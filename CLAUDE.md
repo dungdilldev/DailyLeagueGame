@@ -8,7 +8,7 @@ See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the roadmap and phase s
 
 - **Frontend:** Vite + TypeScript (strict) + Preact (or vanilla TS if the UI stays small). CSS modules / plain CSS, no heavy UI framework.
 - **Data pipeline:** Node.js scripts in TypeScript, run via `tsx`. Runs in GitHub Actions on a cron.
-- **Tests:** Vitest (unit), Playwright (a few e2e smoke tests).
+- **Tests:** Vitest (unit, plus Testing Library for the UI flow), Playwright (a few e2e smoke tests, Phase 4).
 - **Hosting:** Static hosting (GitHub Pages or Cloudflare Pages). No server, no database. Player state lives in `localStorage`.
 - **Lint/format:** ESLint + Prettier. Config is the source of truth, don't argue with it.
 

@@ -118,13 +118,15 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 
 ### Phase 3 - Game logic & UI (MVP)
 
-- [ ] `game/`: `loadPuzzle(date)`, `submitAnswer`, `scoreRun` as pure functions
-- [ ] UI: round screen (4 champion cards, question, progress), reveal screen (values shown), results screen
-- [ ] localStorage: today's progress (resume after refresh), streak, history
-- [ ] Share button (emoji result text copied to clipboard)
-- [ ] Error states: puzzle missing, offline, corrupt storage
-- [ ] Responsive/mobile-first layout, keyboard and screen-reader accessible (labels, focus, contrast)
-- [ ] Riot disclaimer in footer
+- [x] `game/`: `submitAnswer`, `roundResults`, `score`, `currentStreak`, `buildShareText` as pure functions; `data/loaders.ts` loads and validates puzzle files
+- [x] UI: round screen (4 champion cards, question, progress), reveal screen (values shown), results screen
+- [x] localStorage: today's progress (resume after refresh), streak, history (`src/storage/progressStore.ts`)
+- [x] Share button (emoji result text copied to clipboard, textarea fallback if copy fails)
+- [x] Error states: puzzle missing, load failure, corrupt/blocked storage
+- [x] Mobile-first layout, buttons/labels/focus handling, status announcements (screen-reader behaviour not tested with a real screen reader)
+- [x] Riot disclaimer in footer
+- [ ] Visual check in a real browser on desktop and phone (not done: no browser available in the dev session)
+- [ ] Fallback to the latest available puzzle when today's is missing (currently shows a message)
 
 **Done when:** a full daily game is playable end-to-end on desktop and phone with local data.
 
