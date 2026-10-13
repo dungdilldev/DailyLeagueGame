@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-11",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Taliyah",
+        "Heimerdinger",
+        "Elise",
+        "Mel"
+      ],
+      "answerId": "Elise",
+      "values": {
+        "Taliyah": 18,
+        "Heimerdinger": 19,
+        "Elise": 30,
+        "Mel": 21
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Janna",
+        "Aatrox",
+        "Neeko",
+        "Karthus"
+      ],
+      "answerId": "Aatrox",
+      "values": {
+        "Janna": 47,
+        "Aatrox": 60,
+        "Neeko": 48,
+        "Karthus": 46
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Orianna",
+        "Vex",
+        "Fiora",
+        "Yuumi"
+      ],
+      "answerId": "Fiora",
+      "values": {
+        "Orianna": 26,
+        "Vex": 28,
+        "Fiora": 32,
+        "Yuumi": 25
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Blitzcrank",
+        "Illaoi",
+        "Lux",
+        "Rell"
+      ],
+      "answerId": "Illaoi",
+      "values": {
+        "Blitzcrank": 325,
+        "Illaoi": 350,
+        "Lux": 330,
+        "Rell": 315
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "TwistedFate",
+        "LeeSin",
+        "Kayle",
+        "MissFortune"
+      ],
+      "answerId": "MissFortune",
+      "values": {
+        "TwistedFate": 525,
+        "LeeSin": 125,
+        "Kayle": 175,
+        "MissFortune": 550
+      }
+    }
+  ]
+}

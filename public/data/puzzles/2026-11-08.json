@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-08",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "TwistedFate",
+        "Sion",
+        "Anivia",
+        "Karthus"
+      ],
+      "answerId": "Sion",
+      "values": {
+        "TwistedFate": 24,
+        "Sion": 36,
+        "Anivia": 19,
+        "Karthus": 21
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Yuumi",
+        "Kled",
+        "Urgot",
+        "Senna"
+      ],
+      "answerId": "Urgot",
+      "values": {
+        "Yuumi": 500,
+        "Kled": 410,
+        "Urgot": 655,
+        "Senna": 530
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Warwick",
+        "Aphelios",
+        "Yone",
+        "Ivern"
+      ],
+      "answerId": "Aphelios",
+      "values": {
+        "Warwick": 125,
+        "Aphelios": 550,
+        "Yone": 175,
+        "Ivern": 475
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Corki",
+        "Rell",
+        "Mel",
+        "Jax"
+      ],
+      "answerId": "Jax",
+      "values": {
+        "Corki": 325,
+        "Rell": 315,
+        "Mel": 330,
+        "Jax": 350
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Poppy",
+        "Lulu",
+        "Vi",
+        "Ashe"
+      ],
+      "answerId": "Vi",
+      "values": {
+        "Poppy": 56,
+        "Lulu": 47,
+        "Vi": 61,
+        "Ashe": 59
+      }
+    }
+  ]
+}

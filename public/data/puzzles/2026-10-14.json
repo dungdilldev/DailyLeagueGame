@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-14",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Aatrox",
+        "Morgana",
+        "Zac",
+        "Lissandra"
+      ],
+      "answerId": "Morgana",
+      "values": {
+        "Aatrox": 11,
+        "Morgana": 20,
+        "Zac": 10,
+        "Lissandra": 9
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Kalista",
+        "Kayle",
+        "Yuumi",
+        "Orianna"
+      ],
+      "answerId": "Kalista",
+      "values": {
+        "Kalista": 33,
+        "Kayle": 22,
+        "Yuumi": 25,
+        "Orianna": 26
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Nami",
+        "Anivia",
+        "Ivern",
+        "Gnar"
+      ],
+      "answerId": "Ivern",
+      "values": {
+        "Nami": 560,
+        "Anivia": 550,
+        "Ivern": 630,
+        "Gnar": 540
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Kassadin",
+        "Vladimir",
+        "Kindred",
+        "Tryndamere"
+      ],
+      "answerId": "Kindred",
+      "values": {
+        "Kassadin": 150,
+        "Vladimir": 450,
+        "Kindred": 500,
+        "Tryndamere": 175
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Kennen",
+        "Lulu",
+        "Annie",
+        "Zilean"
+      ],
+      "answerId": "Zilean",
+      "values": {
+        "Kennen": 48,
+        "Lulu": 47,
+        "Annie": 50,
+        "Zilean": 52
+      }
+    }
+  ]
+}

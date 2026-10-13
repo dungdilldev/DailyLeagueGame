@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-02",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Karthus",
+        "Kennen",
+        "Chogath",
+        "Janna"
+      ],
+      "answerId": "Chogath",
+      "values": {
+        "Karthus": 46,
+        "Kennen": 48,
+        "Chogath": 69,
+        "Janna": 47
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Kayle",
+        "Kled",
+        "Senna",
+        "Gnar"
+      ],
+      "answerId": "Kayle",
+      "values": {
+        "Kayle": 670,
+        "Kled": 410,
+        "Senna": 530,
+        "Gnar": 540
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Yuumi",
+        "Orianna",
+        "Kalista",
+        "Renekton"
+      ],
+      "answerId": "Kalista",
+      "values": {
+        "Yuumi": 25,
+        "Orianna": 26,
+        "Kalista": 33,
+        "Renekton": 28
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Anivia",
+        "Lillia",
+        "MasterYi",
+        "Rell"
+      ],
+      "answerId": "MasterYi",
+      "values": {
+        "Anivia": 325,
+        "Lillia": 330,
+        "MasterYi": 355,
+        "Rell": 315
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "KogMaw",
+        "RekSai",
+        "Nidalee",
+        "Vex"
+      ],
+      "answerId": "Vex",
+      "values": {
+        "KogMaw": 500,
+        "RekSai": 175,
+        "Nidalee": 525,
+        "Vex": 550
+      }
+    }
+  ]
+}

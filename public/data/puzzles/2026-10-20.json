@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-20",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Kassadin",
+        "Nasus",
+        "Malzahar",
+        "Vayne"
+      ],
+      "answerId": "Nasus",
+      "values": {
+        "Kassadin": 21,
+        "Nasus": 34,
+        "Malzahar": 18,
+        "Vayne": 23
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Yuumi",
+        "Kled",
+        "Gnar",
+        "Ornn"
+      ],
+      "answerId": "Ornn",
+      "values": {
+        "Yuumi": 500,
+        "Kled": 410,
+        "Gnar": 540,
+        "Ornn": 660
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Kayle",
+        "Orianna",
+        "Taric",
+        "Rengar"
+      ],
+      "answerId": "Rengar",
+      "values": {
+        "Kayle": 22,
+        "Orianna": 26,
+        "Taric": 28,
+        "Rengar": 32
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Galio",
+        "Gwen",
+        "Kindred",
+        "Ekko"
+      ],
+      "answerId": "Ekko",
+      "values": {
+        "Galio": 11,
+        "Gwen": 6,
+        "Kindred": 9,
+        "Ekko": 12
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Karthus",
+        "Lulu",
+        "Sona",
+        "Kennen"
+      ],
+      "answerId": "Sona",
+      "values": {
+        "Karthus": 46,
+        "Lulu": 47,
+        "Sona": 49,
+        "Kennen": 48
+      }
+    }
+  ]
+}

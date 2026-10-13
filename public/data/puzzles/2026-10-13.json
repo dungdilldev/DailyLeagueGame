@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-13",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Janna",
+        "Karthus",
+        "Camille",
+        "Orianna"
+      ],
+      "answerId": "Camille",
+      "values": {
+        "Janna": 47,
+        "Karthus": 46,
+        "Camille": 68,
+        "Orianna": 44
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Taliyah",
+        "Mel",
+        "Kayle",
+        "Akali"
+      ],
+      "answerId": "Akali",
+      "values": {
+        "Taliyah": 28,
+        "Mel": 30,
+        "Kayle": 22,
+        "Akali": 37
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Annie",
+        "Gangplank",
+        "Heimerdinger",
+        "Renata"
+      ],
+      "answerId": "Gangplank",
+      "values": {
+        "Annie": 560,
+        "Gangplank": 630,
+        "Heimerdinger": 558,
+        "Renata": 545
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Sylas",
+        "Karma",
+        "Twitch",
+        "Corki"
+      ],
+      "answerId": "Karma",
+      "values": {
+        "Sylas": 9,
+        "Karma": 15,
+        "Twitch": 14,
+        "Corki": 11
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Ashe",
+        "Yorick",
+        "Yunara",
+        "TwistedFate"
+      ],
+      "answerId": "Ashe",
+      "values": {
+        "Ashe": 600,
+        "Yorick": 175,
+        "Yunara": 575,
+        "TwistedFate": 525
+      }
+    }
+  ]
+}

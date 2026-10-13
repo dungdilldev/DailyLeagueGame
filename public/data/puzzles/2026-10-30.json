@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-30",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Orianna",
+        "Lulu",
+        "Karthus",
+        "Trundle"
+      ],
+      "answerId": "Trundle",
+      "values": {
+        "Orianna": 44,
+        "Lulu": 47,
+        "Karthus": 46,
+        "Trundle": 68
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Pyke",
+        "Morgana",
+        "Gnar",
+        "Leblanc"
+      ],
+      "answerId": "Morgana",
+      "values": {
+        "Pyke": 12,
+        "Morgana": 20,
+        "Gnar": 10,
+        "Leblanc": 14
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Kaisa",
+        "Quinn",
+        "Smolder",
+        "Taliyah"
+      ],
+      "answerId": "Kaisa",
+      "values": {
+        "Kaisa": 640,
+        "Quinn": 565,
+        "Smolder": 575,
+        "Taliyah": 550
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Shyvana",
+        "Varus",
+        "Lissandra",
+        "Rell"
+      ],
+      "answerId": "Shyvana",
+      "values": {
+        "Shyvana": 350,
+        "Varus": 330,
+        "Lissandra": 325,
+        "Rell": 315
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Ivern",
+        "Evelynn",
+        "Gragas",
+        "Locke"
+      ],
+      "answerId": "Gragas",
+      "values": {
+        "Ivern": 27,
+        "Evelynn": 37,
+        "Gragas": 38,
+        "Locke": 32
+      }
+    }
+  ]
+}

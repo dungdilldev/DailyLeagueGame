@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-28",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Nilah",
+        "Leona",
+        "Nami",
+        "Yone"
+      ],
+      "answerId": "Nami",
+      "values": {
+        "Nilah": 225,
+        "Leona": 125,
+        "Nami": 550,
+        "Yone": 175
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Camille",
+        "Orianna",
+        "Kayle",
+        "Yuumi"
+      ],
+      "answerId": "Camille",
+      "values": {
+        "Camille": 32,
+        "Orianna": 26,
+        "Kayle": 22,
+        "Yuumi": 25
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Lulu",
+        "Kennen",
+        "Karthus",
+        "Malzahar"
+      ],
+      "answerId": "Malzahar",
+      "values": {
+        "Lulu": 47,
+        "Kennen": 48,
+        "Karthus": 46,
+        "Malzahar": 55
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Rell",
+        "Ziggs",
+        "MasterYi",
+        "Elise"
+      ],
+      "answerId": "MasterYi",
+      "values": {
+        "Rell": 315,
+        "Ziggs": 325,
+        "MasterYi": 355,
+        "Elise": 330
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Teemo",
+        "Kayn",
+        "DrMundo",
+        "Pyke"
+      ],
+      "answerId": "Pyke",
+      "values": {
+        "Teemo": 615,
+        "Kayn": 655,
+        "DrMundo": 640,
+        "Pyke": 670
+      }
+    }
+  ]
+}

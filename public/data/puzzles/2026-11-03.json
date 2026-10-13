@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-03",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Cassiopeia",
+        "Orianna",
+        "Fiddlesticks",
+        "Mel"
+      ],
+      "answerId": "Fiddlesticks",
+      "values": {
+        "Cassiopeia": 18,
+        "Orianna": 20,
+        "Fiddlesticks": 34,
+        "Mel": 21
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Caitlyn",
+        "Sivir",
+        "Yorick",
+        "Velkoz"
+      ],
+      "answerId": "Caitlyn",
+      "values": {
+        "Caitlyn": 650,
+        "Sivir": 500,
+        "Yorick": 175,
+        "Velkoz": 525
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Veigar",
+        "Taliyah",
+        "Hwei",
+        "Warwick"
+      ],
+      "answerId": "Warwick",
+      "values": {
+        "Veigar": 52,
+        "Taliyah": 58,
+        "Hwei": 54,
+        "Warwick": 65
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Aphelios",
+        "Rell",
+        "Swain",
+        "Illaoi"
+      ],
+      "answerId": "Illaoi",
+      "values": {
+        "Aphelios": 325,
+        "Rell": 315,
+        "Swain": 330,
+        "Illaoi": 350
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Elise",
+        "Thresh",
+        "Katarina",
+        "Ahri"
+      ],
+      "answerId": "Ahri",
+      "values": {
+        "Elise": 9,
+        "Thresh": 15,
+        "Katarina": 19,
+        "Ahri": 20
+      }
+    }
+  ]
+}

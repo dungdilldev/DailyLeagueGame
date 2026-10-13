@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-31",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Orianna",
+        "Talon",
+        "Karthus",
+        "Lulu"
+      ],
+      "answerId": "Talon",
+      "values": {
+        "Orianna": 44,
+        "Talon": 68,
+        "Karthus": 46,
+        "Lulu": 47
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Akali",
+        "Yuumi",
+        "Kled",
+        "Jayce"
+      ],
+      "answerId": "Akali",
+      "values": {
+        "Akali": 37,
+        "Yuumi": 25,
+        "Kled": 28,
+        "Jayce": 30
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Taliyah",
+        "Tristana",
+        "Quinn",
+        "Brand"
+      ],
+      "answerId": "Tristana",
+      "values": {
+        "Taliyah": 550,
+        "Tristana": 640,
+        "Quinn": 565,
+        "Brand": 570
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Illaoi",
+        "Yunara",
+        "Smolder",
+        "Rell"
+      ],
+      "answerId": "Illaoi",
+      "values": {
+        "Illaoi": 350,
+        "Yunara": 325,
+        "Smolder": 330,
+        "Rell": 315
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Ezreal",
+        "Blitzcrank",
+        "Nautilus",
+        "Nocturne"
+      ],
+      "answerId": "Ezreal",
+      "values": {
+        "Ezreal": 22,
+        "Blitzcrank": 21,
+        "Nautilus": 11,
+        "Nocturne": 10
+      }
+    }
+  ]
+}

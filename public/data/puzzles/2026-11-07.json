@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-07",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Sett",
+        "Volibear",
+        "XinZhao",
+        "Twitch"
+      ],
+      "answerId": "Twitch",
+      "values": {
+        "Sett": 125,
+        "Volibear": 150,
+        "XinZhao": 175,
+        "Twitch": 550
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Yunara",
+        "Orianna",
+        "Kayle",
+        "Yuumi"
+      ],
+      "answerId": "Yunara",
+      "values": {
+        "Yunara": 33,
+        "Orianna": 26,
+        "Kayle": 22,
+        "Yuumi": 25
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Taliyah",
+        "Vex",
+        "Garen",
+        "Zilean"
+      ],
+      "answerId": "Garen",
+      "values": {
+        "Taliyah": 550,
+        "Vex": 590,
+        "Garen": 690,
+        "Zilean": 574
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Varus",
+        "Trundle",
+        "Rell",
+        "Jinx"
+      ],
+      "answerId": "Trundle",
+      "values": {
+        "Varus": 330,
+        "Trundle": 350,
+        "Rell": 315,
+        "Jinx": 325
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Xayah",
+        "Anivia",
+        "Kalista",
+        "Jayce"
+      ],
+      "answerId": "Xayah",
+      "values": {
+        "Xayah": 25,
+        "Anivia": 19,
+        "Kalista": 24,
+        "Jayce": 22
+      }
+    }
+  ]
+}

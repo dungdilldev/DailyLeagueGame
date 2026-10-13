@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-04",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Zed",
+        "Nilah",
+        "Kalista",
+        "Taric"
+      ],
+      "answerId": "Zed",
+      "values": {
+        "Zed": 14,
+        "Nilah": 3,
+        "Kalista": 6,
+        "Taric": 7
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Kayn",
+        "Leblanc",
+        "Graves",
+        "Jax"
+      ],
+      "answerId": "Leblanc",
+      "values": {
+        "Kayn": 175,
+        "Leblanc": 525,
+        "Graves": 425,
+        "Jax": 125
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Nunu",
+        "Lulu",
+        "Skarner",
+        "Hwei"
+      ],
+      "answerId": "Skarner",
+      "values": {
+        "Nunu": 29,
+        "Lulu": 26,
+        "Skarner": 33,
+        "Hwei": 21
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Nasus",
+        "TwistedFate",
+        "Rell",
+        "Janna"
+      ],
+      "answerId": "Nasus",
+      "values": {
+        "Nasus": 350,
+        "TwistedFate": 330,
+        "Rell": 315,
+        "Janna": 325
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Kayle",
+        "Lux",
+        "Renekton",
+        "DrMundo"
+      ],
+      "answerId": "Lux",
+      "values": {
+        "Kayle": 22,
+        "Lux": 30,
+        "Renekton": 28,
+        "DrMundo": 29
+      }
+    }
+  ]
+}

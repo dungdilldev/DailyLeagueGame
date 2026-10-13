@@ -104,12 +104,15 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 
 ### Phase 2 - Puzzle generator
 
-- [ ] Seeded PRNG util (date string -> seed)
-- [ ] Round builder: pick stat, pick 4 champions, enforce distinct values + min gap, avoid recent repeats
-- [ ] Puzzle builder: N rounds, no repeated stat or champion within a day
-- [ ] Difficulty tuning knobs in one config file
-- [ ] `npm run data:generate -- --days 30` writes `puzzles/YYYY-MM-DD.json` (never overwrites already-published days)
-- [ ] Property tests across many seeds; determinism test
+- [x] Seeded PRNG util (date string -> seed)
+- [x] Round builder: constructive (answer, runner-up inside the difficulty band, two lower champions); distinct values enforced
+- [x] Puzzle builder: 5 rounds, no repeated stat or champion within a day
+- [x] Difficulty config in one file (`pipeline/generate/config.ts`): gap bands narrow each round
+- [x] `npm run data:generate -- --days 30` writes `puzzles/YYYY-MM-DD.json` (never overwrites existing days)
+- [x] Determinism test, validator tests, and a 365-date test against the real roster
+- [ ] Avoid champion repeats across consecutive days (not done: each day is generated independently from its date)
+
+**Difficulty:** gap = (best - second) / best. Round 1: 30%+, round 2: 18-30%, round 3: 10-18%, round 4: 5-10%, round 5: 2-5%. Stats that cannot reach a band (e.g. move speed at 30%) are skipped for that round automatically.
 
 **Done when:** generating 365 days produces zero invalid rounds and re-running yields identical output.
 

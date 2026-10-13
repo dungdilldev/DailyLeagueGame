@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-26",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Rakan",
+        "Morgana",
+        "Ornn",
+        "Chogath"
+      ],
+      "answerId": "Morgana",
+      "values": {
+        "Rakan": 300,
+        "Morgana": 450,
+        "Ornn": 175,
+        "Chogath": 125
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Milio",
+        "Lulu",
+        "Karma",
+        "Irelia"
+      ],
+      "answerId": "Irelia",
+      "values": {
+        "Milio": 48,
+        "Lulu": 47,
+        "Karma": 49,
+        "Irelia": 65
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Volibear",
+        "Lissandra",
+        "Yunara",
+        "Azir"
+      ],
+      "answerId": "Volibear",
+      "values": {
+        "Volibear": 10,
+        "Lissandra": 9,
+        "Yunara": 2,
+        "Azir": 7
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Kassadin",
+        "Annie",
+        "Samira",
+        "Galio"
+      ],
+      "answerId": "Samira",
+      "values": {
+        "Kassadin": 21,
+        "Annie": 23,
+        "Samira": 26,
+        "Galio": 24
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "DrMundo",
+        "Udyr",
+        "Kled",
+        "Senna"
+      ],
+      "answerId": "Senna",
+      "values": {
+        "DrMundo": 29,
+        "Udyr": 32,
+        "Kled": 28,
+        "Senna": 33
+      }
+    }
+  ]
+}

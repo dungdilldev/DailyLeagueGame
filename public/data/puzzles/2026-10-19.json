@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-19",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Gnar",
+        "Rumble",
+        "Neeko",
+        "Taric"
+      ],
+      "answerId": "Neeko",
+      "values": {
+        "Gnar": 175,
+        "Rumble": 125,
+        "Neeko": 550,
+        "Taric": 150
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Yuumi",
+        "Orianna",
+        "JarvanIV",
+        "Kayle"
+      ],
+      "answerId": "JarvanIV",
+      "values": {
+        "Yuumi": 25,
+        "Orianna": 26,
+        "JarvanIV": 32,
+        "Kayle": 22
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Yasuo",
+        "Kaisa",
+        "Quinn",
+        "Vayne"
+      ],
+      "answerId": "Vayne",
+      "values": {
+        "Yasuo": 18,
+        "Kaisa": 14,
+        "Quinn": 7,
+        "Vayne": 21
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "MasterYi",
+        "Rammus",
+        "Sona",
+        "Pyke"
+      ],
+      "answerId": "MasterYi",
+      "values": {
+        "MasterYi": 355,
+        "Rammus": 335,
+        "Sona": 325,
+        "Pyke": 330
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Gragas",
+        "Skarner",
+        "Darius",
+        "Sion"
+      ],
+      "answerId": "Gragas",
+      "values": {
+        "Gragas": 38,
+        "Skarner": 33,
+        "Darius": 37,
+        "Sion": 36
+      }
+    }
+  ]
+}

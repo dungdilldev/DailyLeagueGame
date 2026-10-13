@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-05",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Azir",
+        "JarvanIV",
+        "Poppy",
+        "Taric"
+      ],
+      "answerId": "Azir",
+      "values": {
+        "Azir": 525,
+        "JarvanIV": 175,
+        "Poppy": 125,
+        "Taric": 150
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Karthus",
+        "Samira",
+        "Cassiopeia",
+        "Anivia"
+      ],
+      "answerId": "Samira",
+      "values": {
+        "Karthus": 21,
+        "Samira": 26,
+        "Cassiopeia": 18,
+        "Anivia": 19
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Vi",
+        "Kayle",
+        "Taliyah",
+        "Yuumi"
+      ],
+      "answerId": "Vi",
+      "values": {
+        "Vi": 32,
+        "Kayle": 22,
+        "Taliyah": 28,
+        "Yuumi": 25
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Ashe",
+        "Rell",
+        "Olaf",
+        "Akshan"
+      ],
+      "answerId": "Olaf",
+      "values": {
+        "Ashe": 325,
+        "Rell": 315,
+        "Olaf": 350,
+        "Akshan": 330
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Garen",
+        "Twitch",
+        "Jax",
+        "Nocturne"
+      ],
+      "answerId": "Jax",
+      "values": {
+        "Garen": 19,
+        "Twitch": 14,
+        "Jax": 20,
+        "Nocturne": 10
+      }
+    }
+  ]
+}

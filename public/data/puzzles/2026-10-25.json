@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-25",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Jayce",
+        "Azir",
+        "Belveth",
+        "Camille"
+      ],
+      "answerId": "Jayce",
+      "values": {
+        "Jayce": 12,
+        "Azir": 7,
+        "Belveth": 4,
+        "Camille": 8
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Pantheon",
+        "Yuumi",
+        "Kayle",
+        "Akali"
+      ],
+      "answerId": "Akali",
+      "values": {
+        "Pantheon": 28,
+        "Yuumi": 25,
+        "Kayle": 22,
+        "Akali": 37
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Smolder",
+        "Senna",
+        "Tristana",
+        "Milio"
+      ],
+      "answerId": "Tristana",
+      "values": {
+        "Smolder": 575,
+        "Senna": 530,
+        "Tristana": 640,
+        "Milio": 560
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Soraka",
+        "MasterYi",
+        "Fizz",
+        "Urgot"
+      ],
+      "answerId": "MasterYi",
+      "values": {
+        "Soraka": 325,
+        "MasterYi": 355,
+        "Fizz": 335,
+        "Urgot": 330
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Sivir",
+        "Katarina",
+        "Zaahen",
+        "Hwei"
+      ],
+      "answerId": "Zaahen",
+      "values": {
+        "Sivir": 60,
+        "Katarina": 58,
+        "Zaahen": 63,
+        "Hwei": 54
+      }
+    }
+  ]
+}

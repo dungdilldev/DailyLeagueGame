@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-15",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Taliyah",
+        "Lux",
+        "Sion",
+        "Orianna"
+      ],
+      "answerId": "Sion",
+      "values": {
+        "Taliyah": 18,
+        "Lux": 21,
+        "Sion": 36,
+        "Orianna": 20
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Maokai",
+        "Kled",
+        "Senna",
+        "Gnar"
+      ],
+      "answerId": "Maokai",
+      "values": {
+        "Maokai": 665,
+        "Kled": 410,
+        "Senna": 530,
+        "Gnar": 540
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Xerath",
+        "Aatrox",
+        "Rakan",
+        "Vladimir"
+      ],
+      "answerId": "Xerath",
+      "values": {
+        "Xerath": 525,
+        "Aatrox": 175,
+        "Rakan": 300,
+        "Vladimir": 450
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Morgana",
+        "Ivern",
+        "Kaisa",
+        "Zilean"
+      ],
+      "answerId": "Kaisa",
+      "values": {
+        "Morgana": 56,
+        "Ivern": 50,
+        "Kaisa": 59,
+        "Zilean": 52
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Azir",
+        "Diana",
+        "Viktor",
+        "Janna"
+      ],
+      "answerId": "Diana",
+      "values": {
+        "Azir": 330,
+        "Diana": 345,
+        "Viktor": 335,
+        "Janna": 325
+      }
+    }
+  ]
+}

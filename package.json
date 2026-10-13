@@ -16,7 +16,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "data:refresh": "tsx pipeline/refresh.ts"
+    "data:refresh": "tsx pipeline/refresh.ts",
+    "data:generate": "tsx pipeline/generate.ts"
   },
   "dependencies": {
     "preact": "^11.0.1",

@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-27",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Vayne",
+        "Jhin",
+        "XinZhao",
+        "Xerath"
+      ],
+      "answerId": "XinZhao",
+      "values": {
+        "Vayne": 23,
+        "Jhin": 24,
+        "XinZhao": 35,
+        "Xerath": 22
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Fiddlesticks",
+        "Yuumi",
+        "Kled",
+        "Senna"
+      ],
+      "answerId": "Fiddlesticks",
+      "values": {
+        "Fiddlesticks": 650,
+        "Yuumi": 500,
+        "Kled": 410,
+        "Senna": 530
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Janna",
+        "Karthus",
+        "Ekko",
+        "Milio"
+      ],
+      "answerId": "Ekko",
+      "values": {
+        "Janna": 47,
+        "Karthus": 46,
+        "Ekko": 58,
+        "Milio": 48
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Sett",
+        "Kayle",
+        "Orianna",
+        "Ziggs"
+      ],
+      "answerId": "Ziggs",
+      "values": {
+        "Sett": 28,
+        "Kayle": 22,
+        "Orianna": 26,
+        "Ziggs": 30
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Rell",
+        "Graves",
+        "Lux",
+        "Akali"
+      ],
+      "answerId": "Lux",
+      "values": {
+        "Rell": 4,
+        "Graves": 13,
+        "Lux": 21,
+        "Akali": 20
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-21",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Lulu",
+        "Renekton",
+        "Orianna",
+        "Neeko"
+      ],
+      "answerId": "Renekton",
+      "values": {
+        "Lulu": 47,
+        "Renekton": 69,
+        "Orianna": 44,
+        "Neeko": 48
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Talon",
+        "Yuumi",
+        "Sett",
+        "Kayle"
+      ],
+      "answerId": "Talon",
+      "values": {
+        "Talon": 36,
+        "Yuumi": 25,
+        "Sett": 28,
+        "Kayle": 22
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Elise",
+        "Zaahen",
+        "Syndra",
+        "Fizz"
+      ],
+      "answerId": "Zaahen",
+      "values": {
+        "Elise": 30,
+        "Zaahen": 36,
+        "Syndra": 25,
+        "Fizz": 26
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Soraka",
+        "Draven",
+        "Rell",
+        "Jax"
+      ],
+      "answerId": "Jax",
+      "values": {
+        "Soraka": 325,
+        "Draven": 330,
+        "Rell": 315,
+        "Jax": 350
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Heimerdinger",
+        "Janna",
+        "Velkoz",
+        "Gnar"
+      ],
+      "answerId": "Velkoz",
+      "values": {
+        "Heimerdinger": 558,
+        "Janna": 570,
+        "Velkoz": 590,
+        "Gnar": 540
+      }
+    }
+  ]
+}

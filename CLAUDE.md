@@ -40,14 +40,14 @@ Keep this list accurate, it is the first thing to check. Node 22+ (see `.nvmrc`)
 - `npm run lint` / `npm run typecheck`
 - `npm run format` / `npm run format:check` - Prettier
 - `npm run data:refresh` - fetch Data Dragon, rebuild `public/data/champions.json` (needs network)
-- Not yet implemented (Phase 2): `npm run data:generate -- --days 30` - generate puzzles for the next N days
+- `npm run data:generate -- --days 30` - generate puzzles for the next N days (skips days that already exist; optional `--from YYYY-MM-DD`)
 
 ## Domain Rules (non-obvious, easy to get wrong)
 
 - **A puzzle is data, not code.** The client never decides the answer; it reads a pre-generated puzzle file and compares against the stored values.
 - **Determinism:** the same date + same data snapshot must always produce the same puzzle. Use a seeded PRNG (seed = date string), never `Math.random()` in the generator.
 - **Date handling:** the "day" is defined in **UTC**. Never use local time to pick the puzzle.
-- **Fair rounds:** within a round all 4 champions must have distinct values for the stat, with a minimum gap between first and second place (configurable per stat). Win rate / pick rate comparisons should stay within the same role and patch so the answer is not trivially guessable.
+- **Fair, escalating rounds:** all 4 champions in a round have distinct values. The relative gap between first and second place must fall in the round's band from `pipeline/generate/config.ts`; bands narrow each round so later rounds are harder. Win rate / pick rate comparisons (Phase 5) should stay within the same role and patch.
 - **Stat provenance:** every stat value carries its source and patch/date. Stats that change (win rate) are snapshotted into the puzzle at generation time so a puzzle never changes after publishing.
 - **No official win-rate API exists.** Riot does not expose aggregate champion win/pick rate. Whatever source is used must be isolated behind the `pipeline/sources` interface so it can be swapped (see the plan, Risks).
 - **Riot legal:** include the required "not endorsed by Riot Games" disclaimer in the footer. Do not host Riot assets beyond what Data Dragon / Community Dragon terms allow; hotlink or fetch via CI per their terms.

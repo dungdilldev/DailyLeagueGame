@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-06",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Gwen",
+        "Darius",
+        "Kled",
+        "Lissandra"
+      ],
+      "answerId": "Darius",
+      "values": {
+        "Gwen": 6,
+        "Darius": 18,
+        "Kled": 4,
+        "Lissandra": 9
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Renata",
+        "Gnar",
+        "Anivia",
+        "Amumu"
+      ],
+      "answerId": "Amumu",
+      "values": {
+        "Renata": 545,
+        "Gnar": 540,
+        "Anivia": 550,
+        "Amumu": 685
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Gangplank",
+        "Aurora",
+        "Ziggs",
+        "Senna"
+      ],
+      "answerId": "Gangplank",
+      "values": {
+        "Gangplank": 64,
+        "Aurora": 53,
+        "Ziggs": 55,
+        "Senna": 50
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Jhin",
+        "Illaoi",
+        "Ashe",
+        "Rell"
+      ],
+      "answerId": "Illaoi",
+      "values": {
+        "Jhin": 330,
+        "Illaoi": 350,
+        "Ashe": 325,
+        "Rell": 315
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Janna",
+        "Kalista",
+        "Fiddlesticks",
+        "Volibear"
+      ],
+      "answerId": "Volibear",
+      "values": {
+        "Janna": 28,
+        "Kalista": 24,
+        "Fiddlesticks": 34,
+        "Volibear": 35
+      }
+    }
+  ]
+}

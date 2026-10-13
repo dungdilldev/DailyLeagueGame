@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-23",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Belveth",
+        "DrMundo",
+        "Anivia",
+        "Gnar"
+      ],
+      "answerId": "Anivia",
+      "values": {
+        "Belveth": 150,
+        "DrMundo": 125,
+        "Anivia": 600,
+        "Gnar": 175
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "championIds": [
+        "Zaahen",
+        "Ivern",
+        "Ornn",
+        "Zilean"
+      ],
+      "answerId": "Zilean",
+      "values": {
+        "Zaahen": 1,
+        "Ivern": 6,
+        "Ornn": 5,
+        "Zilean": 8
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "championIds": [
+        "Orianna",
+        "Mel",
+        "Taliyah",
+        "MissFortune"
+      ],
+      "answerId": "MissFortune",
+      "values": {
+        "Orianna": 20,
+        "Mel": 21,
+        "Taliyah": 18,
+        "MissFortune": 25
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Ambessa",
+        "TahmKench",
+        "AurelionSol",
+        "Taric"
+      ],
+      "answerId": "Ambessa",
+      "values": {
+        "Ambessa": 63,
+        "TahmKench": 56,
+        "AurelionSol": 58,
+        "Taric": 55
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Akshan",
+        "Naafiri",
+        "Rell",
+        "Caitlyn"
+      ],
+      "answerId": "Naafiri",
+      "values": {
+        "Akshan": 330,
+        "Naafiri": 340,
+        "Rell": 315,
+        "Caitlyn": 325
+      }
+    }
+  ]
+}

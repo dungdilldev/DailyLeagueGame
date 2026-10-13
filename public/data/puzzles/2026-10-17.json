@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-17",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "championIds": [
+        "Galio",
+        "Samira",
+        "Nilah",
+        "Leona"
+      ],
+      "answerId": "Samira",
+      "values": {
+        "Galio": 150,
+        "Samira": 500,
+        "Nilah": 225,
+        "Leona": 125
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "championIds": [
+        "Yuumi",
+        "Kled",
+        "Yorick",
+        "Senna"
+      ],
+      "answerId": "Yorick",
+      "values": {
+        "Yuumi": 500,
+        "Kled": 410,
+        "Yorick": 650,
+        "Senna": 530
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "championIds": [
+        "Orianna",
+        "MissFortune",
+        "MonkeyKing",
+        "Kayle"
+      ],
+      "answerId": "MissFortune",
+      "values": {
+        "Orianna": 26,
+        "MissFortune": 33,
+        "MonkeyKing": 28,
+        "Kayle": 22
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "championIds": [
+        "Udyr",
+        "Akshan",
+        "Nautilus",
+        "Rell"
+      ],
+      "answerId": "Udyr",
+      "values": {
+        "Udyr": 350,
+        "Akshan": 330,
+        "Nautilus": 325,
+        "Rell": 315
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "championIds": [
+        "Jinx",
+        "Vex",
+        "Bard",
+        "Evelynn"
+      ],
+      "answerId": "Evelynn",
+      "values": {
+        "Jinx": 59,
+        "Vex": 54,
+        "Bard": 52,
+        "Evelynn": 61
+      }
+    }
+  ]
+}
