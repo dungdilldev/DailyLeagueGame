@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-24",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "question": "Which champion has the highest base attack damage?",
+      "championIds": [
+        "Talon",
+        "Orianna",
+        "Janna",
+        "Karthus"
+      ],
+      "answerId": "Talon",
+      "values": {
+        "Talon": 68,
+        "Orianna": 44,
+        "Janna": 47,
+        "Karthus": 46
+      }
+    },
+    {
+      "statId": "attackSpeed",
+      "statLabel": "Base attack speed",
+      "question": "Which champion has the highest base attack speed?",
+      "championIds": [
+        "Annie",
+        "Maokai",
+        "Graves",
+        "Milio"
+      ],
+      "answerId": "Maokai",
+      "values": {
+        "Annie": 0.61,
+        "Maokai": 0.8,
+        "Graves": 0.475,
+        "Milio": 0.625
+      }
+    },
+    {
+      "statId": "healthRegen",
+      "statLabel": "Base health regeneration",
+      "question": "Which champion has the highest base health regeneration?",
+      "championIds": [
+        "Ahri",
+        "Singed",
+        "Kayn",
+        "Yone"
+      ],
+      "answerId": "Singed",
+      "values": {
+        "Ahri": 2.5,
+        "Singed": 9.5,
+        "Kayn": 8,
+        "Yone": 7.5
+      }
+    },
+    {
+      "statId": "armor",
+      "statLabel": "Base armor",
+      "question": "Which champion has the highest base armor?",
+      "championIds": [
+        "Sivir",
+        "Varus",
+        "Corki",
+        "Akali"
+      ],
+      "answerId": "Sivir",
+      "values": {
+        "Sivir": 30,
+        "Varus": 24,
+        "Corki": 27,
+        "Akali": 23
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "question": "Which champion has the highest base health?",
+      "championIds": [
+        "Senna",
+        "Sylas",
+        "Syndra",
+        "Malzahar"
+      ],
+      "answerId": "Sylas",
+      "values": {
+        "Senna": 530,
+        "Sylas": 600,
+        "Syndra": 583,
+        "Malzahar": 580
+      }
+    }
+  ]
+}

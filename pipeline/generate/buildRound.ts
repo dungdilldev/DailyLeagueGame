@@ -9,7 +9,7 @@ interface Entry {
   value: number;
 }
 
-export type StatInfo = Pick<StatDefinition, 'id' | 'label'>;
+export type StatInfo = Pick<StatDefinition, 'id' | 'label' | 'question' | 'formatValue'>;
 
 /** Relative gap between a higher and a lower value, in [0, 1]. */
 export function gapRatio(higher: number, lower: number): number {
@@ -53,9 +53,15 @@ export function buildRound(
     return {
       statId: stat.id,
       statLabel: stat.label,
+      question: stat.question,
       championIds: chosen.map((entry) => entry.champion.id),
       answerId: answer.champion.id,
       values: Object.fromEntries(chosen.map((entry) => [entry.champion.id, entry.value])),
+      ...(stat.formatValue && {
+        displayValues: Object.fromEntries(
+          chosen.map((entry) => [entry.champion.id, stat.formatValue?.(entry.value) ?? '']),
+        ),
+      }),
     };
   }
   return undefined;

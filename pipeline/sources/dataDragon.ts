@@ -27,6 +27,8 @@ const VersionsSchema = z.array(z.string()).min(1);
 
 const ChampionSummarySchema = z.object({
   id: z.string(),
+  /** Numeric champion id as a string; matches the wiki's numeric id. */
+  key: z.string(),
   name: z.string(),
   title: z.string(),
   tags: z.array(z.string()),
@@ -42,11 +44,14 @@ const ChampionDetailSchema = z.object({
   skins: z.array(z.object({ num: z.number(), name: z.string() })),
   stats: z.object({
     hp: z.number(),
+    hpperlevel: z.number(),
+    hpregen: z.number(),
     armor: z.number(),
     spellblock: z.number(),
     attackrange: z.number(),
     movespeed: z.number(),
     attackdamage: z.number(),
+    attackspeed: z.number(),
   }),
 });
 export type ChampionDetail = z.infer<typeof ChampionDetailSchema>;

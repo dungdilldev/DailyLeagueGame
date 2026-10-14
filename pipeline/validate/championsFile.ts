@@ -3,14 +3,20 @@ import type { StatDefinition } from '../stats/types';
 
 /** Sanity floor: a count far below the real roster means a partial or failed fetch. */
 export const MIN_CHAMPION_COUNT = 100;
+/**
+ * Share of champions that must have each stat. Not 100%: a champion released today may be
+ * missing from a secondary source. Near-zero coverage means a source broke, and fails the run.
+ */
+export const MIN_STAT_COVERAGE = 0.95;
 
 /** Returns human-readable problems; empty means the file is safe to publish. */
 export function findProblems(file: ChampionsFile, stats: readonly StatDefinition[]): string[] {
   const problems: string[] = [];
+  const total = file.champions.length;
 
-  if (file.champions.length < MIN_CHAMPION_COUNT) {
+  if (total < MIN_CHAMPION_COUNT) {
     problems.push(
-      `Only ${String(file.champions.length)} champions, expected at least ${String(MIN_CHAMPION_COUNT)}`,
+      `Only ${String(total)} champions, expected at least ${String(MIN_CHAMPION_COUNT)}`,
     );
   }
 
@@ -18,11 +24,14 @@ export function findProblems(file: ChampionsFile, stats: readonly StatDefinition
   for (const champion of file.champions) {
     if (seenIds.has(champion.id)) problems.push(`Duplicate champion id "${champion.id}"`);
     seenIds.add(champion.id);
+  }
 
-    for (const stat of stats) {
-      if (!(stat.id in champion.stats)) {
-        problems.push(`${champion.id} is missing stat "${stat.id}"`);
-      }
+  for (const stat of stats) {
+    const withStat = file.champions.filter((champion) => stat.id in champion.stats).length;
+    if (withStat < total * MIN_STAT_COVERAGE) {
+      problems.push(
+        `Stat "${stat.id}" present for only ${String(withStat)} of ${String(total)} champions`,
+      );
     }
   }
   return problems;

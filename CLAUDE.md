@@ -49,8 +49,9 @@ Keep this list accurate, it is the first thing to check. Node 22+ (see `.nvmrc`)
 - **Determinism:** the same date + same data snapshot must always produce the same puzzle. Use a seeded PRNG (seed = date string), never `Math.random()` in the generator.
 - **Date handling:** the "day" is defined in **UTC**. Never use local time to pick the puzzle.
 - **Fair, escalating rounds:** all 4 champions in a round have distinct values. The relative gap between first and second place must fall in the round's band from `pipeline/generate/config.ts`; bands narrow each round so later rounds are harder. Win rate / pick rate comparisons (Phase 5) should stay within the same role and patch.
+- **Data sources:** Data Dragon (official) and the LoL Wiki champion data module (release dates). Each lives in one file under `pipeline/sources/`. A stat may return `undefined` for a champion (e.g. not on the wiki yet); validation requires 95% coverage per stat rather than 100%.
 - **Stat provenance:** every stat value carries its source and patch/date. Stats that change (win rate) are snapshotted into the puzzle at generation time so a puzzle never changes after publishing.
-- **No official win-rate API exists.** Riot does not expose aggregate champion win/pick rate. Whatever source is used must be isolated behind the `pipeline/sources` interface so it can be swapped (see the plan, Risks).
+- **No official win-rate API exists** (popularity stats are parked, see plan Phase 5b). Riot does not expose aggregate champion win/pick rate. Whatever source is used must be isolated behind the `pipeline/sources` interface so it can be swapped (see the plan, Risks).
 - **Riot legal:** include the required "not endorsed by Riot Games" disclaimer in the footer. Do not host Riot assets beyond what Data Dragon / Community Dragon terms allow; hotlink or fetch via CI per their terms.
 
 ## Maintainability & Clean Code

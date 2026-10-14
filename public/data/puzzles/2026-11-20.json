@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-20",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "healthPerLevel",
+      "statLabel": "Health gained per level",
+      "question": "Which champion has the highest health gained per level?",
+      "championIds": [
+        "Thresh",
+        "Kled",
+        "Gnar",
+        "Yuumi"
+      ],
+      "answerId": "Thresh",
+      "values": {
+        "Thresh": 120,
+        "Kled": 84,
+        "Gnar": 79,
+        "Yuumi": 69
+      }
+    },
+    {
+      "statId": "magicResist",
+      "statLabel": "Base magic resistance",
+      "question": "Which champion has the highest base magic resistance?",
+      "championIds": [
+        "Zed",
+        "Taric",
+        "Akali",
+        "Vladimir"
+      ],
+      "answerId": "Akali",
+      "values": {
+        "Zed": 29,
+        "Taric": 28,
+        "Akali": 37,
+        "Vladimir": 30
+      }
+    },
+    {
+      "statId": "attackSpeed",
+      "statLabel": "Base attack speed",
+      "question": "Which champion has the highest base attack speed?",
+      "championIds": [
+        "Malphite",
+        "Vi",
+        "JarvanIV",
+        "Urgot"
+      ],
+      "answerId": "Malphite",
+      "values": {
+        "Malphite": 0.736,
+        "Vi": 0.644,
+        "JarvanIV": 0.658,
+        "Urgot": 0.625
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "question": "Which champion has the highest movement speed?",
+      "championIds": [
+        "Kindred",
+        "Rell",
+        "Nasus",
+        "Seraphine"
+      ],
+      "answerId": "Nasus",
+      "values": {
+        "Kindred": 325,
+        "Rell": 315,
+        "Nasus": 350,
+        "Seraphine": 330
+      }
+    },
+    {
+      "statId": "skinCount",
+      "statLabel": "Number of skins",
+      "question": "Which champion has the most skins?",
+      "championIds": [
+        "Renekton",
+        "Jax",
+        "Vayne",
+        "Velkoz"
+      ],
+      "answerId": "Vayne",
+      "values": {
+        "Renekton": 15,
+        "Jax": 20,
+        "Vayne": 21,
+        "Velkoz": 7
+      }
+    }
+  ]
+}

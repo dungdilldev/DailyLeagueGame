@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'preact/hooks';
 import type { Round } from '../data/puzzleSchema';
 import type { Champion } from '../data/schema';
 import { isCorrect } from '../game/progress';
+import { displayValue, roundQuestion } from '../game/roundDisplay';
 import { ChampionCard, type CardState } from './ChampionCard';
 
 interface RoundViewProps {
@@ -47,7 +48,7 @@ export function RoundView({
         Round {roundNumber} of {totalRounds}
       </p>
       <h2 id="question" class="question">
-        Which champion has the highest <strong>{round.statLabel.toLowerCase()}</strong>?
+        {roundQuestion(round)}
       </h2>
 
       <div class="cards">
@@ -58,7 +59,7 @@ export function RoundView({
               key={id}
               name={champion?.name ?? id}
               iconUrl={champion?.iconUrl}
-              value={revealed ? round.values[id] : undefined}
+              valueText={revealed ? displayValue(round, id) : undefined}
               state={cardState(round, id, chosenId)}
               disabled={revealed}
               onSelect={() => {

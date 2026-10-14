@@ -90,7 +90,7 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 - [x] `sources/dataDragon.ts`: fetch latest version, champion list, per-champion detail
 - [x] Zod schemas for raw responses and for our `Champion` model (`src/data/schema.ts`)
 - [x] Stat modules: `skinCount`, `baseHealth`, `armor`, `magicResist`, `attackDamage`, `attackRange`, `moveSpeed`
-- [ ] `releaseDate` stat: not in Data Dragon, needs another source (LoL Wiki). Deferred; see notes below
+- [x] `releaseDate` stat from the LoL Wiki (`pipeline/sources/leagueWiki.ts`), added in the "more official stats" step below
 - [x] Stat registry (single list) so new stats = one file
 - [x] `npm run data:refresh` writes `public/data/champions.json`
 - [x] Unit tests with injected fetchers (no live network in tests)
@@ -142,7 +142,20 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 
 **Done when:** the site updates daily with no manual action for 7 consecutive days.
 
-### Phase 5 - Popularity stats (win rate / pick rate)
+### Phase 5a - More stats without popularity data (done)
+
+Decision: win rate / pick rate are skipped for now (no official source). Instead:
+
+- [x] Second source: LoL Wiki champion data (one text request, parsed and validated; fails loudly if the format changes)
+- [x] New stats: `releaseDate`, `healthPerLevel`, `healthRegen`, `attackSpeed` (11 stats total)
+- [x] Stats can supply their own question and display formatting (`question`, `formatValue`); the puzzle stores them, so the client needs no stat knowledge. Older puzzles without them still load.
+- [x] Stat validation is now coverage based (95% of champions) so a champion missing from the wiki on release day does not block the refresh
+- [x] Wiki attribution (CC BY-SA 3.0) in the site footer
+- Release dates are stored as days since 2009-01-01 so the relative-gap difficulty bands still work.
+
+### Phase 5b - Popularity stats (win rate / pick rate) - parked
+
+Revisit only if wanted later. Options and risks are in section 5.
 
 - [ ] Decide provider (see Risks); implement behind the `sources` interface
 - [ ] Snapshot per patch, per role; store provenance in `StatValue`

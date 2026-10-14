@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-18",
+  "patch": "16.20.1",
+  "rounds": [
+    {
+      "statId": "healthPerLevel",
+      "statLabel": "Health gained per level",
+      "question": "Which champion has the highest health gained per level?",
+      "championIds": [
+        "Yuumi",
+        "Sylas",
+        "Gnar",
+        "Kled"
+      ],
+      "answerId": "Sylas",
+      "values": {
+        "Yuumi": 69,
+        "Sylas": 122,
+        "Gnar": 79,
+        "Kled": 84
+      }
+    },
+    {
+      "statId": "baseHealth",
+      "statLabel": "Base health",
+      "question": "Which champion has the highest base health?",
+      "championIds": [
+        "Senna",
+        "Milio",
+        "Heimerdinger",
+        "Zac"
+      ],
+      "answerId": "Zac",
+      "values": {
+        "Senna": 530,
+        "Milio": 560,
+        "Heimerdinger": 558,
+        "Zac": 685
+      }
+    },
+    {
+      "statId": "attackDamage",
+      "statLabel": "Base attack damage",
+      "question": "Which champion has the highest base attack damage?",
+      "championIds": [
+        "Orianna",
+        "Janna",
+        "Kennen",
+        "Naafiri"
+      ],
+      "answerId": "Naafiri",
+      "values": {
+        "Orianna": 44,
+        "Janna": 47,
+        "Kennen": 48,
+        "Naafiri": 55
+      }
+    },
+    {
+      "statId": "moveSpeed",
+      "statLabel": "Movement speed",
+      "question": "Which champion has the highest movement speed?",
+      "championIds": [
+        "Udyr",
+        "Rell",
+        "Lux",
+        "Ashe"
+      ],
+      "answerId": "Udyr",
+      "values": {
+        "Udyr": 350,
+        "Rell": 315,
+        "Lux": 330,
+        "Ashe": 325
+      }
+    },
+    {
+      "statId": "attackRange",
+      "statLabel": "Attack range",
+      "question": "Which champion has the highest attack range?",
+      "championIds": [
+        "Hecarim",
+        "Renekton",
+        "Sivir",
+        "Azir"
+      ],
+      "answerId": "Azir",
+      "values": {
+        "Hecarim": 175,
+        "Renekton": 125,
+        "Sivir": 500,
+        "Azir": 525
+      }
+    }
+  ]
+}

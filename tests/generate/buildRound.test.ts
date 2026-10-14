@@ -3,7 +3,7 @@ import { buildRound, gapRatio } from '../../pipeline/generate/buildRound';
 import { createRng } from '../../pipeline/generate/random';
 import type { Champion } from '../../src/data/schema';
 
-const STAT = { id: 'hp', label: 'Health' };
+const STAT = { id: 'hp', label: 'Health', question: 'Which champion has the most health?' };
 
 function champion(id: string, value: number): Champion {
   return {
@@ -50,6 +50,23 @@ describe('buildRound', () => {
   it('returns undefined when fewer than 4 distinct values exist', () => {
     const ties = [champion('A', 100), champion('B', 50), champion('C', 50), champion('D', 50)];
     expect(buildRound(ties, STAT, { minRatio: 0.3, maxRatio: 1 }, createRng('x'))).toBeUndefined();
+  });
+
+  it('includes the stat question, and pre-formatted values only when the stat formats them', () => {
+    const band = { minRatio: 0.05, maxRatio: 1 };
+    const plain = buildRound(roster, STAT, band, createRng('q'));
+    expect(plain?.question).toBe('Which champion has the most health?');
+    expect(plain?.displayValues).toBeUndefined();
+
+    const formatted = buildRound(
+      roster,
+      { ...STAT, formatValue: (v: number) => `${String(v)} HP` },
+      band,
+      createRng('q'),
+    );
+    expect(formatted?.displayValues?.[formatted.answerId]).toBe(
+      `${String(formatted?.values[formatted.answerId])} HP`,
+    );
   });
 
   it('ignores champions that lack the stat', () => {

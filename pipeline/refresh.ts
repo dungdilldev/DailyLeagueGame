@@ -1,13 +1,15 @@
 import { mkdir, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { buildChampionsFile, type ChampionSource } from './buildChampions';
+import { buildChampionsFile } from './buildChampions';
 import {
   fetchChampionDetail,
   fetchChampionSummaries,
   fetchJson,
   fetchLatestVersion,
 } from './sources/dataDragon';
+import { buildWikiLookup, fetchText, fetchWikiChampions } from './sources/leagueWiki';
 import { STAT_REGISTRY } from './stats';
+import type { StatInput } from './stats/types';
 import { findProblems } from './validate/championsFile';
 
 const OUTPUT_PATH = path.resolve('public/data/champions.json');
@@ -44,16 +46,14 @@ async function main(): Promise<void> {
   console.log(`Data Dragon version ${version}`);
 
   const summaries = await fetchChampionSummaries(fetchJson, version);
-  const sources: ChampionSource[] = await mapWithConcurrency(
-    summaries,
-    CONCURRENCY,
-    async (summary) => ({
-      summary,
-      detail: await fetchChampionDetail(fetchJson, version, summary.id),
-    }),
-  );
+  const findWikiChampion = buildWikiLookup(await fetchWikiChampions(fetchText));
+  const inputs: StatInput[] = await mapWithConcurrency(summaries, CONCURRENCY, async (summary) => ({
+    summary,
+    detail: await fetchChampionDetail(fetchJson, version, summary.id),
+    wiki: findWikiChampion(Number(summary.key), summary.id),
+  }));
 
-  const file = buildChampionsFile(sources, version, STAT_REGISTRY);
+  const file = buildChampionsFile(inputs, version, STAT_REGISTRY);
   const problems = findProblems(file, STAT_REGISTRY);
   if (problems.length > 0) {
     throw new Error(`Refusing to write invalid data:\n- ${problems.join('\n- ')}`);

@@ -2,7 +2,7 @@
 
 A daily League of Legends quiz: five rounds, four champions each, pick the one with the highest stat. A new puzzle every day (00:00 UTC).
 
-Not endorsed by Riot Games. See the footer of the site for the full disclaimer.
+Champion release dates come from the [League of Legends Wiki](https://wiki.leagueoflegends.com/) (CC BY-SA 3.0). Not endorsed by Riot Games. See the footer of the site for the full disclaimer.
 
 ## Run locally
 

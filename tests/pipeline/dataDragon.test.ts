@@ -32,6 +32,7 @@ describe('Data Dragon source', () => {
         data: {
           Ahri: {
             id: 'Ahri',
+            key: '103',
             name: 'Ahri',
             title: 'the Nine-Tailed Fox',
             tags: ['Mage'],

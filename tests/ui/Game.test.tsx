@@ -29,7 +29,19 @@ const makeRound = (statLabel: string, answerId: string) => ({
 const puzzle: Puzzle = {
   date: TODAY,
   patch: '1.0',
-  rounds: [makeRound('Base health', 'Ahri'), makeRound('Attack range', 'Ahri')],
+  rounds: [
+    makeRound('Base health', 'Ahri'),
+    {
+      ...makeRound('Release date', 'Ahri'),
+      question: 'Which champion was released most recently?',
+      displayValues: {
+        Ahri: 'Jun 13, 2013',
+        Brand: 'Jan 1, 2010',
+        Ciri: 'Feb 2, 2010',
+        Dave: 'Mar 3, 2010',
+      },
+    },
+  ],
 };
 
 function memoryStorage(): StorageLike & { value: string | null } {
@@ -61,6 +73,7 @@ describe('Game', () => {
     renderGame(memoryStorage());
 
     expect(screen.getByText(/Round 1 of 2/)).toBeTruthy();
+    expect(screen.getByText('Which champion has the highest base health?')).toBeTruthy();
     await user.click(screen.getByRole('button', { name: /Ahri/ }));
 
     // Reveal: values are shown, feedback is announced, and the cards are locked.
@@ -70,8 +83,11 @@ describe('Game', () => {
 
     await user.click(screen.getByRole('button', { name: 'Next round' }));
     expect(screen.getByText(/Round 2 of 2/)).toBeTruthy();
+    // Round 1 has no stored question (older puzzle format): derived from the label. Round 2 has one.
+    expect(screen.getByText('Which champion was released most recently?')).toBeTruthy();
 
     await user.click(screen.getByRole('button', { name: /Brand/ }));
+    expect(screen.getByText('Jun 13, 2013')).toBeTruthy();
     expect(screen.getByText(/Not quite. It was Ahri/)).toBeTruthy();
 
     await user.click(screen.getByRole('button', { name: 'See results' }));
