@@ -5,6 +5,7 @@ import type { Champion, StatMeta } from '../../../src/data/schema';
 
 const STAT: StatMeta = {
   id: 'hp',
+  subject: 'champion',
   label: 'Health',
   question: 'Which champion has the most health?',
   format: { kind: 'number' },
@@ -38,7 +39,7 @@ describe('buildRound', () => {
       expect(round).toBeDefined();
       if (!round) return;
 
-      expect(new Set(round.championIds).size).toBe(4);
+      expect(new Set(round.optionIds).size).toBe(4);
       const sorted = Object.values(round.values).sort((a, b) => b - a);
       expect(round.values[round.answerId]).toBe(sorted[0]);
       expect(sorted[0]).toBeGreaterThan(sorted[1] as number);
@@ -69,6 +70,6 @@ describe('buildRound', () => {
   it('ignores champions that lack the stat', () => {
     const withMissing = [...roster, { ...champion('NoStat', 0), stats: {} }];
     const round = buildRound(withMissing, STAT, { minRatio: 0.05, maxRatio: 1 }, createRng('m'));
-    expect(round?.championIds).not.toContain('NoStat');
+    expect(round?.optionIds).not.toContain('NoStat');
   });
 });

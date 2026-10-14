@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
-import type { Champion } from '../data/schema';
+import type { Entity, StatSubject } from '../data/schema';
 import { isComplete, submitAnswer, validAnswers } from '../game/progress';
 import { currentStreak } from '../game/streak';
 import { completedDates, loadSavedDays, saveDay, type StorageLike } from '../storage/progressStore';
@@ -9,7 +9,8 @@ import { RoundView } from './RoundView';
 
 interface GameProps {
   puzzle: Puzzle;
-  champions: ReadonlyMap<string, Champion>;
+  /** Champions and items by id, for showing names and icons. */
+  entities: Readonly<Record<StatSubject, ReadonlyMap<string, Entity>>>;
   /** UTC date of the puzzle being played. */
   date: string;
   /** The real current UTC day. Playing an earlier day does not count for the streak. */
@@ -18,7 +19,7 @@ interface GameProps {
   shareUrl: string;
 }
 
-export function Game({ puzzle, champions, date, today, storage, shareUrl }: GameProps) {
+export function Game({ puzzle, entities, date, today, storage, shareUrl }: GameProps) {
   const [days, setDays] = useState(() => loadSavedDays(storage));
   // True between answering a round and pressing "Next": the reveal is shown for that round.
   const [revealing, setRevealing] = useState(false);
@@ -46,8 +47,8 @@ export function Game({ puzzle, champions, date, today, storage, shareUrl }: Game
   const round = puzzle.rounds[roundIndex];
   if (!round) return null;
 
-  const choose = (championId: string) => {
-    const next = submitAnswer(puzzle, answers, championId);
+  const choose = (optionId: string) => {
+    const next = submitAnswer(puzzle, answers, optionId);
     const record = {
       answers: next,
       complete: isComplete(puzzle, next),
@@ -64,7 +65,7 @@ export function Game({ puzzle, champions, date, today, storage, shareUrl }: Game
       round={round}
       roundNumber={roundIndex + 1}
       totalRounds={puzzle.rounds.length}
-      champions={champions}
+      options={entities[round.subject]}
       chosenId={revealing ? answers[roundIndex] : undefined}
       onChoose={choose}
       onNext={() => {

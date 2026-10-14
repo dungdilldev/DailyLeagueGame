@@ -8,7 +8,7 @@ import type { Puzzle, Round } from './puzzle';
 export function validAnswers(puzzle: Puzzle, answers: readonly string[]): string[] {
   const valid: string[] = [];
   for (const [index, answer] of answers.entries()) {
-    if (!puzzle.rounds[index]?.championIds.includes(answer)) break;
+    if (!puzzle.rounds[index]?.optionIds.includes(answer)) break;
     valid.push(answer);
   }
   return valid;
@@ -30,7 +30,7 @@ export function submitAnswer(
 ): string[] {
   const round = puzzle.rounds[answers.length];
   if (!round) throw new Error('Puzzle is already complete');
-  if (!round.championIds.includes(chosenId)) {
+  if (!round.optionIds.includes(chosenId)) {
     throw new Error(`"${chosenId}" is not an option in this round`);
   }
   return [...answers, chosenId];

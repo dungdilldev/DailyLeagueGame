@@ -3,17 +3,28 @@ import path from 'node:path';
 import { GameDataFileSchema, type Snapshot } from '../src/data/schema';
 import { formatUtcDate } from '../src/game/date';
 import { buildChampions } from './buildChampions';
+import { buildItems } from './buildItems';
+import { selectItems } from './items/selectItems';
 import { mergeSnapshots } from './snapshots';
 import {
   fetchChampionDetail,
   fetchChampionSummaries,
+  fetchItems,
   fetchJson,
   fetchLatestVersion,
 } from './sources/dataDragon';
 import { buildWikiLookup, fetchText, fetchWikiChampions } from './sources/leagueWiki';
+import { fetchWikiItemData } from './sources/leagueWikiItems';
+import { fetchPatchCounts } from './sources/leagueWikiPatchHistory';
 import { STAT_REGISTRY } from './stats';
-import { toStatMeta, type StatInput } from './stats/types';
-import { findProblems } from './validate/championsFile';
+import {
+  isItemStat,
+  toStatMeta,
+  type ChampionStat,
+  type ItemStatInput,
+  type StatInput,
+} from './stats/types';
+import { findProblems } from './validate/gameData';
 
 const OUTPUT_PATH = path.resolve('public/data/game-data.json');
 const CONCURRENCY = 8;
@@ -65,16 +76,32 @@ async function main(): Promise<void> {
   const version = await fetchLatestVersion(fetchJson);
   console.log(`Data Dragon version ${version}`);
 
+  const championStats = STAT_REGISTRY.filter((stat): stat is ChampionStat => !isItemStat(stat));
+  const itemStats = STAT_REGISTRY.filter(isItemStat);
+
   const summaries = await fetchChampionSummaries(fetchJson, version);
   const findWikiChampion = buildWikiLookup(await fetchWikiChampions(fetchText));
-  const inputs: StatInput[] = await mapWithConcurrency(summaries, CONCURRENCY, async (summary) => ({
-    summary,
-    detail: await fetchChampionDetail(fetchJson, version, summary.id),
-    wiki: findWikiChampion(Number(summary.key), summary.id),
-  }));
+  const patchCounts = await fetchPatchCounts(summaries.map((summary) => summary.name));
+  const championInputs: StatInput[] = await mapWithConcurrency(
+    summaries,
+    CONCURRENCY,
+    async (summary) => ({
+      summary,
+      detail: await fetchChampionDetail(fetchJson, version, summary.id),
+      wiki: findWikiChampion(Number(summary.key), summary.id),
+      patchCount: patchCounts.get(summary.name),
+    }),
+  );
 
-  const champions = buildChampions(inputs, version, STAT_REGISTRY);
-  const problems = findProblems(champions, STAT_REGISTRY);
+  const wikiItems = await fetchWikiItemData();
+  const itemInputs: ItemStatInput[] = selectItems(
+    await fetchItems(fetchJson, version),
+    wikiItems.items,
+  ).map(({ item, wiki }) => ({ item, wiki, goldValues: wikiItems.goldValues }));
+
+  const champions = buildChampions(championInputs, version, championStats);
+  const items = buildItems(itemInputs, version, itemStats);
+  const problems = findProblems({ champions, items }, STAT_REGISTRY);
   if (problems.length > 0) {
     throw new Error(`Refusing to write invalid data:\n- ${problems.join('\n- ')}`);
   }
@@ -82,7 +109,7 @@ async function main(): Promise<void> {
   const existing = await readExistingSnapshots(OUTPUT_PATH);
   const snapshots = mergeSnapshots(
     existing,
-    { patch: version, champions },
+    { patch: version, champions, items },
     formatUtcDate(new Date()),
   );
   const file = GameDataFileSchema.parse({ stats: STAT_REGISTRY.map(toStatMeta), snapshots });
@@ -90,7 +117,7 @@ async function main(): Promise<void> {
   await writeJsonAtomically(OUTPUT_PATH, file);
   for (const snapshot of snapshots) {
     console.log(
-      `Snapshot patch ${snapshot.patch}: ${String(snapshot.champions.length)} champions, effective from ${snapshot.effectiveFrom}`,
+      `Snapshot patch ${snapshot.patch}: ${String(snapshot.champions.length)} champions, ${String(snapshot.items.length)} items, effective from ${snapshot.effectiveFrom}`,
     );
   }
 }

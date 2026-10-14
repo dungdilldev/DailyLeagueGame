@@ -1,10 +1,10 @@
-import { DATA_DRAGON_SOURCE, type StatDefinition } from './types';
+import { DATA_DRAGON_SOURCE, type ChampionStat } from './types';
 
 const DEFAULT_SKIN_NUMBER = 0;
 /** Chromas and prestige editions are listed as "Name (Variant)" and are not counted as skins. */
 const VARIANT_NAME_PATTERN = /\)$/;
 
-export const skinCount: StatDefinition = {
+export const skinCount: ChampionStat = {
   id: 'skinCount',
   label: 'Number of skins',
   question: 'Which champion has the most skins?',

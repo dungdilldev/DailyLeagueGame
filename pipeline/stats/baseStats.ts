@@ -1,10 +1,10 @@
 import type { ChampionDetail } from '../sources/dataDragon';
-import { DATA_DRAGON_SOURCE, highestQuestion, type StatDefinition } from './types';
+import { DATA_DRAGON_SOURCE, highestQuestion, type ChampionStat } from './types';
 
 type BaseStatKey = keyof ChampionDetail['stats'];
 
 /** Defines a stat that is a direct copy of one of Data Dragon's base stat fields. */
-function baseStat(id: string, label: string, key: BaseStatKey): StatDefinition {
+function baseStat(id: string, label: string, key: BaseStatKey): ChampionStat {
   return {
     id,
     label,

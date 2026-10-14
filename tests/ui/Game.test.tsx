@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it } from 'vitest';
 import type { Puzzle, Round } from '../../src/game/puzzle';
-import type { Champion } from '../../src/data/schema';
+import type { Entity } from '../../src/data/schema';
 import { Game } from '../../src/ui/Game';
 import { loadSavedDays, type StorageLike } from '../../src/storage/progressStore';
 
@@ -11,19 +11,32 @@ afterEach(cleanup);
 const TODAY = '2026-03-05';
 const IDS = ['Ahri', 'Brand', 'Ciri', 'Dave'];
 
-const champions = new Map<string, Champion>(
-  IDS.map((id) => [
-    id,
-    { id, name: id, title: '', classes: [], iconUrl: `https://example.com/${id}.png`, stats: {} },
-  ]),
+const entity = (id: string): Entity => ({
+  id,
+  name: id,
+  iconUrl: `https://example.com/${id}.png`,
+  stats: {},
+});
+const champions = new Map<string, Entity>(IDS.map((id) => [id, entity(id)]));
+const ITEM_IDS = ['3031', '3089', '3157', '3003'];
+const itemNames: Record<string, string> = {
+  '3031': 'Infinity Edge',
+  '3089': 'Rabadon Hat',
+  '3157': 'Zhonya Glass',
+  '3003': 'Archangel Staff',
+};
+const items = new Map<string, Entity>(
+  ITEM_IDS.map((id) => [id, { ...entity(id), name: itemNames[id] ?? id }]),
 );
+const entities = { champion: champions, item: items };
 
 const makeRound = (statLabel: string, answerId: string): Round => ({
   statId: statLabel,
+  subject: 'champion',
   statLabel,
   question: `Which champion has the highest ${statLabel.toLowerCase()}?`,
   format: { kind: 'number' },
-  championIds: IDS,
+  optionIds: IDS,
   answerId,
   values: { Ahri: 400, Brand: 300, Ciri: 200, Dave: 100 },
 });
@@ -59,7 +72,7 @@ const renderGame = (storage: StorageLike) =>
   render(
     <Game
       puzzle={puzzle}
-      champions={champions}
+      entities={entities}
       date={TODAY}
       today={TODAY}
       storage={storage}
@@ -95,6 +108,42 @@ describe('Game', () => {
     expect(screen.getByRole('button', { name: 'Share result' })).toBeTruthy();
   });
 
+  it('shows items by name and formats a percentage when a round is about items', async () => {
+    const user = userEvent.setup();
+    const itemPuzzle: Puzzle = {
+      date: TODAY,
+      patch: '1.0',
+      rounds: [
+        {
+          statId: 'itemGoldEfficiency',
+          subject: 'item',
+          statLabel: 'Gold efficiency',
+          question: 'Which item is the most gold efficient?',
+          format: { kind: 'percent' },
+          optionIds: ITEM_IDS,
+          answerId: '3031',
+          values: { '3031': 103.6, '3089': 74.3, '3157': 95.4, '3003': 112.1 },
+        },
+      ],
+    };
+    render(
+      <Game
+        puzzle={itemPuzzle}
+        entities={entities}
+        date={TODAY}
+        today={TODAY}
+        storage={memoryStorage()}
+        shareUrl="https://example.com/"
+      />,
+    );
+
+    expect(screen.getByText('Which item is the most gold efficient?')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Infinity Edge/ })).toBeTruthy();
+    await user.click(screen.getByRole('button', { name: /Rabadon Hat/ }));
+    expect(screen.getByText('103.6%')).toBeTruthy();
+    expect(screen.getByText(/Not quite. It was Infinity Edge/)).toBeTruthy();
+  });
+
   it('saves progress and resumes mid-day after a reload', async () => {
     const user = userEvent.setup();
     const storage = memoryStorage();
@@ -122,7 +171,7 @@ describe('Game', () => {
     render(
       <Game
         puzzle={puzzle}
-        champions={champions}
+        entities={entities}
         date={TODAY}
         today={TODAY}
         storage={undefined}
@@ -139,7 +188,7 @@ describe('Game', () => {
     render(
       <Game
         puzzle={{ ...puzzle, date: '2026-03-04' }}
-        champions={champions}
+        entities={entities}
         date="2026-03-04"
         today={TODAY}
         storage={storage}
@@ -165,7 +214,7 @@ describe('Game', () => {
     const today = (
       <Game
         puzzle={puzzle}
-        champions={champions}
+        entities={entities}
         date={TODAY}
         today={TODAY}
         storage={storage}
@@ -179,7 +228,7 @@ describe('Game', () => {
     render(
       <Game
         puzzle={{ ...puzzle, date: '2026-03-04' }}
-        champions={champions}
+        entities={entities}
         date="2026-03-04"
         today={TODAY}
         storage={storage}

@@ -1,8 +1,8 @@
 import type { Champion } from '../src/data/schema';
 import { championIconUrl } from './sources/dataDragon';
-import type { StatDefinition, StatInput } from './stats/types';
+import type { ChampionStat, StatInput } from './stats/types';
 
-function buildStats(input: StatInput, stats: readonly StatDefinition[]): Record<string, number> {
+function buildStats(input: StatInput, stats: readonly ChampionStat[]): Record<string, number> {
   const entries = stats.flatMap((stat) => {
     const value = stat.extract(input);
     // A missing value (e.g. brand-new champion not on the wiki yet) just leaves the stat out;
@@ -15,7 +15,7 @@ function buildStats(input: StatInput, stats: readonly StatDefinition[]): Record<
 export function buildChampion(
   input: StatInput,
   version: string,
-  stats: readonly StatDefinition[],
+  stats: readonly ChampionStat[],
 ): Champion {
   const { summary } = input;
   return {
@@ -32,7 +32,7 @@ export function buildChampion(
 export function buildChampions(
   inputs: readonly StatInput[],
   version: string,
-  stats: readonly StatDefinition[],
+  stats: readonly ChampionStat[],
 ): Champion[] {
   return inputs
     .map((input) => buildChampion(input, version, stats))

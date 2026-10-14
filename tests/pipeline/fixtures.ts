@@ -1,6 +1,11 @@
-import type { ChampionDetail, ChampionSummary } from '../../pipeline/sources/dataDragon';
+import type {
+  ChampionDetail,
+  ChampionSummary,
+  DataDragonItem,
+} from '../../pipeline/sources/dataDragon';
 import type { WikiChampion } from '../../pipeline/sources/leagueWiki';
-import type { StatInput } from '../../pipeline/stats/types';
+import type { WikiItem } from '../../pipeline/sources/leagueWikiItems';
+import type { ItemStatInput, StatInput } from '../../pipeline/stats/types';
 
 export function makeSummary(id: string, overrides: Partial<ChampionSummary> = {}): ChampionSummary {
   return {
@@ -42,6 +47,44 @@ export function makeInput(id: string, overrides: Partial<StatInput> = {}): StatI
     summary: makeSummary(id),
     detail: makeDetail(id),
     wiki: makeWiki(id),
+    patchCount: 12,
+    ...overrides,
+  };
+}
+
+export function makeDataDragonItem(
+  id: string,
+  overrides: Partial<DataDragonItem> = {},
+): DataDragonItem {
+  return {
+    id,
+    name: `Item ${id}`,
+    gold: { total: 3000, purchasable: true },
+    maps: { '11': true },
+    tags: [],
+    image: { full: `${id}.png` },
+    ...overrides,
+  };
+}
+
+export function makeWikiItem(id: string, overrides: Partial<WikiItem> = {}): WikiItem {
+  return {
+    id: Number(id),
+    name: `Item ${id}`,
+    types: ['Legendary'],
+    stats: { ad: 60, ah: 20 },
+    unresolvedStats: [],
+    ...overrides,
+  };
+}
+
+export const GOLD_VALUES = { ad: 35, ap: 21.75, hp: 2.666667, armor: 20, mr: 20, ah: 50 };
+
+export function makeItemInput(id: string, overrides: Partial<ItemStatInput> = {}): ItemStatInput {
+  return {
+    item: makeDataDragonItem(id),
+    wiki: makeWikiItem(id),
+    goldValues: GOLD_VALUES,
     ...overrides,
   };
 }

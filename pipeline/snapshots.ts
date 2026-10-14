@@ -2,7 +2,7 @@ import type { Snapshot } from '../src/data/schema';
 import { earliestPlayableDate } from '../src/game/archive';
 import { addUtcDays } from '../src/game/date';
 
-type FreshData = Pick<Snapshot, 'patch' | 'champions'>;
+type FreshData = Pick<Snapshot, 'patch' | 'champions' | 'items'>;
 
 /**
  * Keeps what players can still reach: the snapshot that was in effect on the earliest playable
@@ -14,10 +14,17 @@ export function pruneSnapshots(snapshots: readonly Snapshot[], today: string): S
   return firstNeeded <= 0 ? [...snapshots] : snapshots.slice(firstNeeded);
 }
 
+function hasSameContent(a: FreshData, b: FreshData): boolean {
+  return (
+    JSON.stringify({ champions: a.champions, items: a.items }) ===
+    JSON.stringify({ champions: b.champions, items: b.items })
+  );
+}
+
 /**
  * Folds freshly fetched data into the published snapshots.
  *
- * - Identical champion data changes nothing.
+ * - Identical data changes nothing.
  * - Different data becomes a new snapshot that takes effect tomorrow (UTC), so the puzzle of a
  *   day already in progress never changes. If an upcoming snapshot has not taken effect yet, it
  *   is replaced: nobody has played from it.
@@ -32,7 +39,7 @@ export function mergeSnapshots(
   const latest = sorted.at(-1);
   if (!latest) return [{ ...fresh, effectiveFrom: today }];
 
-  if (JSON.stringify(latest.champions) === JSON.stringify(fresh.champions)) {
+  if (hasSameContent(latest, fresh)) {
     return pruneSnapshots(sorted, today);
   }
 

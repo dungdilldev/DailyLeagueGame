@@ -1,32 +1,33 @@
 import { useEffect, useRef } from 'preact/hooks';
 import type { Round } from '../game/puzzle';
-import type { Champion } from '../data/schema';
+import type { Entity } from '../data/schema';
 import { isCorrect } from '../game/progress';
 import { displayValue } from '../game/roundDisplay';
-import { ChampionCard, type CardState } from './ChampionCard';
+import { OptionCard, type CardState } from './OptionCard';
 
 interface RoundViewProps {
   round: Round;
   roundNumber: number;
   totalRounds: number;
-  champions: ReadonlyMap<string, Champion>;
+  /** The champions or items of this round's subject, by id. */
+  options: ReadonlyMap<string, Entity>;
   /** Set once the player has answered; switches the view to the reveal. */
   chosenId: string | undefined;
-  onChoose: (championId: string) => void;
+  onChoose: (optionId: string) => void;
   onNext: () => void;
 }
 
-function cardState(round: Round, championId: string, chosenId: string | undefined): CardState {
+function cardState(round: Round, optionId: string, chosenId: string | undefined): CardState {
   if (chosenId === undefined) return 'idle';
-  if (championId === round.answerId) return 'correct';
-  return championId === chosenId ? 'wrong' : 'other';
+  if (optionId === round.answerId) return 'correct';
+  return optionId === chosenId ? 'wrong' : 'other';
 }
 
 export function RoundView({
   round,
   roundNumber,
   totalRounds,
-  champions,
+  options,
   chosenId,
   onChoose,
   onNext,
@@ -40,7 +41,7 @@ export function RoundView({
   }, [revealed]);
 
   const isLastRound = roundNumber === totalRounds;
-  const answerName = champions.get(round.answerId)?.name ?? round.answerId;
+  const answerName = options.get(round.answerId)?.name ?? round.answerId;
 
   return (
     <section aria-labelledby="question">
@@ -52,13 +53,13 @@ export function RoundView({
       </h2>
 
       <div class="cards">
-        {round.championIds.map((id) => {
-          const champion = champions.get(id);
+        {round.optionIds.map((id) => {
+          const option = options.get(id);
           return (
-            <ChampionCard
+            <OptionCard
               key={id}
-              name={champion?.name ?? id}
-              iconUrl={champion?.iconUrl}
+              name={option?.name ?? id}
+              iconUrl={option?.iconUrl}
               valueText={revealed ? displayValue(round, id) : undefined}
               state={cardState(round, id, chosenId)}
               disabled={revealed}

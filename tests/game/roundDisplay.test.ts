@@ -5,10 +5,11 @@ import { formatStatValue } from '../../src/game/statFormat';
 
 const base: Round = {
   statId: 'baseHealth',
+  subject: 'champion',
   statLabel: 'Base health',
   question: 'Which champion has the highest base health?',
   format: { kind: 'number' },
-  championIds: ['A', 'B', 'C', 'D'],
+  optionIds: ['A', 'B', 'C', 'D'],
   answerId: 'A',
   values: { A: 1234, B: 3, C: 2, D: 1 },
 };
@@ -17,6 +18,11 @@ describe('formatStatValue', () => {
   it('formats numbers with thousands separators', () => {
     expect(formatStatValue({ kind: 'number' }, 1234)).toBe('1,234');
     expect(formatStatValue({ kind: 'number' }, 0.668)).toBe('0.668');
+  });
+
+  it('formats percentages with one decimal and a percent sign', () => {
+    expect(formatStatValue({ kind: 'percent' }, 103.6)).toBe('103.6%');
+    expect(formatStatValue({ kind: 'percent' }, 90)).toBe('90.0%');
   });
 
   it('formats a day count as a calendar date counted from the epoch', () => {

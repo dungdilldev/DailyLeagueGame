@@ -1,6 +1,6 @@
 export type CardState = 'idle' | 'correct' | 'wrong' | 'other';
 
-interface ChampionCardProps {
+interface OptionCardProps {
   name: string;
   iconUrl: string | undefined;
   /** Revealed stat value as display text; shown only after the player has answered. */
@@ -17,14 +17,14 @@ const STATE_LABEL: Record<CardState, string | undefined> = {
   other: undefined,
 };
 
-export function ChampionCard({
+export function OptionCard({
   name,
   iconUrl,
   valueText,
   state,
   disabled,
   onSelect,
-}: ChampionCardProps) {
+}: OptionCardProps) {
   return (
     <button type="button" class={`card card--${state}`} disabled={disabled} onClick={onSelect}>
       {iconUrl && <img class="card__icon" src={iconUrl} alt="" width={96} height={96} />}

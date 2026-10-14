@@ -1,4 +1,4 @@
-import { LEAGUE_WIKI_SOURCE, type StatDefinition } from './types';
+import { LEAGUE_WIKI_SOURCE, type ChampionStat } from './types';
 
 /**
  * Release dates are stored as days since this date so they behave like any other number
@@ -15,7 +15,7 @@ function daysSinceEpoch(isoDate: string): number {
   );
 }
 
-export const releaseDate: StatDefinition = {
+export const releaseDate: ChampionStat = {
   id: 'releaseDate',
   label: 'Release date',
   question: 'Which champion was released most recently?',

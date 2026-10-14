@@ -88,3 +88,29 @@ export async function fetchChampionDetail(
 export function championIconUrl(version: string, summary: ChampionSummary): string {
   return `${BASE_URL}/cdn/${version}/img/champion/${summary.image.full}`;
 }
+
+const ItemSchema = z.object({
+  name: z.string(),
+  gold: z.object({ total: z.number(), purchasable: z.boolean() }),
+  /** Map id -> available on that map; "11" is Summoner's Rift. */
+  maps: z.record(z.string(), z.boolean()),
+  /** Items this one is an ingredient of; absent for completed items. */
+  into: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional(),
+  image: z.object({ full: z.string() }),
+});
+const ItemFileSchema = z.object({ data: z.record(z.string(), ItemSchema) });
+
+export interface DataDragonItem extends z.infer<typeof ItemSchema> {
+  /** Item id as a string, e.g. "3031". */
+  id: string;
+}
+
+export async function fetchItems(fetcher: JsonFetcher, version: string): Promise<DataDragonItem[]> {
+  const raw = await fetcher(`${BASE_URL}/cdn/${version}/data/${LOCALE}/item.json`);
+  return Object.entries(ItemFileSchema.parse(raw).data).map(([id, item]) => ({ id, ...item }));
+}
+
+export function itemIconUrl(version: string, item: DataDragonItem): string {
+  return `${BASE_URL}/cdn/${version}/img/item/${item.image.full}`;
+}

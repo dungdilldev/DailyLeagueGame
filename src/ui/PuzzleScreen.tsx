@@ -21,7 +21,10 @@ export function PuzzleScreen({ file, date, today, storage, shareUrl }: PuzzleScr
       const { puzzle, snapshot } = createDailyPuzzle(file, date);
       return {
         puzzle,
-        champions: new Map(snapshot.champions.map((champion) => [champion.id, champion])),
+        entities: {
+          champion: new Map(snapshot.champions.map((champion) => [champion.id, champion])),
+          item: new Map(snapshot.items.map((item) => [item.id, item])),
+        },
       };
     } catch (error) {
       return { error: error instanceof Error ? error.message : 'Unknown error' };
@@ -40,7 +43,7 @@ export function PuzzleScreen({ file, date, today, storage, shareUrl }: PuzzleScr
     <Game
       key={date}
       puzzle={daily.puzzle}
-      champions={daily.champions}
+      entities={daily.entities}
       date={date}
       today={today}
       storage={storage}

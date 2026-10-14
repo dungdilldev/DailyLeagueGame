@@ -6,7 +6,7 @@ import { createDailyPuzzle } from '../../src/game/dailyPuzzle';
 const real = GameDataFileSchema.parse(
   JSON.parse(readFileSync('public/data/game-data.json', 'utf8')),
 );
-const currentSnapshot = real.snapshots[0];
+const currentSnapshot = real.snapshots.at(-1);
 if (!currentSnapshot) throw new Error('no snapshot in game data');
 
 describe('createDailyPuzzle', () => {
@@ -18,9 +18,11 @@ describe('createDailyPuzzle', () => {
 
   it('keeps a day on its snapshot even after a newer snapshot is published for later days', () => {
     const upcoming = { ...currentSnapshot, patch: 'next', effectiveFrom: '2030-05-06' };
+    // Only the current snapshot, so the test does not depend on how many the real file holds.
+    const alone: GameDataFile = { ...real, snapshots: [currentSnapshot] };
     const withUpcoming: GameDataFile = { ...real, snapshots: [currentSnapshot, upcoming] };
 
-    const before = createDailyPuzzle(real, '2030-05-05').puzzle;
+    const before = createDailyPuzzle(alone, '2030-05-05').puzzle;
     const sameDayAfterUpdate = createDailyPuzzle(withUpcoming, '2030-05-05').puzzle;
     expect(sameDayAfterUpdate).toEqual(before);
     expect(createDailyPuzzle(withUpcoming, '2030-05-06').puzzle.patch).toBe('next');

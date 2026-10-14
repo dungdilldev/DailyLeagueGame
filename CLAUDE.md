@@ -21,7 +21,8 @@ src/
   data/        Loading and validating the published JSON at runtime.
   storage/     localStorage wrapper (streaks, history, settings).
 pipeline/
-  sources/     One module per external data source (Data Dragon, stats provider, ...).
+  sources/     One module per external data source (Data Dragon, LoL Wiki champions / items / patch history, luaTable parser).
+  items/       Which items are asked about (selectItems) and their gold efficiency.
   stats/       Stat definitions: how each stat is fetched, normalised, labelled.
   validate/    Sanity checks for the fetched champion data.
   snapshots.ts Decides when new data takes effect (see Domain Rules).
@@ -51,7 +52,9 @@ Keep this list accurate, it is the first thing to check. Node 22+ (see `.nvmrc`)
 - **Snapshots:** `game-data.json` holds the snapshot in effect plus any upcoming one. New or changed data becomes a snapshot with `effectiveFrom` = next UTC day, so a day's puzzle never changes once that day has started. The client picks the newest snapshot with `effectiveFrom <= today`. Never edit a snapshot that is already in effect.
 - **Date handling:** the "day" is defined in **UTC**. Never use local time to pick the puzzle.
 - **Fair, escalating rounds:** all 4 champions in a round have distinct values. The relative gap between first and second place must fall in the round's band from `pipeline/generate/config.ts`; bands narrow each round so later rounds are harder. Win rate / pick rate comparisons (Phase 5) should stay within the same role and patch.
-- **Data sources:** Data Dragon (official) and the LoL Wiki champion data module (release dates). Each lives in one file under `pipeline/sources/`. A stat may return `undefined` for a champion (e.g. not on the wiki yet); validation requires 95% coverage per stat rather than 100%.
+- **Data sources:** Data Dragon (official) and the LoL Wiki: champion data (release dates), item data and gold value table (Lua modules, parsed by `luaTable.ts`) and each champion's "Patch history" page (via a few batched API calls). Each lives in one file under `pipeline/sources/`. A stat may return `undefined` for an entity (e.g. not on the wiki yet); validation requires 95% coverage per stat (a stat can lower that) and at least 8 values.
+- **Champions and items:** every stat has a `subject`. A round compares four champions or four items, never a mix, and nothing appears twice in a day. Item pool: completed legendary items and boots sold on Summoner's Rift (`items/selectItems.ts`). Item gold efficiency counts the item's stats only (wiki gold values), not passives, and is left out for an item with a stat of unknown value instead of guessing. "Patches with changes" counts patch-history entries, which include bug fixes and hotfixes, so its question says "patch notes".
+- **Generator changes move old puzzles:** the puzzle is generated from date + data + stat list + generator code. Adding stats or changing the generator changes the puzzle for every date, including today and the archive. Saved answers that no longer fit are dropped automatically.
 - **Stat provenance:** each stat definition carries its `source`, published in `game-data.json`. Stat definitions (label, question, format) are data too: the client has no stat-specific code.
 - **No official win-rate API exists** (popularity stats are parked, see plan Phase 5b). Riot does not expose aggregate champion win/pick rate. Whatever source is used must be isolated behind the `pipeline/sources` interface so it can be swapped (see the plan, Risks).
 - **Riot legal:** include the required "not endorsed by Riot Games" disclaimer in the footer. Do not host Riot assets beyond what Data Dragon / Community Dragon terms allow; hotlink or fetch via CI per their terms.

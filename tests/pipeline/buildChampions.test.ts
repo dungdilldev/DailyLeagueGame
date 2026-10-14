@@ -1,25 +1,38 @@
 import { describe, expect, it } from 'vitest';
 import { buildChampion, buildChampions } from '../../pipeline/buildChampions';
+import { buildItems } from '../../pipeline/buildItems';
 import { STAT_REGISTRY } from '../../pipeline/stats';
-import { findProblems, MIN_CHAMPION_COUNT } from '../../pipeline/validate/championsFile';
-import { makeInput } from './fixtures';
+import { isItemStat, type ChampionStat } from '../../pipeline/stats/types';
+import {
+  findProblems,
+  MIN_CHAMPION_COUNT,
+  MIN_ITEM_COUNT,
+  MIN_VALUES_PER_STAT,
+} from '../../pipeline/validate/gameData';
+import { makeInput, makeItemInput } from './fixtures';
+
+const championStats = STAT_REGISTRY.filter((stat): stat is ChampionStat => !isItemStat(stat));
+const itemStats = STAT_REGISTRY.filter(isItemStat);
 
 describe('buildChampion', () => {
-  it('maps summary fields and records every registered stat with its source', () => {
-    const champion = buildChampion(makeInput('Ahri'), '16.20.1', STAT_REGISTRY);
+  it('maps summary fields and records every champion stat', () => {
+    const champion = buildChampion(makeInput('Ahri'), '16.20.1', championStats);
 
     expect(champion.iconUrl).toBe(
       'https://ddragon.leagueoflegends.com/cdn/16.20.1/img/champion/Ahri.png',
     );
     expect(champion.classes).toEqual(['Mage']);
-    expect(Object.keys(champion.stats).sort()).toEqual(STAT_REGISTRY.map((s) => s.id).sort());
+    expect(Object.keys(champion.stats).sort()).toEqual(championStats.map((s) => s.id).sort());
     expect(champion.stats['baseHealth']).toBe(600);
     expect(champion.stats['releaseDate']).toBeGreaterThan(0);
+    expect(champion.stats['patchCount']).toBe(12);
   });
 
   it('leaves out a stat whose value is unavailable instead of failing', () => {
-    const champion = buildChampion(makeInput('New', { wiki: undefined }), '16.20.1', STAT_REGISTRY);
+    const input = makeInput('New', { wiki: undefined, patchCount: undefined });
+    const champion = buildChampion(input, '16.20.1', championStats);
     expect(champion.stats['releaseDate']).toBeUndefined();
+    expect(champion.stats['patchCount']).toBeUndefined();
     expect(champion.stats['baseHealth']).toBeDefined();
   });
 });
@@ -29,7 +42,7 @@ describe('buildChampions', () => {
     const champions = buildChampions(
       [makeInput('Zed'), makeInput('Ahri'), makeInput('Lux')],
       '16.20.1',
-      STAT_REGISTRY,
+      championStats,
     );
     expect(champions.map((c) => c.id)).toEqual(['Ahri', 'Lux', 'Zed']);
   });
@@ -37,40 +50,110 @@ describe('buildChampions', () => {
   it('passes a bad number through so the schema check at the publish boundary can reject it', () => {
     const broken = makeInput('Bad');
     broken.detail.stats.hp = Number.NaN;
-    const [champion] = buildChampions([broken], '16.20.1', STAT_REGISTRY);
+    const [champion] = buildChampions([broken], '16.20.1', championStats);
     expect(Number.isNaN(champion?.stats['baseHealth'])).toBe(true);
   });
 });
 
+describe('buildItems', () => {
+  it('maps the item, its icon and every item stat it has', () => {
+    const [item] = buildItems([makeItemInput('3031')], '16.20.1', itemStats);
+    expect(item).toMatchObject({
+      id: '3031',
+      name: 'Item 3031',
+      iconUrl: 'https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3031.png',
+    });
+    expect(item?.stats['itemCost']).toBe(3000);
+    expect(item?.stats['itemAttackDamage']).toBe(60);
+    expect(item?.stats['itemAbilityHaste']).toBe(20);
+    // Not every item grants every stat.
+    expect(item?.stats['itemAbilityPower']).toBeUndefined();
+  });
+
+  it('sorts items by name regardless of input order', () => {
+    const items = buildItems(
+      [makeItemInput('2'), makeItemInput('1'), makeItemInput('3')],
+      '16.20.1',
+      itemStats,
+    );
+    expect(items.map((item) => item.id)).toEqual(['1', '2', '3']);
+  });
+});
+
 describe('findProblems', () => {
-  const fullRoster = Array.from({ length: MIN_CHAMPION_COUNT }, (_, i) =>
-    makeInput(`Champ${String(i)}`),
-  );
-
-  it('accepts a complete roster', () => {
-    const file = buildChampions(fullRoster, '16.20.1', STAT_REGISTRY);
-    expect(findProblems(file, STAT_REGISTRY)).toEqual([]);
+  const roster = (count: number) =>
+    Array.from({ length: count }, (_, i) => makeInput(`Champ${String(i)}`));
+  /** Items with an attack-damage-style spread so every item stat has enough values. */
+  const itemRoster = (count: number) =>
+    Array.from({ length: count }, (_, i) =>
+      makeItemInput(String(1000 + i), {
+        wiki: {
+          id: 1000 + i,
+          name: `Item ${String(i)}`,
+          types: ['Legendary'],
+          stats: { ad: 10 + i, ap: 10 + i, hp: 100 + i, armor: 10 + i, mr: 10 + i, ah: 10 + i },
+          unresolvedStats: [],
+        },
+      }),
+    );
+  const build = (champions = roster(MIN_CHAMPION_COUNT), items = itemRoster(MIN_ITEM_COUNT)) => ({
+    champions: buildChampions(champions, '16.20.1', championStats),
+    items: buildItems(items, '16.20.1', itemStats),
   });
 
-  it('flags a roster that is suspiciously small', () => {
-    const file = buildChampions(fullRoster.slice(0, 5), '16.20.1', STAT_REGISTRY);
-    expect(findProblems(file, STAT_REGISTRY).join()).toContain('Only 5 champions');
+  it('accepts a complete set of champions and items', () => {
+    expect(findProblems(build(), STAT_REGISTRY)).toEqual([]);
   });
 
-  it('flags duplicate champion ids', () => {
-    const file = buildChampions([...fullRoster, makeInput('Champ0')], '16.20.1', STAT_REGISTRY);
-    expect(findProblems(file, STAT_REGISTRY).join()).toContain('Duplicate champion id "Champ0"');
+  it('flags too few champions or too few items', () => {
+    expect(findProblems(build(roster(5)), STAT_REGISTRY).join()).toContain('Only 5 champions');
+    expect(findProblems(build(undefined, itemRoster(3)), STAT_REGISTRY).join()).toContain(
+      'Only 3 items',
+    );
+  });
+
+  it('flags duplicate ids', () => {
+    const data = build([...roster(MIN_CHAMPION_COUNT), makeInput('Champ0')]);
+    expect(findProblems(data, STAT_REGISTRY).join()).toContain('Duplicate champion id "Champ0"');
   });
 
   it('tolerates a few champions missing a stat (e.g. brand new, not on the wiki yet)', () => {
-    const roster = [...fullRoster.slice(1), makeInput('Fresh', { wiki: undefined })];
-    const file = buildChampions(roster, '16.20.1', STAT_REGISTRY);
-    expect(findProblems(file, STAT_REGISTRY)).toEqual([]);
+    const champions = [
+      ...roster(MIN_CHAMPION_COUNT).slice(1),
+      makeInput('Fresh', { wiki: undefined }),
+    ];
+    expect(findProblems(build(champions), STAT_REGISTRY)).toEqual([]);
   });
 
-  it('flags a stat that most champions lack, which means a source broke', () => {
-    const roster = fullRoster.map((input) => ({ ...input, wiki: undefined }));
-    const file = buildChampions(roster, '16.20.1', STAT_REGISTRY);
-    expect(findProblems(file, STAT_REGISTRY).join()).toContain('Stat "releaseDate"');
+  it('flags a champion stat that most champions lack, which means a source broke', () => {
+    const champions = roster(MIN_CHAMPION_COUNT).map((input) => ({
+      ...input,
+      patchCount: undefined,
+    }));
+    expect(findProblems(build(champions), STAT_REGISTRY).join()).toContain('Stat "patchCount"');
+  });
+
+  it('flags an item stat that too few items have, since no round could be built', () => {
+    const sparse = itemRoster(MIN_ITEM_COUNT).map((input, index) =>
+      index < MIN_VALUES_PER_STAT - 1 ? input : { ...input, wiki: { ...input.wiki, stats: {} } },
+    );
+    expect(findProblems(build(undefined, sparse), STAT_REGISTRY).join()).toContain(
+      'Stat "itemAttackDamage"',
+    );
+  });
+
+  it('accepts an item stat that only some items have, as long as enough do', () => {
+    // Only every third item grants ability power.
+    const withoutAp = (input: ReturnType<typeof makeItemInput>) => ({
+      ...input,
+      wiki: {
+        ...input.wiki,
+        stats: Object.fromEntries(Object.entries(input.wiki.stats).filter(([key]) => key !== 'ap')),
+      },
+    });
+    const items = itemRoster(MIN_ITEM_COUNT * 3).map((input, index) =>
+      index % 3 === 0 ? input : withoutAp(input),
+    );
+    expect(findProblems(build(undefined, items), STAT_REGISTRY)).toEqual([]);
   });
 });

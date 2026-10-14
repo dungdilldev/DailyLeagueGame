@@ -10,8 +10,9 @@ import {
 
 const round = (answerId: string) => ({
   statId: 'hp',
+  subject: 'champion' as const,
   statLabel: 'Health',
-  championIds: ['A', 'B', 'C', 'D'],
+  optionIds: ['A', 'B', 'C', 'D'],
   answerId,
   format: { kind: 'number' as const },
   question: 'Which champion has the highest health?',

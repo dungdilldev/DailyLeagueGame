@@ -6,6 +6,7 @@ const snapshot = (patch: string, effectiveFrom: string): Snapshot => ({
   patch,
   effectiveFrom,
   champions: [],
+  items: [],
 });
 
 const OLD = snapshot('1.0', '2026-01-01');

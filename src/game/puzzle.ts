@@ -1,19 +1,21 @@
-import type { StatFormat } from '../data/schema';
+import type { StatFormat, StatSubject } from '../data/schema';
 
-export const CHAMPIONS_PER_ROUND = 4;
+export const OPTIONS_PER_ROUND = 4;
 
 export interface Round {
   statId: string;
+  /** Whether the options are champions or items. */
+  subject: StatSubject;
   /** Shown to the player, e.g. "Base health". */
   statLabel: string;
   question: string;
   /** How to display the values after the player has answered. */
   format: StatFormat;
-  /** Display order; the answer is not always in the same position. */
-  championIds: string[];
-  /** The champion with the highest value. */
+  /** Ids of the options (champions or items), in display order; the answer is not always first. */
+  optionIds: string[];
+  /** The option with the highest value. */
   answerId: string;
-  /** Every shown champion's value, revealed after answering. */
+  /** Every option's value, revealed after answering. */
   values: Record<string, number>;
 }
 

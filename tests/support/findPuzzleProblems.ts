@@ -1,19 +1,19 @@
-import type { Champion } from '../../src/data/schema';
+import type { Entity } from '../../src/data/schema';
 import { gapRatio } from '../../src/game/generate/buildRound';
 import { ROUND_GAP_BANDS, type GapBand } from '../../src/game/generate/config';
 import type { Puzzle } from '../../src/game/puzzle';
 
 /**
- * Independent re-check of a generated puzzle against the champion data it came from.
+ * Independent re-check of a generated puzzle against the champion and item data it came from.
  * Deliberately shares no logic with the generator beyond the gap formula. Empty result = valid.
  */
 export function findPuzzleProblems(
   puzzle: Puzzle,
-  champions: readonly Champion[],
+  entities: readonly Entity[],
   bands: readonly GapBand[] = ROUND_GAP_BANDS,
 ): string[] {
   const problems: string[] = [];
-  const championsById = new Map(champions.map((champion) => [champion.id, champion]));
+  const entitiesById = new Map(entities.map((entity) => [entity.id, entity]));
   const seenChampions = new Set<string>();
   const seenStats = new Set<string>();
 
@@ -27,20 +27,20 @@ export function findPuzzleProblems(
     if (seenStats.has(round.statId)) problems.push(`${label}: stat "${round.statId}" repeated`);
     seenStats.add(round.statId);
 
-    if (round.championIds.length !== 4) problems.push(`${label}: not 4 champions`);
+    if (round.optionIds.length !== 4) problems.push(`${label}: not 4 options`);
 
     const values: number[] = [];
-    for (const id of round.championIds) {
-      const stored = championsById.get(id)?.stats[round.statId];
+    for (const id of round.optionIds) {
+      const stored = entitiesById.get(id)?.stats[round.statId];
       if (stored === undefined) {
-        problems.push(`${label}: unknown champion or stat for "${id}"`);
+        problems.push(`${label}: unknown option or stat for "${id}"`);
         continue;
       }
       if (round.values[id] !== stored) {
         problems.push(`${label}: value for "${id}" does not match data`);
       }
       if (seenChampions.has(id)) {
-        problems.push(`${label}: champion "${id}" appears twice in the day`);
+        problems.push(`${label}: "${id}" appears twice in the day`);
       }
       seenChampions.add(id);
       values.push(stored);

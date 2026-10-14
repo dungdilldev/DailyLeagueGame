@@ -11,6 +11,7 @@ npm install
 npm run dev          # http://localhost:5173
 ```
 
+All questions the game can ask: [docs/QUESTIONS.md](docs/QUESTIONS.md).
 How to test locally (play, reset progress, run checks): [docs/LOCAL_TESTING.md](docs/LOCAL_TESTING.md).
 All commands are also listed in [CLAUDE.md](CLAUDE.md).
 

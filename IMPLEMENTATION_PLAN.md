@@ -178,9 +178,30 @@ Decision: no puzzle files in the repo; the date-seeded generator runs in the bro
 
 - [x] `docs/LOCAL_TESTING.md`: how to run, play, reset, check and troubleshoot locally; `npm run check` shortcut
 
+### Phase 5f - Item questions and patch-note counts (done)
+
+Decision: more static data instead of popularity stats.
+
+- [x] Items as a second kind of subject: stats have a `subject`, rounds compare four champions or four items (`optionIds`), snapshots hold `items` (older snapshots without items still work)
+- [x] Sources: Data Dragon `item.json` (price, icon, availability), wiki `Module:ItemData/data` and `Module:Gold_value/data` (stats incl. ability haste, gold values), parsed with a small Lua table parser
+- [x] Item pool: 113 completed legendary items and boots on Summoner's Rift
+- [x] 8 item questions: cost, gold efficiency (stats only), attack damage, ability power, health, armor, magic resistance, ability haste
+- [x] Champion question “appeared in the most patch notes” from each champion's wiki patch history (counts every patch entry, including bug fixes and hotfixes)
+- [x] Percent display format, validation per subject, wiki credit in the footer
+- [ ] Not done: counting only real balance changes (would need to classify each patch entry), item stats from Data Dragon cross-checked against the wiki
+- Known data issue: the wiki page for K'Sante is garbled at the source, so he shows only 2 patches.
+
 ### Phase 5b - Popularity stats (win rate / pick rate) - parked
 
 Revisit only if wanted later. Options and risks are in section 5.
+
+**History:** a full Riot Match-V5 pipeline (sampling, aggregation, rate-limited client, weekly frozen
+publishing, `winRate`/`pickRate`/`banRate` stats, a collection workflow and docs) was built and then
+removed on request, to keep the project smaller for now. Its first real run worked: 53 EUW Emerald+ games
+across 164 champions. The whole change is kept in a local git stash named "Riot popularity pipeline
+(parked ...)" (`git stash list`; `git stash pop` brings it back, `git stash drop` discards it).
+Scraping Lolalytics was assessed instead and not built: no terms of service or API found, but also no
+permission, so it needs the operator's agreement first.
 
 - [ ] Decide provider (see Risks); implement behind the `sources` interface
 - [ ] Snapshot per patch, per role; store provenance in `StatValue`
