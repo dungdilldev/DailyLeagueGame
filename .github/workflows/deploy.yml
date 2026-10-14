@@ -1,0 +1,84 @@
+name: Update data and deploy
+
+on:
+  # Every day shortly after the UTC puzzle rollover. The new day's puzzle already exists
+  # (puzzles are generated ahead), so this run only tops up the buffer and refreshes data.
+  schedule:
+    - cron: '30 0 * * *'
+  # Manual run from the Actions tab.
+  workflow_dispatch:
+  # Deploy code changes. Data commits made by this workflow's own token do not re-trigger it.
+  push:
+    branches: [main]
+
+# One run at a time, and never cancel a run that is half-way through publishing.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  # How far ahead puzzles are generated. A failed refresh is invisible to players until this runs out.
+  PUZZLE_DAYS_AHEAD: 30
+
+jobs:
+  update-data:
+    # Code pushes deploy as-is; only scheduled/manual runs touch the data.
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Refresh champion data
+        run: npm run data:refresh
+      - name: Generate upcoming puzzles
+        run: npm run data:generate -- --days "$PUZZLE_DAYS_AHEAD"
+      # Gate: if fresh data breaks any rule (e.g. a stat can no longer build a puzzle), nothing is
+      # committed or deployed and the previous good data stays live.
+      - run: npm run typecheck
+      - run: npm test
+      - name: Commit data changes
+        run: |
+          if [ -z "$(git status --porcelain public/data)" ]; then
+            echo "No data changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data
+          git commit -m "Update data and puzzles"
+          git push
+
+  deploy:
+    needs: update-data
+    # Run after a successful update, or when the update was skipped (code push). Never after a failure.
+    if: ${{ !cancelled() && (needs.update-data.result == 'success' || needs.update-data.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Default ref would be the commit that triggered the run, missing the data commit above.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

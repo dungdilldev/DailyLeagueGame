@@ -37,6 +37,7 @@ Keep this list accurate, it is the first thing to check. Node 22+ (see `.nvmrc`)
 - `npm run dev` - local dev server
 - `npm run build` - typecheck + production build
 - `npm test` - unit tests (`npm run test:watch` for watch mode)
+- `npm run test:e2e` - Playwright smoke tests against a fresh production build (first time: `npx playwright install chromium`)
 - `npm run lint` / `npm run typecheck`
 - `npm run format` / `npm run format:check` - Prettier
 - `npm run data:refresh` - fetch Data Dragon, rebuild `public/data/champions.json` (needs network)

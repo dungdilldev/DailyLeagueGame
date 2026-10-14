@@ -132,11 +132,13 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 
 ### Phase 4 - Automation & deployment
 
-- [ ] GitHub Actions: daily cron -> refresh data -> generate ahead -> validate -> commit/deploy
-- [ ] Pipeline failure keeps previous data live and notifies (Actions failure email is enough)
-- [ ] Deploy to GitHub Pages or Cloudflare Pages; custom domain optional
-- [ ] Playwright smoke test against the built site
-- [ ] Handle new champion/patch release automatically (version bump detection)
+- [x] GitHub Actions: daily cron -> refresh data -> generate ahead -> test gate -> commit -> build -> deploy (`.github/workflows/deploy.yml`)
+- [x] Pipeline failure keeps previous data live (nothing is committed or deployed) and GitHub emails the owner
+- [x] Deploy to GitHub Pages (setup steps in `README.md`)
+- [x] Playwright smoke tests against the production build, desktop and phone viewport, run in CI
+- [x] New champions/patches handled automatically: the refresh always takes the latest Data Dragon version, and a changed file is committed
+- [ ] First real run on GitHub (workflows are written but untested there: no repository exists yet)
+- [ ] Optional: failure notification beyond GitHub's default email
 
 **Done when:** the site updates daily with no manual action for 7 consecutive days.
 
