@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { ARCHIVE_DAYS } from '../src/game/archive';
 
 const ROUNDS_PER_DAY = 5;
 
@@ -86,8 +87,58 @@ test('layout fits the viewport without horizontal scrolling', async ({ page }) =
   expect(overflow).toBeLessThanOrEqual(0);
 });
 
-test('shows a friendly message when the puzzle is missing', async ({ page }) => {
-  await page.route('**/data/puzzles/*.json', (route) => route.fulfill({ status: 404 }));
+test('shows a friendly message when the game data cannot be loaded', async ({ page }) => {
+  await page.route('**/data/game-data.json', (route) => route.fulfill({ status: 500 }));
   await page.goto('/');
-  await expect(page.getByRole('alert')).toContainText('no puzzle');
+  await expect(page.getByRole('alert')).toContainText('Something went wrong');
+});
+
+test.describe('day navigation', () => {
+  test('goes back to the previous day and returns to today', async ({ page }, testInfo) => {
+    await page.goto('/');
+    const next = page.getByRole('button', { name: /Next day/ });
+    await expect(next).toBeDisabled();
+    await expect(page.getByText('Today', { exact: true })).toBeVisible();
+
+    await page.getByRole('button', { name: /Previous day/ }).click();
+    await expect(page).toHaveURL(/\?date=\d{4}-\d{2}-\d{2}$/);
+    await expect(page.getByText('Earlier puzzle')).toBeVisible();
+    await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+    await page.screenshot({ path: testInfo.outputPath('previous-day.png'), fullPage: true });
+
+    // The chosen day survives a reload.
+    await page.reload();
+    await expect(page.getByText('Earlier puzzle')).toBeVisible();
+
+    await next.click();
+    await expect(page.getByText('Today', { exact: true })).toBeVisible();
+    await expect(page).not.toHaveURL(/date=/);
+  });
+
+  test('can go back only as far as the archive window allows', async ({ page }) => {
+    await page.goto('/');
+    const previous = page.getByRole('button', { name: /Previous day/ });
+    for (let day = 0; day < ARCHIVE_DAYS; day++) await previous.click();
+    await expect(previous).toBeDisabled();
+  });
+
+  test('ignores a date in the address that is invalid or outside the window', async ({ page }) => {
+    for (const value of ['2000-01-01', '2099-01-01', 'garbage']) {
+      await page.goto(`/?date=${value}`);
+      await expect(page.getByText('Today', { exact: true })).toBeVisible();
+    }
+  });
+
+  test('keeps progress for today and an earlier day separate', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('.card').first().click();
+    await page.getByRole('button', { name: 'Next round' }).click();
+    await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+
+    await page.getByRole('button', { name: /Previous day/ }).click();
+    await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+
+    await page.getByRole('button', { name: /Next day/ }).click();
+    await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+  });
 });

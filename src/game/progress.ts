@@ -1,4 +1,18 @@
-import type { Puzzle, Round } from '../data/puzzleSchema';
+import type { Puzzle, Round } from './puzzle';
+
+/**
+ * The saved answers that still fit the puzzle: stops at the first one that is not an option in
+ * its round. Guards against progress saved for a puzzle that was generated differently
+ * (e.g. before the data it was built from changed).
+ */
+export function validAnswers(puzzle: Puzzle, answers: readonly string[]): string[] {
+  const valid: string[] = [];
+  for (const [index, answer] of answers.entries()) {
+    if (!puzzle.rounds[index]?.championIds.includes(answer)) break;
+    valid.push(answer);
+  }
+  return valid;
+}
 
 export function isCorrect(round: Round, chosenId: string): boolean {
   return round.answerId === chosenId;

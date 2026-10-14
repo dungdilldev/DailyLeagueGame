@@ -30,6 +30,18 @@ describe('progress store', () => {
     expect(completedDates(days)).toEqual(['2026-03-04']);
   });
 
+  it('does not count days played late as completed for the streak', () => {
+    const storage = memoryStorage();
+    saveDay(storage, '2026-03-03', { answers: ['A'], complete: true, late: true });
+    saveDay(storage, '2026-03-04', { answers: ['A'], complete: true });
+    expect(completedDates(loadSavedDays(storage))).toEqual(['2026-03-04']);
+  });
+
+  it('still reads progress saved before the late flag existed', () => {
+    const old = memoryStorage('{"2026-03-04":{"answers":["A"],"complete":true}}');
+    expect(completedDates(loadSavedDays(old))).toEqual(['2026-03-04']);
+  });
+
   it('treats corrupt or wrongly shaped data as empty', () => {
     expect(loadSavedDays(memoryStorage('not json'))).toEqual({});
     expect(loadSavedDays(memoryStorage('{"2026-03-05":{"answers":"x"}}'))).toEqual({});

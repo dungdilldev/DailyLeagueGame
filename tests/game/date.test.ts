@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { addUtcDays, formatCountdown, formatUtcDate, msUntilNextUtcDay } from '../../src/game/date';
+import {
+  addUtcDays,
+  formatCountdown,
+  formatUtcDate,
+  isValidUtcDate,
+  msUntilNextUtcDay,
+} from '../../src/game/date';
 
 describe('formatUtcDate', () => {
   it('formats as YYYY-MM-DD', () => {
@@ -34,5 +40,26 @@ describe('countdown', () => {
     expect(formatCountdown(3_661_000)).toBe('01:01:01');
     expect(formatCountdown(0)).toBe('00:00:00');
     expect(formatCountdown(-5)).toBe('00:00:00');
+  });
+});
+
+describe('isValidUtcDate', () => {
+  it('accepts real dates', () => {
+    expect(isValidUtcDate('2026-03-05')).toBe(true);
+    expect(isValidUtcDate('2028-02-29')).toBe(true);
+  });
+
+  it('rejects wrong shapes and impossible dates', () => {
+    for (const value of [
+      '',
+      'abc',
+      '2026-3-5',
+      '2026-13-01',
+      '2026-02-30',
+      '2027-02-29',
+      '2026-03-05T00:00',
+    ]) {
+      expect(isValidUtcDate(value), value).toBe(false);
+    }
   });
 });

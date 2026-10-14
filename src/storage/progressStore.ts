@@ -6,6 +6,8 @@ const DayRecordSchema = z.object({
   /** Champion id chosen in each round, in order. */
   answers: z.array(z.string()),
   complete: z.boolean(),
+  /** Set when the puzzle was played after its own day; such days do not count for the streak. */
+  late: z.boolean().optional(),
 });
 export type DayRecord = z.infer<typeof DayRecordSchema>;
 
@@ -45,8 +47,9 @@ export function saveDay(storage: StorageLike | undefined, date: string, record: 
   }
 }
 
+/** Days completed on their own day; these are the ones that count for the streak. */
 export function completedDates(days: SavedDays): string[] {
   return Object.entries(days)
-    .filter(([, record]) => record.complete)
+    .filter(([, record]) => record.complete && !record.late)
     .map(([date]) => date);
 }

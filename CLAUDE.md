@@ -2,7 +2,7 @@
 
 A daily League of Legends "higher or lower"-style quiz. Each day the player gets rounds of 4 champions and must pick the one with the highest value of a stat (win rate, pick rate, skin count, release date, base HP, ...). Static website, no backend. New quizzes are generated automatically.
 
-See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the roadmap and phase status.
+See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the roadmap and phase status, and [docs/LOCAL_TESTING.md](docs/LOCAL_TESTING.md) for how to run and test locally.
 
 ## Tech Stack
 
@@ -16,18 +16,18 @@ See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the roadmap and phase s
 
 ```
 src/
-  game/        Pure game logic (no DOM, no fetch). Fully unit-tested.
+  game/        Pure game logic (no DOM, no fetch): puzzle generator (generate/), scoring, streaks, formatting. Fully unit-tested.
   ui/          Components and rendering. No game rules here.
   data/        Loading and validating the published JSON at runtime.
   storage/     localStorage wrapper (streaks, history, settings).
 pipeline/
   sources/     One module per external data source (Data Dragon, stats provider, ...).
   stats/       Stat definitions: how each stat is fetched, normalised, labelled.
-  generate/    Puzzle generator (seeded, deterministic).
-  validate/    Schema + sanity checks for generated data.
+  validate/    Sanity checks for the fetched champion data.
+  snapshots.ts Decides when new data takes effect (see Domain Rules).
 public/
-  data/        Generated output: champions.json, puzzles/YYYY-MM-DD.json (committed or built by CI).
-tests/         Mirrors src/ and pipeline/ structure.
+  data/        Generated output: game-data.json (stat definitions + champion snapshots), committed by CI.
+tests/         Mirrors src/ and pipeline/ structure; tests/support has test-only helpers.
 ```
 
 ## Commands
@@ -36,21 +36,23 @@ Keep this list accurate, it is the first thing to check. Node 22+ (see `.nvmrc`)
 
 - `npm run dev` - local dev server
 - `npm run build` - typecheck + production build
+- `npm run check` - typecheck + lint + format check + unit tests (run before pushing, plus `test:e2e`)
 - `npm test` - unit tests (`npm run test:watch` for watch mode)
 - `npm run test:e2e` - Playwright smoke tests against a fresh production build (first time: `npx playwright install chromium`)
 - `npm run lint` / `npm run typecheck`
 - `npm run format` / `npm run format:check` - Prettier
-- `npm run data:refresh` - fetch Data Dragon, rebuild `public/data/champions.json` (needs network)
-- `npm run data:generate -- --days 30` - generate puzzles for the next N days (skips days that already exist; optional `--from YYYY-MM-DD`)
+- `npm run data:refresh` - fetch Data Dragon, update `public/data/game-data.json` (needs network)
 
 ## Domain Rules (non-obvious, easy to get wrong)
 
-- **A puzzle is data, not code.** The client never decides the answer; it reads a pre-generated puzzle file and compares against the stored values.
-- **Determinism:** the same date + same data snapshot must always produce the same puzzle. Use a seeded PRNG (seed = date string), never `Math.random()` in the generator.
+- **Puzzles are generated in the browser, not stored.** `createDailyPuzzle(data, date)` builds the day's puzzle from `game-data.json`; there are no puzzle files. Answers are therefore inspectable by anyone: this is a casual game, do not treat them as secret.
+- **Determinism:** the same date + same data snapshot must always produce the same puzzle, for every player. Use the seeded PRNG (seed = date string), never `Math.random()`, and no clock inside generator code.
+- **Archive:** players can open today and the previous `ARCHIVE_DAYS` (7) days via `?date=YYYY-MM-DD` or the day buttons; anything else falls back to today. Days played after their own date are saved with `late: true` and do not count for the streak. Snapshots are kept long enough to rebuild every archive day exactly as it was.
+- **Snapshots:** `game-data.json` holds the snapshot in effect plus any upcoming one. New or changed data becomes a snapshot with `effectiveFrom` = next UTC day, so a day's puzzle never changes once that day has started. The client picks the newest snapshot with `effectiveFrom <= today`. Never edit a snapshot that is already in effect.
 - **Date handling:** the "day" is defined in **UTC**. Never use local time to pick the puzzle.
 - **Fair, escalating rounds:** all 4 champions in a round have distinct values. The relative gap between first and second place must fall in the round's band from `pipeline/generate/config.ts`; bands narrow each round so later rounds are harder. Win rate / pick rate comparisons (Phase 5) should stay within the same role and patch.
 - **Data sources:** Data Dragon (official) and the LoL Wiki champion data module (release dates). Each lives in one file under `pipeline/sources/`. A stat may return `undefined` for a champion (e.g. not on the wiki yet); validation requires 95% coverage per stat rather than 100%.
-- **Stat provenance:** every stat value carries its source and patch/date. Stats that change (win rate) are snapshotted into the puzzle at generation time so a puzzle never changes after publishing.
+- **Stat provenance:** each stat definition carries its `source`, published in `game-data.json`. Stat definitions (label, question, format) are data too: the client has no stat-specific code.
 - **No official win-rate API exists** (popularity stats are parked, see plan Phase 5b). Riot does not expose aggregate champion win/pick rate. Whatever source is used must be isolated behind the `pipeline/sources` interface so it can be swapped (see the plan, Risks).
 - **Riot legal:** include the required "not endorsed by Riot Games" disclaimer in the footer. Do not host Riot assets beyond what Data Dragon / Community Dragon terms allow; hotlink or fetch via CI per their terms.
 
@@ -82,7 +84,7 @@ These are requirements, not suggestions. Apply them to every change.
 
 **Testing**
 
-- Every function in `src/game` and `pipeline/generate` has unit tests, including edge cases (ties, missing stat, patch change, date boundary at UTC midnight).
+- Every function in `src/game` (including the generator) and `pipeline` has unit tests, including edge cases (ties, missing stat, patch change, date boundary at UTC midnight).
 - Add a regression test with every bug fix.
 - Generator has a property-style test: for N seeds, every produced round is valid (4 distinct champions, unique max, gap respected).
 - Don't mock what you own. Mock only network and clock.

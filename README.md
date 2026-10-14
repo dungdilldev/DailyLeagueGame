@@ -11,7 +11,8 @@ npm install
 npm run dev          # http://localhost:5173
 ```
 
-Other commands (tests, data pipeline, e2e) are listed in [CLAUDE.md](CLAUDE.md).
+How to test locally (play, reset progress, run checks): [docs/LOCAL_TESTING.md](docs/LOCAL_TESTING.md).
+All commands are also listed in [CLAUDE.md](CLAUDE.md).
 
 ## Deploying to GitHub Pages (one-time setup)
 
@@ -26,10 +27,15 @@ After that it runs by itself every day at 00:30 UTC, and on every push to `main`
 
 ## How the daily automation works
 
-- `Update data and deploy` (scheduled): refreshes champion data from Riot's Data Dragon, generates
-  puzzles for the next 30 days (existing days are never changed), runs the full test suite, commits
-  the new files to `main`, then builds and deploys the site.
+- The daily puzzle is generated in the browser from the date (UTC), using the champion data in
+  `public/data/game-data.json`. There are no puzzle files; the answers can be worked out by anyone
+  who reads the code, which is fine for a casual game.
+- `Update data and deploy` (scheduled, daily): fetches fresh champion data from Riot's Data Dragon and
+  the LoL Wiki. If nothing changed, it stops. If something changed (a new patch or champion), it runs
+  the full test suite, which generates a year of puzzles from the new data and checks every one, then
+  commits the data and deploys.
+- New data takes effect from the next UTC day, so a puzzle never changes under someone who is
+  already playing it.
 - If anything fails (Riot data changes shape, a test breaks), nothing is committed or deployed and
   the previous site stays live. GitHub emails the repository owner about failed runs.
-- Puzzles are generated 30 days ahead, so a broken refresh has roughly a month before players notice.
 - `CI` runs checks and browser smoke tests on every pull request and push to `main`.

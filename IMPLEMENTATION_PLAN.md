@@ -30,23 +30,24 @@ Status legend: `[ ]` todo, `[x]` done. Update as work progresses.
 GitHub Actions (cron, daily)
    |
    v
-pipeline/sources  -> fetch Data Dragon + stats provider
-pipeline/validate -> schema checks, fail loudly
-pipeline/generate -> seeded puzzle generator (N days ahead)
+pipeline/sources  -> fetch Data Dragon + LoL Wiki
+pipeline/validate -> sanity checks, fail loudly
+pipeline/snapshots-> new data becomes a snapshot effective from the next UTC day
    |
    v
-public/data/champions.json + puzzles/YYYY-MM-DD.json  (committed to repo or build artifact)
+public/data/game-data.json  (stat definitions + snapshots; committed only when data changes)
    |
    v
-Static site (Vite build) -> hosting (GitHub Pages / Cloudflare Pages)
+Static site (Vite build) -> GitHub Pages
    |
    v
-Browser: fetch today's UTC puzzle, play, store result in localStorage
+Browser: load game-data.json, pick the snapshot for today (UTC), generate the day's puzzle
+         with the date-seeded generator (src/game/generate), play, store result in localStorage
 ```
 
-**Why static + pre-generated puzzles:** zero hosting cost, no server to maintain, puzzle never changes after publish, and "generates its own quizzes" is satisfied by the scheduled pipeline. A seeded generator makes runs reproducible and debuggable.
+**Why static + generate in the browser:** zero hosting cost, no server, no per-day files in the repo. The generator is deterministic (seed = UTC date), so every player gets the same puzzle. Snapshots with an `effectiveFrom` date keep a day's puzzle stable when data changes. Trade-off: answers are inspectable by anyone (a server would be needed to hide them).
 
-**Self-healing:** the pipeline always generates ~14-30 days ahead. If a refresh fails, the site keeps serving already-generated puzzles for weeks while we fix it.
+**Self-healing:** if a refresh fails, the site keeps serving the last good data. Puzzles keep generating from it.
 
 ## 3. Data Model (TypeScript sketch)
 
@@ -108,7 +109,7 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 - [x] Round builder: constructive (answer, runner-up inside the difficulty band, two lower champions); distinct values enforced
 - [x] Puzzle builder: 5 rounds, no repeated stat or champion within a day
 - [x] Difficulty config in one file (`pipeline/generate/config.ts`): gap bands narrow each round
-- [x] `npm run data:generate -- --days 30` writes `puzzles/YYYY-MM-DD.json` (never overwrites existing days)
+- [x] ~~`npm run data:generate` writing puzzle files~~ replaced in Phase 5c by in-browser generation
 - [x] Determinism test, validator tests, and a 365-date test against the real roster
 - [ ] Avoid champion repeats across consecutive days (not done: each day is generated independently from its date)
 
@@ -137,10 +138,10 @@ interface Puzzle { date: string /* YYYY-MM-DD UTC */; patch: string; rounds: Rou
 - [x] Deploy to GitHub Pages (setup steps in `README.md`)
 - [x] Playwright smoke tests against the production build, desktop and phone viewport, run in CI
 - [x] New champions/patches handled automatically: the refresh always takes the latest Data Dragon version, and a changed file is committed
-- [ ] First real run on GitHub (workflows are written but untested there: no repository exists yet)
+- [x] First real run on GitHub: workflow runs and the site is deployed (confirmed). One bug found and fixed: duplicate `github-pages` artifact name on re-runs.
 - [ ] Optional: failure notification beyond GitHub's default email
 
-**Done when:** the site updates daily with no manual action for 7 consecutive days.
+**Done when:** the site updates daily with no manual action for 7 consecutive days. (Still to observe: the daily job has run on GitHub only manually so far.)
 
 ### Phase 5a - More stats without popularity data (done)
 
@@ -152,6 +153,30 @@ Decision: win rate / pick rate are skipped for now (no official source). Instead
 - [x] Stat validation is now coverage based (95% of champions) so a champion missing from the wiki on release day does not block the refresh
 - [x] Wiki attribution (CC BY-SA 3.0) in the site footer
 - Release dates are stored as days since 2009-01-01 so the relative-gap difficulty bands still work.
+
+### Phase 5c - Generate puzzles in the browser (done)
+
+Decision: no puzzle files in the repo; the date-seeded generator runs in the browser.
+
+- [x] Generator moved to `src/game/generate`; stat labels, questions and formats are data (`StatMeta`), not functions
+- [x] `game-data.json` = stat definitions + snapshots; `pickSnapshot` / `mergeSnapshots` keep a day's puzzle stable when data changes
+- [x] `puzzles/` folder, `data:generate` script and generate step in the workflow removed; the daily job only commits and deploys when data actually changed
+- [x] Saved answers that do not fit today's puzzle are discarded instead of breaking the game
+- [x] The year-of-dates generator test is the CI gate for new data
+- First deploy after this change: today's puzzle differs from the old file-based one, so anyone who already played today may see their progress reset once.
+
+### Phase 5d - Previous days (done)
+
+- [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)
+- [x] Window of `ARCHIVE_DAYS` = 7 days back (one constant; set to 1 for “yesterday only”). Data snapshots are pruned to match, so an earlier day is rebuilt from the data that was live then
+- [x] Progress is stored per day; days played late are flagged and excluded from the streak
+- [x] Earlier-day results show a note instead of the countdown
+- [x] Browser tests for navigation, window limit, bad dates and separate progress
+- Known limit: after the first deploy of in-browser generation there is only one snapshot, so older archive days are built from it rather than from the data of that day.
+
+### Phase 5e - Documentation (done)
+
+- [x] `docs/LOCAL_TESTING.md`: how to run, play, reset, check and troubleshoot locally; `npm run check` shortcut
 
 ### Phase 5b - Popularity stats (win rate / pick rate) - parked
 

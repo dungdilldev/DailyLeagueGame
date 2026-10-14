@@ -1,8 +1,8 @@
 name: Update data and deploy
 
 on:
-  # Every day shortly after the UTC puzzle rollover. The new day's puzzle already exists
-  # (puzzles are generated ahead), so this run only tops up the buffer and refreshes data.
+  # Daily check for new champion data (patches, new champions). Puzzles are generated in the
+  # browser from the date, so most days nothing changes and nothing is committed or deployed.
   schedule:
     - cron: '30 0 * * *'
   # Manual run from the Actions tab.
@@ -16,10 +16,6 @@ concurrency:
   group: deploy
   cancel-in-progress: false
 
-env:
-  # How far ahead puzzles are generated. A failed refresh is invisible to players until this runs out.
-  PUZZLE_DAYS_AHEAD: 30
-
 jobs:
   update-data:
     # Code pushes deploy as-is; only scheduled/manual runs touch the data.
@@ -27,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,28 +34,29 @@ jobs:
       - run: npm ci
       - name: Refresh champion data
         run: npm run data:refresh
-      - name: Generate upcoming puzzles
-        run: npm run data:generate -- --days "$PUZZLE_DAYS_AHEAD"
-      # Gate: if fresh data breaks any rule (e.g. a stat can no longer build a puzzle), nothing is
+      # Gate: the tests generate a year of puzzles from the fresh data. If any is invalid, nothing is
       # committed or deployed and the previous good data stays live.
       - run: npm run typecheck
       - run: npm test
       - name: Commit data changes
+        id: commit
         run: |
           if [ -z "$(git status --porcelain public/data)" ]; then
             echo "No data changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
-          git commit -m "Update data and puzzles"
+          git commit -m "Update champion data"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs: update-data
-    # Run after a successful update, or when the update was skipped (code push). Never after a failure.
-    if: ${{ !cancelled() && (needs.update-data.result == 'success' || needs.update-data.result == 'skipped') }}
+    # Deploy code pushes, and data updates that actually changed something. Never after a failure.
+    if: ${{ !cancelled() && (needs.update-data.result == 'skipped' || (needs.update-data.result == 'success' && needs.update-data.outputs.changed == 'true')) }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

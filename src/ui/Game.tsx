@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
-import type { Puzzle } from '../data/puzzleSchema';
+import type { Puzzle } from '../game/puzzle';
 import type { Champion } from '../data/schema';
-import { isComplete, submitAnswer } from '../game/progress';
+import { isComplete, submitAnswer, validAnswers } from '../game/progress';
 import { currentStreak } from '../game/streak';
 import { completedDates, loadSavedDays, saveDay, type StorageLike } from '../storage/progressStore';
 import { ResultsView } from './ResultsView';
@@ -11,17 +11,20 @@ interface GameProps {
   puzzle: Puzzle;
   champions: ReadonlyMap<string, Champion>;
   /** UTC date of the puzzle being played. */
+  date: string;
+  /** The real current UTC day. Playing an earlier day does not count for the streak. */
   today: string;
   storage: StorageLike | undefined;
   shareUrl: string;
 }
 
-export function Game({ puzzle, champions, today, storage, shareUrl }: GameProps) {
+export function Game({ puzzle, champions, date, today, storage, shareUrl }: GameProps) {
   const [days, setDays] = useState(() => loadSavedDays(storage));
   // True between answering a round and pressing "Next": the reveal is shown for that round.
   const [revealing, setRevealing] = useState(false);
 
-  const answers = days[today]?.answers ?? [];
+  // Saved answers that do not fit this puzzle (e.g. it was generated differently) are dropped.
+  const answers = validAnswers(puzzle, days[date]?.answers ?? []);
   const complete = isComplete(puzzle, answers);
 
   if (complete && !revealing) {
@@ -29,7 +32,11 @@ export function Game({ puzzle, champions, today, storage, shareUrl }: GameProps)
       <ResultsView
         puzzle={puzzle}
         answers={answers}
-        streak={currentStreak(completedDates(days), today)}
+        streak={currentStreak(
+          completedDates(days).filter((completed) => completed !== date || complete),
+          today,
+        )}
+        isToday={date === today}
         shareUrl={shareUrl}
       />
     );
@@ -41,9 +48,13 @@ export function Game({ puzzle, champions, today, storage, shareUrl }: GameProps)
 
   const choose = (championId: string) => {
     const next = submitAnswer(puzzle, answers, championId);
-    const record = { answers: next, complete: isComplete(puzzle, next) };
-    saveDay(storage, today, record);
-    setDays((previous) => ({ ...previous, [today]: record }));
+    const record = {
+      answers: next,
+      complete: isComplete(puzzle, next),
+      ...(date !== today && { late: true }),
+    };
+    saveDay(storage, date, record);
+    setDays((previous) => ({ ...previous, [date]: record }));
     setRevealing(true);
   };
 

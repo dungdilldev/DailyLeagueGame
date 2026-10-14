@@ -1,4 +1,4 @@
-import type { ChampionsFile } from '../../src/data/schema';
+import type { Champion } from '../../src/data/schema';
 import type { StatDefinition } from '../stats/types';
 
 /** Sanity floor: a count far below the real roster means a partial or failed fetch. */
@@ -9,10 +9,13 @@ export const MIN_CHAMPION_COUNT = 100;
  */
 export const MIN_STAT_COVERAGE = 0.95;
 
-/** Returns human-readable problems; empty means the file is safe to publish. */
-export function findProblems(file: ChampionsFile, stats: readonly StatDefinition[]): string[] {
+/** Returns human-readable problems; empty means the champion data is safe to publish. */
+export function findProblems(
+  champions: readonly Champion[],
+  stats: readonly StatDefinition[],
+): string[] {
   const problems: string[] = [];
-  const total = file.champions.length;
+  const total = champions.length;
 
   if (total < MIN_CHAMPION_COUNT) {
     problems.push(
@@ -21,13 +24,13 @@ export function findProblems(file: ChampionsFile, stats: readonly StatDefinition
   }
 
   const seenIds = new Set<string>();
-  for (const champion of file.champions) {
+  for (const champion of champions) {
     if (seenIds.has(champion.id)) problems.push(`Duplicate champion id "${champion.id}"`);
     seenIds.add(champion.id);
   }
 
   for (const stat of stats) {
-    const withStat = file.champions.filter((champion) => stat.id in champion.stats).length;
+    const withStat = champions.filter((champion) => stat.id in champion.stats).length;
     if (withStat < total * MIN_STAT_COVERAGE) {
       problems.push(
         `Stat "${stat.id}" present for only ${String(withStat)} of ${String(total)} champions`,

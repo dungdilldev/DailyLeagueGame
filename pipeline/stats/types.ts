@@ -1,9 +1,11 @@
-import type { StatId } from '../../src/data/schema';
+import type { StatFormat, StatId, StatMeta } from '../../src/data/schema';
 import type { ChampionDetail, ChampionSummary } from '../sources/dataDragon';
 import type { WikiChampion } from '../sources/leagueWiki';
 
 export const DATA_DRAGON_SOURCE = 'data-dragon';
 export const LEAGUE_WIKI_SOURCE = 'lol-wiki';
+
+const NUMBER_FORMAT: StatFormat = { kind: 'number' };
 
 /** Everything the pipeline knows about one champion; stats pick the fields they need. */
 export interface StatInput {
@@ -19,14 +21,25 @@ export interface StatDefinition {
   label: string;
   /** The question shown to the player. A higher value is always the right answer. */
   question: string;
-  /** Provenance written next to every value. */
+  /** Provenance, published with the stat definitions. */
   source: string;
+  /** How values are shown to the player; plain numbers when omitted. */
+  format?: StatFormat;
   /** Returns undefined when the value is not available for this champion. */
   extract: (input: StatInput) => number | undefined;
-  /** How to show a value to the player; plain numbers are shown as-is when omitted. */
-  formatValue?: (value: number) => string;
 }
 
 export function highestQuestion(label: string): string {
   return `Which champion has the highest ${label.toLowerCase()}?`;
+}
+
+/** The part of a stat definition that is published to the client. */
+export function toStatMeta(stat: StatDefinition): StatMeta {
+  return {
+    id: stat.id,
+    label: stat.label,
+    question: stat.question,
+    format: stat.format ?? NUMBER_FORMAT,
+    source: stat.source,
+  };
 }

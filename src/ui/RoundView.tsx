@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'preact/hooks';
-import type { Round } from '../data/puzzleSchema';
+import type { Round } from '../game/puzzle';
 import type { Champion } from '../data/schema';
 import { isCorrect } from '../game/progress';
-import { displayValue, roundQuestion } from '../game/roundDisplay';
+import { displayValue } from '../game/roundDisplay';
 import { ChampionCard, type CardState } from './ChampionCard';
 
 interface RoundViewProps {
@@ -48,7 +48,7 @@ export function RoundView({
         Round {roundNumber} of {totalRounds}
       </p>
       <h2 id="question" class="question">
-        {roundQuestion(round)}
+        {round.question}
       </h2>
 
       <div class="cards">

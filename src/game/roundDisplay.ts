@@ -1,14 +1,8 @@
-import type { Round } from '../data/puzzleSchema';
+import { formatStatValue } from './statFormat';
+import type { Round } from './puzzle';
 
-/** The question for a round. Puzzles published before questions were stored get a derived one. */
-export function roundQuestion(round: Round): string {
-  return round.question ?? `Which champion has the highest ${round.statLabel.toLowerCase()}?`;
-}
-
-/** The value to show for a champion: the pre-formatted text if the puzzle has it, else the number. */
+/** The text to show for a champion's value in a round, or undefined if it is not in the round. */
 export function displayValue(round: Round, championId: string): string | undefined {
-  const formatted = round.displayValues?.[championId];
-  if (formatted !== undefined) return formatted;
   const value = round.values[championId];
-  return value === undefined ? undefined : value.toLocaleString('en-US');
+  return value === undefined ? undefined : formatStatValue(round.format, value);
 }

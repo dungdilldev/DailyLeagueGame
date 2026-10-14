@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it } from 'vitest';
-import type { Puzzle } from '../../src/data/puzzleSchema';
+import type { Puzzle, Round } from '../../src/game/puzzle';
 import type { Champion } from '../../src/data/schema';
 import { Game } from '../../src/ui/Game';
 import { loadSavedDays, type StorageLike } from '../../src/storage/progressStore';
@@ -18,9 +18,11 @@ const champions = new Map<string, Champion>(
   ]),
 );
 
-const makeRound = (statLabel: string, answerId: string) => ({
+const makeRound = (statLabel: string, answerId: string): Round => ({
   statId: statLabel,
   statLabel,
+  question: `Which champion has the highest ${statLabel.toLowerCase()}?`,
+  format: { kind: 'number' },
   championIds: IDS,
   answerId,
   values: { Ahri: 400, Brand: 300, Ciri: 200, Dave: 100 },
@@ -34,12 +36,9 @@ const puzzle: Puzzle = {
     {
       ...makeRound('Release date', 'Ahri'),
       question: 'Which champion was released most recently?',
-      displayValues: {
-        Ahri: 'Jun 13, 2013',
-        Brand: 'Jan 1, 2010',
-        Ciri: 'Feb 2, 2010',
-        Dave: 'Mar 3, 2010',
-      },
+      // Days since the epoch: Ahri 12 days after 2013-06-01 is Jun 13, 2013.
+      format: { kind: 'date', epoch: '2013-06-01' },
+      values: { Ahri: 12, Brand: 3, Ciri: 2, Dave: 1 },
     },
   ],
 };
@@ -61,6 +60,7 @@ const renderGame = (storage: StorageLike) =>
     <Game
       puzzle={puzzle}
       champions={champions}
+      date={TODAY}
       today={TODAY}
       storage={storage}
       shareUrl="https://example.com/"
@@ -83,7 +83,6 @@ describe('Game', () => {
 
     await user.click(screen.getByRole('button', { name: 'Next round' }));
     expect(screen.getByText(/Round 2 of 2/)).toBeTruthy();
-    // Round 1 has no stored question (older puzzle format): derived from the label. Round 2 has one.
     expect(screen.getByText('Which champion was released most recently?')).toBeTruthy();
 
     await user.click(screen.getByRole('button', { name: /Brand/ }));
@@ -124,6 +123,7 @@ describe('Game', () => {
       <Game
         puzzle={puzzle}
         champions={champions}
+        date={TODAY}
         today={TODAY}
         storage={undefined}
         shareUrl="https://example.com/"
@@ -131,5 +131,61 @@ describe('Game', () => {
     );
     await user.click(screen.getByRole('button', { name: /Ahri/ }));
     expect(screen.getByText('Correct!')).toBeTruthy();
+  });
+
+  it('an earlier day can be played but does not count towards the streak', async () => {
+    const user = userEvent.setup();
+    const storage = memoryStorage();
+    render(
+      <Game
+        puzzle={{ ...puzzle, date: '2026-03-04' }}
+        champions={champions}
+        date="2026-03-04"
+        today={TODAY}
+        storage={storage}
+        shareUrl="https://example.com/"
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: /Ahri/ }));
+    await user.click(screen.getByRole('button', { name: 'Next round' }));
+    await user.click(screen.getByRole('button', { name: /Ahri/ }));
+    await user.click(screen.getByRole('button', { name: 'See results' }));
+
+    expect(screen.getByText('2/2')).toBeTruthy();
+    expect(screen.getByText('No streak yet')).toBeTruthy();
+    expect(screen.queryByText(/Next puzzle in/)).toBeNull();
+    expect(screen.getByText(/earlier puzzle/)).toBeTruthy();
+    expect(loadSavedDays(storage)['2026-03-04']?.late).toBe(true);
+  });
+
+  it('keeps progress for different days separate', async () => {
+    const user = userEvent.setup();
+    const storage = memoryStorage();
+    const today = (
+      <Game
+        puzzle={puzzle}
+        champions={champions}
+        date={TODAY}
+        today={TODAY}
+        storage={storage}
+        shareUrl="https://example.com/"
+      />
+    );
+    render(today);
+    await user.click(screen.getByRole('button', { name: /Ahri/ }));
+    cleanup();
+
+    render(
+      <Game
+        puzzle={{ ...puzzle, date: '2026-03-04' }}
+        champions={champions}
+        date="2026-03-04"
+        today={TODAY}
+        storage={storage}
+        shareUrl="https://example.com/"
+      />,
+    );
+    expect(screen.getByText(/Round 1 of 2/)).toBeTruthy();
   });
 });

@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import type { Puzzle } from '../data/puzzleSchema';
+import type { Puzzle } from '../game/puzzle';
 import { roundResults } from '../game/progress';
 import { buildShareText } from '../game/share';
 import { Countdown } from './Countdown';
@@ -9,11 +9,13 @@ interface ResultsViewProps {
   answers: readonly string[];
   streak: number;
   shareUrl: string;
+  /** False for an earlier day from the archive: no countdown, and a note about the streak. */
+  isToday: boolean;
 }
 
 type CopyStatus = 'idle' | 'copied' | 'failed';
 
-export function ResultsView({ puzzle, answers, streak, shareUrl }: ResultsViewProps) {
+export function ResultsView({ puzzle, answers, streak, shareUrl, isToday }: ResultsViewProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
   const results = roundResults(puzzle, answers);
   const correct = results.filter(Boolean).length;
@@ -69,7 +71,14 @@ export function ResultsView({ puzzle, answers, streak, shareUrl }: ResultsViewPr
         </div>
       )}
 
-      <Countdown puzzleDate={puzzle.date} />
+      {isToday ? (
+        <Countdown puzzleDate={puzzle.date} />
+      ) : (
+        <p class="countdown">
+          This was an earlier puzzle, so it does not count towards your streak. Use “Next day” to
+          get back to today.
+        </p>
+      )}
     </section>
   );
 }

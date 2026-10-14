@@ -3,6 +3,7 @@ import { STAT_REGISTRY } from '../../pipeline/stats';
 import { armor, baseHealth } from '../../pipeline/stats/baseStats';
 import { RELEASE_DATE_EPOCH, releaseDate } from '../../pipeline/stats/releaseDate';
 import { skinCount } from '../../pipeline/stats/skinCount';
+import { toStatMeta } from '../../pipeline/stats/types';
 import { makeDetail, makeInput, makeWiki } from './fixtures';
 
 describe('skinCount', () => {
@@ -59,11 +60,19 @@ describe('releaseDate', () => {
     ).toBeUndefined();
   });
 
-  it('formats the stored number back to a readable date', () => {
-    const days = releaseDate.extract(
-      makeInput('A', { wiki: makeWiki('A', { releaseDate: '2013-06-13' }) }),
-    );
-    expect(releaseDate.formatValue?.(days ?? 0)).toBe('Jun 13, 2013');
+  it('declares a date format counted from the same epoch it stores', () => {
+    expect(releaseDate.format).toEqual({ kind: 'date', epoch: RELEASE_DATE_EPOCH });
+  });
+});
+
+describe('toStatMeta', () => {
+  it('defaults to the plain number format and keeps the source', () => {
+    expect(toStatMeta(skinCount)).toMatchObject({
+      id: 'skinCount',
+      format: { kind: 'number' },
+      source: 'data-dragon',
+    });
+    expect(toStatMeta(releaseDate).format.kind).toBe('date');
   });
 });
 
