@@ -221,6 +221,13 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Events and groups: Noxian invasion of Ionia (negative question), the Ruination, Sentinels of Light, the Ascended; the Darkin list gained Zaahen
 - Lore now has 20 questions.
 
+### Phase 5c10 - Stats relative to release date (done)
+
+- [x] New stat and question "most skins relative to their release date" (`skinsPerYear`)
+- [x] "Most patch notes" became "most patch changes relative to their release date" (`patchesPerYear` replaces `patchCount`)
+- [x] Age is measured up to the newest champion release in the data, not today, so values only change with the data; minimum age one year
+- [x] `data:refresh` run: new champion snapshot effective 2026-10-18; today's puzzle keeps its old data (so the new stat questions first appear tomorrow)
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

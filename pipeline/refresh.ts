@@ -26,7 +26,8 @@ import { buildWikiLookup, fetchText, fetchWikiChampions } from './sources/league
 import { fetchWikiItemData } from './sources/leagueWikiItems';
 import { fetchPatchCounts } from './sources/leagueWikiPatchHistory';
 import { CHAMPION_STATS, ITEM_STATS } from './stats';
-import { toStatMeta, type ItemStatInput, type StatInput } from './stats/types';
+import { withReferenceDate } from './stats/perYear';
+import { toStatMeta, type ItemStatInput } from './stats/types';
 import {
   findEntityProblems,
   findQuestionListProblems,
@@ -91,16 +92,12 @@ async function main(): Promise<void> {
   const summaries = await fetchChampionSummaries(fetchJson, version);
   const findWikiChampion = buildWikiLookup(await fetchWikiChampions(fetchText));
   const patchCounts = await fetchPatchCounts(summaries.map((summary) => summary.name));
-  const championInputs: StatInput[] = await mapWithConcurrency(
-    summaries,
-    CONCURRENCY,
-    async (summary) => ({
-      summary,
-      detail: await fetchChampionDetail(fetchJson, version, summary.id),
-      wiki: findWikiChampion(Number(summary.key), summary.id),
-      patchCount: patchCounts.get(summary.name),
-    }),
-  );
+  const championInputs = await mapWithConcurrency(summaries, CONCURRENCY, async (summary) => ({
+    summary,
+    detail: await fetchChampionDetail(fetchJson, version, summary.id),
+    wiki: findWikiChampion(Number(summary.key), summary.id),
+    patchCount: patchCounts.get(summary.name),
+  }));
 
   const wikiItems = await fetchWikiItemData();
   const itemInputs: ItemStatInput[] = selectItems(
@@ -110,7 +107,7 @@ async function main(): Promise<void> {
 
   const championStats = CHAMPION_STATS.map(toStatMeta);
   const itemStats = ITEM_STATS.map(toStatMeta);
-  const champions = buildChampions(championInputs, version, CHAMPION_STATS);
+  const champions = buildChampions(withReferenceDate(championInputs), version, CHAMPION_STATS);
   const items = buildItems(itemInputs, version, ITEM_STATS);
   const questions = resolveQuestions(QuestionFileSchema.parse(questionFile).questions, {
     champion: championStats,

@@ -19,14 +19,16 @@ import {
   itemHealth,
   itemMagicResist,
 } from './itemStats';
-import { patchCount } from './patchCount';
+import { patchesPerYear } from './patchesPerYear';
 import { releaseDate } from './releaseDate';
 import { skinCount } from './skinCount';
+import { skinsPerYear } from './skinsPerYear';
 import type { ChampionStat, ItemStat } from './types';
 
 /** Every stat stored in champions.json. Adding one = one new definition + one line here. */
 export const CHAMPION_STATS: readonly ChampionStat[] = [
   skinCount,
+  skinsPerYear,
   releaseDate,
   baseHealth,
   healthPerLevel,
@@ -37,7 +39,7 @@ export const CHAMPION_STATS: readonly ChampionStat[] = [
   attackSpeed,
   attackRange,
   moveSpeed,
-  patchCount,
+  patchesPerYear,
 ];
 
 /** Every stat stored in items.json. */

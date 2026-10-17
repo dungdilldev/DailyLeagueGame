@@ -8,6 +8,13 @@
       "question": "Which champion has the most skins?"
     },
     {
+      "id": "skinsPerYear",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "skinsPerYear",
+      "question": "Which champion has the most skins relative to their release date?"
+    },
+    {
       "id": "releaseDate",
       "category": "stats",
       "difficulty": "variable",
@@ -78,11 +85,11 @@
       "question": "Which champion has the highest movement speed?"
     },
     {
-      "id": "patchCount",
+      "id": "patchesPerYear",
       "category": "stats",
       "difficulty": "variable",
-      "stat": "patchCount",
-      "question": "Which champion has appeared in the most patch notes?"
+      "stat": "patchesPerYear",
+      "question": "Which champion has had the most patch changes relative to their release date?"
     },
     {
       "id": "itemCost",

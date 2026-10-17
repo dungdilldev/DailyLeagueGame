@@ -16,6 +16,8 @@ export interface StatInput {
   wiki: WikiChampion | undefined;
   /** Number of patches the champion was changed in; undefined if the wiki has no history page. */
   patchCount: number | undefined;
+  /** The date ages are measured up to for "per year" stats; see `latestReleaseDate`. */
+  referenceDate: string | undefined;
 }
 
 /** Everything the pipeline knows about one item. */

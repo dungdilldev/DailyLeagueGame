@@ -48,6 +48,7 @@ export function makeInput(id: string, overrides: Partial<StatInput> = {}): StatI
     detail: makeDetail(id),
     wiki: makeWiki(id),
     patchCount: 12,
+    referenceDate: '2026-01-01',
     ...overrides,
   };
 }

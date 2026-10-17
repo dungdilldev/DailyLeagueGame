@@ -26,33 +26,34 @@ The gap is `(best - second) / best`. A question can only appear in a round if th
 a gap of that size, which is why some questions never show up in the easy or hard rounds (see
 [Which round a question appears in](#which-round-a-question-appears-in)).
 
-## All 20 questions
+## All 21 stat questions
 
-12 about champions, 8 about items. On average a day has about 3 champion rounds and 2 item rounds
+13 about champions, 8 about items. On average a day has about 3 champion rounds and 2 item rounds
 (36% of all rounds are about items).
 
-| #   | Question                                                                        | About    | Shown as   | Source      |
-| --- | ------------------------------------------------------------------------------- | -------- | ---------- | ----------- |
-| 1   | Which champion has the most skins?                                              | Champion | Number     | Data Dragon |
-| 2   | Which champion was released most recently?                                      | Champion | Date       | LoL Wiki    |
-| 3   | Which champion has the highest base health?                                     | Champion | Number     | Data Dragon |
-| 4   | Which champion has the highest health gained per level?                         | Champion | Number     | Data Dragon |
-| 5   | Which champion has the highest base health regeneration?                        | Champion | Number     | Data Dragon |
-| 6   | Which champion has the highest base armor?                                      | Champion | Number     | Data Dragon |
-| 7   | Which champion has the highest base magic resistance?                           | Champion | Number     | Data Dragon |
-| 8   | Which champion has the highest base attack damage?                              | Champion | Number     | Data Dragon |
-| 9   | Which champion has the highest base attack speed?                               | Champion | Number     | Data Dragon |
-| 10  | Which champion has the highest attack range?                                    | Champion | Number     | Data Dragon |
-| 11  | Which champion has the highest movement speed?                                  | Champion | Number     | Data Dragon |
-| 12  | Which champion has appeared in the most patch notes?                            | Champion | Number     | LoL Wiki    |
-| 13  | Which item costs the most gold?                                                 | Item     | Number     | Data Dragon |
-| 14  | Which item is the most gold efficient from its stats alone (ignoring passives)? | Item     | Percentage | LoL Wiki    |
-| 15  | Which item gives the most attack damage?                                        | Item     | Number     | LoL Wiki    |
-| 16  | Which item gives the most ability power?                                        | Item     | Number     | LoL Wiki    |
-| 17  | Which item gives the most health?                                               | Item     | Number     | LoL Wiki    |
-| 18  | Which item gives the most armor?                                                | Item     | Number     | LoL Wiki    |
-| 19  | Which item gives the most magic resistance?                                     | Item     | Number     | LoL Wiki    |
-| 20  | Which item gives the most ability haste?                                        | Item     | Number     | LoL Wiki    |
+| #   | Question                                                                        | About    | Shown as   | Source                |
+| --- | ------------------------------------------------------------------------------- | -------- | ---------- | --------------------- |
+| 1   | Which champion has the most skins?                                              | Champion | Number     | Data Dragon           |
+| 2   | Which champion was released most recently?                                      | Champion | Date       | LoL Wiki              |
+| 3   | Which champion has the highest base health?                                     | Champion | Number     | Data Dragon           |
+| 4   | Which champion has the highest health gained per level?                         | Champion | Number     | Data Dragon           |
+| 5   | Which champion has the highest base health regeneration?                        | Champion | Number     | Data Dragon           |
+| 6   | Which champion has the highest base armor?                                      | Champion | Number     | Data Dragon           |
+| 7   | Which champion has the highest base magic resistance?                           | Champion | Number     | Data Dragon           |
+| 8   | Which champion has the highest base attack damage?                              | Champion | Number     | Data Dragon           |
+| 9   | Which champion has the highest base attack speed?                               | Champion | Number     | Data Dragon           |
+| 10  | Which champion has the highest attack range?                                    | Champion | Number     | Data Dragon           |
+| 11  | Which champion has the highest movement speed?                                  | Champion | Number     | Data Dragon           |
+| 12  | Which champion has had the most patch changes relative to their release date?   | Champion | Number     | LoL Wiki              |
+| 13  | Which item costs the most gold?                                                 | Item     | Number     | Data Dragon           |
+| 14  | Which item is the most gold efficient from its stats alone (ignoring passives)? | Item     | Percentage | LoL Wiki              |
+| 15  | Which item gives the most attack damage?                                        | Item     | Number     | LoL Wiki              |
+| 16  | Which item gives the most ability power?                                        | Item     | Number     | LoL Wiki              |
+| 17  | Which item gives the most health?                                               | Item     | Number     | LoL Wiki              |
+| 18  | Which item gives the most armor?                                                | Item     | Number     | LoL Wiki              |
+| 19  | Which item gives the most magic resistance?                                     | Item     | Number     | LoL Wiki              |
+| 20  | Which item gives the most ability haste?                                        | Item     | Number     | LoL Wiki              |
+| 21  | Which champion has the most skins relative to their release date?               | Champion | Number     | Data Dragon, LoL Wiki |
 
 Each question comes up roughly once every 4 days (about 0.25 times a day). Ability haste is rarer.
 
@@ -60,20 +61,21 @@ Each question comes up roughly once every 4 days (about 0.25 times a day). Abili
 
 All 173 champions have a value for every champion question.
 
-| #   | What is compared                               | Lowest                | Highest             | Distinct values |
-| --- | ---------------------------------------------- | --------------------- | ------------------- | --------------- |
-| 1   | Number of skins                                | Locke: 1              | Miss Fortune: 22    | 22              |
-| 2   | Release date                                   | Alistar: Feb 21, 2009 | Locke: Jun 24, 2026 | 144             |
-| 3   | Base health (level 1)                          | Kled: 410             | Tryndamere: 696     | 50              |
-| 4   | Health gained per level                        | Yuumi: 69             | Galio: 126          | 36              |
-| 5   | Base health regeneration (per 5 seconds)       | Briar: 0              | Vi: 10              | 20              |
-| 6   | Base armor (level 1)                           | Cassiopeia: 18        | Leona: 43           | 24              |
-| 7   | Base magic resistance (level 1)                | Kayle: 22             | Akali: 37           | 11              |
-| 8   | Base attack damage (level 1)                   | Orianna: 44           | Renekton: 69        | 25              |
-| 9   | Base attack speed                              | Graves: 0.475         | Maokai: 0.8         | 34              |
-| 10  | Attack range                                   | Akali: 125            | Caitlyn: 650        | 19              |
-| 11  | Movement speed                                 | Rell: 315             | Master Yi: 355      | 8               |
-| 12  | Number of patches the champion has an entry in | K'Sante: 2            | Mordekaiser: 119    | 82              |
+| #   | What is compared                         | Lowest                | Highest             | Distinct values |
+| --- | ---------------------------------------- | --------------------- | ------------------- | --------------- |
+| 1   | Number of skins                          | Locke: 1              | Miss Fortune: 22    | 22              |
+| 2   | Release date                             | Alistar: Feb 21, 2009 | Locke: Jun 24, 2026 | 144             |
+| 3   | Base health (level 1)                    | Kled: 410             | Tryndamere: 696     | 50              |
+| 4   | Health gained per level                  | Yuumi: 69             | Galio: 126          | 36              |
+| 5   | Base health regeneration (per 5 seconds) | Briar: 0              | Vi: 10              | 20              |
+| 6   | Base armor (level 1)                     | Cassiopeia: 18        | Leona: 43           | 24              |
+| 7   | Base magic resistance (level 1)          | Kayle: 22             | Akali: 37           | 11              |
+| 8   | Base attack damage (level 1)             | Orianna: 44           | Renekton: 69        | 25              |
+| 9   | Base attack speed                        | Graves: 0.475         | Maokai: 0.8         | 34              |
+| 10  | Attack range                             | Akali: 125            | Caitlyn: 650        | 19              |
+| 11  | Movement speed                           | Rell: 315             | Master Yi: 355      | 8               |
+| 12  | Patch changes per year since release     | Taric: 3.21           | Mel: 13.42          | 144             |
+| 21  | Skins per year since release             | Udyr: 0.36            | Seraphine: 2.3      | 92              |
 
 Things to know:
 
@@ -82,9 +84,15 @@ Things to know:
 - **#2 Release date:** the more recent date wins. Stored internally as days since 2009-01-01.
 - **#3 to #11:** the champion's base stats from Data Dragon, before items and level-ups. "Health
   gained per level" is the growth number, not the total.
-- **#12 Patch notes:** counts every patch in the champion's wiki "Patch history" page. That includes
-  bug fixes, hotfixes and visual updates, not only balance changes, which is why the question says
-  "patch notes". K'Sante's wiki page is damaged at the source, so he shows only 2.
+- **#12 Patch changes per year:** counts every patch in the champion's wiki "Patch history" page and
+  divides by the champion's age. That includes bug fixes, hotfixes and visual updates, not only
+  balance changes, which is why the question says "patch changes". K'Sante's wiki page is damaged
+  at the source, so his rate is low.
+- **#21 Skins per year:** the number of skins from #1 divided by the champion's age.
+- **"Relative to the release date"** (#12 and #21): a rate per year, with age measured up to the
+  newest champion's release in the data (currently Locke, June 2026), not up to today, so the
+  values do not change every day and cause a new data snapshot daily. A champion younger than a
+  year counts as one year old, so one skin or one patch cannot make a brand-new champion win.
 
 ## Item questions
 

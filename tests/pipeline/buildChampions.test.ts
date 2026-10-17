@@ -27,14 +27,17 @@ describe('buildChampion', () => {
     expect(Object.keys(champion.stats).sort()).toEqual(championStats.map((s) => s.id).sort());
     expect(champion.stats['baseHealth']).toBe(600);
     expect(champion.stats['releaseDate']).toBeGreaterThan(0);
-    expect(champion.stats['patchCount']).toBe(12);
+    // 12 patches over the age of a champion released 2013-06-13, as of 2026-01-01.
+    expect(champion.stats['patchesPerYear']).toBe(0.96);
+    expect(champion.stats['skinsPerYear']).toBe(0);
   });
 
   it('leaves out a stat whose value is unavailable instead of failing', () => {
     const input = makeInput('New', { wiki: undefined, patchCount: undefined });
     const champion = buildChampion(input, '16.20.1', championStats);
     expect(champion.stats['releaseDate']).toBeUndefined();
-    expect(champion.stats['patchCount']).toBeUndefined();
+    expect(champion.stats['patchesPerYear']).toBeUndefined();
+    expect(champion.stats['skinsPerYear']).toBeUndefined();
     expect(champion.stats['baseHealth']).toBeDefined();
   });
 });
@@ -137,7 +140,7 @@ describe('findProblems', () => {
       ...input,
       patchCount: undefined,
     }));
-    expect(findProblems(build(champions)).join()).toContain('Stat "patchCount"');
+    expect(findProblems(build(champions)).join()).toContain('Stat "patchesPerYear"');
   });
 
   it('flags an item stat that too few items have, since no round could be built', () => {
