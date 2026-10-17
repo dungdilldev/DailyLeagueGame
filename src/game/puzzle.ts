@@ -7,16 +7,16 @@ export interface Round {
   questionId: string;
   /** Whether the options are champions or items. */
   subject: StatSubject;
-  /** Shown to the player, e.g. "Base health". */
+  /** Short name for the results, e.g. "Base health" or "Marksmen". */
   statLabel: string;
   question: string;
-  /** How to display the values after the player has answered. */
-  format: StatFormat;
+  /** How to display the values after the player has answered; absent when there are none. */
+  format?: StatFormat;
   /** Ids of the options (champions or items), in display order; the answer is not always first. */
   optionIds: string[];
-  /** The option with the highest value. */
+  /** The right option: the one with the highest value, or the one from a pick question's correct list. */
   answerId: string;
-  /** Every option's value, revealed after answering. */
+  /** Every option's value, revealed after answering. Empty for a pick question. */
   values: Record<string, number>;
 }
 

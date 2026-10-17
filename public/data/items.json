@@ -1,1 +1,1306 @@
-{"stats":[{"id":"itemCost","label":"Item cost","format":{"kind":"number"},"source":"data-dragon"},{"id":"itemGoldEfficiency","label":"Gold efficiency of stats","format":{"kind":"percent"},"source":"lol-wiki"},{"id":"itemAttackDamage","label":"Attack damage","format":{"kind":"number"},"source":"lol-wiki"},{"id":"itemAbilityPower","label":"Ability power","format":{"kind":"number"},"source":"lol-wiki"},{"id":"itemHealth","label":"Health","format":{"kind":"number"},"source":"lol-wiki"},{"id":"itemArmor","label":"Armor","format":{"kind":"number"},"source":"lol-wiki"},{"id":"itemMagicResist","label":"Magic resistance","format":{"kind":"number"},"source":"lol-wiki"},{"id":"itemAbilityHaste","label":"Ability haste","format":{"kind":"number"},"source":"lol-wiki"}],"snapshots":[{"patch":"16.20.1","effectiveFrom":"2026-10-14","entities":[]},{"patch":"16.20.1","effectiveFrom":"2026-10-15","entities":[{"id":"8020","name":"Abyssal Mask","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/8020.png","stats":{"itemCost":2650,"itemGoldEfficiency":97.5,"itemHealth":350,"itemMagicResist":45,"itemAbilityHaste":15}},{"id":"2522","name":"Actualizer","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2522.png","stats":{"itemCost":2800,"itemGoldEfficiency":92.9,"itemAbilityPower":90,"itemAbilityHaste":10}},{"id":"3003","name":"Archangel's Staff","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3003.png","stats":{"itemCost":2900,"itemGoldEfficiency":112.1,"itemAbilityPower":70,"itemAbilityHaste":25}},{"id":"3504","name":"Ardent Censer","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3504.png","stats":{"itemCost":2200,"itemGoldEfficiency":98.2,"itemAbilityPower":45}},{"id":"3174","name":"Armored Advance","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3174.png","stats":{"itemCost":1200,"itemGoldEfficiency":103.3,"itemArmor":35}},{"id":"6696","name":"Axiom Arc","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6696.png","stats":{"itemCost":2750,"itemGoldEfficiency":126,"itemAttackDamage":55,"itemAbilityHaste":20}},{"id":"2524","name":"Bandlepipes","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2524.png","stats":{"itemCost":2300,"itemGoldEfficiency":90.6,"itemHealth":200,"itemArmor":20,"itemMagicResist":20,"itemAbilityHaste":15}},{"id":"3102","name":"Banshee's Veil","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3102.png","stats":{"itemCost":3000,"itemGoldEfficiency":96.7,"itemAbilityPower":105,"itemMagicResist":40}},{"id":"2520","name":"Bastionbreaker","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2520.png","stats":{"itemCost":3000,"itemGoldEfficiency":111.2,"itemAttackDamage":55,"itemAbilityHaste":15}},{"id":"3071","name":"Black Cleaver","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3071.png","stats":{"itemCost":3000,"itemGoldEfficiency":121.4,"itemAttackDamage":45,"itemHealth":400,"itemAbilityHaste":20}},{"id":"2503","name":"Blackfire Torch","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2503.png","stats":{"itemCost":2800,"itemGoldEfficiency":114.3,"itemAbilityPower":80,"itemAbilityHaste":20}},{"id":"3153","name":"Blade of The Ruined King","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3153.png","stats":{"itemCost":3200,"itemGoldEfficiency":80,"itemAttackDamage":40}},{"id":"8010","name":"Bloodletter's Curse","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/8010.png","stats":{"itemCost":2900,"itemGoldEfficiency":107.5,"itemAbilityPower":65,"itemHealth":400,"itemAbilityHaste":15}},{"id":"3072","name":"Bloodthirster","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3072.png","stats":{"itemCost":3400,"itemGoldEfficiency":106,"itemAttackDamage":80}},{"id":"3173","name":"Chainlaced Crushers","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3173.png","stats":{"itemCost":1250,"itemGoldEfficiency":108,"itemMagicResist":25}},{"id":"6609","name":"Chempunk Chainsword","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6609.png","stats":{"itemCost":3000,"itemGoldEfficiency":117.5,"itemAttackDamage":45,"itemHealth":450,"itemAbilityHaste":15}},{"id":"4629","name":"Cosmic Drive","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4629.png","stats":{"itemCost":3000,"itemGoldEfficiency":128.1,"itemAbilityPower":70,"itemHealth":350,"itemAbilityHaste":25}},{"id":"3171","name":"Crimson Lucidity","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3171.png","stats":{"itemCost":900,"itemGoldEfficiency":171.1,"itemAbilityHaste":20}},{"id":"3137","name":"Cryptbloom","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3137.png","stats":{"itemCost":3000,"itemGoldEfficiency":129.5,"itemAbilityPower":75,"itemAbilityHaste":20}},{"id":"6621","name":"Dawncore","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6621.png","stats":{"itemCost":2500,"itemGoldEfficiency":84,"itemAbilityPower":45}},{"id":"3742","name":"Dead Man's Plate","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3742.png","stats":{"itemCost":2900,"itemGoldEfficiency":79.1,"itemHealth":350,"itemArmor":55}},{"id":"6333","name":"Death's Dance","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6333.png","stats":{"itemCost":3300,"itemGoldEfficiency":116.7,"itemAttackDamage":60,"itemArmor":50,"itemAbilityHaste":15}},{"id":"2510","name":"Dusk and Dawn","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2510.png","stats":{"itemCost":3100,"itemGoldEfficiency":112.9,"itemAbilityPower":60,"itemHealth":300,"itemAbilityHaste":20}},{"id":"6620","name":"Echoes of Helia","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6620.png","stats":{"itemCost":2200,"itemGoldEfficiency":124.2,"itemAbilityPower":35,"itemHealth":200,"itemAbilityHaste":20}},{"id":"6692","name":"Eclipse","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6692.png","stats":{"itemCost":2900,"itemGoldEfficiency":98.3,"itemAttackDamage":60,"itemAbilityHaste":15}},{"id":"3814","name":"Edge of Night","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3814.png","stats":{"itemCost":3000,"itemGoldEfficiency":95.6,"itemAttackDamage":50,"itemHealth":250}},{"id":"2517","name":"Endless Hunger","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2517.png","stats":{"itemCost":3100,"itemGoldEfficiency":87.5,"itemAttackDamage":65}},{"id":"3508","name":"Essence Reaver","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3508.png","stats":{"itemCost":3050,"itemGoldEfficiency":123,"itemAttackDamage":50,"itemAbilityHaste":20}},{"id":"3073","name":"Experimental Hexplate","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3073.png","stats":{"itemCost":3000,"itemGoldEfficiency":103.3,"itemAttackDamage":40,"itemHealth":450}},{"id":"2512","name":"Fiendhunter Bolts","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2512.png","stats":{"itemCost":2650,"itemGoldEfficiency":90}},{"id":"4401","name":"Force of Nature","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4401.png","stats":{"itemCost":2800,"itemGoldEfficiency":86.7,"itemHealth":400,"itemMagicResist":55}},{"id":"3110","name":"Frozen Heart","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3110.png","stats":{"itemCost":2500,"itemGoldEfficiency":116,"itemArmor":75,"itemAbilityHaste":20}},{"id":"3026","name":"Guardian Angel","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3026.png","stats":{"itemCost":3200,"itemGoldEfficiency":88.3,"itemAttackDamage":55,"itemArmor":45}},{"id":"3124","name":"Guinsoo's Rageblade","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3124.png","stats":{"itemCost":3000,"itemGoldEfficiency":75.8,"itemAttackDamage":30,"itemAbilityPower":30}},{"id":"3172","name":"Gunmetal Greaves","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3172.png","stats":{"itemCost":1100,"itemGoldEfficiency":175.7}},{"id":"3084","name":"Heartsteel","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3084.png","stats":{"itemCost":3000,"itemGoldEfficiency":90,"itemHealth":900}},{"id":"2523","name":"Hexoptics C44","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2523.png","stats":{"itemCost":2800,"itemGoldEfficiency":104.5,"itemAttackDamage":55}},{"id":"3146","name":"Hextech Gunblade","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3146.png","stats":{"itemCost":3000,"itemGoldEfficiency":115.3,"itemAttackDamage":40,"itemAbilityPower":80}},{"id":"3152","name":"Hextech Rocketbelt","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3152.png","stats":{"itemCost":2650,"itemGoldEfficiency":99.4,"itemAbilityPower":60,"itemHealth":350,"itemAbilityHaste":10}},{"id":"6664","name":"Hollow Radiance","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6664.png","stats":{"itemCost":2800,"itemGoldEfficiency":95.2,"itemHealth":400,"itemMagicResist":40,"itemAbilityHaste":10}},{"id":"4628","name":"Horizon Focus","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4628.png","stats":{"itemCost":2700,"itemGoldEfficiency":101.9,"itemAbilityPower":75,"itemAbilityHaste":25}},{"id":"6697","name":"Hubris","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6697.png","stats":{"itemCost":2800,"itemGoldEfficiency":105.9,"itemAttackDamage":55,"itemAbilityHaste":10}},{"id":"3181","name":"Hullbreaker","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3181.png","stats":{"itemCost":3000,"itemGoldEfficiency":99.8,"itemAttackDamage":40,"itemHealth":500}},{"id":"6662","name":"Iceborn Gauntlet","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6662.png","stats":{"itemCost":2900,"itemGoldEfficiency":87.9,"itemHealth":300,"itemArmor":50,"itemAbilityHaste":15}},{"id":"3168","name":"Immortal Path","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3168.png","stats":{"itemCost":1000,"itemGoldEfficiency":72.4}},{"id":"6673","name":"Immortal Shieldbow","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6673.png","stats":{"itemCost":3000,"itemGoldEfficiency":97.5,"itemAttackDamage":55}},{"id":"4005","name":"Imperial Mandate","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4005.png","stats":{"itemCost":2400,"itemGoldEfficiency":106.3,"itemAbilityPower":60,"itemAbilityHaste":15}},{"id":"3031","name":"Infinity Edge","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3031.png","stats":{"itemCost":3500,"itemGoldEfficiency":103.6,"itemAttackDamage":75}},{"id":"6665","name":"Jak'Sho, The Protean","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6665.png","stats":{"itemCost":3200,"itemGoldEfficiency":85.4,"itemHealth":350,"itemArmor":45,"itemMagicResist":45}},{"id":"2504","name":"Kaenic Rookern","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2504.png","stats":{"itemCost":2900,"itemGoldEfficiency":102.3,"itemHealth":400,"itemMagicResist":80}},{"id":"3109","name":"Knight's Vow","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3109.png","stats":{"itemCost":2300,"itemGoldEfficiency":92.8,"itemHealth":200,"itemArmor":40,"itemAbilityHaste":10}},{"id":"6672","name":"Kraken Slayer","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6672.png","stats":{"itemCost":3000,"itemGoldEfficiency":94.5,"itemAttackDamage":45}},{"id":"6653","name":"Liandry's Torment","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6653.png","stats":{"itemCost":3000,"itemGoldEfficiency":66.7,"itemAbilityPower":60,"itemHealth":300}},{"id":"3100","name":"Lich Bane","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3100.png","stats":{"itemCost":2900,"itemGoldEfficiency":99.7,"itemAbilityPower":100,"itemAbilityHaste":10}},{"id":"3190","name":"Locket of the Iron Solari","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3190.png","stats":{"itemCost":2200,"itemGoldEfficiency":101.5,"itemHealth":200,"itemArmor":30,"itemMagicResist":30,"itemAbilityHaste":10}},{"id":"3036","name":"Lord Dominik's Regards","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3036.png","stats":{"itemCost":3300,"itemGoldEfficiency":111.6,"itemAttackDamage":35}},{"id":"6655","name":"Luden's Echo","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6655.png","stats":{"itemCost":2750,"itemGoldEfficiency":112.7,"itemAbilityPower":100,"itemAbilityHaste":10}},{"id":"3118","name":"Malignance","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3118.png","stats":{"itemCost":2700,"itemGoldEfficiency":116.7,"itemAbilityPower":90,"itemAbilityHaste":15}},{"id":"3004","name":"Manamune","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3004.png","stats":{"itemCost":2900,"itemGoldEfficiency":85.3,"itemAttackDamage":35,"itemAbilityHaste":15}},{"id":"3156","name":"Maw of Malmortius","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3156.png","stats":{"itemCost":3100,"itemGoldEfficiency":117.7,"itemAttackDamage":60,"itemMagicResist":40,"itemAbilityHaste":15}},{"id":"3041","name":"Mejai's Soulstealer","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3041.png","stats":{"itemCost":1500,"itemGoldEfficiency":44.4,"itemAbilityPower":20,"itemHealth":100}},{"id":"3139","name":"Mercurial Scimitar","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3139.png","stats":{"itemCost":3200,"itemGoldEfficiency":93.3,"itemAttackDamage":50,"itemMagicResist":35}},{"id":"3222","name":"Mikael's Blessing","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3222.png","stats":{"itemCost":2300,"itemGoldEfficiency":105.1,"itemHealth":250,"itemAbilityHaste":15}},{"id":"6617","name":"Moonstone Renewer","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6617.png","stats":{"itemCost":2200,"itemGoldEfficiency":115.2,"itemAbilityPower":25,"itemHealth":200,"itemAbilityHaste":20}},{"id":"3165","name":"Morellonomicon","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3165.png","stats":{"itemCost":2850,"itemGoldEfficiency":111.7,"itemAbilityPower":75,"itemHealth":350,"itemAbilityHaste":15}},{"id":"3033","name":"Mortal Reminder","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3033.png","stats":{"itemCost":3000,"itemGoldEfficiency":115.8,"itemAttackDamage":35}},{"id":"3115","name":"Nashor's Tooth","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3115.png","stats":{"itemCost":2900,"itemGoldEfficiency":124.1,"itemAbilityPower":80,"itemAbilityHaste":15}},{"id":"6675","name":"Navori Flickerblade","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6675.png","stats":{"itemCost":2650,"itemGoldEfficiency":85.3}},{"id":"2501","name":"Overlord's Bloodmail","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2501.png","stats":{"itemCost":3300,"itemGoldEfficiency":76.3,"itemAttackDamage":30,"itemHealth":550}},{"id":"3046","name":"Phantom Dancer","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3046.png","stats":{"itemCost":2650,"itemGoldEfficiency":123.6}},{"id":"6698","name":"Profane Hydra","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6698.png","stats":{"itemCost":2850,"itemGoldEfficiency":104,"itemAttackDamage":55,"itemAbilityHaste":10}},{"id":"2525","name":"Protoplasm Harness","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2525.png","stats":{"itemCost":2600,"itemGoldEfficiency":100,"itemHealth":600,"itemAbilityHaste":20}},{"id":"3089","name":"Rabadon's Deathcap","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3089.png","stats":{"itemCost":3500,"itemGoldEfficiency":74.3,"itemAbilityPower":130}},{"id":"3143","name":"Randuin's Omen","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3143.png","stats":{"itemCost":2700,"itemGoldEfficiency":90.1,"itemHealth":350,"itemArmor":75}},{"id":"3094","name":"Rapid Firecannon","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3094.png","stats":{"itemCost":2650,"itemGoldEfficiency":80.6}},{"id":"3074","name":"Ravenous Hydra","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3074.png","stats":{"itemCost":3300,"itemGoldEfficiency":111.1,"itemAttackDamage":65,"itemAbilityHaste":15}},{"id":"3107","name":"Redemption","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3107.png","stats":{"itemCost":2300,"itemGoldEfficiency":97.8,"itemAbilityPower":30,"itemAbilityHaste":15}},{"id":"4633","name":"Riftmaker","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4633.png","stats":{"itemCost":3100,"itemGoldEfficiency":99.5,"itemAbilityPower":70,"itemHealth":350,"itemAbilityHaste":15}},{"id":"6657","name":"Rod of Ages","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6657.png","stats":{"itemCost":2600,"itemGoldEfficiency":89.7,"itemAbilityPower":45,"itemHealth":350}},{"id":"3085","name":"Runaan's Hurricane","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3085.png","stats":{"itemCost":2650,"itemGoldEfficiency":87.8}},{"id":"3116","name":"Rylai's Crystal Scepter","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3116.png","stats":{"itemCost":2600,"itemGoldEfficiency":91,"itemAbilityPower":65,"itemHealth":400}},{"id":"6695","name":"Serpent's Fang","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6695.png","stats":{"itemCost":2500,"itemGoldEfficiency":95,"itemAttackDamage":55}},{"id":"6694","name":"Serylda's Grudge","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6694.png","stats":{"itemCost":3000,"itemGoldEfficiency":126.1,"itemAttackDamage":45,"itemAbilityHaste":15}},{"id":"4645","name":"Shadowflame","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4645.png","stats":{"itemCost":3200,"itemGoldEfficiency":90.6,"itemAbilityPower":110}},{"id":"2065","name":"Shurelya's Battlesong","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2065.png","stats":{"itemCost":2200,"itemGoldEfficiency":114.1,"itemAbilityPower":50,"itemAbilityHaste":15}},{"id":"3161","name":"Spear of Shojin","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3161.png","stats":{"itemCost":3100,"itemGoldEfficiency":89.5,"itemAttackDamage":45,"itemHealth":450}},{"id":"3175","name":"Spellslinger's Shoes","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3175.png","stats":{"itemCost":1100,"itemGoldEfficiency":167.5}},{"id":"3065","name":"Spirit Visage","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3065.png","stats":{"itemCost":2700,"itemGoldEfficiency":106.2,"itemHealth":400,"itemMagicResist":50,"itemAbilityHaste":10}},{"id":"6616","name":"Staff of Flowing Water","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6616.png","stats":{"itemCost":2250,"itemGoldEfficiency":97.8,"itemAbilityPower":35,"itemAbilityHaste":10}},{"id":"3087","name":"Statikk Shiv","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3087.png","stats":{"itemCost":3000,"itemGoldEfficiency":116.2,"itemAttackDamage":45,"itemAbilityPower":45}},{"id":"3053","name":"Sterak's Gage","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3053.png","stats":{"itemCost":3200,"itemGoldEfficiency":39.8,"itemHealth":400}},{"id":"3095","name":"Stormrazor","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3095.png","stats":{"itemCost":3200,"itemGoldEfficiency":105.5,"itemAttackDamage":50}},{"id":"4646","name":"Stormsurge","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4646.png","stats":{"itemCost":2800,"itemGoldEfficiency":103.2,"itemAbilityPower":90}},{"id":"6631","name":"Stridebreaker","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6631.png","stats":{"itemCost":3300,"itemGoldEfficiency":97.7,"itemAttackDamage":40,"itemHealth":450}},{"id":"6610","name":"Sundered Sky","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6610.png","stats":{"itemCost":3100,"itemGoldEfficiency":95.7,"itemAttackDamage":40,"itemHealth":400,"itemAbilityHaste":10}},{"id":"3068","name":"Sunfire Aegis","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3068.png","stats":{"itemCost":2800,"itemGoldEfficiency":86.9,"itemHealth":350,"itemArmor":50,"itemAbilityHaste":10}},{"id":"3170","name":"Swiftmarch","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3170.png","stats":{"itemCost":1000,"itemGoldEfficiency":78}},{"id":"3302","name":"Terminus","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3302.png","stats":{"itemCost":3000,"itemGoldEfficiency":64.2,"itemAttackDamage":30}},{"id":"6676","name":"The Collector","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6676.png","stats":{"itemCost":3000,"itemGoldEfficiency":101.7,"itemAttackDamage":50}},{"id":"3075","name":"Thornmail","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3075.png","stats":{"itemCost":2450,"itemGoldEfficiency":77.6,"itemHealth":150,"itemArmor":75}},{"id":"3748","name":"Titanic Hydra","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3748.png","stats":{"itemCost":3300,"itemGoldEfficiency":90.9,"itemAttackDamage":40,"itemHealth":600}},{"id":"3078","name":"Trinity Force","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3078.png","stats":{"itemCost":3333,"itemGoldEfficiency":109.5,"itemAttackDamage":36,"itemHealth":333,"itemAbilityHaste":15}},{"id":"3179","name":"Umbral Glaive","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3179.png","stats":{"itemCost":2800,"itemGoldEfficiency":121.1,"itemAttackDamage":60,"itemAbilityHaste":15}},{"id":"2502","name":"Unending Despair","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2502.png","stats":{"itemCost":2800,"itemGoldEfficiency":100.6,"itemHealth":400,"itemArmor":50,"itemAbilityHaste":15}},{"id":"3135","name":"Void Staff","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3135.png","stats":{"itemCost":3000,"itemGoldEfficiency":124.9,"itemAbilityPower":95}},{"id":"6699","name":"Voltaic Cyclosword","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6699.png","stats":{"itemCost":3000,"itemGoldEfficiency":90.8,"itemAttackDamage":55,"itemAbilityHaste":10}},{"id":"3083","name":"Warmog's Armor","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3083.png","stats":{"itemCost":3100,"itemGoldEfficiency":95.7,"itemHealth":1000}},{"id":"3119","name":"Winter's Approach","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3119.png","stats":{"itemCost":2400,"itemGoldEfficiency":113.2,"itemHealth":550,"itemAbilityHaste":15}},{"id":"3091","name":"Wit's End","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3091.png","stats":{"itemCost":2800,"itemGoldEfficiency":84.2,"itemMagicResist":45}},{"id":"3142","name":"Youmuu's Ghostblade","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3142.png","stats":{"itemCost":2800,"itemGoldEfficiency":97.3,"itemAttackDamage":55}},{"id":"3032","name":"Yun Tal Wildarrows","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3032.png","stats":{"itemCost":3000,"itemGoldEfficiency":95.8,"itemAttackDamage":50}},{"id":"3050","name":"Zeke's Convergence","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3050.png","stats":{"itemCost":2200,"itemGoldEfficiency":104.5,"itemHealth":300,"itemArmor":25,"itemMagicResist":25,"itemAbilityHaste":10}},{"id":"3157","name":"Zhonya's Hourglass","iconUrl":"https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3157.png","stats":{"itemCost":3250,"itemGoldEfficiency":95.4,"itemAbilityPower":105,"itemArmor":50}}]}]}
+{
+    "stats": [
+        {
+            "id": "itemCost",
+            "label": "Item cost",
+            "format": {
+                "kind": "number"
+            },
+            "source": "data-dragon"
+        },
+        {
+            "id": "itemGoldEfficiency",
+            "label": "Gold efficiency of stats",
+            "format": {
+                "kind": "percent"
+            },
+            "source": "lol-wiki"
+        },
+        {
+            "id": "itemAttackDamage",
+            "label": "Attack damage",
+            "format": {
+                "kind": "number"
+            },
+            "source": "lol-wiki"
+        },
+        {
+            "id": "itemAbilityPower",
+            "label": "Ability power",
+            "format": {
+                "kind": "number"
+            },
+            "source": "lol-wiki"
+        },
+        {
+            "id": "itemHealth",
+            "label": "Health",
+            "format": {
+                "kind": "number"
+            },
+            "source": "lol-wiki"
+        },
+        {
+            "id": "itemArmor",
+            "label": "Armor",
+            "format": {
+                "kind": "number"
+            },
+            "source": "lol-wiki"
+        },
+        {
+            "id": "itemMagicResist",
+            "label": "Magic resistance",
+            "format": {
+                "kind": "number"
+            },
+            "source": "lol-wiki"
+        },
+        {
+            "id": "itemAbilityHaste",
+            "label": "Ability haste",
+            "format": {
+                "kind": "number"
+            },
+            "source": "lol-wiki"
+        }
+    ],
+    "snapshots": [
+        {
+            "patch": "16.20.1",
+            "effectiveFrom": "2026-10-14",
+            "entities": []
+        },
+        {
+            "patch": "16.20.1",
+            "effectiveFrom": "2026-10-15",
+            "entities": [
+                {
+                    "id": "8020",
+                    "name": "Abyssal Mask",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/8020.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 97.5,
+                        "itemHealth": 350,
+                        "itemMagicResist": 45,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "2522",
+                    "name": "Actualizer",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2522.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 92.9,
+                        "itemAbilityPower": 90,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3003",
+                    "name": "Archangel's Staff",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3003.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 112.1,
+                        "itemAbilityPower": 70,
+                        "itemAbilityHaste": 25
+                    }
+                },
+                {
+                    "id": "3504",
+                    "name": "Ardent Censer",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3504.png",
+                    "stats": {
+                        "itemCost": 2200,
+                        "itemGoldEfficiency": 98.2,
+                        "itemAbilityPower": 45
+                    }
+                },
+                {
+                    "id": "3174",
+                    "name": "Armored Advance",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3174.png",
+                    "stats": {
+                        "itemCost": 1200,
+                        "itemGoldEfficiency": 103.3,
+                        "itemArmor": 35
+                    }
+                },
+                {
+                    "id": "6696",
+                    "name": "Axiom Arc",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6696.png",
+                    "stats": {
+                        "itemCost": 2750,
+                        "itemGoldEfficiency": 126,
+                        "itemAttackDamage": 55,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "2524",
+                    "name": "Bandlepipes",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2524.png",
+                    "stats": {
+                        "itemCost": 2300,
+                        "itemGoldEfficiency": 90.6,
+                        "itemHealth": 200,
+                        "itemArmor": 20,
+                        "itemMagicResist": 20,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3102",
+                    "name": "Banshee's Veil",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3102.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 96.7,
+                        "itemAbilityPower": 105,
+                        "itemMagicResist": 40
+                    }
+                },
+                {
+                    "id": "2520",
+                    "name": "Bastionbreaker",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2520.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 111.2,
+                        "itemAttackDamage": 55,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3071",
+                    "name": "Black Cleaver",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3071.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 121.4,
+                        "itemAttackDamage": 45,
+                        "itemHealth": 400,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "2503",
+                    "name": "Blackfire Torch",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2503.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 114.3,
+                        "itemAbilityPower": 80,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "3153",
+                    "name": "Blade of The Ruined King",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3153.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 80,
+                        "itemAttackDamage": 40
+                    }
+                },
+                {
+                    "id": "8010",
+                    "name": "Bloodletter's Curse",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/8010.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 107.5,
+                        "itemAbilityPower": 65,
+                        "itemHealth": 400,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3072",
+                    "name": "Bloodthirster",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3072.png",
+                    "stats": {
+                        "itemCost": 3400,
+                        "itemGoldEfficiency": 106,
+                        "itemAttackDamage": 80
+                    }
+                },
+                {
+                    "id": "3173",
+                    "name": "Chainlaced Crushers",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3173.png",
+                    "stats": {
+                        "itemCost": 1250,
+                        "itemGoldEfficiency": 108,
+                        "itemMagicResist": 25
+                    }
+                },
+                {
+                    "id": "6609",
+                    "name": "Chempunk Chainsword",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6609.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 117.5,
+                        "itemAttackDamage": 45,
+                        "itemHealth": 450,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "4629",
+                    "name": "Cosmic Drive",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4629.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 128.1,
+                        "itemAbilityPower": 70,
+                        "itemHealth": 350,
+                        "itemAbilityHaste": 25
+                    }
+                },
+                {
+                    "id": "3171",
+                    "name": "Crimson Lucidity",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3171.png",
+                    "stats": {
+                        "itemCost": 900,
+                        "itemGoldEfficiency": 171.1,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "3137",
+                    "name": "Cryptbloom",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3137.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 129.5,
+                        "itemAbilityPower": 75,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "6621",
+                    "name": "Dawncore",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6621.png",
+                    "stats": {
+                        "itemCost": 2500,
+                        "itemGoldEfficiency": 84,
+                        "itemAbilityPower": 45
+                    }
+                },
+                {
+                    "id": "3742",
+                    "name": "Dead Man's Plate",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3742.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 79.1,
+                        "itemHealth": 350,
+                        "itemArmor": 55
+                    }
+                },
+                {
+                    "id": "6333",
+                    "name": "Death's Dance",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6333.png",
+                    "stats": {
+                        "itemCost": 3300,
+                        "itemGoldEfficiency": 116.7,
+                        "itemAttackDamage": 60,
+                        "itemArmor": 50,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "2510",
+                    "name": "Dusk and Dawn",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2510.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 112.9,
+                        "itemAbilityPower": 60,
+                        "itemHealth": 300,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "6620",
+                    "name": "Echoes of Helia",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6620.png",
+                    "stats": {
+                        "itemCost": 2200,
+                        "itemGoldEfficiency": 124.2,
+                        "itemAbilityPower": 35,
+                        "itemHealth": 200,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "6692",
+                    "name": "Eclipse",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6692.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 98.3,
+                        "itemAttackDamage": 60,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3814",
+                    "name": "Edge of Night",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3814.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 95.6,
+                        "itemAttackDamage": 50,
+                        "itemHealth": 250
+                    }
+                },
+                {
+                    "id": "2517",
+                    "name": "Endless Hunger",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2517.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 87.5,
+                        "itemAttackDamage": 65
+                    }
+                },
+                {
+                    "id": "3508",
+                    "name": "Essence Reaver",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3508.png",
+                    "stats": {
+                        "itemCost": 3050,
+                        "itemGoldEfficiency": 123,
+                        "itemAttackDamage": 50,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "3073",
+                    "name": "Experimental Hexplate",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3073.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 103.3,
+                        "itemAttackDamage": 40,
+                        "itemHealth": 450
+                    }
+                },
+                {
+                    "id": "2512",
+                    "name": "Fiendhunter Bolts",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2512.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 90
+                    }
+                },
+                {
+                    "id": "4401",
+                    "name": "Force of Nature",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4401.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 86.7,
+                        "itemHealth": 400,
+                        "itemMagicResist": 55
+                    }
+                },
+                {
+                    "id": "3110",
+                    "name": "Frozen Heart",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3110.png",
+                    "stats": {
+                        "itemCost": 2500,
+                        "itemGoldEfficiency": 116,
+                        "itemArmor": 75,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "3026",
+                    "name": "Guardian Angel",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3026.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 88.3,
+                        "itemAttackDamage": 55,
+                        "itemArmor": 45
+                    }
+                },
+                {
+                    "id": "3124",
+                    "name": "Guinsoo's Rageblade",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3124.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 75.8,
+                        "itemAttackDamage": 30,
+                        "itemAbilityPower": 30
+                    }
+                },
+                {
+                    "id": "3172",
+                    "name": "Gunmetal Greaves",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3172.png",
+                    "stats": {
+                        "itemCost": 1100,
+                        "itemGoldEfficiency": 175.7
+                    }
+                },
+                {
+                    "id": "3084",
+                    "name": "Heartsteel",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3084.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 90,
+                        "itemHealth": 900
+                    }
+                },
+                {
+                    "id": "2523",
+                    "name": "Hexoptics C44",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2523.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 104.5,
+                        "itemAttackDamage": 55
+                    }
+                },
+                {
+                    "id": "3146",
+                    "name": "Hextech Gunblade",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3146.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 115.3,
+                        "itemAttackDamage": 40,
+                        "itemAbilityPower": 80
+                    }
+                },
+                {
+                    "id": "3152",
+                    "name": "Hextech Rocketbelt",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3152.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 99.4,
+                        "itemAbilityPower": 60,
+                        "itemHealth": 350,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "6664",
+                    "name": "Hollow Radiance",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6664.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 95.2,
+                        "itemHealth": 400,
+                        "itemMagicResist": 40,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "4628",
+                    "name": "Horizon Focus",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4628.png",
+                    "stats": {
+                        "itemCost": 2700,
+                        "itemGoldEfficiency": 101.9,
+                        "itemAbilityPower": 75,
+                        "itemAbilityHaste": 25
+                    }
+                },
+                {
+                    "id": "6697",
+                    "name": "Hubris",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6697.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 105.9,
+                        "itemAttackDamage": 55,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3181",
+                    "name": "Hullbreaker",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3181.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 99.8,
+                        "itemAttackDamage": 40,
+                        "itemHealth": 500
+                    }
+                },
+                {
+                    "id": "6662",
+                    "name": "Iceborn Gauntlet",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6662.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 87.9,
+                        "itemHealth": 300,
+                        "itemArmor": 50,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3168",
+                    "name": "Immortal Path",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3168.png",
+                    "stats": {
+                        "itemCost": 1000,
+                        "itemGoldEfficiency": 72.4
+                    }
+                },
+                {
+                    "id": "6673",
+                    "name": "Immortal Shieldbow",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6673.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 97.5,
+                        "itemAttackDamage": 55
+                    }
+                },
+                {
+                    "id": "4005",
+                    "name": "Imperial Mandate",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4005.png",
+                    "stats": {
+                        "itemCost": 2400,
+                        "itemGoldEfficiency": 106.3,
+                        "itemAbilityPower": 60,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3031",
+                    "name": "Infinity Edge",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3031.png",
+                    "stats": {
+                        "itemCost": 3500,
+                        "itemGoldEfficiency": 103.6,
+                        "itemAttackDamage": 75
+                    }
+                },
+                {
+                    "id": "6665",
+                    "name": "Jak'Sho, The Protean",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6665.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 85.4,
+                        "itemHealth": 350,
+                        "itemArmor": 45,
+                        "itemMagicResist": 45
+                    }
+                },
+                {
+                    "id": "2504",
+                    "name": "Kaenic Rookern",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2504.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 102.3,
+                        "itemHealth": 400,
+                        "itemMagicResist": 80
+                    }
+                },
+                {
+                    "id": "3109",
+                    "name": "Knight's Vow",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3109.png",
+                    "stats": {
+                        "itemCost": 2300,
+                        "itemGoldEfficiency": 92.8,
+                        "itemHealth": 200,
+                        "itemArmor": 40,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "6672",
+                    "name": "Kraken Slayer",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6672.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 94.5,
+                        "itemAttackDamage": 45
+                    }
+                },
+                {
+                    "id": "6653",
+                    "name": "Liandry's Torment",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6653.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 66.7,
+                        "itemAbilityPower": 60,
+                        "itemHealth": 300
+                    }
+                },
+                {
+                    "id": "3100",
+                    "name": "Lich Bane",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3100.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 99.7,
+                        "itemAbilityPower": 100,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3190",
+                    "name": "Locket of the Iron Solari",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3190.png",
+                    "stats": {
+                        "itemCost": 2200,
+                        "itemGoldEfficiency": 101.5,
+                        "itemHealth": 200,
+                        "itemArmor": 30,
+                        "itemMagicResist": 30,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3036",
+                    "name": "Lord Dominik's Regards",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3036.png",
+                    "stats": {
+                        "itemCost": 3300,
+                        "itemGoldEfficiency": 111.6,
+                        "itemAttackDamage": 35
+                    }
+                },
+                {
+                    "id": "6655",
+                    "name": "Luden's Echo",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6655.png",
+                    "stats": {
+                        "itemCost": 2750,
+                        "itemGoldEfficiency": 112.7,
+                        "itemAbilityPower": 100,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3118",
+                    "name": "Malignance",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3118.png",
+                    "stats": {
+                        "itemCost": 2700,
+                        "itemGoldEfficiency": 116.7,
+                        "itemAbilityPower": 90,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3004",
+                    "name": "Manamune",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3004.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 85.3,
+                        "itemAttackDamage": 35,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3156",
+                    "name": "Maw of Malmortius",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3156.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 117.7,
+                        "itemAttackDamage": 60,
+                        "itemMagicResist": 40,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3041",
+                    "name": "Mejai's Soulstealer",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3041.png",
+                    "stats": {
+                        "itemCost": 1500,
+                        "itemGoldEfficiency": 44.4,
+                        "itemAbilityPower": 20,
+                        "itemHealth": 100
+                    }
+                },
+                {
+                    "id": "3139",
+                    "name": "Mercurial Scimitar",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3139.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 93.3,
+                        "itemAttackDamage": 50,
+                        "itemMagicResist": 35
+                    }
+                },
+                {
+                    "id": "3222",
+                    "name": "Mikael's Blessing",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3222.png",
+                    "stats": {
+                        "itemCost": 2300,
+                        "itemGoldEfficiency": 105.1,
+                        "itemHealth": 250,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "6617",
+                    "name": "Moonstone Renewer",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6617.png",
+                    "stats": {
+                        "itemCost": 2200,
+                        "itemGoldEfficiency": 115.2,
+                        "itemAbilityPower": 25,
+                        "itemHealth": 200,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "3165",
+                    "name": "Morellonomicon",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3165.png",
+                    "stats": {
+                        "itemCost": 2850,
+                        "itemGoldEfficiency": 111.7,
+                        "itemAbilityPower": 75,
+                        "itemHealth": 350,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3033",
+                    "name": "Mortal Reminder",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3033.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 115.8,
+                        "itemAttackDamage": 35
+                    }
+                },
+                {
+                    "id": "3115",
+                    "name": "Nashor's Tooth",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3115.png",
+                    "stats": {
+                        "itemCost": 2900,
+                        "itemGoldEfficiency": 124.1,
+                        "itemAbilityPower": 80,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "6675",
+                    "name": "Navori Flickerblade",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6675.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 85.3
+                    }
+                },
+                {
+                    "id": "2501",
+                    "name": "Overlord's Bloodmail",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2501.png",
+                    "stats": {
+                        "itemCost": 3300,
+                        "itemGoldEfficiency": 76.3,
+                        "itemAttackDamage": 30,
+                        "itemHealth": 550
+                    }
+                },
+                {
+                    "id": "3046",
+                    "name": "Phantom Dancer",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3046.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 123.6
+                    }
+                },
+                {
+                    "id": "6698",
+                    "name": "Profane Hydra",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6698.png",
+                    "stats": {
+                        "itemCost": 2850,
+                        "itemGoldEfficiency": 104,
+                        "itemAttackDamage": 55,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "2525",
+                    "name": "Protoplasm Harness",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2525.png",
+                    "stats": {
+                        "itemCost": 2600,
+                        "itemGoldEfficiency": 100,
+                        "itemHealth": 600,
+                        "itemAbilityHaste": 20
+                    }
+                },
+                {
+                    "id": "3089",
+                    "name": "Rabadon's Deathcap",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3089.png",
+                    "stats": {
+                        "itemCost": 3500,
+                        "itemGoldEfficiency": 74.3,
+                        "itemAbilityPower": 130
+                    }
+                },
+                {
+                    "id": "3143",
+                    "name": "Randuin's Omen",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3143.png",
+                    "stats": {
+                        "itemCost": 2700,
+                        "itemGoldEfficiency": 90.1,
+                        "itemHealth": 350,
+                        "itemArmor": 75
+                    }
+                },
+                {
+                    "id": "3094",
+                    "name": "Rapid Firecannon",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3094.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 80.6
+                    }
+                },
+                {
+                    "id": "3074",
+                    "name": "Ravenous Hydra",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3074.png",
+                    "stats": {
+                        "itemCost": 3300,
+                        "itemGoldEfficiency": 111.1,
+                        "itemAttackDamage": 65,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3107",
+                    "name": "Redemption",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3107.png",
+                    "stats": {
+                        "itemCost": 2300,
+                        "itemGoldEfficiency": 97.8,
+                        "itemAbilityPower": 30,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "4633",
+                    "name": "Riftmaker",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4633.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 99.5,
+                        "itemAbilityPower": 70,
+                        "itemHealth": 350,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "6657",
+                    "name": "Rod of Ages",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6657.png",
+                    "stats": {
+                        "itemCost": 2600,
+                        "itemGoldEfficiency": 89.7,
+                        "itemAbilityPower": 45,
+                        "itemHealth": 350
+                    }
+                },
+                {
+                    "id": "3085",
+                    "name": "Runaan's Hurricane",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3085.png",
+                    "stats": {
+                        "itemCost": 2650,
+                        "itemGoldEfficiency": 87.8
+                    }
+                },
+                {
+                    "id": "3116",
+                    "name": "Rylai's Crystal Scepter",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3116.png",
+                    "stats": {
+                        "itemCost": 2600,
+                        "itemGoldEfficiency": 91,
+                        "itemAbilityPower": 65,
+                        "itemHealth": 400
+                    }
+                },
+                {
+                    "id": "6695",
+                    "name": "Serpent's Fang",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6695.png",
+                    "stats": {
+                        "itemCost": 2500,
+                        "itemGoldEfficiency": 95,
+                        "itemAttackDamage": 55
+                    }
+                },
+                {
+                    "id": "6694",
+                    "name": "Serylda's Grudge",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6694.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 126.1,
+                        "itemAttackDamage": 45,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "4645",
+                    "name": "Shadowflame",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4645.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 90.6,
+                        "itemAbilityPower": 110
+                    }
+                },
+                {
+                    "id": "2065",
+                    "name": "Shurelya's Battlesong",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2065.png",
+                    "stats": {
+                        "itemCost": 2200,
+                        "itemGoldEfficiency": 114.1,
+                        "itemAbilityPower": 50,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3161",
+                    "name": "Spear of Shojin",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3161.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 89.5,
+                        "itemAttackDamage": 45,
+                        "itemHealth": 450
+                    }
+                },
+                {
+                    "id": "3175",
+                    "name": "Spellslinger's Shoes",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3175.png",
+                    "stats": {
+                        "itemCost": 1100,
+                        "itemGoldEfficiency": 167.5
+                    }
+                },
+                {
+                    "id": "3065",
+                    "name": "Spirit Visage",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3065.png",
+                    "stats": {
+                        "itemCost": 2700,
+                        "itemGoldEfficiency": 106.2,
+                        "itemHealth": 400,
+                        "itemMagicResist": 50,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "6616",
+                    "name": "Staff of Flowing Water",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6616.png",
+                    "stats": {
+                        "itemCost": 2250,
+                        "itemGoldEfficiency": 97.8,
+                        "itemAbilityPower": 35,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3087",
+                    "name": "Statikk Shiv",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3087.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 116.2,
+                        "itemAttackDamage": 45,
+                        "itemAbilityPower": 45
+                    }
+                },
+                {
+                    "id": "3053",
+                    "name": "Sterak's Gage",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3053.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 39.8,
+                        "itemHealth": 400
+                    }
+                },
+                {
+                    "id": "3095",
+                    "name": "Stormrazor",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3095.png",
+                    "stats": {
+                        "itemCost": 3200,
+                        "itemGoldEfficiency": 105.5,
+                        "itemAttackDamage": 50
+                    }
+                },
+                {
+                    "id": "4646",
+                    "name": "Stormsurge",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/4646.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 103.2,
+                        "itemAbilityPower": 90
+                    }
+                },
+                {
+                    "id": "6631",
+                    "name": "Stridebreaker",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6631.png",
+                    "stats": {
+                        "itemCost": 3300,
+                        "itemGoldEfficiency": 97.7,
+                        "itemAttackDamage": 40,
+                        "itemHealth": 450
+                    }
+                },
+                {
+                    "id": "6610",
+                    "name": "Sundered Sky",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6610.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 95.7,
+                        "itemAttackDamage": 40,
+                        "itemHealth": 400,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3068",
+                    "name": "Sunfire Aegis",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3068.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 86.9,
+                        "itemHealth": 350,
+                        "itemArmor": 50,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3170",
+                    "name": "Swiftmarch",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3170.png",
+                    "stats": {
+                        "itemCost": 1000,
+                        "itemGoldEfficiency": 78
+                    }
+                },
+                {
+                    "id": "3302",
+                    "name": "Terminus",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3302.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 64.2,
+                        "itemAttackDamage": 30
+                    }
+                },
+                {
+                    "id": "6676",
+                    "name": "The Collector",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6676.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 101.7,
+                        "itemAttackDamage": 50
+                    }
+                },
+                {
+                    "id": "3075",
+                    "name": "Thornmail",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3075.png",
+                    "stats": {
+                        "itemCost": 2450,
+                        "itemGoldEfficiency": 77.6,
+                        "itemHealth": 150,
+                        "itemArmor": 75
+                    }
+                },
+                {
+                    "id": "3748",
+                    "name": "Titanic Hydra",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3748.png",
+                    "stats": {
+                        "itemCost": 3300,
+                        "itemGoldEfficiency": 90.9,
+                        "itemAttackDamage": 40,
+                        "itemHealth": 600
+                    }
+                },
+                {
+                    "id": "3078",
+                    "name": "Trinity Force",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3078.png",
+                    "stats": {
+                        "itemCost": 3333,
+                        "itemGoldEfficiency": 109.5,
+                        "itemAttackDamage": 36,
+                        "itemHealth": 333,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3179",
+                    "name": "Umbral Glaive",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3179.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 121.1,
+                        "itemAttackDamage": 60,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "2502",
+                    "name": "Unending Despair",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/2502.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 100.6,
+                        "itemHealth": 400,
+                        "itemArmor": 50,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3135",
+                    "name": "Void Staff",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3135.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 124.9,
+                        "itemAbilityPower": 95
+                    }
+                },
+                {
+                    "id": "6699",
+                    "name": "Voltaic Cyclosword",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/6699.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 90.8,
+                        "itemAttackDamage": 55,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3083",
+                    "name": "Warmog's Armor",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3083.png",
+                    "stats": {
+                        "itemCost": 3100,
+                        "itemGoldEfficiency": 95.7,
+                        "itemHealth": 1000
+                    }
+                },
+                {
+                    "id": "3119",
+                    "name": "Winter's Approach",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3119.png",
+                    "stats": {
+                        "itemCost": 2400,
+                        "itemGoldEfficiency": 113.2,
+                        "itemHealth": 550,
+                        "itemAbilityHaste": 15
+                    }
+                },
+                {
+                    "id": "3091",
+                    "name": "Wit's End",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3091.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 84.2,
+                        "itemMagicResist": 45
+                    }
+                },
+                {
+                    "id": "3142",
+                    "name": "Youmuu's Ghostblade",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3142.png",
+                    "stats": {
+                        "itemCost": 2800,
+                        "itemGoldEfficiency": 97.3,
+                        "itemAttackDamage": 55
+                    }
+                },
+                {
+                    "id": "3032",
+                    "name": "Yun Tal Wildarrows",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3032.png",
+                    "stats": {
+                        "itemCost": 3000,
+                        "itemGoldEfficiency": 95.8,
+                        "itemAttackDamage": 50
+                    }
+                },
+                {
+                    "id": "3050",
+                    "name": "Zeke's Convergence",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3050.png",
+                    "stats": {
+                        "itemCost": 2200,
+                        "itemGoldEfficiency": 104.5,
+                        "itemHealth": 300,
+                        "itemArmor": 25,
+                        "itemMagicResist": 25,
+                        "itemAbilityHaste": 10
+                    }
+                },
+                {
+                    "id": "3157",
+                    "name": "Zhonya's Hourglass",
+                    "iconUrl": "https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3157.png",
+                    "stats": {
+                        "itemCost": 3250,
+                        "itemGoldEfficiency": 95.4,
+                        "itemAbilityPower": 105,
+                        "itemArmor": 50
+                    }
+                }
+            ]
+        }
+    ]
+}

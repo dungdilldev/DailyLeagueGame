@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { buildRound, gapRatio } from '../../../src/game/generate/buildRound';
 import { createRng } from '../../../src/game/generate/random';
-import type { Question } from '../../../src/data/questions';
+import type { StatQuestion } from '../../../src/data/questions';
 import type { Champion } from '../../../src/data/schema';
 
-const STAT: Question = {
+const STAT: StatQuestion = {
+  kind: 'stat',
   id: 'health',
+  category: 'stats',
+  difficulty: 'variable',
   stat: 'hp',
   subject: 'champion',
   question: 'Which champion has the most health?',
@@ -60,7 +63,7 @@ describe('buildRound', () => {
   });
 
   it('carries the question id, stat label, question and format into the round', () => {
-    const dateStat: Question = {
+    const dateStat: StatQuestion = {
       ...STAT,
       statMeta: { ...STAT.statMeta, format: { kind: 'date', epoch: '2009-01-01' } },
     };
@@ -80,7 +83,7 @@ describe('buildRound', () => {
 
 describe('buildRound answer lists', () => {
   const band = { minRatio: 0.05, maxRatio: 1 };
-  const rounds = (question: Question) =>
+  const rounds = (question: StatQuestion) =>
     Array.from({ length: 60 }, (_, seed) =>
       buildRound(roster, question, band, createRng(`list${String(seed)}`)),
     ).flatMap((round) => (round ? [round] : []));

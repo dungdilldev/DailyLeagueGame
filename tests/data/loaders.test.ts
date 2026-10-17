@@ -36,9 +36,9 @@ describe('loadGameData', () => {
 
   it('ties each question to its stat and subject', async () => {
     const { questions } = await loadGameData(realFiles, './');
-    const itemCost = questions.find((question) => question.stat === 'itemCost');
+    const itemCost = questions.find((question) => question.id === 'itemCost');
     expect(itemCost?.subject).toBe('item');
-    expect(itemCost?.statMeta.label).toBe('Item cost');
+    expect(itemCost?.kind === 'stat' && itemCost.statMeta.label).toBe('Item cost');
   });
 
   it('reports HTTP failures', async () => {
@@ -50,7 +50,17 @@ describe('loadGameData', () => {
   });
 
   it('rejects questions about a stat that does not exist', async () => {
-    const questions = { questions: [{ id: 'q', stat: 'nope', question: 'Which champion?' }] };
+    const questions = {
+      questions: [
+        {
+          id: 'q',
+          category: 'stats',
+          difficulty: 'variable',
+          stat: 'nope',
+          question: 'Which champion?',
+        },
+      ],
+    };
     await expect(loadGameData(realFiles, './', questions)).rejects.toThrow(/unknown stat "nope"/);
   });
 });

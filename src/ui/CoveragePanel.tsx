@@ -1,4 +1,4 @@
-import type { Question } from '../data/questions';
+import { questionLabel, type Question } from '../data/questions';
 import type { Coverage } from '../game/endlessCoverage';
 import { ROUND_GAP_BANDS } from '../game/generate/config';
 
@@ -35,7 +35,7 @@ export function CoveragePanel({ questions, coverage }: CoveragePanelProps) {
             return (
               <tr key={question.id} class={asked === 0 ? 'coverage__missing' : undefined}>
                 <th scope="row">
-                  {question.statMeta.label}{' '}
+                  {questionLabel(question)}{' '}
                   <span class="coverage__subject">({question.subject})</span>
                   {asked === 0 && <span class="coverage__flag"> not seen yet</span>}
                 </th>

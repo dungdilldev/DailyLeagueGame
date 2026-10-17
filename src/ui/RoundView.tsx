@@ -24,6 +24,15 @@ function cardState(round: Round, optionId: string, chosenId: string | undefined)
   return optionId === chosenId ? 'wrong' : 'other';
 }
 
+const WRONG_PICK_TAG = 'Your pick';
+
+/** A stat question's answer is the highest value; a pick question's answer has no value. */
+function cardTag(round: Round, state: CardState): string | undefined {
+  if (state === 'wrong') return WRONG_PICK_TAG;
+  if (state === 'correct') return round.format ? 'Highest' : 'Correct';
+  return undefined;
+}
+
 export function RoundView({
   round,
   roundNumber,
@@ -58,13 +67,15 @@ export function RoundView({
       <div class="cards">
         {round.optionIds.map((id) => {
           const option = options.get(id);
+          const state = cardState(round, id, chosenId);
           return (
             <OptionCard
               key={id}
               name={option?.name ?? id}
               iconUrl={option?.iconUrl}
               valueText={revealed ? displayValue(round, id) : undefined}
-              state={cardState(round, id, chosenId)}
+              state={state}
+              tag={cardTag(round, state)}
               disabled={revealed}
               onSelect={() => {
                 onChoose(id);

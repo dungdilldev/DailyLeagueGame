@@ -176,6 +176,13 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] A question is asked at most once a day (was: a stat); `Round.statId` became `questionId`, `Puzzle.patch` was removed (two files, no single patch)
 - Same 20 questions and same stats as before; the old `game-data.json` was split without refetching, so archive days keep their snapshots.
 
+### Phase 5c3 - Pick questions (done)
+
+- [x] Questions without a stat, answered from explicit `correct` / `wrong` lists (`buildPickRound`); first example: "Which of these champions is a marksman?"
+- [x] Round has optional `format` / empty `values` for these; the right card is tagged "Correct" instead of "Highest"
+- [x] Question templates reject unknown keys
+- [x] Required `category` (`stats` / `trivia`) and `difficulty` (`easy` / `medium` / `hard` / `variable`) per question; rounds are tiered easy, easy, medium, hard, hard and a fixed difficulty is only asked in its tier
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

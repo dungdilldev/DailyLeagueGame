@@ -6,22 +6,18 @@ interface OptionCardProps {
   /** Revealed stat value as display text; shown only after the player has answered. */
   valueText: string | undefined;
   state: CardState;
+  /** Label shown on the right option and on the player's wrong pick once revealed. */
+  tag: string | undefined;
   disabled: boolean;
   onSelect: () => void;
 }
-
-const STATE_LABEL: Record<CardState, string | undefined> = {
-  idle: undefined,
-  correct: 'Highest',
-  wrong: 'Your pick',
-  other: undefined,
-};
 
 export function OptionCard({
   name,
   iconUrl,
   valueText,
   state,
+  tag,
   disabled,
   onSelect,
 }: OptionCardProps) {
@@ -30,7 +26,7 @@ export function OptionCard({
       {iconUrl && <img class="card__icon" src={iconUrl} alt="" width={96} height={96} />}
       <span class="card__name">{name}</span>
       {valueText !== undefined && <span class="card__value">{valueText}</span>}
-      {STATE_LABEL[state] && <span class="card__tag">{STATE_LABEL[state]}</span>}
+      {tag && <span class="card__tag">{tag}</span>}
     </button>
   );
 }

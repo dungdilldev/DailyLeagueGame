@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
-import type { GameData } from '../data/questions';
+import { questionLabel, type GameData } from '../data/questions';
 import { newestPuzzleData } from '../game/dailyPuzzle';
 import { buildEntityLookup } from '../game/entityLookup';
 import { buildEndlessQuestion } from '../game/endless';
@@ -102,7 +102,7 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
             <option value={ANY}>Any (random)</option>
             {data.questions.map((question) => (
               <option key={question.id} value={question.id}>
-                {question.statMeta.label} ({question.subject})
+                {questionLabel(question)} ({question.subject})
               </option>
             ))}
           </select>

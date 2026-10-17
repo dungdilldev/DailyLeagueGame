@@ -13,7 +13,13 @@ const stat = (id: string): StatMeta => ({
 });
 const stats = { champion: [stat('hp')], item: [stat('cost')] };
 
-const template = { id: 'q', stat: 'hp', question: 'Which champion has the most health?' };
+const template = {
+  id: 'q',
+  category: 'stats' as const,
+  difficulty: 'variable' as const,
+  stat: 'hp',
+  question: 'Which champion has the most health?',
+};
 const parse = (questions: unknown[]) => QuestionFileSchema.safeParse({ questions });
 
 describe('QuestionFileSchema', () => {
@@ -38,6 +44,68 @@ describe('QuestionFileSchema', () => {
   });
 });
 
+const pick = {
+  id: 'marksman',
+  category: 'trivia' as const,
+  difficulty: 'easy' as const,
+  subject: 'champion' as const,
+  label: 'Marksmen',
+  question: 'Which of these champions is a marksman?',
+  correct: ['Jinx', 'Ashe'],
+  wrong: ['Garen', 'Lux', 'Zed'],
+};
+
+describe('category and difficulty', () => {
+  it('are required, so every question is classified', () => {
+    expect(parse([{ ...template, category: undefined }]).success).toBe(false);
+    expect(parse([{ ...template, difficulty: undefined }]).success).toBe(false);
+  });
+
+  it('accept every difficulty and both categories', () => {
+    for (const difficulty of ['easy', 'medium', 'hard', 'variable']) {
+      expect(parse([{ ...template, difficulty }]).success, difficulty).toBe(true);
+    }
+    expect(parse([{ ...template, category: 'trivia' }]).success).toBe(true);
+  });
+
+  it('reject anything else', () => {
+    expect(parse([{ ...template, difficulty: 'impossible' }]).success).toBe(false);
+    expect(parse([{ ...template, category: 'sport' }]).success).toBe(false);
+  });
+});
+
+describe('pick questions', () => {
+  it('are accepted with a subject, a label and both lists', () => {
+    expect(parse([pick]).success).toBe(true);
+    expect(parse([pick, template]).success).toBe(true);
+  });
+
+  it('need both lists in full, with at least 3 wrong options', () => {
+    expect(parse([{ ...pick, wrong: ['Garen', 'Lux'] }]).success).toBe(false);
+    expect(parse([{ ...pick, correct: undefined }]).success).toBe(false);
+    expect(parse([{ ...pick, wrong: undefined }]).success).toBe(false);
+  });
+
+  it('need a subject, since there is no stat to tell champions from items', () => {
+    expect(parse([{ ...pick, subject: undefined }]).success).toBe(false);
+  });
+
+  it('cannot reuse an id across the two lists', () => {
+    expect(parse([{ ...pick, wrong: ['Jinx', 'Lux', 'Zed'] }]).success).toBe(false);
+  });
+
+  it('reject unknown fields, so a typo like "corect" is not silently ignored', () => {
+    expect(parse([{ ...pick, corect: ['Jinx'] }]).success).toBe(false);
+    expect(parse([{ ...template, corect: ['A'] }]).success).toBe(false);
+  });
+
+  it('resolve without a stat', () => {
+    const [question] = resolveQuestions([pick], stats);
+    expect(question?.kind).toBe('pick');
+    expect(question?.subject).toBe('champion');
+  });
+});
+
 describe('resolveQuestions', () => {
   it('finds out from the stat whether a question is about champions or items', () => {
     const [champion, item] = resolveQuestions(
@@ -46,7 +114,7 @@ describe('resolveQuestions', () => {
     );
     expect(champion?.subject).toBe('champion');
     expect(item?.subject).toBe('item');
-    expect(item?.statMeta.id).toBe('cost');
+    expect(item?.kind === 'stat' && item.statMeta.id).toBe('cost');
   });
 
   it('keeps the lists', () => {
@@ -64,6 +132,13 @@ describe('resolveQuestions', () => {
 describe('the question file in the repository', () => {
   const { questions } = realGameData;
 
+  it('puts stat questions in "stats" and "variable", and pick questions in "trivia"', () => {
+    for (const question of questions) {
+      expect(question.category, question.id).toBe(question.kind === 'pick' ? 'trivia' : 'stats');
+      if (question.kind === 'stat') expect(question.difficulty, question.id).toBe('variable');
+    }
+  });
+
   it('is valid', () => {
     expect(QuestionFileSchema.safeParse(questionFile).success).toBe(true);
   });
@@ -71,7 +146,11 @@ describe('the question file in the repository', () => {
   it('asks about champions or items matching the data the stat comes from', () => {
     for (const question of questions) {
       const noun = question.subject === 'item' ? 'item' : 'champion';
-      expect(question.question, question.id).toMatch(new RegExp(`^Which ${noun} .*[?]$`));
+      const pattern =
+        question.kind === 'pick'
+          ? new RegExp(`^Which of these ${noun}s .*[?]$`)
+          : new RegExp(`^Which ${noun} .*[?]$`);
+      expect(question.question, question.id).toMatch(pattern);
     }
   });
 

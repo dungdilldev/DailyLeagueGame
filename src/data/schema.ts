@@ -96,32 +96,88 @@ export type ItemDataFile = DataFile<Item>;
 
 const EntityIdListSchema = z.array(z.string().min(1)).min(1);
 
+/** What kind of knowledge a question tests; for grouping and, later, filtering. */
+export const QuestionCategorySchema = z.enum(['stats', 'trivia']);
+export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
+
 /**
- * One kind of question, hand-written in `data/questions.json`. It asks for the highest value of
- * one stat. By default any champion or item that has the stat can be the answer or a wrong
- * option; the lists narrow that down.
+ * Which rounds of the day a question may appear in: easy ones early, hard ones late.
+ * `variable` means any round, for questions whose difficulty comes from the numbers (the gap
+ * between the best and second-best option) rather than from the question itself.
  */
-export const QuestionTemplateSchema = z
-  .object({
-    id: z.string().min(1),
-    /** Id of a stat in the champion data file or the item data file. */
+export const QuestionDifficultySchema = z.enum(['easy', 'medium', 'hard', 'variable']);
+export type QuestionDifficulty = z.infer<typeof QuestionDifficultySchema>;
+
+const QuestionFields = {
+  id: z.string().min(1),
+  category: QuestionCategorySchema,
+  difficulty: QuestionDifficultySchema,
+  /** The question shown to the player. */
+  question: z.string().min(1),
+  /** Never used for this question, neither as the answer nor as a wrong option. */
+  exclude: EntityIdListSchema.optional(),
+};
+
+/** Roles are exclusive: an id that is both right and wrong, or excluded, would be ambiguous. */
+function hasDisjointLists({
+  correct = [],
+  wrong = [],
+  exclude = [],
+}: {
+  correct?: string[] | undefined;
+  wrong?: string[] | undefined;
+  exclude?: string[] | undefined;
+}): boolean {
+  return (
+    new Set([...correct, ...wrong, ...exclude]).size ===
+    correct.length + wrong.length + exclude.length
+  );
+}
+const DISJOINT_LISTS_MESSAGE = 'An id may appear in only one of correct, wrong and exclude';
+
+/**
+ * A question about the highest value of one stat. By default any champion or item that has the
+ * stat can be the answer or a wrong option; the lists narrow that down.
+ */
+const StatQuestionTemplateSchema = z
+  .strictObject({
+    ...QuestionFields,
+    /** Id of a stat in the champion data file or the item data file. A higher value is right. */
     stat: z.string().min(1),
-    /** The question shown to the player. A higher value is always the right answer. */
-    question: z.string().min(1),
     /** If given, only these can be the right answer. */
     correct: EntityIdListSchema.optional(),
     /** If given, only these can be the wrong options. */
     wrong: EntityIdListSchema.optional(),
-    /** Never used for this question, neither as the answer nor as a wrong option. */
-    exclude: EntityIdListSchema.optional(),
   })
-  .refine(
-    ({ correct = [], wrong = [], exclude = [] }) =>
-      new Set([...correct, ...wrong, ...exclude]).size ===
-      correct.length + wrong.length + exclude.length,
-    { message: 'An id may appear in only one of correct, wrong and exclude' },
-  );
+  .refine(hasDisjointLists, { message: DISJOINT_LISTS_MESSAGE });
+
+/** A round shows 4 options: the answer and this many wrong ones. */
+const MIN_WRONG_PER_PICK_QUESTION = 3;
+
+/**
+ * A question with no stat behind it ("Which of these champions is a marksman?"). One option is
+ * drawn from `correct` and the others from `wrong`, so both lists are written out in full.
+ */
+const PickQuestionTemplateSchema = z
+  .strictObject({
+    ...QuestionFields,
+    /** Whether the options are champions or items. */
+    subject: StatSubjectSchema,
+    /** Short name shown in the results, e.g. "Marksmen". */
+    label: z.string().min(1),
+    correct: EntityIdListSchema,
+    wrong: z.array(z.string().min(1)).min(MIN_WRONG_PER_PICK_QUESTION),
+  })
+  .refine(hasDisjointLists, { message: DISJOINT_LISTS_MESSAGE });
+
+/** One kind of question, hand-written in `data/questions.json`. */
+export const QuestionTemplateSchema = z.union([
+  StatQuestionTemplateSchema,
+  PickQuestionTemplateSchema,
+]);
 export type QuestionTemplate = z.infer<typeof QuestionTemplateSchema>;
+export type StatQuestionTemplate = z.infer<typeof StatQuestionTemplateSchema>;
+export type PickQuestionTemplate = z.infer<typeof PickQuestionTemplateSchema>;
 
 export const QuestionFileSchema = z
   .object({ questions: z.array(QuestionTemplateSchema).min(1) })

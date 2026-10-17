@@ -142,6 +142,39 @@ describe('Game', () => {
     expect(screen.getByText(/Not quite. It was Infinity Edge/)).toBeTruthy();
   });
 
+  it('marks the right option without values when a round has no stat behind it', async () => {
+    const user = userEvent.setup();
+    const pickPuzzle: Puzzle = {
+      date: TODAY,
+      rounds: [
+        {
+          questionId: 'isMarksman',
+          subject: 'champion',
+          statLabel: 'Marksmen',
+          question: 'Which of these champions is a marksman?',
+          optionIds: IDS,
+          answerId: 'Brand',
+          values: {},
+        },
+      ],
+    };
+    render(
+      <Game
+        puzzle={pickPuzzle}
+        entities={entities}
+        date={TODAY}
+        today={TODAY}
+        storage={memoryStorage()}
+        shareUrl="https://example.com/"
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: /Ahri/ }));
+    expect(screen.getByText(/Not quite. It was Brand/)).toBeTruthy();
+    expect(screen.getByText('Correct')).toBeTruthy();
+    expect(document.querySelectorAll('.card__value')).toHaveLength(0);
+  });
+
   it('saves progress and resumes mid-day after a reload', async () => {
     const user = userEvent.setup();
     const storage = memoryStorage();

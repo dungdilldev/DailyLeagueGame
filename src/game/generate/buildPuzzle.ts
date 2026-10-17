@@ -2,7 +2,7 @@ import type { Question } from '../../data/questions';
 import type { Champion, Entity, Item, StatSubject } from '../../data/schema';
 import type { Puzzle, Round } from '../puzzle';
 import { buildRound } from './buildRound';
-import { MAX_PUZZLE_ATTEMPTS, ROUND_GAP_BANDS, type GapBand } from './config';
+import { fitsRound, MAX_PUZZLE_ATTEMPTS, ROUND_GAP_BANDS, type GapBand } from './config';
 import { createRng, type Rng } from './random';
 
 export interface PuzzleData {
@@ -37,9 +37,12 @@ function tryBuildRounds(
   const usedIds = new Set<string>();
   let remainingQuestions = rng.shuffle(questions);
 
-  for (const band of bands) {
+  for (const [roundIndex, band] of bands.entries()) {
+    const fitting = remainingQuestions.filter((question) =>
+      fitsRound(question.difficulty, roundIndex),
+    );
     // Some questions cannot satisfy some bands (e.g. few distinct move speeds can't give a 30% gap).
-    const round = firstSuccessful(remainingQuestions, (question) =>
+    const round = firstSuccessful(fitting, (question) =>
       buildRound(
         entitiesFor(data, question.subject).filter((entity) => !usedIds.has(entity.id)),
         question,

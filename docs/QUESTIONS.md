@@ -168,23 +168,75 @@ have appeared. See [LOCAL_TESTING.md](LOCAL_TESTING.md#endless-mode-testing-ever
 
 ## Where to change things
 
-| To...                       | Edit                                                                      |
-| --------------------------- | ------------------------------------------------------------------------- |
-| Add or reword a question    | `data/questions.json`                                                     |
-| Limit who can be an answer  | `correct`, `wrong` or `exclude` on the question in `data/questions.json`  |
-| Add a champion stat         | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`) |
-| Add or change an item stat  | `pipeline/stats/itemStats.ts`                                             |
-| Change which items are used | `pipeline/items/selectItems.ts`                                           |
-| Change how hard rounds are  | `src/game/generate/config.ts`                                             |
+| To...                                 | Edit                                                                      |
+| ------------------------------------- | ------------------------------------------------------------------------- |
+| Add or reword a question              | `data/questions.json`                                                     |
+| Ask about specific champions or items | `data/questions.json` (pick question, see below)                          |
+| Limit who can be an answer            | `correct`, `wrong` or `exclude` on the question in `data/questions.json`  |
+| Add a champion stat                   | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`) |
+| Add or change an item stat            | `pipeline/stats/itemStats.ts`                                             |
+| Change which items are used           | `pipeline/items/selectItems.ts`                                           |
+| Change how hard rounds are            | `src/game/generate/config.ts`                                             |
 
 A stat only becomes a question once `data/questions.json` has an entry for it. Which stat is a
 champion stat and which an item stat follows from the list it is registered in.
+
+### Adding a question about specific champions or items
+
+A question that is not about a stat (for example "which of these is a marksman?") needs no code
+and no data refresh, only an entry in `data/questions.json`:
+
+```json
+{
+  "id": "isMarksman",
+  "category": "trivia",
+  "difficulty": "easy",
+  "subject": "champion",
+  "label": "Marksmen",
+  "question": "Which of these champions is a marksman?",
+  "correct": ["Jinx", "Ashe", "Caitlyn"],
+  "wrong": ["Garen", "Lux", "Zed", "Soraka"]
+}
+```
+
+- Every question also has a `category` (`stats` or `trivia`; use `trivia` for these) and a
+  `difficulty`, see below.
+- `subject` is `champion` or `item`. `label` is the short name in the results.
+- Each day the round shows one champion from `correct` and three from `wrong`, drawn at random,
+  so the longer the lists, the more variety. `wrong` needs at least 3 entries. `exclude` works as
+  for the other questions.
+- Write the question so the options are the answer's kind ("Which of these champions ..." or
+  "Which of these items ...").
+- There are no numbers to reveal, so there is no gap-based difficulty: you pick one with `difficulty`.
+- Ids are Data Dragon ids (`MissFortune`, `Kaisa`, `3031`). `npm run data:refresh` fails if an id
+  disappears from the game, so a stale list is noticed.
+
+### Category and difficulty
+
+Both fields are required on every question.
+
+- `category`: `stats` (compares a number) or `trivia` (knowledge). Only for grouping for now.
+- `difficulty`: which rounds the question may appear in. A day has five rounds, tiered easy,
+  easy, medium, hard, hard.
+
+| `difficulty` | Appears in rounds |
+| ------------ | ----------------- |
+| `easy`       | 1 and 2           |
+| `medium`     | 3                 |
+| `hard`       | 4 and 5           |
+| `variable`   | any               |
+
+Stat questions are all `variable`: how hard they are depends on the round, because the gap
+between the best and second-best option narrows each round. The marksman question is `easy`,
+as its wrong options are clearly not marksmen.
 
 ### Restricting a question
 
 ```json
 {
   "id": "baseHealth",
+  "category": "stats",
+  "difficulty": "variable",
   "stat": "baseHealth",
   "question": "Which champion has the highest base health?",
   "correct": ["Tryndamere", "Sion"],

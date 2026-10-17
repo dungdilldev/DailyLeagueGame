@@ -1,3 +1,5 @@
+import type { QuestionDifficulty } from '../../data/schema';
+
 /**
  * Allowed relative gap between the best and second-best value in a round:
  * (best - second) / best. A narrow band means a close call, i.e. a harder question.
@@ -15,6 +17,20 @@ export const ROUND_GAP_BANDS: readonly GapBand[] = [
   { minRatio: 0.05, maxRatio: 0.1 },
   { minRatio: 0.02, maxRatio: 0.05 },
 ];
+
+/** How hard each round is, in play order, parallel to `ROUND_GAP_BANDS`. */
+export const ROUND_TIERS: readonly Exclude<QuestionDifficulty, 'variable'>[] = [
+  'easy',
+  'easy',
+  'medium',
+  'hard',
+  'hard',
+];
+
+/** Whether a question of this difficulty may be asked in the round with this index. */
+export function fitsRound(difficulty: QuestionDifficulty, roundIndex: number): boolean {
+  return difficulty === 'variable' || difficulty === ROUND_TIERS[roundIndex];
+}
 
 export const ROUNDS_PER_DAY = ROUND_GAP_BANDS.length;
 

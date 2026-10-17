@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { addUtcDays } from '../../../src/game/date';
 import { buildPuzzle } from '../../../src/game/generate/buildPuzzle';
-import { ROUND_GAP_BANDS, ROUNDS_PER_DAY } from '../../../src/game/generate/config';
+import type { QuestionDifficulty } from '../../../src/data/schema';
+import {
+  fitsRound,
+  ROUND_GAP_BANDS,
+  ROUND_TIERS,
+  ROUNDS_PER_DAY,
+} from '../../../src/game/generate/config';
 import { findPuzzleProblems } from '../../support/findPuzzleProblems';
 import { realGameData, realPuzzleData } from '../../support/realGameData';
 
@@ -13,6 +19,22 @@ const { questions } = realGameData;
 const everyone = [...data.champions, ...data.items];
 
 describe('difficulty config', () => {
+  it('names a tier for every round', () => {
+    expect(ROUND_TIERS).toHaveLength(ROUND_GAP_BANDS.length);
+  });
+
+  it('lets a variable question into every round and a fixed one only into its tier', () => {
+    ROUND_TIERS.forEach((tier, index) => {
+      expect(fitsRound('variable', index)).toBe(true);
+      expect(fitsRound(tier, index)).toBe(true);
+      for (const other of ['easy', 'medium', 'hard'] as const) {
+        expect(fitsRound(other, index), `${other} in round ${String(index + 1)}`).toBe(
+          other === tier,
+        );
+      }
+    });
+  });
+
   it('gets strictly harder: bands move to smaller gaps each round', () => {
     for (let i = 1; i < ROUND_GAP_BANDS.length; i++) {
       const previous = ROUND_GAP_BANDS[i - 1];
@@ -123,6 +145,37 @@ describe('buildPuzzle with answer lists', () => {
     const puzzle = buildPuzzle('2026-06-01', data, impossible);
     expect(puzzle.rounds.some((round) => round.questionId === impossible[0]?.id)).toBe(false);
     expect(puzzle.rounds).toHaveLength(ROUNDS_PER_DAY);
+  });
+});
+
+describe('buildPuzzle with question difficulty', () => {
+  const [pick] = questions.filter((question) => question.kind === 'pick');
+  if (!pick) throw new Error('no pick question in the data');
+  const withDifficulty = (difficulty: QuestionDifficulty) =>
+    questions.map((question) => (question.id === pick.id ? { ...question, difficulty } : question));
+  const positionsOf = (difficulty: QuestionDifficulty) => {
+    const found = new Set<number>();
+    for (let offset = 0; offset < 200; offset++) {
+      const puzzle = buildPuzzle(
+        addUtcDays('2026-01-01', offset),
+        data,
+        withDifficulty(difficulty),
+      );
+      puzzle.rounds.forEach((round, index) => {
+        if (round.questionId === pick.id) found.add(index);
+      });
+    }
+    return [...found].sort();
+  };
+
+  it('only asks an easy question in the easy rounds, a hard one in the hard rounds', () => {
+    expect(positionsOf('easy')).toEqual([0, 1]);
+    expect(positionsOf('medium')).toEqual([2]);
+    expect(positionsOf('hard')).toEqual([3, 4]);
+  });
+
+  it('asks a variable question in any round', () => {
+    expect(positionsOf('variable')).toEqual([0, 1, 2, 3, 4]);
   });
 });
 

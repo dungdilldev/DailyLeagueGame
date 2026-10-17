@@ -9,7 +9,7 @@ import {
   MIN_ITEM_COUNT,
   MIN_VALUES_PER_STAT,
 } from '../../pipeline/validate/gameData';
-import type { Question } from '../../src/data/questions';
+import type { Question, StatQuestion } from '../../src/data/questions';
 import type { Champion, Item } from '../../src/data/schema';
 import { makeInput, makeItemInput } from './fixtures';
 
@@ -164,8 +164,11 @@ describe('findProblems', () => {
 });
 
 describe('findQuestionListProblems', () => {
-  const question = (overrides: Partial<Question>): Question => ({
+  const question = (overrides: Partial<StatQuestion>): StatQuestion => ({
+    kind: 'stat',
     id: 'q',
+    category: 'stats',
+    difficulty: 'variable',
     stat: 'baseHealth',
     question: 'Which champion has the highest base health?',
     subject: 'champion',
@@ -196,5 +199,23 @@ describe('findQuestionListProblems', () => {
   it('looks up ids among items for an item question', () => {
     const questions = [question({ subject: 'item', exclude: ['Ahri'] })];
     expect(findQuestionListProblems(questions, known)).toHaveLength(1);
+  });
+
+  it('checks pick questions too', () => {
+    const pick: Question = {
+      kind: 'pick',
+      id: 'p',
+      category: 'trivia',
+      difficulty: 'easy',
+      subject: 'champion',
+      label: 'Mages',
+      question: 'Which of these champions is a mage?',
+      correct: ['Ahri'],
+      wrong: ['Zed', 'Gone', 'Gone2'],
+    };
+    expect(findQuestionListProblems([pick], known)).toEqual([
+      'Question "p" lists unknown champion id "Gone"',
+      'Question "p" lists unknown champion id "Gone2"',
+    ]);
   });
 });

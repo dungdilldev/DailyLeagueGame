@@ -39,6 +39,24 @@ export function findPuzzleProblems(
     const excluded = new Set(question.exclude);
 
     if (round.optionIds.length !== 4) problems.push(`${label}: not 4 options`);
+    if (new Set(round.optionIds).size !== round.optionIds.length) {
+      problems.push(`${label}: repeated option`);
+    }
+    if (!round.optionIds.includes(round.answerId)) problems.push(`${label}: answer not offered`);
+    for (const id of round.optionIds) {
+      if (!entitiesById.has(id)) problems.push(`${label}: unknown option "${id}"`);
+      if (excluded.has(id)) problems.push(`${label}: "${id}" is excluded for this question`);
+      if (seenChampions.has(id)) problems.push(`${label}: "${id}" appears twice in the day`);
+      seenChampions.add(id);
+    }
+    const { correct, wrong } = question;
+    if (correct && !correct.includes(round.answerId)) {
+      problems.push(`${label}: answer is not in the question's correct list`);
+    }
+    if (wrong && round.optionIds.some((id) => id !== round.answerId && !wrong.includes(id))) {
+      problems.push(`${label}: an option is not in the question's wrong list`);
+    }
+    if (question.kind === 'pick') return;
 
     const values: number[] = [];
     for (const id of round.optionIds) {
@@ -50,11 +68,6 @@ export function findPuzzleProblems(
       if (round.values[id] !== stored) {
         problems.push(`${label}: value for "${id}" does not match data`);
       }
-      if (excluded.has(id)) problems.push(`${label}: "${id}" is excluded for this question`);
-      if (seenChampions.has(id)) {
-        problems.push(`${label}: "${id}" appears twice in the day`);
-      }
-      seenChampions.add(id);
       values.push(stored);
     }
 
@@ -66,13 +79,6 @@ export function findPuzzleProblems(
     }
     if (round.values[round.answerId] !== best) problems.push(`${label}: answer is not the highest`);
     if (new Set(values).size !== values.length) problems.push(`${label}: tied values`);
-    if (question.correct && !question.correct.includes(round.answerId)) {
-      problems.push(`${label}: answer is not in the question's correct list`);
-    }
-    const { wrong } = question;
-    if (wrong && round.optionIds.some((id) => id !== round.answerId && !wrong.includes(id))) {
-      problems.push(`${label}: an option is not in the question's wrong list`);
-    }
 
     const band = bands[index];
     const ratio = gapRatio(best, second);

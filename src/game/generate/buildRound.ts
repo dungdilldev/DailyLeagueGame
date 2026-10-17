@@ -1,6 +1,7 @@
-import type { Question } from '../../data/questions';
+import type { Question, StatQuestion } from '../../data/questions';
 import type { Entity } from '../../data/schema';
 import type { Round } from '../puzzle';
+import { buildPickRound } from './buildPickRound';
 import type { GapBand } from './config';
 import type { Rng } from './random';
 
@@ -19,7 +20,7 @@ function isWithinBand(ratio: number, band: GapBand): boolean {
 }
 
 /** Who may be the answer and who may be a wrong option, from the question's lists. */
-function splitPools(entries: readonly Entry[], question: Question) {
+function splitPools(entries: readonly Entry[], question: StatQuestion) {
   const excluded = new Set(question.exclude);
   const allowedAnswers = question.correct && new Set(question.correct);
   const allowedWrong = question.wrong && new Set(question.wrong);
@@ -31,14 +32,14 @@ function splitPools(entries: readonly Entry[], question: Question) {
 }
 
 /**
- * Builds one round constructively instead of sampling and rejecting:
+ * Builds one stat round constructively instead of sampling and rejecting:
  * pick the answer, then a runner-up inside the difficulty band, then two clearly lower
  * options with distinct values. `entities` are the champions or items the question is about.
  * Returns undefined if this question cannot satisfy the band.
  */
-export function buildRound(
+function buildStatRound(
   entities: readonly Entity[],
-  question: Question,
+  question: StatQuestion,
   band: GapBand,
   rng: Rng,
 ): Round | undefined {
@@ -74,4 +75,19 @@ export function buildRound(
     };
   }
   return undefined;
+}
+
+/**
+ * Builds one round for any kind of question. `band` only matters for stat questions; a pick
+ * question has no values to compare, so it fits every difficulty.
+ */
+export function buildRound(
+  entities: readonly Entity[],
+  question: Question,
+  band: GapBand,
+  rng: Rng,
+): Round | undefined {
+  return question.kind === 'pick'
+    ? buildPickRound(entities, question, rng)
+    : buildStatRound(entities, question, band, rng);
 }
