@@ -107,7 +107,7 @@ export function App() {
   return (
     <div class="app">
       <header>
-        <h1>DailyLeague</h1>
+        <h1>Summoner&apos;s Quiz</h1>
         <p class="tagline">Daily League of Legends higher-or-lower.</p>
       </header>
       <main>

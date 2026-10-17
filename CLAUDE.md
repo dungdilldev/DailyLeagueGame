@@ -1,4 +1,4 @@
-# DailyLeague
+# Summoner's Quiz
 
 A daily League of Legends "higher or lower"-style quiz. Each day the player gets rounds of 4 champions and must pick the one with the highest value of a stat (win rate, pick rate, skin count, release date, base HP, ...). Static website, no backend. New quizzes are generated automatically.
 

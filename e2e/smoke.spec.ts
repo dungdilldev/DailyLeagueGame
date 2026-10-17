@@ -42,7 +42,7 @@ test('a full day can be played and the result survives a reload', async ({ page 
   const errors = collectErrors(page);
   await page.goto('/');
 
-  await expect(page.getByRole('heading', { name: 'DailyLeague' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: "Summoner's Quiz" })).toBeVisible();
   await expect(page.locator('.card')).toHaveCount(4);
   await expectIconsLoaded(page);
   await page.screenshot({ path: testInfo.outputPath('round.png'), fullPage: true });
@@ -147,7 +147,7 @@ test.describe('game modes', () => {
   test('starts in the mixed mode and offers one button per category', async ({ page }) => {
     await page.goto('/');
     const nav = page.getByRole('navigation', { name: 'Choose game mode' });
-    await expect(nav.getByRole('button')).toHaveText(['Mixed', 'Stats', 'Lore', 'Esports']);
+    await expect(nav.getByRole('button')).toHaveText(['Stats', 'Lore', 'Esports', 'Mixed']);
     await expect(nav.getByRole('button', { name: 'Mixed' })).toHaveAttribute(
       'aria-pressed',
       'true',

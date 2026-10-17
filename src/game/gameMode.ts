@@ -7,7 +7,7 @@ export const MIXED_MODE = 'mixed';
 /** What the player chooses to play: everything mixed, or the questions of one category. */
 export type GameMode = typeof MIXED_MODE | QuestionCategory;
 
-export const GAME_MODES: readonly GameMode[] = [MIXED_MODE, ...QuestionCategorySchema.options];
+export const GAME_MODES: readonly GameMode[] = [...QuestionCategorySchema.options, MIXED_MODE];
 
 /** Anything that is not a known mode (garbage in the address bar) is the mixed mode. */
 export function parseGameMode(value: string | null | undefined): GameMode {

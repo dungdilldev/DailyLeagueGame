@@ -7,7 +7,7 @@ import { z } from 'zod';
 const CHAMPION_DATA_URL =
   'https://wiki.leagueoflegends.com/en-us/Module:ChampionData/data?action=raw';
 /** The wiki asks API clients to identify themselves. */
-const USER_AGENT = 'DailyLeague/0.1 (hobby quiz; daily data refresh)';
+const USER_AGENT = 'SummonersQuiz/0.1 (hobby quiz; daily data refresh)';
 /** A real response has ~170 champions; far fewer means the format changed and parsing broke. */
 const MIN_WIKI_CHAMPIONS = 100;
 

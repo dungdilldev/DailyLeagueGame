@@ -1,4 +1,4 @@
-# DailyLeague - Implementation Plan
+# Summoner's Quiz - Implementation Plan
 
 Status legend: `[ ]` todo, `[x]` done. Update as work progresses.
 

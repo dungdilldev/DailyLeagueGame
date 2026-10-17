@@ -1,4 +1,4 @@
-# Questions in DailyLeague
+# Questions in Summoner's Quiz
 
 Every question the game can ask, with where the numbers come from and what to know about each one.
 

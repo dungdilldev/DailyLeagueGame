@@ -1,4 +1,4 @@
-# Testing DailyLeague locally
+# Testing Summoner's Quiz locally
 
 Everything below runs from the project folder. You need Node 22 or newer (`node -v`).
 

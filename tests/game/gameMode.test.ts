@@ -12,8 +12,8 @@ import { realGameData } from '../support/realGameData';
 const { questions } = realGameData;
 
 describe('GAME_MODES', () => {
-  it('starts with the mixed mode, then one mode per question category', () => {
-    expect(GAME_MODES).toEqual(['mixed', 'stats', 'lore', 'esports']);
+  it('lists one mode per question category, then the mixed mode', () => {
+    expect(GAME_MODES).toEqual(['stats', 'lore', 'esports', 'mixed']);
   });
 });
 

@@ -6,10 +6,10 @@ import { ModeNav } from '../../src/ui/ModeNav';
 afterEach(cleanup);
 
 describe('ModeNav', () => {
-  it('has a button for the mixed mode and each category, with the current one pressed', () => {
+  it('has a button for each category and the mixed mode, with the current one pressed', () => {
     render(<ModeNav mode="lore" onChange={vi.fn()} />);
     const names = screen.getAllByRole('button').map((button) => button.textContent);
-    expect(names).toEqual(['Mixed', 'Stats', 'Lore', 'Esports']);
+    expect(names).toEqual(['Stats', 'Lore', 'Esports', 'Mixed']);
     expect(screen.getByRole('button', { name: 'Lore' }).getAttribute('aria-pressed')).toBe('true');
     expect(screen.getByRole('button', { name: 'Mixed' }).getAttribute('aria-pressed')).toBe(
       'false',
