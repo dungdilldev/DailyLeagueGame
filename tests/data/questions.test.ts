@@ -65,7 +65,9 @@ describe('category and difficulty', () => {
     for (const difficulty of ['easy', 'medium', 'hard', 'variable']) {
       expect(parse([{ ...template, difficulty }]).success, difficulty).toBe(true);
     }
-    expect(parse([{ ...template, category: 'trivia' }]).success).toBe(true);
+    for (const category of ['stats', 'trivia', 'lore', 'esports']) {
+      expect(parse([{ ...template, category }]).success, category).toBe(true);
+    }
   });
 
   it('reject anything else', () => {
@@ -132,11 +134,34 @@ describe('resolveQuestions', () => {
 describe('the question file in the repository', () => {
   const { questions } = realGameData;
 
-  it('puts stat questions in "stats" and "variable", and pick questions in "trivia"', () => {
+  it('puts stat questions in "stats" and "variable", and pick questions elsewhere', () => {
     for (const question of questions) {
-      expect(question.category, question.id).toBe(question.kind === 'pick' ? 'trivia' : 'stats');
-      if (question.kind === 'stat') expect(question.difficulty, question.id).toBe('variable');
+      if (question.kind === 'pick') expect(question.category, question.id).not.toBe('stats');
+      else
+        expect([question.category, question.difficulty], question.id).toEqual([
+          'stats',
+          'variable',
+        ]);
     }
+  });
+
+  it('has esports questions, and no wrong option of one has an esports skin of its own', () => {
+    const esports = questions.filter((question) => question.category === 'esports');
+    expect(esports.length).toBeGreaterThan(0);
+    const skinQuestions = esports.filter((question) => question.kind === 'pick');
+    const correctElsewhere = new Set(skinQuestions.flatMap((question) => question.correct));
+    for (const question of skinQuestions) {
+      expect(
+        question.wrong.some((id) => correctElsewhere.has(id)),
+        question.id,
+      ).toBe(false);
+    }
+  });
+
+  it('has lore questions about the world of League of Legends', () => {
+    const lore = questions.filter((question) => question.category === 'lore');
+    expect(lore.length).toBeGreaterThan(0);
+    expect(lore.every((question) => question.kind === 'pick')).toBe(true);
   });
 
   it('is valid', () => {

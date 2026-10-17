@@ -52,6 +52,8 @@ describe('EndlessScreen', () => {
   it('reveals the values after an answer and moves on with Next', async () => {
     const user = userEvent.setup();
     renderEndless();
+    // A stat question, the only kind with values to reveal.
+    await user.selectOptions(screen.getByLabelText(/Question/), 'itemCost');
     await user.click(document.querySelectorAll<HTMLButtonElement>('.card')[0] as HTMLButtonElement);
     expect(document.querySelectorAll('.card__value')).toHaveLength(4);
 

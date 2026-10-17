@@ -215,7 +215,8 @@ and no data refresh, only an entry in `data/questions.json`:
 
 Both fields are required on every question.
 
-- `category`: `stats` (compares a number) or `trivia` (knowledge). Only for grouping for now.
+- `category`: `stats` (compares a number), `trivia` (game knowledge) or `lore` (the story of
+  champions and the world) or `esports` (professional play). Only for grouping for now.
 - `difficulty`: which rounds the question may appear in. A day has five rounds, tiered easy,
   easy, medium, hard, hard.
 
@@ -229,6 +230,25 @@ Both fields are required on every question.
 Stat questions are all `variable`: how hard they are depends on the round, because the gap
 between the best and second-best option narrows each round. The marksman question is `easy`,
 as its wrong options are clearly not marksmen.
+
+### Lore questions
+
+Lore questions are pick questions with `"category": "lore"`. Current ones: which champion is from
+each region (Demacia, Noxus, Freljord, Ionia, Piltover, Zaun, Shadow Isles, Bilgewater, Mount
+Targon), and which is a yordle, a Void creature or a Darkin. The lists are written by hand, so check
+them against the [League of Legends wiki](https://wiki.leagueoflegends.com) when you change them.
+Leave out champions whose lore is ambiguous or has changed (for example someone born in one region
+and living in another) rather than risk an unfair question. A region question's wrong options come
+from other regions, so a champion may be a yordle or a marksman and still be a fair option.
+
+### Esports questions
+
+Esports questions are pick questions with `"category": "esports"`. The two so far ask which
+champion has a skin from the esports team T1 (including the earlier SKT T1 line, `medium`) and
+which has a Worlds skin (`hard`). Their lists come from the skin names in Data Dragon, not from
+memory, and every wrong option is a champion with no esports skin at all (no T1, Worlds, Victorious,
+Dragonslayer or MSI skin). Riot adds esports skins over time, so a champion in a wrong list can
+become correct: when a new esports skin line appears, check the wrong lists.
 
 ### Restricting a question
 

@@ -97,7 +97,7 @@ export type ItemDataFile = DataFile<Item>;
 const EntityIdListSchema = z.array(z.string().min(1)).min(1);
 
 /** What kind of knowledge a question tests; for grouping and, later, filtering. */
-export const QuestionCategorySchema = z.enum(['stats', 'trivia']);
+export const QuestionCategorySchema = z.enum(['stats', 'trivia', 'lore', 'esports']);
 export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 
 /**

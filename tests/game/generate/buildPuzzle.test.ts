@@ -180,18 +180,25 @@ describe('buildPuzzle with question difficulty', () => {
 });
 
 describe('findPuzzleProblems', () => {
-  it('flags a tampered answer', () => {
-    const puzzle = buildPuzzle('2026-06-01', data, questions);
-    const round = puzzle.rounds[0];
-    if (!round) throw new Error('no round');
-    const wrong = round.optionIds.find((id) => id !== round.answerId) ?? '';
-    const tampered = {
-      ...puzzle,
-      rounds: [{ ...round, answerId: wrong }, ...puzzle.rounds.slice(1)],
-    };
-
-    expect(findPuzzleProblems(tampered, everyone, questions).join()).toContain(
-      'answer is not the highest',
+  const puzzle = buildPuzzle('2026-06-01', data, questions);
+  const tamper = (kind: 'stat' | 'pick') => {
+    const index = puzzle.rounds.findIndex(
+      (round) => questions.find(({ id }) => id === round.questionId)?.kind === kind,
     );
+    const round = puzzle.rounds[index];
+    if (!round) throw new Error(`no ${kind} round on this day`);
+    const wrong = round.optionIds.find((id) => id !== round.answerId) ?? '';
+    const rounds = puzzle.rounds.map((each, i) =>
+      i === index ? { ...each, answerId: wrong } : each,
+    );
+    return findPuzzleProblems({ ...puzzle, rounds }, everyone, questions).join();
+  };
+
+  it('flags a tampered answer to a stat question', () => {
+    expect(tamper('stat')).toContain('answer is not the highest');
+  });
+
+  it('flags a tampered answer to a pick question', () => {
+    expect(tamper('pick')).toContain("answer is not in the question's correct list");
   });
 });

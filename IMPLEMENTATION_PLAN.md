@@ -183,6 +183,18 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Question templates reject unknown keys
 - [x] Required `category` (`stats` / `trivia`) and `difficulty` (`easy` / `medium` / `hard` / `variable`) per question; rounds are tiered easy, easy, medium, hard, hard and a fixed difficulty is only asked in its tier
 
+### Phase 5c4 - Lore questions (done)
+
+- [x] Category `lore`; 12 pick questions: champions from each of 9 regions (Demacia, Noxus, Freljord, Ionia, Piltover, Zaun, Shadow Isles, Bilgewater, Mount Targon), yordles, Void creatures, Darkin
+- Limit: options are still champions or items, so questions whose answers are not champions (e.g. "Which region is Jinx from?") need a new option kind.
+- Lore lists are hand-written; the wiki is the source to check them against.
+
+### Phase 5c5 - Esports questions (done)
+
+- [x] Category `esports`; 2 pick questions about esports skins: T1 / SKT T1 (`medium`) and Worlds (`hard`)
+- Lists were built from Data Dragon skin names (patch 16.20.1); every wrong option has no esports-line skin at all (Victorious, T1, Worlds, Dragonslayer, MSI).
+- Open: questions about pro play itself (teams, players, tournament results) need a source we can check and, for teams or players, a new option kind.
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)
