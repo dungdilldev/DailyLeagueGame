@@ -49,8 +49,9 @@ export function ResultsView({
   };
 
   return (
-    <section aria-labelledby="results-heading">
-      <h2 id="results-heading" class="question">
+    <section class="results-panel" aria-labelledby="results-heading">
+      <p class="results-panel__eyebrow">{isToday ? 'Today’s result' : 'Earlier puzzle'}</p>
+      <h2 id="results-heading" class="results-panel__score">
         You got{' '}
         <strong>
           {correct}/{results.length}
@@ -62,9 +63,14 @@ export function ResultsView({
 
       <ol class="results">
         {puzzle.rounds.map((round, i) => (
-          <li key={round.questionId}>
-            <span aria-hidden="true">{results[i] ? '\u{1F7E9}' : '\u{1F7E5}'}</span>{' '}
-            {round.statLabel}
+          <li key={round.questionId} class="results__row">
+            <span
+              class={`result-tile ${results[i] ? 'result-tile--ok' : 'result-tile--bad'}`}
+              aria-hidden="true"
+            >
+              {results[i] ? '✓' : '✕'}
+            </span>
+            <span class="results__label">{round.statLabel}</span>
             <span class="visually-hidden">{results[i] ? ' (correct)' : ' (wrong)'}</span>
           </li>
         ))}

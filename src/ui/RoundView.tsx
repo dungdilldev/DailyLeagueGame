@@ -4,6 +4,7 @@ import type { Entity } from '../data/schema';
 import { isCorrect } from '../game/progress';
 import { displayValue } from '../game/roundDisplay';
 import { OptionCard, type CardState } from './OptionCard';
+import { RoundProgress } from './RoundProgress';
 
 interface RoundViewProps {
   round: Round;
@@ -16,7 +17,14 @@ interface RoundViewProps {
   chosenId: string | undefined;
   onChoose: (optionId: string) => void;
   onNext: () => void;
+  /** Results of the rounds answered so far, for the progress tiles; omitted in endless mode. */
+  results?: readonly boolean[];
 }
+
+const SUBJECT_LABELS: Record<Round['subject'], string> = {
+  champion: 'Champions',
+  item: 'Items',
+};
 
 function cardState(round: Round, optionId: string, chosenId: string | undefined): CardState {
   if (chosenId === undefined) return 'idle';
@@ -41,6 +49,7 @@ export function RoundView({
   chosenId,
   onChoose,
   onNext,
+  results,
 }: RoundViewProps) {
   const nextButton = useRef<HTMLButtonElement>(null);
   const revealed = chosenId !== undefined;
@@ -54,12 +63,18 @@ export function RoundView({
   const answerName = options.get(round.answerId)?.name ?? round.answerId;
 
   return (
-    <section aria-labelledby="question">
-      <p class="progress">
-        {totalRounds === undefined
-          ? `Question ${String(roundNumber)}`
-          : `Round ${String(roundNumber)} of ${String(totalRounds)}`}
-      </p>
+    <section class="round" aria-labelledby="question">
+      <div class="round__meta">
+        <p class="progress">
+          {totalRounds === undefined
+            ? `Question ${String(roundNumber)}`
+            : `Round ${String(roundNumber)} of ${String(totalRounds)}`}
+        </p>
+        <span class="chip">{SUBJECT_LABELS[round.subject]}</span>
+      </div>
+      {totalRounds !== undefined && results && (
+        <RoundProgress current={roundNumber - 1} total={totalRounds} results={results} />
+      )}
       <h2 id="question" class="question">
         {round.question}
       </h2>
@@ -88,7 +103,9 @@ export function RoundView({
       <div class="feedback" role="status">
         {revealed && (
           <>
-            <p class={isCorrect(round, chosenId) ? 'feedback__ok' : 'feedback__bad'}>
+            <p
+              class={`feedback__banner ${isCorrect(round, chosenId) ? 'feedback__ok' : 'feedback__bad'}`}
+            >
               {isCorrect(round, chosenId) ? 'Correct!' : `Not quite. It was ${answerName}.`}
             </p>
             <button type="button" class="button" ref={nextButton} onClick={onNext}>

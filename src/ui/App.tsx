@@ -6,6 +6,7 @@ import { getBrowserStorage } from '../storage/progressStore';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
 import { Footer } from './Footer';
+import { Logo } from './Logo';
 import { ModeNav } from './ModeNav';
 import { PuzzleScreen } from './PuzzleScreen';
 import { cleanSeed, randomSeed } from './randomSeed';
@@ -106,9 +107,12 @@ export function App() {
 
   return (
     <div class="app">
-      <header>
-        <h1>Summoner&apos;s Quiz</h1>
-        <p class="tagline">Daily League of Legends higher-or-lower.</p>
+      <header class="masthead">
+        <Logo />
+        <div>
+          <h1 class="masthead__title">Summoner&apos;s Quiz</h1>
+          <p class="tagline">Daily League of Legends higher-or-lower</p>
+        </div>
       </header>
       <main>
         {isEndlessMode ? (

@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
 import type { Entity, StatSubject } from '../data/schema';
-import { isComplete, submitAnswer, validAnswers } from '../game/progress';
+import { isComplete, roundResults, submitAnswer, validAnswers } from '../game/progress';
 import { progressSlot, type GameMode } from '../game/gameMode';
 import { currentStreak } from '../game/streak';
 import { completedDates, loadSavedDays, saveDay, type StorageLike } from '../storage/progressStore';
@@ -70,6 +70,7 @@ export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }:
       round={round}
       roundNumber={roundIndex + 1}
       totalRounds={puzzle.rounds.length}
+      results={roundResults(puzzle, answers)}
       options={entities[round.subject]}
       chosenId={revealing ? answers[roundIndex] : undefined}
       onChoose={choose}
