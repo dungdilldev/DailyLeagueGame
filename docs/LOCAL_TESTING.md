@@ -27,6 +27,16 @@ Open http://localhost:5173/ . The page reloads when you edit code. Stop with `Ct
 Only today and the previous 7 days can be opened. Any other date in the address falls back to today.
 Days played after their own date do not count towards the streak.
 
+### Endless mode (testing every question)
+
+Open http://localhost:5173/?mode=endless, or use the "Endless mode (for testing)" link under the daily puzzle. It shows random questions one after another with no end. Nothing is saved and nothing affects your streak.
+
+- **Coverage table** at the bottom lists every question with how often it was shown and answered correctly. Questions not seen yet are red, so you can see at a glance whether everything is represented.
+- **Question** and **Difficulty** menus force one question and/or one difficulty. If a question cannot be built at that difficulty (movement speed in the easiest round, for example) the page says so.
+- **Skip question** shows the next one without answering. **New seed** starts over with a fresh random sequence and clears the table.
+- **Seed:** the same seed always gives the same sequence of questions. It is kept in the address (`?mode=endless&seed=abc123`), so reloading repeats it and you can share a link to reproduce a problem.
+- It uses the newest data even if that only starts tomorrow, so new questions can be checked early.
+
 ### Reset your progress
 
 Progress and streak live in your browser. In the browser console (F12) run:
@@ -70,22 +80,22 @@ npm run data:refresh
 ```
 
 Fetches the latest champion data from Riot's Data Dragon and the LoL Wiki and updates
-`public/data/game-data.json`. It needs an internet connection. If the data did not change, the file
-stays the same. If it did change, the new data becomes a snapshot that starts tomorrow (UTC) and the
+`public/data/champions.json` and `public/data/items.json`. It needs an internet connection. If the
+data of a file did not change, that file stays the same. If it did change, the new data becomes a snapshot that starts tomorrow (UTC) and the
 previous one is kept, so today's puzzle does not change.
 
 Afterwards run `npm test`: it generates a year of puzzles from the data and checks every one.
 
 ## Troubleshooting
 
-| Problem                                     | Fix                                                                            |
-| ------------------------------------------- | ------------------------------------------------------------------------------ |
-| `Executable doesn't exist` in browser tests | Run `npx playwright install chromium`                                          |
-| Port 5173 or 4173 already in use            | Stop the other dev server, or use `npm run dev -- --port 5200`                 |
-| Page says "Something went wrong loading"    | `public/data/game-data.json` is missing or invalid: run `npm run data:refresh` |
-| Champion icons are blank                    | They load from Riot's CDN, so check your internet connection                   |
-| Data refresh fails on the wiki step         | The wiki may be down or changed its format; the error says which. Retry later  |
-| You see an already-finished day             | Reset your progress (see above)                                                |
+| Problem                                     | Fix                                                                                            |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `Executable doesn't exist` in browser tests | Run `npx playwright install chromium`                                                          |
+| Port 5173 or 4173 already in use            | Stop the other dev server, or use `npm run dev -- --port 5200`                                 |
+| Page says "Something went wrong loading"    | `public/data/champions.json` or `items.json` is missing or invalid: run `npm run data:refresh` |
+| Champion icons are blank                    | They load from Riot's CDN, so check your internet connection                                   |
+| Data refresh fails on the wiki step         | The wiki may be down or changed its format; the error says which. Retry later                  |
+| You see an already-finished day             | Reset your progress (see above)                                                                |
 
 ## What cannot be tested locally
 

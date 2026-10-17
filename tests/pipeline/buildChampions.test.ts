@@ -1,18 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import { buildChampion, buildChampions } from '../../pipeline/buildChampions';
 import { buildItems } from '../../pipeline/buildItems';
-import { STAT_REGISTRY } from '../../pipeline/stats';
-import { isItemStat, type ChampionStat } from '../../pipeline/stats/types';
+import { CHAMPION_STATS, ITEM_STATS } from '../../pipeline/stats';
 import {
-  findProblems,
+  findEntityProblems,
+  findQuestionListProblems,
   MIN_CHAMPION_COUNT,
   MIN_ITEM_COUNT,
   MIN_VALUES_PER_STAT,
 } from '../../pipeline/validate/gameData';
+import type { Question } from '../../src/data/questions';
+import type { Champion, Item } from '../../src/data/schema';
 import { makeInput, makeItemInput } from './fixtures';
 
-const championStats = STAT_REGISTRY.filter((stat): stat is ChampionStat => !isItemStat(stat));
-const itemStats = STAT_REGISTRY.filter(isItemStat);
+const championStats = CHAMPION_STATS;
+const itemStats = ITEM_STATS;
 
 describe('buildChampion', () => {
   it('maps summary fields and records every champion stat', () => {
@@ -80,6 +82,13 @@ describe('buildItems', () => {
   });
 });
 
+function findProblems(data: { champions: Champion[]; items: Item[] }): string[] {
+  return [
+    ...findEntityProblems('champion', data.champions, CHAMPION_STATS, MIN_CHAMPION_COUNT),
+    ...findEntityProblems('item', data.items, ITEM_STATS, MIN_ITEM_COUNT),
+  ];
+}
+
 describe('findProblems', () => {
   const roster = (count: number) =>
     Array.from({ length: count }, (_, i) => makeInput(`Champ${String(i)}`));
@@ -102,19 +111,17 @@ describe('findProblems', () => {
   });
 
   it('accepts a complete set of champions and items', () => {
-    expect(findProblems(build(), STAT_REGISTRY)).toEqual([]);
+    expect(findProblems(build())).toEqual([]);
   });
 
   it('flags too few champions or too few items', () => {
-    expect(findProblems(build(roster(5)), STAT_REGISTRY).join()).toContain('Only 5 champions');
-    expect(findProblems(build(undefined, itemRoster(3)), STAT_REGISTRY).join()).toContain(
-      'Only 3 items',
-    );
+    expect(findProblems(build(roster(5))).join()).toContain('Only 5 champions');
+    expect(findProblems(build(undefined, itemRoster(3))).join()).toContain('Only 3 items');
   });
 
   it('flags duplicate ids', () => {
     const data = build([...roster(MIN_CHAMPION_COUNT), makeInput('Champ0')]);
-    expect(findProblems(data, STAT_REGISTRY).join()).toContain('Duplicate champion id "Champ0"');
+    expect(findProblems(data).join()).toContain('Duplicate champion id "Champ0"');
   });
 
   it('tolerates a few champions missing a stat (e.g. brand new, not on the wiki yet)', () => {
@@ -122,7 +129,7 @@ describe('findProblems', () => {
       ...roster(MIN_CHAMPION_COUNT).slice(1),
       makeInput('Fresh', { wiki: undefined }),
     ];
-    expect(findProblems(build(champions), STAT_REGISTRY)).toEqual([]);
+    expect(findProblems(build(champions))).toEqual([]);
   });
 
   it('flags a champion stat that most champions lack, which means a source broke', () => {
@@ -130,16 +137,14 @@ describe('findProblems', () => {
       ...input,
       patchCount: undefined,
     }));
-    expect(findProblems(build(champions), STAT_REGISTRY).join()).toContain('Stat "patchCount"');
+    expect(findProblems(build(champions)).join()).toContain('Stat "patchCount"');
   });
 
   it('flags an item stat that too few items have, since no round could be built', () => {
     const sparse = itemRoster(MIN_ITEM_COUNT).map((input, index) =>
       index < MIN_VALUES_PER_STAT - 1 ? input : { ...input, wiki: { ...input.wiki, stats: {} } },
     );
-    expect(findProblems(build(undefined, sparse), STAT_REGISTRY).join()).toContain(
-      'Stat "itemAttackDamage"',
-    );
+    expect(findProblems(build(undefined, sparse)).join()).toContain('Stat "itemAttackDamage"');
   });
 
   it('accepts an item stat that only some items have, as long as enough do', () => {
@@ -154,6 +159,42 @@ describe('findProblems', () => {
     const items = itemRoster(MIN_ITEM_COUNT * 3).map((input, index) =>
       index % 3 === 0 ? input : withoutAp(input),
     );
-    expect(findProblems(build(undefined, items), STAT_REGISTRY)).toEqual([]);
+    expect(findProblems(build(undefined, items))).toEqual([]);
+  });
+});
+
+describe('findQuestionListProblems', () => {
+  const question = (overrides: Partial<Question>): Question => ({
+    id: 'q',
+    stat: 'baseHealth',
+    question: 'Which champion has the highest base health?',
+    subject: 'champion',
+    statMeta: {
+      id: 'baseHealth',
+      label: 'Base health',
+      format: { kind: 'number' },
+      source: 'test',
+    },
+    ...overrides,
+  });
+  const known = { champion: new Set(['Ahri', 'Zed']), item: new Set(['3031']) };
+
+  it('accepts lists that only name champions or items that exist', () => {
+    const questions = [question({ correct: ['Ahri'], wrong: ['Zed'], exclude: [] })];
+    expect(findQuestionListProblems(questions, known)).toEqual([]);
+  });
+
+  it('flags an id that is gone, in any of the three lists', () => {
+    const questions = [question({ correct: ['Gone1'], wrong: ['Gone2'], exclude: ['Gone3'] })];
+    expect(findQuestionListProblems(questions, known)).toEqual([
+      'Question "q" lists unknown champion id "Gone1"',
+      'Question "q" lists unknown champion id "Gone2"',
+      'Question "q" lists unknown champion id "Gone3"',
+    ]);
+  });
+
+  it('looks up ids among items for an item question', () => {
+    const questions = [question({ subject: 'item', exclude: ['Ahri'] })];
+    expect(findQuestionListProblems(questions, known)).toHaveLength(1);
   });
 });

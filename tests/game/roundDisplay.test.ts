@@ -4,7 +4,7 @@ import { displayValue } from '../../src/game/roundDisplay';
 import { formatStatValue } from '../../src/game/statFormat';
 
 const base: Round = {
-  statId: 'baseHealth',
+  questionId: 'baseHealth',
   subject: 'champion',
   statLabel: 'Base health',
   question: 'Which champion has the highest base health?',

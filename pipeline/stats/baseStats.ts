@@ -1,5 +1,5 @@
 import type { ChampionDetail } from '../sources/dataDragon';
-import { DATA_DRAGON_SOURCE, highestQuestion, type ChampionStat } from './types';
+import { DATA_DRAGON_SOURCE, type ChampionStat } from './types';
 
 type BaseStatKey = keyof ChampionDetail['stats'];
 
@@ -8,7 +8,6 @@ function baseStat(id: string, label: string, key: BaseStatKey): ChampionStat {
   return {
     id,
     label,
-    question: highestQuestion(label),
     source: DATA_DRAGON_SOURCE,
     extract: ({ detail }) => detail.stats[key],
   };

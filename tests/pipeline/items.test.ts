@@ -92,11 +92,4 @@ describe('item stats', () => {
     const noAd = makeItemInput('2', { wiki: makeWikiItem('2', { stats: { hp: 300 } }) });
     expect(itemAttackDamage.extract(noAd)).toBeUndefined();
   });
-
-  it('all item questions ask about items, and are phrased so the highest value is the answer', () => {
-    for (const stat of [itemCost, itemGoldEfficiency, itemAttackDamage]) {
-      expect(stat.subject).toBe('item');
-      expect(stat.question).toMatch(/^Which item .*\?$/);
-    }
-  });
 });

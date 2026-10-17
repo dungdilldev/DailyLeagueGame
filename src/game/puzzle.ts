@@ -3,7 +3,8 @@ import type { StatFormat, StatSubject } from '../data/schema';
 export const OPTIONS_PER_ROUND = 4;
 
 export interface Round {
-  statId: string;
+  /** Id of the question template this round was built from. */
+  questionId: string;
   /** Whether the options are champions or items. */
   subject: StatSubject;
   /** Shown to the player, e.g. "Base health". */
@@ -22,7 +23,5 @@ export interface Round {
 export interface Puzzle {
   /** UTC day this puzzle belongs to, YYYY-MM-DD. */
   date: string;
-  /** Patch of the data snapshot the values come from. */
-  patch: string;
   rounds: Round[];
 }

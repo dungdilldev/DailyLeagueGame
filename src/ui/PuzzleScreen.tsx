@@ -1,11 +1,11 @@
 import { useMemo } from 'preact/hooks';
-import type { GameDataFile } from '../data/schema';
+import type { GameData } from '../data/questions';
 import { createDailyPuzzle } from '../game/dailyPuzzle';
 import type { StorageLike } from '../storage/progressStore';
 import { Game } from './Game';
 
 interface PuzzleScreenProps {
-  file: GameDataFile;
+  data: GameData;
   /** The puzzle day being played (today, or an earlier day from the archive). */
   date: string;
   /** The real current UTC day. */
@@ -15,21 +15,14 @@ interface PuzzleScreenProps {
 }
 
 /** Builds the puzzle for `date` from the loaded data and plays it. */
-export function PuzzleScreen({ file, date, today, storage, shareUrl }: PuzzleScreenProps) {
+export function PuzzleScreen({ data, date, today, storage, shareUrl }: PuzzleScreenProps) {
   const daily = useMemo(() => {
     try {
-      const { puzzle, snapshot } = createDailyPuzzle(file, date);
-      return {
-        puzzle,
-        entities: {
-          champion: new Map(snapshot.champions.map((champion) => [champion.id, champion])),
-          item: new Map(snapshot.items.map((item) => [item.id, item])),
-        },
-      };
+      return createDailyPuzzle(data, date);
     } catch (error) {
       return { error: error instanceof Error ? error.message : 'Unknown error' };
     }
-  }, [file, date]);
+  }, [data, date]);
 
   if ('error' in daily) {
     return (

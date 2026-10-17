@@ -27,7 +27,9 @@ pipeline/
   validate/    Sanity checks for the fetched champion data.
   snapshots.ts Decides when new data takes effect (see Domain Rules).
 public/
-  data/        Generated output: game-data.json (stat definitions + champion snapshots), committed by CI.
+  data/        Generated output, committed by CI: champions.json (champion stats + snapshots) and items.json (item stats + snapshots).
+data/
+  questions.json  Hand-edited question templates (outside public/: it is bundled into the app, checked by Prettier and by tests).
 tests/         Mirrors src/ and pipeline/ structure; tests/support has test-only helpers.
 ```
 
@@ -42,20 +44,22 @@ Keep this list accurate, it is the first thing to check. Node 22+ (see `.nvmrc`)
 - `npm run test:e2e` - Playwright smoke tests against a fresh production build (first time: `npx playwright install chromium`)
 - `npm run lint` / `npm run typecheck`
 - `npm run format` / `npm run format:check` - Prettier
-- `npm run data:refresh` - fetch Data Dragon, update `public/data/game-data.json` (needs network)
+- `npm run data:refresh` - fetch Data Dragon, update `public/data/champions.json` and `items.json` (needs network)
 
 ## Domain Rules (non-obvious, easy to get wrong)
 
-- **Puzzles are generated in the browser, not stored.** `createDailyPuzzle(data, date)` builds the day's puzzle from `game-data.json`; there are no puzzle files. Answers are therefore inspectable by anyone: this is a casual game, do not treat them as secret.
+- **Puzzles are generated in the browser, not stored.** `createDailyPuzzle(data, date)` builds the day's puzzle from the two data files and `data/questions.json`; there are no puzzle files. Answers are therefore inspectable by anyone: this is a casual game, do not treat them as secret.
 - **Determinism:** the same date + same data snapshot must always produce the same puzzle, for every player. Use the seeded PRNG (seed = date string), never `Math.random()`, and no clock inside generator code.
 - **Archive:** players can open today and the previous `ARCHIVE_DAYS` (7) days via `?date=YYYY-MM-DD` or the day buttons; anything else falls back to today. Days played after their own date are saved with `late: true` and do not count for the streak. Snapshots are kept long enough to rebuild every archive day exactly as it was.
-- **Snapshots:** `game-data.json` holds the snapshot in effect plus any upcoming one. New or changed data becomes a snapshot with `effectiveFrom` = next UTC day, so a day's puzzle never changes once that day has started. The client picks the newest snapshot with `effectiveFrom <= today`. Never edit a snapshot that is already in effect.
+- **Three data files, three jobs:** `champions.json` has all champion stats, `items.json` all item stats (both generated), `data/questions.json` the question templates (hand-edited). A question names one stat (`stat`), so it is about champions or items depending on which file defines that stat. Optional lists narrow who can appear: `correct` (only these can be the answer), `wrong` (only these can be the other options), `exclude` (never used). An id may be in only one list. Lists are checked against the data on every refresh: an id that no longer exists fails the run. A question is asked at most once a day.
+- **Snapshots:** each data file holds its own snapshot in effect plus any upcoming one; a day uses the snapshot of each file in effect on that day. New or changed data becomes a snapshot with `effectiveFrom` = next UTC day, so a day's puzzle never changes once that day has started. The client picks the newest snapshot with `effectiveFrom <= today`. Never edit a snapshot that is already in effect.
 - **Date handling:** the "day" is defined in **UTC**. Never use local time to pick the puzzle.
 - **Fair, escalating rounds:** all 4 champions in a round have distinct values. The relative gap between first and second place must fall in the round's band from `pipeline/generate/config.ts`; bands narrow each round so later rounds are harder. Win rate / pick rate comparisons (Phase 5) should stay within the same role and patch.
 - **Data sources:** Data Dragon (official) and the LoL Wiki: champion data (release dates), item data and gold value table (Lua modules, parsed by `luaTable.ts`) and each champion's "Patch history" page (via a few batched API calls). Each lives in one file under `pipeline/sources/`. A stat may return `undefined` for an entity (e.g. not on the wiki yet); validation requires 95% coverage per stat (a stat can lower that) and at least 8 values.
 - **Champions and items:** every stat has a `subject`. A round compares four champions or four items, never a mix, and nothing appears twice in a day. Item pool: completed legendary items and boots sold on Summoner's Rift (`items/selectItems.ts`). Item gold efficiency counts the item's stats only (wiki gold values), not passives, and is left out for an item with a stat of unknown value instead of guessing. "Patches with changes" counts patch-history entries, which include bug fixes and hotfixes, so its question says "patch notes".
+- **Endless mode** (`?mode=endless[&seed=...]`, `src/game/endless.ts`, `EndlessScreen`) is a testing tool: random questions, uniform over stats, optional forced question/difficulty, a coverage table. It is seeded, saves nothing and never touches the streak. Keep it working when adding stats; its tests check that every stat and difficulty appears.
 - **Generator changes move old puzzles:** the puzzle is generated from date + data + stat list + generator code. Adding stats or changing the generator changes the puzzle for every date, including today and the archive. Saved answers that no longer fit are dropped automatically.
-- **Stat provenance:** each stat definition carries its `source`, published in `game-data.json`. Stat definitions (label, question, format) are data too: the client has no stat-specific code.
+- **Stat provenance:** each stat definition carries its `source`, published in its data file. Stat definitions (label, format) and questions are data too: the client has no stat-specific code.
 - **No official win-rate API exists** (popularity stats are parked, see plan Phase 5b). Riot does not expose aggregate champion win/pick rate. Whatever source is used must be isolated behind the `pipeline/sources` interface so it can be swapped (see the plan, Risks).
 - **Riot legal:** include the required "not endorsed by Riot Games" disclaimer in the footer. Do not host Riot assets beyond what Data Dragon / Community Dragon terms allow; hotlink or fetch via CI per their terms.
 

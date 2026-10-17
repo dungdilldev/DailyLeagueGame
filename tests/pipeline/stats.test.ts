@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { STAT_REGISTRY } from '../../pipeline/stats';
+import { CHAMPION_STATS, ITEM_STATS } from '../../pipeline/stats';
 import { armor, baseHealth } from '../../pipeline/stats/baseStats';
 import { RELEASE_DATE_EPOCH, releaseDate } from '../../pipeline/stats/releaseDate';
 import { skinCount } from '../../pipeline/stats/skinCount';
@@ -76,13 +76,11 @@ describe('toStatMeta', () => {
   });
 });
 
-describe('STAT_REGISTRY', () => {
-  it('has unique stat ids', () => {
-    const ids = STAT_REGISTRY.map((stat) => stat.id);
-    expect(new Set(ids).size).toBe(ids.length);
-  });
-
-  it('gives every stat a question that does not need the label to make sense', () => {
-    for (const stat of STAT_REGISTRY) expect(stat.question.endsWith('?')).toBe(true);
+describe('stat lists', () => {
+  it('have unique stat ids within each data file', () => {
+    for (const stats of [CHAMPION_STATS, ITEM_STATS]) {
+      const ids = stats.map((stat) => stat.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    }
   });
 });

@@ -1,30 +1,55 @@
-import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { GameDataFileSchema, type GameDataFile } from '../../src/data/schema';
+import type { GameData } from '../../src/data/questions';
 import { createDailyPuzzle } from '../../src/game/dailyPuzzle';
+import { realGameData } from '../support/realGameData';
 
-const real = GameDataFileSchema.parse(
-  JSON.parse(readFileSync('public/data/game-data.json', 'utf8')),
-);
-const currentSnapshot = real.snapshots.at(-1);
-if (!currentSnapshot) throw new Error('no snapshot in game data');
+const currentChampions = realGameData.champions.snapshots.at(-1);
+const currentItems = realGameData.items.snapshots.at(-1);
+if (!currentChampions || !currentItems) throw new Error('no snapshot in game data');
 
 describe('createDailyPuzzle', () => {
   it('gives every player the same puzzle for the same date', () => {
-    expect(createDailyPuzzle(real, '2030-05-05').puzzle).toEqual(
-      createDailyPuzzle(real, '2030-05-05').puzzle,
+    expect(createDailyPuzzle(realGameData, '2030-05-05').puzzle).toEqual(
+      createDailyPuzzle(realGameData, '2030-05-05').puzzle,
     );
   });
 
-  it('keeps a day on its snapshot even after a newer snapshot is published for later days', () => {
-    const upcoming = { ...currentSnapshot, patch: 'next', effectiveFrom: '2030-05-06' };
-    // Only the current snapshot, so the test does not depend on how many the real file holds.
-    const alone: GameDataFile = { ...real, snapshots: [currentSnapshot] };
-    const withUpcoming: GameDataFile = { ...real, snapshots: [currentSnapshot, upcoming] };
+  it('keeps a day on its snapshots even after newer ones are published for later days', () => {
+    // A shifted copy of the data, so the later snapshot would give a different puzzle.
+    const shifted = {
+      ...currentChampions,
+      effectiveFrom: '2030-05-06',
+      entities: currentChampions.entities.slice(0, -20),
+    };
+    // Only the current snapshots, so the test does not depend on how many the real files hold.
+    const alone: GameData = {
+      ...realGameData,
+      champions: { ...realGameData.champions, snapshots: [currentChampions] },
+      items: { ...realGameData.items, snapshots: [currentItems] },
+    };
+    const withUpcoming: GameData = {
+      ...alone,
+      champions: { ...alone.champions, snapshots: [currentChampions, shifted] },
+    };
 
     const before = createDailyPuzzle(alone, '2030-05-05').puzzle;
-    const sameDayAfterUpdate = createDailyPuzzle(withUpcoming, '2030-05-05').puzzle;
-    expect(sameDayAfterUpdate).toEqual(before);
-    expect(createDailyPuzzle(withUpcoming, '2030-05-06').puzzle.patch).toBe('next');
+    expect(createDailyPuzzle(withUpcoming, '2030-05-05').puzzle).toEqual(before);
+    const lastChampion = currentChampions.entities.at(-1);
+    const after = createDailyPuzzle(withUpcoming, '2030-05-06').entities;
+    expect(lastChampion && after.champion.has(lastChampion.id)).toBe(false);
+  });
+
+  it('versions champions and items independently', () => {
+    const upcoming = { ...currentItems, effectiveFrom: '2030-05-06', entities: [] };
+    const data: GameData = {
+      ...realGameData,
+      items: { ...realGameData.items, snapshots: [currentItems, upcoming] },
+    };
+    expect(createDailyPuzzle(data, '2030-05-05').entities.item.size).toBe(
+      currentItems.entities.length,
+    );
+    expect(createDailyPuzzle(data, '2030-05-06').entities.champion.size).toBe(
+      currentChampions.entities.length,
+    );
   });
 });

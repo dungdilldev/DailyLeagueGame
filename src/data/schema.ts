@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-/** Stat ids are defined by the stat registry in `pipeline/stats`; the client treats them as opaque. */
+/** Stat ids are defined by the stat lists in `pipeline/stats`; the client treats them as opaque. */
 export type StatId = string;
 
 const IsoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
@@ -22,12 +22,8 @@ export type StatFormat = z.infer<typeof StatFormatSchema>;
 /** Everything the game needs to know about a stat besides the values themselves. */
 export const StatMetaSchema = z.object({
   id: z.string().min(1),
-  /** Whether the stat describes champions or items. */
-  subject: StatSubjectSchema.default('champion'),
   /** Shown to the player, e.g. "Base health". */
   label: z.string().min(1),
-  /** The full question; a higher value is always the right answer. */
-  question: z.string().min(1),
   format: StatFormatSchema,
   /** Where the values came from, so wrong-looking numbers can be traced. */
   source: z.string().min(1),
@@ -62,23 +58,74 @@ export const ItemSchema = z.object(EntityFields);
 export type Item = z.infer<typeof ItemSchema>;
 
 /**
- * Game data as of one patch. A snapshot is used for puzzle days from `effectiveFrom` on,
- * so a data update never changes the puzzle of a day that has already started.
+ * One data file's content as of one patch. A snapshot is used for puzzle days from
+ * `effectiveFrom` on, so a data update never changes the puzzle of a day that has already started.
  */
-export const SnapshotSchema = z.object({
-  /** Game patch the data was taken from, e.g. "16.20.1". */
-  patch: z.string().min(1),
-  /** First UTC day (YYYY-MM-DD) whose puzzle is generated from this snapshot. */
-  effectiveFrom: IsoDateSchema,
-  champions: z.array(ChampionSchema),
-  /** Absent in snapshots published before items were added. */
-  items: z.array(ItemSchema).default([]),
-});
-export type Snapshot = z.infer<typeof SnapshotSchema>;
+function snapshotSchema<T extends z.ZodType>(entity: T) {
+  return z.object({
+    /** Game patch the data was taken from, e.g. "16.20.1". */
+    patch: z.string().min(1),
+    /** First UTC day (YYYY-MM-DD) whose puzzle is generated from this snapshot. */
+    effectiveFrom: IsoDateSchema,
+    entities: z.array(entity),
+  });
+}
 
-/** The published data file: stat definitions plus the current (and any upcoming) snapshot. */
-export const GameDataFileSchema = z.object({
-  stats: z.array(StatMetaSchema).min(1),
-  snapshots: z.array(SnapshotSchema).min(1),
-});
-export type GameDataFile = z.infer<typeof GameDataFileSchema>;
+/** A published data file: the stats it holds plus the current (and any upcoming) snapshot. */
+function dataFileSchema<T extends z.ZodType>(entity: T) {
+  return z.object({
+    stats: z.array(StatMetaSchema).min(1),
+    snapshots: z.array(snapshotSchema(entity)).min(1),
+  });
+}
+
+export const ChampionDataFileSchema = dataFileSchema(ChampionSchema);
+export const ItemDataFileSchema = dataFileSchema(ItemSchema);
+
+export interface Snapshot<T> {
+  patch: string;
+  effectiveFrom: string;
+  entities: T[];
+}
+export interface DataFile<T> {
+  stats: StatMeta[];
+  snapshots: Snapshot<T>[];
+}
+export type ChampionDataFile = DataFile<Champion>;
+export type ItemDataFile = DataFile<Item>;
+
+const EntityIdListSchema = z.array(z.string().min(1)).min(1);
+
+/**
+ * One kind of question, hand-written in `data/questions.json`. It asks for the highest value of
+ * one stat. By default any champion or item that has the stat can be the answer or a wrong
+ * option; the lists narrow that down.
+ */
+export const QuestionTemplateSchema = z
+  .object({
+    id: z.string().min(1),
+    /** Id of a stat in the champion data file or the item data file. */
+    stat: z.string().min(1),
+    /** The question shown to the player. A higher value is always the right answer. */
+    question: z.string().min(1),
+    /** If given, only these can be the right answer. */
+    correct: EntityIdListSchema.optional(),
+    /** If given, only these can be the wrong options. */
+    wrong: EntityIdListSchema.optional(),
+    /** Never used for this question, neither as the answer nor as a wrong option. */
+    exclude: EntityIdListSchema.optional(),
+  })
+  .refine(
+    ({ correct = [], wrong = [], exclude = [] }) =>
+      new Set([...correct, ...wrong, ...exclude]).size ===
+      correct.length + wrong.length + exclude.length,
+    { message: 'An id may appear in only one of correct, wrong and exclude' },
+  );
+export type QuestionTemplate = z.infer<typeof QuestionTemplateSchema>;
+
+export const QuestionFileSchema = z
+  .object({ questions: z.array(QuestionTemplateSchema).min(1) })
+  .refine(({ questions }) => new Set(questions.map(({ id }) => id)).size === questions.length, {
+    message: 'Question ids must be unique',
+  });
+export type QuestionFile = z.infer<typeof QuestionFileSchema>;

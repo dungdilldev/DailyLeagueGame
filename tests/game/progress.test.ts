@@ -9,7 +9,7 @@ import {
 } from '../../src/game/progress';
 
 const round = (answerId: string) => ({
-  statId: 'hp',
+  questionId: 'hp',
   subject: 'champion' as const,
   statLabel: 'Health',
   optionIds: ['A', 'B', 'C', 'D'],
@@ -18,7 +18,7 @@ const round = (answerId: string) => ({
   question: 'Which champion has the highest health?',
   values: { A: 4, B: 3, C: 2, D: 1 },
 });
-const puzzle: Puzzle = { date: '2026-01-01', patch: '1.0', rounds: [round('A'), round('B')] };
+const puzzle: Puzzle = { date: '2026-01-01', rounds: [round('A'), round('B')] };
 
 describe('submitAnswer', () => {
   it('appends the choice without mutating the input', () => {

@@ -1,20 +1,16 @@
-import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { GameDataFileSchema } from '../../../src/data/schema';
 import { addUtcDays } from '../../../src/game/date';
 import { buildPuzzle } from '../../../src/game/generate/buildPuzzle';
 import { ROUND_GAP_BANDS, ROUNDS_PER_DAY } from '../../../src/game/generate/config';
-import { pickSnapshot } from '../../../src/game/snapshot';
 import { findPuzzleProblems } from '../../support/findPuzzleProblems';
+import { realGameData, realPuzzleData } from '../../support/realGameData';
 
 // Uses the real published data, so this also guards against stat/band combinations that break.
 // In CI the daily data job runs this suite before publishing, so new data can never go live if
 // it cannot produce valid puzzles.
-const data = GameDataFileSchema.parse(
-  JSON.parse(readFileSync('public/data/game-data.json', 'utf8')),
-);
-const snapshot = pickSnapshot(data.snapshots, '2999-01-01');
-const everyone = [...snapshot.champions, ...snapshot.items];
+const data = realPuzzleData;
+const { questions } = realGameData;
+const everyone = [...data.champions, ...data.items];
 
 describe('difficulty config', () => {
   it('gets strictly harder: bands move to smaller gaps each round', () => {
@@ -28,33 +24,33 @@ describe('difficulty config', () => {
 
 describe('buildPuzzle', () => {
   it('is deterministic for the same date and data', () => {
-    expect(buildPuzzle('2026-06-01', snapshot, data.stats)).toEqual(
-      buildPuzzle('2026-06-01', snapshot, data.stats),
+    expect(buildPuzzle('2026-06-01', data, questions)).toEqual(
+      buildPuzzle('2026-06-01', data, questions),
     );
   });
 
   it('differs between dates', () => {
-    expect(buildPuzzle('2026-06-01', snapshot, data.stats)).not.toEqual(
-      buildPuzzle('2026-06-02', snapshot, data.stats),
+    expect(buildPuzzle('2026-06-01', data, questions)).not.toEqual(
+      buildPuzzle('2026-06-02', data, questions),
     );
   });
 
   it('produces a valid puzzle for a full year of dates', () => {
     for (let offset = 0; offset < 365; offset++) {
       const date = addUtcDays('2026-01-01', offset);
-      const puzzle = buildPuzzle(date, snapshot, data.stats);
+      const puzzle = buildPuzzle(date, data, questions);
 
       expect(puzzle.rounds, date).toHaveLength(ROUNDS_PER_DAY);
-      expect(findPuzzleProblems(puzzle, everyone), date).toEqual([]);
+      expect(findPuzzleProblems(puzzle, everyone, questions), date).toEqual([]);
     }
   });
 });
 
 describe('buildPuzzle with champions and items', () => {
-  const championIds = new Set(snapshot.champions.map((champion) => champion.id));
-  const itemIds = new Set(snapshot.items.map((item) => item.id));
+  const championIds = new Set(data.champions.map((champion) => champion.id));
+  const itemIds = new Set(data.items.map((item) => item.id));
   const days = Array.from({ length: 365 }, (_, offset) => addUtcDays('2026-01-01', offset));
-  const puzzles = days.map((date) => buildPuzzle(date, snapshot, data.stats));
+  const puzzles = days.map((date) => buildPuzzle(date, data, questions));
 
   it('uses champions for champion questions and items for item questions, never mixing them', () => {
     for (const puzzle of puzzles) {
@@ -62,9 +58,11 @@ describe('buildPuzzle with champions and items', () => {
         const allowed = round.subject === 'item' ? itemIds : championIds;
         expect(
           round.optionIds.every((id) => allowed.has(id)),
-          `${puzzle.date} ${round.statId}`,
+          `${puzzle.date} ${round.questionId}`,
         ).toBe(true);
-        expect(data.stats.find((stat) => stat.id === round.statId)?.subject).toBe(round.subject);
+        expect(questions.find((question) => question.id === round.questionId)?.subject).toBe(
+          round.subject,
+        );
       }
     }
   });
@@ -81,23 +79,56 @@ describe('buildPuzzle with champions and items', () => {
   });
 
   it('uses every item question at least once in a year', () => {
-    const used = new Set(puzzles.flatMap((puzzle) => puzzle.rounds.map((round) => round.statId)));
-    for (const stat of data.stats) expect(used.has(stat.id), stat.id).toBe(true);
+    const used = new Set(
+      puzzles.flatMap((puzzle) => puzzle.rounds.map((round) => round.questionId)),
+    );
+    for (const question of questions) expect(used.has(question.id), question.id).toBe(true);
   });
 
-  it('still builds puzzles from an older snapshot that has no items, using champion questions only', () => {
-    const withoutItems = { patch: snapshot.patch, champions: snapshot.champions, items: [] };
+  it('builds puzzles from champion questions only when there are no items', () => {
+    const withoutItems = { champions: data.champions, items: [] };
     for (const date of days.slice(0, 60)) {
-      const puzzle = buildPuzzle(date, withoutItems, data.stats);
+      const puzzle = buildPuzzle(date, withoutItems, questions);
       expect(puzzle.rounds.every((round) => round.subject === 'champion')).toBe(true);
-      expect(findPuzzleProblems(puzzle, snapshot.champions), date).toEqual([]);
+      expect(findPuzzleProblems(puzzle, data.champions, questions), date).toEqual([]);
     }
+  });
+});
+
+describe('buildPuzzle with answer lists', () => {
+  const [first] = data.champions;
+  const [second] = data.champions.slice(1);
+  if (!first || !second) throw new Error('not enough champions');
+
+  it('keeps every round valid and respects the lists of a question', () => {
+    const restricted = questions.map((question) =>
+      question.subject === 'champion'
+        ? { ...question, correct: [first.id], exclude: [second.id] }
+        : question,
+    );
+    for (let offset = 0; offset < 60; offset++) {
+      const date = addUtcDays('2026-01-01', offset);
+      const puzzle = buildPuzzle(date, data, restricted);
+      expect(findPuzzleProblems(puzzle, everyone, restricted), date).toEqual([]);
+      for (const round of puzzle.rounds.filter((r) => r.subject === 'champion')) {
+        expect(round.answerId).toBe(first.id);
+      }
+    }
+  });
+
+  it('skips a question whose lists cannot produce a round, and asks others instead', () => {
+    const impossible = questions.map((question, index) =>
+      index === 0 ? { ...question, correct: ['NoSuchEntity'] } : question,
+    );
+    const puzzle = buildPuzzle('2026-06-01', data, impossible);
+    expect(puzzle.rounds.some((round) => round.questionId === impossible[0]?.id)).toBe(false);
+    expect(puzzle.rounds).toHaveLength(ROUNDS_PER_DAY);
   });
 });
 
 describe('findPuzzleProblems', () => {
   it('flags a tampered answer', () => {
-    const puzzle = buildPuzzle('2026-06-01', snapshot, data.stats);
+    const puzzle = buildPuzzle('2026-06-01', data, questions);
     const round = puzzle.rounds[0];
     if (!round) throw new Error('no round');
     const wrong = round.optionIds.find((id) => id !== round.answerId) ?? '';
@@ -106,6 +137,8 @@ describe('findPuzzleProblems', () => {
       rounds: [{ ...round, answerId: wrong }, ...puzzle.rounds.slice(1)],
     };
 
-    expect(findPuzzleProblems(tampered, everyone).join()).toContain('answer is not the highest');
+    expect(findPuzzleProblems(tampered, everyone, questions).join()).toContain(
+      'answer is not the highest',
+    );
   });
 });

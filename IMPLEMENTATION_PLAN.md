@@ -35,13 +35,14 @@ pipeline/validate -> sanity checks, fail loudly
 pipeline/snapshots-> new data becomes a snapshot effective from the next UTC day
    |
    v
-public/data/game-data.json  (stat definitions + snapshots; committed only when data changes)
+public/data/champions.json + items.json  (stats + snapshots; committed only when data changes)
+data/questions.json  (hand-edited question templates, bundled into the app)
    |
    v
 Static site (Vite build) -> GitHub Pages
    |
    v
-Browser: load game-data.json, pick the snapshot for today (UTC), generate the day's puzzle
+Browser: load both data files, pick each file's snapshot for today (UTC), generate the day's puzzle
          with the date-seeded generator (src/game/generate), play, store result in localStorage
 ```
 
@@ -159,11 +160,21 @@ Decision: win rate / pick rate are skipped for now (no official source). Instead
 Decision: no puzzle files in the repo; the date-seeded generator runs in the browser.
 
 - [x] Generator moved to `src/game/generate`; stat labels, questions and formats are data (`StatMeta`), not functions
-- [x] `game-data.json` = stat definitions + snapshots; `pickSnapshot` / `mergeSnapshots` keep a day's puzzle stable when data changes
+- [x] Data files = stat definitions + snapshots; `pickSnapshot` / `mergeSnapshots` keep a day's puzzle stable when data changes
 - [x] `puzzles/` folder, `data:generate` script and generate step in the workflow removed; the daily job only commits and deploys when data actually changed
 - [x] Saved answers that do not fit today's puzzle are discarded instead of breaking the game
 - [x] The year-of-dates generator test is the CI gate for new data
 - First deploy after this change: today's puzzle differs from the old file-based one, so anyone who already played today may see their progress reset once.
+
+### Phase 5c2 - Separate champion data, item data and questions (done)
+
+Decision: maintenance was hard because a stat was both a data column and a question.
+
+- [x] `champions.json` and `items.json` (generated, each with its own stat definitions and snapshots) and `data/questions.json` (hand-edited templates)
+- [x] A question names a stat; the stat's file decides champions vs items
+- [x] Optional `correct` / `wrong` / `exclude` lists per question; refresh fails if a listed id no longer exists
+- [x] A question is asked at most once a day (was: a stat); `Round.statId` became `questionId`, `Puzzle.patch` was removed (two files, no single patch)
+- Same 20 questions and same stats as before; the old `game-data.json` was split without refetching, so archive days keep their snapshots.
 
 ### Phase 5d - Previous days (done)
 
@@ -190,6 +201,14 @@ Decision: more static data instead of popularity stats.
 - [x] Percent display format, validation per subject, wiki credit in the footer
 - [ ] Not done: counting only real balance changes (would need to classify each patch entry), item stats from Data Dragon cross-checked against the wiki
 - Known data issue: the wiki page for K'Sante is garbled at the source, so he shows only 2 patches.
+
+### Phase 5g - Endless testing mode (done)
+
+- [x] `?mode=endless`: endless random questions (uniform over stats, random difficulty), seeded and reproducible (`?seed=`), nothing saved
+- [x] Coverage table (asked / correct per question, difficulty histogram, unseen questions in red)
+- [x] Filters to force a question and/or a difficulty; says when a combination cannot be built
+- [x] Uses the newest snapshot, so upcoming data can be checked before it takes effect
+- [x] Tests: seeded determinism, equal weighting, all 20 questions and 5 difficulties appear, screen behaviour, and a browser run that skips through questions until everything is covered
 
 ### Phase 5b - Popularity stats (win rate / pick rate) - parked
 

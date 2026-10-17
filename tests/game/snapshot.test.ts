@@ -1,12 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import type { Snapshot } from '../../src/data/schema';
-import { pickSnapshot } from '../../src/game/snapshot';
+import { newestSnapshot, pickSnapshot } from '../../src/game/snapshot';
 
-const snapshot = (patch: string, effectiveFrom: string): Snapshot => ({
+const snapshot = (patch: string, effectiveFrom: string): Snapshot<never> => ({
   patch,
   effectiveFrom,
-  champions: [],
-  items: [],
+  entities: [],
 });
 
 const OLD = snapshot('1.0', '2026-01-01');
@@ -32,5 +31,17 @@ describe('pickSnapshot', () => {
 
   it('throws when there are no snapshots', () => {
     expect(() => pickSnapshot([], '2026-01-01')).toThrow();
+  });
+});
+
+describe('newestSnapshot', () => {
+  it('picks the latest snapshot even if it has not taken effect yet', () => {
+    const early = snapshot('early', '2026-01-01');
+    const late = snapshot('late', '2999-01-01');
+    expect(newestSnapshot([late, early]).patch).toBe('late');
+  });
+
+  it('throws when there are no snapshots', () => {
+    expect(() => newestSnapshot([])).toThrow();
   });
 });

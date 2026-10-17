@@ -161,13 +161,43 @@ So the first round is usually a clear-cut question, and movement speed is always
   a puzzle never changes while someone is playing it.
 - **Earlier days.** The previous 7 days can be replayed; their results do not count for the streak.
 
+## Seeing all questions
+
+The endless mode (`/?mode=endless`) shows random questions without end and a table of which ones
+have appeared. See [LOCAL_TESTING.md](LOCAL_TESTING.md#endless-mode-testing-every-question).
+
 ## Where to change things
 
-| To...                         | Edit                                                                      |
-| ----------------------------- | ------------------------------------------------------------------------- |
-| Add or reword a champion stat | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`) |
-| Add or reword an item stat    | `pipeline/stats/itemStats.ts`                                             |
-| Change which items are used   | `pipeline/items/selectItems.ts`                                           |
-| Change how hard rounds are    | `src/game/generate/config.ts`                                             |
+| To...                       | Edit                                                                      |
+| --------------------------- | ------------------------------------------------------------------------- |
+| Add or reword a question    | `data/questions.json`                                                     |
+| Limit who can be an answer  | `correct`, `wrong` or `exclude` on the question in `data/questions.json`  |
+| Add a champion stat         | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`) |
+| Add or change an item stat  | `pipeline/stats/itemStats.ts`                                             |
+| Change which items are used | `pipeline/items/selectItems.ts`                                           |
+| Change how hard rounds are  | `src/game/generate/config.ts`                                             |
+
+A stat only becomes a question once `data/questions.json` has an entry for it. Which stat is a
+champion stat and which an item stat follows from the list it is registered in.
+
+### Restricting a question
+
+```json
+{
+  "id": "baseHealth",
+  "stat": "baseHealth",
+  "question": "Which champion has the highest base health?",
+  "correct": ["Tryndamere", "Sion"],
+  "wrong": ["Kled", "Yuumi", "Lux", "Soraka"],
+  "exclude": ["Aatrox"]
+}
+```
+
+- `correct`: only these can be the right answer. Without it, anyone with the stat can be.
+- `wrong`: only these can be the other three options. Without it, anyone with a lower value can be.
+- `exclude`: never shown, neither as answer nor as option.
+- The right answer is still always the highest value and the difficulty gap still applies, so a
+  list that leaves too few possibilities means the question is skipped at that difficulty. An id
+  may appear in only one of the three lists. Ids are Data Dragon ids (`MissFortune`, `3031`).
 
 Then run `npm run data:refresh` and `npm run check`. More in [CLAUDE.md](../CLAUDE.md).

@@ -22,10 +22,10 @@ import {
 import { patchCount } from './patchCount';
 import { releaseDate } from './releaseDate';
 import { skinCount } from './skinCount';
-import type { StatDefinition } from './types';
+import type { ChampionStat, ItemStat } from './types';
 
-/** The single list of stats in the game. Adding a stat = one new definition + one line here. */
-export const STAT_REGISTRY: readonly StatDefinition[] = [
+/** Every stat stored in champions.json. Adding one = one new definition + one line here. */
+export const CHAMPION_STATS: readonly ChampionStat[] = [
   skinCount,
   releaseDate,
   baseHealth,
@@ -38,6 +38,10 @@ export const STAT_REGISTRY: readonly StatDefinition[] = [
   attackRange,
   moveSpeed,
   patchCount,
+];
+
+/** Every stat stored in items.json. */
+export const ITEM_STATS: readonly ItemStat[] = [
   itemCost,
   itemGoldEfficiency,
   itemAttackDamage,

@@ -46,7 +46,7 @@ export function ResultsView({ puzzle, answers, streak, shareUrl, isToday }: Resu
 
       <ol class="results">
         {puzzle.rounds.map((round, i) => (
-          <li key={round.statId}>
+          <li key={round.questionId}>
             <span aria-hidden="true">{results[i] ? '\u{1F7E9}' : '\u{1F7E5}'}</span>{' '}
             {round.statLabel}
             <span class="visually-hidden">{results[i] ? ' (correct)' : ' (wrong)'}</span>

@@ -31,7 +31,7 @@ const items = new Map<string, Entity>(
 const entities = { champion: champions, item: items };
 
 const makeRound = (statLabel: string, answerId: string): Round => ({
-  statId: statLabel,
+  questionId: statLabel,
   subject: 'champion',
   statLabel,
   question: `Which champion has the highest ${statLabel.toLowerCase()}?`,
@@ -43,7 +43,6 @@ const makeRound = (statLabel: string, answerId: string): Round => ({
 
 const puzzle: Puzzle = {
   date: TODAY,
-  patch: '1.0',
   rounds: [
     makeRound('Base health', 'Ahri'),
     {
@@ -112,10 +111,9 @@ describe('Game', () => {
     const user = userEvent.setup();
     const itemPuzzle: Puzzle = {
       date: TODAY,
-      patch: '1.0',
       rounds: [
         {
-          statId: 'itemGoldEfficiency',
+          questionId: 'itemGoldEfficiency',
           subject: 'item',
           statLabel: 'Gold efficiency',
           question: 'Which item is the most gold efficient?',

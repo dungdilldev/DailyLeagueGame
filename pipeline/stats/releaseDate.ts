@@ -18,7 +18,6 @@ function daysSinceEpoch(isoDate: string): number {
 export const releaseDate: ChampionStat = {
   id: 'releaseDate',
   label: 'Release date',
-  question: 'Which champion was released most recently?',
   source: LEAGUE_WIKI_SOURCE,
   format: { kind: 'date', epoch: RELEASE_DATE_EPOCH },
   extract: ({ wiki }) => (wiki?.releaseDate ? daysSinceEpoch(wiki.releaseDate) : undefined),

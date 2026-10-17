@@ -88,7 +88,7 @@ test('layout fits the viewport without horizontal scrolling', async ({ page }) =
 });
 
 test('shows a friendly message when the game data cannot be loaded', async ({ page }) => {
-  await page.route('**/data/game-data.json', (route) => route.fulfill({ status: 500 }));
+  await page.route('**/data/champions.json', (route) => route.fulfill({ status: 500 }));
   await page.goto('/');
   await expect(page.getByRole('alert')).toContainText('Something went wrong');
 });

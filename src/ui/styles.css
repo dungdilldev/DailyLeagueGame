@@ -273,3 +273,84 @@ footer {
   font-size: 0.8rem;
   color: var(--muted);
 }
+
+.mode-link {
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.mode-link a {
+  color: var(--muted);
+}
+
+.endless__note,
+.endless__debug {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.endless__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.endless__controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.endless__controls select {
+  min-height: 2.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.button--small {
+  min-height: 2.5rem;
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+}
+
+.coverage {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.coverage table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.coverage th,
+.coverage td {
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.coverage td {
+  text-align: right;
+}
+
+.coverage__subject {
+  color: var(--muted);
+}
+
+.coverage__flag {
+  color: var(--bad);
+}
+
+.coverage__missing th {
+  color: var(--bad);
+}

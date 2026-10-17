@@ -7,7 +7,6 @@ const VARIANT_NAME_PATTERN = /\)$/;
 export const skinCount: ChampionStat = {
   id: 'skinCount',
   label: 'Number of skins',
-  question: 'Which champion has the most skins?',
   source: DATA_DRAGON_SOURCE,
   extract: ({ detail }) =>
     detail.skins.filter(

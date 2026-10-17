@@ -1,0 +1,104 @@
+{
+  "questions": [
+    {
+      "id": "skinCount",
+      "stat": "skinCount",
+      "question": "Which champion has the most skins?"
+    },
+    {
+      "id": "releaseDate",
+      "stat": "releaseDate",
+      "question": "Which champion was released most recently?"
+    },
+    {
+      "id": "baseHealth",
+      "stat": "baseHealth",
+      "question": "Which champion has the highest base health?"
+    },
+    {
+      "id": "healthPerLevel",
+      "stat": "healthPerLevel",
+      "question": "Which champion has the highest health gained per level?"
+    },
+    {
+      "id": "healthRegen",
+      "stat": "healthRegen",
+      "question": "Which champion has the highest base health regeneration?"
+    },
+    {
+      "id": "armor",
+      "stat": "armor",
+      "question": "Which champion has the highest base armor?"
+    },
+    {
+      "id": "magicResist",
+      "stat": "magicResist",
+      "question": "Which champion has the highest base magic resistance?"
+    },
+    {
+      "id": "attackDamage",
+      "stat": "attackDamage",
+      "question": "Which champion has the highest base attack damage?"
+    },
+    {
+      "id": "attackSpeed",
+      "stat": "attackSpeed",
+      "question": "Which champion has the highest base attack speed?"
+    },
+    {
+      "id": "attackRange",
+      "stat": "attackRange",
+      "question": "Which champion has the highest attack range?"
+    },
+    {
+      "id": "moveSpeed",
+      "stat": "moveSpeed",
+      "question": "Which champion has the highest movement speed?"
+    },
+    {
+      "id": "patchCount",
+      "stat": "patchCount",
+      "question": "Which champion has appeared in the most patch notes?"
+    },
+    {
+      "id": "itemCost",
+      "stat": "itemCost",
+      "question": "Which item costs the most gold?"
+    },
+    {
+      "id": "itemGoldEfficiency",
+      "stat": "itemGoldEfficiency",
+      "question": "Which item is the most gold efficient from its stats alone (ignoring passives)?"
+    },
+    {
+      "id": "itemAttackDamage",
+      "stat": "itemAttackDamage",
+      "question": "Which item gives the most attack damage?"
+    },
+    {
+      "id": "itemAbilityPower",
+      "stat": "itemAbilityPower",
+      "question": "Which item gives the most ability power?"
+    },
+    {
+      "id": "itemHealth",
+      "stat": "itemHealth",
+      "question": "Which item gives the most health?"
+    },
+    {
+      "id": "itemArmor",
+      "stat": "itemArmor",
+      "question": "Which item gives the most armor?"
+    },
+    {
+      "id": "itemMagicResist",
+      "stat": "itemMagicResist",
+      "question": "Which item gives the most magic resistance?"
+    },
+    {
+      "id": "itemAbilityHaste",
+      "stat": "itemAbilityHaste",
+      "question": "Which item gives the most ability haste?"
+    }
+  ]
+}

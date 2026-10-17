@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'preact/hooks';
 import { loadGameData } from '../data/loaders';
-import type { GameDataFile } from '../data/schema';
+import type { GameData } from '../data/questions';
 
 export type GameFileState =
-  { kind: 'loading' } | { kind: 'error'; message: string } | { kind: 'ready'; file: GameDataFile };
+  { kind: 'loading' } | { kind: 'error'; message: string } | { kind: 'ready'; data: GameData };
 
-/** Loads the game data file once; switching puzzle days reuses it. */
+/** Loads the game data once; switching puzzle days reuses it. */
 export function useGameFile(): GameFileState {
   const [state, setState] = useState<GameFileState>({ kind: 'loading' });
 
   useEffect(() => {
     let cancelled = false;
     loadGameData()
-      .then((file) => {
-        if (!cancelled) setState({ kind: 'ready', file });
+      .then((data) => {
+        if (!cancelled) setState({ kind: 'ready', data });
       })
       .catch((error: unknown) => {
         if (cancelled) return;
