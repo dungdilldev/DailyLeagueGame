@@ -200,13 +200,19 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Mode buttons at the top: Mixed (all questions, the original puzzle) and one per category; `?category=` in the address
 - [x] Each mode has its own seed, saved progress, streak and share text
 - [x] Pools smaller than 5 questions give shorter days; empty tiers fall back to the nearest tier
-- Open: esports (2 questions) gives a very short day until more questions exist.
 - The `trivia` category (one marksman question) was removed again.
 
 ### Phase 5c7 - Endless mode is dev-only (done)
 
 - [x] No link to the endless mode; `?mode=endless` only works in development builds and is removed from the production bundle
 - [x] Its Playwright tests run against the dev server; a production test checks the address shows the normal game
+
+### Phase 5c8 - Esports history questions (done)
+
+- [x] `text` option subject: team names, players, cities and regions as plain cards (name = id, no icon, no data file)
+- [x] 9 history questions: Worlds winners, finalists without a title, final cities, titles per region and player, Faker's nickname, T1 players, first champion, three in a row
+- [x] Esports mode now has 11 questions, so a full 5-round day
+- Facts checked against the Wikipedia Worlds results table up to the 2025 final. They go stale: re-check the esports lists after every Worlds (November). The 2026 final is in New York, and the pool should be refreshed after it.
 
 ### Phase 5d - Previous days (done)
 

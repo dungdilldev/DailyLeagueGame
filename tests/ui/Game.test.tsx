@@ -28,7 +28,7 @@ const itemNames: Record<string, string> = {
 const items = new Map<string, Entity>(
   ITEM_IDS.map((id) => [id, { ...entity(id), name: itemNames[id] ?? id }]),
 );
-const entities = { champion: champions, item: items };
+const entities = { champion: champions, item: items, text: new Map<string, Entity>() };
 
 const makeRound = (statLabel: string, answerId: string): Round => ({
   questionId: statLabel,
@@ -176,6 +176,40 @@ describe('Game', () => {
     expect(screen.getByText(/Not quite. It was Brand/)).toBeTruthy();
     expect(screen.getByText('Correct')).toBeTruthy();
     expect(document.querySelectorAll('.card__value')).toHaveLength(0);
+  });
+
+  it('shows plain text options by name without icons', async () => {
+    const user = userEvent.setup();
+    const teamPuzzle: Puzzle = {
+      date: TODAY,
+      rounds: [
+        {
+          questionId: 'isWorldsChampion',
+          subject: 'text',
+          statLabel: 'World champions',
+          question: 'Which of these teams has won the World Championship?',
+          optionIds: ['T1', 'G2 Esports', 'Cloud9', 'Team Liquid'],
+          answerId: 'T1',
+          values: {},
+        },
+      ],
+    };
+    render(
+      <Game
+        puzzle={teamPuzzle}
+        entities={entities}
+        mode="mixed"
+        date={TODAY}
+        today={TODAY}
+        storage={memoryStorage()}
+        shareUrl="https://example.com/"
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: /Cloud9/ })).toBeTruthy();
+    expect(document.querySelectorAll('.card__icon')).toHaveLength(0);
+    await user.click(screen.getByRole('button', { name: /Cloud9/ }));
+    expect(screen.getByText(/Not quite. It was T1/)).toBeTruthy();
   });
 
   it('saves progress and resumes mid-day after a reload', async () => {

@@ -44,7 +44,10 @@ export function findPuzzleProblems(
     }
     if (!round.optionIds.includes(round.answerId)) problems.push(`${label}: answer not offered`);
     for (const id of round.optionIds) {
-      if (!entitiesById.has(id)) problems.push(`${label}: unknown option "${id}"`);
+      // Text options are written in the question, not in the data.
+      if (question.subject !== 'text' && !entitiesById.has(id)) {
+        problems.push(`${label}: unknown option "${id}"`);
+      }
       if (excluded.has(id)) problems.push(`${label}: "${id}" is excluded for this question`);
       if (seenChampions.has(id)) problems.push(`${label}: "${id}" appears twice in the day`);
       seenChampions.add(id);

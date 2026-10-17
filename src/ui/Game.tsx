@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
-import type { Entity, StatSubject } from '../data/schema';
+import type { Entity, OptionSubject } from '../data/schema';
 import { isComplete, roundResults, submitAnswer, validAnswers } from '../game/progress';
 import { progressSlot, type GameMode } from '../game/gameMode';
 import { currentStreak } from '../game/streak';
@@ -11,7 +11,7 @@ import { RoundView } from './RoundView';
 interface GameProps {
   puzzle: Puzzle;
   /** Champions and items by id, for showing names and icons. */
-  entities: Readonly<Record<StatSubject, ReadonlyMap<string, Entity>>>;
+  entities: Readonly<Record<OptionSubject, ReadonlyMap<string, Entity>>>;
   /** Which game mode this puzzle belongs to; each mode saves its own progress and streak. */
   mode: GameMode;
   /** UTC date of the puzzle being played. */

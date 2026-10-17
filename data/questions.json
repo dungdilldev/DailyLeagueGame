@@ -682,6 +682,152 @@
         "Shen",
         "Veigar"
       ]
+    },
+    {
+      "id": "isWorldsChampion",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "World champions",
+      "question": "Which of these teams has won the League of Legends World Championship?",
+      "correct": [
+        "T1",
+        "Fnatic",
+        "Taipei Assassins",
+        "Samsung White",
+        "Samsung Galaxy",
+        "Invictus Gaming",
+        "FunPlus Phoenix",
+        "Damwon Gaming",
+        "Edward Gaming",
+        "DRX"
+      ],
+      "wrong": [
+        "G2 Esports",
+        "Cloud9",
+        "Team Liquid",
+        "JD Gaming",
+        "Bilibili Gaming",
+        "Top Esports",
+        "Royal Never Give Up",
+        "KT Rolster",
+        "Weibo Gaming",
+        "FlyQuest",
+        "MAD Lions",
+        "Hanwha Life Esports"
+      ]
+    },
+    {
+      "id": "lostWorldsFinal",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Finalists",
+      "question": "Which of these teams has reached a Worlds final but never won the title?",
+      "correct": [
+        "Royal Never Give Up",
+        "Weibo Gaming",
+        "G2 Esports",
+        "Bilibili Gaming",
+        "KT Rolster",
+        "Against All Authority",
+        "Hanwha Life Esports",
+        "Suning",
+        "KOO Tigers"
+      ],
+      "wrong": ["Cloud9", "Team Liquid", "JD Gaming", "Top Esports", "MAD Lions", "FlyQuest"]
+    },
+    {
+      "id": "hostedWorldsFinal",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Final cities",
+      "question": "Which of these cities has hosted a Worlds final?",
+      "correct": [
+        "Jönköping",
+        "Los Angeles",
+        "Seoul",
+        "Berlin",
+        "Beijing",
+        "Incheon",
+        "Paris",
+        "Shanghai",
+        "Reykjavík",
+        "San Francisco",
+        "London",
+        "Chengdu"
+      ],
+      "wrong": [
+        "Tokyo",
+        "Madrid",
+        "Sydney",
+        "Toronto",
+        "Singapore",
+        "Rio de Janeiro",
+        "Moscow",
+        "Mumbai"
+      ]
+    },
+    {
+      "id": "mostTitlesRegion",
+      "category": "esports",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Regions",
+      "question": "Which of these regions has won the most World Championships?",
+      "correct": ["LCK"],
+      "wrong": ["LPL", "LEC", "LCS", "CBLOL"]
+    },
+    {
+      "id": "mostTitlesPlayer",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Most titles",
+      "question": "Which of these players has won the most World Championships?",
+      "correct": ["Faker"],
+      "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus"]
+    },
+    {
+      "id": "demonKing",
+      "category": "esports",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Nicknames",
+      "question": "Which of these players is nicknamed the Unkillable Demon King?",
+      "correct": ["Faker"],
+      "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus"]
+    },
+    {
+      "id": "playedForT1",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "T1 players",
+      "question": "Which of these players has played for T1 (SK Telecom T1)?",
+      "correct": ["Faker", "Gumayusi", "Keria", "Oner", "Zeus", "Doran", "Bengi", "Bang", "Wolf"],
+      "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus", "Froggen"]
+    },
+    {
+      "id": "firstWorldsChampion",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "First champions",
+      "question": "Which of these teams won the very first World Championship, in 2011?",
+      "correct": ["Fnatic"],
+      "wrong": ["Taipei Assassins", "Samsung White", "Cloud9", "G2 Esports"]
+    },
+    {
+      "id": "threeInARow",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Three-peat",
+      "question": "Which of these teams has won three World Championships in a row?",
+      "correct": ["T1"],
+      "wrong": ["Fnatic", "Samsung Galaxy", "Edward Gaming", "Invictus Gaming", "FunPlus Phoenix"]
     }
   ]
 }

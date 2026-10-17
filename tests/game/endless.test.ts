@@ -86,11 +86,11 @@ describe('buildEndlessQuestion', () => {
     expect(ask(0, { bandIndex: 99 })).toBeUndefined();
   });
 
-  it('works without items, using champion questions only', () => {
+  it('works without items, never asking about items', () => {
     const withoutItems = { champions: data.champions, items: [] };
     for (let index = 0; index < 200; index++) {
       const question = buildEndlessQuestion(withoutItems, questions, 'seed', index);
-      expect(question?.round.subject).toBe('champion');
+      expect(question?.round.subject).not.toBe('item');
     }
   });
 });

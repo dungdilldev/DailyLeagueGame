@@ -9,6 +9,13 @@ const IsoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 export const StatSubjectSchema = z.enum(['champion', 'item']);
 export type StatSubject = z.infer<typeof StatSubjectSchema>;
 
+/**
+ * What the options of a round are. `text` options are written out in the question itself
+ * (team names, players, cities): they have no data file and no icon, their id is their name.
+ */
+export const OptionSubjectSchema = z.enum(['champion', 'item', 'text']);
+export type OptionSubject = z.infer<typeof OptionSubjectSchema>;
+
 /** How a stat's number is shown to the player. */
 export const StatFormatSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('number') }),
@@ -156,13 +163,14 @@ const MIN_WRONG_PER_PICK_QUESTION = 3;
 
 /**
  * A question with no stat behind it ("Which of these champions is a yordle?"). One option is
- * drawn from `correct` and the others from `wrong`, so both lists are written out in full.
+ * drawn from `correct` and the others from `wrong`, so both lists are written out in full. For
+ * `text` options the lists hold the names shown to the player.
  */
 const PickQuestionTemplateSchema = z
   .strictObject({
     ...QuestionFields,
-    /** Whether the options are champions or items. */
-    subject: StatSubjectSchema,
+    /** Whether the options are champions, items or plain text. */
+    subject: OptionSubjectSchema,
     /** Short name shown in the results, e.g. "Marksmen". */
     label: z.string().min(1),
     correct: EntityIdListSchema,

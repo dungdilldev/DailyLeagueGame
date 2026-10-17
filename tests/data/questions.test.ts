@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import questionFile from '../../data/questions.json';
-import { resolveQuestions } from '../../src/data/questions';
+import { resolveQuestions, type PickQuestion } from '../../src/data/questions';
 import { QuestionFileSchema, type StatMeta } from '../../src/data/schema';
 import { findQuestionListProblems } from '../../pipeline/validate/gameData';
 import { realGameData } from '../support/realGameData';
@@ -148,7 +148,10 @@ describe('the question file in the repository', () => {
   it('has esports questions, and no wrong option of one has an esports skin of its own', () => {
     const esports = questions.filter((question) => question.category === 'esports');
     expect(esports.length).toBeGreaterThan(0);
-    const skinQuestions = esports.filter((question) => question.kind === 'pick');
+    const skinQuestions = esports.filter(
+      (question): question is PickQuestion =>
+        question.kind === 'pick' && question.subject === 'champion',
+    );
     const correctElsewhere = new Set(skinQuestions.flatMap((question) => question.correct));
     for (const question of skinQuestions) {
       expect(
@@ -171,10 +174,13 @@ describe('the question file in the repository', () => {
   it('asks about champions or items matching the data the stat comes from', () => {
     for (const question of questions) {
       const noun = question.subject === 'item' ? 'item' : 'champion';
+      // Text options can be anything (teams, players, cities), so only the opening is fixed.
       const pattern =
-        question.kind === 'pick'
-          ? new RegExp(`^Which of these ${noun}s .*[?]$`)
-          : new RegExp(`^Which ${noun} .*[?]$`);
+        question.subject === 'text'
+          ? /^Which .*[?]$/
+          : question.kind === 'pick'
+            ? new RegExp(`^Which of these ${noun}s .*[?]$`)
+            : new RegExp(`^Which ${noun} .*[?]$`);
       expect(question.question, question.id).toMatch(pattern);
     }
   });

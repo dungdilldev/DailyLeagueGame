@@ -182,14 +182,16 @@ test.describe('game modes', () => {
     expect(errors).toEqual([]);
   });
 
-  test('a category with fewer questions than rounds gives a shorter day', async ({ page }) => {
+  test('the esports mode plays a full day, with text options and champion options', async ({
+    page,
+  }) => {
+    const errors = collectErrors(page);
     await page.goto('/?category=esports');
-    await expect(page.getByText('Round 1 of 2')).toBeVisible();
-    await page.locator('.card').first().click();
-    await page.getByRole('button', { name: 'Next round' }).click();
-    await page.locator('.card').first().click();
-    await page.getByRole('button', { name: 'See results' }).click();
+    await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+    await expect(page.locator('.card')).toHaveCount(4);
+    await playFullDay(page);
     await expect(page.getByRole('heading', { name: /You got/ })).toBeVisible();
+    expect(errors).toEqual([]);
   });
 });
 

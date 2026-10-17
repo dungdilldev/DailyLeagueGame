@@ -67,6 +67,8 @@ export function findQuestionListProblems(
   knownIds: Readonly<Record<StatSubject, ReadonlySet<string>>>,
 ): string[] {
   return questions.flatMap((question) => {
+    // Text options (team names, cities) are not in any data file, so there is nothing to check.
+    if (question.subject === 'text') return [];
     const known = knownIds[question.subject];
     const listed = [
       ...(question.correct ?? []),

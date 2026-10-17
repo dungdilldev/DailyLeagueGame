@@ -1,4 +1,4 @@
-import type { StatFormat, StatSubject } from '../data/schema';
+import type { OptionSubject, StatFormat } from '../data/schema';
 
 export const OPTIONS_PER_ROUND = 4;
 
@@ -6,7 +6,7 @@ export interface Round {
   /** Id of the question template this round was built from. */
   questionId: string;
   /** Whether the options are champions or items. */
-  subject: StatSubject;
+  subject: OptionSubject;
   /** Short name for the results, e.g. "Base health" or "Marksmen". */
   statLabel: string;
   question: string;

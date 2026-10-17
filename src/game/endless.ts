@@ -1,6 +1,7 @@
 import type { Question } from '../data/questions';
 import { buildRound } from './generate/buildRound';
-import { entitiesFor, type PuzzleData } from './generate/buildPuzzle';
+import type { PuzzleData } from './generate/buildPuzzle';
+import { optionPool } from './generate/optionPool';
 import { fitsRound, ROUND_GAP_BANDS } from './generate/config';
 import { createRng } from './generate/random';
 import type { Round } from './puzzle';
@@ -47,7 +48,7 @@ export function buildEndlessQuestion(
     for (const bandIndex of bands) {
       const band = ROUND_GAP_BANDS[bandIndex];
       if (!band || !fitsRound(question.difficulty, bandIndex)) continue;
-      const round = buildRound(entitiesFor(data, question.subject), question, band, rng);
+      const round = buildRound(optionPool(data, question), question, band, rng);
       if (round) return { round, bandIndex };
     }
   }

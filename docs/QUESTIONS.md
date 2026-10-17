@@ -168,8 +168,8 @@ category: **Stats**, **Lore** or **Esports**. Each mode is its own game: it has 
 puzzle for the day, its own progress, streak and shared result. The choice is kept in the address
 (`?category=lore`).
 
-A category with fewer questions than rounds gives a shorter day, one round per question: Esports
-is short until more questions are added. When a category has no question left for a
+A category with fewer questions than rounds would give a shorter day, one round per question. No
+category is that small at the moment. When a category has no question left for a
 round's difficulty (for example Lore has only one `hard` question), the nearest difficulty is used.
 
 ## Seeing all questions
@@ -212,7 +212,7 @@ and no data refresh, only an entry in `data/questions.json`:
 
 - Every question also has a `category` (`lore` or `esports` for these) and a
   `difficulty`, see below.
-- `subject` is `champion` or `item`. `label` is the short name in the results.
+- `subject` is `champion`, `item` or `text`. `label` is the short name in the results.
 - Each day the round shows one champion from `correct` and three from `wrong`, drawn at random,
   so the longer the lists, the more variety. `wrong` needs at least 3 entries. `exclude` works as
   for the other questions.
@@ -254,12 +254,27 @@ from other regions, so a champion may be a yordle and still be a fair option.
 
 ### Esports questions
 
-Esports questions are pick questions with `"category": "esports"`. The two so far ask which
-champion has a skin from the esports team T1 (including the earlier SKT T1 line, `medium`) and
-which has a Worlds skin (`hard`). Their lists come from the skin names in Data Dragon, not from
-memory, and every wrong option is a champion with no esports skin at all (no T1, Worlds, Victorious,
-Dragonslayer or MSI skin). Riot adds esports skins over time, so a champion in a wrong list can
-become correct: when a new esports skin line appears, check the wrong lists.
+Esports questions are pick questions with `"category": "esports"`. There are two kinds.
+
+**Skins (champion options).** Which champion has a skin from the esports team T1 (including the earlier
+SKT T1 line, `medium`) and which has a Worlds skin (`hard`). Their lists come from the skin names in
+Data Dragon, and every wrong option is a champion with no esports skin at all (no T1, Worlds,
+Victorious, Dragonslayer or MSI skin). Riot adds esports skins over time, so a champion in a wrong
+list can become correct: when a new esports skin line appears, check the wrong lists.
+
+**History (text options).** Teams, players, regions and cities, shown as plain name cards without
+icons: which team has won Worlds, which has reached a final without winning, which city has hosted a
+final, which region has won the most titles, which player has the most titles (Faker) and is
+nicknamed the Unkillable Demon King, who has played for T1, who won the first Worlds (Fnatic, 2011)
+and who won three in a row (T1, 2023 to 2025). In a `text` question the `correct` and `wrong` lists
+hold the names shown to the player, so `"subject": "text"` and no data file is involved.
+
+These facts were checked against the Wikipedia results table of the World Championship up to the
+2025 final (T1 beat KT Rolster 3-2 in Chengdu). **They go stale. After every Worlds final in
+November, re-check the esports lists:** a team in a "never won" list may have won, the final city
+list needs the new host (the 2026 final is in New York), a "three in a row" or "most titles" answer
+may change. Wrong lists only use retired players for the same reason: an active player can join T1
+in any offseason.
 
 ### Restricting a question
 

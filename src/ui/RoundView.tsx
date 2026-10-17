@@ -21,9 +21,11 @@ interface RoundViewProps {
   results?: readonly boolean[];
 }
 
-const SUBJECT_LABELS: Record<Round['subject'], string> = {
+/** Text options (teams, cities) are self-explanatory from the question, so they get no label. */
+const SUBJECT_LABELS: Record<Round['subject'], string | undefined> = {
   champion: 'Champions',
   item: 'Items',
+  text: undefined,
 };
 
 function cardState(round: Round, optionId: string, chosenId: string | undefined): CardState {
@@ -70,7 +72,7 @@ export function RoundView({
             ? `Question ${String(roundNumber)}`
             : `Round ${String(roundNumber)} of ${String(totalRounds)}`}
         </p>
-        <span class="chip">{SUBJECT_LABELS[round.subject]}</span>
+        {SUBJECT_LABELS[round.subject] && <span class="chip">{SUBJECT_LABELS[round.subject]}</span>}
       </div>
       {totalRounds !== undefined && results && (
         <RoundProgress current={roundNumber - 1} total={totalRounds} results={results} />

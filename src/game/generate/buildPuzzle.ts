@@ -1,7 +1,8 @@
 import type { Question } from '../../data/questions';
-import type { Champion, Entity, Item, StatSubject } from '../../data/schema';
+import type { Champion, Item } from '../../data/schema';
 import type { Puzzle, Round } from '../puzzle';
 import { buildRound } from './buildRound';
+import { optionPool } from './optionPool';
 import {
   fitsRound,
   MAX_PUZZLE_ATTEMPTS,
@@ -14,11 +15,6 @@ import { createRng, type Rng } from './random';
 export interface PuzzleData {
   champions: readonly Champion[];
   items: readonly Item[];
-}
-
-/** The champions or items a question of this subject compares. */
-export function entitiesFor(data: PuzzleData, subject: StatSubject): readonly Entity[] {
-  return subject === 'item' ? data.items : data.champions;
 }
 
 function firstSuccessful<T, R>(
@@ -62,7 +58,7 @@ function tryBuildRounds(
     // Some questions cannot satisfy some bands (e.g. few distinct move speeds can't give a 30% gap).
     const round = firstSuccessful(candidatesForRound(remainingQuestions, roundIndex), (question) =>
       buildRound(
-        entitiesFor(data, question.subject).filter((entity) => !usedIds.has(entity.id)),
+        optionPool(data, question).filter((entity) => !usedIds.has(entity.id)),
         question,
         band,
         rng,

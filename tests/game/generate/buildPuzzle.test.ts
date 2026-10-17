@@ -77,7 +77,14 @@ describe('buildPuzzle with champions and items', () => {
   it('uses champions for champion questions and items for item questions, never mixing them', () => {
     for (const puzzle of puzzles) {
       for (const round of puzzle.rounds) {
-        const allowed = round.subject === 'item' ? itemIds : championIds;
+        // Text options (teams, cities) are written in the question, not in the data.
+        const question = questions.find(({ id }) => id === round.questionId);
+        const allowed =
+          round.subject === 'text'
+            ? new Set(question?.kind === 'pick' ? [...question.correct, ...question.wrong] : [])
+            : round.subject === 'item'
+              ? itemIds
+              : championIds;
         expect(
           round.optionIds.every((id) => allowed.has(id)),
           `${puzzle.date} ${round.questionId}`,
@@ -93,7 +100,7 @@ describe('buildPuzzle with champions and items', () => {
     const subjects = new Set(
       puzzles.flatMap((puzzle) => puzzle.rounds.map((round) => round.subject)),
     );
-    expect(subjects).toEqual(new Set(['champion', 'item']));
+    expect(subjects).toEqual(new Set(['champion', 'item', 'text']));
     const itemRounds = puzzles
       .flatMap((puzzle) => puzzle.rounds)
       .filter((round) => round.subject === 'item');
@@ -107,11 +114,11 @@ describe('buildPuzzle with champions and items', () => {
     for (const question of questions) expect(used.has(question.id), question.id).toBe(true);
   });
 
-  it('builds puzzles from champion questions only when there are no items', () => {
+  it('builds puzzles without item questions when there are no items', () => {
     const withoutItems = { champions: data.champions, items: [] };
     for (const date of days.slice(0, 60)) {
       const puzzle = buildPuzzle(date, withoutItems, questions);
-      expect(puzzle.rounds.every((round) => round.subject === 'champion')).toBe(true);
+      expect(puzzle.rounds.every((round) => round.subject !== 'item')).toBe(true);
       expect(findPuzzleProblems(puzzle, data.champions, questions), date).toEqual([]);
     }
   });
@@ -179,19 +186,38 @@ describe('buildPuzzle with question difficulty', () => {
   });
 });
 
+describe('buildPuzzle with fewer questions than rounds', () => {
+  it('gives one round per question, in a valid puzzle', () => {
+    const few = questions.filter((question) => question.category === 'lore').slice(0, 2);
+    for (let offset = 0; offset < 60; offset++) {
+      const date = addUtcDays('2026-01-01', offset);
+      const puzzle = buildPuzzle(date, data, few);
+      expect(puzzle.rounds.map((round) => round.questionId).sort(), date).toEqual(
+        few.map((question) => question.id).sort(),
+      );
+      const bands = ROUND_GAP_BANDS.slice(0, few.length);
+      expect(findPuzzleProblems(puzzle, everyone, questions, bands), date).toEqual([]);
+    }
+  });
+});
+
 describe('findPuzzleProblems', () => {
-  const puzzle = buildPuzzle('2026-06-01', data, questions);
+  const kindOf = (questionId: string) => questions.find(({ id }) => id === questionId)?.kind;
+
+  /** Tampers with the answer of the first round of this kind, on the first day that has one. */
   const tamper = (kind: 'stat' | 'pick') => {
-    const index = puzzle.rounds.findIndex(
-      (round) => questions.find(({ id }) => id === round.questionId)?.kind === kind,
-    );
-    const round = puzzle.rounds[index];
-    if (!round) throw new Error(`no ${kind} round on this day`);
-    const wrong = round.optionIds.find((id) => id !== round.answerId) ?? '';
-    const rounds = puzzle.rounds.map((each, i) =>
-      i === index ? { ...each, answerId: wrong } : each,
-    );
-    return findPuzzleProblems({ ...puzzle, rounds }, everyone, questions).join();
+    for (let offset = 0; offset < 30; offset++) {
+      const puzzle = buildPuzzle(addUtcDays('2026-06-01', offset), data, questions);
+      const index = puzzle.rounds.findIndex((round) => kindOf(round.questionId) === kind);
+      const round = puzzle.rounds[index];
+      if (!round) continue;
+      const wrong = round.optionIds.find((id) => id !== round.answerId) ?? '';
+      const rounds = puzzle.rounds.map((each, i) =>
+        i === index ? { ...each, answerId: wrong } : each,
+      );
+      return findPuzzleProblems({ ...puzzle, rounds }, everyone, questions).join();
+    }
+    throw new Error(`no ${kind} round in 30 days`);
   };
 
   it('flags a tampered answer to a stat question', () => {
