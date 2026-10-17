@@ -192,3 +192,10 @@ test.describe('game modes', () => {
     await expect(page.getByRole('heading', { name: /You got/ })).toBeVisible();
   });
 });
+
+test('the endless testing mode does not exist in the production build', async ({ page }) => {
+  await page.goto('/?mode=endless');
+  await expect(page.getByText(/Round 1 of \d/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Endless mode' })).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Choose game mode' })).toBeVisible();
+});

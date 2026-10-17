@@ -36,7 +36,7 @@ Days played after their own date do not count towards the streak.
 
 ### Endless mode (testing every question)
 
-Open http://localhost:5173/?mode=endless, or use the "Endless mode (for testing)" link under the daily puzzle. It shows random questions one after another with no end. Nothing is saved and nothing affects your streak.
+Open http://localhost:5173/?mode=endless. It only works with `npm run dev`: there is no link to it on the site, and in the deployed site (a production build) the address just shows the normal game, with none of its code included. The page itself links back to the daily puzzle. It shows random questions one after another with no end. Nothing is saved and nothing affects your streak.
 
 - **Coverage table** at the bottom lists every question with how often it was shown and answered correctly. Questions not seen yet are red, so you can see at a glance whether everything is represented.
 - **Question** and **Difficulty** menus force one question and/or one difficulty. If a question cannot be built at that difficulty (movement speed in the easiest round, for example) the page says so.

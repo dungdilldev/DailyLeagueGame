@@ -22,7 +22,11 @@ const CATEGORY_PARAM = 'category';
 const SEED_PARAM = 'seed';
 const ENDLESS_MODE = 'endless';
 
-const isEndlessMode = new URLSearchParams(window.location.search).get(MODE_PARAM) === ENDLESS_MODE;
+// A testing tool, so it only exists in development builds: Vite replaces `import.meta.env.DEV`
+// with `false` in production and drops the endless screen from the bundle.
+const isEndlessMode =
+  import.meta.env.DEV &&
+  new URLSearchParams(window.location.search).get(MODE_PARAM) === ENDLESS_MODE;
 
 function readRequestedDate(): string {
   const requested = new URLSearchParams(window.location.search).get(DATE_PARAM);
@@ -127,11 +131,6 @@ export function App() {
           </>
         )}
         <Body date={date} mode={mode} />
-        {!isEndlessMode && (
-          <p class="mode-link">
-            <a href={`?${MODE_PARAM}=${ENDLESS_MODE}`}>Endless mode (for testing)</a>
-          </p>
-        )}
       </main>
       <SupportButton />
       <Footer />

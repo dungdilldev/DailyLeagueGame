@@ -1,9 +1,12 @@
 import { expect, test } from '@playwright/test';
 
-test('the endless mode is reachable from the daily page and back', async ({ page }) => {
+test('the endless mode is reachable by address only, and links back to the daily page', async ({
+  page,
+}) => {
   await page.goto('/');
-  await page.getByRole('link', { name: /Endless mode/ }).click();
-  await expect(page).toHaveURL(/mode=endless/);
+  await expect(page.getByRole('link', { name: /Endless mode/ })).toHaveCount(0);
+
+  await page.goto('/?mode=endless');
   await expect(page.getByRole('heading', { name: 'Endless mode' })).toBeVisible();
 
   await page.getByRole('link', { name: /Back to the daily puzzle/ }).click();

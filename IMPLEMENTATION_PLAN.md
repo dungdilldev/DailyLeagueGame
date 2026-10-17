@@ -203,6 +203,11 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - Open: esports (2 questions) gives a very short day until more questions exist.
 - The `trivia` category (one marksman question) was removed again.
 
+### Phase 5c7 - Endless mode is dev-only (done)
+
+- [x] No link to the endless mode; `?mode=endless` only works in development builds and is removed from the production bundle
+- [x] Its Playwright tests run against the dev server; a production test checks the address shows the normal game
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)
