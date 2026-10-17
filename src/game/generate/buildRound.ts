@@ -1,6 +1,7 @@
 import type { Question, StatQuestion } from '../../data/questions';
 import type { Entity } from '../../data/schema';
 import type { Round } from '../puzzle';
+import { buildClueRound } from './buildClueRound';
 import { buildPickRound } from './buildPickRound';
 import type { GapBand } from './config';
 import type { Rng } from './random';
@@ -78,8 +79,8 @@ function buildStatRound(
 }
 
 /**
- * Builds one round for any kind of question. `band` only matters for stat questions; a pick
- * question has no values to compare, so it fits every difficulty.
+ * Builds one round for any kind of question. `band` only matters for stat questions; the other
+ * kinds have no values to compare, so they fit every difficulty.
  */
 export function buildRound(
   entities: readonly Entity[],
@@ -87,7 +88,12 @@ export function buildRound(
   band: GapBand,
   rng: Rng,
 ): Round | undefined {
-  return question.kind === 'pick'
-    ? buildPickRound(entities, question, rng)
-    : buildStatRound(entities, question, band, rng);
+  switch (question.kind) {
+    case 'pick':
+      return buildPickRound(entities, question, rng);
+    case 'clue':
+      return buildClueRound(entities, question, rng);
+    case 'stat':
+      return buildStatRound(entities, question, band, rng);
+  }
 }

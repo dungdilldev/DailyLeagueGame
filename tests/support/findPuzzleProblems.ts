@@ -52,12 +52,21 @@ export function findPuzzleProblems(
       if (seenChampions.has(id)) problems.push(`${label}: "${id}" appears twice in the day`);
       seenChampions.add(id);
     }
-    const { correct, wrong } = question;
+    const correct = 'correct' in question ? question.correct : undefined;
+    const wrong = 'wrong' in question ? question.wrong : undefined;
     if (correct && !correct.includes(round.answerId)) {
       problems.push(`${label}: answer is not in the question's correct list`);
     }
     if (wrong && round.optionIds.some((id) => id !== round.answerId && !wrong.includes(id))) {
       problems.push(`${label}: an option is not in the question's wrong list`);
+    }
+    if (question.kind === 'clue') {
+      // The quoted clue must belong to the answer, or the question would be unanswerable.
+      const title = entitiesById.get(round.answerId)?.title;
+      if (!title || !round.question.includes(title)) {
+        problems.push(`${label}: question does not quote the answer's title`);
+      }
+      return;
     }
     if (question.kind === 'pick') return;
 

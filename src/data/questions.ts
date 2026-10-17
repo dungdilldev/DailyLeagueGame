@@ -1,5 +1,6 @@
 import type {
   ChampionDataFile,
+  ClueQuestionTemplate,
   ItemDataFile,
   PickQuestionTemplate,
   QuestionTemplate,
@@ -21,11 +22,16 @@ export interface PickQuestion extends PickQuestionTemplate {
   kind: 'pick';
 }
 
-export type Question = StatQuestion | PickQuestion;
+/** A question that quotes a clue taken from a random champion's data. */
+export interface ClueQuestion extends ClueQuestionTemplate {
+  kind: 'clue';
+}
+
+export type Question = StatQuestion | PickQuestion | ClueQuestion;
 
 /** Short name of a question, e.g. "Base health" or "Marksmen". */
 export function questionLabel(question: Question): string {
-  return question.kind === 'pick' ? question.label : question.statMeta.label;
+  return question.kind === 'stat' ? question.statMeta.label : question.label;
 }
 
 type StatsBySubject = Record<StatSubject, readonly StatMeta[]>;
@@ -43,9 +49,11 @@ export function resolveQuestions(
   templates: readonly QuestionTemplate[],
   stats: StatsBySubject,
 ): Question[] {
-  return templates.map((template) =>
-    'stat' in template ? resolveStatQuestion(template, stats) : { ...template, kind: 'pick' },
-  );
+  return templates.map((template): Question => {
+    if ('stat' in template) return resolveStatQuestion(template, stats);
+    if ('clue' in template) return { ...template, kind: 'clue' };
+    return { ...template, kind: 'pick' };
+  });
 }
 
 /** Everything the game needs: both data files and the questions asked about them. */

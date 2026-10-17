@@ -51,6 +51,8 @@ export type Entity = {
   name: string;
   iconUrl: string;
   stats: Record<string, number>;
+  /** A champion's epithet ("the Darkin Blade"); absent for items and text options. */
+  title?: string;
 };
 
 export const ChampionSchema = z.object({
@@ -158,6 +160,20 @@ const StatQuestionTemplateSchema = z
   })
   .refine(hasDisjointLists, { message: DISJOINT_LISTS_MESSAGE });
 
+/**
+ * A question made from the champion data itself: it quotes a clue about a random champion
+ * ("Which champion is known as \"the Darkin Blade\"?") and offers that champion and three others.
+ * The `{title}` in the question text is replaced by the clue.
+ */
+const ClueQuestionTemplateSchema = z.strictObject({
+  ...QuestionFields,
+  subject: z.literal('champion'),
+  /** Which champion field is quoted. */
+  clue: z.literal('title'),
+  /** Short name shown in the results. */
+  label: z.string().min(1),
+});
+
 /** A round shows 4 options: the answer and this many wrong ones. */
 const MIN_WRONG_PER_PICK_QUESTION = 3;
 
@@ -182,10 +198,12 @@ const PickQuestionTemplateSchema = z
 export const QuestionTemplateSchema = z.union([
   StatQuestionTemplateSchema,
   PickQuestionTemplateSchema,
+  ClueQuestionTemplateSchema,
 ]);
 export type QuestionTemplate = z.infer<typeof QuestionTemplateSchema>;
 export type StatQuestionTemplate = z.infer<typeof StatQuestionTemplateSchema>;
 export type PickQuestionTemplate = z.infer<typeof PickQuestionTemplateSchema>;
+export type ClueQuestionTemplate = z.infer<typeof ClueQuestionTemplateSchema>;
 
 export const QuestionFileSchema = z
   .object({ questions: z.array(QuestionTemplateSchema).min(1) })

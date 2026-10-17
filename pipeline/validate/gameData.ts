@@ -70,9 +70,10 @@ export function findQuestionListProblems(
     // Text options (team names, cities) are not in any data file, so there is nothing to check.
     if (question.subject === 'text') return [];
     const known = knownIds[question.subject];
+    // Clue questions only have an exclude list.
     const listed = [
-      ...(question.correct ?? []),
-      ...(question.wrong ?? []),
+      ...('correct' in question ? (question.correct ?? []) : []),
+      ...('wrong' in question ? (question.wrong ?? []) : []),
       ...(question.exclude ?? []),
     ];
     return listed

@@ -108,6 +108,43 @@ describe('pick questions', () => {
   });
 });
 
+const clue = {
+  id: 'knownAsTitle',
+  category: 'lore' as const,
+  difficulty: 'easy' as const,
+  subject: 'champion' as const,
+  clue: 'title' as const,
+  label: 'Champion titles',
+  question: 'Which champion is known as "{title}"?',
+};
+
+describe('clue questions', () => {
+  it('are accepted with a subject, a clue, a label and the question text', () => {
+    expect(parse([clue]).success).toBe(true);
+    expect(parse([clue, template, pick]).success).toBe(true);
+  });
+
+  it('only quote a clue we can read from the champion data, about champions', () => {
+    expect(parse([{ ...clue, clue: 'region' }]).success).toBe(false);
+    expect(parse([{ ...clue, subject: 'item' }]).success).toBe(false);
+    expect(parse([{ ...clue, subject: undefined }]).success).toBe(false);
+  });
+
+  it('need a label, and reject answer lists, which they do not use', () => {
+    expect(parse([{ ...clue, label: undefined }]).success).toBe(false);
+    expect(parse([{ ...clue, correct: ['Ahri'] }]).success).toBe(false);
+  });
+
+  it('can exclude champions', () => {
+    expect(parse([{ ...clue, exclude: ['Teemo'] }]).success).toBe(true);
+  });
+
+  it('resolve without a stat', () => {
+    const [question] = resolveQuestions([clue], stats);
+    expect(question?.kind).toBe('clue');
+  });
+});
+
 describe('resolveQuestions', () => {
   it('finds out from the stat whether a question is about champions or items', () => {
     const [champion, item] = resolveQuestions(
@@ -134,9 +171,9 @@ describe('resolveQuestions', () => {
 describe('the question file in the repository', () => {
   const { questions } = realGameData;
 
-  it('puts stat questions in "stats" and "variable", and pick questions elsewhere', () => {
+  it('puts stat questions in "stats" and "variable", and every other kind elsewhere', () => {
     for (const question of questions) {
-      if (question.kind === 'pick') expect(question.category, question.id).not.toBe('stats');
+      if (question.kind !== 'stat') expect(question.category, question.id).not.toBe('stats');
       else
         expect([question.category, question.difficulty], question.id).toEqual([
           'stats',
@@ -164,7 +201,7 @@ describe('the question file in the repository', () => {
   it('has lore questions about the world of League of Legends', () => {
     const lore = questions.filter((question) => question.category === 'lore');
     expect(lore.length).toBeGreaterThan(0);
-    expect(lore.every((question) => question.kind === 'pick')).toBe(true);
+    expect(lore.every((question) => question.kind !== 'stat')).toBe(true);
   });
 
   it('is valid', () => {

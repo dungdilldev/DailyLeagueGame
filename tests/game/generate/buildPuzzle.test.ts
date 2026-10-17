@@ -131,15 +131,20 @@ describe('buildPuzzle with answer lists', () => {
 
   it('keeps every round valid and respects the lists of a question', () => {
     const restricted = questions.map((question) =>
-      question.subject === 'champion'
+      question.kind === 'stat' && question.subject === 'champion'
         ? { ...question, correct: [first.id], exclude: [second.id] }
         : question,
+    );
+    const statIds = new Set(
+      restricted.filter((question) => question.kind === 'stat').map(({ id }) => id),
     );
     for (let offset = 0; offset < 60; offset++) {
       const date = addUtcDays('2026-01-01', offset);
       const puzzle = buildPuzzle(date, data, restricted);
       expect(findPuzzleProblems(puzzle, everyone, restricted), date).toEqual([]);
-      for (const round of puzzle.rounds.filter((r) => r.subject === 'champion')) {
+      for (const round of puzzle.rounds.filter(
+        (r) => r.subject === 'champion' && statIds.has(r.questionId),
+      )) {
         expect(round.answerId).toBe(first.id);
       }
     }

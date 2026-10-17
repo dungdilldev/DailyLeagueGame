@@ -214,6 +214,13 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Esports mode now has 11 questions, so a full 5-round day
 - Facts checked against the Wikipedia Worlds results table up to the 2025 final. They go stale: re-check the esports lists after every Worlds (November). The 2026 final is in New York, and the pool should be refreshed after it.
 
+### Phase 5c9 - More lore questions (done)
+
+- [x] Clue questions (`clue: "title"`): "Which champion is known as ...?" built from the champion data
+- [x] Regions rebuilt from the wiki region pages (Urgot moved from Noxus to Zaun, Mordekaiser dropped from the Shadow Isles, ambiguous distractors removed) and extended with Shurima, Ixtal and Bandle City
+- [x] Events and groups: Noxian invasion of Ionia (negative question), the Ruination, Sentinels of Light, the Ascended; the Darkin list gained Zaahen
+- Lore now has 20 questions.
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

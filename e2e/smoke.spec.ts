@@ -48,7 +48,8 @@ test('a full day can be played and the result survives a reload', async ({ page 
   await page.screenshot({ path: testInfo.outputPath('round.png'), fullPage: true });
 
   await page.locator('.card').first().click();
-  await expect(page.locator('.card__value')).toHaveCount(4);
+  // Every kind of question marks the right option once answered; only stat questions show values.
+  await expect(page.locator('.card--correct')).toHaveCount(1);
   await page.screenshot({ path: testInfo.outputPath('reveal.png'), fullPage: true });
   await page.getByRole('button', { name: 'Next round' }).click();
 

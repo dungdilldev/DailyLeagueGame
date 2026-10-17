@@ -36,7 +36,8 @@ test('endless questions work, with real icons, and the seed is kept in the addre
     .toBe(true);
 
   await page.locator('.card').first().click();
-  await expect(page.locator('.card__value')).toHaveCount(4);
+  // Every kind of question marks the right option once answered; only stat questions show values.
+  await expect(page.locator('.card--correct')).toHaveCount(1);
   await page.getByRole('button', { name: 'Next round' }).click();
   await expect(page.getByText('Question 2')).toBeVisible();
 

@@ -55,10 +55,13 @@ describe('buildEndlessQuestion', () => {
       counts.set(id, (counts.get(id) ?? 0) + 1);
     }
     const expected = total / questions.length;
+    // Counts vary like a coin toss, by about sqrt(expected); allow five times that, so the test
+    // stays steady as questions are added but still catches a question that is favoured.
+    const tolerance = 5 * Math.sqrt(expected);
     for (const question of questions) {
       const count = counts.get(question.id) ?? 0;
-      expect(count, question.id).toBeGreaterThan(expected * 0.7);
-      expect(count, question.id).toBeLessThan(expected * 1.3);
+      expect(count, question.id).toBeGreaterThan(expected - tolerance);
+      expect(count, question.id).toBeLessThan(expected + tolerance);
     }
   });
 

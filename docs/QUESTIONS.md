@@ -244,13 +244,39 @@ between the best and second-best option narrows each round. The yordle and Void 
 
 ### Lore questions
 
-Lore questions are pick questions with `"category": "lore"`. Current ones: which champion is from
-each region (Demacia, Noxus, Freljord, Ionia, Piltover, Zaun, Shadow Isles, Bilgewater, Mount
-Targon), and which is a yordle, a Void creature or a Darkin. The lists are written by hand, so check
-them against the [League of Legends wiki](https://wiki.leagueoflegends.com) when you change them.
-Leave out champions whose lore is ambiguous or has changed (for example someone born in one region
-and living in another) rather than risk an unfair question. A region question's wrong options come
-from other regions, so a champion may be a yordle and still be a fair option.
+Lore questions have `"category": "lore"`. All lists were checked against the
+[League of Legends wiki](https://wiki.leagueoflegends.com) region and event pages, and any
+champion the wiki also ties to another region (visitors, people born elsewhere, disputed cases)
+is left out of every list, so no option can be argued to be right or wrong. There are three kinds.
+
+**Regions (`medium`).** Which champion is from Demacia, Noxus, Freljord, Ionia, Piltover, Zaun,
+the Shadow Isles, Bilgewater, Mount Targon, Shurima, Ixtal or Bandle City. The wrong options are
+two champions from every other region.
+
+**Races and groups (`easy` to `hard`).** Yordles and Void creatures (`easy`), Darkin, the Ascended
+of Shurima and the Sentinels of Light (`hard`).
+
+**Events (`hard`).** Which champion did NOT fight in the Noxian invasion of Ionia, and which was
+turned into an undead spirit by the Black Mist during the Ruination.
+
+**Champion titles (`easy`).** "Which champion is known as \"the Darkin Blade\"?" This one needs no
+lists: it takes a random champion's title from the champion data, so it asks about a different
+champion each day and stays correct as new champions arrive. It is a clue question, written as
+
+```json
+{
+  "id": "knownAsTitle",
+  "category": "lore",
+  "difficulty": "easy",
+  "subject": "champion",
+  "clue": "title",
+  "label": "Champion titles",
+  "question": "Which champion is known as \"{title}\"?"
+}
+```
+
+`{title}` is replaced by the answer's title. Lore changes with new releases (a champion can
+change region), so re-check a list when the wiki's page changes.
 
 ### Esports questions
 
