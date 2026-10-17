@@ -9,6 +9,7 @@ import { Footer } from './Footer';
 import { Logo } from './Logo';
 import { ModeNav } from './ModeNav';
 import { PuzzleScreen } from './PuzzleScreen';
+import { SupportButton } from './SupportButton';
 import { cleanSeed, randomSeed } from './randomSeed';
 import { useGameFile } from './useGameFile';
 
@@ -132,6 +133,7 @@ export function App() {
           </p>
         )}
       </main>
+      <SupportButton />
       <Footer />
     </div>
   );
