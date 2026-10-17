@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import type { GameData } from '../../src/data/questions';
-import { createDailyPuzzle } from '../../src/game/dailyPuzzle';
+import { createDailyPuzzle, puzzleDataFor } from '../../src/game/dailyPuzzle';
+import { addUtcDays } from '../../src/game/date';
+import { GAME_MODES } from '../../src/game/gameMode';
+import { ROUND_GAP_BANDS, ROUNDS_PER_DAY } from '../../src/game/generate/config';
+import { findPuzzleProblems } from '../support/findPuzzleProblems';
 import { realGameData } from '../support/realGameData';
 
 const currentChampions = realGameData.champions.snapshots.at(-1);
@@ -37,6 +41,46 @@ describe('createDailyPuzzle', () => {
     const lastChampion = currentChampions.entities.at(-1);
     const after = createDailyPuzzle(withUpcoming, '2030-05-06').entities;
     expect(lastChampion && after.champion.has(lastChampion.id)).toBe(false);
+  });
+
+  it('plays only the questions of the chosen mode, and a different puzzle than the mixed one', () => {
+    const date = '2030-05-05';
+    const lore = createDailyPuzzle(realGameData, date, 'lore').puzzle;
+    const loreIds = new Set(
+      realGameData.questions.filter((q) => q.category === 'lore').map((q) => q.id),
+    );
+    expect(lore.rounds.length).toBeGreaterThan(0);
+    expect(lore.rounds.every((round) => loreIds.has(round.questionId))).toBe(true);
+    expect(createDailyPuzzle(realGameData, date, 'lore').puzzle).toEqual(lore);
+    expect(createDailyPuzzle(realGameData, date).puzzle).not.toEqual(lore);
+  });
+
+  it('keeps the mixed mode identical to the puzzle without a mode', () => {
+    expect(createDailyPuzzle(realGameData, '2030-05-05', 'mixed').puzzle).toEqual(
+      createDailyPuzzle(realGameData, '2030-05-05').puzzle,
+    );
+  });
+
+  it('builds a valid puzzle for every mode on every day of a year', () => {
+    for (const mode of GAME_MODES) {
+      const poolSize = realGameData.questions.filter(
+        (q) => mode === 'mixed' || q.category === mode,
+      ).length;
+      const expected = Math.min(ROUNDS_PER_DAY, poolSize);
+      for (let offset = 0; offset < 365; offset++) {
+        const date = addUtcDays('2026-01-01', offset);
+        const { puzzle } = createDailyPuzzle(realGameData, date, mode);
+        expect(puzzle.rounds, `${mode} ${date}`).toHaveLength(expected);
+        const { champions, items } = puzzleDataFor(realGameData, date);
+        const problems = findPuzzleProblems(
+          puzzle,
+          [...champions, ...items],
+          realGameData.questions,
+          ROUND_GAP_BANDS.slice(0, expected),
+        );
+        expect(problems, `${mode} ${date}`).toEqual([]);
+      }
+    }
   });
 
   it('versions champions and items independently', () => {

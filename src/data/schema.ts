@@ -97,7 +97,7 @@ export type ItemDataFile = DataFile<Item>;
 const EntityIdListSchema = z.array(z.string().min(1)).min(1);
 
 /** What kind of knowledge a question tests; for grouping and, later, filtering. */
-export const QuestionCategorySchema = z.enum(['stats', 'trivia', 'lore', 'esports']);
+export const QuestionCategorySchema = z.enum(['stats', 'lore', 'esports']);
 export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 
 /**
@@ -155,7 +155,7 @@ const StatQuestionTemplateSchema = z
 const MIN_WRONG_PER_PICK_QUESTION = 3;
 
 /**
- * A question with no stat behind it ("Which of these champions is a marksman?"). One option is
+ * A question with no stat behind it ("Which of these champions is a yordle?"). One option is
  * drawn from `correct` and the others from `wrong`, so both lists are written out in full.
  */
 const PickQuestionTemplateSchema = z

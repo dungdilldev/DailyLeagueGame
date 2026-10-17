@@ -46,7 +46,7 @@ describe('QuestionFileSchema', () => {
 
 const pick = {
   id: 'marksman',
-  category: 'trivia' as const,
+  category: 'lore' as const,
   difficulty: 'easy' as const,
   subject: 'champion' as const,
   label: 'Marksmen',
@@ -65,7 +65,7 @@ describe('category and difficulty', () => {
     for (const difficulty of ['easy', 'medium', 'hard', 'variable']) {
       expect(parse([{ ...template, difficulty }]).success, difficulty).toBe(true);
     }
-    for (const category of ['stats', 'trivia', 'lore', 'esports']) {
+    for (const category of ['stats', 'lore', 'esports']) {
       expect(parse([{ ...template, category }]).success, category).toBe(true);
     }
   });

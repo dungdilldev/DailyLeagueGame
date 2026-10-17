@@ -9,6 +9,13 @@ npm install
 npx playwright install chromium     # only needed for the browser tests (npm run test:e2e)
 ```
 
+## Game modes
+
+The buttons at the top switch between the mixed puzzle and one category. Open
+http://localhost:5173/?category=lore (or `stats`, `esports`) to go straight to one. Each
+mode saves its own progress, so to replay one mode only, clear its key in the browser's local
+storage: `dailyleague:v1` is the mixed mode, `dailyleague:v1:lore` and so on are the others.
+
 ## Play the game
 
 ```

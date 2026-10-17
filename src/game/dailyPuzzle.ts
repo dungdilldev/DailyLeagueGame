@@ -1,6 +1,8 @@
 import type { GameData } from '../data/questions';
 import { buildEntityLookup, type EntityLookup } from './entityLookup';
 import { buildPuzzle, type PuzzleData } from './generate/buildPuzzle';
+import { ROUND_GAP_BANDS } from './generate/config';
+import { MIXED_MODE, puzzleSeed, questionsForMode, type GameMode } from './gameMode';
 import type { Puzzle } from './puzzle';
 import { newestSnapshot, pickSnapshot } from './snapshot';
 
@@ -29,12 +31,22 @@ export function newestPuzzleData(data: GameData): PuzzleData {
 /**
  * The puzzle for a UTC day: same date and data always give the same puzzle. The champion and
  * item files are versioned independently, so each day uses the snapshot of each file that was
- * in effect on that day.
+ * in effect on that day. A mode other than mixed plays only the questions of its category.
  */
-export function createDailyPuzzle(data: GameData, date: string): DailyPuzzle {
+export function createDailyPuzzle(
+  data: GameData,
+  date: string,
+  mode: GameMode = MIXED_MODE,
+): DailyPuzzle {
   const puzzleData = puzzleDataFor(data, date);
   return {
-    puzzle: buildPuzzle(date, puzzleData, data.questions),
+    puzzle: buildPuzzle(
+      date,
+      puzzleData,
+      questionsForMode(data.questions, mode),
+      ROUND_GAP_BANDS,
+      puzzleSeed(date, mode),
+    ),
     entities: buildEntityLookup(puzzleData),
   };
 }

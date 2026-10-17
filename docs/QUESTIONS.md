@@ -161,6 +161,17 @@ So the first round is usually a clear-cut question, and movement speed is always
   a puzzle never changes while someone is playing it.
 - **Earlier days.** The previous 7 days can be replayed; their results do not count for the streak.
 
+## Game modes
+
+The buttons at the top choose what to play: **Mixed** (all questions, five rounds) or a single
+category: **Stats**, **Lore** or **Esports**. Each mode is its own game: it has its own
+puzzle for the day, its own progress, streak and shared result. The choice is kept in the address
+(`?category=lore`).
+
+A category with fewer questions than rounds gives a shorter day, one round per question: Esports
+is short until more questions are added. When a category has no question left for a
+round's difficulty (for example Lore has only one `hard` question), the nearest difficulty is used.
+
 ## Seeing all questions
 
 The endless mode (`/?mode=endless`) shows random questions without end and a table of which ones
@@ -183,23 +194,23 @@ champion stat and which an item stat follows from the list it is registered in.
 
 ### Adding a question about specific champions or items
 
-A question that is not about a stat (for example "which of these is a marksman?") needs no code
+A question that is not about a stat (for example "which of these is a yordle?") needs no code
 and no data refresh, only an entry in `data/questions.json`:
 
 ```json
 {
-  "id": "isMarksman",
-  "category": "trivia",
+  "id": "isYordle",
+  "category": "lore",
   "difficulty": "easy",
   "subject": "champion",
-  "label": "Marksmen",
-  "question": "Which of these champions is a marksman?",
-  "correct": ["Jinx", "Ashe", "Caitlyn"],
+  "label": "Yordles",
+  "question": "Which of these champions is a yordle?",
+  "correct": ["Teemo", "Tristana", "Lulu"],
   "wrong": ["Garen", "Lux", "Zed", "Soraka"]
 }
 ```
 
-- Every question also has a `category` (`stats` or `trivia`; use `trivia` for these) and a
+- Every question also has a `category` (`lore` or `esports` for these) and a
   `difficulty`, see below.
 - `subject` is `champion` or `item`. `label` is the short name in the results.
 - Each day the round shows one champion from `correct` and three from `wrong`, drawn at random,
@@ -215,7 +226,7 @@ and no data refresh, only an entry in `data/questions.json`:
 
 Both fields are required on every question.
 
-- `category`: `stats` (compares a number), `trivia` (game knowledge) or `lore` (the story of
+- `category`: `stats` (compares a number), `lore` (the story of
   champions and the world) or `esports` (professional play). Only for grouping for now.
 - `difficulty`: which rounds the question may appear in. A day has five rounds, tiered easy,
   easy, medium, hard, hard.
@@ -228,8 +239,8 @@ Both fields are required on every question.
 | `variable`   | any               |
 
 Stat questions are all `variable`: how hard they are depends on the round, because the gap
-between the best and second-best option narrows each round. The marksman question is `easy`,
-as its wrong options are clearly not marksmen.
+between the best and second-best option narrows each round. The yordle and Void questions are
+`easy`, as their wrong options are clearly not that kind of champion.
 
 ### Lore questions
 
@@ -239,7 +250,7 @@ Targon), and which is a yordle, a Void creature or a Darkin. The lists are writt
 them against the [League of Legends wiki](https://wiki.leagueoflegends.com) when you change them.
 Leave out champions whose lore is ambiguous or has changed (for example someone born in one region
 and living in another) rather than risk an unfair question. A region question's wrong options come
-from other regions, so a champion may be a yordle or a marksman and still be a fair option.
+from other regions, so a champion may be a yordle and still be a fair option.
 
 ### Esports questions
 

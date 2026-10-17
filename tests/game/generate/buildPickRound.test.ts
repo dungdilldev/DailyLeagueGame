@@ -18,7 +18,7 @@ const roster = ['Jinx', 'Ashe', 'Garen', 'Lux', 'Zed', 'Soraka'].map(champion);
 const QUESTION: PickQuestion = {
   kind: 'pick',
   id: 'marksman',
-  category: 'trivia',
+  category: 'lore',
   difficulty: 'easy',
   subject: 'champion',
   label: 'Marksmen',

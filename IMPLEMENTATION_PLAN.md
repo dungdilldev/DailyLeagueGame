@@ -178,10 +178,10 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 
 ### Phase 5c3 - Pick questions (done)
 
-- [x] Questions without a stat, answered from explicit `correct` / `wrong` lists (`buildPickRound`); first example: "Which of these champions is a marksman?"
+- [x] Questions without a stat, answered from explicit `correct` / `wrong` lists (`buildPickRound`); first example: "Which of these champions is a yordle?"
 - [x] Round has optional `format` / empty `values` for these; the right card is tagged "Correct" instead of "Highest"
 - [x] Question templates reject unknown keys
-- [x] Required `category` (`stats` / `trivia`) and `difficulty` (`easy` / `medium` / `hard` / `variable`) per question; rounds are tiered easy, easy, medium, hard, hard and a fixed difficulty is only asked in its tier
+- [x] Required `category` (`stats` / `lore` / `esports`) and `difficulty` (`easy` / `medium` / `hard` / `variable`) per question; rounds are tiered easy, easy, medium, hard, hard and a fixed difficulty is only asked in its tier
 
 ### Phase 5c4 - Lore questions (done)
 
@@ -194,6 +194,14 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Category `esports`; 2 pick questions about esports skins: T1 / SKT T1 (`medium`) and Worlds (`hard`)
 - Lists were built from Data Dragon skin names (patch 16.20.1); every wrong option has no esports-line skin at all (Victorious, T1, Worlds, Dragonslayer, MSI).
 - Open: questions about pro play itself (teams, players, tournament results) need a source we can check and, for teams or players, a new option kind.
+
+### Phase 5c6 - Game modes (done)
+
+- [x] Mode buttons at the top: Mixed (all questions, the original puzzle) and one per category; `?category=` in the address
+- [x] Each mode has its own seed, saved progress, streak and share text
+- [x] Pools smaller than 5 questions give shorter days; empty tiers fall back to the nearest tier
+- Open: esports (2 questions) gives a very short day until more questions exist.
+- The `trivia` category (one marksman question) was removed again.
 
 ### Phase 5d - Previous days (done)
 

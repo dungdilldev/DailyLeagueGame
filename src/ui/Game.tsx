@@ -2,6 +2,7 @@ import { useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
 import type { Entity, StatSubject } from '../data/schema';
 import { isComplete, submitAnswer, validAnswers } from '../game/progress';
+import { progressSlot, type GameMode } from '../game/gameMode';
 import { currentStreak } from '../game/streak';
 import { completedDates, loadSavedDays, saveDay, type StorageLike } from '../storage/progressStore';
 import { ResultsView } from './ResultsView';
@@ -11,6 +12,8 @@ interface GameProps {
   puzzle: Puzzle;
   /** Champions and items by id, for showing names and icons. */
   entities: Readonly<Record<StatSubject, ReadonlyMap<string, Entity>>>;
+  /** Which game mode this puzzle belongs to; each mode saves its own progress and streak. */
+  mode: GameMode;
   /** UTC date of the puzzle being played. */
   date: string;
   /** The real current UTC day. Playing an earlier day does not count for the streak. */
@@ -19,8 +22,9 @@ interface GameProps {
   shareUrl: string;
 }
 
-export function Game({ puzzle, entities, date, today, storage, shareUrl }: GameProps) {
-  const [days, setDays] = useState(() => loadSavedDays(storage));
+export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }: GameProps) {
+  const slot = progressSlot(mode);
+  const [days, setDays] = useState(() => loadSavedDays(storage, slot));
   // True between answering a round and pressing "Next": the reveal is shown for that round.
   const [revealing, setRevealing] = useState(false);
 
@@ -38,6 +42,7 @@ export function Game({ puzzle, entities, date, today, storage, shareUrl }: GameP
           today,
         )}
         isToday={date === today}
+        mode={mode}
         shareUrl={shareUrl}
       />
     );
@@ -54,7 +59,7 @@ export function Game({ puzzle, entities, date, today, storage, shareUrl }: GameP
       complete: isComplete(puzzle, next),
       ...(date !== today && { late: true }),
     };
-    saveDay(storage, date, record);
+    saveDay(storage, date, record, slot);
     setDays((previous) => ({ ...previous, [date]: record }));
     setRevealing(true);
   };

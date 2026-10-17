@@ -72,6 +72,7 @@ const renderGame = (storage: StorageLike) =>
     <Game
       puzzle={puzzle}
       entities={entities}
+      mode="mixed"
       date={TODAY}
       today={TODAY}
       storage={storage}
@@ -128,6 +129,7 @@ describe('Game', () => {
       <Game
         puzzle={itemPuzzle}
         entities={entities}
+        mode="mixed"
         date={TODAY}
         today={TODAY}
         storage={memoryStorage()}
@@ -148,10 +150,10 @@ describe('Game', () => {
       date: TODAY,
       rounds: [
         {
-          questionId: 'isMarksman',
+          questionId: 'isYordle',
           subject: 'champion',
-          statLabel: 'Marksmen',
-          question: 'Which of these champions is a marksman?',
+          statLabel: 'Yordles',
+          question: 'Which of these champions is a yordle?',
           optionIds: IDS,
           answerId: 'Brand',
           values: {},
@@ -162,6 +164,7 @@ describe('Game', () => {
       <Game
         puzzle={pickPuzzle}
         entities={entities}
+        mode="mixed"
         date={TODAY}
         today={TODAY}
         storage={memoryStorage()}
@@ -203,6 +206,7 @@ describe('Game', () => {
       <Game
         puzzle={puzzle}
         entities={entities}
+        mode="mixed"
         date={TODAY}
         today={TODAY}
         storage={undefined}
@@ -220,6 +224,7 @@ describe('Game', () => {
       <Game
         puzzle={{ ...puzzle, date: '2026-03-04' }}
         entities={entities}
+        mode="mixed"
         date="2026-03-04"
         today={TODAY}
         storage={storage}
@@ -246,6 +251,7 @@ describe('Game', () => {
       <Game
         puzzle={puzzle}
         entities={entities}
+        mode="mixed"
         date={TODAY}
         today={TODAY}
         storage={storage}
@@ -260,6 +266,7 @@ describe('Game', () => {
       <Game
         puzzle={{ ...puzzle, date: '2026-03-04' }}
         entities={entities}
+        mode="mixed"
         date="2026-03-04"
         today={TODAY}
         storage={storage}

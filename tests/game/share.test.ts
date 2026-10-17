@@ -8,6 +8,12 @@ describe('buildShareText', () => {
     );
   });
 
+  it('names the mode when it is not the mixed one', () => {
+    expect(buildShareText('2026-03-05', [true, false], undefined, 'Lore')).toBe(
+      'DailyLeague Lore 2026-03-05 1/2\n\u{1F7E9}\u{1F7E5}',
+    );
+  });
+
   it('appends the url when given', () => {
     expect(buildShareText('2026-03-05', [true], 'https://example.com')).toContain(
       '\nhttps://example.com',

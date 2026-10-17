@@ -32,6 +32,18 @@ export function fitsRound(difficulty: QuestionDifficulty, roundIndex: number): b
   return difficulty === 'variable' || difficulty === ROUND_TIERS[roundIndex];
 }
 
+const TIER_ORDER: readonly QuestionDifficulty[] = ['easy', 'medium', 'hard'];
+
+/**
+ * How far a question's difficulty is from a round's tier: 0 if it fits. Used when a small pool
+ * (one category) has nothing that fits a round, to take the nearest instead of ending the day.
+ */
+export function tierDistance(difficulty: QuestionDifficulty, roundIndex: number): number {
+  const tier = ROUND_TIERS[roundIndex];
+  if (difficulty === 'variable' || !tier) return 0;
+  return Math.abs(TIER_ORDER.indexOf(difficulty) - TIER_ORDER.indexOf(tier));
+}
+
 export const ROUNDS_PER_DAY = ROUND_GAP_BANDS.length;
 
 /** Retries with a derived seed if a day cannot be built (still fully deterministic). */

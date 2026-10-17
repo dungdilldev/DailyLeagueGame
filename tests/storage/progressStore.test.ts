@@ -66,3 +66,28 @@ describe('progress store', () => {
     }).not.toThrow();
   });
 });
+
+/** Unlike the helper above, remembers every key separately. */
+function keyedStorage(): StorageLike {
+  const values = new Map<string, string>();
+  return {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => {
+      values.set(key, value);
+    },
+  };
+}
+
+describe('save slots', () => {
+  const record = { answers: ['A'], complete: true };
+
+  it('keep each mode as its own game, apart from the original slot', () => {
+    const storage = keyedStorage();
+    saveDay(storage, '2026-03-05', record);
+    saveDay(storage, '2026-03-05', { answers: ['B'], complete: false }, 'lore');
+
+    expect(loadSavedDays(storage)['2026-03-05']?.answers).toEqual(['A']);
+    expect(loadSavedDays(storage, 'lore')['2026-03-05']?.answers).toEqual(['B']);
+    expect(loadSavedDays(storage, 'esports')).toEqual({});
+  });
+});

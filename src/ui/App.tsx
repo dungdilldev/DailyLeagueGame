@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks';
 import { resolvePuzzleDate } from '../game/archive';
 import { formatUtcDate } from '../game/date';
+import { MIXED_MODE, parseGameMode, type GameMode } from '../game/gameMode';
 import { getBrowserStorage } from '../storage/progressStore';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
 import { Footer } from './Footer';
+import { ModeNav } from './ModeNav';
 import { PuzzleScreen } from './PuzzleScreen';
 import { cleanSeed, randomSeed } from './randomSeed';
 import { useGameFile } from './useGameFile';
@@ -14,6 +16,7 @@ const TODAY = formatUtcDate(new Date());
 const SHARE_URL = window.location.origin + window.location.pathname;
 const DATE_PARAM = 'date';
 const MODE_PARAM = 'mode';
+const CATEGORY_PARAM = 'category';
 const SEED_PARAM = 'seed';
 const ENDLESS_MODE = 'endless';
 
@@ -26,6 +29,18 @@ function readRequestedDate(): string {
 
 function readInitialSeed(): string {
   return cleanSeed(new URLSearchParams(window.location.search).get(SEED_PARAM)) ?? randomSeed();
+}
+
+function readRequestedMode(): GameMode {
+  return parseGameMode(new URLSearchParams(window.location.search).get(CATEGORY_PARAM));
+}
+
+/** Keeps the chosen game mode in the address too, so a reload or shared link keeps it. */
+function showModeInUrl(mode: GameMode): void {
+  const url = new URL(window.location.href);
+  if (mode === MIXED_MODE) url.searchParams.delete(CATEGORY_PARAM);
+  else url.searchParams.set(CATEGORY_PARAM, mode);
+  window.history.replaceState(null, '', url);
 }
 
 /** Keeps the address bar in sync so an earlier day survives a reload and can be bookmarked. */
@@ -43,7 +58,7 @@ function showSeedInUrl(seed: string): void {
   window.history.replaceState(null, '', url);
 }
 
-function Body({ date }: { date: string }) {
+function Body({ date, mode }: { date: string; mode: GameMode }) {
   const state = useGameFile();
 
   switch (state.kind) {
@@ -65,6 +80,7 @@ function Body({ date }: { date: string }) {
       ) : (
         <PuzzleScreen
           data={state.data}
+          mode={mode}
           date={date}
           today={TODAY}
           storage={getBrowserStorage()}
@@ -76,10 +92,16 @@ function Body({ date }: { date: string }) {
 
 export function App() {
   const [date, setDate] = useState(readRequestedDate);
+  const [mode, setMode] = useState(readRequestedMode);
 
   const changeDate = (next: string) => {
     setDate(next);
     showDateInUrl(next);
+  };
+
+  const changeMode = (next: GameMode) => {
+    setMode(next);
+    showModeInUrl(next);
   };
 
   return (
@@ -94,9 +116,12 @@ export function App() {
             <a href={window.location.pathname}>&larr; Back to the daily puzzle</a>
           </p>
         ) : (
-          <DayNav date={date} today={TODAY} onChange={changeDate} />
+          <>
+            <ModeNav mode={mode} onChange={changeMode} />
+            <DayNav date={date} today={TODAY} onChange={changeDate} />
+          </>
         )}
-        <Body date={date} />
+        <Body date={date} mode={mode} />
         {!isEndlessMode && (
           <p class="mode-link">
             <a href={`?${MODE_PARAM}=${ENDLESS_MODE}`}>Endless mode (for testing)</a>

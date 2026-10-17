@@ -142,3 +142,53 @@ test.describe('day navigation', () => {
     await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
   });
 });
+
+test.describe('game modes', () => {
+  test('starts in the mixed mode and offers one button per category', async ({ page }) => {
+    await page.goto('/');
+    const nav = page.getByRole('navigation', { name: 'Choose game mode' });
+    await expect(nav.getByRole('button')).toHaveText(['Mixed', 'Stats', 'Lore', 'Esports']);
+    await expect(nav.getByRole('button', { name: 'Mixed' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+  });
+
+  test('plays a category on its own, keeps it in the address and saves it apart', async ({
+    page,
+  }) => {
+    const errors = collectErrors(page);
+    await page.goto('/');
+    await page.locator('.card').first().click();
+    await page.getByRole('button', { name: 'Next round' }).click();
+    await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+
+    await page.getByRole('button', { name: 'Lore' }).click();
+    await expect(page).toHaveURL(/category=lore/);
+    // The lore day has its own progress: it starts at round 1.
+    await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
+    await expectIconsLoaded(page);
+
+    await page.reload();
+    await expect(page.getByRole('button', { name: 'Lore' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
+
+    await page.getByRole('button', { name: 'Mixed' }).click();
+    await expect(page).not.toHaveURL(/category=/);
+    await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+    expect(errors).toEqual([]);
+  });
+
+  test('a category with fewer questions than rounds gives a shorter day', async ({ page }) => {
+    await page.goto('/?category=esports');
+    await expect(page.getByText('Round 1 of 2')).toBeVisible();
+    await page.locator('.card').first().click();
+    await page.getByRole('button', { name: 'Next round' }).click();
+    await page.locator('.card').first().click();
+    await page.getByRole('button', { name: 'See results' }).click();
+    await expect(page.getByRole('heading', { name: /You got/ })).toBeVisible();
+  });
+});

@@ -2,6 +2,11 @@ import { z } from 'zod';
 
 const STORAGE_KEY = 'dailyleague:v1';
 
+/** The mixed mode keeps the original key; every other mode saves apart, as its own game. */
+function storageKey(slot: string | undefined): string {
+  return slot === undefined ? STORAGE_KEY : `${STORAGE_KEY}:${slot}`;
+}
+
 const DayRecordSchema = z.object({
   /** Champion id chosen in each round, in order. */
   answers: z.array(z.string()),
@@ -26,9 +31,9 @@ export function getBrowserStorage(): StorageLike | undefined {
 }
 
 /** Returns saved progress, or an empty record if nothing usable is stored. Never throws. */
-export function loadSavedDays(storage: StorageLike | undefined): SavedDays {
+export function loadSavedDays(storage: StorageLike | undefined, slot?: string): SavedDays {
   try {
-    const raw = storage?.getItem(STORAGE_KEY);
+    const raw = storage?.getItem(storageKey(slot));
     if (!raw) return {};
     const parsed = SavedDaysSchema.safeParse(JSON.parse(raw));
     return parsed.success ? parsed.data : {};
@@ -38,10 +43,15 @@ export function loadSavedDays(storage: StorageLike | undefined): SavedDays {
 }
 
 /** Saves one day's progress, keeping the other days. Failures are ignored: progress is a convenience. */
-export function saveDay(storage: StorageLike | undefined, date: string, record: DayRecord): void {
+export function saveDay(
+  storage: StorageLike | undefined,
+  date: string,
+  record: DayRecord,
+  slot?: string,
+): void {
   try {
-    const days = { ...loadSavedDays(storage), [date]: record };
-    storage?.setItem(STORAGE_KEY, JSON.stringify(days));
+    const days = { ...loadSavedDays(storage, slot), [date]: record };
+    storage?.setItem(storageKey(slot), JSON.stringify(days));
   } catch {
     // Storage full or blocked: keep playing with in-memory state.
   }

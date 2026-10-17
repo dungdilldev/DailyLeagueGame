@@ -205,7 +205,7 @@ describe('findQuestionListProblems', () => {
     const pick: Question = {
       kind: 'pick',
       id: 'p',
-      category: 'trivia',
+      category: 'lore',
       difficulty: 'easy',
       subject: 'champion',
       label: 'Mages',

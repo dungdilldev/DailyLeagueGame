@@ -1,8 +1,11 @@
 import { useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
 import { roundResults } from '../game/progress';
+import type { GameMode } from '../game/gameMode';
+import { MIXED_MODE } from '../game/gameMode';
 import { buildShareText } from '../game/share';
 import { Countdown } from './Countdown';
+import { MODE_LABELS } from './modeLabels';
 
 interface ResultsViewProps {
   puzzle: Puzzle;
@@ -11,15 +14,28 @@ interface ResultsViewProps {
   shareUrl: string;
   /** False for an earlier day from the archive: no countdown, and a note about the streak. */
   isToday: boolean;
+  mode: GameMode;
 }
 
 type CopyStatus = 'idle' | 'copied' | 'failed';
 
-export function ResultsView({ puzzle, answers, streak, shareUrl, isToday }: ResultsViewProps) {
+export function ResultsView({
+  puzzle,
+  answers,
+  streak,
+  shareUrl,
+  isToday,
+  mode,
+}: ResultsViewProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
   const results = roundResults(puzzle, answers);
   const correct = results.filter(Boolean).length;
-  const shareText = buildShareText(puzzle.date, results, shareUrl);
+  const shareText = buildShareText(
+    puzzle.date,
+    results,
+    shareUrl,
+    mode === MIXED_MODE ? undefined : MODE_LABELS[mode],
+  );
 
   const copyResult = () => {
     navigator.clipboard.writeText(shareText).then(
