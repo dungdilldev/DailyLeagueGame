@@ -68,15 +68,10 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  text-align: center;
   padding: 0.5rem 0 1rem;
   margin-bottom: 1.25rem;
   border-bottom: 1px solid var(--gold-line);
-}
-
-.logo {
-  flex: none;
-  filter: drop-shadow(0 0 8px rgb(200 170 110 / 25%));
 }
 
 .masthead__title {

@@ -6,7 +6,6 @@ import { getBrowserStorage } from '../storage/progressStore';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
 import { Footer } from './Footer';
-import { Logo } from './Logo';
 import { ModeNav } from './ModeNav';
 import { PuzzleScreen } from './PuzzleScreen';
 import { SupportButton } from './SupportButton';
@@ -113,10 +112,9 @@ export function App() {
   return (
     <div class="app">
       <header class="masthead">
-        <Logo />
         <div>
           <h1 class="masthead__title">Summoner&apos;s Quiz</h1>
-          <p class="tagline">Daily League of Legends higher-or-lower</p>
+          <p class="tagline">Daily League of Legends trivia game</p>
         </div>
       </header>
       <main>
