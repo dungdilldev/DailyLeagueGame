@@ -348,6 +348,11 @@ main {
   box-shadow: 0 0 0 1px rgb(0 0 0 / 50%);
 }
 
+.card__icon:not(.card__icon--symbol) {
+  object-fit: cover;
+  object-position: top;
+}
+
 .card__icon--symbol {
   border: 0;
   border-radius: 0;

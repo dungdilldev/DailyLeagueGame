@@ -178,7 +178,7 @@ describe('Game', () => {
     expect(document.querySelectorAll('.card__value')).toHaveLength(0);
   });
 
-  it('shows plain text options by name without icons', async () => {
+  it('shows text options by name with their team logos', async () => {
     const user = userEvent.setup();
     const teamPuzzle: Puzzle = {
       date: TODAY,
@@ -207,7 +207,7 @@ describe('Game', () => {
     );
 
     expect(screen.getByRole('button', { name: /Cloud9/ })).toBeTruthy();
-    expect(document.querySelectorAll('.card__icon')).toHaveLength(0);
+    expect(document.querySelectorAll('.card__icon')).toHaveLength(4);
     await user.click(screen.getByRole('button', { name: /Cloud9/ }));
     expect(screen.getByText(/Not quite. It was T1/)).toBeTruthy();
   });

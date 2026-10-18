@@ -91,8 +91,8 @@ export function RoundView({
             <OptionCard
               key={id}
               name={option?.name ?? id}
-              iconUrl={symbols?.[id] ?? option?.iconUrl}
-              isSymbol={symbols !== undefined}
+              iconUrl={symbols?.urls[id] ?? option?.iconUrl}
+              isSymbol={symbols?.kind === 'crest'}
               valueText={revealed ? displayValue(round, id) : undefined}
               state={state}
               tag={cardTag(round, state)}

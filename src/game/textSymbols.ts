@@ -1,10 +1,31 @@
+import {
+  ESPORTS_IMAGE_DIRECTORY,
+  esportsImagePath,
+  esportsImages,
+  type EsportsImageKind,
+} from '../data/esportsImages';
 import type { Round } from './puzzle';
 
 /** Crest images are hotlinked from the League of Legends Wiki, which hosts Riot's artwork. */
 const CREST_BASE_URL = 'https://wiki.leagueoflegends.com/en-us/images/';
 
-function crestUrl(fileName: string): string {
-  return `${CREST_BASE_URL}${encodeURIComponent(fileName.replaceAll(' ', '_'))}`;
+/** A crest or logo is drawn as is; a photo of a person gets a portrait frame. */
+export type SymbolKind = 'crest' | 'photo';
+
+export interface RoundSymbols {
+  readonly kind: SymbolKind;
+  /** Image address by option id. */
+  readonly urls: Readonly<Record<string, string>>;
+}
+
+/**
+ * Photos show players in the jersey of the team they were photographed with, so a question
+ * that names a team ("has played for {team}") would be answered by the photo.
+ */
+const QUESTIONS_WITHOUT_PHOTOS: readonly string[] = ['playerByTeam'];
+
+function fileUrl(baseUrl: string, fileName: string): string {
+  return `${baseUrl}${encodeURIComponent(fileName.replaceAll(' ', '_'))}`;
 }
 
 /**
@@ -12,7 +33,7 @@ function crestUrl(fileName: string): string {
  * inside a nation gets none: showing its nation's crest would give away "Which of these places
  * is in Demacia?".
  */
-const SYMBOL_FILES: Readonly<Record<string, string>> = {
+const LORE_CREST_FILES: Readonly<Record<string, string>> = {
   Demacia: 'Demacia Crest icon.png',
   Noxus: 'Noxus Crest icon.png',
   Ionia: 'Ionia Crest icon.png',
@@ -42,14 +63,38 @@ const SYMBOL_FILES: Readonly<Record<string, string>> = {
   'House Lightshield': 'Lightshield House Crest icon.png',
 };
 
+/** Downloaded esports image, if there is one for this name. */
+function esportsImageUrl(kind: EsportsImageKind, name: string): string | undefined {
+  if (!(name in esportsImages[kind])) return undefined;
+  return `${import.meta.env.BASE_URL}${ESPORTS_IMAGE_DIRECTORY}/${esportsImagePath(kind, name)}`;
+}
+
+function symbolFor(name: string): { kind: SymbolKind; url: string } | undefined {
+  const loreFile = LORE_CREST_FILES[name];
+  if (loreFile !== undefined) return { kind: 'crest', url: fileUrl(CREST_BASE_URL, loreFile) };
+  const logoUrl = esportsImageUrl('leagues', name) ?? esportsImageUrl('teams', name);
+  if (logoUrl !== undefined) return { kind: 'crest', url: logoUrl };
+  const photoUrl = esportsImageUrl('players', name);
+  if (photoUrl !== undefined) return { kind: 'photo', url: photoUrl };
+  return undefined;
+}
+
 /**
- * The crest to show for each option of a text round, by option id, or undefined when the round
- * shows none. It is all or nothing: if only some options had a crest, the cards without one
- * would stand out and hint at the answer.
+ * The image to show for each option of a text round, or undefined when the round shows none. It
+ * is all or nothing: if only some options had an image, the cards without one would stand out
+ * and hint at the answer.
  */
-export function roundSymbols(round: Round): Readonly<Record<string, string>> | undefined {
+export function roundSymbols(round: Round): RoundSymbols | undefined {
   if (round.subject !== 'text') return undefined;
-  const files = round.optionIds.map((id) => SYMBOL_FILES[id]);
-  if (files.some((file) => file === undefined)) return undefined;
-  return Object.fromEntries(round.optionIds.map((id, index) => [id, crestUrl(files[index] ?? '')]));
+  const symbols = round.optionIds.map(symbolFor);
+  const [first] = symbols;
+  if (first === undefined || symbols.some((symbol) => symbol?.kind !== first.kind)) {
+    return undefined;
+  }
+  if (first.kind === 'photo' && QUESTIONS_WITHOUT_PHOTOS.includes(round.questionId))
+    return undefined;
+  return {
+    kind: first.kind,
+    urls: Object.fromEntries(round.optionIds.map((id, index) => [id, symbols[index]?.url ?? ''])),
+  };
 }
