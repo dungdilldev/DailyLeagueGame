@@ -126,12 +126,33 @@ describe('EndlessScreen', () => {
     }
   });
 
-  it('groups the coverage table by category', () => {
+  it('groups the coverage table by category and subcategory', () => {
     renderEndless();
     const headings = [...document.querySelectorAll('.coverage h3')].map((h) => h.textContent);
-    expect(headings).toHaveLength(3);
     expect(headings[0]).toMatch(/^Stats/);
-    expect(document.querySelectorAll('.coverage table')).toHaveLength(3);
+    expect(headings.some((heading) => /^Lore › Geography/.test(heading))).toBe(true);
+    expect(document.querySelectorAll('.coverage table')).toHaveLength(headings.length);
+    expect(document.querySelectorAll('.coverage tbody tr')).toHaveLength(
+      realGameData.questions.length,
+    );
+  });
+
+  it('offers the subcategories of the chosen category and asks only those questions', async () => {
+    const user = userEvent.setup();
+    renderEndless();
+    // Only categories that have subcategories offer the choice.
+    await user.selectOptions(screen.getByLabelText(/Category/), 'stats');
+    expect(screen.queryByLabelText(/Subcategory/)).toBeNull();
+    await user.selectOptions(screen.getByLabelText(/Category/), 'lore');
+    await user.selectOptions(screen.getByLabelText(/Subcategory/), 'geography');
+    const geography = realGameData.questions
+      .filter((q) => q.subcategory === 'geography')
+      .map((q) => q.id);
+    const options = [...screen.getByLabelText<HTMLSelectElement>(/Question/).options];
+    expect(options.map((o) => o.value).filter((v) => v !== 'any')).toEqual(geography);
+    await user.click(screen.getByRole('button', { name: 'Skip question' }));
+    const shown = document.querySelector('.endless__debug code:nth-of-type(2)')?.textContent;
+    expect(geography).toContain(shown);
   });
 
   it('can be restricted to one difficulty and shows it', async () => {

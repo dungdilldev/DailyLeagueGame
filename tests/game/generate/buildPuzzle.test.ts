@@ -117,11 +117,18 @@ describe('buildPuzzle with champions and items', () => {
     expect(itemRounds.length).toBeGreaterThan(days.length / 2);
   });
 
-  it('uses every item question at least once in a year', () => {
+  it('uses every question, or at least one question of every subcategory, in a year', () => {
     const used = new Set(
       puzzles.flatMap((puzzle) => puzzle.rounds.map((round) => round.questionId)),
     );
-    for (const question of questions) expect(used.has(question.id), question.id).toBe(true);
+    const slotOf = (question: Question) =>
+      question.subcategory === undefined
+        ? question.id
+        : `${question.category}/${question.subcategory}`;
+    const usedSlots = new Set(questions.filter(({ id }) => used.has(id)).map(slotOf));
+    for (const question of questions) {
+      expect(usedSlots.has(slotOf(question)), question.id).toBe(true);
+    }
   });
 
   it('builds puzzles without item questions when there are no items', () => {
@@ -167,6 +174,62 @@ describe('buildPuzzle with answer lists', () => {
     const puzzle = buildPuzzle('2026-06-01', data, impossible);
     expect(puzzle.rounds.some((round) => round.questionId === impossible[0]?.id)).toBe(false);
     expect(puzzle.rounds).toHaveLength(ROUNDS_PER_DAY);
+  });
+});
+
+describe('buildPuzzle with subcategories', () => {
+  const bySlot = (question: Question) =>
+    question.subcategory === undefined ? undefined : `${question.category}/${question.subcategory}`;
+  const slotOfRound = (round: { questionId: string }) =>
+    bySlot(questions.find(({ id }) => id === round.questionId) as Question);
+  const subcategories = new Set(questions.map(bySlot).filter((slot) => slot !== undefined));
+
+  it('asks at most one question of a subcategory a day', () => {
+    for (let offset = 0; offset < 200; offset++) {
+      const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, questions);
+      const slots = puzzle.rounds.map(slotOfRound).filter((slot) => slot !== undefined);
+      expect(new Set(slots).size, puzzle.date).toBe(slots.length);
+    }
+  });
+
+  it('can ask every question of a subcategory, not only the same few', () => {
+    expect(subcategories.size).toBeGreaterThan(0);
+    for (const slot of subcategories) {
+      const group = questions.filter((question) => bySlot(question) === slot);
+      // Questions that fit any round let the group's questions land in the round of their tier.
+      const anyRound = questions.filter(
+        (question) => question.subcategory === undefined && question.difficulty === 'variable',
+      );
+      const pool = [...group, ...anyRound];
+      const groupIds = new Set(group.map(({ id }) => id));
+      const asked = new Set<string>();
+      for (let offset = 0; offset < 40 * group.length && asked.size < groupIds.size; offset++) {
+        const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, pool);
+        puzzle.rounds.forEach((round) => {
+          if (groupIds.has(round.questionId)) asked.add(round.questionId);
+        });
+      }
+      expect(asked.size, slot).toBe(groupIds.size);
+    }
+  });
+
+  it('does not let a big subcategory take over the day', () => {
+    const counts = new Map<string, number>();
+    for (let offset = 0; offset < 365; offset++) {
+      const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, questions);
+      for (const round of puzzle.rounds) {
+        const key = slotOfRound(round) ?? round.questionId;
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+      }
+    }
+    const biggest = Math.max(
+      ...[...counts.entries()].filter(([key]) => key.includes('/')).map(([, n]) => n),
+    );
+    const singles = [...counts.entries()].filter(([key]) => !key.includes('/')).map(([, n]) => n);
+    const averageSingle = singles.reduce((sum, n) => sum + n, 0) / singles.length;
+    // Not equal: a group with questions of every difficulty fits any round, while a single hard
+    // question fits only two of the five. But it must stay far from its share by size (20+ times).
+    expect(biggest).toBeLessThan(averageSingle * 3);
   });
 });
 

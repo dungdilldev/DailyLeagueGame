@@ -30,6 +30,16 @@ describe('buildEndlessQuestion', () => {
     }
   });
 
+  it('only asks questions of the chosen subcategory', () => {
+    const ids = new Set(
+      questions.filter((question) => question.subcategory === 'geography').map(({ id }) => id),
+    );
+    expect(ids.size).toBeGreaterThan(0);
+    for (let index = 0; index < 50; index++) {
+      expect(ids.has(ask(index, { subcategory: 'geography' })?.round.questionId ?? '')).toBe(true);
+    }
+  });
+
   it('finds nothing for a question outside the chosen category', () => {
     expect(ask(0, { category: 'lore', questionId: 'itemCost' })).toBeUndefined();
   });

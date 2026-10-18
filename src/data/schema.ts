@@ -117,9 +117,14 @@ export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 export const QuestionDifficultySchema = z.enum(['easy', 'medium', 'hard', 'variable']);
 export type QuestionDifficulty = z.infer<typeof QuestionDifficultySchema>;
 
+/** Lowercase words joined by hyphens, so "Geography" or "geo graphy" typos fail loudly. */
+const SUBCATEGORY_PATTERN = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
+
 const QuestionFields = {
   id: z.string().min(1),
   category: QuestionCategorySchema,
+  /** Optional topic within the category (e.g. "geography"); groups questions in the testing mode. */
+  subcategory: z.string().regex(SUBCATEGORY_PATTERN).optional(),
   difficulty: QuestionDifficultySchema,
   /** The question shown to the player. */
   question: z.string().min(1),

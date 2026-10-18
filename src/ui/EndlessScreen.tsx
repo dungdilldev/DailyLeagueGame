@@ -8,7 +8,7 @@ import { emptyCoverage, recordAnswer, recordShown } from '../game/endlessCoverag
 import { ROUND_GAP_BANDS } from '../game/generate/config';
 import { newestSnapshot } from '../game/snapshot';
 import type { GapBand } from '../game/generate/config';
-import { CATEGORY_LABELS, groupByCategory } from './categoryLabels';
+import { CATEGORY_LABELS, groupQuestions, subcategoryLabel } from './categoryLabels';
 import { CoveragePanel } from './CoveragePanel';
 import { randomSeed } from './randomSeed';
 import { RoundView } from './RoundView';
@@ -37,6 +37,7 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
   const [seed, setSeed] = useState(initialSeed);
   const [index, setIndex] = useState(0);
   const [categoryFilter, setCategoryFilter] = useState(ANY);
+  const [subcategoryFilter, setSubcategoryFilter] = useState(ANY);
   const [questionFilter, setQuestionFilter] = useState(ANY);
   const [bandFilter, setBandFilter] = useState(ANY);
   const [chosenId, setChosenId] = useState<string | undefined>();
@@ -50,14 +51,24 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
     () =>
       buildEndlessQuestion(puzzleData, data.questions, seed, index, {
         ...(categoryFilter !== ANY && { category: categoryFilter as QuestionCategory }),
+        ...(subcategoryFilter !== ANY && { subcategory: subcategoryFilter }),
         ...(questionFilter !== ANY && { questionId: questionFilter }),
         ...(bandFilter !== ANY && { bandIndex: Number(bandFilter) }),
       }),
-    [puzzleData, data.questions, seed, index, categoryFilter, questionFilter, bandFilter],
+    [
+      puzzleData,
+      data.questions,
+      seed,
+      index,
+      categoryFilter,
+      subcategoryFilter,
+      questionFilter,
+      bandFilter,
+    ],
   );
 
   // Count each question once when it appears (a changed filter shows a new question).
-  const shownKey = `${seed}#${String(index)}#${categoryFilter}#${questionFilter}#${bandFilter}`;
+  const shownKey = `${seed}#${String(index)}#${categoryFilter}#${subcategoryFilter}#${questionFilter}#${bandFilter}`;
   useEffect(() => {
     if (question) setCoverage((previous) => recordShown(previous, question));
   }, [shownKey]);
@@ -83,8 +94,14 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
   };
 
   const band = question && ROUND_GAP_BANDS[question.bandIndex];
-  const questionGroups = groupByCategory(data.questions).filter(
+  const inCategory = groupQuestions(data.questions).filter(
     ({ category }) => categoryFilter === ANY || category === categoryFilter,
+  );
+  const subcategories = [
+    ...new Set(inCategory.flatMap(({ subcategory }) => (subcategory ? [subcategory] : []))),
+  ];
+  const questionGroups = inCategory.filter(
+    ({ subcategory }) => subcategoryFilter === ANY || subcategory === subcategoryFilter,
   );
 
   return (
@@ -104,6 +121,7 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
             onChange={(event) => {
               // The chosen question may belong to another category.
               setCategoryFilter(event.currentTarget.value);
+              setSubcategoryFilter(ANY);
               setQuestionFilter(ANY);
               setChosenId(undefined);
             }}
@@ -116,6 +134,26 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
             ))}
           </select>
         </label>
+        {subcategories.length > 0 && (
+          <label>
+            Subcategory{' '}
+            <select
+              value={subcategoryFilter}
+              onChange={(event) => {
+                setSubcategoryFilter(event.currentTarget.value);
+                setQuestionFilter(ANY);
+                setChosenId(undefined);
+              }}
+            >
+              <option value={ANY}>Any (random)</option>
+              {subcategories.map((subcategory) => (
+                <option key={subcategory} value={subcategory}>
+                  {subcategoryLabel(subcategory)}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <label>
           Question{' '}
           <select
@@ -127,7 +165,7 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
           >
             <option value={ANY}>Any (random)</option>
             {questionGroups.map((group) => (
-              <optgroup key={group.category} label={CATEGORY_LABELS[group.category]}>
+              <optgroup key={group.label} label={group.label}>
                 {group.questions.map((question) => (
                   <option key={question.id} value={question.id}>
                     {questionLabel(question)} ({question.subject})

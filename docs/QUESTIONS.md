@@ -316,6 +316,24 @@ has {player} played for?" (`teamByPlayer`) and "Which of these players is nickna
 `"ask"` instead of `correct` and `wrong`. Wrong options rely on the file being complete: a team or
 nickname missing for a player can make a wrong option right.
 
+### Subcategories
+
+Add `"subcategory": "geography"` to a question to file it with related ones. It is optional, works
+for every kind of question and must be lowercase words joined by hyphens (`world-events`), so a typo
+like `Geography` fails instead of creating a new group.
+
+All questions with the same category and subcategory share **one slot** in the daily puzzle. A day
+asks at most one of them, and a subcategory with 25 questions comes up about as often as one single
+question, so adding many questions on one topic does not push the other topics out. A question
+without a subcategory is its own slot. The testing mode shows a Subcategory dropdown and groups its
+question list and coverage table by it.
+
+Use one subcategory per topic that will get many questions: for Lore there are `geography`,
+`nations`, `city-states`, and one per event of the
+[wiki timeline](https://wiki.leagueoflegends.com/en-us/Universe:Timeline) (`return-of-the-ruined-king`,
+`rune-wars`, `great-mage-rebellion`, ...). Write the facts from that event's wiki page, and pick wrong
+options the page does not connect to the event.
+
 ### Restricting a question
 
 ```json

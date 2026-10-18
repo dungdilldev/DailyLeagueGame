@@ -11,6 +11,8 @@ import type { Round } from './puzzle';
 export interface EndlessFilter {
   /** Only questions of this category; combined with `questionId` it must match both. */
   category?: QuestionCategory;
+  /** Only questions of this subcategory (within the category, if one is given). */
+  subcategory?: string;
   questionId?: string;
   /** Index into the daily difficulty bands: 0 is the easiest round, the last is the hardest. */
   bandIndex?: number;
@@ -41,7 +43,9 @@ export function buildEndlessQuestion(
 ): EndlessQuestion | undefined {
   const rng = createRng(`${seed}#${String(index)}`);
   const inCategory = questions.filter(
-    (question) => filter.category === undefined || question.category === filter.category,
+    (question) =>
+      (filter.category === undefined || question.category === filter.category) &&
+      (filter.subcategory === undefined || question.subcategory === filter.subcategory),
   );
   const candidates =
     filter.questionId === undefined

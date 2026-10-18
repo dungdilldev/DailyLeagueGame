@@ -189,6 +189,20 @@ const winner = {
   ],
 };
 
+describe('subcategory', () => {
+  it('is optional and allowed on every kind of question', () => {
+    expect(parse([{ ...template, subcategory: 'geography' }]).success).toBe(true);
+    expect(parse([{ ...pick, subcategory: 'world-events' }]).success).toBe(true);
+    expect(parse([template, pick]).success).toBe(true);
+  });
+
+  it('must be lowercase words joined by hyphens, so a typo does not make a new group', () => {
+    for (const subcategory of ['Geography', 'geo graphy', 'geography_', '', '-geography']) {
+      expect(parse([{ ...template, subcategory }]).success, subcategory).toBe(false);
+    }
+  });
+});
+
 describe('winner questions', () => {
   it('are accepted with a year placeholder and winners', () => {
     expect(parse([winner]).success).toBe(true);

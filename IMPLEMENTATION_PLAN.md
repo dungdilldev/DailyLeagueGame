@@ -247,6 +247,19 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] "Who played for T1" removed: the generated players-and-teams question covers it
 - [x] T1 and Worlds skin questions merged into one esports-skin question (40 champions)
 
+### Phase 5g3 - Question subcategories (done)
+
+- [x] Optional `subcategory` on every question (schema validates the spelling); endless mode gets a Subcategory dropdown and groups its question list and coverage table by it; `continentsRunterra` is the first (`lore`, `geography`)
+- The daily puzzle treats a subcategory as one slot (phase 5c13).
+
+### Phase 5c13 - Lore geography, nations, city-states and events (done)
+
+- [x] 193 new Lore questions in 21 subcategories, written from the League of Legends Wiki (Universe:Runeterra locations, Universe:Timeline and the linked location and event pages): `geography`, `nations`, `city-states` and 18 events
+- [x] A subcategory is one slot in the daily puzzle (`orderBySlot`): at most one question per subcategory a day, so Lore has 50 more questions without taking over. In Mixed mode Lore is about 53% of rounds, Stats 37%, Esports 10%
+- [x] Repaired `continentsRunterra` (it broke the data load); the wiki says Camavor's continent is "an eastern continent", so the question says that
+- Not on the wiki: a "western continent" (the page names Valoran north, Shurima south, Camavor east, Arctic as the north pole), so there is no such question
+- Open: nothing checks that a wrong option is unrelated to the event. Review lists when the wiki changes.
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

@@ -1,7 +1,7 @@
 import { questionLabel, type Question } from '../data/questions';
 import type { Coverage } from '../game/endlessCoverage';
 import { ROUND_GAP_BANDS } from '../game/generate/config';
-import { CATEGORY_LABELS, groupByCategory } from './categoryLabels';
+import { groupQuestions } from './categoryLabels';
 
 interface CoveragePanelProps {
   questions: readonly Question[];
@@ -22,14 +22,14 @@ export function CoveragePanel({ questions, coverage }: CoveragePanelProps) {
         questions seen
       </p>
 
-      {groupByCategory(questions).map((group) => {
+      {groupQuestions(questions).map((group) => {
         const seenInGroup = group.questions.filter(
           (question) => (coverage.asked[question.id] ?? 0) > 0,
         ).length;
         return (
-          <div key={group.category}>
+          <div key={group.label}>
             <h3>
-              {CATEGORY_LABELS[group.category]}{' '}
+              {group.label}{' '}
               <span class="coverage__subject">
                 ({seenInGroup} of {group.questions.length} seen)
               </span>

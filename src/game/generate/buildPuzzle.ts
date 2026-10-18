@@ -41,6 +41,26 @@ function candidatesForRound(remaining: readonly Question[], roundIndex: number):
   );
 }
 
+/** Questions of the same category and subcategory share one slot; the others have a slot each. */
+function slotKey(question: Question): string {
+  return question.subcategory === undefined
+    ? question.id
+    : `${question.category}/${question.subcategory}`;
+}
+
+/**
+ * The questions in the order they are tried: slots in random order, and the questions of a slot
+ * together in random order. A subcategory with many questions therefore comes up as often as a
+ * single question, instead of in proportion to its size.
+ */
+function orderBySlot(questions: readonly Question[], rng: Rng): Question[] {
+  const slots = new Map<string, Question[]>();
+  for (const question of questions) {
+    slots.set(slotKey(question), [...(slots.get(slotKey(question)) ?? []), question]);
+  }
+  return rng.shuffle([...slots.values()]).flatMap((slot) => rng.shuffle(slot));
+}
+
 function tryBuildRounds(
   data: PuzzleData,
   questions: readonly Question[],
@@ -50,7 +70,7 @@ function tryBuildRounds(
   const rounds: Round[] = [];
   // Ids of champions and items cannot clash (names vs. numbers), so one set serves both.
   const usedIds = new Set<string>();
-  let remainingQuestions = rng.shuffle(questions);
+  let remainingQuestions = orderBySlot(questions, rng);
 
   for (const [roundIndex, band] of bands.entries()) {
     // A pool with fewer questions than rounds gives a shorter day.
@@ -68,7 +88,10 @@ function tryBuildRounds(
 
     rounds.push(round);
     round.optionIds.forEach((id) => usedIds.add(id));
-    remainingQuestions = remainingQuestions.filter(({ id }) => id !== round.questionId);
+    // The whole slot is used up, so at most one question per subcategory is asked a day.
+    const usedSlot = remainingQuestions.find(({ id }) => id === round.questionId);
+    const usedKey = usedSlot && slotKey(usedSlot);
+    remainingQuestions = remainingQuestions.filter((question) => slotKey(question) !== usedKey);
   }
   return rounds;
 }

@@ -55,6 +55,9 @@ test('the same seed shows the same first question', async ({ page }) => {
   expect(await firstQuestion()).toBe(first);
 });
 
+const MAX_SKIPS = 3000;
+const MANY_SKIPS_TIMEOUT_MS = 180_000;
+
 test('skipping through many questions covers every question and difficulty', async ({
   page,
 }, testInfo) => {
@@ -63,8 +66,10 @@ test('skipping through many questions covers every question and difficulty', asy
   const skip = page.getByRole('button', { name: 'Skip question' });
   const missing = page.locator('.coverage__missing');
 
-  // Random questions are chosen uniformly, so 600 is far more than needed even with 50+ questions. Stop once all are seen.
-  for (let i = 0; i < 600 && (await missing.count()) > 0; i++) {
+  // Questions are drawn uniformly, so seeing all N takes about N * (ln N + 0.6) skips: the
+  // limit is that for several hundred questions, with room to spare. Stop as soon as all are seen.
+  test.setTimeout(MANY_SKIPS_TIMEOUT_MS);
+  for (let i = 0; i < MAX_SKIPS && (await missing.count()) > 0; i++) {
     await skip.click();
   }
 
