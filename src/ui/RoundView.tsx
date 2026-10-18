@@ -3,6 +3,7 @@ import type { Round } from '../game/puzzle';
 import type { Entity } from '../data/schema';
 import { isCorrect } from '../game/progress';
 import { displayValue } from '../game/roundDisplay';
+import { roundSymbols } from '../game/textSymbols';
 import { OptionCard, type CardState } from './OptionCard';
 import { RoundProgress } from './RoundProgress';
 
@@ -62,6 +63,7 @@ export function RoundView({
   }, [revealed]);
 
   const isLastRound = totalRounds !== undefined && roundNumber === totalRounds;
+  const symbols = roundSymbols(round);
   const answerName = options.get(round.answerId)?.name ?? round.answerId;
 
   return (
@@ -89,7 +91,8 @@ export function RoundView({
             <OptionCard
               key={id}
               name={option?.name ?? id}
-              iconUrl={option?.iconUrl}
+              iconUrl={symbols?.[id] ?? option?.iconUrl}
+              isSymbol={symbols !== undefined}
               valueText={revealed ? displayValue(round, id) : undefined}
               state={state}
               tag={cardTag(round, state)}
