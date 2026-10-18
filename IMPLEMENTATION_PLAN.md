@@ -230,9 +230,11 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 
 ### Phase 5c11 - Esports players file (done)
 
-- [x] `data/players.json` with 15 well-known players (name, region, Worlds/MSI titles, teams, optional nickname), checked against their Wikipedia articles; schema in `src/data/playerSchema.ts`
+- [x] `data/players.json` with 102 players: the first 15 checked against Wikipedia, the other 87 filled from web search summaries and unverified (region = league of the best-known stretch; Taiwan, Vietnam, Latin America and Brazil were added as regions)
+- Earlier: 15 well-known players (name, region, Worlds/MSI titles, teams, optional nickname), checked against their Wikipedia articles; schema in `src/data/playerSchema.ts`
 - [x] Two player questions (`playerByTeam`, `teamByPlayer`, both `medium`), generated from the players; the file is bundled and validated at load and on `data:refresh`
 - Adding the questions changes the puzzle for every date (see Generator changes move old puzzles); saved answers that no longer fit are dropped.
+- [x] Winner questions: which team won Worlds (2011-2025) or MSI (2015-2026, none in 2020) in a given year; winners are written in the question, wrong options are winners of other years
 - Open: players whose article was not found (Canyon, ShowMaker, TheShy, Bang, Wolf, ...) are not in yet; more players give more variety.
 
 ### Phase 5d - Previous days (done)

@@ -1,19 +1,34 @@
-import type { PlayerQuestion, Question } from '../../src/data/questions';
+import type { PlayerQuestion, Question, WinnerQuestion } from '../../src/data/questions';
 import type { Entity } from '../../src/data/schema';
 import { gapRatio } from '../../src/game/generate/buildRound';
 import { ROUND_GAP_BANDS, type GapBand } from '../../src/game/generate/config';
 import type { Puzzle, Round } from '../../src/game/puzzle';
 
-/** The team or player a player question names, cut out of the finished question text. */
-function namedSubject(round: Round, question: PlayerQuestion): string {
-  const placeholder = question.ask === 'playerByTeam' ? '{team}' : '{player}';
-  const [before = '', after = ''] = question.question.split(placeholder);
+/** What replaced the placeholder in a finished question text (a team, a player or a year). */
+function namedSubject(round: Round, template: string, placeholder: string): string {
+  const [before = '', after = ''] = template.split(placeholder);
   return round.question.slice(before.length, round.question.length - after.length);
+}
+
+/** A winner round is valid if the answer won that year and no other option did. */
+function findWinnerRoundProblems(round: Round, question: WinnerQuestion, label: string): string[] {
+  const year = Number(namedSubject(round, question.question, '{year}'));
+  const wonThatYear = (team: string) =>
+    question.winners.some((winner) => winner.year === year && winner.team === team);
+  const problems: string[] = [];
+  if (!wonThatYear(round.answerId)) {
+    problems.push(`${label}: the answer did not win in ${String(year)}`);
+  }
+  for (const id of round.optionIds.filter((option) => option !== round.answerId)) {
+    if (wonThatYear(id)) problems.push(`${label}: "${id}" also won in ${String(year)}`);
+  }
+  return problems;
 }
 
 /** A player round is valid if the named team or player fits the answer and none of the other options. */
 function findPlayerRoundProblems(round: Round, question: PlayerQuestion, label: string): string[] {
-  const subject = namedSubject(round, question);
+  const placeholder = question.ask === 'playerByTeam' ? '{team}' : '{player}';
+  const subject = namedSubject(round, question.question, placeholder);
   const fits = (option: string) =>
     question.ask === 'playerByTeam'
       ? question.players.some((player) => player.name === option && player.teams.includes(subject))
@@ -91,6 +106,10 @@ export function findPuzzleProblems(
       return;
     }
     if (question.kind === 'pick') return;
+    if (question.kind === 'winner') {
+      problems.push(...findWinnerRoundProblems(round, question, label));
+      return;
+    }
     if (question.kind === 'player') {
       problems.push(...findPlayerRoundProblems(round, question, label));
       return;

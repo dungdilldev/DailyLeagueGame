@@ -1055,6 +1055,130 @@
       "clue": "title",
       "label": "Champion titles",
       "question": "Which champion is known as \"{title}\"?"
+    },
+    {
+      "id": "worldsWinnerByYear",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Worlds winners",
+      "question": "Which team won the World Championship in {year}?",
+      "winners": [
+        {
+          "year": 2011,
+          "team": "Fnatic"
+        },
+        {
+          "year": 2012,
+          "team": "Taipei Assassins"
+        },
+        {
+          "year": 2013,
+          "team": "T1"
+        },
+        {
+          "year": 2014,
+          "team": "Samsung White"
+        },
+        {
+          "year": 2015,
+          "team": "T1"
+        },
+        {
+          "year": 2016,
+          "team": "T1"
+        },
+        {
+          "year": 2017,
+          "team": "Samsung Galaxy"
+        },
+        {
+          "year": 2018,
+          "team": "Invictus Gaming"
+        },
+        {
+          "year": 2019,
+          "team": "FunPlus Phoenix"
+        },
+        {
+          "year": 2020,
+          "team": "Damwon Gaming"
+        },
+        {
+          "year": 2021,
+          "team": "Edward Gaming"
+        },
+        {
+          "year": 2022,
+          "team": "DRX"
+        },
+        {
+          "year": 2023,
+          "team": "T1"
+        },
+        {
+          "year": 2024,
+          "team": "T1"
+        },
+        {
+          "year": 2025,
+          "team": "T1"
+        }
+      ]
+    },
+    {
+      "id": "msiWinnerByYear",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "MSI winners",
+      "question": "Which team won the Mid-Season Invitational in {year}?",
+      "winners": [
+        {
+          "year": 2015,
+          "team": "Edward Gaming"
+        },
+        {
+          "year": 2016,
+          "team": "T1"
+        },
+        {
+          "year": 2017,
+          "team": "T1"
+        },
+        {
+          "year": 2018,
+          "team": "Royal Never Give Up"
+        },
+        {
+          "year": 2019,
+          "team": "G2 Esports"
+        },
+        {
+          "year": 2021,
+          "team": "Royal Never Give Up"
+        },
+        {
+          "year": 2022,
+          "team": "Royal Never Give Up"
+        },
+        {
+          "year": 2023,
+          "team": "JD Gaming"
+        },
+        {
+          "year": 2024,
+          "team": "Gen.G"
+        },
+        {
+          "year": 2025,
+          "team": "Gen.G"
+        },
+        {
+          "year": 2026,
+          "team": "Hanwha Life Esports"
+        }
+      ]
     }
   ]
 }

@@ -4,78 +4,118 @@
       "name": "Faker",
       "region": "Korea",
       "titles": [
-        { "event": "Worlds", "year": 2013 },
-        { "event": "Worlds", "year": 2015 },
-        { "event": "Worlds", "year": 2016 },
-        { "event": "Worlds", "year": 2023 },
-        { "event": "Worlds", "year": 2024 },
-        { "event": "Worlds", "year": 2025 },
-        { "event": "MSI", "year": 2016 },
-        { "event": "MSI", "year": 2017 }
+        {
+          "event": "Worlds",
+          "year": 2013
+        },
+        {
+          "event": "Worlds",
+          "year": 2015
+        },
+        {
+          "event": "Worlds",
+          "year": 2016
+        },
+        {
+          "event": "Worlds",
+          "year": 2023
+        },
+        {
+          "event": "Worlds",
+          "year": 2024
+        },
+        {
+          "event": "Worlds",
+          "year": 2025
+        },
+        {
+          "event": "MSI",
+          "year": 2016
+        },
+        {
+          "event": "MSI",
+          "year": 2017
+        }
       ],
       "teams": ["T1"],
       "nickname": "Unkillable Demon King"
     },
     {
-      "name": "Bengi",
-      "region": "Korea",
+      "name": "Meiko",
+      "region": "China",
       "titles": [
-        { "event": "Worlds", "year": 2013 },
-        { "event": "Worlds", "year": 2015 },
-        { "event": "Worlds", "year": 2016 }
+        {
+          "event": "MSI",
+          "year": 2015
+        },
+        {
+          "event": "Worlds",
+          "year": 2021
+        }
       ],
-      "teams": ["BBT", "T1", "Vici Gaming"],
-      "nickname": "The Jungle God"
+      "teams": ["EDward Gaming", "Top Esports"]
     },
     {
-      "name": "Gumayusi",
-      "region": "Korea",
+      "name": "Rookie",
+      "region": "China",
       "titles": [
-        { "event": "Worlds", "year": 2023 },
-        { "event": "Worlds", "year": 2024 },
-        { "event": "Worlds", "year": 2025 },
-        { "event": "MSI", "year": 2026 }
+        {
+          "event": "Worlds",
+          "year": 2018
+        }
       ],
-      "teams": ["T1", "Hanwha Life Esports"]
+      "teams": ["KT Rolster", "Invictus Gaming", "Victory Five", "Top Esports", "Ninjas in Pyjamas"]
     },
     {
-      "name": "Keria",
-      "region": "Korea",
+      "name": "Xiaohu",
+      "region": "China",
       "titles": [
-        { "event": "Worlds", "year": 2023 },
-        { "event": "Worlds", "year": 2024 },
-        { "event": "Worlds", "year": 2025 }
+        {
+          "event": "MSI",
+          "year": 2018
+        },
+        {
+          "event": "MSI",
+          "year": 2021
+        },
+        {
+          "event": "MSI",
+          "year": 2022
+        }
       ],
-      "teams": ["DRX", "T1"],
-      "nickname": "The Genius Monster"
+      "teams": ["Royal Never Give Up", "Weibo Gaming"]
     },
     {
-      "name": "Oner",
+      "name": "Ruler",
       "region": "Korea",
       "titles": [
-        { "event": "Worlds", "year": 2023 },
-        { "event": "Worlds", "year": 2024 },
-        { "event": "Worlds", "year": 2025 }
+        {
+          "event": "Worlds",
+          "year": 2017
+        },
+        {
+          "event": "MSI",
+          "year": 2023
+        },
+        {
+          "event": "MSI",
+          "year": 2025
+        }
       ],
-      "teams": ["T1"]
-    },
-    {
-      "name": "Zeus",
-      "region": "Korea",
-      "titles": [
-        { "event": "Worlds", "year": 2023 },
-        { "event": "Worlds", "year": 2024 },
-        { "event": "MSI", "year": 2026 }
-      ],
-      "teams": ["T1", "Hanwha Life Esports"],
-      "nickname": "God of Thunder"
+      "teams": ["Samsung Galaxy", "Gen.G", "JD Gaming"]
     },
     {
       "name": "Deft",
       "region": "Korea",
       "titles": [
-        { "event": "MSI", "year": 2015 },
-        { "event": "Worlds", "year": 2022 }
+        {
+          "event": "MSI",
+          "year": 2015
+        },
+        {
+          "event": "Worlds",
+          "year": 2022
+        }
       ],
       "teams": [
         "MVP Blue",
@@ -89,28 +129,799 @@
       "nickname": "Unbreakable Heart"
     },
     {
-      "name": "Ruler",
+      "name": "Scout",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2021
+        }
+      ],
+      "teams": ["EDward Gaming", "LNG Esports", "JD Gaming", "Nongshim RedForce"]
+    },
+    {
+      "name": "Peanut",
       "region": "Korea",
       "titles": [
-        { "event": "Worlds", "year": 2017 },
-        { "event": "MSI", "year": 2023 },
-        { "event": "MSI", "year": 2025 }
+        {
+          "event": "MSI",
+          "year": 2017
+        }
       ],
-      "teams": ["Samsung Galaxy", "Gen.G", "JD Gaming"]
+      "teams": [
+        "NaJin e-mFire",
+        "Hanwha Life Esports",
+        "T1",
+        "DRX",
+        "Gen.G",
+        "LGD Gaming",
+        "Nongshim RedForce"
+      ]
+    },
+    {
+      "name": "Knight",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2023
+        }
+      ],
+      "teams": ["Young Miracles", "Suning", "Top Esports", "JD Gaming", "Bilibili Gaming"],
+      "nickname": "The Golden Left Hand"
+    },
+    {
+      "name": "Bdd",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["CJ Entus", "Longzhu Gaming", "DRX", "KT Rolster", "Gen.G", "Nongshim RedForce"]
+    },
+    {
+      "name": "Flandre",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2021
+        }
+      ],
+      "teams": ["LNG Esports", "EDward Gaming", "JD Gaming", "Anyone's Legend", "Bilibili Gaming"]
+    },
+    {
+      "name": "Kiin",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2024
+        },
+        {
+          "event": "MSI",
+          "year": 2025
+        }
+      ],
+      "teams": ["Winners", "DN SOOPers", "KT Rolster", "Gen.G"]
+    },
+    {
+      "name": "JackeyLove",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2018
+        }
+      ],
+      "teams": ["Invictus Gaming", "Top Esports"]
+    },
+    {
+      "name": "Viper",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2021
+        }
+      ],
+      "teams": ["Griffin", "Hanwha Life Esports", "EDward Gaming", "Bilibili Gaming"]
     },
     {
       "name": "Chovy",
       "region": "Korea",
       "titles": [
-        { "event": "MSI", "year": 2024 },
-        { "event": "MSI", "year": 2025 }
+        {
+          "event": "MSI",
+          "year": 2024
+        },
+        {
+          "event": "MSI",
+          "year": 2025
+        }
       ],
       "teams": ["Griffin", "DRX", "Hanwha Life Esports", "Gen.G"]
     },
     {
+      "name": "Keria",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2023
+        },
+        {
+          "event": "Worlds",
+          "year": 2024
+        },
+        {
+          "event": "Worlds",
+          "year": 2025
+        }
+      ],
+      "teams": ["DRX", "T1"],
+      "nickname": "The Genius Monster"
+    },
+    {
+      "name": "Impact",
+      "region": "North America",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2013
+        }
+      ],
+      "teams": [
+        "T1",
+        "Team Impulse",
+        "NRG Esports",
+        "Cloud9",
+        "Team Liquid",
+        "Evil Geniuses",
+        "FlyQuest"
+      ],
+      "nickname": "Top Die"
+    },
+    {
+      "name": "Crisp",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2019
+        }
+      ],
+      "teams": ["FunPlus Phoenix", "Weibo Gaming", "Top Esports", "LGD Gaming"]
+    },
+    {
+      "name": "Canyon",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2020
+        }
+      ],
+      "teams": ["Dplus KIA", "Gen.G"]
+    },
+    {
+      "name": "ShowMaker",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2020
+        }
+      ],
+      "teams": ["Dplus KIA"]
+    },
+    {
+      "name": "Tarzan",
+      "region": "China",
+      "titles": [],
+      "teams": ["Griffin", "LNG Esports", "Weibo Gaming", "Anyone's Legend"]
+    },
+    {
+      "name": "GALA",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2021
+        },
+        {
+          "event": "MSI",
+          "year": 2022
+        }
+      ],
+      "teams": ["Royal Never Give Up", "LNG Esports", "Invictus Gaming", "JD Gaming"]
+    },
+    {
+      "name": "Caps",
+      "region": "Europe",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2019
+        }
+      ],
+      "teams": ["Fnatic", "G2 Esports"],
+      "nickname": "Baby Faker"
+    },
+    {
+      "name": "Bin",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2022
+        }
+      ],
+      "teams": ["Suning", "Weibo Gaming", "Royal Never Give Up", "Bilibili Gaming"]
+    },
+    {
+      "name": "Lehends",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2024
+        }
+      ],
+      "teams": ["Griffin", "KT Rolster", "Gen.G"]
+    },
+    {
+      "name": "Doran",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2025
+        }
+      ],
+      "teams": ["Griffin", "DRX", "Gen.G", "Hanwha Life Esports", "T1"]
+    },
+    {
+      "name": "Tian",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2019
+        }
+      ],
+      "teams": ["Suning", "FunPlus Phoenix", "Top Esports", "Weibo Gaming"]
+    },
+    {
+      "name": "CoreJJ",
+      "region": "North America",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2017
+        }
+      ],
+      "teams": ["Dignitas", "Samsung Galaxy", "Gen.G", "Team Liquid"]
+    },
+    {
+      "name": "Kanavi",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2023
+        },
+        {
+          "event": "MSI",
+          "year": 2026
+        }
+      ],
+      "teams": ["JD Gaming", "Top Esports", "Hanwha Life Esports"]
+    },
+    {
+      "name": "Cuzz",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Longzhu Gaming", "DRX", "T1", "KT Rolster", "DN SOOPers"]
+    },
+    {
+      "name": "Aiming",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["KT Rolster", "Bilibili Gaming", "Dplus KIA"]
+    },
+    {
+      "name": "Elk",
+      "region": "China",
+      "titles": [],
+      "teams": ["Team WE", "Bilibili Gaming", "Weibo Gaming"]
+    },
+    {
+      "name": "369",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2023
+        }
+      ],
+      "teams": ["Top Esports", "JD Gaming"]
+    },
+    {
+      "name": "Teddy",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Jin Air Green Wings", "T1", "DN SOOPers", "Liiv SANDBOX", "DRX"]
+    },
+    {
+      "name": "Karsa",
+      "region": "Taiwan",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2018
+        }
+      ],
+      "teams": [
+        "Flash Wolves",
+        "Royal Never Give Up",
+        "Top Esports",
+        "Victory Five",
+        "Weibo Gaming",
+        "CTBC Flying Oyster",
+        "PSG Talon"
+      ]
+    },
+    {
+      "name": "Hans Sama",
+      "region": "Europe",
+      "titles": [],
+      "teams": ["Millenium", "Misfits Gaming", "Rogue", "Team Liquid", "G2 Esports"]
+    },
+    {
+      "name": "Oner",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2023
+        },
+        {
+          "event": "Worlds",
+          "year": 2024
+        },
+        {
+          "event": "Worlds",
+          "year": 2025
+        }
+      ],
+      "teams": ["T1"]
+    },
+    {
+      "name": "Ming",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2018
+        },
+        {
+          "event": "MSI",
+          "year": 2021
+        },
+        {
+          "event": "MSI",
+          "year": 2022
+        }
+      ],
+      "teams": ["Young Miracles", "Royal Never Give Up"]
+    },
+    {
+      "name": "Doinb",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2019
+        }
+      ],
+      "teams": [
+        "Qiao Gu Reapers",
+        "Newbee",
+        "JD Gaming",
+        "Rogue Warriors",
+        "FunPlus Phoenix",
+        "LNG Esports",
+        "Ninjas in Pyjamas"
+      ]
+    },
+    {
+      "name": "ON",
+      "region": "China",
+      "titles": [],
+      "teams": ["Bilibili Gaming"]
+    },
+    {
+      "name": "Gumayusi",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2023
+        },
+        {
+          "event": "Worlds",
+          "year": 2024
+        },
+        {
+          "event": "Worlds",
+          "year": 2025
+        },
+        {
+          "event": "MSI",
+          "year": 2026
+        }
+      ],
+      "teams": ["T1", "Hanwha Life Esports"]
+    },
+    {
+      "name": "FoFo",
+      "region": "Taiwan",
+      "titles": [],
+      "teams": [
+        "Taipei Assassins",
+        "J Team",
+        "Bilibili Gaming",
+        "Rare Atom",
+        "EDward Gaming",
+        "Team WE",
+        "PSG Talon"
+      ]
+    },
+    {
+      "name": "Mikyx",
+      "region": "Europe",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2019
+        }
+      ],
+      "teams": ["Splyce", "Misfits Gaming", "G2 Esports", "Excel Esports", "Fnatic", "SK Gaming"]
+    },
+    {
+      "name": "Jankos",
+      "region": "Europe",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2019
+        }
+      ],
+      "teams": ["H2k-Gaming", "ROCCAT", "G2 Esports", "Team Heretics"],
+      "nickname": "First Blood King"
+    },
+    {
+      "name": "Zeus",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2023
+        },
+        {
+          "event": "Worlds",
+          "year": 2024
+        },
+        {
+          "event": "MSI",
+          "year": 2026
+        }
+      ],
+      "teams": ["T1", "Hanwha Life Esports"],
+      "nickname": "God of Thunder"
+    },
+    {
+      "name": "BeryL",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2020
+        },
+        {
+          "event": "Worlds",
+          "year": 2022
+        }
+      ],
+      "teams": ["Dplus KIA", "DRX", "KT Rolster"]
+    },
+    {
+      "name": "Zeka",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2022
+        },
+        {
+          "event": "MSI",
+          "year": 2026
+        }
+      ],
+      "teams": ["Vici Gaming", "Bilibili Gaming", "DRX", "Hanwha Life Esports"]
+    },
+    {
+      "name": "Yagao",
+      "region": "China",
+      "titles": [],
+      "teams": ["JD Gaming", "Bilibili Gaming"]
+    },
+    {
+      "name": "Breathe",
+      "region": "China",
+      "titles": [],
+      "teams": ["Oh My God", "Team WE", "Bilibili Gaming", "Royal Never Give Up", "Weibo Gaming"]
+    },
+    {
+      "name": "TheShy",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2018
+        }
+      ],
+      "teams": ["Team WE", "Invictus Gaming", "Weibo Gaming"]
+    },
+    {
+      "name": "MISSING",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2023
+        }
+      ],
+      "teams": ["JD Gaming", "LNG Esports"]
+    },
+    {
+      "name": "Kingen",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2022
+        }
+      ],
+      "teams": [
+        "APK Prince",
+        "KT Rolster",
+        "Bilibili Gaming",
+        "DRX",
+        "Hanwha Life Esports",
+        "Dplus KIA",
+        "Nongshim RedForce"
+      ]
+    },
+    {
+      "name": "Hylissang",
+      "region": "Europe",
+      "titles": [],
+      "teams": ["Unicorns of Love", "Fnatic", "MAD Lions", "Team Vitality"]
+    },
+    {
+      "name": "Wei",
+      "region": "China",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2021
+        },
+        {
+          "event": "MSI",
+          "year": 2022
+        }
+      ],
+      "teams": [
+        "Young Miracles",
+        "eStar",
+        "Royal Never Give Up",
+        "Bilibili Gaming",
+        "Invictus Gaming"
+      ]
+    },
+    {
+      "name": "Xun",
+      "region": "China",
+      "titles": [],
+      "teams": ["Invictus Gaming", "Bilibili Gaming", "JD Gaming"]
+    },
+    {
+      "name": "Bjergsen",
+      "region": "North America",
+      "titles": [],
+      "teams": [
+        "Copenhagen Wolves",
+        "Ninjas in Pyjamas",
+        "Team SoloMid",
+        "Team Liquid",
+        "100 Thieves"
+      ],
+      "nickname": "The Great Dane"
+    },
+    {
+      "name": "BrokenBlade",
+      "region": "Europe",
+      "titles": [],
+      "teams": ["Dark Passage", "Team SoloMid", "FC Schalke 04", "G2 Esports"]
+    },
+    {
+      "name": "SwordArt",
+      "region": "Taiwan",
+      "titles": [],
+      "teams": ["Flash Wolves", "Suning", "Team SoloMid", "Weibo Gaming", "MGN Vikings"]
+    },
+    {
+      "name": "Kellin",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Jin Air Green Wings", "Gen.G", "Nongshim RedForce", "Dplus KIA", "BNK FEARX"]
+    },
+    {
+      "name": "Jensen",
+      "region": "North America",
+      "titles": [],
+      "teams": ["Cloud9", "Team Liquid", "Dignitas", "FlyQuest"],
+      "nickname": "The Body"
+    },
+    {
+      "name": "Ssumday",
+      "region": "North America",
+      "titles": [],
+      "teams": ["KT Rolster", "Dignitas", "100 Thieves", "Evil Geniuses"]
+    },
+    {
+      "name": "Delight",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2026
+        }
+      ],
+      "teams": ["OKSavingsBank BRION", "Gen.G", "Hanwha Life Esports"]
+    },
+    {
+      "name": "Hope",
+      "region": "China",
+      "titles": [],
+      "teams": ["EDward Gaming", "Team WE", "JD Gaming", "Anyone's Legend"]
+    },
+    {
+      "name": "Zven",
+      "region": "North America",
+      "titles": [],
+      "teams": ["Origen", "G2 Esports", "Team SoloMid", "Cloud9", "Dignitas"]
+    },
+    {
+      "name": "Life",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Gen.G", "DN SOOPers"]
+    },
+    {
+      "name": "Light",
+      "region": "China",
+      "titles": [],
+      "teams": ["LNG Esports", "Weibo Gaming"]
+    },
+    {
+      "name": "Lwx",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2019
+        }
+      ],
+      "teams": ["Newbee", "I May", "FunPlus Phoenix", "Royal Never Give Up"]
+    },
+    {
+      "name": "xiye",
+      "region": "China",
+      "titles": [],
+      "teams": ["Team WE", "Dominus Esports", "LGD Gaming", "JD Gaming"]
+    },
+    {
+      "name": "Creme",
+      "region": "China",
+      "titles": [],
+      "teams": ["Oh My God", "Top Esports"]
+    },
+    {
+      "name": "Cube",
+      "region": "China",
+      "titles": [],
+      "teams": ["Vici Gaming", "Rare Atom", "Team WE", "Oh My God"]
+    },
+    {
+      "name": "Jiejie",
+      "region": "China",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2021
+        }
+      ],
+      "teams": ["EDward Gaming", "Invictus Gaming", "FunPlus Phoenix", "Weibo Gaming"]
+    },
+    {
+      "name": "WildTurtle",
+      "region": "North America",
+      "titles": [],
+      "teams": [
+        "Cloud9",
+        "Team SoloMid",
+        "Immortals",
+        "FlyQuest",
+        "Counter Logic Gaming",
+        "Shopify Rebellion"
+      ]
+    },
+    {
+      "name": "Clid",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["JD Gaming", "T1", "Gen.G", "FunPlus Phoenix", "Hanwha Life Esports"]
+    },
+    {
+      "name": "Wunder",
+      "region": "Europe",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2019
+        }
+      ],
+      "teams": ["Splyce", "G2 Esports", "Fnatic", "Team Heretics", "The Ruddy Sack", "SK Gaming"]
+    },
+    {
+      "name": "Canna",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["T1", "Nongshim RedForce", "Dplus KIA", "Karmine Corp"]
+    },
+    {
+      "name": "Maple",
+      "region": "Taiwan",
+      "titles": [],
+      "teams": [
+        "Flash Wolves",
+        "Suning",
+        "LNG Esports",
+        "PSG Talon",
+        "Anyone's Legend",
+        "Team SoloMid"
+      ]
+    },
+    {
+      "name": "Pyosik",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2022
+        }
+      ],
+      "teams": ["DRX", "Team Liquid", "KT Rolster", "DN SOOPers"]
+    },
+    {
       "name": "Uzi",
       "region": "China",
-      "titles": [{ "event": "MSI", "year": 2018 }],
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2018
+        }
+      ],
       "teams": [
         "Royal Never Give Up",
         "OMG",
@@ -118,7 +929,55 @@
         "Newbee",
         "Bilibili Gaming",
         "Edward Gaming"
-      ]
+      ],
+      "nickname": "The Mad Dog"
+    },
+    {
+      "name": "Bang",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2015
+        },
+        {
+          "event": "Worlds",
+          "year": 2016
+        },
+        {
+          "event": "MSI",
+          "year": 2016
+        },
+        {
+          "event": "MSI",
+          "year": 2017
+        }
+      ],
+      "teams": ["NaJin White Shield", "T1", "100 Thieves", "Evil Geniuses", "DN SOOPers"]
+    },
+    {
+      "name": "Betty",
+      "region": "Taiwan",
+      "titles": [],
+      "teams": ["PSG Talon"]
+    },
+    {
+      "name": "Shanks",
+      "region": "China",
+      "titles": [],
+      "teams": ["Team WE", "Anyone's Legend"]
+    },
+    {
+      "name": "Morgan",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["JD Gaming", "Team WE", "Hanwha Life Esports", "OKSavingsBank BRION", "Team Liquid"]
+    },
+    {
+      "name": "aphromoo",
+      "region": "North America",
+      "titles": [],
+      "teams": ["Counter Logic Gaming", "100 Thieves", "Dignitas", "FlyQuest"]
     },
     {
       "name": "Doublelift",
@@ -132,38 +991,163 @@
         "Team SoloMid",
         "Team Liquid",
         "100 Thieves"
-      ]
+      ],
+      "nickname": "Big Brother"
     },
     {
-      "name": "Bjergsen",
+      "name": "Mata",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2014
+        }
+      ],
+      "teams": ["Samsung Galaxy", "Vici Gaming", "Royal Never Give Up", "KT Rolster", "T1"]
+    },
+    {
+      "name": "Vulcan",
       "region": "North America",
       "titles": [],
+      "teams": ["Clutch Gaming", "Cloud9", "Evil Geniuses", "FlyQuest"]
+    },
+    {
+      "name": "Odoamne",
+      "region": "Europe",
+      "titles": [],
+      "teams": ["H2k-Gaming", "Splyce", "FC Schalke 04", "Rogue", "GIANTX"]
+    },
+    {
+      "name": "Ucal",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["KT Rolster", "DN SOOPers", "Griffin", "DRX"]
+    },
+    {
+      "name": "Oddie",
+      "region": "Latin America",
+      "titles": [],
+      "teams": ["Lyon Gaming", "Isurus", "Rainbow7", "LYON"]
+    },
+    {
+      "name": "SofM",
+      "region": "Vietnam",
+      "titles": [],
+      "teams": ["Full Louis", "LNG Esports", "Suning", "Weibo Gaming", "MGN Vikings"]
+    },
+    {
+      "name": "Ignar",
+      "region": "Korea",
+      "titles": [],
       "teams": [
-        "Copenhagen Wolves",
-        "Ninjas in Pyjamas",
-        "Team SoloMid",
-        "Team Liquid",
-        "100 Thieves"
+        "KT Rolster",
+        "Misfits Gaming",
+        "Evil Geniuses",
+        "Immortals",
+        "NRG Esports",
+        "FlyQuest",
+        "GIANTX",
+        "Dignitas"
       ]
-    },
-    {
-      "name": "Caps",
-      "region": "Europe",
-      "titles": [{ "event": "MSI", "year": 2019 }],
-      "teams": ["Fnatic", "G2 Esports"],
-      "nickname": "Baby Faker"
-    },
-    {
-      "name": "Perkz",
-      "region": "Europe",
-      "titles": [{ "event": "MSI", "year": 2019 }],
-      "teams": ["G2 Esports", "Cloud9", "Team Vitality", "Team Heretics"]
     },
     {
       "name": "Rekkles",
       "region": "Europe",
       "titles": [],
-      "teams": ["Fnatic", "Alliance", "G2 Esports", "Karmine Corp", "Los Ratones"]
+      "teams": ["Fnatic", "Alliance", "G2 Esports", "Karmine Corp", "Los Ratones"],
+      "nickname": "Swedish Superman"
+    },
+    {
+      "name": "deokdam",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Nongshim RedForce", "KT Rolster", "DN SOOPers"]
+    },
+    {
+      "name": "Robo",
+      "region": "Brazil",
+      "titles": [],
+      "teams": ["paiN Gaming", "LOUD"]
+    },
+    {
+      "name": "Svenskeren",
+      "region": "North America",
+      "titles": [],
+      "teams": ["Copenhagen Wolves", "SK Gaming", "Team SoloMid", "Cloud9", "Evil Geniuses"]
+    },
+    {
+      "name": "GorillA",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Hanwha Life Esports", "Longzhu Gaming", "DRX", "Liiv SANDBOX", "BNK FEARX"]
+    },
+    {
+      "name": "Humanoid",
+      "region": "Europe",
+      "titles": [],
+      "teams": ["Splyce", "MAD Lions", "Fnatic", "Team Vitality"]
+    },
+    {
+      "name": "Kuro",
+      "region": "Korea",
+      "titles": [],
+      "teams": ["Hanwha Life Esports", "KT Rolster"]
+    },
+    {
+      "name": "Ghost",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2020
+        }
+      ],
+      "teams": [
+        "CJ Entus",
+        "Liiv SANDBOX",
+        "Dplus KIA",
+        "Nongshim RedForce",
+        "Estral Esports",
+        "KT Rolster"
+      ]
+    },
+    {
+      "name": "Angel",
+      "region": "China",
+      "titles": [],
+      "teams": ["TyLoo", "Suning", "Weibo Gaming", "EDward Gaming", "JD Gaming"]
+    },
+    {
+      "name": "Bengi",
+      "region": "Korea",
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2013
+        },
+        {
+          "event": "Worlds",
+          "year": 2015
+        },
+        {
+          "event": "Worlds",
+          "year": 2016
+        }
+      ],
+      "teams": ["BBT", "T1", "Vici Gaming"],
+      "nickname": "The Jungle himself"
+    },
+    {
+      "name": "Perkz",
+      "region": "Europe",
+      "titles": [
+        {
+          "event": "MSI",
+          "year": 2019
+        }
+      ],
+      "teams": ["G2 Esports", "Cloud9", "Team Vitality", "Team Heretics"],
+      "nickname": "Uma Jan"
     }
   ]
 }

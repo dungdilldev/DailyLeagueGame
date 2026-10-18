@@ -4,8 +4,17 @@ import { z } from 'zod';
 export const PlayerTitleEventSchema = z.enum(['Worlds', 'MSI']);
 export type PlayerTitleEvent = z.infer<typeof PlayerTitleEventSchema>;
 
-/** The region a player is best known for, which is not always where they were born. */
-export const PlayerRegionSchema = z.enum(['Korea', 'China', 'Europe', 'North America']);
+/** The league of the player's best-known stretch, which is not always where they were born. */
+export const PlayerRegionSchema = z.enum([
+  'Korea',
+  'China',
+  'Taiwan',
+  'Vietnam',
+  'Europe',
+  'North America',
+  'Latin America',
+  'Brazil',
+]);
 export type PlayerRegion = z.infer<typeof PlayerRegionSchema>;
 
 const PlayerTitleSchema = z.strictObject({

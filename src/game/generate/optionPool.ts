@@ -24,5 +24,8 @@ export function optionPool(data: PuzzleData, question: Question): readonly Entit
         : question.players.flatMap(({ teams }) => teams);
     return [...new Set(names)].map(textOption);
   }
+  if (question.kind === 'winner') {
+    return [...new Set(question.winners.map(({ team }) => team))].map(textOption);
+  }
   return entitiesFor(data, question.subject === 'item' ? 'item' : 'champion');
 }

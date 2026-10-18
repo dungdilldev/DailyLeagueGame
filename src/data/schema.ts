@@ -187,6 +187,37 @@ const PlayerQuestionTemplateSchema = z.strictObject({
   label: z.string().min(1),
 });
 
+/** Winners per year are only meaningful when each year appears once. */
+const hasUniqueYears = ({ winners }: { winners: { year: number }[] }) =>
+  new Set(winners.map(({ year }) => year)).size === winners.length;
+
+/** Rounds need the winner plus this many other winning teams as wrong options. */
+const MIN_DISTINCT_WINNING_TEAMS = 4;
+
+/**
+ * A question about who won a tournament in a year ("Which team won Worlds in {year}?"). The
+ * winners are written out here, one per year; the wrong options are winners of other years.
+ */
+const WinnerQuestionTemplateSchema = z
+  .strictObject({
+    ...QuestionFields,
+    subject: z.literal('text'),
+    /** Short name shown in the results. */
+    label: z.string().min(1),
+    /** Who won in which year; the team name is also the option shown. */
+    winners: z.array(z.strictObject({ year: z.number().int().min(2011), team: z.string().min(1) })),
+  })
+  .refine(hasUniqueYears, { message: 'A year may appear only once in winners' })
+  .refine(
+    ({ winners }) => new Set(winners.map(({ team }) => team)).size >= MIN_DISTINCT_WINNING_TEAMS,
+    {
+      message: `winners needs at least ${String(MIN_DISTINCT_WINNING_TEAMS)} different teams`,
+    },
+  )
+  .refine(({ question }) => question.includes('{year}'), {
+    message: 'The question text needs a {year} placeholder',
+  });
+
 /** A round shows 4 options: the answer and this many wrong ones. */
 const MIN_WRONG_PER_PICK_QUESTION = 3;
 
@@ -213,12 +244,14 @@ export const QuestionTemplateSchema = z.union([
   PickQuestionTemplateSchema,
   ClueQuestionTemplateSchema,
   PlayerQuestionTemplateSchema,
+  WinnerQuestionTemplateSchema,
 ]);
 export type QuestionTemplate = z.infer<typeof QuestionTemplateSchema>;
 export type StatQuestionTemplate = z.infer<typeof StatQuestionTemplateSchema>;
 export type PickQuestionTemplate = z.infer<typeof PickQuestionTemplateSchema>;
 export type ClueQuestionTemplate = z.infer<typeof ClueQuestionTemplateSchema>;
 export type PlayerQuestionTemplate = z.infer<typeof PlayerQuestionTemplateSchema>;
+export type WinnerQuestionTemplate = z.infer<typeof WinnerQuestionTemplateSchema>;
 
 export const QuestionFileSchema = z
   .object({ questions: z.array(QuestionTemplateSchema).min(1) })

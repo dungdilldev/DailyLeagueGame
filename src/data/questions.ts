@@ -9,6 +9,7 @@ import type {
   StatMeta,
   StatQuestionTemplate,
   StatSubject,
+  WinnerQuestionTemplate,
 } from './schema';
 
 /** A question about the highest value of a stat, tied to the stat it asks about. */
@@ -38,7 +39,12 @@ export interface PlayerQuestion extends PlayerQuestionTemplate {
   players: readonly Player[];
 }
 
-export type Question = StatQuestion | PickQuestion | ClueQuestion | PlayerQuestion;
+/** A question about who won a tournament in a given year; the winners come with the template. */
+export interface WinnerQuestion extends WinnerQuestionTemplate {
+  kind: 'winner';
+}
+
+export type Question = StatQuestion | PickQuestion | ClueQuestion | PlayerQuestion | WinnerQuestion;
 
 /** Short name of a question, e.g. "Base health" or "Marksmen". */
 export function questionLabel(question: Question): string {
@@ -68,6 +74,7 @@ export function resolveQuestions(
     if ('stat' in template) return resolveStatQuestion(template, stats);
     if ('clue' in template) return { ...template, kind: 'clue' };
     if ('ask' in template) return { ...template, kind: 'player', players };
+    if ('winners' in template) return { ...template, kind: 'winner' };
     return { ...template, kind: 'pick' };
   });
 }

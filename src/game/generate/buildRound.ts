@@ -4,6 +4,7 @@ import type { Round } from '../puzzle';
 import { buildClueRound } from './buildClueRound';
 import { buildPickRound } from './buildPickRound';
 import { buildPlayerRound } from './buildPlayerRound';
+import { buildWinnerRound } from './buildWinnerRound';
 import type { GapBand } from './config';
 import type { Rng } from './random';
 
@@ -96,6 +97,8 @@ export function buildRound(
       return buildClueRound(entities, question, rng);
     case 'player':
       return buildPlayerRound(entities, question, rng);
+    case 'winner':
+      return buildWinnerRound(entities, question, rng);
     case 'stat':
       return buildStatRound(entities, question, band, rng);
   }

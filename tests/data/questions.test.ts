@@ -174,6 +174,42 @@ describe('player questions', () => {
   });
 });
 
+const winner = {
+  id: 'worldsWinnerByYear',
+  category: 'esports' as const,
+  difficulty: 'medium' as const,
+  subject: 'text' as const,
+  label: 'Worlds winners',
+  question: 'Which team won Worlds in {year}?',
+  winners: [
+    { year: 2011, team: 'Fnatic' },
+    { year: 2012, team: 'Taipei Assassins' },
+    { year: 2013, team: 'T1' },
+    { year: 2014, team: 'Samsung White' },
+  ],
+};
+
+describe('winner questions', () => {
+  it('are accepted with a year placeholder and winners', () => {
+    expect(parse([winner]).success).toBe(true);
+  });
+
+  it('need the year placeholder, or every round would ask the same thing', () => {
+    expect(parse([{ ...winner, question: 'Which team won Worlds?' }]).success).toBe(false);
+  });
+
+  it('need one winner per year and at least four different teams for the wrong options', () => {
+    const twice = [...winner.winners, { year: 2011, team: 'Cloud9' }];
+    expect(parse([{ ...winner, winners: twice }]).success).toBe(false);
+    expect(parse([{ ...winner, winners: winner.winners.slice(0, 3) }]).success).toBe(false);
+  });
+
+  it('resolve without extra data', () => {
+    const [question] = resolveQuestions([winner], stats, []);
+    expect(question?.kind).toBe('winner');
+  });
+});
+
 describe('resolveQuestions', () => {
   it('finds out from the stat whether a question is about champions or items', () => {
     const [champion, item] = resolveQuestions(

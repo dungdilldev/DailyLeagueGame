@@ -63,8 +63,8 @@ test('skipping through many questions covers every question and difficulty', asy
   const skip = page.getByRole('button', { name: 'Skip question' });
   const missing = page.locator('.coverage__missing');
 
-  // Random questions are chosen uniformly, so 300 is far more than needed. Stop once all are seen.
-  for (let i = 0; i < 300 && (await missing.count()) > 0; i++) {
+  // Random questions are chosen uniformly, so 600 is far more than needed even with 50+ questions. Stop once all are seen.
+  for (let i = 0; i < 600 && (await missing.count()) > 0; i++) {
     await skip.click();
   }
 
