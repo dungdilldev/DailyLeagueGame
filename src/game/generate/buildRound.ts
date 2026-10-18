@@ -3,6 +3,7 @@ import type { Entity } from '../../data/schema';
 import type { Round } from '../puzzle';
 import { buildClueRound } from './buildClueRound';
 import { buildPickRound } from './buildPickRound';
+import { buildPlayerRound } from './buildPlayerRound';
 import type { GapBand } from './config';
 import type { Rng } from './random';
 
@@ -93,6 +94,8 @@ export function buildRound(
       return buildPickRound(entities, question, rng);
     case 'clue':
       return buildClueRound(entities, question, rng);
+    case 'player':
+      return buildPlayerRound(entities, question, rng);
     case 'stat':
       return buildStatRound(entities, question, band, rng);
   }

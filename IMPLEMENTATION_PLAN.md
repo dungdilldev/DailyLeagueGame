@@ -228,6 +228,13 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Age is measured up to the newest champion release in the data, not today, so values only change with the data; minimum age one year
 - [x] `data:refresh` run: new champion snapshot effective 2026-10-18; today's puzzle keeps its old data (so the new stat questions first appear tomorrow)
 
+### Phase 5c11 - Esports players file (done)
+
+- [x] `data/players.json` with 15 well-known players (name, region, Worlds/MSI titles, teams, optional nickname), checked against their Wikipedia articles; schema in `src/data/playerSchema.ts`
+- [x] Two player questions (`playerByTeam`, `teamByPlayer`, both `medium`), generated from the players; the file is bundled and validated at load and on `data:refresh`
+- Adding the questions changes the puzzle for every date (see Generator changes move old puzzles); saved answers that no longer fit are dropped.
+- Open: players whose article was not found (Canyon, ShowMaker, TheShy, Bang, Wolf, ...) are not in yet; more players give more variety.
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

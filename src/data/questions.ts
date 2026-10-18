@@ -1,8 +1,10 @@
+import type { Player } from './playerSchema';
 import type {
   ChampionDataFile,
   ClueQuestionTemplate,
   ItemDataFile,
   PickQuestionTemplate,
+  PlayerQuestionTemplate,
   QuestionTemplate,
   StatMeta,
   StatQuestionTemplate,
@@ -27,7 +29,16 @@ export interface ClueQuestion extends ClueQuestionTemplate {
   kind: 'clue';
 }
 
-export type Question = StatQuestion | PickQuestion | ClueQuestion;
+/**
+ * A question about which players played for which teams. It carries the player data it is
+ * built from, so the generator needs no third data source.
+ */
+export interface PlayerQuestion extends PlayerQuestionTemplate {
+  kind: 'player';
+  players: readonly Player[];
+}
+
+export type Question = StatQuestion | PickQuestion | ClueQuestion | PlayerQuestion;
 
 /** Short name of a question, e.g. "Base health" or "Marksmen". */
 export function questionLabel(question: Question): string {
@@ -44,14 +55,19 @@ function resolveStatQuestion(template: StatQuestionTemplate, stats: StatsBySubje
   throw new Error(`Question "${template.id}" uses unknown stat "${template.stat}"`);
 }
 
-/** Throws if a stat question names a stat that neither data file defines. */
+/**
+ * Throws if a stat question names a stat that neither data file defines. `players` are what
+ * the player questions are built from.
+ */
 export function resolveQuestions(
   templates: readonly QuestionTemplate[],
   stats: StatsBySubject,
+  players: readonly Player[],
 ): Question[] {
   return templates.map((template): Question => {
     if ('stat' in template) return resolveStatQuestion(template, stats);
     if ('clue' in template) return { ...template, kind: 'clue' };
+    if ('ask' in template) return { ...template, kind: 'player', players };
     return { ...template, kind: 'pick' };
   });
 }

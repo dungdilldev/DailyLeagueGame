@@ -1,8 +1,30 @@
-import type { Question } from '../../src/data/questions';
+import type { PlayerQuestion, Question } from '../../src/data/questions';
 import type { Entity } from '../../src/data/schema';
 import { gapRatio } from '../../src/game/generate/buildRound';
 import { ROUND_GAP_BANDS, type GapBand } from '../../src/game/generate/config';
-import type { Puzzle } from '../../src/game/puzzle';
+import type { Puzzle, Round } from '../../src/game/puzzle';
+
+/** The team or player a player question names, cut out of the finished question text. */
+function namedSubject(round: Round, question: PlayerQuestion): string {
+  const placeholder = question.ask === 'playerByTeam' ? '{team}' : '{player}';
+  const [before = '', after = ''] = question.question.split(placeholder);
+  return round.question.slice(before.length, round.question.length - after.length);
+}
+
+/** A player round is valid if the named team or player fits the answer and none of the other options. */
+function findPlayerRoundProblems(round: Round, question: PlayerQuestion, label: string): string[] {
+  const subject = namedSubject(round, question);
+  const fits = (option: string) =>
+    question.ask === 'playerByTeam'
+      ? question.players.some((player) => player.name === option && player.teams.includes(subject))
+      : question.players.some((player) => player.name === subject && player.teams.includes(option));
+  const problems: string[] = [];
+  if (!fits(round.answerId)) problems.push(`${label}: the answer does not fit the question`);
+  for (const id of round.optionIds.filter((option) => option !== round.answerId)) {
+    if (fits(id)) problems.push(`${label}: "${id}" also fits the question`);
+  }
+  return problems;
+}
 
 /**
  * Independent re-check of a generated puzzle against the champion and item data it came from.
@@ -69,6 +91,10 @@ export function findPuzzleProblems(
       return;
     }
     if (question.kind === 'pick') return;
+    if (question.kind === 'player') {
+      problems.push(...findPlayerRoundProblems(round, question, label));
+      return;
+    }
 
     const values: number[] = [];
     for (const id of round.optionIds) {

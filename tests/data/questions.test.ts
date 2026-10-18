@@ -102,7 +102,7 @@ describe('pick questions', () => {
   });
 
   it('resolve without a stat', () => {
-    const [question] = resolveQuestions([pick], stats);
+    const [question] = resolveQuestions([pick], stats, []);
     expect(question?.kind).toBe('pick');
     expect(question?.subject).toBe('champion');
   });
@@ -140,8 +140,37 @@ describe('clue questions', () => {
   });
 
   it('resolve without a stat', () => {
-    const [question] = resolveQuestions([clue], stats);
+    const [question] = resolveQuestions([clue], stats, []);
     expect(question?.kind).toBe('clue');
+  });
+});
+
+const playerQuestion = {
+  id: 'playerByTeam',
+  category: 'esports' as const,
+  difficulty: 'medium' as const,
+  subject: 'text' as const,
+  label: 'Players and teams',
+  ask: 'playerByTeam' as const,
+  question: 'Which of these players has played for {team}?',
+};
+
+describe('player questions', () => {
+  it('are accepted for either direction and for text options only', () => {
+    expect(parse([playerQuestion]).success).toBe(true);
+    expect(parse([{ ...playerQuestion, ask: 'teamByPlayer' }]).success).toBe(true);
+    expect(parse([{ ...playerQuestion, subject: 'champion' }]).success).toBe(false);
+    expect(parse([{ ...playerQuestion, ask: 'other' }]).success).toBe(false);
+  });
+
+  it('reject answer lists, which they do not use', () => {
+    expect(parse([{ ...playerQuestion, correct: ['Faker'] }]).success).toBe(false);
+  });
+
+  it('resolve with the players they are built from', () => {
+    const players = [{ name: 'Faker', region: 'Korea' as const, titles: [], teams: ['T1'] }];
+    const [question] = resolveQuestions([playerQuestion], stats, players);
+    expect(question?.kind === 'player' && question.players).toEqual(players);
   });
 });
 
@@ -150,6 +179,7 @@ describe('resolveQuestions', () => {
     const [champion, item] = resolveQuestions(
       [template, { ...template, id: 'i', stat: 'cost' }],
       stats,
+      [],
     );
     expect(champion?.subject).toBe('champion');
     expect(item?.subject).toBe('item');
@@ -157,12 +187,12 @@ describe('resolveQuestions', () => {
   });
 
   it('keeps the lists', () => {
-    const [question] = resolveQuestions([{ ...template, exclude: ['A'] }], stats);
+    const [question] = resolveQuestions([{ ...template, exclude: ['A'] }], stats, []);
     expect(question?.exclude).toEqual(['A']);
   });
 
   it('fails loudly for an unknown stat', () => {
-    expect(() => resolveQuestions([{ ...template, stat: 'nope' }], stats)).toThrow(
+    expect(() => resolveQuestions([{ ...template, stat: 'nope' }], stats, [])).toThrow(
       'Question "q" uses unknown stat "nope"',
     );
   });

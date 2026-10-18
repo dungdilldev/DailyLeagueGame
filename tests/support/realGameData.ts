@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs';
+import playerFile from '../../data/players.json';
 import questionFile from '../../data/questions.json';
+import { PlayerFileSchema } from '../../src/data/playerSchema';
 import { resolveQuestions, type GameData } from '../../src/data/questions';
 import {
   ChampionDataFileSchema,
@@ -20,7 +22,11 @@ export function loadRealGameData(): GameData {
   return {
     champions,
     items,
-    questions: resolveQuestions(questions, { champion: champions.stats, item: items.stats }),
+    questions: resolveQuestions(
+      questions,
+      { champion: champions.stats, item: items.stats },
+      PlayerFileSchema.parse(playerFile).players,
+    ),
   };
 }
 

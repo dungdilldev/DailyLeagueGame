@@ -1,0 +1,169 @@
+{
+  "players": [
+    {
+      "name": "Faker",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2013 },
+        { "event": "Worlds", "year": 2015 },
+        { "event": "Worlds", "year": 2016 },
+        { "event": "Worlds", "year": 2023 },
+        { "event": "Worlds", "year": 2024 },
+        { "event": "Worlds", "year": 2025 },
+        { "event": "MSI", "year": 2016 },
+        { "event": "MSI", "year": 2017 }
+      ],
+      "teams": ["T1"],
+      "nickname": "Unkillable Demon King"
+    },
+    {
+      "name": "Bengi",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2013 },
+        { "event": "Worlds", "year": 2015 },
+        { "event": "Worlds", "year": 2016 }
+      ],
+      "teams": ["BBT", "T1", "Vici Gaming"],
+      "nickname": "The Jungle God"
+    },
+    {
+      "name": "Gumayusi",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2023 },
+        { "event": "Worlds", "year": 2024 },
+        { "event": "Worlds", "year": 2025 },
+        { "event": "MSI", "year": 2026 }
+      ],
+      "teams": ["T1", "Hanwha Life Esports"]
+    },
+    {
+      "name": "Keria",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2023 },
+        { "event": "Worlds", "year": 2024 },
+        { "event": "Worlds", "year": 2025 }
+      ],
+      "teams": ["DRX", "T1"],
+      "nickname": "The Genius Monster"
+    },
+    {
+      "name": "Oner",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2023 },
+        { "event": "Worlds", "year": 2024 },
+        { "event": "Worlds", "year": 2025 }
+      ],
+      "teams": ["T1"]
+    },
+    {
+      "name": "Zeus",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2023 },
+        { "event": "Worlds", "year": 2024 },
+        { "event": "MSI", "year": 2026 }
+      ],
+      "teams": ["T1", "Hanwha Life Esports"],
+      "nickname": "God of Thunder"
+    },
+    {
+      "name": "Deft",
+      "region": "Korea",
+      "titles": [
+        { "event": "MSI", "year": 2015 },
+        { "event": "Worlds", "year": 2022 }
+      ],
+      "teams": [
+        "MVP Blue",
+        "Samsung Blue",
+        "Edward Gaming",
+        "KT Rolster",
+        "DRX",
+        "Hanwha Life Esports",
+        "Dplus KIA"
+      ],
+      "nickname": "Unbreakable Heart"
+    },
+    {
+      "name": "Ruler",
+      "region": "Korea",
+      "titles": [
+        { "event": "Worlds", "year": 2017 },
+        { "event": "MSI", "year": 2023 },
+        { "event": "MSI", "year": 2025 }
+      ],
+      "teams": ["Samsung Galaxy", "Gen.G", "JD Gaming"]
+    },
+    {
+      "name": "Chovy",
+      "region": "Korea",
+      "titles": [
+        { "event": "MSI", "year": 2024 },
+        { "event": "MSI", "year": 2025 }
+      ],
+      "teams": ["Griffin", "DRX", "Hanwha Life Esports", "Gen.G"]
+    },
+    {
+      "name": "Uzi",
+      "region": "China",
+      "titles": [{ "event": "MSI", "year": 2018 }],
+      "teams": [
+        "Royal Never Give Up",
+        "OMG",
+        "Qiao Gu Reapers",
+        "Newbee",
+        "Bilibili Gaming",
+        "Edward Gaming"
+      ]
+    },
+    {
+      "name": "Doublelift",
+      "region": "North America",
+      "titles": [],
+      "teams": [
+        "Epik Gamer",
+        "unRestricted eSports",
+        "Team Curse",
+        "Counter Logic Gaming",
+        "Team SoloMid",
+        "Team Liquid",
+        "100 Thieves"
+      ]
+    },
+    {
+      "name": "Bjergsen",
+      "region": "North America",
+      "titles": [],
+      "teams": [
+        "Copenhagen Wolves",
+        "Ninjas in Pyjamas",
+        "Team SoloMid",
+        "Team Liquid",
+        "100 Thieves"
+      ]
+    },
+    {
+      "name": "Caps",
+      "region": "Europe",
+      "titles": [{ "event": "MSI", "year": 2019 }],
+      "teams": ["Fnatic", "G2 Esports"],
+      "nickname": "Baby Faker"
+    },
+    {
+      "name": "Perkz",
+      "region": "Europe",
+      "titles": [{ "event": "MSI", "year": 2019 }],
+      "teams": ["G2 Esports", "Cloud9", "Team Vitality", "Team Heretics"]
+    },
+    {
+      "name": "Rekkles",
+      "region": "Europe",
+      "titles": [],
+      "teams": ["Fnatic", "Alliance", "G2 Esports", "Karmine Corp", "Los Ratones"]
+    }
+  ]
+}

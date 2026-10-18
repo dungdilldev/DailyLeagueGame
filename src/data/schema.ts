@@ -174,6 +174,19 @@ const ClueQuestionTemplateSchema = z.strictObject({
   label: z.string().min(1),
 });
 
+/**
+ * A question made from `data/players.json`: it names a random team and asks for a player who
+ * played there (`playerByTeam`, `{team}` in the text), or names a random player and asks for
+ * one of their teams (`teamByPlayer`, `{player}` in the text). Options are plain text.
+ */
+const PlayerQuestionTemplateSchema = z.strictObject({
+  ...QuestionFields,
+  subject: z.literal('text'),
+  ask: z.enum(['playerByTeam', 'teamByPlayer']),
+  /** Short name shown in the results. */
+  label: z.string().min(1),
+});
+
 /** A round shows 4 options: the answer and this many wrong ones. */
 const MIN_WRONG_PER_PICK_QUESTION = 3;
 
@@ -199,11 +212,13 @@ export const QuestionTemplateSchema = z.union([
   StatQuestionTemplateSchema,
   PickQuestionTemplateSchema,
   ClueQuestionTemplateSchema,
+  PlayerQuestionTemplateSchema,
 ]);
 export type QuestionTemplate = z.infer<typeof QuestionTemplateSchema>;
 export type StatQuestionTemplate = z.infer<typeof StatQuestionTemplateSchema>;
 export type PickQuestionTemplate = z.infer<typeof PickQuestionTemplateSchema>;
 export type ClueQuestionTemplate = z.infer<typeof ClueQuestionTemplateSchema>;
+export type PlayerQuestionTemplate = z.infer<typeof PlayerQuestionTemplateSchema>;
 
 export const QuestionFileSchema = z
   .object({ questions: z.array(QuestionTemplateSchema).min(1) })

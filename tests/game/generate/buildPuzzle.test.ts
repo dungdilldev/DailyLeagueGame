@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { addUtcDays } from '../../../src/game/date';
 import { buildPuzzle } from '../../../src/game/generate/buildPuzzle';
+import type { Question } from '../../../src/data/questions';
 import type { QuestionDifficulty } from '../../../src/data/schema';
 import {
   fitsRound,
@@ -68,6 +69,14 @@ describe('buildPuzzle', () => {
   });
 });
 
+function textOptionsOf(question: Question | undefined): Set<string> {
+  if (question?.kind === 'pick') return new Set([...question.correct, ...question.wrong]);
+  if (question?.kind === 'player') {
+    return new Set(question.players.flatMap(({ name, teams }) => [name, ...teams]));
+  }
+  return new Set();
+}
+
 describe('buildPuzzle with champions and items', () => {
   const championIds = new Set(data.champions.map((champion) => champion.id));
   const itemIds = new Set(data.items.map((item) => item.id));
@@ -81,7 +90,7 @@ describe('buildPuzzle with champions and items', () => {
         const question = questions.find(({ id }) => id === round.questionId);
         const allowed =
           round.subject === 'text'
-            ? new Set(question?.kind === 'pick' ? [...question.correct, ...question.wrong] : [])
+            ? textOptionsOf(question)
             : round.subject === 'item'
               ? itemIds
               : championIds;
@@ -167,7 +176,8 @@ describe('buildPuzzle with question difficulty', () => {
     questions.map((question) => (question.id === pick.id ? { ...question, difficulty } : question));
   const positionsOf = (difficulty: QuestionDifficulty) => {
     const found = new Set<number>();
-    for (let offset = 0; offset < 200; offset++) {
+    // Long enough that a question with 1 in ~40 odds per round shows up in every round it fits.
+    for (let offset = 0; offset < 500; offset++) {
       const puzzle = buildPuzzle(
         addUtcDays('2026-01-01', offset),
         data,

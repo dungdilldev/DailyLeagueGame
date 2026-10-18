@@ -17,5 +17,12 @@ export function optionPool(data: PuzzleData, question: Question): readonly Entit
   if (question.kind === 'pick' && question.subject === 'text') {
     return [...question.correct, ...question.wrong].map(textOption);
   }
+  if (question.kind === 'player') {
+    const names =
+      question.ask === 'playerByTeam'
+        ? question.players.map(({ name }) => name)
+        : question.players.flatMap(({ teams }) => teams);
+    return [...new Set(names)].map(textOption);
+  }
   return entitiesFor(data, question.subject === 'item' ? 'item' : 'champion');
 }

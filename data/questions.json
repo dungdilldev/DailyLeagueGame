@@ -1,6 +1,24 @@
 {
   "questions": [
     {
+      "id": "playerByTeam",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Players and teams",
+      "ask": "playerByTeam",
+      "question": "Which of these players has played for {team}?"
+    },
+    {
+      "id": "teamByPlayer",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Players and teams",
+      "ask": "teamByPlayer",
+      "question": "Which of these teams has {player} played for?"
+    },
+    {
       "id": "skinCount",
       "category": "stats",
       "difficulty": "variable",
@@ -1014,8 +1032,20 @@
       "subject": "champion",
       "label": "The Ascended",
       "question": "Which of these champions is one of the Ascended of Shurima?",
-      "correct": ["Azir", "Nasus", "Renekton", "Xerath", "Aatrox", "Naafiri", "Varus", "Zaahen"],
-      "wrong": ["Garen", "Lux", "Ashe", "Darius", "Caitlyn", "Leona", "Draven"]
+      "correct": ["Azir", "Nasus", "Renekton", "Xerath"],
+      "wrong": [
+        "Garen",
+        "Lux",
+        "Ashe",
+        "Darius",
+        "Caitlyn",
+        "Leona",
+        "Draven",
+        "Aatrox",
+        "Naafiri",
+        "Varus",
+        "Zaahen"
+      ]
     },
     {
       "id": "knownAsTitle",

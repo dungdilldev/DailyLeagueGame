@@ -1,7 +1,9 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { ZodType } from 'zod';
+import playerFile from '../data/players.json';
 import questionFile from '../data/questions.json';
+import { PlayerFileSchema } from '../src/data/playerSchema';
 import { resolveQuestions } from '../src/data/questions';
 import {
   ChampionDataFileSchema,
@@ -109,10 +111,11 @@ async function main(): Promise<void> {
   const itemStats = ITEM_STATS.map(toStatMeta);
   const champions = buildChampions(withReferenceDate(championInputs), version, CHAMPION_STATS);
   const items = buildItems(itemInputs, version, ITEM_STATS);
-  const questions = resolveQuestions(QuestionFileSchema.parse(questionFile).questions, {
-    champion: championStats,
-    item: itemStats,
-  });
+  const questions = resolveQuestions(
+    QuestionFileSchema.parse(questionFile).questions,
+    { champion: championStats, item: itemStats },
+    PlayerFileSchema.parse(playerFile).players,
+  );
   const problems = [
     ...findEntityProblems('champion', champions, CHAMPION_STATS, MIN_CHAMPION_COUNT),
     ...findEntityProblems('item', items, ITEM_STATS, MIN_ITEM_COUNT),
