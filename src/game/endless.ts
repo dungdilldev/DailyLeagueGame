@@ -1,4 +1,5 @@
 import type { Question } from '../data/questions';
+import type { QuestionCategory } from '../data/schema';
 import { buildRound } from './generate/buildRound';
 import type { PuzzleData } from './generate/buildPuzzle';
 import { optionPool } from './generate/optionPool';
@@ -8,6 +9,8 @@ import type { Round } from './puzzle';
 
 /** Restricts the endless mode to one question and/or one difficulty. */
 export interface EndlessFilter {
+  /** Only questions of this category; combined with `questionId` it must match both. */
+  category?: QuestionCategory;
   questionId?: string;
   /** Index into the daily difficulty bands: 0 is the easiest round, the last is the hardest. */
   bandIndex?: number;
@@ -37,10 +40,13 @@ export function buildEndlessQuestion(
   filter: EndlessFilter = {},
 ): EndlessQuestion | undefined {
   const rng = createRng(`${seed}#${String(index)}`);
+  const inCategory = questions.filter(
+    (question) => filter.category === undefined || question.category === filter.category,
+  );
   const candidates =
     filter.questionId === undefined
-      ? rng.shuffle(questions)
-      : questions.filter((question) => question.id === filter.questionId);
+      ? rng.shuffle(inCategory)
+      : inCategory.filter((question) => question.id === filter.questionId);
   const allBands = ROUND_GAP_BANDS.map((_, bandIndex) => bandIndex);
 
   for (const question of candidates) {

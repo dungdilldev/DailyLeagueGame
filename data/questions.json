@@ -248,90 +248,53 @@
       ]
     },
     {
-      "id": "hasT1Skin",
+      "id": "hasEsportsSkin",
       "category": "esports",
       "difficulty": "medium",
       "subject": "champion",
-      "label": "T1 skins",
-      "question": "Which of these champions has a skin from the esports team T1 (or SKT T1)?",
+      "label": "Esports skins",
+      "question": "Which of these champions has an esports skin (a T1 or Worlds skin)?",
       "correct": [
         "Alistar",
         "Ambessa",
+        "Ashe",
         "Azir",
         "Bard",
         "Ekko",
         "Elise",
         "Galio",
         "Gnar",
+        "JarvanIV",
         "Jax",
         "Jayce",
         "Jhin",
         "Jinx",
         "Kalista",
+        "Khazix",
+        "Leblanc",
         "LeeSin",
         "Nami",
         "Olaf",
         "Orianna",
         "Pyke",
         "Renekton",
+        "Riven",
         "Ryze",
         "Seraphine",
+        "Shyvana",
         "Sylas",
         "Syndra",
+        "Thresh",
         "Varus",
         "Vayne",
         "Vi",
+        "Viego",
         "XinZhao",
         "Yone",
         "Yunara",
         "Zac",
         "Zed",
         "Zyra"
-      ],
-      "wrong": [
-        "Garen",
-        "Lux",
-        "Soraka",
-        "Malphite",
-        "Annie",
-        "Nasus",
-        "Teemo",
-        "Taric",
-        "Ornn",
-        "Amumu",
-        "Sion",
-        "Leona",
-        "Brand",
-        "Karthus",
-        "Nunu",
-        "Singed",
-        "Rammus",
-        "Zilean",
-        "Shen",
-        "Veigar"
-      ]
-    },
-    {
-      "id": "hasWorldsSkin",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "champion",
-      "label": "Worlds skins",
-      "question": "Which of these champions has a Worlds skin?",
-      "correct": [
-        "Ashe",
-        "Azir",
-        "JarvanIV",
-        "Kalista",
-        "Khazix",
-        "Leblanc",
-        "Renekton",
-        "Riven",
-        "Ryze",
-        "Shyvana",
-        "Thresh",
-        "Viego",
-        "Zed"
       ],
       "wrong": [
         "Garen",
@@ -463,24 +426,13 @@
       "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus"]
     },
     {
-      "id": "demonKing",
+      "id": "playerByNickname",
       "category": "esports",
-      "difficulty": "easy",
+      "difficulty": "medium",
       "subject": "text",
       "label": "Nicknames",
-      "question": "Which of these players is nicknamed the Unkillable Demon King?",
-      "correct": ["Faker"],
-      "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus"]
-    },
-    {
-      "id": "playedForT1",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "T1 players",
-      "question": "Which of these players has played for T1 (SK Telecom T1)?",
-      "correct": ["Faker", "Gumayusi", "Keria", "Oner", "Zeus", "Doran", "Bengi", "Bang", "Wolf"],
-      "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus", "Froggen"]
+      "ask": "playerByNickname",
+      "question": "Which of these players is nicknamed \"{nickname}\"?"
     },
     {
       "id": "firstWorldsChampion",
@@ -1179,6 +1131,15 @@
           "team": "Hanwha Life Esports"
         }
       ]
+    },
+    {
+      "id": "continentsRunterra",
+      "category": "Lore",
+      "difficulty": "easy",
+      "stat": "releaseDate",
+      "question": "Which continent is also called the eastern most continent?",
+      "correct": ["Camavoran"],
+      "wrong": ["Shurima, Valoran, Arctic"]
     }
   ]
 }

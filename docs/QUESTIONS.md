@@ -288,19 +288,18 @@ change region), so re-check a list when the wiki's page changes.
 
 ### Esports questions
 
-Esports questions are pick questions with `"category": "esports"`. There are two kinds.
+Esports questions have `"category": "esports"`. There are three kinds.
 
-**Skins (champion options).** Which champion has a skin from the esports team T1 (including the earlier
-SKT T1 line, `medium`) and which has a Worlds skin (`hard`). Their lists come from the skin names in
-Data Dragon, and every wrong option is a champion with no esports skin at all (no T1, Worlds,
+**Skins (champion options).** Which champion has an esports skin: one from the esports team T1
+(including the earlier SKT T1 line) or a Worlds skin (one question, `medium`; the correct list is
+both sets together). The lists come from the skin names in Data Dragon, and every wrong option is a champion with no esports skin at all (no T1, Worlds,
 Victorious, Dragonslayer or MSI skin). Riot adds esports skins over time, so a champion in a wrong
 list can become correct: when a new esports skin line appears, check the wrong lists.
 
 **History (text options).** Teams, players, regions and cities, shown as plain name cards without
 icons: which team has won Worlds, which has reached a final without winning, which city has hosted a
-final, which region has won the most titles, which player has the most titles (Faker) and is
-nicknamed the Unkillable Demon King, who has played for T1, who won the first Worlds (Fnatic, 2011)
-and who won three in a row (T1, 2023 to 2025). In a `text` question the `correct` and `wrong` lists
+final, which region has won the most titles, which player has the most titles (Faker), who won the first Worlds (Fnatic, 2011) and who won
+three in a row (T1, 2023 to 2025). In a `text` question the `correct` and `wrong` lists
 hold the names shown to the player, so `"subject": "text"` and no data file is involved.
 
 These facts were checked against the Wikipedia results table of the World Championship up to the
@@ -309,6 +308,13 @@ November, re-check the esports lists:** a team in a "never won" list may have wo
 list needs the new host (the 2026 final is in New York), a "three in a row" or "most titles" answer
 may change. Wrong lists only use retired players for the same reason: an active player can join T1
 in any offseason.
+
+**Players (text options).** Generated from `data/players.json`, so they grow with the file and need
+no lists: "Which of these players has played for {team}?" (`playerByTeam`), "Which of these teams
+has {player} played for?" (`teamByPlayer`) and "Which of these players is nicknamed {nickname}?"
+(`playerByNickname`, only players with a `nickname`). Write the question with its placeholder and
+`"ask"` instead of `correct` and `wrong`. Wrong options rely on the file being complete: a team or
+nickname missing for a player can make a wrong option right.
 
 ### Restricting a question
 

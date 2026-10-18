@@ -13,11 +13,11 @@ const player = (name: string, teams: string[]): Player => ({
 });
 
 const players = [
-  player('Faker', ['T1']),
-  player('Keria', ['DRX', 'T1']),
+  { ...player('Faker', ['T1']), nickname: 'Unkillable Demon King' },
+  { ...player('Keria', ['DRX', 'T1']), nickname: 'The Genius Monster' },
   player('Deft', ['DRX', 'KT Rolster']),
   player('Uzi', ['Royal Never Give Up', 'Edward Gaming']),
-  player('Caps', ['Fnatic', 'G2 Esports']),
+  { ...player('Caps', ['Fnatic', 'G2 Esports']), nickname: 'Baby Faker' },
   player('Perkz', ['G2 Esports', 'Cloud9']),
 ];
 
@@ -29,10 +29,11 @@ const question = (ask: PlayerQuestion['ask']): PlayerQuestion => ({
   subject: 'text',
   label: 'Players and teams',
   ask,
-  question:
-    ask === 'playerByTeam'
-      ? 'Which player has played for {team}?'
-      : 'Which team has {player} played for?',
+  question: {
+    playerByTeam: 'Which player has played for {team}?',
+    teamByPlayer: 'Which team has {player} played for?',
+    playerByNickname: 'Which player is nicknamed "{nickname}"?',
+  }[ask],
   players,
 });
 
@@ -40,9 +41,9 @@ const entities = (names: string[]): Entity[] =>
   names.map((name) => ({ id: name, name, iconUrl: '', stats: {} }));
 const allNames = (ask: PlayerQuestion['ask']) =>
   entities(
-    ask === 'playerByTeam'
-      ? players.map(({ name }) => name)
-      : [...new Set(players.flatMap(({ teams }) => teams))],
+    ask === 'teamByPlayer'
+      ? [...new Set(players.flatMap(({ teams }) => teams))]
+      : players.map(({ name }) => name),
   );
 const seeds = Array.from({ length: 50 }, (_, index) => `seed${String(index)}`);
 
@@ -80,6 +81,31 @@ describe('buildPlayerRound', () => {
       expect(others).toHaveLength(3);
       expect(others.filter((id) => teams.includes(id))).toEqual([]);
     }
+  });
+
+  it('quotes a nickname and offers its player plus three players with other nicknames', () => {
+    const nicknames = new Map(players.map((p) => [p.name, p.nickname]));
+    for (const seed of seeds) {
+      const round = buildPlayerRound(
+        allNames('playerByNickname'),
+        question('playerByNickname'),
+        createRng(seed),
+      );
+      expect(round).toBeDefined();
+      const quoted = round?.question.match(/nicknamed "(.+)"\?/)?.[1];
+      expect(nicknames.get(round?.answerId ?? '')).toBe(quoted);
+      const others = round?.optionIds.filter((id) => id !== round.answerId) ?? [];
+      expect(others).toHaveLength(3);
+      expect(others.map((id) => nicknames.get(id))).not.toContain(quoted);
+    }
+  });
+
+  it('only quotes nicknames that exist', () => {
+    const nobody = {
+      ...question('playerByNickname'),
+      players: players.map(({ name, region, titles, teams }) => ({ name, region, titles, teams })),
+    };
+    expect(buildPlayerRound(allNames('playerByNickname'), nobody, createRng('s'))).toBeUndefined();
   });
 
   it('is deterministic for a seed', () => {

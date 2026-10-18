@@ -106,6 +106,34 @@ describe('EndlessScreen', () => {
     expect(questionText()).toBe('Which item costs the most gold?');
   });
 
+  it('lists the questions of the chosen category only, and asks only those', async () => {
+    const user = userEvent.setup();
+    renderEndless();
+    const select = screen.getByLabelText<HTMLSelectElement>(/Question/);
+    const optionIds = () =>
+      [...select.options].map((option) => option.value).filter((value) => value !== 'any');
+    const idsOf = (category: string) =>
+      realGameData.questions.filter((q) => q.category === category).map((q) => q.id);
+
+    expect(optionIds()).toHaveLength(realGameData.questions.length);
+    await user.selectOptions(screen.getByLabelText(/Category/), 'esports');
+    expect(optionIds().sort()).toEqual(idsOf('esports').sort());
+
+    for (let i = 0; i < 5; i++) {
+      await user.click(screen.getByRole('button', { name: 'Skip question' }));
+      const shown = document.querySelector('.endless__debug code:nth-of-type(2)')?.textContent;
+      expect(idsOf('esports')).toContain(shown);
+    }
+  });
+
+  it('groups the coverage table by category', () => {
+    renderEndless();
+    const headings = [...document.querySelectorAll('.coverage h3')].map((h) => h.textContent);
+    expect(headings).toHaveLength(3);
+    expect(headings[0]).toMatch(/^Stats/);
+    expect(document.querySelectorAll('.coverage table')).toHaveLength(3);
+  });
+
   it('can be restricted to one difficulty and shows it', async () => {
     const user = userEvent.setup();
     renderEndless();

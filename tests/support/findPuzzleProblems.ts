@@ -27,12 +27,21 @@ function findWinnerRoundProblems(round: Round, question: WinnerQuestion, label: 
 
 /** A player round is valid if the named team or player fits the answer and none of the other options. */
 function findPlayerRoundProblems(round: Round, question: PlayerQuestion, label: string): string[] {
-  const placeholder = question.ask === 'playerByTeam' ? '{team}' : '{player}';
-  const subject = namedSubject(round, question.question, placeholder);
-  const fits = (option: string) =>
-    question.ask === 'playerByTeam'
-      ? question.players.some((player) => player.name === option && player.teams.includes(subject))
-      : question.players.some((player) => player.name === subject && player.teams.includes(option));
+  const placeholders = {
+    playerByTeam: '{team}',
+    teamByPlayer: '{player}',
+    playerByNickname: '{nickname}',
+  };
+  const subject = namedSubject(round, question.question, placeholders[question.ask]);
+  const fitsByAsk = {
+    playerByTeam: (option: string) =>
+      question.players.some((player) => player.name === option && player.teams.includes(subject)),
+    teamByPlayer: (option: string) =>
+      question.players.some((player) => player.name === subject && player.teams.includes(option)),
+    playerByNickname: (option: string) =>
+      question.players.some((player) => player.name === option && player.nickname === subject),
+  };
+  const fits = fitsByAsk[question.ask];
   const problems: string[] = [];
   if (!fits(round.answerId)) problems.push(`${label}: the answer does not fit the question`);
   for (const id of round.optionIds.filter((option) => option !== round.answerId)) {

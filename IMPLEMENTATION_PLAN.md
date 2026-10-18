@@ -237,6 +237,16 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Winner questions: which team won Worlds (2011-2025) or MSI (2015-2026, none in 2020) in a given year; winners are written in the question, wrong options are winners of other years
 - Open: players whose article was not found (Canyon, ShowMaker, TheShy, Bang, Wolf, ...) are not in yet; more players give more variety.
 
+### Phase 5g2 - Endless mode by category (done)
+
+- [x] Category dropdown in the endless mode: limits the random questions and the question list to that category; the coverage table is grouped by category with a seen count each
+
+### Phase 5c12 - Esports questions from the player data (done)
+
+- [x] Nickname question generated from the players (`playerByNickname`), replacing the hand-written one that only knew Faker
+- [x] "Who played for T1" removed: the generated players-and-teams question covers it
+- [x] T1 and Worlds skin questions merged into one esports-skin question (40 champions)
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

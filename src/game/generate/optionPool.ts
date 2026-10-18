@@ -19,7 +19,7 @@ export function optionPool(data: PuzzleData, question: Question): readonly Entit
   }
   if (question.kind === 'player') {
     const names =
-      question.ask === 'playerByTeam'
+      question.ask !== 'teamByPlayer'
         ? question.players.map(({ name }) => name)
         : question.players.flatMap(({ teams }) => teams);
     return [...new Set(names)].map(textOption);

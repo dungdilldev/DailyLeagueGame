@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { questionLabel, type GameData } from '../data/questions';
+import { QuestionCategorySchema, type QuestionCategory } from '../data/schema';
 import { newestPuzzleData } from '../game/dailyPuzzle';
 import { buildEntityLookup } from '../game/entityLookup';
 import { buildEndlessQuestion } from '../game/endless';
@@ -7,6 +8,7 @@ import { emptyCoverage, recordAnswer, recordShown } from '../game/endlessCoverag
 import { ROUND_GAP_BANDS } from '../game/generate/config';
 import { newestSnapshot } from '../game/snapshot';
 import type { GapBand } from '../game/generate/config';
+import { CATEGORY_LABELS, groupByCategory } from './categoryLabels';
 import { CoveragePanel } from './CoveragePanel';
 import { randomSeed } from './randomSeed';
 import { RoundView } from './RoundView';
@@ -34,6 +36,7 @@ function describeBand(band: GapBand): string {
 export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreenProps) {
   const [seed, setSeed] = useState(initialSeed);
   const [index, setIndex] = useState(0);
+  const [categoryFilter, setCategoryFilter] = useState(ANY);
   const [questionFilter, setQuestionFilter] = useState(ANY);
   const [bandFilter, setBandFilter] = useState(ANY);
   const [chosenId, setChosenId] = useState<string | undefined>();
@@ -46,14 +49,15 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
   const question = useMemo(
     () =>
       buildEndlessQuestion(puzzleData, data.questions, seed, index, {
+        ...(categoryFilter !== ANY && { category: categoryFilter as QuestionCategory }),
         ...(questionFilter !== ANY && { questionId: questionFilter }),
         ...(bandFilter !== ANY && { bandIndex: Number(bandFilter) }),
       }),
-    [puzzleData, data.questions, seed, index, questionFilter, bandFilter],
+    [puzzleData, data.questions, seed, index, categoryFilter, questionFilter, bandFilter],
   );
 
   // Count each question once when it appears (a changed filter shows a new question).
-  const shownKey = `${seed}#${String(index)}#${questionFilter}#${bandFilter}`;
+  const shownKey = `${seed}#${String(index)}#${categoryFilter}#${questionFilter}#${bandFilter}`;
   useEffect(() => {
     if (question) setCoverage((previous) => recordShown(previous, question));
   }, [shownKey]);
@@ -79,6 +83,9 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
   };
 
   const band = question && ROUND_GAP_BANDS[question.bandIndex];
+  const questionGroups = groupByCategory(data.questions).filter(
+    ({ category }) => categoryFilter === ANY || category === categoryFilter,
+  );
 
   return (
     <section aria-labelledby="endless-heading">
@@ -91,6 +98,25 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
 
       <div class="endless__controls">
         <label>
+          Category{' '}
+          <select
+            value={categoryFilter}
+            onChange={(event) => {
+              // The chosen question may belong to another category.
+              setCategoryFilter(event.currentTarget.value);
+              setQuestionFilter(ANY);
+              setChosenId(undefined);
+            }}
+          >
+            <option value={ANY}>Any (random)</option>
+            {QuestionCategorySchema.options.map((category) => (
+              <option key={category} value={category}>
+                {CATEGORY_LABELS[category]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
           Question{' '}
           <select
             value={questionFilter}
@@ -100,10 +126,14 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
             }}
           >
             <option value={ANY}>Any (random)</option>
-            {data.questions.map((question) => (
-              <option key={question.id} value={question.id}>
-                {questionLabel(question)} ({question.subject})
-              </option>
+            {questionGroups.map((group) => (
+              <optgroup key={group.category} label={CATEGORY_LABELS[group.category]}>
+                {group.questions.map((question) => (
+                  <option key={question.id} value={question.id}>
+                    {questionLabel(question)} ({question.subject})
+                  </option>
+                ))}
+              </optgroup>
             ))}
           </select>
         </label>

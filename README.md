@@ -26,6 +26,25 @@ All commands are also listed in [CLAUDE.md](CLAUDE.md).
 
 After that it runs by itself every day at 00:30 UTC, and on every push to `main`.
 
+### Custom domain (summonersquiz.com)
+
+No code change is needed: the build uses relative paths, and share links use the address the
+visitor is on. Because the site is deployed by GitHub Actions, a `CNAME` file in the repository is
+not used; the domain is set in the repository settings.
+
+1. At the domain registrar, add DNS records for the apex domain `summonersquiz.com`:
+   - four `A` records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - optionally four `AAAA` records: `2606:50c0:8000::153`, `2606:50c0:8001::153`,
+     `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - one `CNAME` record for `www` pointing to `dungdilldev.github.io`
+2. In the repository go to **Settings > Pages > Custom domain**, enter `summonersquiz.com` and save.
+   GitHub checks the DNS (this can take from minutes up to a day) and then redirects `www` to it.
+3. When the check passes, tick **Enforce HTTPS** (the certificate can take up to an hour).
+4. Optional but recommended: verify the domain under your account's **Settings > Pages** so nobody
+   else can point a subdomain at your account.
+
+Remove any old `A`, `AAAA` or `CNAME` records on the same names first, and do not use wildcard DNS.
+
 ## How the daily automation works
 
 - The daily puzzle is generated in the browser from the date (UTC), using the champion and item data in

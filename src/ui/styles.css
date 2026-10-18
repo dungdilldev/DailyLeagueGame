@@ -739,6 +739,11 @@ footer a {
   text-align: right;
 }
 
+.coverage h3 {
+  margin: 1.25rem 0 0.25rem;
+  font-size: 1rem;
+}
+
 .coverage__subject {
   color: var(--muted);
 }

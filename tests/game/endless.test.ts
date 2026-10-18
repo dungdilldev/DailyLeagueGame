@@ -18,6 +18,22 @@ describe('buildEndlessQuestion', () => {
     expect(ask(7, {}, 'other')).not.toEqual(ask(7));
   });
 
+  it('only asks questions of the chosen category', () => {
+    for (const category of ['stats', 'lore', 'esports'] as const) {
+      const ids = new Set(
+        questions.filter((question) => question.category === category).map(({ id }) => id),
+      );
+      for (let index = 0; index < 100; index++) {
+        const question = ask(index, { category });
+        expect(ids.has(question?.round.questionId ?? ''), category).toBe(true);
+      }
+    }
+  });
+
+  it('finds nothing for a question outside the chosen category', () => {
+    expect(ask(0, { category: 'lore', questionId: 'itemCost' })).toBeUndefined();
+  });
+
   it('always builds a valid question for its difficulty band', () => {
     for (let index = 0; index < 500; index++) {
       const question = ask(index);

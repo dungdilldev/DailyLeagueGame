@@ -177,12 +177,13 @@ const ClueQuestionTemplateSchema = z.strictObject({
 /**
  * A question made from `data/players.json`: it names a random team and asks for a player who
  * played there (`playerByTeam`, `{team}` in the text), or names a random player and asks for
- * one of their teams (`teamByPlayer`, `{player}` in the text). Options are plain text.
+ * one of their teams (`teamByPlayer`, `{player}` in the text), or quotes a nickname and asks
+ * who has it (`playerByNickname`, `{nickname}` in the text). Options are plain text.
  */
 const PlayerQuestionTemplateSchema = z.strictObject({
   ...QuestionFields,
   subject: z.literal('text'),
-  ask: z.enum(['playerByTeam', 'teamByPlayer']),
+  ask: z.enum(['playerByTeam', 'teamByPlayer', 'playerByNickname']),
   /** Short name shown in the results. */
   label: z.string().min(1),
 });
