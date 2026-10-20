@@ -212,18 +212,19 @@
       "question": "Which of these champions is a creature of the Void?",
       "correct": ["Khazix", "Velkoz", "Chogath", "KogMaw", "RekSai", "Belveth"],
       "wrong": [
-        "Garen",
-        "Lux",
-        "Darius",
-        "Ashe",
-        "Jinx",
-        "Leona",
-        "Thresh",
-        "Yasuo",
-        "Caitlyn",
-        "Braum",
-        "Sion",
-        "Nasus"
+        "Aatrox",
+        "Elise",
+        "Evelynn",
+        "Fiddlesticks",
+        "Hecarim",
+        "Mordekaiser",
+        "Nocturne",
+        "Pyke",
+        "Rammus",
+        "Shaco",
+        "Tahm Kench",
+        "Volibear",
+        "Warwick"
       ]
     },
     {
@@ -233,18 +234,24 @@
       "subject": "champion",
       "label": "Darkin",
       "question": "Which of these champions is a Darkin?",
-      "correct": ["Aatrox", "Varus", "Naafiri", "Zaahen"],
+      "correct": ["Aatrox", "Varus", "Naafiri", "Zaahen", "Kayn"],
       "wrong": [
-        "Garen",
-        "Lux",
-        "Darius",
-        "Ashe",
-        "Jinx",
-        "Leona",
-        "Thresh",
-        "Yasuo",
-        "Caitlyn",
-        "Braum"
+        "Ahri",
+        "Akali",
+        "AurelionSol",
+        "Belveth",
+        "Briar",
+        "Draven",
+        "Gwen",
+        "Hecarim",
+        "Illaoi",
+        "Ksante",
+        "Kalista",
+        "Nocturne",
+        "Pantheon",
+        "Renekton",
+        "Sion",
+        "Thresh"
       ]
     },
     {
@@ -255,52 +262,80 @@
       "label": "Esports skins",
       "question": "Which of these champions has an esports skin (a T1 or Worlds skin)?",
       "correct": [
+        "Aatrox",
+        "Ahri",
+        "Akali",
         "Alistar",
         "Ambessa",
+        "Aphelios",
         "Ashe",
         "Azir",
         "Bard",
+        "Camille",
+        "Caitlyn",
+        "Corki",
+        "DrMundo",
         "Ekko",
         "Elise",
+        "Ezreal",
+        "Fiora",
         "Galio",
+        "Gangplank",
         "Gnar",
+        "Gragas",
+        "Graves",
+        "Irelia",
+        "Janna",
         "JarvanIV",
         "Jax",
         "Jayce",
         "Jhin",
         "Jinx",
+        "KaiSa",
         "Kalista",
-        "Khazix",
+        "Karthus",
+        "Kennen",
+        "Kindred",
         "Leblanc",
+        "Leona",
         "LeeSin",
+        "Malphite",
+        "Maokai",
         "Nami",
+        "Nidalee",
+        "Nunu",
         "Olaf",
         "Orianna",
         "Pyke",
+        "Rakan",
         "Renekton",
-        "Riven",
+        "Rengar",
         "Ryze",
         "Seraphine",
+        "Shen",
         "Shyvana",
+        "Singed",
         "Sylas",
         "Syndra",
+        "Taliyah",
+        "Talon",
+        "TwistedFate",
         "Thresh",
         "Varus",
         "Vayne",
         "Vi",
         "Viego",
-        "XinZhao",
         "Yone",
-        "Yunara",
+        "Yuumi",
         "Zac",
         "Zed",
+        "Zoe",
         "Zyra"
       ],
       "wrong": [
         "Garen",
         "Lux",
         "Soraka",
-        "Malphite",
         "Annie",
         "Nasus",
         "Teemo",
@@ -308,15 +343,26 @@
         "Ornn",
         "Amumu",
         "Sion",
-        "Leona",
         "Brand",
-        "Karthus",
-        "Nunu",
-        "Singed",
         "Rammus",
         "Zilean",
-        "Shen",
-        "Veigar"
+        "Veigar",
+        "Akshan",
+        "Anivia",
+        "AurelionSol",
+        "Blitzcrank",
+        "Braum",
+        "Briar",
+        "Darius",
+        "Diana",
+        "Rumble",
+        "Ivern",
+        "Hwei",
+        "Karma",
+        "Kayle",
+        "Mel",
+        "Malzahar",
+        "MissFortune"
       ]
     },
     {
@@ -330,6 +376,7 @@
         "T1",
         "Fnatic",
         "Taipei Assassins",
+        "SK Telecom T1",
         "Samsung White",
         "Samsung Galaxy",
         "Invictus Gaming",
@@ -340,14 +387,14 @@
       ],
       "wrong": [
         "G2 Esports",
-        "Cloud9",
-        "Team Liquid",
-        "JD Gaming",
-        "Bilibili Gaming",
+        "Azubu Frost",
         "Top Esports",
-        "Royal Never Give Up",
-        "KT Rolster",
+        "Sunung",
+        "DWG KIA",
         "Weibo Gaming",
+        "Bilibili Gaming",
+        "KT Rolster",
+        "Royal Never Give Up",
         "FlyQuest",
         "MAD Lions",
         "Hanwha Life Esports"
@@ -371,7 +418,7 @@
         "Suning",
         "KOO Tigers"
       ],
-      "wrong": ["Cloud9", "Team Liquid", "JD Gaming", "Top Esports", "MAD Lions", "FlyQuest"]
+      "wrong": ["Cloud9", "Team Liquid", "JD Gaming", "Top Esports", "MAD Lions", "FlyQuest", "Karmine Carp", "Gen.G"]
     },
     {
       "id": "hostedWorldsFinal",
@@ -402,7 +449,13 @@
         "Singapore",
         "Rio de Janeiro",
         "Moscow",
-        "Mumbai"
+        "Mumbai",
+        "Münich",
+        "Dehli",
+        "Cairo",
+        "Mexico City",
+        "Istanbul",
+        "Osaka"
       ]
     },
     {
@@ -442,7 +495,7 @@
       "label": "First champions",
       "question": "Which of these teams won the very first World Championship, in 2011?",
       "correct": ["Fnatic"],
-      "wrong": ["Taipei Assassins", "Samsung White", "Cloud9", "G2 Esports"]
+      "wrong": ["Taipei Assassins", "Samsung White", "Cloud9", "G2 Esports", "SK Telecom T1"]
     },
     {
       "id": "threeInARow",
@@ -460,15 +513,20 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Demacia",
-      "question": "Which of these champions is from Demacia?",
+      "question": "Which of these champions belongs to Demacia?",
       "correct": [
         "Fiora",
         "Galio",
         "Garen",
         "JarvanIV",
+        "Kayle",
+        "Lucian",
         "Lux",
+        "Morgana",
         "Poppy",
         "Quinn",
+        "Shyvana",
+        "Sona",
         "Sylas",
         "XinZhao",
         "Vayne"
@@ -478,6 +536,7 @@
         "Draven",
         "Ashe",
         "Braum",
+        "Ezreal",
         "Irelia",
         "Lillia",
         "Caitlyn",
@@ -493,9 +552,20 @@
         "Azir",
         "Nasus",
         "Neeko",
-        "Qiyana",
         "Veigar",
-        "Rumble"
+        "Rumble",
+        "Senna",
+        "Zoe",
+        "Ryze",
+        "Fiddlesticks",
+        "Akshan",
+        "Ambessa",
+        "Corki",
+        "Hwei",
+        "Jhin",
+        "Milio",
+        "MasterYi",
+        "Qiyana"
       ]
     },
     {
@@ -504,18 +574,24 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Noxus",
-      "question": "Which of these champions is from Noxus?",
+      "question": "Which of these champions belongs to Noxus?",
       "correct": [
         "Ambessa",
         "Briar",
         "Cassiopeia",
         "Darius",
+        "Elise",
         "Draven",
         "Katarina",
         "Kled",
         "Leblanc",
+        "Mel",
+        "Mordekaiser",
         "Rell",
+        "Riven",
+        "Samira",
         "Sion",
+        "Smolder",
         "Swain",
         "Talon",
         "Vladimir"
@@ -542,7 +618,15 @@
         "Neeko",
         "Qiyana",
         "Veigar",
-        "Rumble"
+        "Rumble",
+        "Pyke",
+        "RenataGlasc",
+        "Sejuani",
+        "Shen",
+        "Urgot",
+        "Vayne",
+        "Viego",
+        "Zaahen"
       ]
     },
     {
@@ -555,15 +639,18 @@
       "correct": [
         "Ashe",
         "Anivia",
+        "Aurora",
         "Braum",
         "Gnar",
         "Gragas",
         "Lissandra",
+        "Nunu",
         "Olaf",
         "Ornn",
         "Sejuani",
         "Trundle",
         "Tryndamere",
+        "Udyr",
         "Volibear"
       ],
       "wrong": [
@@ -588,7 +675,24 @@
         "Neeko",
         "Qiyana",
         "Veigar",
-        "Rumble"
+        "Rumble",
+        "Ryze",
+        "Annie",
+        "Brand",
+        "Ivern",
+        "Briar",
+        "Alistar",
+        "Velkoz",
+        "Bard",
+        "Chogath",
+        "Fiddlesticks",
+        "Hwei",
+        "Karma",
+        "Kindred",
+        "Locke",
+        "Poppy",
+        "Skarner",
+        "Zilean"
       ]
     },
     {
@@ -597,20 +701,25 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ionia",
-      "question": "Which of these champions is from Ionia?",
+      "question": "Which of these champions belongs to Ionia?",
       "correct": [
         "Ahri",
         "Akali",
+        "Hwei",
         "Irelia",
+        "Ivern",
         "Karma",
         "Kayn",
+        "Kennen",
         "LeeSin",
         "Lillia",
         "MasterYi",
         "Rakan",
         "Sett",
         "Shen",
-        "MonkeyKing",
+        "Syndra",
+        "Varus",
+        "Wukong",
         "Xayah",
         "Yasuo",
         "Yone",
@@ -619,26 +728,29 @@
       "wrong": [
         "Garen",
         "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Maokai",
-        "Yorick",
-        "Illaoi",
-        "Nautilus",
-        "Leona",
+        "Akshan",
+        "Alistar",
         "Aphelios",
-        "Azir",
-        "Nasus",
+        "Camille",
+        "Diana",
+        "Ezreal",
+        "Janna",
+        "Jax",
+        "Jhin",
+        "Kayle",
+        "Kindred",
+        "LeBlanc",
+        "Locke",
+        "Nami",
         "Neeko",
-        "Qiyana",
-        "Veigar",
-        "Rumble"
+        "Pantheon",
+        "Rammus",
+        "Smolder",
+        "Sona",
+        "Soraka",
+        "Taric",
+        "Udyr",
+        "Zilean"
       ]
     },
     {
@@ -647,7 +759,7 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Piltover",
-      "question": "Which of these champions is from Piltover?",
+      "question": "Which of these champions belongs to Piltover?",
       "correct": [
         "Caitlyn",
         "Camille",
@@ -659,28 +771,23 @@
         "Vi"
       ],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "DrMundo",
         "Ekko",
-        "Maokai",
-        "Yorick",
-        "Illaoi",
-        "Nautilus",
-        "Leona",
-        "Aphelios",
-        "Azir",
-        "Nasus",
-        "Neeko",
-        "Qiyana",
-        "Veigar",
-        "Rumble"
+        "Singed",
+        "Jinx",
+        "Soraka",
+        "Graves",
+        "Jhin",
+        "Viktor",
+        "Janna",
+        "Ziggs",
+        "Blitzcrank",
+        "Urgot",
+        "DrMundo",
+        "Kled",
+        "Lucian",
+        "RenataGlasc",
+        "Zeri",
+        "Zilean"
       ]
     },
     {
@@ -689,13 +796,15 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Zaun",
-      "question": "Which of these champions is from Zaun?",
+      "question": "Which of these champions belongs to Zaun?",
       "correct": [
         "Blitzcrank",
         "DrMundo",
         "Ekko",
+        "Janna",
         "Jinx",
-        "Renata",
+        "RenataGlasc",
+        "Singed",
         "Twitch",
         "Urgot",
         "Viktor",
@@ -725,7 +834,14 @@
         "Neeko",
         "Qiyana",
         "Veigar",
-        "Rumble"
+        "Rumble",
+        "Teemo",
+        "Vex",
+        "Viego",
+        "Elise",
+        "Jhin",
+        "Seraphine",
+        "Orianna"
       ]
     },
     {
@@ -734,31 +850,35 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shadow Isles",
-      "question": "Which of these champions is from the Shadow Isles?",
-      "correct": ["Gwen", "Hecarim", "Kalista", "Karthus", "Maokai", "Thresh", "Viego", "Yorick"],
+      "question": "Which of these champions belongs to the Shadow Isles?",
+      "correct": ["Gwen", "Hecarim", "Kalista", "Karthus", "Maokai", "Senna", "Thresh", "Vex", "Viego", "Yorick"],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Illaoi",
-        "Nautilus",
-        "Leona",
+        "Aatrox",
+        "Ahri",
+        "Amumu",
         "Aphelios",
-        "Azir",
-        "Nasus",
-        "Neeko",
-        "Qiyana",
-        "Veigar",
-        "Rumble"
+        "Belveth",
+        "Brand",
+        "Cassiopeia",
+        "Chogath",
+        "DrMundo",
+        "Elise",
+        "Evelynn",
+        "Fiddlesticks",
+        "Kassadin",
+        "Kindred",
+        "Khazix",
+        "Locke",
+        "Lucian",
+        "Malzahar",
+        "Mordekaiser",
+        "Nocturne",
+        "Pyke",
+        "Reksai",
+        "Shaco",
+        "Sion",
+        "Swain",
+        "Velkoz"
       ]
     },
     {
@@ -767,7 +887,7 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bilgewater",
-      "question": "Which of these champions is from Bilgewater?",
+      "question": "Which of these champions nelongs to Bilgewater?",
       "correct": [
         "Fizz",
         "Gangplank",
@@ -775,33 +895,29 @@
         "Illaoi",
         "MissFortune",
         "Nautilus",
+        "TahmKench",
         "Nilah",
         "Pyke",
         "TwistedFate"
       ],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Maokai",
-        "Yorick",
-        "Leona",
-        "Aphelios",
-        "Azir",
-        "Nasus",
-        "Neeko",
         "Qiyana",
-        "Veigar",
-        "Rumble"
+        "Rumble",
+        "Aphelios",
+        "Aurora",
+        "Bard",
+        "Blitzcrank",
+        "Camille",
+        "Ekko",
+        "Gragas",
+        "Jax",
+        "Katerina",
+        "Mordekaiser",
+        "Nami",
+        "Quinn",
+        "Rengar",
+        "Sett",
+        "Viego"
       ]
     },
     {
@@ -810,31 +926,26 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Mount Targon",
-      "question": "Which of these champions is from Mount Targon?",
-      "correct": ["Aphelios", "AurelionSol", "Diana", "Leona", "Pantheon", "Soraka", "Zoe"],
+      "question": "Which of these champions belongs to Mount Targon?",
+      "correct": ["Aphelios", "AurelionSol", "Diana", "Leona", "Pantheon", "Soraka", "Taric", "Zoe"],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Maokai",
-        "Yorick",
-        "Illaoi",
-        "Nautilus",
+        "Amumu",
         "Azir",
+        "Bard",
+        "Fiddlesticks",
+        "Galio",
+        "Karma",
+        "Kayle",
+        "Kindred",
+        "Lilia",
         "Nasus",
-        "Neeko",
-        "Qiyana",
-        "Veigar",
-        "Rumble"
+        "Morgana",
+        "Nocturne",
+        "Ornn",
+        "Rell",
+        "Shyvana",
+        "Yuumi",
+        "Zilean"
       ]
     },
     {
@@ -843,31 +954,35 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shurima",
-      "question": "Which of these champions is from Shurima?",
-      "correct": ["Amumu", "Azir", "Nasus", "Rammus", "Renekton", "Sivir", "Taliyah", "Xerath"],
+      "question": "Which of these champions nelongs to Shurima?",
+      "correct": ["Akshan", "Amumu", "Azir", "Ksante", "Naafiri", "Nasus", "Rammus", "Renekton", "Sivir", "Taliyah", "Xerath"],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Maokai",
-        "Yorick",
+        "Aatrox",
+        "Alistar",
+        "AurelionSol",
+        "Bard",
+        "Belveth",
+        "Cassiopeia",
+        "Diana",
+        "Ezreal",
+        "Elise",
+        "Gnar",
+        "Hecarim",
         "Illaoi",
-        "Nautilus",
-        "Leona",
-        "Aphelios",
-        "Neeko",
+        "Garen",
+        "Janna",
+        "Jax",
+        "Kayle",
+        "Malphite",
+        "Nami",
+        "Pantheon",
         "Qiyana",
-        "Veigar",
-        "Rumble"
+        "Quinn",
+        "Rengar",
+        "Riven",
+        "Samira",
+        "Skarner",
+        "Zaahen"
       ]
     },
     {
@@ -876,31 +991,45 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ixtal",
-      "question": "Which of these champions is from Ixtal?",
-      "correct": ["Milio", "Neeko", "Nidalee", "Qiyana", "Skarner", "Zyra"],
+      "question": "Which of these champions belongs to Ixtal?",
+      "correct": ["Malphite", "Milio", "Neeko", "Nidalee", "Qiyana", "Rengar", "Skarner", "Zyra"],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Maokai",
-        "Yorick",
-        "Illaoi",
-        "Nautilus",
-        "Leona",
-        "Aphelios",
+        "Ahri",
+        "Alistar",
+        "Amumu",
+        "Anivia",
+        "Aurora",
         "Azir",
-        "Nasus",
-        "Veigar",
-        "Rumble"
+        "Bard",
+        "Cassiopeia",
+        "Elise",
+        "Evelynn",
+        "Ezreal",
+        "Fizz",
+        "Gnar",
+        "Ivern",
+        "Janna",
+        "Jax",
+        "Khazix",
+        "Kindred",
+        "Kled",
+        "Lilia",
+        "Maokai",
+        "Quinn",
+        "Rakan",
+        "Rammus",
+        "Renekton",
+        "Sett",
+        "Shyvana",
+        "Smolder",
+        "Sivir",
+        "Soraka",
+        "Tahm Kench",
+        "Wukong",
+        "Warwick",
+        "Volibear",
+        "Xayah",
+        "Yuumi"
       ]
     },
     {
@@ -909,31 +1038,22 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bandle City",
-      "question": "Which of these champions is from Bandle City?",
-      "correct": ["Corki", "Lulu", "Rumble", "Teemo", "Tristana", "Veigar"],
+      "question": "Which of these champions belongs to Bandle City?",
+      "correct": ["Corki", "Lulu", "Rumble", "Teemo", "Tristana", "Veigar", "Yuumi"],
       "wrong": [
-        "Garen",
-        "Fiora",
-        "Darius",
-        "Draven",
-        "Ashe",
-        "Braum",
-        "Irelia",
-        "Lillia",
-        "Caitlyn",
-        "Camille",
-        "DrMundo",
-        "Ekko",
-        "Maokai",
-        "Yorick",
-        "Illaoi",
-        "Nautilus",
-        "Leona",
-        "Aphelios",
-        "Azir",
-        "Nasus",
-        "Neeko",
-        "Qiyana"
+        "Amumu",
+        "Annie",
+        "Briar",
+        "Fizz",
+        "Gnar",
+        "Heimedinger",
+        "Kennen",
+        "Kled",
+        "Milio",
+        "Poppy",
+        "Smolder",
+        "Vex",
+        "Ziggs"
       ]
     },
     {
@@ -943,8 +1063,8 @@
       "subject": "champion",
       "label": "Noxian invasion of Ionia",
       "question": "Which of these champions did NOT fight in the Noxian invasion of Ionia?",
-      "correct": ["Garen", "Ashe", "Braum", "Lux", "Nasus", "Fiora"],
-      "wrong": ["Irelia", "Karma", "Zed", "Shen", "Swain", "Darius", "Singed", "Udyr"]
+      "correct": ["Yasuo", "Fiora", "Sona", "Kled", "Ahri", "Syndra", "Wukong", "Draven", "Katarina", "Rell", "Sion", "Talon"],
+      "wrong": ["MasterYi","Yone", "Karma", "Zed", "Udyr", "LeeSin", "Irelia", "Swain", "Kayn",  "Singed", "Riven", "Darius"]
     },
     {
       "id": "claimedByBlackMist",
@@ -953,8 +1073,8 @@
       "subject": "champion",
       "label": "The Ruination",
       "question": "Which of these champions was turned into an undead spirit by the Black Mist?",
-      "correct": ["Hecarim", "Kalista", "Thresh"],
-      "wrong": ["Maokai", "Garen", "Lux", "Ashe", "Sivir"]
+      "correct": ["Hecarim", "Kalista", "Thresh", "Karthus"],
+      "wrong": ["Yorick", "Viego", "Gwen", "Maokai", "Senna", "Kindred", "Evelynn", "Fiddlestick", "Shaco", "Nocturne", "Pyke"]
     },
     {
       "id": "isSentinelOfLight",
@@ -973,30 +1093,30 @@
         "Pyke",
         "Rengar",
         "Olaf",
-        "Riven"
+        "Riven",
+        "Irelia"
       ],
-      "wrong": ["Garen", "Ashe", "Darius", "Nasus", "Teemo", "Ahri"]
+      "wrong": ["Draven", "Ezreal", "Gwen", "Illaoi", "Yorick", "Karma", "MissFortune", "Pantheon", "Shyvana"]
     },
     {
       "id": "isAscended",
       "category": "lore",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "The Ascended",
       "question": "Which of these champions is one of the Ascended of Shurima?",
       "correct": ["Azir", "Nasus", "Renekton", "Xerath"],
       "wrong": [
-        "Garen",
-        "Lux",
-        "Ashe",
-        "Darius",
-        "Caitlyn",
         "Leona",
-        "Draven",
         "Aatrox",
         "Naafiri",
         "Varus",
-        "Zaahen"
+        "Zaahen",
+        "Sivir",
+        "Pantheon",
+        "Taric",
+        "Ksante",
+        "Malphite"
       ]
     },
     {
@@ -1026,7 +1146,7 @@
         },
         {
           "year": 2013,
-          "team": "T1"
+          "team": "SK Telecom T1"
         },
         {
           "year": 2014,
@@ -1034,11 +1154,11 @@
         },
         {
           "year": 2015,
-          "team": "T1"
+          "team": "SK Telecom T1"
         },
         {
           "year": 2016,
-          "team": "T1"
+          "team": "SK Telecom T1"
         },
         {
           "year": 2017,
@@ -1092,11 +1212,11 @@
         },
         {
           "year": 2016,
-          "team": "T1"
+          "team": "SK Telecom T1"
         },
         {
           "year": 2017,
-          "team": "T1"
+          "team": "SK Telecom T1"
         },
         {
           "year": 2018,
@@ -1142,17 +1262,6 @@
       "question": "Which continent is described as an eastern continent of Runeterra?",
       "correct": ["Camavor"],
       "wrong": ["Shurima", "Valoran", "Arctic"]
-    },
-    {
-      "id": "geoNorthPole",
-      "category": "lore",
-      "subcategory": "geography",
-      "difficulty": "easy",
-      "subject": "text",
-      "label": "Continents",
-      "question": "Which continent contains Runeterra's geographic North Pole?",
-      "correct": ["Arctic"],
-      "wrong": ["Valoran", "Shurima", "Camavor"]
     },
     {
       "id": "geoLandBridge",
@@ -2340,7 +2449,7 @@
       "difficulty": "easy",
       "subject": "text",
       "label": "Locations",
-      "question": "Which two city-states stand on the isthmus between Valoran and Shurima?",
+      "question": "Which city state stands on the isthmus between Valoran and Shurima?",
       "correct": ["Piltover", "Zaun"],
       "wrong": ["Bilgewater", "Demacia", "Noxus", "Ixtal"]
     },
@@ -2348,7 +2457,7 @@
       "id": "cityBilgewaterCapital",
       "category": "lore",
       "subcategory": "city-states",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Locations",
       "question": "Which of these is the capital of Bilgewater?",
@@ -2480,7 +2589,7 @@
       "id": "titanWarFoe",
       "category": "lore",
       "subcategory": "titan-war",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Titan War",
       "question": "Which beings did the Vastayashai'rei defeat in the Titan War?",
@@ -2518,7 +2627,7 @@
       "label": "Three Sisters",
       "question": "Which of these champions was one of the Three Sisters of the Freljord?",
       "correct": ["Lissandra"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Tristana", "Soraka", "Lulu", "Aurora", "Anivia", "Annie"]
     },
     {
       "id": "sistersBlinded",
@@ -2529,7 +2638,7 @@
       "label": "Three Sisters",
       "question": "Which of these champions is the demigod who slashed Lissandra's eyes and blinded her in front of her army?",
       "correct": ["Volibear"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Nunu", "Ashe", "Olaf", "Tryndamere", "Ornn", "Sejuani", "Udyr"]
     },
     {
       "id": "sistersEntombed",
@@ -2540,13 +2649,13 @@
       "label": "Three Sisters",
       "question": "Which beings did Lissandra entomb in True Ice?",
       "correct": ["The Watchers"],
-      "wrong": ["The Darkin", "The Titans", "The Voidborn"]
+      "wrong": ["The Darkin", "The Titans", "The Darkins"]
     },
     {
       "id": "sistersAbyss",
       "category": "lore",
       "subcategory": "war-of-the-three-sisters",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Three Sisters",
       "question": "Which chasm, the deepest trench in the world, did the demigod Ramhaurg carve in the Freljord?",
@@ -2562,7 +2671,7 @@
       "label": "Three Sisters",
       "question": "Which of these champions is the amicable Freljord demigod Ysjarn?",
       "correct": ["Anivia"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Volibear", "Ornn", "Olaf", "Lissandra", "Nunu"]
     },
     {
       "id": "sistersSisters",
@@ -2606,18 +2715,18 @@
       "label": "Icathia",
       "question": "Which of these champions sat on the Icathian council and opposed using the Void?",
       "correct": ["Zilean"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Azir", "Ryze", "Jax", "Qiyana", "Bard"]
     },
     {
       "id": "icathiaMalphite",
       "category": "lore",
       "subcategory": "rebellion-of-icathia",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Icathia",
       "question": "Which of these champions was formed from a surviving shard of Ne'Zuk's Monolith?",
       "correct": ["Malphite"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Skarner", "Nunu", "Ornn", "Amumu", "Orianna"]
     },
     {
       "id": "darkinAatrox",
@@ -2661,7 +2770,7 @@
       "label": "Darkin War",
       "question": "Which of these champions is the Darkin who asked to be sealed in his glaive, hidden in the Temple of Twilight?",
       "correct": ["Zaahen"],
-      "wrong": ["Aatrox", "Naafiri", "Varus"]
+      "wrong": ["Aatrox", "Naafiri", "Varus", "Hecarim"]
     },
     {
       "id": "darkinVladimir",
@@ -2672,7 +2781,7 @@
       "label": "Darkin War",
       "question": "Which of these champions was a Camavoran prince taken hostage and became the first human to learn blood magic?",
       "correct": ["Vladimir"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Briar", "Viego", "Kathus", "Ryze", "Viktor"]
     },
     {
       "id": "darkinMoneerah",
@@ -2683,7 +2792,7 @@
       "label": "Darkin War",
       "question": "Which of these champions killed the Darkin Moneerah after she explored the ruins of the Great Library of Nashramae?",
       "correct": ["Nasus"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Azir", "Renekton", "Xerath", "Rammus", "Sivir", "Samira"]
     },
     {
       "id": "darkinShuriman",
@@ -2694,7 +2803,7 @@
       "label": "Darkin War",
       "question": "Which name does Shurima use for the Great Darkin War?",
       "correct": ["War of the Sunborn"],
-      "wrong": ["War of the Three Sisters", "Rune Wars", "Titan War"]
+      "wrong": ["War of the Three Sisters", "Rune Wars", "Titan War", "Darkin Disaster", "War of the False Kanmei"]
     },
     {
       "id": "darkinIonian",
@@ -2705,7 +2814,7 @@
       "label": "Darkin War",
       "question": "Which name does Ionia use for the Great Darkin War?",
       "correct": ["War of the False Kanmei"],
-      "wrong": ["War of the Three Sisters", "Rune Wars", "Titan War"]
+      "wrong": ["War of the Three Sisters", "Rune Wars", "Titan War", "Darkin Disaster", "War of the Sunborn"]
     },
     {
       "id": "darkinMeaning",
@@ -2727,7 +2836,7 @@
       "label": "Iron Revenant",
       "question": "Which of these champions reigned over eastern and central Valoran as the Iron Revenant?",
       "correct": ["Mordekaiser"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Karthus", "Darius", "Sion", "Kindred", "Teemo", "Sylas", "Rell"]
     },
     {
       "id": "revenantFortress",
@@ -2749,7 +2858,7 @@
       "label": "Iron Revenant",
       "question": "Which of these champions plotted with LeBlanc to cast Mordekaiser out of the material realm?",
       "correct": ["Vladimir"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Elise", "Veigar", "Mel", "Cassiopeia", "Viego", "Yorick"]
     },
     {
       "id": "revenantBlackRose",
@@ -2815,7 +2924,7 @@
       "label": "Ruination",
       "question": "Which kingdom did Viego rule before the Ruination?",
       "correct": ["Camavor"],
-      "wrong": ["Demacia", "Noxus", "Shurima"]
+      "wrong": ["Demacia", "Noxus", "Shurima", "Ixtal"]
     },
     {
       "id": "ruinationKalista",
@@ -2826,7 +2935,7 @@
       "label": "Ruination",
       "question": "Which of these champions was the Camavoran general sent to the Blessed Isles to find the Waters of Life?",
       "correct": ["Kalista"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Hecarim", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Thresh"]
     },
     {
       "id": "ruinationHecarim",
@@ -2837,7 +2946,7 @@
       "label": "Ruination",
       "question": "Which of these champions led the Iron Order's knights at Helia?",
       "correct": ["Hecarim"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Kalista", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Thresh"]
     },
     {
       "id": "ruinationThresh",
@@ -2848,7 +2957,7 @@
       "label": "Ruination",
       "question": "Which of these champions is the Warden of Thresholds who gave Kalista the Waters of Life and a waystone?",
       "correct": ["Thresh"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Kalista", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Hecarim"]
     },
     {
       "id": "ruinationYorick",
@@ -2859,7 +2968,7 @@
       "label": "Ruination",
       "question": "Which of these champions is the Brethren of the Dusk who could speak with the dead and told Viego his wife had passed peacefully?",
       "correct": ["Yorick"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Kalista", "Thresh", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Hecarim"]
     },
     {
       "id": "ruinationRyze",
@@ -2870,7 +2979,7 @@
       "label": "Ruination",
       "question": "Which of these champions teleported survivors onto the Daggerhawk?",
       "correct": ["Ryze"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Kalista", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Hecarim", "Senna", "Akshan"]
     },
     {
       "id": "runeWarsRyze",
@@ -2881,18 +2990,18 @@
       "label": "Rune Wars",
       "question": "Which of these champions killed his master Tyrus and vowed never to use a World Rune?",
       "correct": ["Ryze"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Soraka", "Kassadin", "Zed", "Sylas", "Heimerdinger", "Ziggs", "Mel", "Malzahar"]
     },
     {
       "id": "runeWarsZyra",
       "category": "lore",
       "subcategory": "rune-wars",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Rune Wars",
       "question": "Which of these champions rose from the ashes of the Gardens of Zyr?",
       "correct": ["Zyra"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Maokai", "Ivern", "Lilia", "Neeko"]
     },
     {
       "id": "runeWarsSkarner",
@@ -2903,7 +3012,7 @@
       "label": "Rune Wars",
       "question": "Which of these champions persuaded the Yun Tal to close the borders of Ixtal?",
       "correct": ["Skarner"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Milio", "Malphite", "Neeko", "Qiyana", "Zyra", "Ezreal"]
     },
     {
       "id": "runeWarsTwins",
@@ -2912,9 +3021,9 @@
       "difficulty": "hard",
       "subject": "champion",
       "label": "Rune Wars",
-      "question": "Which of these champions were the twins born to Mihira after she climbed Mount Targon?",
+      "question": "Which of these champions belongs to the twins born to Mihira after she climbed Mount Targon?",
       "correct": ["Kayle", "Morgana"],
-      "wrong": ["Leona", "Diana", "Pantheon", "Zoe"]
+      "wrong": ["Leona", "Diana", "Pantheon", "Taric", "AurelionSol"]
     },
     {
       "id": "runeWarsPoppy",
@@ -2923,9 +3032,9 @@
       "difficulty": "hard",
       "subject": "champion",
       "label": "Rune Wars",
-      "question": "Which of these champions is the yordle who joined Orlon's warriors on their journey west?",
+      "question": "Which of these champions joined Orlon's warriors on their journey west?",
       "correct": ["Poppy"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Teemo", "Xin Zhao", "Irelia", "Jax", "Zed", "Vi", "Garen", "Pantheon", "Shaco", "Akal", "Kennen"]
     },
     {
       "id": "runeWarsNocturne",
@@ -2936,7 +3045,7 @@
       "label": "Rune Wars",
       "question": "Which of these champions was created as a byproduct of shadow magic in the Spirit Realm?",
       "correct": ["Nocturne"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Evelynn", "Soraka", "Morgana", "Karthus", "Mordekaiser", "Shaco", "Zyra", "Maokai", "Janna"]
     },
     {
       "id": "runeWarsZeffira",
@@ -2997,7 +3106,7 @@
       "id": "firstWarMemorial",
       "category": "lore",
       "subcategory": "first-demacian-noxian-war",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Demacian-Noxian War",
       "question": "Which tomb is used to contain Sion's resurrected form?",
@@ -3024,7 +3133,7 @@
       "label": "Ionian invasion",
       "question": "Which of these champions captured the Placidium of Navori, and lost an arm there?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "Draven", "Sion", "Garen"]
+      "wrong": ["Darius", "Draven", "Sion", "Garen", "Sylas", "Zed"]
     },
     {
       "id": "ionianIrelia",
@@ -3035,7 +3144,7 @@
       "label": "Ionian invasion",
       "question": "Which of these champions led the Ionian forces to victory at Dalu Bay?",
       "correct": ["Irelia"],
-      "wrong": ["Ashe", "Garen", "Lux", "Jax"]
+      "wrong": ["Karma", "Kennen", "Shen", "Akali", "Wukong", "Yasuo", "MasterYi", "Xin Zhao"]
     },
     {
       "id": "ionianYi",
@@ -3046,7 +3155,7 @@
       "label": "Ionian invasion",
       "question": "Which of these champions became the last surviving Wuju master after his village was destroyed?",
       "correct": ["MasterYi"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Karma", "Kennen", "Shen", "Akali", "Wukong", "Yasuo", "Yone", "Xin Zhao", "Riven"]
     },
     {
       "id": "ionianSinged",
@@ -3057,7 +3166,7 @@
       "label": "Ionian invasion",
       "question": "Which of these champions created the chemical weapon Noxus used in Ionia?",
       "correct": ["Singed"],
-      "wrong": ["Heimerdinger", "Viktor", "Ziggs", "Blitzcrank"]
+      "wrong": ["Heimerdinger", "Viktor", "Ziggs", "Blitzcrank", "Twitch", "Jinx"]
     },
     {
       "id": "ionianZed",
@@ -3068,18 +3177,18 @@
       "label": "Ionian invasion",
       "question": "Which of these champions is the former Kinkou student who seized the Temple of Thanjuul and founded the Yánléi?",
       "correct": ["Zed"],
-      "wrong": ["Shen", "Kennen", "Akali"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Kayn"]
     },
     {
       "id": "ionianKayn",
       "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Ionian invasion",
       "question": "Which of these champions ambushed a Noxian convoy and took the Darkin scythe Rhaast?",
       "correct": ["Kayn"],
-      "wrong": ["Zed", "Shen", "Akali"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed"]
     },
     {
       "id": "ionianUdyr",
@@ -3090,18 +3199,18 @@
       "label": "Ionian invasion",
       "question": "Which of these champions helped Lee Sin defend the Hirana Monastery from the Noxians?",
       "correct": ["Udyr"],
-      "wrong": ["Zed", "Kayn", "Shen"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed", "Kayn", "LeeSin"]
     },
     {
       "id": "ionianRiven",
       "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Ionian invasion",
       "question": "Which of these champions survived Emystan's chemical fire, shielded by her runic blade?",
       "correct": ["Riven"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed", "Fiora", "Kassadin"]
     },
     {
       "id": "ionianFinalBattle",
@@ -3145,7 +3254,7 @@
       "label": "Avarosan rift",
       "question": "Which of these champions found the True Ice bow at Ghulfrost?",
       "correct": ["Ashe"],
-      "wrong": ["Sejuani", "Lissandra", "Braum"]
+      "wrong": ["Sejuani", "Lissandra", "Braum", "Nunu", "Volibear", "Tryndamere", "Trundle"]
     },
     {
       "id": "riftWarmother",
@@ -3195,7 +3304,7 @@
       "id": "medardaHouse",
       "category": "lore",
       "subcategory": "medardan-succession-war",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Medardan war",
       "question": "Which noble house fought the Medardan Succession War?",
@@ -3211,18 +3320,18 @@
       "label": "Medardan war",
       "question": "Which of these champions killed her rival Ta'Fik and became the new leader of House Medarda?",
       "correct": ["Ambessa"],
-      "wrong": ["Darius", "Swain", "Draven", "Garen"]
+      "wrong": ["Darius", "Swain", "Draven", "Mel", "LeBlanc", "Talon", "Elise", "Katarina"]
     },
     {
       "id": "medardaMel",
       "category": "lore",
       "subcategory": "medardan-succession-war",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Medardan war",
       "question": "Which of these champions was exiled from Noxus and became the wealthiest person in Piltover?",
       "correct": ["Mel"],
-      "wrong": ["Caitlyn", "Jayce", "Vi", "Heimerdinger"]
+      "wrong": ["Caitlyn", "Jayce", "Vi", "Heimerdinger", "Ambessa", "Jinx"]
     },
     {
       "id": "medardaPatriarch",
@@ -3244,7 +3353,7 @@
       "label": "Era of Hextech",
       "question": "Which of these champions developed hextech together with Jayce?",
       "correct": ["Viktor"],
-      "wrong": ["Caitlyn", "Vi", "Ekko", "Jinx"]
+      "wrong": ["Caitlyn", "Vi", "Ekko", "Heimedinger", "Jinx"]
     },
     {
       "id": "hextechJinx",
@@ -3255,7 +3364,7 @@
       "label": "Era of Hextech",
       "question": "Which of these champions stole the hextech gemstone on Progress Day?",
       "correct": ["Jinx"],
-      "wrong": ["Vi", "Ekko", "Caitlyn"]
+      "wrong": ["Vi", "Ekko", "Caitlyn", "Teemo", "Heimedinger", "Jayce"]
     },
     {
       "id": "hextechHammer",
@@ -3266,7 +3375,7 @@
       "label": "Era of Hextech",
       "question": "Which of these champions wields the Mercury Hammer?",
       "correct": ["Jayce"],
-      "wrong": ["Vi", "Caitlyn", "Ekko"]
+      "wrong": ["Poppy", "Taric", "Jax", "Ornn"]
     },
     {
       "id": "hextechZDrive",
@@ -3277,7 +3386,7 @@
       "label": "Era of Hextech",
       "question": "Which of these champions built the Z-Drive, a hextech time-reversal device?",
       "correct": ["Ekko"],
-      "wrong": ["Jinx", "Vi", "Caitlyn"]
+      "wrong": ["Jinx", "Vi", "Caitlyn", "Zilean"]
     },
     {
       "id": "hextechHexgate",
@@ -3294,7 +3403,7 @@
       "id": "hextechHexcore",
       "category": "lore",
       "subcategory": "era-of-hextech",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Era of Hextech",
       "question": "Which device is Viktor's adaptive runic matrix?",
@@ -3305,7 +3414,7 @@
       "id": "hextechFishbones",
       "category": "lore",
       "subcategory": "era-of-hextech",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Era of Hextech",
       "question": "Which weapon did Jinx build from the stolen hextech gemstone?",
@@ -3316,7 +3425,7 @@
       "id": "hextechShimmer",
       "category": "lore",
       "subcategory": "era-of-hextech",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Era of Hextech",
       "question": "Which mutagenic serum, not hextech, did Singed create for Silco?",
@@ -3327,7 +3436,7 @@
       "id": "hextechSevika",
       "category": "lore",
       "subcategory": "era-of-hextech",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "subject": "text",
       "label": "Era of Hextech",
       "question": "Which person became the first Zaunite to sit on the Piltover Council?",
@@ -3343,7 +3452,7 @@
       "label": "Trifarix",
       "question": "Which of these champions led the coup that overthrew Emperor Boram Darkwill?",
       "correct": ["Swain"],
-      "wrong": ["Garen", "Lux", "JarvanIV", "Zed"]
+      "wrong": ["Darius", "LeBlanc", "JarvanIV", "Zed", "Talon", "Sylas", "Viego"]
     },
     {
       "id": "trifarixVision",
@@ -3354,7 +3463,7 @@
       "label": "Trifarix",
       "question": "Which of these champions represents Vision on the Trifarix?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "Draven", "Katarina"]
+      "wrong": ["Darius", "Draven", "Katarina", "LeBlanc", "Zilean"]
     },
     {
       "id": "trifarixDraven",
@@ -3365,7 +3474,7 @@
       "label": "Trifarix",
       "question": "Which of these champions helped Swain with the coup against Boram Darkwill?",
       "correct": ["Draven"],
-      "wrong": ["Garen", "Lux", "Zed", "Teemo"]
+      "wrong": ["Darius", "LeBlanc", "Talon", "Riven", "Ambessa", "Mel"]
     },
     {
       "id": "trifarixGuile",
@@ -3387,13 +3496,13 @@
       "label": "Sun Disc",
       "question": "Which of these champions is the last Shuriman emperor, awakened by Sivir's blood?",
       "correct": ["Azir"],
-      "wrong": ["Nasus", "Renekton", "Xerath"]
+      "wrong": ["Nasus", "Renekton", "Xerath", "Qiyana", "Rammus"]
     },
     {
       "id": "sunDiscCassiopeia",
       "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Sun Disc",
       "question": "Which of these champions betrays Sivir and is cursed into a serpent-like form?",
@@ -3409,7 +3518,7 @@
       "label": "Sun Disc",
       "question": "Which of these champions defeats the Sandthrashers at Vekaura while hunting Nasus?",
       "correct": ["Renekton"],
-      "wrong": ["Xerath", "Sivir", "Taliyah"]
+      "wrong": ["Xerath", "Sivir", "Taliyah", "Rengar", "Khazix", "Azir", "Rammus", "Reksai"]
     },
     {
       "id": "sunDiscXerath",
@@ -3420,7 +3529,7 @@
       "label": "Sun Disc",
       "question": "Which of these champions builds a new empire in Nerimazeth?",
       "correct": ["Xerath"],
-      "wrong": ["Renekton", "Nasus", "Azir"]
+      "wrong": ["Renekton", "Nasus", "Azir", "Qiyana", "Belveth", "Skarner", "Darius", "Ashe"]
     },
     {
       "id": "sunDiscTaliyah",
@@ -3431,7 +3540,7 @@
       "label": "Sun Disc",
       "question": "Which of these champions reaches the Sun Disc in 991 AN?",
       "correct": ["Taliyah"],
-      "wrong": ["Sivir", "Cassiopeia", "Nasus"]
+      "wrong": ["Sivir", "Cassiopeia", "Nasus", "Renekton", "Rammus", "Reksai"]
     },
     {
       "id": "sunDiscNasus",
@@ -3442,7 +3551,7 @@
       "label": "Sun Disc",
       "question": "Which of these champions protects the emperor's bloodline and opposes Xerath?",
       "correct": ["Nasus"],
-      "wrong": ["Renekton", "Xerath", "Cassiopeia"]
+      "wrong": ["Renekton", "Xerath", "Cassiopeia", "Azir", "Rammus", "Sivir"]
     },
     {
       "id": "sunDiscVekaura",
@@ -3541,7 +3650,7 @@
       "label": "Reaver King",
       "question": "Which of these champions destroyed Gangplank's flagship, the Dead Pool?",
       "correct": ["MissFortune"],
-      "wrong": ["Graves", "TwistedFate", "Illaoi"]
+      "wrong": ["Graves", "TwistedFate", "Illaoi", "Pyke", "Fizz", "Nilah"]
     },
     {
       "id": "reaverHired",
@@ -3552,7 +3661,7 @@
       "label": "Reaver King",
       "question": "Which of these champions was hired by Sarah Fortune to steal a magical dagger from Gangplank?",
       "correct": ["TwistedFate"],
-      "wrong": ["Illaoi", "Fizz", "Nautilus", "Pyke"]
+      "wrong": ["Graves", "Miss Fortune", "Illaoi", "Pyke", "Fizz", "Nilah", "Katarina", "Talon"]
     },
     {
       "id": "reaverLocker",
@@ -3563,7 +3672,7 @@
       "label": "Reaver King",
       "question": "Which of these champions was imprisoned in the Locker for a decade?",
       "correct": ["Graves"],
-      "wrong": ["TwistedFate", "Illaoi", "Pyke"]
+      "wrong": ["Gangplank", "TwistedFate", "Illaoi", "Pyke", "Fizz", "Nilah"]
     },
     {
       "id": "reaverShip",
@@ -3607,7 +3716,7 @@
       "label": "Ruined King",
       "question": "Which of these champions resurrected Viego?",
       "correct": ["Thresh"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Gwen", "Yorick", "Maokai", "Vex", "LeBlanc", "Akshan", "Mordekaiser", "Karthus"]
     },
     {
       "id": "ruinedKingSenna",
@@ -3618,7 +3727,7 @@
       "label": "Ruined King",
       "question": "Which of these champions had their soul trapped in a lantern by Thresh?",
       "correct": ["Senna"],
-      "wrong": ["Lucian", "Vayne", "Akshan"]
+      "wrong": ["Lucian", "Akshan", "Vayne", "Riven", "Pyke", "Olaf", "Graves"]
     },
     {
       "id": "ruinedKingLucian",
@@ -3629,7 +3738,7 @@
       "label": "Ruined King",
       "question": "Which of these champions freed Senna's soul from Thresh's lantern?",
       "correct": ["Lucian"],
-      "wrong": ["Senna", "Vayne", "Akshan"]
+      "wrong": ["Akshan", "Vayne", "Riven", "Pyke", "Olaf", "Graves"]
     },
     {
       "id": "ruinedKingAkshan",
@@ -3640,7 +3749,7 @@
       "label": "Ruined King",
       "question": "Which of these champions killed Isolde at her own request?",
       "correct": ["Akshan"],
-      "wrong": ["Lucian", "Senna", "Gwen"]
+      "wrong": ["Lucian", "Vayne", "Riven", "Pyke", "Olaf", "Graves", "Gwen"]
     },
     {
       "id": "ruinedKingGwen",
@@ -3651,7 +3760,7 @@
       "label": "Ruined King",
       "question": "Which of these champions used the Hallowed Mist to bind Viego with needles and thread?",
       "correct": ["Gwen"],
-      "wrong": ["Akshan", "Vayne", "Riven"]
+      "wrong": ["Lucian", "Vayne", "Akshan", "Riven", "Pyke", "Olaf", "Graves", "Senna"]
     },
     {
       "id": "ruinedKingFortune",
@@ -3662,7 +3771,7 @@
       "label": "Ruined King",
       "question": "Which of these champions sealed Viego in the amulet during the battle in Bilgewater?",
       "correct": ["MissFortune"],
-      "wrong": ["Gangplank", "Illaoi", "Braum"]
+      "wrong": ["Gangplank", "Illaoi", "Pyke", "Nilah", "Fizz", "Graves", "Twisted Fate"]
     },
     {
       "id": "ruinedKingAhri",
@@ -3673,7 +3782,7 @@
       "label": "Ruined King",
       "question": "Which of these champions learned Viego's memories through the Black Mist?",
       "correct": ["Ahri"],
-      "wrong": ["Yasuo", "Illaoi", "Braum"]
+      "wrong": ["Yasuo", "Illaoi", "Senna", "Lucian", "Yorick", "Karthus", "Thresh", "Vex", "Gwen"]
     },
     {
       "id": "ruinedKingBraum",
@@ -3684,18 +3793,18 @@
       "label": "Ruined King",
       "question": "Which of these champions sought the Blessed Waters in the Shadow Isles to cure a sickness in the Freljord?",
       "correct": ["Braum"],
-      "wrong": ["Illaoi", "Yasuo", "Ahri"]
+      "wrong": ["Illaoi", "Yasuo", "Ahri", "Sejuani", "Udyr", "Trundle", "Maokai"]
     },
     {
       "id": "ruinedKingYasuo",
       "category": "lore",
       "subcategory": "return-of-the-ruined-king",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Ruined King",
       "question": "Which of these champions faced his brother Yone's shadow and spared him?",
       "correct": ["Yasuo"],
-      "wrong": ["Ahri", "Braum", "Illaoi"]
+      "wrong": ["Ahri", "Braum", "Illaoi", "Zed", "Vex"]
     },
     {
       "id": "ruinedKingVayne",
@@ -3706,7 +3815,7 @@
       "label": "Ruined King",
       "question": "Which of these champions is the Sentinel of Light who stayed on as Demacia's Sentinel?",
       "correct": ["Vayne"],
-      "wrong": ["Gwen", "Akshan", "Olaf"]
+      "wrong": ["Gwen", "Akshan", "Olaf", "Graves", "Riven", "Irelia", "Pyke", "Diana"]
     },
     {
       "id": "ruinedKingPrison",
@@ -3750,7 +3859,7 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions started the Great Mage Rebellion?",
       "correct": ["Sylas"],
-      "wrong": ["Lux", "Garen", "JarvanIV", "Galio"]
+      "wrong": ["Lux", "Garen", "JarvanIV", "Galio", "Darius", "Locke"]
     },
     {
       "id": "rebellionLux",
@@ -3761,7 +3870,7 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions smuggled forbidden books to Sylas and helped him escape?",
       "correct": ["Lux"],
-      "wrong": ["Garen", "JarvanIV", "Fiora", "Poppy"]
+      "wrong": ["Garen", "JarvanIV", "Fiora", "Poppy", "Graves", "Twisted Fate", "Miss Fortune"]
     },
     {
       "id": "rebellionGalio",
@@ -3772,7 +3881,7 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions did Lux summon to save Garen in the battle against Sylas and the Winter's Claw?",
       "correct": ["Galio"],
-      "wrong": ["Poppy", "Shyvana", "Kayle", "Fiora"]
+      "wrong": ["Poppy", "Shyvana", "Kayle", "Fiora", "Quinn", "Bard", "Sona"]
     },
     {
       "id": "rebellionMageseekers",
