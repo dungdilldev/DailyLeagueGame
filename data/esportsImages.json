@@ -110,7 +110,13 @@
     "Victory Five": "Victory Fivelogo square.png",
     "Weibo Gaming": "Weibo Gaminglogo square.png",
     "Winners": "Winnerslogo square.png",
-    "Young Miracles": "Young Miracleslogo square.png"
+    "Young Miracles": "Young Miracleslogo square.png",
+    "Azubu Frost": "Azubu Frostlogo square.png",
+    "DWG KIA": "DWG KIAlogo square.png",
+    "SK Telecom T1": "SK Telecom T1logo square.png",
+    "eStar": "EStar (Chinese Team)logo square.png",
+    "LYON": "LYON (2024 American Team)logo square.png",
+    "MGN Vikings": "MGN Vikings Esportslogo square.png"
   },
   "players": {
     "369": "KOF 369 2018 Spring.png",
@@ -199,6 +205,7 @@
     "Xun": "IGY XUN 2020 Split 1.png",
     "Yagao": "MSC YaGao 2017 Summer.png",
     "Zeus": "T1 Zeus 2021 Split 1.png",
-    "Zven": "OG-niels-2015Summer.jpg"
+    "Zven": "OG-niels-2015Summer.jpg",
+    "Dyrus": "TSM Dyrus.jpg"
   }
 }
