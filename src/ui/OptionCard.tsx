@@ -5,8 +5,10 @@ interface OptionCardProps {
   iconUrl: string | undefined;
   /** A region or group crest rather than a portrait: drawn without the portrait frame. */
   isSymbol?: boolean;
-  /** Revealed stat value as display text; shown only after the player has answered. */
+  /** Stat value as display text; its line is always reserved so revealing it moves nothing. */
   valueText: string | undefined;
+  /** False until the player has answered: the value takes up space but is invisible. */
+  valueRevealed: boolean;
   state: CardState;
   /** Label shown on the right option and on the player's wrong pick once revealed. */
   tag: string | undefined;
@@ -19,6 +21,7 @@ export function OptionCard({
   iconUrl,
   isSymbol = false,
   valueText,
+  valueRevealed,
   state,
   tag,
   disabled,
@@ -41,7 +44,11 @@ export function OptionCard({
         />
       )}
       <span class="card__name">{name}</span>
-      {valueText !== undefined && <span class="card__value">{valueText}</span>}
+      {valueText !== undefined && (
+        <span class={valueRevealed ? 'card__value' : 'card__value card__value--hidden'}>
+          {valueText}
+        </span>
+      )}
       {tag && <span class="card__tag">{tag}</span>}
     </button>
   );

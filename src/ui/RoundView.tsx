@@ -59,7 +59,7 @@ export function RoundView({
 
   // Keyboard and screen-reader users land on the next action after answering.
   useEffect(() => {
-    if (revealed) nextButton.current?.focus();
+    if (revealed) nextButton.current?.focus({ preventScroll: true });
   }, [revealed]);
 
   const isLastRound = totalRounds !== undefined && roundNumber === totalRounds;
@@ -93,7 +93,8 @@ export function RoundView({
               name={option?.name ?? id}
               iconUrl={symbols?.urls[id] ?? option?.iconUrl}
               isSymbol={symbols?.kind === 'crest'}
-              valueText={revealed ? displayValue(round, id) : undefined}
+              valueText={displayValue(round, id)}
+              valueRevealed={revealed}
               state={state}
               tag={cardTag(round, state)}
               disabled={revealed}

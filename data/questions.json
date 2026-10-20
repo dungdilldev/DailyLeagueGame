@@ -222,7 +222,7 @@
         "Pyke",
         "Rammus",
         "Shaco",
-        "Tahm Kench",
+        "TahmKench",
         "Volibear",
         "Warwick"
       ]
@@ -245,7 +245,7 @@
         "Gwen",
         "Hecarim",
         "Illaoi",
-        "Ksante",
+        "KSante",
         "Kalista",
         "Nocturne",
         "Pantheon",
@@ -291,7 +291,7 @@
         "Jayce",
         "Jhin",
         "Jinx",
-        "KaiSa",
+        "Kaisa",
         "Kalista",
         "Karthus",
         "Kennen",
@@ -418,7 +418,16 @@
         "Suning",
         "KOO Tigers"
       ],
-      "wrong": ["Cloud9", "Team Liquid", "JD Gaming", "Top Esports", "MAD Lions", "FlyQuest", "Karmine Carp", "Gen.G"]
+      "wrong": [
+        "Cloud9",
+        "Team Liquid",
+        "JD Gaming",
+        "Top Esports",
+        "MAD Lions",
+        "FlyQuest",
+        "Karmine Carp",
+        "Gen.G"
+      ]
     },
     {
       "id": "hostedWorldsFinal",
@@ -620,7 +629,7 @@
         "Veigar",
         "Rumble",
         "Pyke",
-        "RenataGlasc",
+        "Renata",
         "Sejuani",
         "Shen",
         "Urgot",
@@ -719,7 +728,7 @@
         "Shen",
         "Syndra",
         "Varus",
-        "Wukong",
+        "MonkeyKing",
         "Xayah",
         "Yasuo",
         "Yone",
@@ -739,7 +748,7 @@
         "Jhin",
         "Kayle",
         "Kindred",
-        "LeBlanc",
+        "Leblanc",
         "Locke",
         "Nami",
         "Neeko",
@@ -785,7 +794,7 @@
         "DrMundo",
         "Kled",
         "Lucian",
-        "RenataGlasc",
+        "Renata",
         "Zeri",
         "Zilean"
       ]
@@ -803,7 +812,7 @@
         "Ekko",
         "Janna",
         "Jinx",
-        "RenataGlasc",
+        "Renata",
         "Singed",
         "Twitch",
         "Urgot",
@@ -851,7 +860,18 @@
       "subject": "champion",
       "label": "Shadow Isles",
       "question": "Which of these champions belongs to the Shadow Isles?",
-      "correct": ["Gwen", "Hecarim", "Kalista", "Karthus", "Maokai", "Senna", "Thresh", "Vex", "Viego", "Yorick"],
+      "correct": [
+        "Gwen",
+        "Hecarim",
+        "Kalista",
+        "Karthus",
+        "Maokai",
+        "Senna",
+        "Thresh",
+        "Vex",
+        "Viego",
+        "Yorick"
+      ],
       "wrong": [
         "Aatrox",
         "Ahri",
@@ -874,7 +894,7 @@
         "Mordekaiser",
         "Nocturne",
         "Pyke",
-        "Reksai",
+        "RekSai",
         "Shaco",
         "Sion",
         "Swain",
@@ -911,7 +931,7 @@
         "Ekko",
         "Gragas",
         "Jax",
-        "Katerina",
+        "Katarina",
         "Mordekaiser",
         "Nami",
         "Quinn",
@@ -927,7 +947,16 @@
       "subject": "champion",
       "label": "Mount Targon",
       "question": "Which of these champions belongs to Mount Targon?",
-      "correct": ["Aphelios", "AurelionSol", "Diana", "Leona", "Pantheon", "Soraka", "Taric", "Zoe"],
+      "correct": [
+        "Aphelios",
+        "AurelionSol",
+        "Diana",
+        "Leona",
+        "Pantheon",
+        "Soraka",
+        "Taric",
+        "Zoe"
+      ],
       "wrong": [
         "Amumu",
         "Azir",
@@ -937,7 +966,7 @@
         "Karma",
         "Kayle",
         "Kindred",
-        "Lilia",
+        "Lillia",
         "Nasus",
         "Morgana",
         "Nocturne",
@@ -955,7 +984,19 @@
       "subject": "champion",
       "label": "Shurima",
       "question": "Which of these champions nelongs to Shurima?",
-      "correct": ["Akshan", "Amumu", "Azir", "Ksante", "Naafiri", "Nasus", "Rammus", "Renekton", "Sivir", "Taliyah", "Xerath"],
+      "correct": [
+        "Akshan",
+        "Amumu",
+        "Azir",
+        "KSante",
+        "Naafiri",
+        "Nasus",
+        "Rammus",
+        "Renekton",
+        "Sivir",
+        "Taliyah",
+        "Xerath"
+      ],
       "wrong": [
         "Aatrox",
         "Alistar",
@@ -1013,7 +1054,7 @@
         "Khazix",
         "Kindred",
         "Kled",
-        "Lilia",
+        "Lillia",
         "Maokai",
         "Quinn",
         "Rakan",
@@ -1024,8 +1065,8 @@
         "Smolder",
         "Sivir",
         "Soraka",
-        "Tahm Kench",
-        "Wukong",
+        "TahmKench",
+        "MonkeyKing",
         "Warwick",
         "Volibear",
         "Xayah",
@@ -1046,7 +1087,7 @@
         "Briar",
         "Fizz",
         "Gnar",
-        "Heimedinger",
+        "Heimerdinger",
         "Kennen",
         "Kled",
         "Milio",
@@ -1063,8 +1104,34 @@
       "subject": "champion",
       "label": "Noxian invasion of Ionia",
       "question": "Which of these champions did NOT fight in the Noxian invasion of Ionia?",
-      "correct": ["Yasuo", "Fiora", "Sona", "Kled", "Ahri", "Syndra", "Wukong", "Draven", "Katarina", "Rell", "Sion", "Talon"],
-      "wrong": ["MasterYi","Yone", "Karma", "Zed", "Udyr", "LeeSin", "Irelia", "Swain", "Kayn",  "Singed", "Riven", "Darius"]
+      "correct": [
+        "Yasuo",
+        "Fiora",
+        "Sona",
+        "Kled",
+        "Ahri",
+        "Syndra",
+        "MonkeyKing",
+        "Draven",
+        "Katarina",
+        "Rell",
+        "Sion",
+        "Talon"
+      ],
+      "wrong": [
+        "MasterYi",
+        "Yone",
+        "Karma",
+        "Zed",
+        "Udyr",
+        "LeeSin",
+        "Irelia",
+        "Swain",
+        "Kayn",
+        "Singed",
+        "Riven",
+        "Darius"
+      ]
     },
     {
       "id": "claimedByBlackMist",
@@ -1074,7 +1141,19 @@
       "label": "The Ruination",
       "question": "Which of these champions was turned into an undead spirit by the Black Mist?",
       "correct": ["Hecarim", "Kalista", "Thresh", "Karthus"],
-      "wrong": ["Yorick", "Viego", "Gwen", "Maokai", "Senna", "Kindred", "Evelynn", "Fiddlestick", "Shaco", "Nocturne", "Pyke"]
+      "wrong": [
+        "Yorick",
+        "Viego",
+        "Gwen",
+        "Maokai",
+        "Senna",
+        "Kindred",
+        "Evelynn",
+        "Fiddlesticks",
+        "Shaco",
+        "Nocturne",
+        "Pyke"
+      ]
     },
     {
       "id": "isSentinelOfLight",
@@ -1096,7 +1175,17 @@
         "Riven",
         "Irelia"
       ],
-      "wrong": ["Draven", "Ezreal", "Gwen", "Illaoi", "Yorick", "Karma", "MissFortune", "Pantheon", "Shyvana"]
+      "wrong": [
+        "Draven",
+        "Ezreal",
+        "Gwen",
+        "Illaoi",
+        "Yorick",
+        "Karma",
+        "MissFortune",
+        "Pantheon",
+        "Shyvana"
+      ]
     },
     {
       "id": "isAscended",
@@ -1115,7 +1204,7 @@
         "Sivir",
         "Pantheon",
         "Taric",
-        "Ksante",
+        "KSante",
         "Malphite"
       ]
     },
@@ -2781,7 +2870,7 @@
       "label": "Darkin War",
       "question": "Which of these champions was a Camavoran prince taken hostage and became the first human to learn blood magic?",
       "correct": ["Vladimir"],
-      "wrong": ["Briar", "Viego", "Kathus", "Ryze", "Viktor"]
+      "wrong": ["Briar", "Viego", "Karthus", "Ryze", "Viktor"]
     },
     {
       "id": "darkinMoneerah",
@@ -2803,7 +2892,13 @@
       "label": "Darkin War",
       "question": "Which name does Shurima use for the Great Darkin War?",
       "correct": ["War of the Sunborn"],
-      "wrong": ["War of the Three Sisters", "Rune Wars", "Titan War", "Darkin Disaster", "War of the False Kanmei"]
+      "wrong": [
+        "War of the Three Sisters",
+        "Rune Wars",
+        "Titan War",
+        "Darkin Disaster",
+        "War of the False Kanmei"
+      ]
     },
     {
       "id": "darkinIonian",
@@ -2814,7 +2909,13 @@
       "label": "Darkin War",
       "question": "Which name does Ionia use for the Great Darkin War?",
       "correct": ["War of the False Kanmei"],
-      "wrong": ["War of the Three Sisters", "Rune Wars", "Titan War", "Darkin Disaster", "War of the Sunborn"]
+      "wrong": [
+        "War of the Three Sisters",
+        "Rune Wars",
+        "Titan War",
+        "Darkin Disaster",
+        "War of the Sunborn"
+      ]
     },
     {
       "id": "darkinMeaning",
@@ -2946,7 +3047,17 @@
       "label": "Ruination",
       "question": "Which of these champions led the Iron Order's knights at Helia?",
       "correct": ["Hecarim"],
-      "wrong": ["Kalista", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Thresh"]
+      "wrong": [
+        "Kalista",
+        "Yorick",
+        "Vex",
+        "Karthus",
+        "Gwen",
+        "Viego",
+        "Shyvana",
+        "Mordekaiser",
+        "Thresh"
+      ]
     },
     {
       "id": "ruinationThresh",
@@ -2957,7 +3068,17 @@
       "label": "Ruination",
       "question": "Which of these champions is the Warden of Thresholds who gave Kalista the Waters of Life and a waystone?",
       "correct": ["Thresh"],
-      "wrong": ["Kalista", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Hecarim"]
+      "wrong": [
+        "Kalista",
+        "Yorick",
+        "Vex",
+        "Karthus",
+        "Gwen",
+        "Viego",
+        "Shyvana",
+        "Mordekaiser",
+        "Hecarim"
+      ]
     },
     {
       "id": "ruinationYorick",
@@ -2968,7 +3089,17 @@
       "label": "Ruination",
       "question": "Which of these champions is the Brethren of the Dusk who could speak with the dead and told Viego his wife had passed peacefully?",
       "correct": ["Yorick"],
-      "wrong": ["Kalista", "Thresh", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Hecarim"]
+      "wrong": [
+        "Kalista",
+        "Thresh",
+        "Vex",
+        "Karthus",
+        "Gwen",
+        "Viego",
+        "Shyvana",
+        "Mordekaiser",
+        "Hecarim"
+      ]
     },
     {
       "id": "ruinationRyze",
@@ -2979,7 +3110,19 @@
       "label": "Ruination",
       "question": "Which of these champions teleported survivors onto the Daggerhawk?",
       "correct": ["Ryze"],
-      "wrong": ["Kalista", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Mordekaiser", "Hecarim", "Senna", "Akshan"]
+      "wrong": [
+        "Kalista",
+        "Yorick",
+        "Vex",
+        "Karthus",
+        "Gwen",
+        "Viego",
+        "Shyvana",
+        "Mordekaiser",
+        "Hecarim",
+        "Senna",
+        "Akshan"
+      ]
     },
     {
       "id": "runeWarsRyze",
@@ -3001,7 +3144,7 @@
       "label": "Rune Wars",
       "question": "Which of these champions rose from the ashes of the Gardens of Zyr?",
       "correct": ["Zyra"],
-      "wrong": ["Maokai", "Ivern", "Lilia", "Neeko"]
+      "wrong": ["Maokai", "Ivern", "Lillia", "Neeko"]
     },
     {
       "id": "runeWarsSkarner",
@@ -3034,7 +3177,19 @@
       "label": "Rune Wars",
       "question": "Which of these champions joined Orlon's warriors on their journey west?",
       "correct": ["Poppy"],
-      "wrong": ["Teemo", "Xin Zhao", "Irelia", "Jax", "Zed", "Vi", "Garen", "Pantheon", "Shaco", "Akal", "Kennen"]
+      "wrong": [
+        "Teemo",
+        "XinZhao",
+        "Irelia",
+        "Jax",
+        "Zed",
+        "Vi",
+        "Garen",
+        "Pantheon",
+        "Shaco",
+        "Akali",
+        "Kennen"
+      ]
     },
     {
       "id": "runeWarsNocturne",
@@ -3045,7 +3200,17 @@
       "label": "Rune Wars",
       "question": "Which of these champions was created as a byproduct of shadow magic in the Spirit Realm?",
       "correct": ["Nocturne"],
-      "wrong": ["Evelynn", "Soraka", "Morgana", "Karthus", "Mordekaiser", "Shaco", "Zyra", "Maokai", "Janna"]
+      "wrong": [
+        "Evelynn",
+        "Soraka",
+        "Morgana",
+        "Karthus",
+        "Mordekaiser",
+        "Shaco",
+        "Zyra",
+        "Maokai",
+        "Janna"
+      ]
     },
     {
       "id": "runeWarsZeffira",
@@ -3144,7 +3309,7 @@
       "label": "Ionian invasion",
       "question": "Which of these champions led the Ionian forces to victory at Dalu Bay?",
       "correct": ["Irelia"],
-      "wrong": ["Karma", "Kennen", "Shen", "Akali", "Wukong", "Yasuo", "MasterYi", "Xin Zhao"]
+      "wrong": ["Karma", "Kennen", "Shen", "Akali", "MonkeyKing", "Yasuo", "MasterYi", "XinZhao"]
     },
     {
       "id": "ionianYi",
@@ -3155,7 +3320,17 @@
       "label": "Ionian invasion",
       "question": "Which of these champions became the last surviving Wuju master after his village was destroyed?",
       "correct": ["MasterYi"],
-      "wrong": ["Karma", "Kennen", "Shen", "Akali", "Wukong", "Yasuo", "Yone", "Xin Zhao", "Riven"]
+      "wrong": [
+        "Karma",
+        "Kennen",
+        "Shen",
+        "Akali",
+        "MonkeyKing",
+        "Yasuo",
+        "Yone",
+        "XinZhao",
+        "Riven"
+      ]
     },
     {
       "id": "ionianSinged",
@@ -3320,7 +3495,7 @@
       "label": "Medardan war",
       "question": "Which of these champions killed her rival Ta'Fik and became the new leader of House Medarda?",
       "correct": ["Ambessa"],
-      "wrong": ["Darius", "Swain", "Draven", "Mel", "LeBlanc", "Talon", "Elise", "Katarina"]
+      "wrong": ["Darius", "Swain", "Draven", "Mel", "Leblanc", "Talon", "Elise", "Katarina"]
     },
     {
       "id": "medardaMel",
@@ -3353,7 +3528,7 @@
       "label": "Era of Hextech",
       "question": "Which of these champions developed hextech together with Jayce?",
       "correct": ["Viktor"],
-      "wrong": ["Caitlyn", "Vi", "Ekko", "Heimedinger", "Jinx"]
+      "wrong": ["Caitlyn", "Vi", "Ekko", "Heimerdinger", "Jinx"]
     },
     {
       "id": "hextechJinx",
@@ -3364,7 +3539,7 @@
       "label": "Era of Hextech",
       "question": "Which of these champions stole the hextech gemstone on Progress Day?",
       "correct": ["Jinx"],
-      "wrong": ["Vi", "Ekko", "Caitlyn", "Teemo", "Heimedinger", "Jayce"]
+      "wrong": ["Vi", "Ekko", "Caitlyn", "Teemo", "Heimerdinger", "Jayce"]
     },
     {
       "id": "hextechHammer",
@@ -3452,7 +3627,7 @@
       "label": "Trifarix",
       "question": "Which of these champions led the coup that overthrew Emperor Boram Darkwill?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "LeBlanc", "JarvanIV", "Zed", "Talon", "Sylas", "Viego"]
+      "wrong": ["Darius", "Leblanc", "JarvanIV", "Zed", "Talon", "Sylas", "Viego"]
     },
     {
       "id": "trifarixVision",
@@ -3463,7 +3638,7 @@
       "label": "Trifarix",
       "question": "Which of these champions represents Vision on the Trifarix?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "Draven", "Katarina", "LeBlanc", "Zilean"]
+      "wrong": ["Darius", "Draven", "Katarina", "Leblanc", "Zilean"]
     },
     {
       "id": "trifarixDraven",
@@ -3474,7 +3649,7 @@
       "label": "Trifarix",
       "question": "Which of these champions helped Swain with the coup against Boram Darkwill?",
       "correct": ["Draven"],
-      "wrong": ["Darius", "LeBlanc", "Talon", "Riven", "Ambessa", "Mel"]
+      "wrong": ["Darius", "Leblanc", "Talon", "Riven", "Ambessa", "Mel"]
     },
     {
       "id": "trifarixGuile",
@@ -3518,7 +3693,7 @@
       "label": "Sun Disc",
       "question": "Which of these champions defeats the Sandthrashers at Vekaura while hunting Nasus?",
       "correct": ["Renekton"],
-      "wrong": ["Xerath", "Sivir", "Taliyah", "Rengar", "Khazix", "Azir", "Rammus", "Reksai"]
+      "wrong": ["Xerath", "Sivir", "Taliyah", "Rengar", "Khazix", "Azir", "Rammus", "RekSai"]
     },
     {
       "id": "sunDiscXerath",
@@ -3540,7 +3715,7 @@
       "label": "Sun Disc",
       "question": "Which of these champions reaches the Sun Disc in 991 AN?",
       "correct": ["Taliyah"],
-      "wrong": ["Sivir", "Cassiopeia", "Nasus", "Renekton", "Rammus", "Reksai"]
+      "wrong": ["Sivir", "Cassiopeia", "Nasus", "Renekton", "Rammus", "RekSai"]
     },
     {
       "id": "sunDiscNasus",
@@ -3661,7 +3836,7 @@
       "label": "Reaver King",
       "question": "Which of these champions was hired by Sarah Fortune to steal a magical dagger from Gangplank?",
       "correct": ["TwistedFate"],
-      "wrong": ["Graves", "Miss Fortune", "Illaoi", "Pyke", "Fizz", "Nilah", "Katarina", "Talon"]
+      "wrong": ["Graves", "MissFortune", "Illaoi", "Pyke", "Fizz", "Nilah", "Katarina", "Talon"]
     },
     {
       "id": "reaverLocker",
@@ -3716,7 +3891,7 @@
       "label": "Ruined King",
       "question": "Which of these champions resurrected Viego?",
       "correct": ["Thresh"],
-      "wrong": ["Gwen", "Yorick", "Maokai", "Vex", "LeBlanc", "Akshan", "Mordekaiser", "Karthus"]
+      "wrong": ["Gwen", "Yorick", "Maokai", "Vex", "Leblanc", "Akshan", "Mordekaiser", "Karthus"]
     },
     {
       "id": "ruinedKingSenna",
@@ -3771,7 +3946,7 @@
       "label": "Ruined King",
       "question": "Which of these champions sealed Viego in the amulet during the battle in Bilgewater?",
       "correct": ["MissFortune"],
-      "wrong": ["Gangplank", "Illaoi", "Pyke", "Nilah", "Fizz", "Graves", "Twisted Fate"]
+      "wrong": ["Gangplank", "Illaoi", "Pyke", "Nilah", "Fizz", "Graves", "TwistedFate"]
     },
     {
       "id": "ruinedKingAhri",
@@ -3870,7 +4045,7 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions smuggled forbidden books to Sylas and helped him escape?",
       "correct": ["Lux"],
-      "wrong": ["Garen", "JarvanIV", "Fiora", "Poppy", "Graves", "Twisted Fate", "Miss Fortune"]
+      "wrong": ["Garen", "JarvanIV", "Fiora", "Poppy", "Graves", "TwistedFate", "MissFortune"]
     },
     {
       "id": "rebellionGalio",
