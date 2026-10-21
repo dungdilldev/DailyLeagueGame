@@ -713,6 +713,78 @@ footer a {
   color: inherit;
 }
 
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* ---------- Information pages (how to play, about, privacy) ---------- */
+
+.masthead__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.info h1,
+.info h2 {
+  font-family: var(--font-display);
+  font-weight: normal;
+  letter-spacing: 0.04em;
+}
+
+.info h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.info h2 {
+  margin: 1.75rem 0 0.5rem;
+  color: var(--gold);
+  font-size: 1.15rem;
+}
+
+.info a {
+  color: var(--teal);
+}
+
+.info ul {
+  padding-left: 1.25rem;
+}
+
+.info li {
+  margin-bottom: 0.5rem;
+}
+
+.info code {
+  color: var(--gold-light);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+.info__updated {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.info .info__play {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--gold-dark);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--gold-light);
+  text-decoration: none;
+}
+
+.info .info__play:hover {
+  border-color: var(--gold);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

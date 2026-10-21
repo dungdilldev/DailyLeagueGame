@@ -321,6 +321,64 @@ permission, so it needs the operator's agreement first.
 - [ ] Analytics (privacy-friendly, e.g. Plausible/Cloudflare) and OG share image
 - [ ] Archive of past puzzles
 
+### Phase 7 - Information pages (done, groundwork for ads)
+
+- [x] Static `how-to-play.html`, `about.html`, `privacy.html` (real text for crawlers, not JS-rendered), linked from both footers
+- [x] Shared header/footer/contact through `<!--include:name-->` partials; multi-page Vite build
+- [x] Ads follow in Phase 8
+
+### Phase 8 - Ads with Google AdSense (not started)
+
+Goal: one or two small, unobtrusive ads that never get in the way of the game and never load before the visitor has agreed, where the law asks for it. The owner already has a domain.
+
+**Decisions (confirm before building)**
+
+- [ ] **Riot policy:** re-read Riot's Legal Jibber Jabber and Developer/Data Dragon terms for fan sites that earn money; record the result here. Stop if ads are not allowed.
+- [ ] **Placement:** proposed one banner between the game and the footer, and one on the results screen; never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
+- [ ] **Operator identity:** AdSense and EU law want a named operator and a working contact address; decide the name and public email and put them on the privacy page (the GitHub issues link is not enough).
+
+**A. Domain and hosting**
+
+- [ ] Point the domain at the host (GitHub Pages custom domain: `public/CNAME` plus DNS records, enable HTTPS)
+- [ ] Check that `base: './'`, the page links and the e2e tests still work on the custom domain
+- [ ] Redirect or retire the old `github.io` address so the domain is the single canonical site (add `<link rel="canonical">` to every page)
+
+**B. Get approved (can run in parallel with C)**
+
+- [ ] Content check before applying: how-to-play, about and privacy pages are live and linked (done in Phase 7); no broken links; a visible contact address
+- [ ] Create the AdSense account, add the site, add the verification snippet/`ads.txt` as instructed
+- [ ] Wait for review (days to weeks). If rejected as "low value content", add more real text (for example a short page per game mode or a champion-trivia blog section), then reapply
+
+**C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
+
+- [ ] Turn on Google's consent message (Privacy & messaging in AdSense, a certified consent platform) or use another certified one. No script of Google's may load before consent where it is required
+- [ ] Add a "Privacy settings" link in both footers to reopen the choice
+- [ ] Update `privacy.html`: ads, cookies and identifiers set by Google and its partners, what is shared, how to opt out (Google's ad settings, `youronlinechoices`), new "Last updated" date. Update `CLAUDE.md` (the "Riot legal" and storage notes)
+- [ ] Stop saying "no cookies" in the page text; the text on `privacy.html` and `about.html` must stay true
+
+**D. Code**
+
+- [ ] `public/ads.txt` with the publisher line AdSense gives
+- [ ] `src/ads/` (pure logic, unit-tested): the publisher and slot ids as named constants, and `shouldLoadAds(consent, isDevBuild)`
+- [ ] `src/ui/AdSlot.tsx`: reserves a fixed height so the layout never jumps, loads the AdSense script once and only when allowed, renders nothing if the script is blocked or fails (an ad blocker must not break or blank the game); a "Advertisement" label above it
+- [ ] Static info pages get the same slot only after approval is stable, via a partial in `src/pages/partials/`
+- [ ] Content-Security-Policy / host headers if any are set: allow Google's script, frame and image domains
+- [ ] `import.meta.env.DEV` builds never load ads, so local testing and the endless mode stay clean
+
+**E. Tests**
+
+- [ ] Unit: consent decision, ad config, slot renders nothing without consent
+- [ ] Playwright (script blocked via `page.route`): the full-day game test passes with ads blocked and with consent declined; no console errors; no horizontal scroll on mobile; the slot does not move the answer buttons
+- [ ] Manual after launch: use AdSense test mode / `adtest=on` before real traffic, check Lighthouse (layout shift and speed) before and after
+
+**F. Launch and after**
+
+- [ ] Deploy, verify `ads.txt` is reachable at `/ads.txt`, wait for ads to start serving
+- [ ] Monitor AdSense policy centre and the earnings/RPM; watch page speed and the player drop-off
+- [ ] If ads hurt play, reduce to one slot or the results screen only
+
+**Done when:** approved ads show on the live domain only after consent where required, the game works identically with ads blocked, the privacy policy matches what the site does, and `npm run check` and the e2e tests pass.
+
 ## 5. Risks & Open Questions
 
 1. **Win rate / pick rate source (biggest risk).** Riot has no aggregate endpoint. Options:

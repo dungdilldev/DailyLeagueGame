@@ -1,6 +1,11 @@
 export function Footer() {
   return (
     <footer>
+      <nav class="footer-nav" aria-label="Information">
+        <a href="how-to-play.html">How to play</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
       <p>
         Summoner&apos;s Quiz isn&apos;t endorsed by Riot Games and doesn&apos;t reflect the views or
         opinions of Riot Games or anyone officially involved in producing or managing Riot Games

@@ -20,6 +20,7 @@ src/
   ui/          Components and rendering. No game rules here.
   data/        Loading and validating the published JSON at runtime.
   storage/     localStorage wrapper (streaks, history, settings).
+  pages/       Shared bits of the static information pages (`how-to-play.html`, `about.html`, `privacy.html` in the root): `partials/` holds the header, footer and contact link, pulled in with `<!--include:name-->` by a small plugin in `vite.config.ts`. **Update `privacy.html` whenever data is stored, a third party is contacted or ads/analytics are added.** A new page also goes into `PAGES` in `vite.config.ts` and into both footers (`partials/footer.html` and `ui/Footer.tsx`).
 pipeline/
   sources/     One module per external data source (Data Dragon, LoL Wiki champions / items / patch history, luaTable parser).
   items/       Which items are asked about (selectItems) and their gold efficiency.

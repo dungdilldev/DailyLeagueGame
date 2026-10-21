@@ -202,3 +202,29 @@ test('the endless testing mode does not exist in the production build', async ({
   await expect(page.getByRole('heading', { name: 'Endless mode' })).toHaveCount(0);
   await expect(page.getByRole('navigation', { name: 'Choose game mode' })).toBeVisible();
 });
+
+test.describe('information pages', () => {
+  const pages = [
+    { link: 'How to play', heading: 'How to play' },
+    { link: 'About', heading: "About Summoner's Quiz" },
+    { link: 'Privacy', heading: 'Privacy policy' },
+  ];
+
+  for (const { link, heading } of pages) {
+    test(`${link} opens from the footer and links back to the game`, async ({ page }) => {
+      const errors = collectErrors(page);
+      await page.goto('/');
+      await page.getByRole('navigation', { name: 'Information' }).getByText(link).click();
+      await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
+      // The shared header and footer were included.
+      await expect(page.getByText('Daily League of Legends trivia game')).toBeVisible();
+      await expect(
+        page.getByRole('contentinfo').getByText("isn't endorsed by Riot Games"),
+      ).toBeVisible();
+
+      await page.getByRole('link', { name: "Summoner's Quiz" }).click();
+      await expect(page.locator('.card')).toHaveCount(4);
+      expect(errors).toEqual([]);
+    });
+  }
+});
