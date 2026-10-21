@@ -340,14 +340,14 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 **A. Domain and hosting**
 
-- [ ] Point the domain at the host (GitHub Pages custom domain: `public/CNAME` plus DNS records, enable HTTPS)
-- [ ] Check that `base: './'`, the page links and the e2e tests still work on the custom domain
-- [ ] Redirect or retire the old `github.io` address so the domain is the single canonical site (add `<link rel="canonical">` to every page)
+- [X] Point the domain at the host (GitHub Pages custom domain: `public/CNAME` plus DNS records, enable HTTPS)
+- [X] Check that `base: './'`, the page links and the e2e tests still work on the custom domain
+- [X] Redirect or retire the old `github.io` address so the domain is the single canonical site (add `<link rel="canonical">` to every page)
 
 **B. Get approved (can run in parallel with C)**
 
-- [ ] Content check before applying: how-to-play, about and privacy pages are live and linked (done in Phase 7); no broken links; a visible contact address
-- [ ] Create the AdSense account, add the site, add the verification snippet/`ads.txt` as instructed
+- [X] Content check before applying: how-to-play, about and privacy pages are live and linked (done in Phase 7); no broken links; a visible contact address
+- [X] Create the AdSense account, add the site, add the verification snippet/`ads.txt` as instructed
 - [ ] Wait for review (days to weeks). If rejected as "low value content", add more real text (for example a short page per game mode or a champion-trivia blog section), then reapply
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
