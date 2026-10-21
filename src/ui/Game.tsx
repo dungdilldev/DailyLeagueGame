@@ -1,12 +1,14 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
 import type { Entity, OptionSubject } from '../data/schema';
 import { isComplete, roundResults, submitAnswer, validAnswers } from '../game/progress';
 import { progressSlot, type GameMode } from '../game/gameMode';
+import { remainingImageUrls } from '../game/roundImages';
 import { currentStreak } from '../game/streak';
 import { completedDates, loadSavedDays, saveDay, type StorageLike } from '../storage/progressStore';
 import { ResultsView } from './ResultsView';
 import { RoundView } from './RoundView';
+import { preloadImages } from './preloadImages';
 
 interface GameProps {
   puzzle: Puzzle;
@@ -31,6 +33,13 @@ export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }:
   // Saved answers that do not fit this puzzle (e.g. it was generated differently) are dropped.
   const answers = validAnswers(puzzle, days[date]?.answers ?? []);
   const complete = isComplete(puzzle, answers);
+
+  // Fetch the images of this and all later rounds now: loading them only when a round appears
+  // leaves its cards empty for a moment while each picture makes its own trip to the server.
+  const answeredCount = answers.length;
+  useEffect(() => {
+    preloadImages(remainingImageUrls(puzzle, answeredCount, entities));
+  }, [puzzle, entities, answeredCount]);
 
   if (complete && !revealing) {
     return (

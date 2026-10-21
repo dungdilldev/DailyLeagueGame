@@ -320,6 +320,7 @@ permission, so it needs the operator's agreement first.
 - [ ] Champion splash art / ability icons, animations, sound toggle
 - [ ] Analytics (privacy-friendly, e.g. Plausible/Cloudflare) and OG share image
 - [ ] Archive of past puzzles
+- [ ] "Report a problem" button on each round. Deferred until the site has a server of its own: no third-party form service (decided by the owner); a `mailto:` link with the question, options and date prefilled is the no-server fallback
 
 ### Phase 7 - Information pages (done, groundwork for ads)
 
@@ -333,9 +334,9 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 **Decisions (confirm before building)**
 
-- [ ] **Riot policy:** re-read Riot's Legal Jibber Jabber and Developer/Data Dragon terms for fan sites that earn money; record the result here. Stop if ads are not allowed.
-- [ ] **Placement:** proposed one banner between the game and the footer, and one on the results screen; never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
-- [ ] **Operator identity:** AdSense and EU law want a named operator and a working contact address; decide the name and public email and put them on the privacy page (the GitHub issues link is not enough).
+- [x] **Riot policy:** the owner checked Riot's Legal Jibber Jabber and ads are allowed (confirmed by the owner, 2026-10-21).
+- [x] **Placement:** one banner between the game and the footer (decided by the owner); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
+- [ ] **Operator identity (Germany):** the owner lives in Germany, so a site with ads needs an Impressum (§ 5 DDG): real name and a postal address that can receive legal documents (no P.O. box, no handle only), plus an email address. Decide which address to publish, and the email (preferably `contact@<domain>` forwarding to the owner's inbox). Add `impressum.html` to the footers and `PAGES`, and name the operator in `privacy.html` (the GitHub issues link is not enough). Sources are in the chat answer of 2026-10-21; have a lawyer or a service such as eRecht24 check the final text.
 
 **A. Domain and hosting**
 
@@ -375,7 +376,7 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 - [ ] Deploy, verify `ads.txt` is reachable at `/ads.txt`, wait for ads to start serving
 - [ ] Monitor AdSense policy centre and the earnings/RPM; watch page speed and the player drop-off
-- [ ] If ads hurt play, reduce to one slot or the results screen only
+- [ ] If ads hurt play, move the banner or remove it
 
 **Done when:** approved ads show on the live domain only after consent where required, the game works identically with ads blocked, the privacy policy matches what the site does, and `npm run check` and the e2e tests pass.
 
