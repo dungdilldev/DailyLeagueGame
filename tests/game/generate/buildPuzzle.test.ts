@@ -71,7 +71,8 @@ describe('buildPuzzle', () => {
 
 function textOptionsOf(question: Question | undefined): Set<string> {
   if (question?.kind === 'pick') return new Set([...question.correct, ...question.wrong]);
-  if (question?.kind === 'winner') return new Set(question.winners.map(({ team }) => team));
+  if (question?.kind === 'yearly') return new Set(question.byYear.map(({ answer }) => answer));
+  if (question?.kind === 'logo') return new Set(question.teams);
   if (question?.kind === 'player') {
     return new Set(question.players.flatMap(({ name, teams }) => [name, ...teams]));
   }

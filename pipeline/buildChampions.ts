@@ -1,4 +1,5 @@
 import type { Champion } from '../src/data/schema';
+import { esportsSkinLines } from './esportsSkins';
 import { championIconUrl } from './sources/dataDragon';
 import type { ChampionStat, StatInput } from './stats/types';
 
@@ -18,6 +19,7 @@ export function buildChampion(
   stats: readonly ChampionStat[],
 ): Champion {
   const { summary } = input;
+  const skinLines = esportsSkinLines(input.detail);
   return {
     id: summary.id,
     name: summary.name,
@@ -25,6 +27,8 @@ export function buildChampion(
     classes: summary.tags,
     iconUrl: championIconUrl(version, summary),
     stats: buildStats(input, stats),
+    // Left out when empty, which keeps the published file small.
+    ...(skinLines.length > 0 && { esportsSkinLines: skinLines }),
   };
 }
 

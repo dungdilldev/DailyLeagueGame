@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import questionFile from '../../data/questions.json';
-import { resolveQuestions, type PickQuestion } from '../../src/data/questions';
+import { resolveQuestions } from '../../src/data/questions';
 import { QuestionFileSchema, type StatMeta } from '../../src/data/schema';
 import { findQuestionListProblems } from '../../pipeline/validate/gameData';
 import { realGameData } from '../support/realGameData';
@@ -161,6 +161,10 @@ describe('player questions', () => {
     expect(parse([{ ...playerQuestion, ask: 'teamByPlayer' }]).success).toBe(true);
     expect(parse([{ ...playerQuestion, subject: 'champion' }]).success).toBe(false);
     expect(parse([{ ...playerQuestion, ask: 'other' }]).success).toBe(false);
+    const title = { ...playerQuestion, ask: 'playerWithTitle', event: 'Worlds' };
+    expect(parse([title]).success).toBe(true);
+    expect(parse([{ ...title, event: undefined }]).success).toBe(false);
+    expect(parse([{ ...playerQuestion, event: 'MSI' }]).success).toBe(false);
   });
 
   it('reject answer lists, which they do not use', () => {
@@ -168,24 +172,26 @@ describe('player questions', () => {
   });
 
   it('resolve with the players they are built from', () => {
-    const players = [{ name: 'Faker', region: 'Korea' as const, titles: [], teams: ['T1'] }];
+    const players = [
+      { name: 'Faker', region: 'Korea' as const, role: 'mid' as const, titles: [], teams: ['T1'] },
+    ];
     const [question] = resolveQuestions([playerQuestion], stats, players);
     expect(question?.kind === 'player' && question.players).toEqual(players);
   });
 });
 
-const winner = {
+const yearly = {
   id: 'worldsWinnerByYear',
   category: 'esports' as const,
   difficulty: 'medium' as const,
   subject: 'text' as const,
   label: 'Worlds winners',
   question: 'Which team won Worlds in {year}?',
-  winners: [
-    { year: 2011, team: 'Fnatic' },
-    { year: 2012, team: 'Taipei Assassins' },
-    { year: 2013, team: 'T1' },
-    { year: 2014, team: 'Samsung White' },
+  byYear: [
+    { year: 2011, answer: 'Fnatic' },
+    { year: 2012, answer: 'Taipei Assassins' },
+    { year: 2013, answer: 'T1' },
+    { year: 2014, answer: 'Samsung White' },
   ],
 };
 
@@ -203,24 +209,24 @@ describe('subcategory', () => {
   });
 });
 
-describe('winner questions', () => {
-  it('are accepted with a year placeholder and winners', () => {
-    expect(parse([winner]).success).toBe(true);
+describe('questions about a given year', () => {
+  it('are accepted with a year placeholder and one answer per year', () => {
+    expect(parse([yearly]).success).toBe(true);
   });
 
   it('need the year placeholder, or every round would ask the same thing', () => {
-    expect(parse([{ ...winner, question: 'Which team won Worlds?' }]).success).toBe(false);
+    expect(parse([{ ...yearly, question: 'Which team won Worlds?' }]).success).toBe(false);
   });
 
-  it('need one winner per year and at least four different teams for the wrong options', () => {
-    const twice = [...winner.winners, { year: 2011, team: 'Cloud9' }];
-    expect(parse([{ ...winner, winners: twice }]).success).toBe(false);
-    expect(parse([{ ...winner, winners: winner.winners.slice(0, 3) }]).success).toBe(false);
+  it('need one answer per year and at least four different answers for the wrong options', () => {
+    const twice = [...yearly.byYear, { year: 2011, answer: 'Cloud9' }];
+    expect(parse([{ ...yearly, byYear: twice }]).success).toBe(false);
+    expect(parse([{ ...yearly, byYear: yearly.byYear.slice(0, 3) }]).success).toBe(false);
   });
 
   it('resolve without extra data', () => {
-    const [question] = resolveQuestions([winner], stats, []);
-    expect(question?.kind).toBe('winner');
+    const [question] = resolveQuestions([yearly], stats, []);
+    expect(question?.kind).toBe('yearly');
   });
 });
 
@@ -262,20 +268,8 @@ describe('the question file in the repository', () => {
     }
   });
 
-  it('has esports questions, and no wrong option of one has an esports skin of its own', () => {
-    const esports = questions.filter((question) => question.category === 'esports');
-    expect(esports.length).toBeGreaterThan(0);
-    const skinQuestions = esports.filter(
-      (question): question is PickQuestion =>
-        question.kind === 'pick' && question.subject === 'champion',
-    );
-    const correctElsewhere = new Set(skinQuestions.flatMap((question) => question.correct));
-    for (const question of skinQuestions) {
-      expect(
-        question.wrong.some((id) => correctElsewhere.has(id)),
-        question.id,
-      ).toBe(false);
-    }
+  it('has esports questions', () => {
+    expect(questions.some((question) => question.category === 'esports')).toBe(true);
   });
 
   it('has lore questions about the world of League of Legends', () => {
@@ -301,7 +295,7 @@ describe('the question file in the repository', () => {
       const pattern =
         question.subject === 'text'
           ? /^Which .*[?]$/
-          : question.kind === 'pick'
+          : question.kind === 'pick' || question.kind === 'skinLine'
             ? new RegExp(`^Which of these ${noun}s .*[?]$`)
             : new RegExp(`^Which ${noun} .*[?]$`);
       expect(question.question, question.id).toMatch(pattern);

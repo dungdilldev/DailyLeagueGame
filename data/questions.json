@@ -298,115 +298,185 @@
       ]
     },
     {
-      "id": "hasEsportsSkin",
+      "id": "esportsSkinLine",
       "category": "esports",
       "difficulty": "medium",
       "subject": "champion",
+      "skinLine": "esports",
       "label": "Esports skins",
-      "question": "Which of these champions has an esports skin (a T1 or Worlds skin)?",
-      "correct": [
-        "Aatrox",
-        "Ahri",
-        "Akali",
-        "Alistar",
-        "Ambessa",
-        "Aphelios",
-        "Ashe",
-        "Azir",
-        "Bard",
-        "Camille",
-        "Caitlyn",
-        "Corki",
-        "DrMundo",
-        "Ekko",
-        "Elise",
-        "Ezreal",
-        "Fiora",
-        "Galio",
-        "Gangplank",
-        "Gnar",
-        "Gragas",
-        "Graves",
-        "Irelia",
-        "Janna",
-        "JarvanIV",
-        "Jax",
-        "Jayce",
-        "Jhin",
-        "Jinx",
-        "Kaisa",
-        "Kalista",
-        "Karthus",
-        "Kennen",
-        "Kindred",
-        "Leblanc",
-        "Leona",
-        "LeeSin",
-        "Malphite",
-        "Maokai",
-        "Nami",
-        "Nidalee",
-        "Nunu",
-        "Olaf",
-        "Orianna",
-        "Pyke",
-        "Rakan",
-        "Renekton",
-        "Rengar",
-        "Ryze",
-        "Seraphine",
-        "Shen",
-        "Shyvana",
-        "Singed",
-        "Sylas",
-        "Syndra",
-        "Taliyah",
-        "Talon",
-        "TwistedFate",
-        "Thresh",
-        "Varus",
-        "Vayne",
-        "Vi",
-        "Viego",
-        "Yone",
-        "Yuumi",
-        "Zac",
-        "Zed",
-        "Zoe",
-        "Zyra"
-      ],
-      "wrong": [
-        "Garen",
-        "Lux",
-        "Soraka",
-        "Annie",
-        "Nasus",
-        "Teemo",
-        "Taric",
-        "Ornn",
-        "Amumu",
-        "Sion",
-        "Brand",
-        "Rammus",
-        "Zilean",
-        "Veigar",
-        "Akshan",
-        "Anivia",
-        "AurelionSol",
-        "Blitzcrank",
-        "Braum",
-        "Briar",
-        "Darius",
-        "Diana",
-        "Rumble",
-        "Ivern",
-        "Hwei",
-        "Karma",
-        "Kayle",
-        "Mel",
-        "Malzahar",
-        "MissFortune"
+      "question": "Which of these champions has a {line} skin?"
+    },
+    {
+      "id": "teamByLogo",
+      "category": "esports",
+      "difficulty": "easy",
+      "subject": "text",
+      "logo": "team",
+      "label": "Team logos",
+      "question": "Which team does this logo belong to?",
+      "teams": [
+        "T1",
+        "Gen.G",
+        "Hanwha Life Esports",
+        "KT Rolster",
+        "DRX",
+        "Dplus KIA",
+        "Nongshim RedForce",
+        "Bilibili Gaming",
+        "JD Gaming",
+        "Top Esports",
+        "Weibo Gaming",
+        "LNG Esports",
+        "Edward Gaming",
+        "Invictus Gaming",
+        "Royal Never Give Up",
+        "FunPlus Phoenix",
+        "Anyone's Legend",
+        "Team WE",
+        "G2 Esports",
+        "Fnatic",
+        "MAD Lions",
+        "Team Vitality",
+        "Karmine Corp",
+        "Team Heretics",
+        "Misfits Gaming",
+        "Splyce",
+        "Cloud9",
+        "Team Liquid",
+        "Team SoloMid",
+        "FlyQuest",
+        "100 Thieves",
+        "Counter Logic Gaming",
+        "Evil Geniuses",
+        "Dignitas",
+        "PSG Talon",
+        "Flash Wolves",
+        "paiN Gaming",
+        "LOUD",
+        "Samsung Galaxy",
+        "Griffin"
       ]
+    },
+    {
+      "id": "momentFakerZed",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Faker vs Ryu",
+      "question": "Which of these champions were Faker and Ryu both playing when Faker outplayed Ryu in the deciding game of the OGN Summer 2013 final?",
+      "correct": ["Zed"],
+      "wrong": ["Yasuo", "Sylas", "Yone"]
+    },
+    {
+      "id": "momentXpekeBackdoor",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "xPeke's backdoor",
+      "question": "Which of these champions did xPeke play in his famous backdoor against SK Gaming at IEM Katowice in 2013?",
+      "correct": ["Kassadin"],
+      "wrong": ["Ekko", "Qiyana", "Akshan"]
+    },
+    {
+      "id": "momentUziTwoFinals",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Two lost finals",
+      "question": "Which of these players lost the World Championship final in both 2013 and 2014?",
+      "correct": ["Uzi"],
+      "wrong": ["Deft", "Doublelift", "Rookie"]
+    },
+    {
+      "id": "momentEveryoneElseIsTrash",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "\"Everyone else is trash\"",
+      "question": "Which of these players declared \"Everyone else is trash\" at the 2013 All-Star event?",
+      "correct": ["Doublelift"],
+      "wrong": ["Bjergsen", "WildTurtle", "Jensen"]
+    },
+    {
+      "id": "momentCloud9Semis",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Cloud9 in 2018",
+      "question": "Which of these North American teams reached the World Championship semifinals in 2018?",
+      "correct": ["Cloud9"],
+      "wrong": ["Team Liquid", "Team SoloMid", "100 Thieves"]
+    },
+    {
+      "id": "momentFirstChineseTitle",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "China's first title",
+      "question": "Which of these teams won China's first World Championship title, in 2018?",
+      "correct": ["Invictus Gaming"],
+      "wrong": ["Royal Never Give Up", "Edward Gaming", "FunPlus Phoenix"]
+    },
+    {
+      "id": "momentSamsungRematch",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "The 2017 rematch",
+      "question": "Which of these teams beat SK Telecom T1 in the 2017 World Championship final, a year after losing the final to them?",
+      "correct": ["Samsung Galaxy"],
+      "wrong": ["Fnatic", "Edward Gaming", "G2 Esports"]
+    },
+    {
+      "id": "momentG2Msi",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "G2 in 2019",
+      "question": "Which of these teams won MSI in 2019 and reached the World Championship final later that year?",
+      "correct": ["G2 Esports"],
+      "wrong": ["Team Liquid", "Fnatic", "Invictus Gaming"]
+    },
+    {
+      "id": "momentDrxPlayIn",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "DRX from the play-in",
+      "question": "Which year saw DRX win the World Championship after starting in the play-in stage?",
+      "correct": ["2022"],
+      "wrong": ["2019", "2020", "2023"]
+    },
+    {
+      "id": "momentFakerFirstTitle",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Faker's first title",
+      "question": "Which year brought Faker his first World Championship title?",
+      "correct": ["2013"],
+      "wrong": ["2012", "2014", "2017"]
+    },
+    {
+      "id": "momentFirstWorldsEvent",
+      "category": "esports",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "The first Worlds",
+      "question": "Which event hosted the first World Championship, in 2011?",
+      "correct": ["DreamHack Summer"],
+      "wrong": ["IEM Katowice", "Gamescom", "BlizzCon"]
     },
     {
       "id": "isWorldsChampion",
@@ -539,6 +609,55 @@
       "label": "Nicknames",
       "ask": "playerByNickname",
       "question": "Which of these players is nicknamed \"{nickname}\"?"
+    },
+    {
+      "id": "worldsChampionPlayer",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "ask": "playerWithTitle",
+      "event": "Worlds",
+      "label": "Worlds champions",
+      "question": "Which of these players has won the World Championship?"
+    },
+    {
+      "id": "msiChampionPlayer",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "ask": "playerWithTitle",
+      "event": "MSI",
+      "label": "MSI champions",
+      "question": "Which of these players has won the Mid-Season Invitational?"
+    },
+    {
+      "id": "neverWonWorlds",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "ask": "playerWithoutTitle",
+      "event": "Worlds",
+      "label": "Never won Worlds",
+      "question": "Which of these players has never won the World Championship?"
+    },
+    {
+      "id": "playerByRegion",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "ask": "playerByRegion",
+      "label": "Players by region",
+      "question": "Which of these players made their name in {region}?"
+    },
+    {
+      "id": "playerByRole",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "ask": "playerByRole",
+      "exclude": ["Perkz", "CoreJJ", "Xiaohu", "Rekkles", "Zven"],
+      "label": "Players by role",
+      "question": "Which of these players is best known as a {role}?"
     },
     {
       "id": "firstWorldsChampion",
@@ -1268,66 +1387,66 @@
       "subject": "text",
       "label": "Worlds winners",
       "question": "Which team won the World Championship in {year}?",
-      "winners": [
+      "byYear": [
         {
           "year": 2011,
-          "team": "Fnatic"
+          "answer": "Fnatic"
         },
         {
           "year": 2012,
-          "team": "Taipei Assassins"
+          "answer": "Taipei Assassins"
         },
         {
           "year": 2013,
-          "team": "SK Telecom T1"
+          "answer": "SK Telecom T1"
         },
         {
           "year": 2014,
-          "team": "Samsung White"
+          "answer": "Samsung White"
         },
         {
           "year": 2015,
-          "team": "SK Telecom T1"
+          "answer": "SK Telecom T1"
         },
         {
           "year": 2016,
-          "team": "SK Telecom T1"
+          "answer": "SK Telecom T1"
         },
         {
           "year": 2017,
-          "team": "Samsung Galaxy"
+          "answer": "Samsung Galaxy"
         },
         {
           "year": 2018,
-          "team": "Invictus Gaming"
+          "answer": "Invictus Gaming"
         },
         {
           "year": 2019,
-          "team": "FunPlus Phoenix"
+          "answer": "FunPlus Phoenix"
         },
         {
           "year": 2020,
-          "team": "Damwon Gaming"
+          "answer": "Damwon Gaming"
         },
         {
           "year": 2021,
-          "team": "Edward Gaming"
+          "answer": "Edward Gaming"
         },
         {
           "year": 2022,
-          "team": "DRX"
+          "answer": "DRX"
         },
         {
           "year": 2023,
-          "team": "T1"
+          "answer": "T1"
         },
         {
           "year": 2024,
-          "team": "T1"
+          "answer": "T1"
         },
         {
           "year": 2025,
-          "team": "T1"
+          "answer": "T1"
         }
       ]
     },
@@ -1338,50 +1457,248 @@
       "subject": "text",
       "label": "MSI winners",
       "question": "Which team won the Mid-Season Invitational in {year}?",
-      "winners": [
+      "byYear": [
         {
           "year": 2015,
-          "team": "Edward Gaming"
+          "answer": "Edward Gaming"
         },
         {
           "year": 2016,
-          "team": "SK Telecom T1"
+          "answer": "SK Telecom T1"
         },
         {
           "year": 2017,
-          "team": "SK Telecom T1"
+          "answer": "SK Telecom T1"
         },
         {
           "year": 2018,
-          "team": "Royal Never Give Up"
+          "answer": "Royal Never Give Up"
         },
         {
           "year": 2019,
-          "team": "G2 Esports"
+          "answer": "G2 Esports"
         },
         {
           "year": 2021,
-          "team": "Royal Never Give Up"
+          "answer": "Royal Never Give Up"
         },
         {
           "year": 2022,
-          "team": "Royal Never Give Up"
+          "answer": "Royal Never Give Up"
         },
         {
           "year": 2023,
-          "team": "JD Gaming"
+          "answer": "JD Gaming"
         },
         {
           "year": 2024,
-          "team": "Gen.G"
+          "answer": "Gen.G"
         },
         {
           "year": 2025,
-          "team": "Gen.G"
+          "answer": "Gen.G"
         },
         {
           "year": 2026,
-          "team": "Hanwha Life Esports"
+          "answer": "Hanwha Life Esports"
+        }
+      ]
+    },
+    {
+      "id": "worldsRunnerUpByYear",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Worlds runners-up",
+      "question": "Which team lost the World Championship final in {year}?",
+      "byYear": [
+        {
+          "year": 2011,
+          "answer": "Against All Authority"
+        },
+        {
+          "year": 2012,
+          "answer": "Azubu Frost"
+        },
+        {
+          "year": 2013,
+          "answer": "Royal Club"
+        },
+        {
+          "year": 2014,
+          "answer": "Royal Club"
+        },
+        {
+          "year": 2015,
+          "answer": "KOO Tigers"
+        },
+        {
+          "year": 2016,
+          "answer": "Samsung Galaxy"
+        },
+        {
+          "year": 2017,
+          "answer": "T1"
+        },
+        {
+          "year": 2018,
+          "answer": "Fnatic"
+        },
+        {
+          "year": 2019,
+          "answer": "G2 Esports"
+        },
+        {
+          "year": 2020,
+          "answer": "Suning"
+        },
+        {
+          "year": 2021,
+          "answer": "DWG KIA"
+        },
+        {
+          "year": 2022,
+          "answer": "T1"
+        },
+        {
+          "year": 2023,
+          "answer": "Weibo Gaming"
+        },
+        {
+          "year": 2024,
+          "answer": "Bilibili Gaming"
+        },
+        {
+          "year": 2025,
+          "answer": "KT Rolster"
+        }
+      ]
+    },
+    {
+      "id": "worldsFinalsMvpByYear",
+      "category": "esports",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Worlds Finals MVPs",
+      "question": "Which player was named Finals MVP at the World Championship in {year}?",
+      "byYear": [
+        {
+          "year": 2014,
+          "answer": "Mata"
+        },
+        {
+          "year": 2015,
+          "answer": "MaRin"
+        },
+        {
+          "year": 2016,
+          "answer": "Faker"
+        },
+        {
+          "year": 2017,
+          "answer": "Ruler"
+        },
+        {
+          "year": 2018,
+          "answer": "Ning"
+        },
+        {
+          "year": 2019,
+          "answer": "Tian"
+        },
+        {
+          "year": 2020,
+          "answer": "Canyon"
+        },
+        {
+          "year": 2021,
+          "answer": "Scout"
+        },
+        {
+          "year": 2022,
+          "answer": "Kingen"
+        },
+        {
+          "year": 2023,
+          "answer": "Zeus"
+        },
+        {
+          "year": 2024,
+          "answer": "Faker"
+        },
+        {
+          "year": 2025,
+          "answer": "Gumayusi"
+        }
+      ]
+    },
+    {
+      "id": "worldsFinalCityByYear",
+      "category": "esports",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Worlds final cities",
+      "question": "Which city hosted the World Championship final in {year}?",
+      "byYear": [
+        {
+          "year": 2011,
+          "answer": "Jönköping"
+        },
+        {
+          "year": 2012,
+          "answer": "Los Angeles"
+        },
+        {
+          "year": 2013,
+          "answer": "Los Angeles"
+        },
+        {
+          "year": 2014,
+          "answer": "Seoul"
+        },
+        {
+          "year": 2015,
+          "answer": "Berlin"
+        },
+        {
+          "year": 2016,
+          "answer": "Los Angeles"
+        },
+        {
+          "year": 2017,
+          "answer": "Beijing"
+        },
+        {
+          "year": 2018,
+          "answer": "Incheon"
+        },
+        {
+          "year": 2019,
+          "answer": "Paris"
+        },
+        {
+          "year": 2020,
+          "answer": "Shanghai"
+        },
+        {
+          "year": 2021,
+          "answer": "Reykjavík"
+        },
+        {
+          "year": 2022,
+          "answer": "San Francisco"
+        },
+        {
+          "year": 2023,
+          "answer": "Seoul"
+        },
+        {
+          "year": 2024,
+          "answer": "London"
+        },
+        {
+          "year": 2025,
+          "answer": "Chengdu"
         }
       ]
     },

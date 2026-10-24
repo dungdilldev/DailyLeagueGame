@@ -16,6 +16,11 @@ export interface Round {
   optionIds: string[];
   /** The right option: the one with the highest value, or the one from a pick question's correct list. */
   answerId: string;
+  /**
+   * Something shown with the question that the player must recognise: the answer's team logo.
+   * Absent for most rounds.
+   */
+  clue?: 'teamLogo';
   /** Every option's value, revealed after answering. Empty for a pick question. */
   values: Record<string, number>;
 }

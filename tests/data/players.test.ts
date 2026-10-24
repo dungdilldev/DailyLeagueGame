@@ -5,6 +5,7 @@ import { PlayerFileSchema } from '../../src/data/playerSchema';
 const player = {
   name: 'Faker',
   region: 'Korea',
+  role: 'mid',
   titles: [{ event: 'Worlds', year: 2013 }],
   teams: ['T1'],
   nickname: 'Unkillable Demon King',
@@ -17,9 +18,11 @@ describe('PlayerFileSchema', () => {
     expect(parse([{ ...player, nickname: undefined, titles: [] }]).success).toBe(true);
   });
 
-  it('rejects a player with no team, an unknown region or an unknown event', () => {
+  it('rejects a player with no team, an unknown region, role or event, or no role', () => {
     expect(parse([{ ...player, teams: [] }]).success).toBe(false);
     expect(parse([{ ...player, region: 'Mars' }]).success).toBe(false);
+    expect(parse([{ ...player, role: 'carry' }]).success).toBe(false);
+    expect(parse([{ ...player, role: undefined }]).success).toBe(false);
     expect(parse([{ ...player, titles: [{ event: 'LCK', year: 2020 }] }]).success).toBe(false);
   });
 

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { PlayerTitleEventSchema } from './playerSchema';
 
 /** Stat ids are defined by the stat lists in `pipeline/stats`; the client treats them as opaque. */
 export type StatId = string;
@@ -59,6 +60,8 @@ export type Entity = {
   stats: Record<string, number>;
   /** A champion's epithet ("the Darkin Blade"); absent for items and text options. */
   title?: string;
+  /** Esports skin lines a champion has a skin in ("Samsung Galaxy", "Worlds 2019"). */
+  esportsSkinLines?: string[];
 };
 
 export const ChampionSchema = z.object({
@@ -66,6 +69,11 @@ export const ChampionSchema = z.object({
   title: z.string(),
   /** Data Dragon "tags": champion classes such as Mage or Assassin (not lanes). */
   classes: z.array(z.string()),
+  /**
+   * Esports skin lines the champion has a skin in, from Data Dragon's skin names. Absent when
+   * there are none, and in snapshots made before the field existed.
+   */
+  esportsSkinLines: z.array(z.string().min(1)).min(1).optional(),
 });
 export type Champion = z.infer<typeof ChampionSchema>;
 
@@ -192,45 +200,102 @@ const ClueQuestionTemplateSchema = z.strictObject({
 });
 
 /**
- * A question made from `data/players.json`: it names a random team and asks for a player who
- * played there (`playerByTeam`, `{team}` in the text), or names a random player and asks for
- * one of their teams (`teamByPlayer`, `{player}` in the text), or quotes a nickname and asks
- * who has it (`playerByNickname`, `{nickname}` in the text). Options are plain text.
+ * A question made from the champions' esports skins: "Which of these champions has a {line}
+ * skin?". The answer has a skin in that line, the wrong options have none.
  */
-const PlayerQuestionTemplateSchema = z.strictObject({
-  ...QuestionFields,
-  subject: z.literal('text'),
-  ask: z.enum(['playerByTeam', 'teamByPlayer', 'playerByNickname']),
-  /** Short name shown in the results. */
-  label: z.string().min(1),
-});
+const SkinLineQuestionTemplateSchema = z
+  .strictObject({
+    ...QuestionFields,
+    subject: z.literal('champion'),
+    skinLine: z.literal('esports'),
+    /** Short name shown in the results. */
+    label: z.string().min(1),
+  })
+  .refine(({ question }) => question.includes('{line}'), {
+    message: 'The question text needs a {line} placeholder',
+  });
 
-/** Winners per year are only meaningful when each year appears once. */
-const hasUniqueYears = ({ winners }: { winners: { year: number }[] }) =>
-  new Set(winners.map(({ year }) => year)).size === winners.length;
-
-/** Rounds need the winner plus this many other winning teams as wrong options. */
-const MIN_DISTINCT_WINNING_TEAMS = 4;
+/** A logo round offers the logo's team and three others. */
+const OPTIONS_PER_LOGO_ROUND = 4;
 
 /**
- * A question about who won a tournament in a year ("Which team won Worlds in {year}?"). The
- * winners are written out here, one per year; the wrong options are winners of other years.
+ * "Which team does this logo belong to?": the round shows a random team's logo and offers that
+ * team and three others as plain names. `teams` is written out by hand: only well-known teams
+ * whose logos are distinct (no two logos of one organisation) and visible on a dark background.
  */
-const WinnerQuestionTemplateSchema = z
+const LogoQuestionTemplateSchema = z
+  .strictObject({
+    ...QuestionFields,
+    subject: z.literal('text'),
+    logo: z.literal('team'),
+    /** Short name shown in the results. */
+    label: z.string().min(1),
+    /** Team names exactly as in `data/esportsImages.json`. */
+    teams: z.array(z.string().min(1)).min(OPTIONS_PER_LOGO_ROUND),
+  })
+  .refine(({ teams }) => new Set(teams).size === teams.length, {
+    message: 'A team may be listed only once',
+  });
+
+/** Player questions about a title; they need to say which tournament (`event`). */
+const TITLE_ASKS: readonly string[] = ['playerWithTitle', 'playerWithoutTitle'];
+
+/**
+ * A question made from `data/players.json`. It names a random team and asks for a player who
+ * played there (`playerByTeam`, `{team}`), names a player and asks for one of their teams
+ * (`teamByPlayer`, `{player}`), quotes a nickname (`playerByNickname`, `{nickname}`), names a
+ * region (`playerByRegion`, `{region}`) or a role (`playerByRole`, `{role}`), or asks who has
+ * (`playerWithTitle`) or has never (`playerWithoutTitle`) won the `event`. Options are plain text.
+ */
+const PlayerQuestionTemplateSchema = z
+  .strictObject({
+    ...QuestionFields,
+    subject: z.literal('text'),
+    ask: z.enum([
+      'playerByTeam',
+      'teamByPlayer',
+      'playerByNickname',
+      'playerByRegion',
+      'playerByRole',
+      'playerWithTitle',
+      'playerWithoutTitle',
+    ]),
+    /** The tournament a title question is about; only for those. */
+    event: PlayerTitleEventSchema.optional(),
+    /** Short name shown in the results. */
+    label: z.string().min(1),
+  })
+  .refine(({ ask, event }) => TITLE_ASKS.includes(ask) === (event !== undefined), {
+    message: 'event is required for title questions and allowed only there',
+  });
+
+/** One answer per year is only meaningful when each year appears once. */
+const hasUniqueYears = ({ byYear }: { byYear: { year: number }[] }) =>
+  new Set(byYear.map(({ year }) => year)).size === byYear.length;
+
+/** Rounds need the year's answer plus three answers of other years as wrong options. */
+const MIN_DISTINCT_ANSWERS = 4;
+
+/**
+ * A question with one answer per year ("Which team won Worlds in {year}?", "Who was Finals MVP
+ * in {year}?"). The answers are written out here, one per year; the wrong options are the
+ * answers of other years, so none of them can be argued to be right.
+ */
+const YearQuestionTemplateSchema = z
   .strictObject({
     ...QuestionFields,
     subject: z.literal('text'),
     /** Short name shown in the results. */
     label: z.string().min(1),
-    /** Who won in which year; the team name is also the option shown. */
-    winners: z.array(z.strictObject({ year: z.number().int().min(2011), team: z.string().min(1) })),
+    /** The answer of each year; it is also the option shown. */
+    byYear: z.array(
+      z.strictObject({ year: z.number().int().min(2011), answer: z.string().min(1) }),
+    ),
   })
-  .refine(hasUniqueYears, { message: 'A year may appear only once in winners' })
+  .refine(hasUniqueYears, { message: 'A year may appear only once in byYear' })
   .refine(
-    ({ winners }) => new Set(winners.map(({ team }) => team)).size >= MIN_DISTINCT_WINNING_TEAMS,
-    {
-      message: `winners needs at least ${String(MIN_DISTINCT_WINNING_TEAMS)} different teams`,
-    },
+    ({ byYear }) => new Set(byYear.map(({ answer }) => answer)).size >= MIN_DISTINCT_ANSWERS,
+    { message: `byYear needs at least ${String(MIN_DISTINCT_ANSWERS)} different answers` },
   )
   .refine(({ question }) => question.includes('{year}'), {
     message: 'The question text needs a {year} placeholder',
@@ -262,14 +327,18 @@ export const QuestionTemplateSchema = z.union([
   PickQuestionTemplateSchema,
   ClueQuestionTemplateSchema,
   PlayerQuestionTemplateSchema,
-  WinnerQuestionTemplateSchema,
+  YearQuestionTemplateSchema,
+  SkinLineQuestionTemplateSchema,
+  LogoQuestionTemplateSchema,
 ]);
 export type QuestionTemplate = z.infer<typeof QuestionTemplateSchema>;
 export type StatQuestionTemplate = z.infer<typeof StatQuestionTemplateSchema>;
 export type PickQuestionTemplate = z.infer<typeof PickQuestionTemplateSchema>;
 export type ClueQuestionTemplate = z.infer<typeof ClueQuestionTemplateSchema>;
 export type PlayerQuestionTemplate = z.infer<typeof PlayerQuestionTemplateSchema>;
-export type WinnerQuestionTemplate = z.infer<typeof WinnerQuestionTemplateSchema>;
+export type YearQuestionTemplate = z.infer<typeof YearQuestionTemplateSchema>;
+export type SkinLineQuestionTemplate = z.infer<typeof SkinLineQuestionTemplateSchema>;
+export type LogoQuestionTemplate = z.infer<typeof LogoQuestionTemplateSchema>;
 
 export const QuestionFileSchema = z
   .object({ questions: z.array(QuestionTemplateSchema).min(1) })

@@ -285,6 +285,15 @@ main {
   background: var(--bad);
 }
 
+.round__clue {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0.9rem auto 0;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 50%));
+}
+
 .question {
   margin: 0.9rem 0 1.1rem;
   font-family: var(--font-display);

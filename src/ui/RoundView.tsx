@@ -3,7 +3,7 @@ import type { Round } from '../game/puzzle';
 import type { Entity } from '../data/schema';
 import { isCorrect } from '../game/progress';
 import { displayValue } from '../game/roundDisplay';
-import { roundSymbols } from '../game/textSymbols';
+import { clueImageUrl, roundSymbols } from '../game/textSymbols';
 import { OptionCard, type CardState } from './OptionCard';
 import { RoundProgress } from './RoundProgress';
 
@@ -65,6 +65,7 @@ export function RoundView({
 
   const isLastRound = totalRounds !== undefined && roundNumber === totalRounds;
   const symbols = roundSymbols(round);
+  const clueUrl = clueImageUrl(round);
   const answerName = options.get(round.answerId)?.name ?? round.answerId;
 
   return (
@@ -79,6 +80,15 @@ export function RoundView({
       </div>
       {totalRounds !== undefined && results && (
         <RoundProgress current={roundNumber - 1} total={totalRounds} results={results} />
+      )}
+      {clueUrl && (
+        <img
+          class="round__clue"
+          src={clueUrl}
+          alt="The logo to recognise"
+          width={120}
+          height={120}
+        />
       )}
       <h2 id="question" class="question">
         {round.question}

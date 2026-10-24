@@ -1,4 +1,4 @@
-import type { PlayerQuestion, Question, WinnerQuestion } from '../../src/data/questions';
+import type { PlayerQuestion, Question, YearQuestion } from '../../src/data/questions';
 import type { Entity } from '../../src/data/schema';
 import { gapRatio } from '../../src/game/generate/buildRound';
 import { ROUND_GAP_BANDS, type GapBand } from '../../src/game/generate/config';
@@ -10,42 +10,78 @@ function namedSubject(round: Round, template: string, placeholder: string): stri
   return round.question.slice(before.length, round.question.length - after.length);
 }
 
-/** A winner round is valid if the answer won that year and no other option did. */
-function findWinnerRoundProblems(round: Round, question: WinnerQuestion, label: string): string[] {
+/** A round about a given year is valid if the answer is that year's and no other option is. */
+function findYearRoundProblems(round: Round, question: YearQuestion, label: string): string[] {
   const year = Number(namedSubject(round, question.question, '{year}'));
-  const wonThatYear = (team: string) =>
-    question.winners.some((winner) => winner.year === year && winner.team === team);
+  const answersThatYear = (option: string) =>
+    question.byYear.some((entry) => entry.year === year && entry.answer === option);
   const problems: string[] = [];
-  if (!wonThatYear(round.answerId)) {
-    problems.push(`${label}: the answer did not win in ${String(year)}`);
+  if (!answersThatYear(round.answerId)) {
+    problems.push(`${label}: the answer is not the one for ${String(year)}`);
   }
   for (const id of round.optionIds.filter((option) => option !== round.answerId)) {
-    if (wonThatYear(id)) problems.push(`${label}: "${id}" also won in ${String(year)}`);
+    if (answersThatYear(id)) problems.push(`${label}: "${id}" is also right for ${String(year)}`);
   }
   return problems;
 }
 
-/** A player round is valid if the named team or player fits the answer and none of the other options. */
+/** The role each role question names, written out independently of the generator. */
+const ROLE_BY_NAME: Readonly<Record<string, string>> = {
+  'top laner': 'top',
+  jungler: 'jungle',
+  'mid laner': 'mid',
+  'bot laner': 'bot',
+  support: 'support',
+};
+
+/**
+ * For each kind of player question: whether an option is right (`fits`) and whether a wrong
+ * option could be argued to be right (`arguable`, stricter where the data is fuzzy).
+ */
+function playerChecks(question: PlayerQuestion, subject: string) {
+  const { players } = question;
+  const find = (name: string) => players.find((player) => player.name === name);
+  const hasTitle = (name: string) =>
+    find(name)?.titles.some(({ event }) => event === question.event) ?? false;
+  const regionTeams = new Set(
+    players.filter(({ region }) => region === subject).flatMap(({ teams }) => teams),
+  );
+  const checks: Record<PlayerQuestion['ask'], (option: string) => boolean> = {
+    playerByTeam: (option) => find(option)?.teams.includes(subject) ?? false,
+    teamByPlayer: (option) => find(subject)?.teams.includes(option) ?? false,
+    playerByNickname: (option) => find(option)?.nickname === subject,
+    playerByRegion: (option) => find(option)?.region === subject,
+    playerByRole: (option) => find(option)?.role === ROLE_BY_NAME[subject],
+    playerWithTitle: hasTitle,
+    playerWithoutTitle: (option) => find(option) !== undefined && !hasTitle(option),
+  };
+  const fits = checks[question.ask];
+  const arguable =
+    question.ask === 'playerByRegion'
+      ? (option: string) =>
+          fits(option) || (find(option)?.teams.some((team) => regionTeams.has(team)) ?? false)
+      : fits;
+  return { fits, arguable };
+}
+
+const PLAYER_PLACEHOLDERS: Partial<Record<PlayerQuestion['ask'], string>> = {
+  playerByTeam: '{team}',
+  teamByPlayer: '{player}',
+  playerByNickname: '{nickname}',
+  playerByRegion: '{region}',
+  playerByRole: '{role}',
+};
+
+/** A player round is valid if the answer fits the question and none of the other options could. */
 function findPlayerRoundProblems(round: Round, question: PlayerQuestion, label: string): string[] {
-  const placeholders = {
-    playerByTeam: '{team}',
-    teamByPlayer: '{player}',
-    playerByNickname: '{nickname}',
-  };
-  const subject = namedSubject(round, question.question, placeholders[question.ask]);
-  const fitsByAsk = {
-    playerByTeam: (option: string) =>
-      question.players.some((player) => player.name === option && player.teams.includes(subject)),
-    teamByPlayer: (option: string) =>
-      question.players.some((player) => player.name === subject && player.teams.includes(option)),
-    playerByNickname: (option: string) =>
-      question.players.some((player) => player.name === option && player.nickname === subject),
-  };
-  const fits = fitsByAsk[question.ask];
+  const placeholder = PLAYER_PLACEHOLDERS[question.ask];
+  const subject =
+    placeholder === undefined ? '' : namedSubject(round, question.question, placeholder);
+  const { fits, arguable } = playerChecks(question, subject);
   const problems: string[] = [];
   if (!fits(round.answerId)) problems.push(`${label}: the answer does not fit the question`);
   for (const id of round.optionIds.filter((option) => option !== round.answerId)) {
-    if (fits(id)) problems.push(`${label}: "${id}" also fits the question`);
+    if (arguable(id)) problems.push(`${label}: "${id}" also fits the question`);
   }
   return problems;
 }
@@ -115,12 +151,28 @@ export function findPuzzleProblems(
       return;
     }
     if (question.kind === 'pick') return;
-    if (question.kind === 'winner') {
-      problems.push(...findWinnerRoundProblems(round, question, label));
+    if (question.kind === 'yearly') {
+      problems.push(...findYearRoundProblems(round, question, label));
       return;
     }
     if (question.kind === 'player') {
       problems.push(...findPlayerRoundProblems(round, question, label));
+      return;
+    }
+    if (question.kind === 'logo') {
+      if (round.clue !== 'teamLogo') problems.push(`${label}: the logo is not shown`);
+      if (round.optionIds.some((id) => !question.teams.includes(id))) {
+        problems.push(`${label}: an option is not in the question's team list`);
+      }
+      return;
+    }
+    if (question.kind === 'skinLine') {
+      const line = namedSubject(round, question.question, '{line}');
+      const hasLine = (id: string) => entitiesById.get(id)?.esportsSkinLines?.includes(line);
+      if (!hasLine(round.answerId)) problems.push(`${label}: the answer has no ${line} skin`);
+      for (const id of round.optionIds.filter((option) => option !== round.answerId)) {
+        if (hasLine(id)) problems.push(`${label}: "${id}" also has a ${line} skin`);
+      }
       return;
     }
 

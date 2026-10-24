@@ -10,7 +10,9 @@ import type {
   StatMeta,
   StatQuestionTemplate,
   StatSubject,
-  WinnerQuestionTemplate,
+  LogoQuestionTemplate,
+  SkinLineQuestionTemplate,
+  YearQuestionTemplate,
 } from './schema';
 import { StatSubjectSchema } from './schema';
 
@@ -41,12 +43,29 @@ export interface PlayerQuestion extends PlayerQuestionTemplate {
   players: readonly Player[];
 }
 
-/** A question about who won a tournament in a given year; the winners come with the template. */
-export interface WinnerQuestion extends WinnerQuestionTemplate {
-  kind: 'winner';
+/** A question with one answer per year; the answers come with the template. */
+export interface YearQuestion extends YearQuestionTemplate {
+  kind: 'yearly';
 }
 
-export type Question = StatQuestion | PickQuestion | ClueQuestion | PlayerQuestion | WinnerQuestion;
+/** A question about the champions' esports skin lines, made from the champion data. */
+export interface SkinLineQuestion extends SkinLineQuestionTemplate {
+  kind: 'skinLine';
+}
+
+/** A question that shows a team's logo and asks whose it is. */
+export interface LogoQuestion extends LogoQuestionTemplate {
+  kind: 'logo';
+}
+
+export type Question =
+  | StatQuestion
+  | PickQuestion
+  | ClueQuestion
+  | PlayerQuestion
+  | YearQuestion
+  | SkinLineQuestion
+  | LogoQuestion;
 
 /** Short name of a question, e.g. "Base health" or "Marksmen". */
 export function questionLabel(question: Question): string {
@@ -76,7 +95,9 @@ export function resolveQuestions(
     if ('stat' in template) return resolveStatQuestion(template, stats);
     if ('clue' in template) return { ...template, kind: 'clue' };
     if ('ask' in template) return { ...template, kind: 'player', players };
-    if ('winners' in template) return { ...template, kind: 'winner' };
+    if ('byYear' in template) return { ...template, kind: 'yearly' };
+    if ('skinLine' in template) return { ...template, kind: 'skinLine' };
+    if ('logo' in template) return { ...template, kind: 'logo' };
     return { ...template, kind: 'pick' };
   });
 }

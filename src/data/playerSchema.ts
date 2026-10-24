@@ -17,6 +17,10 @@ export const PlayerRegionSchema = z.enum([
 ]);
 export type PlayerRegion = z.infer<typeof PlayerRegionSchema>;
 
+/** The position of the player's best-known stretch; some players changed role during their career. */
+export const PlayerRoleSchema = z.enum(['top', 'jungle', 'mid', 'bot', 'support']);
+export type PlayerRole = z.infer<typeof PlayerRoleSchema>;
+
 const PlayerTitleSchema = z.strictObject({
   event: PlayerTitleEventSchema,
   year: z.number().int().min(2011),
@@ -30,6 +34,8 @@ const PlayerSchema = z
     /** In-game name; also the id, and the name a `text` question option would show. */
     name: z.string().min(1),
     region: PlayerRegionSchema,
+    /** Required for everyone: a player without one would be a wrong option that might be right. */
+    role: PlayerRoleSchema,
     /** Titles at Worlds and MSI only; regional titles are not recorded. */
     titles: z.array(PlayerTitleSchema),
     /** Professional teams, oldest first; an organisation that was renamed appears under its current name. */

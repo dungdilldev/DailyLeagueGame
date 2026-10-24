@@ -3,6 +3,7 @@
     {
       "name": "Faker",
       "region": "Korea",
+      "role": "mid",
       "titles": [
         {
           "event": "Worlds",
@@ -43,6 +44,7 @@
     {
       "name": "Meiko",
       "region": "China",
+      "role": "support",
       "titles": [
         {
           "event": "MSI",
@@ -58,6 +60,7 @@
     {
       "name": "Rookie",
       "region": "China",
+      "role": "mid",
       "titles": [
         {
           "event": "Worlds",
@@ -69,6 +72,7 @@
     {
       "name": "Xiaohu",
       "region": "China",
+      "role": "mid",
       "titles": [
         {
           "event": "MSI",
@@ -88,6 +92,7 @@
     {
       "name": "Ruler",
       "region": "Korea",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -107,6 +112,7 @@
     {
       "name": "Deft",
       "region": "Korea",
+      "role": "bot",
       "titles": [
         {
           "event": "MSI",
@@ -131,6 +137,7 @@
     {
       "name": "Scout",
       "region": "China",
+      "role": "mid",
       "titles": [
         {
           "event": "Worlds",
@@ -142,6 +149,7 @@
     {
       "name": "Peanut",
       "region": "Korea",
+      "role": "jungle",
       "titles": [
         {
           "event": "MSI",
@@ -161,6 +169,7 @@
     {
       "name": "Knight",
       "region": "China",
+      "role": "mid",
       "titles": [
         {
           "event": "MSI",
@@ -173,12 +182,14 @@
     {
       "name": "Bdd",
       "region": "Korea",
+      "role": "mid",
       "titles": [],
       "teams": ["CJ Entus", "Longzhu Gaming", "DRX", "KT Rolster", "Gen.G", "Nongshim RedForce"]
     },
     {
       "name": "Flandre",
       "region": "China",
+      "role": "top",
       "titles": [
         {
           "event": "Worlds",
@@ -190,6 +201,7 @@
     {
       "name": "Kiin",
       "region": "Korea",
+      "role": "top",
       "titles": [
         {
           "event": "MSI",
@@ -205,6 +217,7 @@
     {
       "name": "JackeyLove",
       "region": "China",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -216,6 +229,7 @@
     {
       "name": "Viper",
       "region": "Korea",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -227,6 +241,7 @@
     {
       "name": "Chovy",
       "region": "Korea",
+      "role": "mid",
       "titles": [
         {
           "event": "MSI",
@@ -242,6 +257,7 @@
     {
       "name": "Keria",
       "region": "Korea",
+      "role": "support",
       "titles": [
         {
           "event": "Worlds",
@@ -262,6 +278,7 @@
     {
       "name": "Impact",
       "region": "North America",
+      "role": "top",
       "titles": [
         {
           "event": "Worlds",
@@ -282,6 +299,7 @@
     {
       "name": "Crisp",
       "region": "China",
+      "role": "support",
       "titles": [
         {
           "event": "Worlds",
@@ -293,6 +311,7 @@
     {
       "name": "Canyon",
       "region": "Korea",
+      "role": "jungle",
       "titles": [
         {
           "event": "Worlds",
@@ -304,6 +323,7 @@
     {
       "name": "ShowMaker",
       "region": "Korea",
+      "role": "mid",
       "titles": [
         {
           "event": "Worlds",
@@ -315,12 +335,14 @@
     {
       "name": "Tarzan",
       "region": "China",
+      "role": "jungle",
       "titles": [],
       "teams": ["Griffin", "LNG Esports", "Weibo Gaming", "Anyone's Legend"]
     },
     {
       "name": "GALA",
       "region": "China",
+      "role": "bot",
       "titles": [
         {
           "event": "MSI",
@@ -336,6 +358,7 @@
     {
       "name": "Caps",
       "region": "Europe",
+      "role": "mid",
       "titles": [
         {
           "event": "MSI",
@@ -348,6 +371,7 @@
     {
       "name": "Bin",
       "region": "China",
+      "role": "top",
       "titles": [
         {
           "event": "MSI",
@@ -359,6 +383,7 @@
     {
       "name": "Lehends",
       "region": "Korea",
+      "role": "support",
       "titles": [
         {
           "event": "MSI",
@@ -370,6 +395,7 @@
     {
       "name": "Doran",
       "region": "Korea",
+      "role": "top",
       "titles": [
         {
           "event": "Worlds",
@@ -381,6 +407,7 @@
     {
       "name": "Tian",
       "region": "China",
+      "role": "jungle",
       "titles": [
         {
           "event": "Worlds",
@@ -392,6 +419,7 @@
     {
       "name": "CoreJJ",
       "region": "North America",
+      "role": "support",
       "titles": [
         {
           "event": "Worlds",
@@ -403,6 +431,7 @@
     {
       "name": "Kanavi",
       "region": "China",
+      "role": "jungle",
       "titles": [
         {
           "event": "MSI",
@@ -418,24 +447,28 @@
     {
       "name": "Cuzz",
       "region": "Korea",
+      "role": "jungle",
       "titles": [],
       "teams": ["Longzhu Gaming", "DRX", "T1", "KT Rolster", "DN SOOPers"]
     },
     {
       "name": "Aiming",
       "region": "Korea",
+      "role": "bot",
       "titles": [],
       "teams": ["KT Rolster", "Bilibili Gaming", "Dplus KIA"]
     },
     {
       "name": "Elk",
       "region": "China",
+      "role": "bot",
       "titles": [],
       "teams": ["Team WE", "Bilibili Gaming", "Weibo Gaming"]
     },
     {
       "name": "369",
       "region": "China",
+      "role": "top",
       "titles": [
         {
           "event": "MSI",
@@ -447,12 +480,14 @@
     {
       "name": "Teddy",
       "region": "Korea",
+      "role": "bot",
       "titles": [],
       "teams": ["Jin Air Green Wings", "T1", "DN SOOPers", "Liiv SANDBOX", "DRX"]
     },
     {
       "name": "Karsa",
       "region": "Taiwan",
+      "role": "jungle",
       "titles": [
         {
           "event": "MSI",
@@ -472,12 +507,14 @@
     {
       "name": "Hans Sama",
       "region": "Europe",
+      "role": "bot",
       "titles": [],
       "teams": ["Millenium", "Misfits Gaming", "Rogue", "Team Liquid", "G2 Esports"]
     },
     {
       "name": "Oner",
       "region": "Korea",
+      "role": "jungle",
       "titles": [
         {
           "event": "Worlds",
@@ -497,6 +534,7 @@
     {
       "name": "Ming",
       "region": "China",
+      "role": "support",
       "titles": [
         {
           "event": "MSI",
@@ -516,6 +554,7 @@
     {
       "name": "Doinb",
       "region": "China",
+      "role": "mid",
       "titles": [
         {
           "event": "Worlds",
@@ -535,12 +574,14 @@
     {
       "name": "ON",
       "region": "China",
+      "role": "support",
       "titles": [],
       "teams": ["Bilibili Gaming"]
     },
     {
       "name": "Gumayusi",
       "region": "Korea",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -564,6 +605,7 @@
     {
       "name": "FoFo",
       "region": "Taiwan",
+      "role": "mid",
       "titles": [],
       "teams": [
         "Taipei Assassins",
@@ -578,6 +620,7 @@
     {
       "name": "Mikyx",
       "region": "Europe",
+      "role": "support",
       "titles": [
         {
           "event": "MSI",
@@ -589,6 +632,7 @@
     {
       "name": "Jankos",
       "region": "Europe",
+      "role": "jungle",
       "titles": [
         {
           "event": "MSI",
@@ -601,6 +645,7 @@
     {
       "name": "Zeus",
       "region": "Korea",
+      "role": "top",
       "titles": [
         {
           "event": "Worlds",
@@ -621,6 +666,7 @@
     {
       "name": "BeryL",
       "region": "Korea",
+      "role": "support",
       "titles": [
         {
           "event": "Worlds",
@@ -636,6 +682,7 @@
     {
       "name": "Zeka",
       "region": "Korea",
+      "role": "mid",
       "titles": [
         {
           "event": "Worlds",
@@ -651,18 +698,21 @@
     {
       "name": "Yagao",
       "region": "China",
+      "role": "mid",
       "titles": [],
       "teams": ["JD Gaming", "Bilibili Gaming"]
     },
     {
       "name": "Breathe",
       "region": "China",
+      "role": "top",
       "titles": [],
       "teams": ["Oh My God", "Team WE", "Bilibili Gaming", "Royal Never Give Up", "Weibo Gaming"]
     },
     {
       "name": "TheShy",
       "region": "China",
+      "role": "top",
       "titles": [
         {
           "event": "Worlds",
@@ -674,6 +724,7 @@
     {
       "name": "MISSING",
       "region": "China",
+      "role": "support",
       "titles": [
         {
           "event": "MSI",
@@ -685,6 +736,7 @@
     {
       "name": "Kingen",
       "region": "Korea",
+      "role": "top",
       "titles": [
         {
           "event": "Worlds",
@@ -704,12 +756,14 @@
     {
       "name": "Hylissang",
       "region": "Europe",
+      "role": "support",
       "titles": [],
       "teams": ["Unicorns of Love", "Fnatic", "MAD Lions", "Team Vitality"]
     },
     {
       "name": "Wei",
       "region": "China",
+      "role": "jungle",
       "titles": [
         {
           "event": "MSI",
@@ -731,12 +785,14 @@
     {
       "name": "Xun",
       "region": "China",
+      "role": "jungle",
       "titles": [],
       "teams": ["Invictus Gaming", "Bilibili Gaming", "JD Gaming"]
     },
     {
       "name": "Bjergsen",
       "region": "North America",
+      "role": "mid",
       "titles": [],
       "teams": [
         "Copenhagen Wolves",
@@ -750,24 +806,28 @@
     {
       "name": "BrokenBlade",
       "region": "Europe",
+      "role": "top",
       "titles": [],
       "teams": ["Dark Passage", "Team SoloMid", "FC Schalke 04", "G2 Esports"]
     },
     {
       "name": "SwordArt",
       "region": "Taiwan",
+      "role": "support",
       "titles": [],
       "teams": ["Flash Wolves", "Suning", "Team SoloMid", "Weibo Gaming", "MGN Vikings"]
     },
     {
       "name": "Kellin",
       "region": "Korea",
+      "role": "support",
       "titles": [],
       "teams": ["Jin Air Green Wings", "Gen.G", "Nongshim RedForce", "Dplus KIA", "BNK FEARX"]
     },
     {
       "name": "Jensen",
       "region": "North America",
+      "role": "mid",
       "titles": [],
       "teams": ["Cloud9", "Team Liquid", "Dignitas", "FlyQuest"],
       "nickname": "The Body"
@@ -775,12 +835,14 @@
     {
       "name": "Ssumday",
       "region": "North America",
+      "role": "top",
       "titles": [],
       "teams": ["KT Rolster", "Dignitas", "100 Thieves", "Evil Geniuses"]
     },
     {
       "name": "Delight",
       "region": "Korea",
+      "role": "support",
       "titles": [
         {
           "event": "MSI",
@@ -792,30 +854,35 @@
     {
       "name": "Hope",
       "region": "China",
+      "role": "bot",
       "titles": [],
       "teams": ["EDward Gaming", "Team WE", "JD Gaming", "Anyone's Legend"]
     },
     {
       "name": "Zven",
       "region": "North America",
+      "role": "bot",
       "titles": [],
       "teams": ["Origen", "G2 Esports", "Team SoloMid", "Cloud9", "Dignitas"]
     },
     {
       "name": "Life",
       "region": "Korea",
+      "role": "support",
       "titles": [],
       "teams": ["Gen.G", "DN SOOPers"]
     },
     {
       "name": "Light",
       "region": "China",
+      "role": "bot",
       "titles": [],
       "teams": ["LNG Esports", "Weibo Gaming"]
     },
     {
       "name": "Lwx",
       "region": "China",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -827,24 +894,28 @@
     {
       "name": "xiye",
       "region": "China",
+      "role": "mid",
       "titles": [],
       "teams": ["Team WE", "Dominus Esports", "LGD Gaming", "JD Gaming"]
     },
     {
       "name": "Creme",
       "region": "China",
+      "role": "mid",
       "titles": [],
       "teams": ["Oh My God", "Top Esports"]
     },
     {
       "name": "Cube",
       "region": "China",
+      "role": "top",
       "titles": [],
       "teams": ["Vici Gaming", "Rare Atom", "Team WE", "Oh My God"]
     },
     {
       "name": "Jiejie",
       "region": "China",
+      "role": "jungle",
       "titles": [
         {
           "event": "Worlds",
@@ -856,6 +927,7 @@
     {
       "name": "WildTurtle",
       "region": "North America",
+      "role": "bot",
       "titles": [],
       "teams": [
         "Cloud9",
@@ -869,12 +941,14 @@
     {
       "name": "Clid",
       "region": "Korea",
+      "role": "jungle",
       "titles": [],
       "teams": ["JD Gaming", "T1", "Gen.G", "FunPlus Phoenix", "Hanwha Life Esports"]
     },
     {
       "name": "Wunder",
       "region": "Europe",
+      "role": "top",
       "titles": [
         {
           "event": "MSI",
@@ -886,12 +960,14 @@
     {
       "name": "Canna",
       "region": "Korea",
+      "role": "top",
       "titles": [],
       "teams": ["T1", "Nongshim RedForce", "Dplus KIA", "Karmine Corp"]
     },
     {
       "name": "Maple",
       "region": "Taiwan",
+      "role": "mid",
       "titles": [],
       "teams": [
         "Flash Wolves",
@@ -905,6 +981,7 @@
     {
       "name": "Pyosik",
       "region": "Korea",
+      "role": "jungle",
       "titles": [
         {
           "event": "Worlds",
@@ -916,6 +993,7 @@
     {
       "name": "Uzi",
       "region": "China",
+      "role": "bot",
       "titles": [
         {
           "event": "MSI",
@@ -935,6 +1013,7 @@
     {
       "name": "Bang",
       "region": "Korea",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -958,30 +1037,35 @@
     {
       "name": "Betty",
       "region": "Taiwan",
+      "role": "bot",
       "titles": [],
       "teams": ["PSG Talon"]
     },
     {
       "name": "Shanks",
       "region": "China",
+      "role": "mid",
       "titles": [],
       "teams": ["Team WE", "Anyone's Legend"]
     },
     {
       "name": "Morgan",
       "region": "Korea",
+      "role": "top",
       "titles": [],
       "teams": ["JD Gaming", "Team WE", "Hanwha Life Esports", "OKSavingsBank BRION", "Team Liquid"]
     },
     {
       "name": "aphromoo",
       "region": "North America",
+      "role": "support",
       "titles": [],
       "teams": ["Counter Logic Gaming", "100 Thieves", "Dignitas", "FlyQuest"]
     },
     {
       "name": "Doublelift",
       "region": "North America",
+      "role": "bot",
       "titles": [],
       "teams": [
         "Epik Gamer",
@@ -997,6 +1081,7 @@
     {
       "name": "Mata",
       "region": "Korea",
+      "role": "support",
       "titles": [
         {
           "event": "Worlds",
@@ -1008,36 +1093,42 @@
     {
       "name": "Vulcan",
       "region": "North America",
+      "role": "support",
       "titles": [],
       "teams": ["Clutch Gaming", "Cloud9", "Evil Geniuses", "FlyQuest"]
     },
     {
       "name": "Odoamne",
       "region": "Europe",
+      "role": "top",
       "titles": [],
       "teams": ["H2k-Gaming", "Splyce", "FC Schalke 04", "Rogue", "GIANTX"]
     },
     {
       "name": "Ucal",
       "region": "Korea",
+      "role": "mid",
       "titles": [],
       "teams": ["KT Rolster", "DN SOOPers", "Griffin", "DRX"]
     },
     {
       "name": "Oddie",
       "region": "Latin America",
+      "role": "jungle",
       "titles": [],
       "teams": ["Lyon Gaming", "Isurus", "Rainbow7", "LYON"]
     },
     {
       "name": "SofM",
       "region": "Vietnam",
+      "role": "jungle",
       "titles": [],
       "teams": ["Full Louis", "LNG Esports", "Suning", "Weibo Gaming", "MGN Vikings"]
     },
     {
       "name": "Ignar",
       "region": "Korea",
+      "role": "support",
       "titles": [],
       "teams": [
         "KT Rolster",
@@ -1053,6 +1144,7 @@
     {
       "name": "Rekkles",
       "region": "Europe",
+      "role": "bot",
       "titles": [],
       "teams": ["Fnatic", "Alliance", "G2 Esports", "Karmine Corp", "Los Ratones"],
       "nickname": "Swedish Superman"
@@ -1060,42 +1152,49 @@
     {
       "name": "deokdam",
       "region": "Korea",
+      "role": "bot",
       "titles": [],
       "teams": ["Nongshim RedForce", "KT Rolster", "DN SOOPers"]
     },
     {
       "name": "Robo",
       "region": "Brazil",
+      "role": "top",
       "titles": [],
       "teams": ["paiN Gaming", "LOUD"]
     },
     {
       "name": "Svenskeren",
       "region": "North America",
+      "role": "jungle",
       "titles": [],
       "teams": ["Copenhagen Wolves", "SK Gaming", "Team SoloMid", "Cloud9", "Evil Geniuses"]
     },
     {
       "name": "GorillA",
       "region": "Korea",
+      "role": "support",
       "titles": [],
       "teams": ["Hanwha Life Esports", "Longzhu Gaming", "DRX", "Liiv SANDBOX", "BNK FEARX"]
     },
     {
       "name": "Humanoid",
       "region": "Europe",
+      "role": "mid",
       "titles": [],
       "teams": ["Splyce", "MAD Lions", "Fnatic", "Team Vitality"]
     },
     {
       "name": "Kuro",
       "region": "Korea",
+      "role": "mid",
       "titles": [],
       "teams": ["Hanwha Life Esports", "KT Rolster"]
     },
     {
       "name": "Ghost",
       "region": "Korea",
+      "role": "bot",
       "titles": [
         {
           "event": "Worlds",
@@ -1114,12 +1213,14 @@
     {
       "name": "Angel",
       "region": "China",
+      "role": "mid",
       "titles": [],
       "teams": ["TyLoo", "Suning", "Weibo Gaming", "EDward Gaming", "JD Gaming"]
     },
     {
       "name": "Bengi",
       "region": "Korea",
+      "role": "jungle",
       "titles": [
         {
           "event": "Worlds",
@@ -1140,6 +1241,7 @@
     {
       "name": "Perkz",
       "region": "Europe",
+      "role": "mid",
       "titles": [
         {
           "event": "MSI",

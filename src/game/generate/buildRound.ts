@@ -4,7 +4,9 @@ import type { Round } from '../puzzle';
 import { buildClueRound } from './buildClueRound';
 import { buildPickRound } from './buildPickRound';
 import { buildPlayerRound } from './buildPlayerRound';
-import { buildWinnerRound } from './buildWinnerRound';
+import { buildLogoRound } from './buildLogoRound';
+import { buildSkinLineRound } from './buildSkinLineRound';
+import { buildYearRound } from './buildYearRound';
 import type { GapBand } from './config';
 import type { Rng } from './random';
 
@@ -97,8 +99,12 @@ export function buildRound(
       return buildClueRound(entities, question, rng);
     case 'player':
       return buildPlayerRound(entities, question, rng);
-    case 'winner':
-      return buildWinnerRound(entities, question, rng);
+    case 'yearly':
+      return buildYearRound(entities, question, rng);
+    case 'skinLine':
+      return buildSkinLineRound(entities, question, rng);
+    case 'logo':
+      return buildLogoRound(entities, question, rng);
     case 'stat':
       return buildStatRound(entities, question, band, rng);
   }

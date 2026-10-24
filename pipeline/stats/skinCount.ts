@@ -5,11 +5,13 @@ const DEFAULT_SKIN_NUMBER = 0;
 /** Chromas and prestige editions are listed as "Name (Variant)" and are not counted as skins. */
 const VARIANT_NAME_PATTERN = /\)$/;
 
-/** Skins a player can buy: not the default one, and not chromas or prestige editions. */
+/** A skin a player can buy: not the default one, and not a chroma or prestige edition. */
+export function isPurchasableSkin(skin: ChampionDetail['skins'][number]): boolean {
+  return skin.num !== DEFAULT_SKIN_NUMBER && !VARIANT_NAME_PATTERN.test(skin.name);
+}
+
 export function countSkins(detail: ChampionDetail): number {
-  return detail.skins.filter(
-    (skin) => skin.num !== DEFAULT_SKIN_NUMBER && !VARIANT_NAME_PATTERN.test(skin.name),
-  ).length;
+  return detail.skins.filter(isPurchasableSkin).length;
 }
 
 export const skinCount: ChampionStat = {

@@ -37,6 +37,7 @@ import { withReferenceDate } from './stats/perYear';
 import { toStatMeta, type ItemStatInput } from './stats/types';
 import {
   findEntityProblems,
+  findEsportsSkinProblems,
   findQuestionListProblems,
   MIN_ABILITY_COUNT,
   MIN_CHAMPION_COUNT,
@@ -150,6 +151,7 @@ async function main(): Promise<void> {
   );
   const problems = [
     ...findEntityProblems('champion', champions, CHAMPION_STATS, MIN_CHAMPION_COUNT),
+    ...findEsportsSkinProblems(champions),
     ...findEntityProblems('item', items, ITEM_STATS, MIN_ITEM_COUNT),
     ...findEntityProblems('ability', abilities, ABILITY_STATS, MIN_ABILITY_COUNT),
     ...findQuestionListProblems(questions, {

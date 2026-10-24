@@ -85,7 +85,8 @@ function symbolFor(name: string): { kind: SymbolKind; url: string } | undefined 
  * and hint at the answer.
  */
 export function roundSymbols(round: Round): RoundSymbols | undefined {
-  if (round.subject !== 'text') return undefined;
+  // A round with a clue asks the player to recognise it; logos on the cards would answer it.
+  if (round.subject !== 'text' || round.clue !== undefined) return undefined;
   const symbols = round.optionIds.map(symbolFor);
   const [first] = symbols;
   if (first === undefined || symbols.some((symbol) => symbol?.kind !== first.kind)) {
@@ -97,4 +98,9 @@ export function roundSymbols(round: Round): RoundSymbols | undefined {
     kind: first.kind,
     urls: Object.fromEntries(round.optionIds.map((id, index) => [id, symbols[index]?.url ?? ''])),
   };
+}
+
+/** The image shown with the question of a clue round: the answer's team logo. */
+export function clueImageUrl(round: Round): string | undefined {
+  return round.clue === 'teamLogo' ? esportsImageUrl('teams', round.answerId) : undefined;
 }

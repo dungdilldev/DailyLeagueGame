@@ -272,6 +272,18 @@ Decisions (owner, 2026-10-24): the options are abilities (a new subject, like it
 - No `subcategory`, like the item questions, so each ability question is its own slot; with 8 more stat questions, items and abilities each come up on roughly half of the days.
 - Adding the questions changes the puzzle for every date, including today (see Generator changes move old puzzles).
 
+### Phase 5c15 - Esports variety (done)
+
+Decisions (owner, 2026-10-24): all four idea groups, and memorable moments in mixed formats.
+
+- [x] "By year" question kind (renamed from winners: `byYear: [{year, answer}]`, `buildYearRound`); new: Worlds runners-up (2011-2025), Finals MVP (2014-2025; sources disagree before that), final city (2011-2025)
+- [x] Fixed the Worlds winners list: it named 2013-2016 "SK Telecom T1" and 2023-2025 "T1", so "Who won in 2013?" could offer T1 as a wrong option. Every `byYear` list now uses one name per organisation
+- [x] Player questions: has won Worlds / MSI, has never won Worlds, made their name in a region (a wrong option never played for a team of that region's players), best known in a role (new required `role` field for all 102 players, unverified like the other web-sourced data; players known in two roles are excluded)
+- [x] Esports skins generated from Data Dragon skin names (`esportsSkinLines` on champions, SKT T1 and T1 merged, yearly Worlds skins included); replaces the hand-built esports skin list. New champion snapshot from 2026-10-25, so the question first appears that day
+- [x] "Which team does this logo belong to?": a logo shown with the question (`Round.clue`), plain names as options, 40 hand-picked teams with distinct logos
+- [x] 11 memorable moments (`subcategory: moments`): who, which team, which champion, which year
+- Mixed mode is now about 38% stats, 43% lore, 19% esports (was about 10% esports). Not done: region-specific moments and older or regional moments (the owner can add favourites; every fact needs a source)
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)

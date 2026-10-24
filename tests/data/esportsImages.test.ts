@@ -1,12 +1,14 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
+import questionFile from '../../data/questions.json';
 import {
   ESPORTS_IMAGE_DIRECTORY,
   esportsImagePath,
   esportsImages,
   type EsportsImageKind,
 } from '../../src/data/esportsImages';
+import { QuestionFileSchema } from '../../src/data/schema';
 
 const WEBP_SIGNATURE = 'WEBP';
 
@@ -22,6 +24,16 @@ describe('data/esportsImages.json', () => {
   const entries = (Object.keys(esportsImages) as EsportsImageKind[]).flatMap((kind) =>
     Object.keys(esportsImages[kind]).map((name) => ({ kind, name })),
   );
+
+  it('has a logo for every team of the logo question', () => {
+    const logoQuestions = QuestionFileSchema.parse(questionFile).questions.flatMap((question) =>
+      'logo' in question ? [question] : [],
+    );
+    expect(logoQuestions.length).toBeGreaterThan(0);
+    for (const { teams } of logoQuestions) {
+      expect(teams.filter((team) => !(team in esportsImages.teams))).toEqual([]);
+    }
+  });
 
   it('has a downloaded image for every entry (run `npm run images:download` if not)', () => {
     const missing = entries.filter(

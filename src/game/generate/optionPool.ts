@@ -26,8 +26,9 @@ export function optionPool(data: PuzzleData, question: Question): readonly Entit
         : question.players.flatMap(({ teams }) => teams);
     return [...new Set(names)].map(textOption);
   }
-  if (question.kind === 'winner') {
-    return [...new Set(question.winners.map(({ team }) => team))].map(textOption);
+  if (question.kind === 'logo') return question.teams.map(textOption);
+  if (question.kind === 'yearly') {
+    return [...new Set(question.byYear.map(({ answer }) => answer))].map(textOption);
   }
   if (question.subject === 'text') {
     return [...question.correct, ...question.wrong].map(textOption);

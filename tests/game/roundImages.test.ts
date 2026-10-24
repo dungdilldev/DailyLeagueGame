@@ -47,6 +47,13 @@ describe('roundImageUrls', () => {
     expect(urls.every((url) => url.endsWith('.webp'))).toBe(true);
   });
 
+  it("fetches only the answer's logo for a logo round, whose cards are plain names", () => {
+    const logoRound: Round = { ...round('text', ESPORTS_TEAMS), clue: 'teamLogo' };
+    const urls = roundImageUrls(logoRound, new Map());
+    expect(urls).toHaveLength(1);
+    expect(urls[0]).toContain('teams/t1.webp');
+  });
+
   it('has none for a text round without images', () => {
     expect(
       roundImageUrls(round('text', ['Wuju', 'Navori', 'Hirana Monastery']), new Map()),

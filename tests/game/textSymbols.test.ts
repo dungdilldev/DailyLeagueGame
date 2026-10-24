@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Round } from '../../src/game/puzzle';
-import { roundSymbols } from '../../src/game/textSymbols';
+import { clueImageUrl, roundSymbols } from '../../src/game/textSymbols';
 
 function textRound(optionIds: string[]): Round {
   return {
@@ -14,6 +14,24 @@ function textRound(optionIds: string[]): Round {
     values: {},
   };
 }
+
+describe('team logo clue', () => {
+  const teams = ['T1', 'Fnatic', 'Cloud9', 'G2 Esports'];
+  const logoRound: Round = { ...textRound(teams), questionId: 'teamByLogo', clue: 'teamLogo' };
+
+  it("shows the answer's logo with the question", () => {
+    expect(clueImageUrl(logoRound)).toContain('images/esports/teams/t1.webp');
+  });
+
+  it('shows no logos on the cards, which would answer the question', () => {
+    expect(roundSymbols(textRound(teams))).toBeDefined();
+    expect(roundSymbols(logoRound)).toBeUndefined();
+  });
+
+  it('shows nothing for rounds without a clue', () => {
+    expect(clueImageUrl(textRound(teams))).toBeUndefined();
+  });
+});
 
 describe('roundSymbols', () => {
   it('gives every option its crest when all of them have one', () => {

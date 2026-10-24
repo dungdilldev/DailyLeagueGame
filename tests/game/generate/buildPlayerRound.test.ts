@@ -5,20 +5,37 @@ import type { Entity } from '../../../src/data/schema';
 import { buildPlayerRound } from '../../../src/game/generate/buildPlayerRound';
 import { createRng } from '../../../src/game/generate/random';
 
-const player = (name: string, teams: string[]): Player => ({
+const player = (name: string, teams: string[], details: Partial<Player> = {}): Player => ({
   name,
   region: 'Korea',
+  role: 'mid',
   titles: [],
   teams,
+  ...details,
 });
+const worlds = [{ event: 'Worlds' as const, year: 2023 }];
+const msi = [{ event: 'MSI' as const, year: 2019 }];
 
 const players = [
-  { ...player('Faker', ['T1']), nickname: 'Unkillable Demon King' },
-  { ...player('Keria', ['DRX', 'T1']), nickname: 'The Genius Monster' },
-  player('Deft', ['DRX', 'KT Rolster']),
-  player('Uzi', ['Royal Never Give Up', 'Edward Gaming']),
-  { ...player('Caps', ['Fnatic', 'G2 Esports']), nickname: 'Baby Faker' },
-  player('Perkz', ['G2 Esports', 'Cloud9']),
+  player('Faker', ['T1'], { nickname: 'Unkillable Demon King', titles: worlds }),
+  player('Keria', ['DRX', 'T1'], {
+    nickname: 'The Genius Monster',
+    role: 'support',
+    titles: worlds,
+  }),
+  // A Korean who played in China: never a wrong option for "made their name in China".
+  player('Deft', ['DRX', 'KT Rolster', 'Edward Gaming'], { role: 'bot', titles: worlds }),
+  player('Uzi', ['Royal Never Give Up', 'Edward Gaming'], {
+    region: 'China',
+    role: 'bot',
+    titles: msi,
+  }),
+  player('Caps', ['Fnatic', 'G2 Esports'], {
+    nickname: 'Baby Faker',
+    region: 'Europe',
+    titles: msi,
+  }),
+  player('Perkz', ['G2 Esports', 'Cloud9'], { region: 'Europe', titles: msi }),
 ];
 
 const question = (ask: PlayerQuestion['ask']): PlayerQuestion => ({
@@ -29,10 +46,17 @@ const question = (ask: PlayerQuestion['ask']): PlayerQuestion => ({
   subject: 'text',
   label: 'Players and teams',
   ask,
+  ...(ask === 'playerWithTitle' || ask === 'playerWithoutTitle'
+    ? { event: 'Worlds' as const }
+    : {}),
   question: {
     playerByTeam: 'Which player has played for {team}?',
     teamByPlayer: 'Which team has {player} played for?',
     playerByNickname: 'Which player is nicknamed "{nickname}"?',
+    playerByRegion: 'Which player made their name in {region}?',
+    playerByRole: 'Which player is best known as a {role}?',
+    playerWithTitle: 'Which player has won Worlds?',
+    playerWithoutTitle: 'Which player has never won Worlds?',
   }[ask],
   players,
 });
@@ -103,9 +127,64 @@ describe('buildPlayerRound', () => {
   it('only quotes nicknames that exist', () => {
     const nobody = {
       ...question('playerByNickname'),
-      players: players.map(({ name, region, titles, teams }) => ({ name, region, titles, teams })),
+      players: players.map((p) => ({ ...p, nickname: undefined })),
     };
     expect(buildPlayerRound(allNames('playerByNickname'), nobody, createRng('s'))).toBeUndefined();
+  });
+
+  it('names a region and offers a player from it, never one who played for a team there', () => {
+    for (const seed of seeds) {
+      const round = buildPlayerRound(
+        allNames('playerByRegion'),
+        question('playerByRegion'),
+        createRng(seed),
+      );
+      const region = round?.question.match(/name in (.+)\?/)?.[1];
+      if (round === undefined) continue;
+      expect(players.find((p) => p.name === round.answerId)?.region).toBe(region);
+      const others = round.optionIds.filter((id) => id !== round.answerId);
+      expect(others.map((id) => players.find((p) => p.name === id)?.region)).not.toContain(region);
+      if (region === 'China') expect(others).not.toContain('Deft');
+    }
+  });
+
+  it('names a role in words and offers one player with it and three without', () => {
+    const roleNames = { mid: 'mid laner', support: 'support', bot: 'bot laner' };
+    for (const seed of seeds) {
+      const round = buildPlayerRound(
+        allNames('playerByRole'),
+        question('playerByRole'),
+        createRng(seed),
+      );
+      const named = round?.question.match(/known as a (.+)\?/)?.[1];
+      const roleOf = (id: string) => {
+        const role = players.find((p) => p.name === id)?.role;
+        return role && roleNames[role as keyof typeof roleNames];
+      };
+      expect(roleOf(round?.answerId ?? '')).toBe(named);
+      expect(round?.optionIds.filter((id) => roleOf(id) === named)).toHaveLength(1);
+    }
+  });
+
+  it('asks who has won the event, or who never has, with the other side as wrong options', () => {
+    const champions = ['Faker', 'Keria', 'Deft'];
+    for (const seed of seeds) {
+      const won = buildPlayerRound(
+        allNames('playerWithTitle'),
+        question('playerWithTitle'),
+        createRng(seed),
+      );
+      expect(champions).toContain(won?.answerId);
+      expect(won?.optionIds.filter((id) => champions.includes(id))).toHaveLength(1);
+      expect(won?.question).toBe('Which player has won Worlds?');
+      const never = buildPlayerRound(
+        allNames('playerWithoutTitle'),
+        question('playerWithoutTitle'),
+        createRng(seed),
+      );
+      expect(champions).not.toContain(never?.answerId);
+      expect(never?.optionIds.filter((id) => !champions.includes(id))).toHaveLength(1);
+    }
   });
 
   it('is deterministic for a seed', () => {

@@ -1,14 +1,19 @@
 import type { Entity } from '../data/schema';
 import type { Puzzle, Round } from './puzzle';
-import { roundSymbols } from './textSymbols';
+import { clueImageUrl, roundSymbols } from './textSymbols';
 
-/** Addresses of the images a round shows, in display order; options without an image add none. */
+/**
+ * Addresses of the images a round shows, in display order: the clue first, then the options;
+ * options without an image add none.
+ */
 export function roundImageUrls(round: Round, options: ReadonlyMap<string, Entity>): string[] {
   const symbols = roundSymbols(round);
-  return round.optionIds.flatMap((id) => {
+  const clue = clueImageUrl(round);
+  const optionUrls = round.optionIds.flatMap((id) => {
     const url = symbols?.urls[id] ?? options.get(id)?.iconUrl;
     return url === undefined ? [] : [url];
   });
+  return clue === undefined ? optionUrls : [clue, ...optionUrls];
 }
 
 /**

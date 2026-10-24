@@ -1,5 +1,5 @@
 import type { Question } from '../../src/data/questions';
-import type { Entity, StatSubject } from '../../src/data/schema';
+import type { Champion, Entity, StatSubject } from '../../src/data/schema';
 import type { StatBase } from '../stats/types';
 
 /** Sanity floors: counts far below the real totals mean a partial or failed fetch. */
@@ -13,6 +13,8 @@ export const MIN_ABILITY_COUNT = 400;
  * source broke, and fails the run.
  */
 export const MIN_STAT_COVERAGE = 0.95;
+/** About 70 champions have an esports skin; far fewer means Data Dragon's skin names changed. */
+export const MIN_CHAMPIONS_WITH_ESPORTS_SKINS = 40;
 /** Building a round needs four different values, so a stat needs comfortably more than that. */
 export const MIN_VALUES_PER_STAT = 8;
 
@@ -82,4 +84,14 @@ export function findQuestionListProblems(
       .filter((id) => !known.has(id))
       .map((id) => `Question "${question.id}" lists unknown ${question.subject} id "${id}"`);
   });
+}
+
+/** The esports skin question is generated from skin names, so a format change must fail the run. */
+export function findEsportsSkinProblems(champions: readonly Champion[]): string[] {
+  const withSkins = champions.filter(({ esportsSkinLines }) => esportsSkinLines !== undefined);
+  return withSkins.length >= MIN_CHAMPIONS_WITH_ESPORTS_SKINS
+    ? []
+    : [
+        `Only ${String(withSkins.length)} champions have an esports skin, expected at least ${String(MIN_CHAMPIONS_WITH_ESPORTS_SKINS)}`,
+      ];
 }
