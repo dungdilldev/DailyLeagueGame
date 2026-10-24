@@ -1,6 +1,13 @@
 import type { StatFormat, StatId, StatMeta } from '../../src/data/schema';
-import type { ChampionDetail, ChampionSummary, DataDragonItem } from '../sources/dataDragon';
+import type { WikiAbility } from '../abilities/parseAbility';
+import type {
+  ChampionDetail,
+  ChampionSummary,
+  DataDragonItem,
+  DataDragonSpell,
+} from '../sources/dataDragon';
 import type { WikiChampion } from '../sources/leagueWiki';
+import type { AbilitySlot } from '../sources/leagueWikiAbilities';
 import type { WikiItem } from '../sources/leagueWikiItems';
 
 export const DATA_DRAGON_SOURCE = 'data-dragon';
@@ -28,6 +35,18 @@ export interface ItemStatInput {
   goldValues: Readonly<Record<string, number>>;
 }
 
+/** Everything the pipeline knows about one champion ability (Q, W, E or R). */
+export interface AbilityStatInput {
+  /** Data Dragon champion id plus slot, e.g. "AhriQ". */
+  id: string;
+  championName: string;
+  slot: AbilitySlot;
+  /** For the icon. */
+  spell: DataDragonSpell;
+  /** The numbers, from the ability's wiki data template. */
+  wiki: WikiAbility;
+}
+
 export interface StatBase {
   id: StatId;
   /** Human-readable name, e.g. "Base health". */
@@ -50,6 +69,12 @@ export interface ChampionStat extends StatBase {
 export interface ItemStat extends StatBase {
   /** Returns undefined when the item does not have this stat. */
   extract: (input: ItemStatInput) => number | undefined;
+}
+
+/** A stat about abilities. */
+export interface AbilityStat extends StatBase {
+  /** Returns undefined when the ability has no clear value for this stat. */
+  extract: (input: AbilityStatInput) => number | undefined;
 }
 
 /** The part of a stat definition that is published to the client. */

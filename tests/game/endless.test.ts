@@ -6,7 +6,7 @@ import { realGameData, realPuzzleData } from '../support/realGameData';
 
 const data = realPuzzleData;
 const { questions } = realGameData;
-const everyone = [...data.champions, ...data.items];
+const everyone = [...data.champions, ...data.items, ...data.abilities];
 
 const ask = (index: number, filter = {}, seed = 'seed') =>
   buildEndlessQuestion(data, questions, seed, index, filter);
@@ -116,7 +116,7 @@ describe('buildEndlessQuestion', () => {
   });
 
   it('works without items, never asking about items', () => {
-    const withoutItems = { champions: data.champions, items: [] };
+    const withoutItems = { ...data, items: [] };
     for (let index = 0; index < 200; index++) {
       const question = buildEndlessQuestion(withoutItems, questions, 'seed', index);
       expect(question?.round.subject).not.toBe('item');

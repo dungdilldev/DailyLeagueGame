@@ -4,6 +4,7 @@ import questionFile from '../../data/questions.json';
 import { PlayerFileSchema } from '../../src/data/playerSchema';
 import { resolveQuestions, type GameData } from '../../src/data/questions';
 import {
+  AbilityDataFileSchema,
   ChampionDataFileSchema,
   ItemDataFileSchema,
   QuestionFileSchema,
@@ -18,13 +19,15 @@ function readJson(path: string): unknown {
 export function loadRealGameData(): GameData {
   const champions = ChampionDataFileSchema.parse(readJson('public/data/champions.json'));
   const items = ItemDataFileSchema.parse(readJson('public/data/items.json'));
+  const abilities = AbilityDataFileSchema.parse(readJson('public/data/abilities.json'));
   const { questions } = QuestionFileSchema.parse(questionFile);
   return {
     champions,
     items,
+    abilities,
     questions: resolveQuestions(
       questions,
-      { champion: champions.stats, item: items.stats },
+      { champion: champions.stats, item: items.stats, ability: abilities.stats },
       PlayerFileSchema.parse(playerFile).players,
     ),
   };

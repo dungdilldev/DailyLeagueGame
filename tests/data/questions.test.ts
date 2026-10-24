@@ -11,7 +11,7 @@ const stat = (id: string): StatMeta => ({
   format: { kind: 'number' },
   source: 'test',
 });
-const stats = { champion: [stat('hp')], item: [stat('cost')] };
+const stats = { champion: [stat('hp')], item: [stat('cost')], ability: [stat('manaCost')] };
 
 const template = {
   id: 'q',
@@ -288,9 +288,15 @@ describe('the question file in the repository', () => {
     expect(QuestionFileSchema.safeParse(questionFile).success).toBe(true);
   });
 
-  it('asks about champions or items matching the data the stat comes from', () => {
+  it('asks about champions, items or abilities matching the data the stat comes from', () => {
+    // Ability questions may narrow the noun down: "Which ultimate ...", "Which basic ability ...".
+    const nouns = {
+      champion: 'champion',
+      item: 'item',
+      ability: '(?:ability|basic ability|ultimate)',
+    };
     for (const question of questions) {
-      const noun = question.subject === 'item' ? 'item' : 'champion';
+      const noun = question.subject === 'text' ? '' : nouns[question.subject];
       // Text options can be anything (teams, players, cities), so only the opening is fixed.
       const pattern =
         question.subject === 'text'
@@ -308,6 +314,9 @@ describe('the question file in the repository', () => {
         realGameData.champions.snapshots.flatMap((s) => s.entities.map((e) => e.id)),
       ),
       item: new Set(realGameData.items.snapshots.flatMap((s) => s.entities.map((e) => e.id))),
+      ability: new Set(
+        realGameData.abilities.snapshots.flatMap((s) => s.entities.map((e) => e.id)),
+      ),
     };
     expect(findQuestionListProblems(questions, known)).toEqual([]);
   });

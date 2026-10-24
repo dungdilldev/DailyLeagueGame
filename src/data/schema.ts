@@ -5,15 +5,18 @@ export type StatId = string;
 
 const IsoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 
-/** What a question is about: each round compares champions with champions, or items with items. */
-export const StatSubjectSchema = z.enum(['champion', 'item']);
+/**
+ * What a question is about: each round compares champions with champions, items with items or
+ * abilities with abilities.
+ */
+export const StatSubjectSchema = z.enum(['champion', 'item', 'ability']);
 export type StatSubject = z.infer<typeof StatSubjectSchema>;
 
 /**
  * What the options of a round are. `text` options are written out in the question itself
  * (team names, players, cities): they have no data file and no icon, their id is their name.
  */
-export const OptionSubjectSchema = z.enum(['champion', 'item', 'text']);
+export const OptionSubjectSchema = z.enum(['champion', 'item', 'ability', 'text']);
 export type OptionSubject = z.infer<typeof OptionSubjectSchema>;
 
 /** How a stat's number is shown to the player. */
@@ -37,9 +40,12 @@ export const StatMetaSchema = z.object({
 });
 export type StatMeta = z.infer<typeof StatMetaSchema>;
 
-/** Something the player can pick: a champion or an item. */
+/** Something the player can pick: a champion, an item or an ability. */
 const EntityFields = {
-  /** Stable id: Data Dragon's champion id ("MissFortune") or item id ("3031"). */
+  /**
+   * Stable id: Data Dragon's champion id ("MissFortune"), item id ("3031") or champion id plus
+   * ability slot ("MissFortuneR").
+   */
   id: z.string().min(1),
   name: z.string().min(1),
   iconUrl: z.url(),
@@ -66,6 +72,10 @@ export type Champion = z.infer<typeof ChampionSchema>;
 export const ItemSchema = z.object(EntityFields);
 export type Item = z.infer<typeof ItemSchema>;
 
+/** A champion's Q, W, E or R; the name says whose ("Ahri Q · Orb of Deception"). */
+export const AbilitySchema = z.object(EntityFields);
+export type Ability = z.infer<typeof AbilitySchema>;
+
 /**
  * One data file's content as of one patch. A snapshot is used for puzzle days from
  * `effectiveFrom` on, so a data update never changes the puzzle of a day that has already started.
@@ -90,6 +100,7 @@ function dataFileSchema<T extends z.ZodType>(entity: T) {
 
 export const ChampionDataFileSchema = dataFileSchema(ChampionSchema);
 export const ItemDataFileSchema = dataFileSchema(ItemSchema);
+export const AbilityDataFileSchema = dataFileSchema(AbilitySchema);
 
 export interface Snapshot<T> {
   patch: string;
@@ -102,6 +113,7 @@ export interface DataFile<T> {
 }
 export type ChampionDataFile = DataFile<Champion>;
 export type ItemDataFile = DataFile<Item>;
+export type AbilityDataFile = DataFile<Ability>;
 
 const EntityIdListSchema = z.array(z.string().min(1)).min(1);
 

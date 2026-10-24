@@ -17,7 +17,7 @@ import { realGameData, realPuzzleData } from '../../support/realGameData';
 // it cannot produce valid puzzles.
 const data = realPuzzleData;
 const { questions } = realGameData;
-const everyone = [...data.champions, ...data.items];
+const everyone = [...data.champions, ...data.items, ...data.abilities];
 
 describe('difficulty config', () => {
   it('names a tier for every round', () => {
@@ -81,6 +81,7 @@ function textOptionsOf(question: Question | undefined): Set<string> {
 describe('buildPuzzle with champions and items', () => {
   const championIds = new Set(data.champions.map((champion) => champion.id));
   const itemIds = new Set(data.items.map((item) => item.id));
+  const abilityIds = new Set(data.abilities.map((ability) => ability.id));
   const days = Array.from({ length: 365 }, (_, offset) => addUtcDays('2026-01-01', offset));
   const puzzles = days.map((date) => buildPuzzle(date, data, questions));
 
@@ -89,12 +90,9 @@ describe('buildPuzzle with champions and items', () => {
       for (const round of puzzle.rounds) {
         // Text options (teams, cities) are written in the question, not in the data.
         const question = questions.find(({ id }) => id === round.questionId);
+        const idsBySubject = { champion: championIds, item: itemIds, ability: abilityIds };
         const allowed =
-          round.subject === 'text'
-            ? textOptionsOf(question)
-            : round.subject === 'item'
-              ? itemIds
-              : championIds;
+          round.subject === 'text' ? textOptionsOf(question) : idsBySubject[round.subject];
         expect(
           round.optionIds.every((id) => allowed.has(id)),
           `${puzzle.date} ${round.questionId}`,
@@ -106,15 +104,18 @@ describe('buildPuzzle with champions and items', () => {
     }
   });
 
-  it('asks about both champions and items over time', () => {
+  it('asks about champions, items and abilities over time', () => {
     const subjects = new Set(
       puzzles.flatMap((puzzle) => puzzle.rounds.map((round) => round.subject)),
     );
-    expect(subjects).toEqual(new Set(['champion', 'item', 'text']));
-    const itemRounds = puzzles
-      .flatMap((puzzle) => puzzle.rounds)
-      .filter((round) => round.subject === 'item');
-    expect(itemRounds.length).toBeGreaterThan(days.length / 2);
+    expect(subjects).toEqual(new Set(['champion', 'item', 'ability', 'text']));
+    // Each of the two has 8 of the stat questions, so each comes up on about every other day.
+    for (const subject of ['item', 'ability']) {
+      const rounds = puzzles
+        .flatMap((puzzle) => puzzle.rounds)
+        .filter((round) => round.subject === subject);
+      expect(rounds.length, subject).toBeGreaterThan(days.length / 3);
+    }
   });
 
   it('uses every question, or at least one question of every subcategory, in a year', () => {
@@ -132,11 +133,11 @@ describe('buildPuzzle with champions and items', () => {
   });
 
   it('builds puzzles without item questions when there are no items', () => {
-    const withoutItems = { champions: data.champions, items: [] };
+    const withoutItems = { ...data, items: [] };
     for (const date of days.slice(0, 60)) {
       const puzzle = buildPuzzle(date, withoutItems, questions);
       expect(puzzle.rounds.every((round) => round.subject !== 'item')).toBe(true);
-      expect(findPuzzleProblems(puzzle, data.champions, questions), date).toEqual([]);
+      expect(findPuzzleProblems(puzzle, everyone, questions), date).toEqual([]);
     }
   });
 });

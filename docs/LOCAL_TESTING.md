@@ -87,7 +87,7 @@ npm run data:refresh
 ```
 
 Fetches the latest champion data from Riot's Data Dragon and the LoL Wiki and updates
-`public/data/champions.json` and `public/data/items.json`. It needs an internet connection. If the
+`public/data/champions.json`, `public/data/items.json` and `public/data/abilities.json`. It needs an internet connection. If the
 data of a file did not change, that file stays the same. If it did change, the new data becomes a snapshot that starts tomorrow (UTC) and the
 previous one is kept, so today's puzzle does not change.
 
@@ -95,14 +95,14 @@ Afterwards run `npm test`: it generates a year of puzzles from the data and chec
 
 ## Troubleshooting
 
-| Problem                                     | Fix                                                                                            |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `Executable doesn't exist` in browser tests | Run `npx playwright install chromium`                                                          |
-| Port 5173 or 4173 already in use            | Stop the other dev server, or use `npm run dev -- --port 5200`                                 |
-| Page says "Something went wrong loading"    | `public/data/champions.json` or `items.json` is missing or invalid: run `npm run data:refresh` |
-| Champion icons are blank                    | They load from Riot's CDN, so check your internet connection                                   |
-| Data refresh fails on the wiki step         | The wiki may be down or changed its format; the error says which. Retry later                  |
-| You see an already-finished day             | Reset your progress (see above)                                                                |
+| Problem                                     | Fix                                                                                                              |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Executable doesn't exist` in browser tests | Run `npx playwright install chromium`                                                                            |
+| Port 5173 or 4173 already in use            | Stop the other dev server, or use `npm run dev -- --port 5200`                                                   |
+| Page says "Something went wrong loading"    | `public/data/champions.json`, `items.json` or `abilities.json` is missing or invalid: run `npm run data:refresh` |
+| Champion icons are blank                    | They load from Riot's CDN, so check your internet connection                                                     |
+| Data refresh fails on the wiki step         | The wiki may be down or changed its format; the error says which. Retry later                                    |
+| You see an already-finished day             | Reset your progress (see above)                                                                                  |
 
 ## What cannot be tested locally
 

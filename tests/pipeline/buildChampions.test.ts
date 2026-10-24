@@ -183,7 +183,11 @@ describe('findQuestionListProblems', () => {
     },
     ...overrides,
   });
-  const known = { champion: new Set(['Ahri', 'Zed']), item: new Set(['3031']) };
+  const known = {
+    champion: new Set(['Ahri', 'Zed']),
+    item: new Set(['3031']),
+    ability: new Set(['AhriQ']),
+  };
 
   it('accepts lists that only name champions or items that exist', () => {
     const questions = [question({ correct: ['Ahri'], wrong: ['Zed'], exclude: [] })];

@@ -7,16 +7,18 @@ function textOption(name: string): Entity {
   return { id: name, name, iconUrl: '', stats: {} };
 }
 
-/** The champions or items a question of this subject compares. */
+/** The champions, items or abilities a question of this subject compares. */
 function entitiesFor(data: PuzzleData, subject: StatSubject): readonly Entity[] {
-  return subject === 'item' ? data.items : data.champions;
+  const bySubject: Record<StatSubject, readonly Entity[]> = {
+    champion: data.champions,
+    item: data.items,
+    ability: data.abilities,
+  };
+  return bySubject[subject];
 }
 
 /** Everything a question may pick its options from, before anything is ruled out. */
 export function optionPool(data: PuzzleData, question: Question): readonly Entity[] {
-  if (question.kind === 'pick' && question.subject === 'text') {
-    return [...question.correct, ...question.wrong].map(textOption);
-  }
   if (question.kind === 'player') {
     const names =
       question.ask !== 'teamByPlayer'
@@ -27,5 +29,8 @@ export function optionPool(data: PuzzleData, question: Question): readonly Entit
   if (question.kind === 'winner') {
     return [...new Set(question.winners.map(({ team }) => team))].map(textOption);
   }
-  return entitiesFor(data, question.subject === 'item' ? 'item' : 'champion');
+  if (question.subject === 'text') {
+    return [...question.correct, ...question.wrong].map(textOption);
+  }
+  return entitiesFor(data, question.subject);
 }

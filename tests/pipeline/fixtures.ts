@@ -23,6 +23,10 @@ export function makeDetail(id: string, overrides: Partial<ChampionDetail> = {}):
   return {
     id,
     skins: [{ num: 0, name: 'default' }],
+    spells: ['Q', 'W', 'E', 'R'].map((slot) => ({
+      name: `${id} ${slot}`,
+      image: { full: `${id}${slot}.png` },
+    })),
     stats: {
       hp: 600,
       hpperlevel: 100,

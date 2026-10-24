@@ -5,6 +5,8 @@ import type { StatBase } from '../stats/types';
 /** Sanity floors: counts far below the real totals mean a partial or failed fetch. */
 export const MIN_CHAMPION_COUNT = 100;
 export const MIN_ITEM_COUNT = 30;
+/** About 170 champions with four abilities each, of which most have at least one clear stat. */
+export const MIN_ABILITY_COUNT = 400;
 /**
  * Share of entities that must have each stat, unless the stat says otherwise. Not 100%: a
  * champion released today may be missing from a secondary source. Near-zero coverage means a
@@ -25,7 +27,7 @@ function findDuplicateIds(label: string, entities: readonly { id: string }[]): s
 }
 
 /**
- * Returns human-readable problems with one data file's entities (all champions or all items);
+ * Returns human-readable problems with one data file's entities (all champions, items or abilities);
  * empty means the data is safe to publish.
  */
 export function findEntityProblems(
@@ -59,7 +61,7 @@ export function findEntityProblems(
 
 /**
  * Problems in the hand-written questions that the data can reveal: explicit lists naming a
- * champion or item that no longer exists (e.g. removed from the game). Stat ids are checked when
+ * champion, item or ability that no longer exists (e.g. removed from the game). Stat ids are checked when
  * the questions are resolved.
  */
 export function findQuestionListProblems(

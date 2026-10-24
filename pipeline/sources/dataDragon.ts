@@ -38,9 +38,20 @@ export type ChampionSummary = z.infer<typeof ChampionSummarySchema>;
 
 const SummaryFileSchema = z.object({ data: z.record(z.string(), ChampionSummarySchema) });
 
+const SpellSchema = z.object({
+  name: z.string(),
+  image: z.object({ full: z.string() }),
+});
+export type DataDragonSpell = z.infer<typeof SpellSchema>;
+
+/** Q, W, E and R; any other number would break the slot order. */
+const SPELLS_PER_CHAMPION = 4;
+
 /** Per-champion detail: only the fields stat modules read. */
 const ChampionDetailSchema = z.object({
   id: z.string(),
+  /** In slot order Q, W, E, R. A transforming champion's spell is named after both forms. */
+  spells: z.array(SpellSchema).length(SPELLS_PER_CHAMPION),
   skins: z.array(z.object({ num: z.number(), name: z.string() })),
   stats: z.object({
     hp: z.number(),
@@ -87,6 +98,10 @@ export async function fetchChampionDetail(
 
 export function championIconUrl(version: string, summary: ChampionSummary): string {
   return `${BASE_URL}/cdn/${version}/img/champion/${summary.image.full}`;
+}
+
+export function abilityIconUrl(version: string, spell: DataDragonSpell): string {
+  return `${BASE_URL}/cdn/${version}/img/spell/${spell.image.full}`;
 }
 
 const ItemSchema = z.object({

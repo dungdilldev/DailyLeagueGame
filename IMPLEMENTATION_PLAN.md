@@ -35,7 +35,7 @@ pipeline/validate -> sanity checks, fail loudly
 pipeline/snapshots-> new data becomes a snapshot effective from the next UTC day
    |
    v
-public/data/champions.json + items.json  (stats + snapshots; committed only when data changes)
+public/data/champions.json + items.json + abilities.json  (stats + snapshots; committed only when data changes)
 data/questions.json  (hand-edited question templates, bundled into the app)
    |
    v
@@ -260,6 +260,18 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - Not on the wiki: a "western continent" (the page names Valoran north, Shurima south, Camavor east, Arctic as the north pole), so there is no such question
 - Open: nothing checks that a wrong option is unrelated to the event. Review lists when the wiki changes.
 
+### Phase 5c14 - Ability questions (done)
+
+Decisions (owner, 2026-10-24): the options are abilities (a new subject, like items), all numbers at max rank, four groups of questions.
+
+- [x] Abilities as a third data file, `abilities.json` (655 abilities on patch 16.21.1), with its own snapshots; cards show "Ahri Q · Orb of Deception" with Data Dragon's spell icon
+- [x] Source: each ability's wiki data template (`Template:Data <Champion>/<Slot>`), fetched in batches; the batched page fetch is shared with the patch history source (`leagueWikiPages.ts`)
+- [x] 8 stat questions: base damage (basic abilities 178, ultimates 48), AP ratio (158), bonus AD ratio (62), total AD ratio (22), longest cooldown (basic 478, ultimates 166), mana cost (513)
+- [x] Only unarguable values: one champion damage line per ability, no formula ratios, no cooldown for abilities with charges, mana-only costs, wiki and Data Dragon names must agree (see CLAUDE.md, Abilities)
+- No health-ratio question: only Volibear W has a damage line that scales with the champion's own health. Range was looked at and dropped (cast range, effect range and dash distance are mixed in one field, plus "Global").
+- No `subcategory`, like the item questions, so each ability question is its own slot; with 8 more stat questions, items and abilities each come up on roughly half of the days.
+- Adding the questions changes the puzzle for every date, including today (see Generator changes move old puzzles).
+
 ### Phase 5d - Previous days (done)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)
@@ -340,14 +352,14 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 **A. Domain and hosting**
 
-- [X] Point the domain at the host (GitHub Pages custom domain: `public/CNAME` plus DNS records, enable HTTPS)
-- [X] Check that `base: './'`, the page links and the e2e tests still work on the custom domain
-- [X] Redirect or retire the old `github.io` address so the domain is the single canonical site (add `<link rel="canonical">` to every page)
+- [x] Point the domain at the host (GitHub Pages custom domain: `public/CNAME` plus DNS records, enable HTTPS)
+- [x] Check that `base: './'`, the page links and the e2e tests still work on the custom domain
+- [x] Redirect or retire the old `github.io` address so the domain is the single canonical site (add `<link rel="canonical">` to every page)
 
 **B. Get approved (can run in parallel with C)**
 
-- [X] Content check before applying: how-to-play, about and privacy pages are live and linked (done in Phase 7); no broken links; a visible contact address
-- [X] Create the AdSense account, add the site, add the verification snippet/`ads.txt` as instructed
+- [x] Content check before applying: how-to-play, about and privacy pages are live and linked (done in Phase 7); no broken links; a visible contact address
+- [x] Create the AdSense account, add the site, add the verification snippet/`ads.txt` as instructed
 - [ ] Wait for review (days to weeks). If rejected as "low value content", add more real text (for example a short page per game mode or a champion-trivia blog section), then reapply
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**

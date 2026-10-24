@@ -1,5 +1,5 @@
 import type { Question } from '../../data/questions';
-import type { Champion, Item } from '../../data/schema';
+import type { Ability, Champion, Item } from '../../data/schema';
 import type { Puzzle, Round } from '../puzzle';
 import { buildRound } from './buildRound';
 import { optionPool } from './optionPool';
@@ -15,6 +15,7 @@ import { createRng, type Rng } from './random';
 export interface PuzzleData {
   champions: readonly Champion[];
   items: readonly Item[];
+  abilities: readonly Ability[];
 }
 
 function firstSuccessful<T, R>(
@@ -68,7 +69,7 @@ function tryBuildRounds(
   rng: Rng,
 ): Round[] | undefined {
   const rounds: Round[] = [];
-  // Ids of champions and items cannot clash (names vs. numbers), so one set serves both.
+  // Ids cannot clash across subjects (names, numbers, name plus slot), so one set serves all.
   const usedIds = new Set<string>();
   let remainingQuestions = orderBySlot(questions, rng);
 

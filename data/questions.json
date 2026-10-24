@@ -166,6 +166,62 @@
       "question": "Which item gives the most ability haste?"
     },
     {
+      "id": "basicAbilityDamage",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "basicAbilityDamage",
+      "question": "Which basic ability deals the most base damage at max rank?"
+    },
+    {
+      "id": "ultimateDamage",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "ultimateDamage",
+      "question": "Which ultimate deals the most base damage at max rank?"
+    },
+    {
+      "id": "abilityApRatio",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "abilityApRatio",
+      "question": "Which ability has the highest AP ratio at max rank?"
+    },
+    {
+      "id": "abilityBonusAdRatio",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "abilityBonusAdRatio",
+      "question": "Which ability has the highest bonus AD ratio at max rank?"
+    },
+    {
+      "id": "abilityAdRatio",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "abilityAdRatio",
+      "question": "Which ability has the highest total AD ratio at max rank?"
+    },
+    {
+      "id": "basicAbilityCooldown",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "basicAbilityCooldown",
+      "question": "Which basic ability has the longest cooldown at max rank?"
+    },
+    {
+      "id": "ultimateCooldown",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "ultimateCooldown",
+      "question": "Which ultimate has the longest cooldown at max rank?"
+    },
+    {
+      "id": "abilityManaCost",
+      "category": "stats",
+      "difficulty": "variable",
+      "stat": "abilityManaCost",
+      "question": "Which ability costs the most mana at max rank?"
+    },
+    {
       "id": "isYordle",
       "category": "lore",
       "difficulty": "easy",
@@ -188,16 +244,7 @@
         "Fizz",
         "Vex"
       ],
-      "wrong": [
-        "Annie",
-        "Nunu",
-        "Rammus",
-        "Amumu",
-        "Milio",
-        "Yuumi",
-        "Smolder",
-        "Twitch"
-      ]
+      "wrong": ["Annie", "Nunu", "Rammus", "Amumu", "Milio", "Yuumi", "Smolder", "Twitch"]
     },
     {
       "id": "isFromTheVoid",

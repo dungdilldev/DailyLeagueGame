@@ -71,10 +71,10 @@ describe('createDailyPuzzle', () => {
         const date = addUtcDays('2026-01-01', offset);
         const { puzzle } = createDailyPuzzle(realGameData, date, mode);
         expect(puzzle.rounds, `${mode} ${date}`).toHaveLength(expected);
-        const { champions, items } = puzzleDataFor(realGameData, date);
+        const { champions, items, abilities } = puzzleDataFor(realGameData, date);
         const problems = findPuzzleProblems(
           puzzle,
-          [...champions, ...items],
+          [...champions, ...items, ...abilities],
           realGameData.questions,
           ROUND_GAP_BANDS.slice(0, expected),
         );

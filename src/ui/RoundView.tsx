@@ -12,7 +12,7 @@ interface RoundViewProps {
   roundNumber: number;
   /** Number of rounds in the day; undefined in the endless mode, which has no end. */
   totalRounds: number | undefined;
-  /** The champions or items of this round's subject, by id. */
+  /** The champions, items or abilities of this round's subject, by id. */
   options: ReadonlyMap<string, Entity>;
   /** Set once the player has answered; switches the view to the reveal. */
   chosenId: string | undefined;
@@ -26,6 +26,7 @@ interface RoundViewProps {
 const SUBJECT_LABELS: Record<Round['subject'], string | undefined> = {
   champion: 'Champions',
   item: 'Items',
+  ability: 'Abilities',
   text: undefined,
 };
 

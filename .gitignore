@@ -1,5 +1,6 @@
 node_modules/
 dist/
+dist-ads-test/
 coverage/
 *.log
 .env

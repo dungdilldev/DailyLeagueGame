@@ -24,7 +24,12 @@ const champions = new Map<string, Entity>([
   ['Ahri', champion('Ahri', 'https://icons.test/Ahri.png')],
   ['Zed', champion('Zed', 'https://icons.test/Zed.png')],
 ]);
-const entities = { champion: champions, item: new Map<string, Entity>(), text: new Map() };
+const entities = {
+  champion: champions,
+  item: new Map<string, Entity>(),
+  ability: new Map<string, Entity>(),
+  text: new Map<string, Entity>(),
+};
 
 const ESPORTS_TEAMS = ['T1', 'Gen.G', 'Cloud9', 'Fnatic'];
 

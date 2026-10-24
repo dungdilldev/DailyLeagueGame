@@ -1,5 +1,6 @@
 import type { Player } from './playerSchema';
 import type {
+  AbilityDataFile,
   ChampionDataFile,
   ClueQuestionTemplate,
   ItemDataFile,
@@ -11,11 +12,12 @@ import type {
   StatSubject,
   WinnerQuestionTemplate,
 } from './schema';
+import { StatSubjectSchema } from './schema';
 
 /** A question about the highest value of a stat, tied to the stat it asks about. */
 export interface StatQuestion extends StatQuestionTemplate {
   kind: 'stat';
-  /** Whether the options are champions or items; follows from the data file holding the stat. */
+  /** Whether the options are champions, items or abilities; follows from the data file holding the stat. */
   subject: StatSubject;
   statMeta: StatMeta;
 }
@@ -54,7 +56,7 @@ export function questionLabel(question: Question): string {
 type StatsBySubject = Record<StatSubject, readonly StatMeta[]>;
 
 function resolveStatQuestion(template: StatQuestionTemplate, stats: StatsBySubject): StatQuestion {
-  for (const subject of ['champion', 'item'] as const) {
+  for (const subject of StatSubjectSchema.options) {
     const statMeta = stats[subject].find((stat) => stat.id === template.stat);
     if (statMeta) return { ...template, kind: 'stat', subject, statMeta };
   }
@@ -62,7 +64,7 @@ function resolveStatQuestion(template: StatQuestionTemplate, stats: StatsBySubje
 }
 
 /**
- * Throws if a stat question names a stat that neither data file defines. `players` are what
+ * Throws if a stat question names a stat that no data file defines. `players` are what
  * the player questions are built from.
  */
 export function resolveQuestions(
@@ -79,9 +81,10 @@ export function resolveQuestions(
   });
 }
 
-/** Everything the game needs: both data files and the questions asked about them. */
+/** Everything the game needs: the data files and the questions asked about them. */
 export interface GameData {
   champions: ChampionDataFile;
   items: ItemDataFile;
+  abilities: AbilityDataFile;
   questions: Question[];
 }

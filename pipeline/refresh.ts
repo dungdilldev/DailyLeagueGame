@@ -6,13 +6,17 @@ import questionFile from '../data/questions.json';
 import { PlayerFileSchema } from '../src/data/playerSchema';
 import { resolveQuestions } from '../src/data/questions';
 import {
+  AbilityDataFileSchema,
   ChampionDataFileSchema,
   ItemDataFileSchema,
   QuestionFileSchema,
   type DataFile,
   type Entity,
+  type StatMeta,
 } from '../src/data/schema';
 import { formatUtcDate } from '../src/game/date';
+import { collectAbilities } from './abilities/collectAbilities';
+import { buildAbilities } from './buildAbilities';
 import { buildChampions } from './buildChampions';
 import { buildItems } from './buildItems';
 import { selectItems } from './items/selectItems';
@@ -25,20 +29,23 @@ import {
   fetchLatestVersion,
 } from './sources/dataDragon';
 import { buildWikiLookup, fetchText, fetchWikiChampions } from './sources/leagueWiki';
+import { fetchAbilityTemplates } from './sources/leagueWikiAbilities';
 import { fetchWikiItemData } from './sources/leagueWikiItems';
 import { fetchPatchCounts } from './sources/leagueWikiPatchHistory';
-import { CHAMPION_STATS, ITEM_STATS } from './stats';
+import { ABILITY_STATS, CHAMPION_STATS, ITEM_STATS } from './stats';
 import { withReferenceDate } from './stats/perYear';
 import { toStatMeta, type ItemStatInput } from './stats/types';
 import {
   findEntityProblems,
   findQuestionListProblems,
+  MIN_ABILITY_COUNT,
   MIN_CHAMPION_COUNT,
   MIN_ITEM_COUNT,
 } from './validate/gameData';
 
 const CHAMPIONS_PATH = path.resolve('public/data/champions.json');
 const ITEMS_PATH = path.resolve('public/data/items.json');
+const ABILITIES_PATH = path.resolve('public/data/abilities.json');
 const CONCURRENCY = 8;
 
 /** Runs `task` over `items` with a bounded number of requests in flight, keeping input order. */
@@ -87,6 +94,24 @@ async function writeJsonAtomically(filePath: string, data: unknown): Promise<voi
   await rename(tempPath, filePath);
 }
 
+/** A data file with the freshly built entities folded into its published snapshots. */
+async function updatedDataFile<T extends Entity>(
+  filePath: string,
+  schema: ZodType<DataFile<T>>,
+  stats: StatMeta[],
+  entities: T[],
+  { version, today }: { version: string; today: string },
+): Promise<DataFile<T>> {
+  return schema.parse({
+    stats,
+    snapshots: mergeSnapshots(
+      await readExistingSnapshots(filePath, schema),
+      { patch: version, entities },
+      today,
+    ),
+  });
+}
+
 async function main(): Promise<void> {
   const version = await fetchLatestVersion(fetchJson);
   console.log(`Data Dragon version ${version}`);
@@ -107,21 +132,30 @@ async function main(): Promise<void> {
     wikiItems.items,
   ).map(({ item, wiki }) => ({ item, wiki, goldValues: wikiItems.goldValues }));
 
+  const abilityTemplates = await fetchAbilityTemplates(summaries.map((summary) => summary.name));
+  const abilityInputs = championInputs.flatMap(({ summary, detail }) =>
+    collectAbilities(summary, detail, abilityTemplates.get(summary.name) ?? {}),
+  );
+
   const championStats = CHAMPION_STATS.map(toStatMeta);
   const itemStats = ITEM_STATS.map(toStatMeta);
+  const abilityStats = ABILITY_STATS.map(toStatMeta);
   const champions = buildChampions(withReferenceDate(championInputs), version, CHAMPION_STATS);
   const items = buildItems(itemInputs, version, ITEM_STATS);
+  const abilities = buildAbilities(abilityInputs, version, ABILITY_STATS);
   const questions = resolveQuestions(
     QuestionFileSchema.parse(questionFile).questions,
-    { champion: championStats, item: itemStats },
+    { champion: championStats, item: itemStats, ability: abilityStats },
     PlayerFileSchema.parse(playerFile).players,
   );
   const problems = [
     ...findEntityProblems('champion', champions, CHAMPION_STATS, MIN_CHAMPION_COUNT),
     ...findEntityProblems('item', items, ITEM_STATS, MIN_ITEM_COUNT),
+    ...findEntityProblems('ability', abilities, ABILITY_STATS, MIN_ABILITY_COUNT),
     ...findQuestionListProblems(questions, {
       champion: new Set(champions.map(({ id }) => id)),
       item: new Set(items.map(({ id }) => id)),
+      ability: new Set(abilities.map(({ id }) => id)),
     }),
   ];
   if (problems.length > 0) {
@@ -129,29 +163,39 @@ async function main(): Promise<void> {
   }
 
   const today = formatUtcDate(new Date());
-  const championFile = ChampionDataFileSchema.parse({
-    stats: championStats,
-    snapshots: mergeSnapshots(
-      await readExistingSnapshots(CHAMPIONS_PATH, ChampionDataFileSchema),
-      { patch: version, entities: champions },
-      today,
-    ),
-  });
-  const itemFile = ItemDataFileSchema.parse({
-    stats: itemStats,
-    snapshots: mergeSnapshots(
-      await readExistingSnapshots(ITEMS_PATH, ItemDataFileSchema),
-      { patch: version, entities: items },
-      today,
-    ),
-  });
+  const fresh = { version, today };
+  const files = [
+    {
+      name: 'champions',
+      path: CHAMPIONS_PATH,
+      file: await updatedDataFile(
+        CHAMPIONS_PATH,
+        ChampionDataFileSchema,
+        championStats,
+        champions,
+        fresh,
+      ),
+    },
+    {
+      name: 'items',
+      path: ITEMS_PATH,
+      file: await updatedDataFile(ITEMS_PATH, ItemDataFileSchema, itemStats, items, fresh),
+    },
+    {
+      name: 'abilities',
+      path: ABILITIES_PATH,
+      file: await updatedDataFile(
+        ABILITIES_PATH,
+        AbilityDataFileSchema,
+        abilityStats,
+        abilities,
+        fresh,
+      ),
+    },
+  ];
 
-  await writeJsonAtomically(CHAMPIONS_PATH, championFile);
-  await writeJsonAtomically(ITEMS_PATH, itemFile);
-  for (const [name, file] of [
-    ['champions', championFile],
-    ['items', itemFile],
-  ] as const) {
+  for (const { path: filePath, file } of files) await writeJsonAtomically(filePath, file);
+  for (const { name, file } of files) {
     for (const snapshot of file.snapshots) {
       console.log(
         `${name} snapshot patch ${snapshot.patch}: ${String(snapshot.entities.length)} entries, effective from ${snapshot.effectiveFrom}`,

@@ -109,8 +109,9 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
       <h2 id="endless-heading">Endless mode</h2>
       <p class="endless__note">
         Random questions for testing. Nothing is saved and nothing counts towards your streak. Data
-        from champion patch {newestSnapshot(data.champions.snapshots).patch} and item patch{' '}
-        {newestSnapshot(data.items.snapshots).patch}.
+        from champion patch {newestSnapshot(data.champions.snapshots).patch}, item patch{' '}
+        {newestSnapshot(data.items.snapshots).patch} and ability patch{' '}
+        {newestSnapshot(data.abilities.snapshots).patch}.
       </p>
 
       <div class="endless__controls">

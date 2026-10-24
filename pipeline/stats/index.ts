@@ -1,4 +1,14 @@
 import {
+  abilityAdRatio,
+  abilityApRatio,
+  abilityBonusAdRatio,
+  abilityManaCost,
+  basicAbilityCooldown,
+  basicAbilityDamage,
+  ultimateCooldown,
+  ultimateDamage,
+} from './abilityStats';
+import {
   armor,
   attackDamage,
   attackRange,
@@ -23,7 +33,7 @@ import { patchesPerYear } from './patchesPerYear';
 import { releaseDate } from './releaseDate';
 import { skinCount } from './skinCount';
 import { skinsPerYear } from './skinsPerYear';
-import type { ChampionStat, ItemStat } from './types';
+import type { AbilityStat, ChampionStat, ItemStat } from './types';
 
 /** Every stat stored in champions.json. Adding one = one new definition + one line here. */
 export const CHAMPION_STATS: readonly ChampionStat[] = [
@@ -52,4 +62,16 @@ export const ITEM_STATS: readonly ItemStat[] = [
   itemArmor,
   itemMagicResist,
   itemAbilityHaste,
+];
+
+/** Every stat stored in abilities.json. */
+export const ABILITY_STATS: readonly AbilityStat[] = [
+  basicAbilityDamage,
+  ultimateDamage,
+  abilityApRatio,
+  abilityBonusAdRatio,
+  abilityAdRatio,
+  basicAbilityCooldown,
+  ultimateCooldown,
+  abilityManaCost,
 ];

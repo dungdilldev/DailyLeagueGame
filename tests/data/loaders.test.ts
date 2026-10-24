@@ -14,23 +14,32 @@ const respond =
 const readData = (name: string): unknown =>
   JSON.parse(readFileSync(`public/data/${name}.json`, 'utf8'));
 const realChampions = readData('champions');
-const realItems = readData('items');
+const realFileContents: Record<string, unknown> = {
+  'champions.json': realChampions,
+  'items.json': readData('items'),
+  'abilities.json': readData('abilities'),
+};
 
 /** Answers each data file with its real content. */
 const realFiles: HttpFetcher = (url) =>
-  respond(200, url.endsWith('champions.json') ? realChampions : realItems)(url);
+  respond(200, realFileContents[url.split('/').at(-1) ?? ''])(url);
 
 describe('loadGameData', () => {
-  it('requests both data files relative to the base url and validates them', async () => {
+  it('requests every data file relative to the base url and validates them', async () => {
     const urls: string[] = [];
     const fetcher: HttpFetcher = (url) => {
       urls.push(url);
       return realFiles(url);
     };
     const data = await loadGameData(fetcher, './');
-    expect(urls.sort()).toEqual(['./data/champions.json', './data/items.json']);
+    expect(urls.sort()).toEqual([
+      './data/abilities.json',
+      './data/champions.json',
+      './data/items.json',
+    ]);
     expect(data.champions.snapshots.length).toBeGreaterThan(0);
     expect(data.items.snapshots.length).toBeGreaterThan(0);
+    expect(data.abilities.snapshots.length).toBeGreaterThan(0);
     expect(data.questions.length).toBeGreaterThan(5);
   });
 

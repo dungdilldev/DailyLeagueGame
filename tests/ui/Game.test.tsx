@@ -28,7 +28,12 @@ const itemNames: Record<string, string> = {
 const items = new Map<string, Entity>(
   ITEM_IDS.map((id) => [id, { ...entity(id), name: itemNames[id] ?? id }]),
 );
-const entities = { champion: champions, item: items, text: new Map<string, Entity>() };
+const entities = {
+  champion: champions,
+  item: items,
+  ability: new Map<string, Entity>(),
+  text: new Map<string, Entity>(),
+};
 
 const makeRound = (statLabel: string, answerId: string): Round => ({
   questionId: statLabel,
