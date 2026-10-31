@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   addUtcDays,
   formatCountdown,
+  formatDayLabel,
   formatUtcDate,
   isValidUtcDate,
   msUntilNextUtcDay,
@@ -61,5 +62,15 @@ describe('isValidUtcDate', () => {
     ]) {
       expect(isValidUtcDate(value), value).toBe(false);
     }
+  });
+});
+
+describe('formatDayLabel', () => {
+  it('writes the day out with its weekday', () => {
+    expect(formatDayLabel('2026-10-24')).toBe('Sat, Oct 24, 2026');
+  });
+
+  it('reads the date in UTC, so no time zone moves it to a neighbouring day', () => {
+    expect(formatDayLabel('2026-01-01')).toBe('Thu, Jan 1, 2026');
   });
 });
