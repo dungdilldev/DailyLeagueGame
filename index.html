@@ -3,19 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // The game used to live at this address: old and shared links (?category=, ?date=, ...)
+      // still open it. Inline, so it runs before anything is drawn.
+      (function () {
+        const GAME_PARAMS = ['category', 'date', 'mode', 'seed'];
+        const params = new URLSearchParams(window.location.search);
+        if (GAME_PARAMS.some((name) => params.has(name))) {
+          window.location.replace('play.html' + window.location.search);
+        }
+      })();
+    </script>
     <meta
       name="description"
-      content="A daily League of Legends trivia game: five rounds, four options each, pick the right one."
+      content="Summoner's Quiz is a free daily League of Legends trivia game. Pick a mode (stats, lore, esports or mixed) and answer five rounds, four options each."
     />
     <meta name="theme-color" content="#010a13" />
+    <link rel="canonical" href="https://summonersquiz.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://summonersquiz.com/" />
+    <meta property="og:title" content="Summoner's Quiz - daily League of Legends trivia" />
+    <meta
+      property="og:description"
+      content="Five rounds a day about champion stats, Runeterra lore and esports history. Same puzzle for everyone, new every day."
+    />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21Z' fill='%230a1428' stroke='%23c8aa6e' stroke-width='3'/%3E%3Cpath d='M24 14 33 24 24 34 15 24Z' fill='%23c8aa6e'/%3E%3C/svg%3E"
     />
-    <title>Summoner&apos;s Quiz</title>
+    <title>Summoner&apos;s Quiz - daily League of Legends trivia</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="app">
+      <!--include:header-->
+      <main class="info landing">
+        <section class="landing__hero">
+          <h1>Test your League of Legends knowledge, every day</h1>
+          <p>
+            Five rounds, four options each, one right answer. Everyone gets the same puzzle, and a
+            new one appears every day at midnight UTC.
+          </p>
+          <div id="landing-countdown">
+            <p class="countdown">New puzzle every day at 00:00 UTC.</p>
+          </div>
+        </section>
+
+        <h2 class="visually-hidden">Choose a mode</h2>
+        <nav class="mode-cards" aria-label="Game modes">
+          <a class="mode-card" href="play.html" data-mode="stats">
+            <span class="mode-card__title">Stats</span>
+            <span class="mode-card__text">Champions, items and abilities by the numbers</span>
+            <span class="mode-card__status" hidden>Played today</span>
+          </a>
+          <a class="mode-card" href="play.html?category=lore" data-mode="lore">
+            <span class="mode-card__title">Lore</span>
+            <span class="mode-card__text">Regions, places and history of Runeterra</span>
+            <span class="mode-card__status" hidden>Played today</span>
+          </a>
+          <a class="mode-card" href="play.html?category=esports" data-mode="esports">
+            <span class="mode-card__title">Esports</span>
+            <span class="mode-card__text">Worlds, MSI, players and teams</span>
+            <span class="mode-card__status" hidden>Played today</span>
+          </a>
+          <a class="mode-card" href="play.html?category=mixed" data-mode="mixed">
+            <span class="mode-card__title">Mixed</span>
+            <span class="mode-card__text">All categories in one puzzle</span>
+            <span class="mode-card__status" hidden>Played today</span>
+          </a>
+        </nav>
+
+        <p class="landing__more">New here? Read <a href="how-to-play.html">how to play</a>.</p>
+      </main>
+      <!--include:footer-->
+    </div>
+    <script type="module" src="/src/pages/landing.tsx"></script>
   </body>
 </html>

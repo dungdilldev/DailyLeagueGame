@@ -373,7 +373,11 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 - [x] Content check before applying: how-to-play, about and privacy pages are live and linked (done in Phase 7); no broken links; a visible contact address
 - [x] Create the AdSense account, add the site, add the verification snippet/`ads.txt` as instructed
-- [ ] Wait for review (days to weeks). If rejected as "low value content", add more real text (for example a short page per game mode or a champion-trivia blog section), then reapply
+- [x] Wait for review. **Rejected 2026-10-31:** "ads on screens without publisher content" and "low value content". The crawler saw `/` as an empty JavaScript shell that turns into a game screen (a "behavioural" screen), plus three short text pages, and no `robots.txt` or sitemap.
+- [x] Fix, step 1: static start page `index.html` (headline, live countdown, one short card per mode with "played today" marks; the owner wanted it compact, so the mode descriptions, data sources and FAQ were moved to `how-to-play.html`, which is now the main text page), the game moved to `play.html` (old `/?category=` / `?date=` / `?mode=` links redirect), `robots.txt`, `sitemap.xml`, `<link rel="canonical">` on every page
+- [ ] Owner: deploy, add the site to Google Search Console, submit the sitemap, check that `/` is indexed with its text. Build some real traffic over a few weeks (Google also judges "genuine user interest"), then request review
+- [ ] Ads go on the start page and the info pages, not on `play.html` (the game is the kind of screen Google rejected), at least until approval is stable. Move `AdSlot` from the game (branch `dev-adding-ads`) to a partial accordingly
+- [ ] If rejected again: more original pages, e.g. reference pages generated from the data (stat rankings, lore regions and events, Worlds history) and a few hand-written guides
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
 
@@ -427,3 +431,11 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 ## 7. Suggested First Session
 
 Phase 0 and the Data Dragon part of Phase 1: scaffold, then print one champion's stats from live data to confirm the source works.
+
+### Note for Later
+
+Before you reapply:
+
+Deploy, add the site to Google Search Console and submit https://summonersquiz.com/sitemap.xml. Then check that / shows up indexed with its text.
+Google also judges whether real people use the site, so give it a few weeks of traffic (Reddit, Discord) before you request a review.
+When ads go in, put them on the start page and the info pages, not on play.html, because the game screen is exactly what Google rejected. The AdSlot on the dev-adding-ads branch currently sits under the game and should be moved.

@@ -113,7 +113,9 @@ export function App() {
     <div class="app">
       <header class="masthead">
         <div>
-          <h1 class="masthead__title">Summoner&apos;s Quiz</h1>
+          <h1 class="masthead__title">
+            <a href="./">Summoner&apos;s Quiz</a>
+          </h1>
           <p class="tagline">Daily League of Legends trivia game</p>
         </div>
       </header>

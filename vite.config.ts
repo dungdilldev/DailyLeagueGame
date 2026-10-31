@@ -6,7 +6,7 @@ import { defineConfig } from 'vitest/config';
 
 const PARTIAL_PATTERN = /<!--include:([\w-]+)-->/g;
 const PARTIALS_DIRECTORY = './src/pages/partials/';
-const PAGES = ['index', 'how-to-play', 'about', 'privacy'];
+const PAGES = ['index', 'play', 'how-to-play', 'about', 'privacy'];
 
 /** Lets the static pages share their header, footer and contact link: `<!--include:name-->`. */
 function includePartials(): Plugin {

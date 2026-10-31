@@ -2,6 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { ARCHIVE_DAYS } from '../src/game/archive';
 
 const ROUNDS_PER_DAY = 5;
+const START_HEADING = 'Test your League of Legends knowledge, every day';
 
 /** Fails the test on any uncaught page error or console error (e.g. broken data or images). */
 function collectErrors(page: Page): string[] {
@@ -40,7 +41,7 @@ async function playFullDay(page: Page): Promise<void> {
 
 test('a full day can be played and the result survives a reload', async ({ page }, testInfo) => {
   const errors = collectErrors(page);
-  await page.goto('/');
+  await page.goto('/play.html');
 
   await expect(page.getByRole('heading', { name: "Summoner's Quiz" })).toBeVisible();
   await expect(page.locator('.card')).toHaveCount(4);
@@ -70,7 +71,7 @@ test('a full day can be played and the result survives a reload', async ({ page 
 });
 
 test('progress resumes mid-day after a reload', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/play.html');
   await page.locator('.card').first().click();
   await page.getByRole('button', { name: 'Next round' }).click();
   await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
@@ -80,7 +81,7 @@ test('progress resumes mid-day after a reload', async ({ page }) => {
 });
 
 test('layout fits the viewport without horizontal scrolling', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/play.html');
   await playFullDay(page);
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -90,13 +91,13 @@ test('layout fits the viewport without horizontal scrolling', async ({ page }) =
 
 test('shows a friendly message when the game data cannot be loaded', async ({ page }) => {
   await page.route('**/data/champions.json', (route) => route.fulfill({ status: 500 }));
-  await page.goto('/');
+  await page.goto('/play.html');
   await expect(page.getByRole('alert')).toContainText('Something went wrong');
 });
 
 test.describe('day navigation', () => {
   test('goes back to the previous day and returns to today', async ({ page }, testInfo) => {
-    await page.goto('/');
+    await page.goto('/play.html');
     const next = page.getByRole('button', { name: /Next day/ });
     await expect(next).toBeDisabled();
     await expect(page.getByText('Today', { exact: true })).toBeVisible();
@@ -117,7 +118,7 @@ test.describe('day navigation', () => {
   });
 
   test('can go back only as far as the archive window allows', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/play.html');
     const previous = page.getByRole('button', { name: /Previous day/ });
     for (let day = 0; day < ARCHIVE_DAYS; day++) await previous.click();
     await expect(previous).toBeDisabled();
@@ -125,13 +126,13 @@ test.describe('day navigation', () => {
 
   test('ignores a date in the address that is invalid or outside the window', async ({ page }) => {
     for (const value of ['2000-01-01', '2099-01-01', 'garbage']) {
-      await page.goto(`/?date=${value}`);
+      await page.goto(`/play.html?date=${value}`);
       await expect(page.getByText('Today', { exact: true })).toBeVisible();
     }
   });
 
   test('keeps progress for today and an earlier day separate', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/play.html');
     await page.locator('.card').first().click();
     await page.getByRole('button', { name: 'Next round' }).click();
     await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
@@ -146,7 +147,7 @@ test.describe('day navigation', () => {
 
 test.describe('game modes', () => {
   test('starts in the stats mode and offers one button per category', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/play.html');
     const nav = page.getByRole('navigation', { name: 'Choose game mode' });
     await expect(nav.getByRole('button')).toHaveText(['Stats', 'Lore', 'Esports', 'Mixed']);
     await expect(nav.getByRole('button', { name: 'Stats' })).toHaveAttribute(
@@ -159,7 +160,7 @@ test.describe('game modes', () => {
     page,
   }) => {
     const errors = collectErrors(page);
-    await page.goto('/');
+    await page.goto('/play.html');
     await page.locator('.card').first().click();
     await page.getByRole('button', { name: 'Next round' }).click();
     await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
@@ -191,7 +192,7 @@ test.describe('game modes', () => {
     page,
   }) => {
     const errors = collectErrors(page);
-    await page.goto('/?category=esports');
+    await page.goto('/play.html?category=esports');
     await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
     await expect(page.locator('.card')).toHaveCount(4);
     await playFullDay(page);
@@ -201,7 +202,7 @@ test.describe('game modes', () => {
 });
 
 test('the endless testing mode does not exist in the production build', async ({ page }) => {
-  await page.goto('/?mode=endless');
+  await page.goto('/play.html?mode=endless');
   await expect(page.getByText(/Round 1 of \d/)).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Endless mode' })).toHaveCount(0);
   await expect(page.getByRole('navigation', { name: 'Choose game mode' })).toBeVisible();
@@ -217,7 +218,7 @@ test.describe('information pages', () => {
   for (const { link, heading } of pages) {
     test(`${link} opens from the footer and links back to the game`, async ({ page }) => {
       const errors = collectErrors(page);
-      await page.goto('/');
+      await page.goto('/play.html');
       await page.getByRole('navigation', { name: 'Information' }).getByText(link).click();
       await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
       // The shared header and footer were included.
@@ -227,8 +228,70 @@ test.describe('information pages', () => {
       ).toBeVisible();
 
       await page.getByRole('link', { name: "Summoner's Quiz" }).click();
-      await expect(page.locator('.card')).toHaveCount(4);
+      await expect(page.getByRole('heading', { level: 1, name: START_HEADING })).toBeVisible();
       expect(errors).toEqual([]);
     });
   }
+});
+
+test.describe('start page', () => {
+  const modes = [
+    { name: 'Stats', url: /\/play\.html$/ },
+    { name: 'Lore', url: /category=lore/ },
+    { name: 'Esports', url: /category=esports/ },
+    { name: 'Mixed', url: /category=mixed/ },
+  ];
+
+  for (const { name, url } of modes) {
+    test(`the ${name} card opens the game in that mode`, async ({ page }) => {
+      const errors = collectErrors(page);
+      await page.goto('/');
+      await page
+        .getByRole('navigation', { name: 'Game modes' })
+        .getByText(name, { exact: true })
+        .click();
+      await expect(page).toHaveURL(url);
+      await expect(page.locator('.card')).toHaveCount(4);
+      await expect(page.getByRole('button', { name, pressed: true })).toBeVisible();
+      expect(errors).toEqual([]);
+    });
+  }
+
+  test('shows the countdown and marks a mode once it is played today', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText(/Next puzzle in/)).toBeVisible();
+    await expect(page.locator('.mode-card__status:visible')).toHaveCount(0);
+
+    await page.goto('/play.html?category=lore');
+    await playFullDay(page);
+    await page.goto('/');
+    await expect(page.locator('.mode-card[data-mode="lore"] .mode-card__status')).toBeVisible();
+    await expect(page.locator('.mode-card__status:visible')).toHaveCount(1);
+  });
+
+  test('old game links on the start page open the game', async ({ page }) => {
+    await page.goto('/?category=esports');
+    await expect(page).toHaveURL(/\/play\.html\?category=esports$/);
+    await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
+  });
+
+  test('fits the viewport without horizontal scrolling', async ({ page }) => {
+    await page.goto('/');
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+});
+
+test.describe('start page without JavaScript', () => {
+  test.use({ javaScriptEnabled: false });
+
+  test('its heading and mode links are in the HTML itself, for crawlers', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { level: 1, name: START_HEADING })).toBeVisible();
+    await expect(
+      page.getByRole('navigation', { name: 'Game modes' }).getByRole('link'),
+    ).toHaveCount(4);
+  });
 });

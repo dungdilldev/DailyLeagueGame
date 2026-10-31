@@ -2,6 +2,7 @@ export function Footer() {
   return (
     <footer>
       <nav class="footer-nav" aria-label="Information">
+        <a href="./">Home</a>
         <a href="how-to-play.html">How to play</a>
         <a href="about.html">About</a>
         <a href="privacy.html">Privacy</a>

@@ -11,8 +11,10 @@ npx playwright install chromium     # only needed for the browser tests (npm run
 
 ## Game modes
 
-The buttons at the top switch between one category (the site opens on Stats) and the mixed
-puzzle. Open http://localhost:5173/?category=lore (or `esports`, `mixed`) to go straight to one. Each
+The site opens on a start page with one card per mode; the game itself is `play.html` (Stats when
+no mode is named), and the buttons at the top of the game switch between modes. Open
+http://localhost:5173/play.html?category=lore (or `esports`, `mixed`) to go straight to one; the
+old addresses on `/` (`/?category=lore`, `/?date=...`, `/?mode=endless`) redirect there. Each
 mode saves its own progress, so to replay one mode only, clear its key in the browser's local
 storage: `dailyleague:v1` is the mixed mode, `dailyleague:v1:lore` and so on are the others.
 
@@ -22,21 +24,21 @@ storage: `dailyleague:v1` is the mixed mode, `dailyleague:v1:lore` and so on are
 npm run dev
 ```
 
-Open http://localhost:5173/ . The page reloads when you edit code. Stop with `Ctrl+C`.
+Open http://localhost:5173/ (start page) and pick a mode. The page reloads when you edit code. Stop with `Ctrl+C`.
 
-| Goal                       | Command or URL                                                     |
-| -------------------------- | ------------------------------------------------------------------ |
-| Play on your phone         | `npm run dev -- --host`, then open the "Network" address it prints |
-| Try the production build   | `npm run build`, then `npm run preview` (http://localhost:4173/)   |
-| Play an earlier day        | Use the "Previous day" button, or open `/?date=YYYY-MM-DD`         |
-| Play again after finishing | Reset progress (below)                                             |
+| Goal                       | Command or URL                                                      |
+| -------------------------- | ------------------------------------------------------------------- |
+| Play on your phone         | `npm run dev -- --host`, then open the "Network" address it prints  |
+| Try the production build   | `npm run build`, then `npm run preview` (http://localhost:4173/)    |
+| Play an earlier day        | Use the "Previous day" button, or open `/play.html?date=YYYY-MM-DD` |
+| Play again after finishing | Reset progress (below)                                              |
 
 Only today and the previous 7 days can be opened. Any other date in the address falls back to today.
 Days played after their own date do not count towards the streak.
 
 ### Endless mode (testing every question)
 
-Open http://localhost:5173/?mode=endless. It only works with `npm run dev`: there is no link to it on the site, and in the deployed site (a production build) the address just shows the normal game, with none of its code included. The page itself links back to the daily puzzle. It shows random questions one after another with no end. Nothing is saved and nothing affects your streak.
+Open http://localhost:5173/play.html?mode=endless. It only works with `npm run dev`: there is no link to it on the site, and in the deployed site (a production build) the address just shows the normal game, with none of its code included. The page itself links back to the daily puzzle. It shows random questions one after another with no end. Nothing is saved and nothing affects your streak.
 
 - **Coverage table** at the bottom lists every question with how often it was shown and answered correctly. Questions not seen yet are red, so you can see at a glance whether everything is represented.
 - **Question** and **Difficulty** menus force one question and/or one difficulty. If a question cannot be built at that difficulty (movement speed in the easiest round, for example) the page says so.
