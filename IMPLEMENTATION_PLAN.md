@@ -198,6 +198,7 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 ### Phase 5c6 - Game modes (done)
 
 - [x] Mode buttons at the top: Mixed (all questions, the original puzzle) and one per category; `?category=` in the address
+- [x] The site opens on Stats instead of Mixed (owner, 2026-10-31); saved progress and seeds unchanged, so Mixed keeps its streak
 - [x] Each mode has its own seed, saved progress, streak and share text
 - [x] Pools smaller than 5 questions give shorter days; empty tiers fall back to the nearest tier
 - The `trivia` category (one marksman question) was removed again.

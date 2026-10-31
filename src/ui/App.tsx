@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 import { resolvePuzzleDate } from '../game/archive';
 import { formatUtcDate } from '../game/date';
-import { MIXED_MODE, parseGameMode, type GameMode } from '../game/gameMode';
+import { DEFAULT_GAME_MODE, parseGameMode, type GameMode } from '../game/gameMode';
 import { getBrowserStorage } from '../storage/progressStore';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
@@ -43,7 +43,7 @@ function readRequestedMode(): GameMode {
 /** Keeps the chosen game mode in the address too, so a reload or shared link keeps it. */
 function showModeInUrl(mode: GameMode): void {
   const url = new URL(window.location.href);
-  if (mode === MIXED_MODE) url.searchParams.delete(CATEGORY_PARAM);
+  if (mode === DEFAULT_GAME_MODE) url.searchParams.delete(CATEGORY_PARAM);
   else url.searchParams.set(CATEGORY_PARAM, mode);
   window.history.replaceState(null, '', url);
 }

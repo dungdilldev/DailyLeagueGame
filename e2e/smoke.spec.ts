@@ -145,11 +145,11 @@ test.describe('day navigation', () => {
 });
 
 test.describe('game modes', () => {
-  test('starts in the mixed mode and offers one button per category', async ({ page }) => {
+  test('starts in the stats mode and offers one button per category', async ({ page }) => {
     await page.goto('/');
     const nav = page.getByRole('navigation', { name: 'Choose game mode' });
     await expect(nav.getByRole('button')).toHaveText(['Stats', 'Lore', 'Esports', 'Mixed']);
-    await expect(nav.getByRole('button', { name: 'Mixed' })).toHaveAttribute(
+    await expect(nav.getByRole('button', { name: 'Stats' })).toHaveAttribute(
       'aria-pressed',
       'true',
     );
@@ -178,6 +178,10 @@ test.describe('game modes', () => {
     await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
 
     await page.getByRole('button', { name: 'Mixed' }).click();
+    await expect(page).toHaveURL(/category=mixed/);
+    await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
+
+    await page.getByRole('button', { name: 'Stats' }).click();
     await expect(page).not.toHaveURL(/category=/);
     await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
     expect(errors).toEqual([]);

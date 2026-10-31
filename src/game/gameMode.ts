@@ -9,9 +9,12 @@ export type GameMode = typeof MIXED_MODE | QuestionCategory;
 
 export const GAME_MODES: readonly GameMode[] = [...QuestionCategorySchema.options, MIXED_MODE];
 
-/** Anything that is not a known mode (garbage in the address bar) is the mixed mode. */
+/** The mode the site opens in when the address names none. */
+export const DEFAULT_GAME_MODE: GameMode = 'stats';
+
+/** Anything that is not a known mode (garbage in the address bar) is the default mode. */
 export function parseGameMode(value: string | null | undefined): GameMode {
-  return GAME_MODES.find((mode) => mode === value) ?? MIXED_MODE;
+  return GAME_MODES.find((mode) => mode === value) ?? DEFAULT_GAME_MODE;
 }
 
 export function questionsForMode(questions: readonly Question[], mode: GameMode): Question[] {

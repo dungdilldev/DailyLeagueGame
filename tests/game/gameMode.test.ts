@@ -18,10 +18,10 @@ describe('GAME_MODES', () => {
 });
 
 describe('parseGameMode', () => {
-  it('accepts every mode and falls back to mixed for anything else', () => {
+  it('accepts every mode and falls back to stats for anything else', () => {
     for (const mode of GAME_MODES) expect(parseGameMode(mode)).toBe(mode);
     for (const bad of [null, undefined, '', 'nope', 'LORE', 'endless']) {
-      expect(parseGameMode(bad)).toBe(MIXED_MODE);
+      expect(parseGameMode(bad)).toBe('stats');
     }
   });
 });
