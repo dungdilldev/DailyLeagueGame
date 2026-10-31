@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { loadGameData, type HttpFetcher } from '../../src/data/loaders';
+import { QUESTION_FILES } from '../../src/data/questionFiles';
 
 const respond =
   (status: number, body?: unknown): HttpFetcher =>
@@ -60,15 +61,10 @@ describe('loadGameData', () => {
 
   it('rejects questions about a stat that does not exist', async () => {
     const questions = {
-      questions: [
-        {
-          id: 'q',
-          category: 'stats',
-          difficulty: 'variable',
-          stat: 'nope',
-          question: 'Which champion?',
-        },
-      ],
+      ...QUESTION_FILES,
+      stats: {
+        questions: [{ id: 'q', difficulty: 'variable', stat: 'nope', question: 'Which champion?' }],
+      },
     };
     await expect(loadGameData(realFiles, './', questions)).rejects.toThrow(/unknown stat "nope"/);
   });

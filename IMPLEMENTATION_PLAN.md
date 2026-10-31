@@ -36,7 +36,7 @@ pipeline/snapshots-> new data becomes a snapshot effective from the next UTC day
    |
    v
 public/data/champions.json + items.json + abilities.json  (stats + snapshots; committed only when data changes)
-data/questions.json  (hand-edited question templates, bundled into the app)
+data/questions/*.json  (hand-edited question templates, one file per category, bundled into the app)
    |
    v
 Static site (Vite build) -> GitHub Pages
@@ -352,6 +352,23 @@ permission, so it needs the operator's agreement first.
 - [x] Static `how-to-play.html`, `about.html`, `privacy.html` (real text for crawlers, not JS-rendered), linked from both footers
 - [x] Shared header/footer/contact through `<!--include:name-->` partials; multi-page Vite build
 - [x] Ads follow in Phase 8
+
+### Phase 7b - One question file per category (done)
+
+Decision (owner, 2026-10-31): `data/questions.json` had grown to ~4,500 lines with the categories interleaved.
+
+- [x] Split into `data/questions/stats.json`, `lore.json` and `esports.json`; the file decides a question's category (entries no longer have a `category` key)
+- [x] `src/data/questionFiles.ts` validates each file, adds the category and checks ids across files; loader, refresh and tests use it
+- Category-mode puzzles are unchanged (each file kept its order); the mixed puzzle changed once for every date because the combined order changed.
+
+### Phase 7c - Trivia category (done)
+
+Decision (owner, 2026-10-31): a fourth category, "Trivia", about the game itself and its development; one subcategory per topic.
+
+- [x] `trivia` category: `data/questions/trivia.json`, mode button, start page card (the mixed card now spans its row), how-to-play and about text
+- [x] 43 questions in 16 subcategories (scrapped champions, cancelled features, removed modes, spells and items, original champions, visual and gameplay updates, voice lines, names and references, music bands, Ultimate skins, spin-offs, Summoner's Rift, ranked history, April Fools, Riot Games), checked against the LoL Wiki and Data Dragon
+- [x] Mode buttons tighten on narrow screens so five fit
+- Stats, lore and esports puzzles are unchanged; the mixed puzzle changes for every date (new questions).
 
 ### Phase 8 - Ads with Google AdSense (not started)
 

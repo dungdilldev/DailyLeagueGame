@@ -1,13 +1,8 @@
 import playerFile from '../../data/players.json';
-import questionFile from '../../data/questions.json';
 import { PlayerFileSchema } from './playerSchema';
+import { parseQuestionFiles, QUESTION_FILES, type QuestionSources } from './questionFiles';
 import { resolveQuestions, type GameData } from './questions';
-import {
-  AbilityDataFileSchema,
-  ChampionDataFileSchema,
-  ItemDataFileSchema,
-  QuestionFileSchema,
-} from './schema';
+import { AbilityDataFileSchema, ChampionDataFileSchema, ItemDataFileSchema } from './schema';
 
 export type HttpFetcher = (url: string) => Promise<Pick<Response, 'ok' | 'status' | 'json'>>;
 
@@ -26,7 +21,7 @@ async function fetchJson(fetcher: HttpFetcher, url: string, what: string): Promi
 export async function loadGameData(
   fetcher: HttpFetcher = browserFetcher,
   baseUrl: string = import.meta.env.BASE_URL,
-  questionSource: unknown = questionFile,
+  questionSources: QuestionSources = QUESTION_FILES,
   playerSource: unknown = playerFile,
 ): Promise<GameData> {
   const [championJson, itemJson, abilityJson] = await Promise.all([
@@ -37,14 +32,13 @@ export async function loadGameData(
   const champions = ChampionDataFileSchema.parse(championJson);
   const items = ItemDataFileSchema.parse(itemJson);
   const abilities = AbilityDataFileSchema.parse(abilityJson);
-  const { questions } = QuestionFileSchema.parse(questionSource);
   const { players } = PlayerFileSchema.parse(playerSource);
   return {
     champions,
     items,
     abilities,
     questions: resolveQuestions(
-      questions,
+      parseQuestionFiles(questionSources),
       { champion: champions.stats, item: items.stats, ability: abilities.stats },
       players,
     ),

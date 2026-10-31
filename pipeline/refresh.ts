@@ -2,14 +2,13 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { ZodType } from 'zod';
 import playerFile from '../data/players.json';
-import questionFile from '../data/questions.json';
 import { PlayerFileSchema } from '../src/data/playerSchema';
+import { parseQuestionFiles, QUESTION_FILES } from '../src/data/questionFiles';
 import { resolveQuestions } from '../src/data/questions';
 import {
   AbilityDataFileSchema,
   ChampionDataFileSchema,
   ItemDataFileSchema,
-  QuestionFileSchema,
   type DataFile,
   type Entity,
   type StatMeta,
@@ -145,7 +144,7 @@ async function main(): Promise<void> {
   const items = buildItems(itemInputs, version, ITEM_STATS);
   const abilities = buildAbilities(abilityInputs, version, ABILITY_STATS);
   const questions = resolveQuestions(
-    QuestionFileSchema.parse(questionFile).questions,
+    parseQuestionFiles(QUESTION_FILES),
     { champion: championStats, item: itemStats, ability: abilityStats },
     PlayerFileSchema.parse(playerFile).players,
   );

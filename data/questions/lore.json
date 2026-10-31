@@ -1,229 +1,7 @@
 {
   "questions": [
     {
-      "id": "playerByTeam",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Players and teams",
-      "ask": "playerByTeam",
-      "question": "Which of these players has played for {team}?"
-    },
-    {
-      "id": "teamByPlayer",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Players and teams",
-      "ask": "teamByPlayer",
-      "question": "Which of these teams has {player} played for?"
-    },
-    {
-      "id": "skinCount",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "skinCount",
-      "question": "Which champion has the most skins?"
-    },
-    {
-      "id": "skinsPerYear",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "skinsPerYear",
-      "question": "Which champion has the most skins relative to their release date?"
-    },
-    {
-      "id": "releaseDate",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "releaseDate",
-      "question": "Which champion was released most recently?"
-    },
-    {
-      "id": "baseHealth",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "baseHealth",
-      "question": "Which champion has the highest base health?"
-    },
-    {
-      "id": "healthPerLevel",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "healthPerLevel",
-      "question": "Which champion has the highest health gained per level?"
-    },
-    {
-      "id": "healthRegen",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "healthRegen",
-      "question": "Which champion has the highest base health regeneration?"
-    },
-    {
-      "id": "armor",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "armor",
-      "question": "Which champion has the highest base armor?"
-    },
-    {
-      "id": "magicResist",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "magicResist",
-      "question": "Which champion has the highest base magic resistance?"
-    },
-    {
-      "id": "attackDamage",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "attackDamage",
-      "question": "Which champion has the highest base attack damage?"
-    },
-    {
-      "id": "attackSpeed",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "attackSpeed",
-      "question": "Which champion has the highest base attack speed?"
-    },
-    {
-      "id": "attackRange",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "attackRange",
-      "question": "Which champion has the highest attack range?"
-    },
-    {
-      "id": "moveSpeed",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "moveSpeed",
-      "question": "Which champion has the highest movement speed?"
-    },
-    {
-      "id": "patchesPerYear",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "patchesPerYear",
-      "question": "Which champion has had the most patch changes relative to their release date?"
-    },
-    {
-      "id": "itemCost",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemCost",
-      "question": "Which item costs the most gold?"
-    },
-    {
-      "id": "itemGoldEfficiency",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemGoldEfficiency",
-      "question": "Which item is the most gold efficient from its stats alone (ignoring passives)?"
-    },
-    {
-      "id": "itemAttackDamage",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemAttackDamage",
-      "question": "Which item gives the most attack damage?"
-    },
-    {
-      "id": "itemAbilityPower",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemAbilityPower",
-      "question": "Which item gives the most ability power?"
-    },
-    {
-      "id": "itemHealth",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemHealth",
-      "question": "Which item gives the most health?"
-    },
-    {
-      "id": "itemArmor",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemArmor",
-      "question": "Which item gives the most armor?"
-    },
-    {
-      "id": "itemMagicResist",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemMagicResist",
-      "question": "Which item gives the most magic resistance?"
-    },
-    {
-      "id": "itemAbilityHaste",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "itemAbilityHaste",
-      "question": "Which item gives the most ability haste?"
-    },
-    {
-      "id": "basicAbilityDamage",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "basicAbilityDamage",
-      "question": "Which basic ability deals the most base damage at max rank?"
-    },
-    {
-      "id": "ultimateDamage",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "ultimateDamage",
-      "question": "Which ultimate deals the most base damage at max rank?"
-    },
-    {
-      "id": "abilityApRatio",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "abilityApRatio",
-      "question": "Which ability has the highest AP ratio at max rank?"
-    },
-    {
-      "id": "abilityBonusAdRatio",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "abilityBonusAdRatio",
-      "question": "Which ability has the highest bonus AD ratio at max rank?"
-    },
-    {
-      "id": "abilityAdRatio",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "abilityAdRatio",
-      "question": "Which ability has the highest total AD ratio at max rank?"
-    },
-    {
-      "id": "basicAbilityCooldown",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "basicAbilityCooldown",
-      "question": "Which basic ability has the longest cooldown at max rank?"
-    },
-    {
-      "id": "ultimateCooldown",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "ultimateCooldown",
-      "question": "Which ultimate has the longest cooldown at max rank?"
-    },
-    {
-      "id": "abilityManaCost",
-      "category": "stats",
-      "difficulty": "variable",
-      "stat": "abilityManaCost",
-      "question": "Which ability costs the most mana at max rank?"
-    },
-    {
       "id": "isYordle",
-      "category": "lore",
       "difficulty": "easy",
       "subject": "champion",
       "label": "Yordles",
@@ -248,7 +26,6 @@
     },
     {
       "id": "isFromTheVoid",
-      "category": "lore",
       "difficulty": "easy",
       "subject": "champion",
       "label": "Void creatures",
@@ -272,7 +49,6 @@
     },
     {
       "id": "isDarkin",
-      "category": "lore",
       "difficulty": "hard",
       "subject": "champion",
       "label": "Darkin",
@@ -298,390 +74,7 @@
       ]
     },
     {
-      "id": "esportsSkinLine",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "champion",
-      "skinLine": "esports",
-      "label": "Esports skins",
-      "question": "Which of these champions has a {line} skin?"
-    },
-    {
-      "id": "teamByLogo",
-      "category": "esports",
-      "difficulty": "easy",
-      "subject": "text",
-      "logo": "team",
-      "label": "Team logos",
-      "question": "Which team does this logo belong to?",
-      "teams": [
-        "T1",
-        "Gen.G",
-        "Hanwha Life Esports",
-        "KT Rolster",
-        "DRX",
-        "Dplus KIA",
-        "Nongshim RedForce",
-        "Bilibili Gaming",
-        "JD Gaming",
-        "Top Esports",
-        "Weibo Gaming",
-        "LNG Esports",
-        "Edward Gaming",
-        "Invictus Gaming",
-        "Royal Never Give Up",
-        "FunPlus Phoenix",
-        "Anyone's Legend",
-        "Team WE",
-        "G2 Esports",
-        "Fnatic",
-        "MAD Lions",
-        "Team Vitality",
-        "Karmine Corp",
-        "Team Heretics",
-        "Misfits Gaming",
-        "Splyce",
-        "Cloud9",
-        "Team Liquid",
-        "Team SoloMid",
-        "FlyQuest",
-        "100 Thieves",
-        "Counter Logic Gaming",
-        "Evil Geniuses",
-        "Dignitas",
-        "PSG Talon",
-        "Flash Wolves",
-        "paiN Gaming",
-        "LOUD",
-        "Samsung Galaxy",
-        "Griffin"
-      ]
-    },
-    {
-      "id": "momentFakerZed",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "champion",
-      "label": "Faker vs Ryu",
-      "question": "Which of these champions were Faker and Ryu both playing when Faker outplayed Ryu in the deciding game of the OGN Summer 2013 final?",
-      "correct": ["Zed"],
-      "wrong": ["Yasuo", "Sylas", "Yone"]
-    },
-    {
-      "id": "momentXpekeBackdoor",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "champion",
-      "label": "xPeke's backdoor",
-      "question": "Which of these champions did xPeke play in his famous backdoor against SK Gaming at IEM Katowice in 2013?",
-      "correct": ["Kassadin"],
-      "wrong": ["Ekko", "Qiyana", "Akshan"]
-    },
-    {
-      "id": "momentUziTwoFinals",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "Two lost finals",
-      "question": "Which of these players lost the World Championship final in both 2013 and 2014?",
-      "correct": ["Uzi"],
-      "wrong": ["Deft", "Doublelift", "Rookie"]
-    },
-    {
-      "id": "momentEveryoneElseIsTrash",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "\"Everyone else is trash\"",
-      "question": "Which of these players declared \"Everyone else is trash\" at the 2013 All-Star event?",
-      "correct": ["Doublelift"],
-      "wrong": ["Bjergsen", "WildTurtle", "Jensen"]
-    },
-    {
-      "id": "momentCloud9Semis",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Cloud9 in 2018",
-      "question": "Which of these North American teams reached the World Championship semifinals in 2018?",
-      "correct": ["Cloud9"],
-      "wrong": ["Team Liquid", "Team SoloMid", "100 Thieves"]
-    },
-    {
-      "id": "momentFirstChineseTitle",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "China's first title",
-      "question": "Which of these teams won China's first World Championship title, in 2018?",
-      "correct": ["Invictus Gaming"],
-      "wrong": ["Royal Never Give Up", "Edward Gaming", "FunPlus Phoenix"]
-    },
-    {
-      "id": "momentSamsungRematch",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "The 2017 rematch",
-      "question": "Which of these teams beat SK Telecom T1 in the 2017 World Championship final, a year after losing the final to them?",
-      "correct": ["Samsung Galaxy"],
-      "wrong": ["Fnatic", "Edward Gaming", "G2 Esports"]
-    },
-    {
-      "id": "momentG2Msi",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "G2 in 2019",
-      "question": "Which of these teams won MSI in 2019 and reached the World Championship final later that year?",
-      "correct": ["G2 Esports"],
-      "wrong": ["Team Liquid", "Fnatic", "Invictus Gaming"]
-    },
-    {
-      "id": "momentDrxPlayIn",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "DRX from the play-in",
-      "question": "Which year saw DRX win the World Championship after starting in the play-in stage?",
-      "correct": ["2022"],
-      "wrong": ["2019", "2020", "2023"]
-    },
-    {
-      "id": "momentFakerFirstTitle",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "easy",
-      "subject": "text",
-      "label": "Faker's first title",
-      "question": "Which year brought Faker his first World Championship title?",
-      "correct": ["2013"],
-      "wrong": ["2012", "2014", "2017"]
-    },
-    {
-      "id": "momentFirstWorldsEvent",
-      "category": "esports",
-      "subcategory": "moments",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "The first Worlds",
-      "question": "Which event hosted the first World Championship, in 2011?",
-      "correct": ["DreamHack Summer"],
-      "wrong": ["IEM Katowice", "Gamescom", "BlizzCon"]
-    },
-    {
-      "id": "isWorldsChampion",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "World champions",
-      "question": "Which of these teams has won the League of Legends World Championship?",
-      "correct": [
-        "T1",
-        "Fnatic",
-        "Taipei Assassins",
-        "SK Telecom T1",
-        "Samsung White",
-        "Samsung Galaxy",
-        "Invictus Gaming",
-        "FunPlus Phoenix",
-        "Damwon Gaming",
-        "Edward Gaming",
-        "DRX"
-      ],
-      "wrong": [
-        "G2 Esports",
-        "Azubu Frost",
-        "Top Esports",
-        "Suning",
-        "DWG KIA",
-        "Weibo Gaming",
-        "Bilibili Gaming",
-        "KT Rolster",
-        "Royal Never Give Up",
-        "FlyQuest",
-        "MAD Lions",
-        "Hanwha Life Esports"
-      ]
-    },
-    {
-      "id": "lostWorldsFinal",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "Finalists",
-      "question": "Which of these teams has reached a Worlds final but never won the title?",
-      "correct": [
-        "Royal Never Give Up",
-        "Weibo Gaming",
-        "G2 Esports",
-        "Bilibili Gaming",
-        "KT Rolster",
-        "Against All Authority",
-        "Hanwha Life Esports",
-        "Suning",
-        "KOO Tigers"
-      ],
-      "wrong": [
-        "Cloud9",
-        "Team Liquid",
-        "JD Gaming",
-        "Top Esports",
-        "MAD Lions",
-        "FlyQuest",
-        "Karmine Corp",
-        "Gen.G",
-        "Taipei Assassins"
-      ]
-    },
-    {
-      "id": "hostedWorldsFinal",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "Final cities",
-      "question": "Which of these cities has hosted a Worlds final?",
-      "correct": [
-        "Jönköping",
-        "Los Angeles",
-        "Seoul",
-        "Berlin",
-        "Beijing",
-        "Incheon",
-        "Paris",
-        "Shanghai",
-        "Reykjavík",
-        "San Francisco",
-        "London",
-        "Chengdu"
-      ],
-      "wrong": [
-        "Tokyo",
-        "Madrid",
-        "Sydney",
-        "Toronto",
-        "Singapore",
-        "Rio de Janeiro",
-        "Moscow",
-        "Mumbai",
-        "Münich",
-        "Dehli",
-        "Cairo",
-        "Mexico City",
-        "Istanbul",
-        "Osaka"
-      ]
-    },
-    {
-      "id": "mostTitlesRegion",
-      "category": "esports",
-      "difficulty": "easy",
-      "subject": "text",
-      "label": "Regions",
-      "question": "Which of these regions has won the most World Championships?",
-      "correct": ["LCK"],
-      "wrong": ["LPL", "LEC", "LCS", "CBLOL"]
-    },
-    {
-      "id": "mostTitlesPlayer",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Most titles",
-      "question": "Which of these players has won the most World Championships?",
-      "correct": ["Faker"],
-      "wrong": ["Uzi", "Bjergsen", "Doublelift", "Dyrus"]
-    },
-    {
-      "id": "playerByNickname",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Nicknames",
-      "ask": "playerByNickname",
-      "question": "Which of these players is nicknamed \"{nickname}\"?"
-    },
-    {
-      "id": "worldsChampionPlayer",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "ask": "playerWithTitle",
-      "event": "Worlds",
-      "label": "Worlds champions",
-      "question": "Which of these players has won the World Championship?"
-    },
-    {
-      "id": "msiChampionPlayer",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "ask": "playerWithTitle",
-      "event": "MSI",
-      "label": "MSI champions",
-      "question": "Which of these players has won the Mid-Season Invitational?"
-    },
-    {
-      "id": "neverWonWorlds",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "ask": "playerWithoutTitle",
-      "event": "Worlds",
-      "label": "Never won Worlds",
-      "question": "Which of these players has never won the World Championship?"
-    },
-    {
-      "id": "playerByRegion",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "ask": "playerByRegion",
-      "label": "Players by region",
-      "question": "Which of these players made their name in {region}?"
-    },
-    {
-      "id": "playerByRole",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "ask": "playerByRole",
-      "exclude": ["Perkz", "CoreJJ", "Xiaohu", "Rekkles", "Zven"],
-      "label": "Players by role",
-      "question": "Which of these players is best known as a {role}?"
-    },
-    {
-      "id": "firstWorldsChampion",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "First champions",
-      "question": "Which of these teams won the very first World Championship, in 2011?",
-      "correct": ["Fnatic"],
-      "wrong": ["Taipei Assassins", "Samsung White", "Cloud9", "G2 Esports", "SK Telecom T1"]
-    },
-    {
-      "id": "threeInARow",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Three-peat",
-      "question": "Which of these teams has won three World Championships in a row?",
-      "correct": ["T1"],
-      "wrong": ["Fnatic", "Samsung Galaxy", "Edward Gaming", "Invictus Gaming", "FunPlus Phoenix"]
-    },
-    {
       "id": "isFromDemacia",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Demacia",
@@ -742,7 +135,6 @@
     },
     {
       "id": "isFromNoxus",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Noxus",
@@ -803,7 +195,6 @@
     },
     {
       "id": "isFromFreljord",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Freljord",
@@ -869,7 +260,6 @@
     },
     {
       "id": "isFromIonia",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ionia",
@@ -927,7 +317,6 @@
     },
     {
       "id": "isFromPiltover",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Piltover",
@@ -964,7 +353,6 @@
     },
     {
       "id": "isFromZaun",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Zaun",
@@ -1018,7 +406,6 @@
     },
     {
       "id": "isFromShadowIsles",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shadow Isles",
@@ -1066,7 +453,6 @@
     },
     {
       "id": "isFromBilgewater",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bilgewater",
@@ -1105,7 +491,6 @@
     },
     {
       "id": "isFromMountTargon",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Mount Targon",
@@ -1142,7 +527,6 @@
     },
     {
       "id": "isFromShurima",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shurima",
@@ -1191,7 +575,6 @@
     },
     {
       "id": "isFromIxtal",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ixtal",
@@ -1238,7 +621,6 @@
     },
     {
       "id": "isFromBandleCity",
-      "category": "lore",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bandle City",
@@ -1262,7 +644,6 @@
     },
     {
       "id": "notInIonianInvasion",
-      "category": "lore",
       "difficulty": "hard",
       "subject": "champion",
       "label": "Noxian invasion of Ionia",
@@ -1298,7 +679,6 @@
     },
     {
       "id": "claimedByBlackMist",
-      "category": "lore",
       "difficulty": "hard",
       "subject": "champion",
       "label": "The Ruination",
@@ -1320,7 +700,6 @@
     },
     {
       "id": "isSentinelOfLight",
-      "category": "lore",
       "difficulty": "hard",
       "subject": "champion",
       "label": "Sentinels of Light",
@@ -1352,7 +731,6 @@
     },
     {
       "id": "isAscended",
-      "category": "lore",
       "difficulty": "easy",
       "subject": "champion",
       "label": "The Ascended",
@@ -1373,7 +751,6 @@
     },
     {
       "id": "knownAsTitle",
-      "category": "lore",
       "difficulty": "easy",
       "subject": "champion",
       "clue": "title",
@@ -1381,330 +758,7 @@
       "question": "Which champion is known as \"{title}\"?"
     },
     {
-      "id": "worldsWinnerByYear",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Worlds winners",
-      "question": "Which team won the World Championship in {year}?",
-      "byYear": [
-        {
-          "year": 2011,
-          "answer": "Fnatic"
-        },
-        {
-          "year": 2012,
-          "answer": "Taipei Assassins"
-        },
-        {
-          "year": 2013,
-          "answer": "SK Telecom T1"
-        },
-        {
-          "year": 2014,
-          "answer": "Samsung White"
-        },
-        {
-          "year": 2015,
-          "answer": "SK Telecom T1"
-        },
-        {
-          "year": 2016,
-          "answer": "SK Telecom T1"
-        },
-        {
-          "year": 2017,
-          "answer": "Samsung Galaxy"
-        },
-        {
-          "year": 2018,
-          "answer": "Invictus Gaming"
-        },
-        {
-          "year": 2019,
-          "answer": "FunPlus Phoenix"
-        },
-        {
-          "year": 2020,
-          "answer": "Damwon Gaming"
-        },
-        {
-          "year": 2021,
-          "answer": "Edward Gaming"
-        },
-        {
-          "year": 2022,
-          "answer": "DRX"
-        },
-        {
-          "year": 2023,
-          "answer": "T1"
-        },
-        {
-          "year": 2024,
-          "answer": "T1"
-        },
-        {
-          "year": 2025,
-          "answer": "T1"
-        }
-      ]
-    },
-    {
-      "id": "msiWinnerByYear",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "MSI winners",
-      "question": "Which team won the Mid-Season Invitational in {year}?",
-      "byYear": [
-        {
-          "year": 2015,
-          "answer": "Edward Gaming"
-        },
-        {
-          "year": 2016,
-          "answer": "SK Telecom T1"
-        },
-        {
-          "year": 2017,
-          "answer": "SK Telecom T1"
-        },
-        {
-          "year": 2018,
-          "answer": "Royal Never Give Up"
-        },
-        {
-          "year": 2019,
-          "answer": "G2 Esports"
-        },
-        {
-          "year": 2021,
-          "answer": "Royal Never Give Up"
-        },
-        {
-          "year": 2022,
-          "answer": "Royal Never Give Up"
-        },
-        {
-          "year": 2023,
-          "answer": "JD Gaming"
-        },
-        {
-          "year": 2024,
-          "answer": "Gen.G"
-        },
-        {
-          "year": 2025,
-          "answer": "Gen.G"
-        },
-        {
-          "year": 2026,
-          "answer": "Hanwha Life Esports"
-        }
-      ]
-    },
-    {
-      "id": "worldsRunnerUpByYear",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "Worlds runners-up",
-      "question": "Which team lost the World Championship final in {year}?",
-      "byYear": [
-        {
-          "year": 2011,
-          "answer": "Against All Authority"
-        },
-        {
-          "year": 2012,
-          "answer": "Azubu Frost"
-        },
-        {
-          "year": 2013,
-          "answer": "Royal Club"
-        },
-        {
-          "year": 2014,
-          "answer": "Royal Club"
-        },
-        {
-          "year": 2015,
-          "answer": "KOO Tigers"
-        },
-        {
-          "year": 2016,
-          "answer": "Samsung Galaxy"
-        },
-        {
-          "year": 2017,
-          "answer": "T1"
-        },
-        {
-          "year": 2018,
-          "answer": "Fnatic"
-        },
-        {
-          "year": 2019,
-          "answer": "G2 Esports"
-        },
-        {
-          "year": 2020,
-          "answer": "Suning"
-        },
-        {
-          "year": 2021,
-          "answer": "DWG KIA"
-        },
-        {
-          "year": 2022,
-          "answer": "T1"
-        },
-        {
-          "year": 2023,
-          "answer": "Weibo Gaming"
-        },
-        {
-          "year": 2024,
-          "answer": "Bilibili Gaming"
-        },
-        {
-          "year": 2025,
-          "answer": "KT Rolster"
-        }
-      ]
-    },
-    {
-      "id": "worldsFinalsMvpByYear",
-      "category": "esports",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "Worlds Finals MVPs",
-      "question": "Which player was named Finals MVP at the World Championship in {year}?",
-      "byYear": [
-        {
-          "year": 2014,
-          "answer": "Mata"
-        },
-        {
-          "year": 2015,
-          "answer": "MaRin"
-        },
-        {
-          "year": 2016,
-          "answer": "Faker"
-        },
-        {
-          "year": 2017,
-          "answer": "Ruler"
-        },
-        {
-          "year": 2018,
-          "answer": "Ning"
-        },
-        {
-          "year": 2019,
-          "answer": "Tian"
-        },
-        {
-          "year": 2020,
-          "answer": "Canyon"
-        },
-        {
-          "year": 2021,
-          "answer": "Scout"
-        },
-        {
-          "year": 2022,
-          "answer": "Kingen"
-        },
-        {
-          "year": 2023,
-          "answer": "Zeus"
-        },
-        {
-          "year": 2024,
-          "answer": "Faker"
-        },
-        {
-          "year": 2025,
-          "answer": "Gumayusi"
-        }
-      ]
-    },
-    {
-      "id": "worldsFinalCityByYear",
-      "category": "esports",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Worlds final cities",
-      "question": "Which city hosted the World Championship final in {year}?",
-      "byYear": [
-        {
-          "year": 2011,
-          "answer": "Jönköping"
-        },
-        {
-          "year": 2012,
-          "answer": "Los Angeles"
-        },
-        {
-          "year": 2013,
-          "answer": "Los Angeles"
-        },
-        {
-          "year": 2014,
-          "answer": "Seoul"
-        },
-        {
-          "year": 2015,
-          "answer": "Berlin"
-        },
-        {
-          "year": 2016,
-          "answer": "Los Angeles"
-        },
-        {
-          "year": 2017,
-          "answer": "Beijing"
-        },
-        {
-          "year": 2018,
-          "answer": "Incheon"
-        },
-        {
-          "year": 2019,
-          "answer": "Paris"
-        },
-        {
-          "year": 2020,
-          "answer": "Shanghai"
-        },
-        {
-          "year": 2021,
-          "answer": "Reykjavík"
-        },
-        {
-          "year": 2022,
-          "answer": "San Francisco"
-        },
-        {
-          "year": 2023,
-          "answer": "Seoul"
-        },
-        {
-          "year": 2024,
-          "answer": "London"
-        },
-        {
-          "year": 2025,
-          "answer": "Chengdu"
-        }
-      ]
-    },
-    {
       "id": "continentsRunterra",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "easy",
       "subject": "text",
@@ -1715,7 +769,6 @@
     },
     {
       "id": "geoLandBridge",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1726,7 +779,6 @@
     },
     {
       "id": "geoSouthernContinent",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "easy",
       "subject": "text",
@@ -1737,7 +789,6 @@
     },
     {
       "id": "geoArgentThrone",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1748,7 +799,6 @@
     },
     {
       "id": "geoIceSea",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1759,7 +809,6 @@
     },
     {
       "id": "geoConquerorsSea",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1770,7 +819,6 @@
     },
     {
       "id": "geoGuardiansSea",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1781,7 +829,6 @@
     },
     {
       "id": "geoSerpentIsles",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1792,7 +839,6 @@
     },
     {
       "id": "geoShadowIsles",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "easy",
       "subject": "text",
@@ -1803,7 +849,6 @@
     },
     {
       "id": "geoIonianArchipelago",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "easy",
       "subject": "text",
@@ -1814,7 +859,6 @@
     },
     {
       "id": "geoUrsineLands",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1825,7 +869,6 @@
     },
     {
       "id": "geoGreatSai",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1836,7 +879,6 @@
     },
     {
       "id": "geoSaiFaraj",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1847,7 +889,6 @@
     },
     {
       "id": "geoTallestPeak",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1858,7 +899,6 @@
     },
     {
       "id": "geoRidgeback",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1869,7 +909,6 @@
     },
     {
       "id": "geoPetriciteForest",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "hard",
       "subject": "text",
@@ -1880,7 +919,6 @@
     },
     {
       "id": "geoEastValoran",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1891,7 +929,6 @@
     },
     {
       "id": "geoWestValoran",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1902,7 +939,6 @@
     },
     {
       "id": "geoSouthValoran",
-      "category": "lore",
       "subcategory": "geography",
       "difficulty": "medium",
       "subject": "text",
@@ -1913,7 +949,6 @@
     },
     {
       "id": "natFeudalMonarchy",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "easy",
       "subject": "text",
@@ -1924,7 +959,6 @@
     },
     {
       "id": "natTribalMatriarchy",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -1935,7 +969,6 @@
     },
     {
       "id": "natMageAutocracy",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -1946,7 +979,6 @@
     },
     {
       "id": "natExpansionistEmpire",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "easy",
       "subject": "text",
@@ -1957,7 +989,6 @@
     },
     {
       "id": "natTribalTheocracy",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -1968,7 +999,6 @@
     },
     {
       "id": "natDivineEmpire",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -1979,7 +1009,6 @@
     },
     {
       "id": "natRegionalProvinces",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -1990,7 +1019,6 @@
     },
     {
       "id": "natFrostguardSeat",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "champion",
@@ -2001,7 +1029,6 @@
     },
     {
       "id": "natAvarosanLeader",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "easy",
       "subject": "champion",
@@ -2012,7 +1039,6 @@
     },
     {
       "id": "natWinterClawLeader",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "easy",
       "subject": "champion",
@@ -2023,7 +1049,6 @@
     },
     {
       "id": "natDemaciaRuler",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "champion",
@@ -2034,7 +1059,6 @@
     },
     {
       "id": "natYunTalFounder",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "champion",
@@ -2045,7 +1069,6 @@
     },
     {
       "id": "natDemaciaCapital",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "easy",
       "subject": "text",
@@ -2056,7 +1079,6 @@
     },
     {
       "id": "natZeffira",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2067,7 +1089,6 @@
     },
     {
       "id": "natIxtalCapital",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2078,7 +1099,6 @@
     },
     {
       "id": "natFrostheld",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2089,7 +1109,6 @@
     },
     {
       "id": "natTargonCapital",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2100,7 +1119,6 @@
     },
     {
       "id": "natCamavorCapital",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2111,7 +1129,6 @@
     },
     {
       "id": "natTaskaros",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2122,7 +1139,6 @@
     },
     {
       "id": "natPanthas",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2133,7 +1149,6 @@
     },
     {
       "id": "natIronKeep",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2144,7 +1159,6 @@
     },
     {
       "id": "natEastShurimanContinent",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2155,7 +1169,6 @@
     },
     {
       "id": "natWestShurimanContinent",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2166,7 +1179,6 @@
     },
     {
       "id": "natLunari",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2177,7 +1189,6 @@
     },
     {
       "id": "natSolari",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2188,7 +1199,6 @@
     },
     {
       "id": "natAspectTwilight",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "champion",
@@ -2199,7 +1209,6 @@
     },
     {
       "id": "natAspectWar",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "champion",
@@ -2210,7 +1219,6 @@
     },
     {
       "id": "natAspectProtection",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "champion",
@@ -2221,7 +1229,6 @@
     },
     {
       "id": "natPlacesOfDemacia",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2301,7 +1308,6 @@
     },
     {
       "id": "natPlacesOfNoxus",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2381,7 +1387,6 @@
     },
     {
       "id": "natPlacesOfFreljord",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2461,7 +1466,6 @@
     },
     {
       "id": "natPlacesOfIonia",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2541,7 +1545,6 @@
     },
     {
       "id": "natPlacesOfShurima",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "medium",
       "subject": "text",
@@ -2621,7 +1624,6 @@
     },
     {
       "id": "natPlacesOfTargon",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2701,7 +1703,6 @@
     },
     {
       "id": "natPlacesOfIxtal",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2781,7 +1782,6 @@
     },
     {
       "id": "natPlacesOfCamavor",
-      "category": "lore",
       "subcategory": "nations",
       "difficulty": "hard",
       "subject": "text",
@@ -2861,7 +1861,6 @@
     },
     {
       "id": "cityPiltoverGovernment",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -2872,7 +1871,6 @@
     },
     {
       "id": "cityZaunGovernment",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -2883,7 +1881,6 @@
     },
     {
       "id": "cityBilgewaterGovernment",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -2894,7 +1891,6 @@
     },
     {
       "id": "cityIsthmus",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "easy",
       "subject": "text",
@@ -2905,7 +1901,6 @@
     },
     {
       "id": "cityBilgewaterCapital",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "easy",
       "subject": "text",
@@ -2916,7 +1911,6 @@
     },
     {
       "id": "cityLowPiltover",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -2927,7 +1921,6 @@
     },
     {
       "id": "cityGoldWay",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -2938,7 +1931,6 @@
     },
     {
       "id": "cityAcademy",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -2949,7 +1941,6 @@
     },
     {
       "id": "cityProgressDay",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -2960,7 +1951,6 @@
     },
     {
       "id": "citySump",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -2971,7 +1961,6 @@
     },
     {
       "id": "cityEntresol",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -2982,7 +1971,6 @@
     },
     {
       "id": "cityPromenade",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -2993,7 +1981,6 @@
     },
     {
       "id": "cityChemBarons",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -3004,7 +1991,6 @@
     },
     {
       "id": "citySlaughterDocks",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -3015,7 +2001,6 @@
     },
     {
       "id": "cityWhiteWharf",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "hard",
       "subject": "text",
@@ -3026,7 +2011,6 @@
     },
     {
       "id": "cityMotherSerpent",
-      "category": "lore",
       "subcategory": "city-states",
       "difficulty": "medium",
       "subject": "text",
@@ -3037,7 +2021,6 @@
     },
     {
       "id": "titanWarFoe",
-      "category": "lore",
       "subcategory": "titan-war",
       "difficulty": "easy",
       "subject": "text",
@@ -3048,7 +2031,6 @@
     },
     {
       "id": "titanWarPlace",
-      "category": "lore",
       "subcategory": "titan-war",
       "difficulty": "hard",
       "subject": "text",
@@ -3059,7 +2041,6 @@
     },
     {
       "id": "titanWarWinners",
-      "category": "lore",
       "subcategory": "titan-war",
       "difficulty": "medium",
       "subject": "text",
@@ -3070,7 +2051,6 @@
     },
     {
       "id": "sistersLissandra",
-      "category": "lore",
       "subcategory": "war-of-the-three-sisters",
       "difficulty": "medium",
       "subject": "champion",
@@ -3081,7 +2061,6 @@
     },
     {
       "id": "sistersBlinded",
-      "category": "lore",
       "subcategory": "war-of-the-three-sisters",
       "difficulty": "hard",
       "subject": "champion",
@@ -3092,7 +2071,6 @@
     },
     {
       "id": "sistersEntombed",
-      "category": "lore",
       "subcategory": "war-of-the-three-sisters",
       "difficulty": "medium",
       "subject": "text",
@@ -3103,7 +2081,6 @@
     },
     {
       "id": "sistersAbyss",
-      "category": "lore",
       "subcategory": "war-of-the-three-sisters",
       "difficulty": "easy",
       "subject": "text",
@@ -3114,7 +2091,6 @@
     },
     {
       "id": "sistersYsjarn",
-      "category": "lore",
       "subcategory": "war-of-the-three-sisters",
       "difficulty": "hard",
       "subject": "champion",
@@ -3125,7 +2101,6 @@
     },
     {
       "id": "sistersSisters",
-      "category": "lore",
       "subcategory": "war-of-the-three-sisters",
       "difficulty": "hard",
       "subject": "text",
@@ -3136,7 +2111,6 @@
     },
     {
       "id": "icathiaWeapon",
-      "category": "lore",
       "subcategory": "rebellion-of-icathia",
       "difficulty": "easy",
       "subject": "text",
@@ -3147,7 +2121,6 @@
     },
     {
       "id": "icathiaEmpire",
-      "category": "lore",
       "subcategory": "rebellion-of-icathia",
       "difficulty": "medium",
       "subject": "text",
@@ -3158,7 +2131,6 @@
     },
     {
       "id": "icathiaZilean",
-      "category": "lore",
       "subcategory": "rebellion-of-icathia",
       "difficulty": "hard",
       "subject": "champion",
@@ -3169,7 +2141,6 @@
     },
     {
       "id": "icathiaMalphite",
-      "category": "lore",
       "subcategory": "rebellion-of-icathia",
       "difficulty": "easy",
       "subject": "champion",
@@ -3180,7 +2151,6 @@
     },
     {
       "id": "darkinAatrox",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "medium",
       "subject": "champion",
@@ -3191,7 +2161,6 @@
     },
     {
       "id": "darkinNaafiri",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "hard",
       "subject": "champion",
@@ -3202,7 +2171,6 @@
     },
     {
       "id": "darkinVarus",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "medium",
       "subject": "champion",
@@ -3213,7 +2181,6 @@
     },
     {
       "id": "darkinZaahen",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "hard",
       "subject": "champion",
@@ -3224,7 +2191,6 @@
     },
     {
       "id": "darkinVladimir",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "hard",
       "subject": "champion",
@@ -3235,7 +2201,6 @@
     },
     {
       "id": "darkinMoneerah",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "hard",
       "subject": "champion",
@@ -3246,7 +2211,6 @@
     },
     {
       "id": "darkinShuriman",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "hard",
       "subject": "text",
@@ -3263,7 +2227,6 @@
     },
     {
       "id": "darkinIonian",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "hard",
       "subject": "text",
@@ -3280,7 +2243,6 @@
     },
     {
       "id": "darkinMeaning",
-      "category": "lore",
       "subcategory": "great-darkin-war",
       "difficulty": "medium",
       "subject": "text",
@@ -3291,7 +2253,6 @@
     },
     {
       "id": "revenantRuler",
-      "category": "lore",
       "subcategory": "reign-of-the-iron-revenant",
       "difficulty": "easy",
       "subject": "champion",
@@ -3302,7 +2263,6 @@
     },
     {
       "id": "revenantFortress",
-      "category": "lore",
       "subcategory": "reign-of-the-iron-revenant",
       "difficulty": "medium",
       "subject": "text",
@@ -3313,7 +2273,6 @@
     },
     {
       "id": "revenantVladimir",
-      "category": "lore",
       "subcategory": "reign-of-the-iron-revenant",
       "difficulty": "hard",
       "subject": "champion",
@@ -3324,7 +2283,6 @@
     },
     {
       "id": "revenantBlackRose",
-      "category": "lore",
       "subcategory": "reign-of-the-iron-revenant",
       "difficulty": "hard",
       "subject": "text",
@@ -3335,7 +2293,6 @@
     },
     {
       "id": "revenantAfterworld",
-      "category": "lore",
       "subcategory": "reign-of-the-iron-revenant",
       "difficulty": "hard",
       "subject": "text",
@@ -3346,7 +2303,6 @@
     },
     {
       "id": "ruinationCapital",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "medium",
       "subject": "text",
@@ -3357,7 +2313,6 @@
     },
     {
       "id": "ruinationYear",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "hard",
       "subject": "text",
@@ -3368,7 +2323,6 @@
     },
     {
       "id": "ruinationAfter",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "easy",
       "subject": "text",
@@ -3379,7 +2333,6 @@
     },
     {
       "id": "ruinationKingdom",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "medium",
       "subject": "text",
@@ -3390,7 +2343,6 @@
     },
     {
       "id": "ruinationKalista",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "medium",
       "subject": "champion",
@@ -3401,7 +2353,6 @@
     },
     {
       "id": "ruinationHecarim",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "medium",
       "subject": "champion",
@@ -3422,7 +2373,6 @@
     },
     {
       "id": "ruinationThresh",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "hard",
       "subject": "champion",
@@ -3443,7 +2393,6 @@
     },
     {
       "id": "ruinationYorick",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "hard",
       "subject": "champion",
@@ -3464,7 +2413,6 @@
     },
     {
       "id": "ruinationRyze",
-      "category": "lore",
       "subcategory": "ruination-of-helia",
       "difficulty": "hard",
       "subject": "champion",
@@ -3487,7 +2435,6 @@
     },
     {
       "id": "runeWarsRyze",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "medium",
       "subject": "champion",
@@ -3498,7 +2445,6 @@
     },
     {
       "id": "runeWarsZyra",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "easy",
       "subject": "champion",
@@ -3509,7 +2455,6 @@
     },
     {
       "id": "runeWarsSkarner",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "hard",
       "subject": "champion",
@@ -3520,7 +2465,6 @@
     },
     {
       "id": "runeWarsTwins",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "hard",
       "subject": "champion",
@@ -3531,7 +2475,6 @@
     },
     {
       "id": "runeWarsPoppy",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "hard",
       "subject": "champion",
@@ -3554,7 +2497,6 @@
     },
     {
       "id": "runeWarsNocturne",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "hard",
       "subject": "champion",
@@ -3575,7 +2517,6 @@
     },
     {
       "id": "runeWarsZeffira",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "medium",
       "subject": "text",
@@ -3586,7 +2527,6 @@
     },
     {
       "id": "runeWarsKhom",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "hard",
       "subject": "text",
@@ -3597,7 +2537,6 @@
     },
     {
       "id": "runeWarsBastion",
-      "category": "lore",
       "subcategory": "rune-wars",
       "difficulty": "medium",
       "subject": "text",
@@ -3608,7 +2547,6 @@
     },
     {
       "id": "firstWarSion",
-      "category": "lore",
       "subcategory": "first-demacian-noxian-war",
       "difficulty": "medium",
       "subject": "champion",
@@ -3619,7 +2557,6 @@
     },
     {
       "id": "firstWarPlace",
-      "category": "lore",
       "subcategory": "first-demacian-noxian-war",
       "difficulty": "hard",
       "subject": "text",
@@ -3630,7 +2567,6 @@
     },
     {
       "id": "firstWarMemorial",
-      "category": "lore",
       "subcategory": "first-demacian-noxian-war",
       "difficulty": "easy",
       "subject": "text",
@@ -3641,7 +2577,6 @@
     },
     {
       "id": "ionianLeader",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "medium",
       "subject": "text",
@@ -3652,7 +2587,6 @@
     },
     {
       "id": "ionianSwain",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "medium",
       "subject": "champion",
@@ -3663,7 +2597,6 @@
     },
     {
       "id": "ionianIrelia",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "easy",
       "subject": "champion",
@@ -3674,7 +2607,6 @@
     },
     {
       "id": "ionianYi",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "medium",
       "subject": "champion",
@@ -3695,7 +2627,6 @@
     },
     {
       "id": "ionianSinged",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "hard",
       "subject": "champion",
@@ -3706,7 +2637,6 @@
     },
     {
       "id": "ionianZed",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "medium",
       "subject": "champion",
@@ -3717,7 +2647,6 @@
     },
     {
       "id": "ionianKayn",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "easy",
       "subject": "champion",
@@ -3728,7 +2657,6 @@
     },
     {
       "id": "ionianUdyr",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "hard",
       "subject": "champion",
@@ -3739,7 +2667,6 @@
     },
     {
       "id": "ionianRiven",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "easy",
       "subject": "champion",
@@ -3750,7 +2677,6 @@
     },
     {
       "id": "ionianFinalBattle",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "medium",
       "subject": "text",
@@ -3761,7 +2687,6 @@
     },
     {
       "id": "ionianBase",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "hard",
       "subject": "text",
@@ -3772,7 +2697,6 @@
     },
     {
       "id": "ionianWuju",
-      "category": "lore",
       "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "medium",
       "subject": "text",
@@ -3783,7 +2707,6 @@
     },
     {
       "id": "riftTrueIce",
-      "category": "lore",
       "subcategory": "avarosan-winters-claw-rift",
       "difficulty": "medium",
       "subject": "champion",
@@ -3794,7 +2717,6 @@
     },
     {
       "id": "riftWarmother",
-      "category": "lore",
       "subcategory": "avarosan-winters-claw-rift",
       "difficulty": "medium",
       "subject": "champion",
@@ -3805,7 +2727,6 @@
     },
     {
       "id": "riftGrena",
-      "category": "lore",
       "subcategory": "avarosan-winters-claw-rift",
       "difficulty": "hard",
       "subject": "text",
@@ -3816,7 +2737,6 @@
     },
     {
       "id": "riftHejian",
-      "category": "lore",
       "subcategory": "avarosan-winters-claw-rift",
       "difficulty": "hard",
       "subject": "text",
@@ -3827,7 +2747,6 @@
     },
     {
       "id": "riftMaalcrom",
-      "category": "lore",
       "subcategory": "avarosan-winters-claw-rift",
       "difficulty": "hard",
       "subject": "text",
@@ -3838,7 +2757,6 @@
     },
     {
       "id": "medardaHouse",
-      "category": "lore",
       "subcategory": "medardan-succession-war",
       "difficulty": "easy",
       "subject": "text",
@@ -3849,7 +2767,6 @@
     },
     {
       "id": "medardaAmbessa",
-      "category": "lore",
       "subcategory": "medardan-succession-war",
       "difficulty": "medium",
       "subject": "champion",
@@ -3860,7 +2777,6 @@
     },
     {
       "id": "medardaMel",
-      "category": "lore",
       "subcategory": "medardan-succession-war",
       "difficulty": "easy",
       "subject": "champion",
@@ -3871,7 +2787,6 @@
     },
     {
       "id": "medardaPatriarch",
-      "category": "lore",
       "subcategory": "medardan-succession-war",
       "difficulty": "hard",
       "subject": "text",
@@ -3882,7 +2797,6 @@
     },
     {
       "id": "hextechViktor",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "medium",
       "subject": "champion",
@@ -3893,7 +2807,6 @@
     },
     {
       "id": "hextechJinx",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "easy",
       "subject": "champion",
@@ -3904,7 +2817,6 @@
     },
     {
       "id": "hextechHammer",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "medium",
       "subject": "champion",
@@ -3915,7 +2827,6 @@
     },
     {
       "id": "hextechZDrive",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "medium",
       "subject": "champion",
@@ -3926,7 +2837,6 @@
     },
     {
       "id": "hextechHexgate",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "medium",
       "subject": "text",
@@ -3937,7 +2847,6 @@
     },
     {
       "id": "hextechHexcore",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "easy",
       "subject": "text",
@@ -3948,7 +2857,6 @@
     },
     {
       "id": "hextechFishbones",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "easy",
       "subject": "text",
@@ -3959,7 +2867,6 @@
     },
     {
       "id": "hextechShimmer",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "easy",
       "subject": "text",
@@ -3970,7 +2877,6 @@
     },
     {
       "id": "hextechSevika",
-      "category": "lore",
       "subcategory": "era-of-hextech",
       "difficulty": "medium",
       "subject": "text",
@@ -3981,7 +2887,6 @@
     },
     {
       "id": "trifarixSwain",
-      "category": "lore",
       "subcategory": "establishment-of-the-trifarix",
       "difficulty": "medium",
       "subject": "champion",
@@ -3992,7 +2897,6 @@
     },
     {
       "id": "trifarixVision",
-      "category": "lore",
       "subcategory": "establishment-of-the-trifarix",
       "difficulty": "hard",
       "subject": "champion",
@@ -4003,7 +2907,6 @@
     },
     {
       "id": "trifarixDraven",
-      "category": "lore",
       "subcategory": "establishment-of-the-trifarix",
       "difficulty": "hard",
       "subject": "champion",
@@ -4014,7 +2917,6 @@
     },
     {
       "id": "trifarixGuile",
-      "category": "lore",
       "subcategory": "establishment-of-the-trifarix",
       "difficulty": "hard",
       "subject": "text",
@@ -4025,7 +2927,6 @@
     },
     {
       "id": "sunDiscAzir",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "easy",
       "subject": "champion",
@@ -4036,7 +2937,6 @@
     },
     {
       "id": "sunDiscCassiopeia",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "easy",
       "subject": "champion",
@@ -4047,7 +2947,6 @@
     },
     {
       "id": "sunDiscRenekton",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "medium",
       "subject": "champion",
@@ -4058,7 +2957,6 @@
     },
     {
       "id": "sunDiscXerath",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "medium",
       "subject": "champion",
@@ -4069,7 +2967,6 @@
     },
     {
       "id": "sunDiscTaliyah",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "hard",
       "subject": "champion",
@@ -4080,7 +2977,6 @@
     },
     {
       "id": "sunDiscNasus",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "medium",
       "subject": "champion",
@@ -4091,7 +2987,6 @@
     },
     {
       "id": "sunDiscVekaura",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "hard",
       "subject": "text",
@@ -4102,7 +2997,6 @@
     },
     {
       "id": "sunDiscOasis",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "hard",
       "subject": "text",
@@ -4113,7 +3007,6 @@
     },
     {
       "id": "sunDiscAscended",
-      "category": "lore",
       "subcategory": "rebirth-of-the-sun-disc",
       "difficulty": "medium",
       "subject": "text",
@@ -4124,7 +3017,6 @@
     },
     {
       "id": "princeShyvana",
-      "category": "lore",
       "subcategory": "rescue-of-the-demacian-prince",
       "difficulty": "easy",
       "subject": "champion",
@@ -4135,7 +3027,6 @@
     },
     {
       "id": "princeMountains",
-      "category": "lore",
       "subcategory": "rescue-of-the-demacian-prince",
       "difficulty": "medium",
       "subject": "text",
@@ -4146,7 +3037,6 @@
     },
     {
       "id": "princeGates",
-      "category": "lore",
       "subcategory": "rescue-of-the-demacian-prince",
       "difficulty": "hard",
       "subject": "text",
@@ -4157,7 +3047,6 @@
     },
     {
       "id": "princeCastle",
-      "category": "lore",
       "subcategory": "rescue-of-the-demacian-prince",
       "difficulty": "hard",
       "subject": "text",
@@ -4168,7 +3057,6 @@
     },
     {
       "id": "princeMarshal",
-      "category": "lore",
       "subcategory": "rescue-of-the-demacian-prince",
       "difficulty": "hard",
       "subject": "text",
@@ -4179,7 +3067,6 @@
     },
     {
       "id": "reaverFortune",
-      "category": "lore",
       "subcategory": "fall-of-the-reaver-king",
       "difficulty": "easy",
       "subject": "champion",
@@ -4190,7 +3077,6 @@
     },
     {
       "id": "reaverHired",
-      "category": "lore",
       "subcategory": "fall-of-the-reaver-king",
       "difficulty": "medium",
       "subject": "champion",
@@ -4201,7 +3087,6 @@
     },
     {
       "id": "reaverLocker",
-      "category": "lore",
       "subcategory": "fall-of-the-reaver-king",
       "difficulty": "hard",
       "subject": "champion",
@@ -4212,7 +3097,6 @@
     },
     {
       "id": "reaverShip",
-      "category": "lore",
       "subcategory": "fall-of-the-reaver-king",
       "difficulty": "medium",
       "subject": "text",
@@ -4223,7 +3107,6 @@
     },
     {
       "id": "reaverConclave",
-      "category": "lore",
       "subcategory": "fall-of-the-reaver-king",
       "difficulty": "hard",
       "subject": "text",
@@ -4234,7 +3117,6 @@
     },
     {
       "id": "reaverKillhouse",
-      "category": "lore",
       "subcategory": "fall-of-the-reaver-king",
       "difficulty": "hard",
       "subject": "text",
@@ -4245,7 +3127,6 @@
     },
     {
       "id": "ruinedKingThresh",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "medium",
       "subject": "champion",
@@ -4256,7 +3137,6 @@
     },
     {
       "id": "ruinedKingSenna",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "easy",
       "subject": "champion",
@@ -4267,7 +3147,6 @@
     },
     {
       "id": "ruinedKingLucian",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "medium",
       "subject": "champion",
@@ -4278,7 +3157,6 @@
     },
     {
       "id": "ruinedKingAkshan",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "champion",
@@ -4289,7 +3167,6 @@
     },
     {
       "id": "ruinedKingGwen",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "champion",
@@ -4300,7 +3177,6 @@
     },
     {
       "id": "ruinedKingFortune",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "medium",
       "subject": "champion",
@@ -4311,7 +3187,6 @@
     },
     {
       "id": "ruinedKingAhri",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "champion",
@@ -4322,7 +3197,6 @@
     },
     {
       "id": "ruinedKingBraum",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "champion",
@@ -4333,7 +3207,6 @@
     },
     {
       "id": "ruinedKingYasuo",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "easy",
       "subject": "champion",
@@ -4344,7 +3217,6 @@
     },
     {
       "id": "ruinedKingVayne",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "champion",
@@ -4355,7 +3227,6 @@
     },
     {
       "id": "ruinedKingPrison",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "text",
@@ -4366,7 +3237,6 @@
     },
     {
       "id": "ruinedKingShip",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "medium",
       "subject": "text",
@@ -4377,7 +3247,6 @@
     },
     {
       "id": "ruinedKingAbsolver",
-      "category": "lore",
       "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "text",
@@ -4388,7 +3257,6 @@
     },
     {
       "id": "rebellionSylas",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "easy",
       "subject": "champion",
@@ -4399,7 +3267,6 @@
     },
     {
       "id": "rebellionLux",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "medium",
       "subject": "champion",
@@ -4410,7 +3277,6 @@
     },
     {
       "id": "rebellionGalio",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "medium",
       "subject": "champion",
@@ -4421,7 +3287,6 @@
     },
     {
       "id": "rebellionMageseekers",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "easy",
       "subject": "text",
@@ -4432,7 +3297,6 @@
     },
     {
       "id": "rebellionAlly",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "hard",
       "subject": "text",
@@ -4443,7 +3307,6 @@
     },
     {
       "id": "rebellionKing",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "hard",
       "subject": "text",
@@ -4454,7 +3317,6 @@
     },
     {
       "id": "rebellionAlderburg",
-      "category": "lore",
       "subcategory": "great-mage-rebellion",
       "difficulty": "hard",
       "subject": "text",

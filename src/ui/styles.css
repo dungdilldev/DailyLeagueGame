@@ -125,6 +125,16 @@ main {
     background 0.15s;
 }
 
+/* Five modes have to fit a phone-width row: tighter type instead of overflowing. */
+@media (max-width: 26rem) {
+  .mode-nav__button {
+    min-width: 0;
+    padding: 0.25rem 0.1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+}
+
 .mode-nav__button:hover {
   color: var(--gold-light);
 }
@@ -862,6 +872,11 @@ footer a {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
+}
+
+/* Four categories fill two rows; the mixed card spans the row below them. */
+.info .mode-card[data-mode='mixed'] {
+  grid-column: 1 / -1;
 }
 
 .info .mode-card {

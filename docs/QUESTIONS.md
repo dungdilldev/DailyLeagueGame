@@ -172,7 +172,7 @@ So the first round is usually a clear-cut question, and movement speed is always
 ## Game modes
 
 The buttons at the top choose what to play: **Mixed** (all questions, five rounds) or a single
-category: **Stats**, **Lore** or **Esports**. Each mode is its own game: it has its own
+category: **Stats**, **Lore**, **Esports** or **Trivia**. Each mode is its own game: it has its own
 puzzle for the day, its own progress, streak and shared result. The choice is kept in the address
 (`?category=lore`).
 
@@ -189,26 +189,25 @@ have appeared. See [LOCAL_TESTING.md](LOCAL_TESTING.md#endless-mode-testing-ever
 
 | To...                                 | Edit                                                                      |
 | ------------------------------------- | ------------------------------------------------------------------------- |
-| Add or reword a question              | `data/questions.json`                                                     |
-| Ask about specific champions or items | `data/questions.json` (pick question, see below)                          |
-| Limit who can be an answer            | `correct`, `wrong` or `exclude` on the question in `data/questions.json`  |
+| Add or reword a question              | `data/questions/<category>.json`                                          |
+| Ask about specific champions or items | `data/questions/<category>.json` (pick question, see below)               |
+| Limit who can be an answer            | `correct`, `wrong` or `exclude` on the question                           |
 | Add a champion stat                   | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`) |
 | Add or change an item stat            | `pipeline/stats/itemStats.ts`                                             |
 | Change which items are used           | `pipeline/items/selectItems.ts`                                           |
 | Change how hard rounds are            | `src/game/generate/config.ts`                                             |
 
-A stat only becomes a question once `data/questions.json` has an entry for it. Which stat is a
+A stat only becomes a question once `data/questions/stats.json` has an entry for it. Which stat is a
 champion stat and which an item stat follows from the list it is registered in.
 
 ### Adding a question about specific champions or items
 
 A question that is not about a stat (for example "which of these is a yordle?") needs no code
-and no data refresh, only an entry in `data/questions.json`:
+and no data refresh, only an entry in the question file of its category (here `data/questions/lore.json`):
 
 ```json
 {
   "id": "isYordle",
-  "category": "lore",
   "difficulty": "easy",
   "subject": "champion",
   "label": "Yordles",
@@ -218,8 +217,7 @@ and no data refresh, only an entry in `data/questions.json`:
 }
 ```
 
-- Every question also has a `category` (`lore` or `esports` for these) and a
-  `difficulty`, see below.
+- Every question also has a category (the file it is in) and a `difficulty`, see below.
 - `subject` is `champion`, `item` or `text`. `label` is the short name in the results.
 - Each day the round shows one champion from `correct` and three from `wrong`, drawn at random,
   so the longer the lists, the more variety. `wrong` needs at least 3 entries. `exclude` works as
@@ -232,10 +230,13 @@ and no data refresh, only an entry in `data/questions.json`:
 
 ### Category and difficulty
 
-Both fields are required on every question.
+Every question has both.
 
-- `category`: `stats` (compares a number), `lore` (the story of
-  champions and the world) or `esports` (professional play). Only for grouping for now.
+- category: `stats` (compares a number), `lore` (the story of
+  champions and the world), `esports` (professional play) or `trivia` (the game itself and how
+  it was made). It is not written on the question: the file decides it
+  (`data/questions/stats.json`, `lore.json`, `esports.json`, `trivia.json`), and an entry with
+  its own `category` key is rejected. Ids must be unique across all files.
 - `difficulty`: which rounds the question may appear in. A day has five rounds, tiered easy,
   easy, medium, hard, hard.
 
@@ -252,7 +253,7 @@ between the best and second-best option narrows each round. The yordle and Void 
 
 ### Lore questions
 
-Lore questions have `"category": "lore"`. All lists were checked against the
+Lore questions live in `data/questions/lore.json`. All lists were checked against the
 [League of Legends wiki](https://wiki.leagueoflegends.com) region and event pages, and any
 champion the wiki also ties to another region (visitors, people born elsewhere, disputed cases)
 is left out of every list, so no option can be argued to be right or wrong. There are three kinds.
@@ -274,7 +275,6 @@ champion each day and stays correct as new champions arrive. It is a clue questi
 ```json
 {
   "id": "knownAsTitle",
-  "category": "lore",
   "difficulty": "easy",
   "subject": "champion",
   "clue": "title",
@@ -288,7 +288,7 @@ change region), so re-check a list when the wiki's page changes.
 
 ### Esports questions
 
-Esports questions have `"category": "esports"`. There are three kinds.
+Esports questions live in `data/questions/esports.json`. There are three kinds.
 
 **Skins (champion options).** Which champion has an esports skin: one from the esports team T1
 (including the earlier SKT T1 line) or a Worlds skin (one question, `medium`; the correct list is
@@ -316,6 +316,35 @@ has {player} played for?" (`teamByPlayer`) and "Which of these players is nickna
 `"ask"` instead of `correct` and `wrong`. Wrong options rely on the file being complete: a team or
 nickname missing for a player can make a wrong option right.
 
+### Trivia questions
+
+Trivia questions live in `data/questions/trivia.json`: knowledge about the game itself and how it
+was made. All are pick questions with hand-written lists, and every one has a subcategory, one per
+topic, so a day asks at most one question of each:
+
+| Subcategory               | About                                                      | Source (League of Legends Wiki unless noted) |
+| ------------------------- | ---------------------------------------------------------- | -------------------------------------------- |
+| `unreleased-champions`    | Scrapped concepts and the champion they became             | Unreleased Content                           |
+| `cancelled-features`      | Magma Chamber, recycled into Dominion and Arena            | Magma Chamber, Unreleased Content            |
+| `removed-modes`           | Dominion / The Crystal Scar, Twisted Treeline              | Dominion, Twisted Treeline                   |
+| `removed-summoner-spells` | Clairvoyance, Revive, Promote...                           | Summoner spell                               |
+| `removed-items`           | Ohmwrecker, Sightstone...                                  | Removed items                                |
+| `original-champions`      | The 17 champions of February 2009                          | release dates in `champions.json`            |
+| `champion-updates`        | Full visual and gameplay updates                           | Champion update                              |
+| `voice-lines`             | Jax's tribute to Joe, Rammus' "OK.", Teemo's Scout Code    | the champions' Audio pages                   |
+| `names-and-references`    | Baron Nashor and Roshan, Guinsoo's Rageblade               | Baron Nashor, Guinsoo's Rageblade            |
+| `music-bands`             | K/DA, Pentakill, True Damage, HEARTSTEEL                   | Data Dragon skin names                       |
+| `ultimate-skins`          | The seven Ultimate skins                                   | Ultimate skin, skin guides                   |
+| `spin-offs`               | Riot Forge games, Arcane                                   | Riot Forge, Arcane                           |
+| `summoners-rift`          | Voidgrubs (V14.1), Atakhan (V25.S1.1)                      | Voidgrubs, Atakhan                           |
+| `ranked-history`          | Master (2014), Iron and Grandmaster (2019), Emerald (2023) | Rank (League of Legends)                     |
+| `april-fools`             | Urf the Manatee, Ultra Rapid Fire                          | Ultra Rapid Fire, Unreleased Content         |
+| `riot-games`              | Founders, Tencent, release year, Defense of the Ancients   | Riot Games, Baron Nashor                     |
+
+A wrong option must be something the source does not tie to the answer: for a scrapped concept, no
+champion the page says it became; for a removed item, only items on sale today. Some facts go
+stale: re-check the bands, Ultimate skins, monsters and ranked tiers when a new one ships.
+
 ### Subcategories
 
 Add `"subcategory": "geography"` to a question to file it with related ones. It is optional, works
@@ -339,7 +368,6 @@ options the page does not connect to the event.
 ```json
 {
   "id": "baseHealth",
-  "category": "stats",
   "difficulty": "variable",
   "stat": "baseHealth",
   "question": "Which champion has the highest base health?",

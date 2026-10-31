@@ -149,7 +149,13 @@ test.describe('game modes', () => {
   test('starts in the stats mode and offers one button per category', async ({ page }) => {
     await page.goto('/play.html');
     const nav = page.getByRole('navigation', { name: 'Choose game mode' });
-    await expect(nav.getByRole('button')).toHaveText(['Stats', 'Lore', 'Esports', 'Mixed']);
+    await expect(nav.getByRole('button')).toHaveText([
+      'Stats',
+      'Lore',
+      'Esports',
+      'Trivia',
+      'Mixed',
+    ]);
     await expect(nav.getByRole('button', { name: 'Stats' })).toHaveAttribute(
       'aria-pressed',
       'true',
@@ -239,6 +245,7 @@ test.describe('start page', () => {
     { name: 'Stats', url: /\/play\.html$/ },
     { name: 'Lore', url: /category=lore/ },
     { name: 'Esports', url: /category=esports/ },
+    { name: 'Trivia', url: /category=trivia/ },
     { name: 'Mixed', url: /category=mixed/ },
   ];
 
@@ -292,6 +299,6 @@ test.describe('start page without JavaScript', () => {
     await expect(page.getByRole('heading', { level: 1, name: START_HEADING })).toBeVisible();
     await expect(
       page.getByRole('navigation', { name: 'Game modes' }).getByRole('link'),
-    ).toHaveCount(4);
+    ).toHaveCount(5);
   });
 });

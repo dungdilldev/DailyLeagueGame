@@ -48,7 +48,7 @@ Remove any old `A`, `AAAA` or `CNAME` records on the same names first, and do no
 ## How the daily automation works
 
 - The daily puzzle is generated in the browser from the date (UTC), using the champion, item and ability data in
-  `public/data/champions.json`, `public/data/items.json` and `public/data/abilities.json` and the questions in `data/questions.json`. There are no puzzle files; the answers can be worked out by anyone
+  `public/data/champions.json`, `public/data/items.json` and `public/data/abilities.json` and the questions in `data/questions/` (one file per category). There are no puzzle files; the answers can be worked out by anyone
   who reads the code, which is fine for a casual game.
 - `Update data and deploy` (scheduled, daily): fetches fresh champion data from Riot's Data Dragon and
   the LoL Wiki. If nothing changed, it stops. If something changed (a new patch or champion), it runs

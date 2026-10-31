@@ -1,0 +1,178 @@
+{
+  "questions": [
+    {
+      "id": "skinCount",
+      "difficulty": "variable",
+      "stat": "skinCount",
+      "question": "Which champion has the most skins?"
+    },
+    {
+      "id": "skinsPerYear",
+      "difficulty": "variable",
+      "stat": "skinsPerYear",
+      "question": "Which champion has the most skins relative to their release date?"
+    },
+    {
+      "id": "releaseDate",
+      "difficulty": "variable",
+      "stat": "releaseDate",
+      "question": "Which champion was released most recently?"
+    },
+    {
+      "id": "baseHealth",
+      "difficulty": "variable",
+      "stat": "baseHealth",
+      "question": "Which champion has the highest base health?"
+    },
+    {
+      "id": "healthPerLevel",
+      "difficulty": "variable",
+      "stat": "healthPerLevel",
+      "question": "Which champion has the highest health gained per level?"
+    },
+    {
+      "id": "healthRegen",
+      "difficulty": "variable",
+      "stat": "healthRegen",
+      "question": "Which champion has the highest base health regeneration?"
+    },
+    {
+      "id": "armor",
+      "difficulty": "variable",
+      "stat": "armor",
+      "question": "Which champion has the highest base armor?"
+    },
+    {
+      "id": "magicResist",
+      "difficulty": "variable",
+      "stat": "magicResist",
+      "question": "Which champion has the highest base magic resistance?"
+    },
+    {
+      "id": "attackDamage",
+      "difficulty": "variable",
+      "stat": "attackDamage",
+      "question": "Which champion has the highest base attack damage?"
+    },
+    {
+      "id": "attackSpeed",
+      "difficulty": "variable",
+      "stat": "attackSpeed",
+      "question": "Which champion has the highest base attack speed?"
+    },
+    {
+      "id": "attackRange",
+      "difficulty": "variable",
+      "stat": "attackRange",
+      "question": "Which champion has the highest attack range?"
+    },
+    {
+      "id": "moveSpeed",
+      "difficulty": "variable",
+      "stat": "moveSpeed",
+      "question": "Which champion has the highest movement speed?"
+    },
+    {
+      "id": "patchesPerYear",
+      "difficulty": "variable",
+      "stat": "patchesPerYear",
+      "question": "Which champion has had the most patch changes relative to their release date?"
+    },
+    {
+      "id": "itemCost",
+      "difficulty": "variable",
+      "stat": "itemCost",
+      "question": "Which item costs the most gold?"
+    },
+    {
+      "id": "itemGoldEfficiency",
+      "difficulty": "variable",
+      "stat": "itemGoldEfficiency",
+      "question": "Which item is the most gold efficient from its stats alone (ignoring passives)?"
+    },
+    {
+      "id": "itemAttackDamage",
+      "difficulty": "variable",
+      "stat": "itemAttackDamage",
+      "question": "Which item gives the most attack damage?"
+    },
+    {
+      "id": "itemAbilityPower",
+      "difficulty": "variable",
+      "stat": "itemAbilityPower",
+      "question": "Which item gives the most ability power?"
+    },
+    {
+      "id": "itemHealth",
+      "difficulty": "variable",
+      "stat": "itemHealth",
+      "question": "Which item gives the most health?"
+    },
+    {
+      "id": "itemArmor",
+      "difficulty": "variable",
+      "stat": "itemArmor",
+      "question": "Which item gives the most armor?"
+    },
+    {
+      "id": "itemMagicResist",
+      "difficulty": "variable",
+      "stat": "itemMagicResist",
+      "question": "Which item gives the most magic resistance?"
+    },
+    {
+      "id": "itemAbilityHaste",
+      "difficulty": "variable",
+      "stat": "itemAbilityHaste",
+      "question": "Which item gives the most ability haste?"
+    },
+    {
+      "id": "basicAbilityDamage",
+      "difficulty": "variable",
+      "stat": "basicAbilityDamage",
+      "question": "Which basic ability deals the most base damage at max rank?"
+    },
+    {
+      "id": "ultimateDamage",
+      "difficulty": "variable",
+      "stat": "ultimateDamage",
+      "question": "Which ultimate deals the most base damage at max rank?"
+    },
+    {
+      "id": "abilityApRatio",
+      "difficulty": "variable",
+      "stat": "abilityApRatio",
+      "question": "Which ability has the highest AP ratio at max rank?"
+    },
+    {
+      "id": "abilityBonusAdRatio",
+      "difficulty": "variable",
+      "stat": "abilityBonusAdRatio",
+      "question": "Which ability has the highest bonus AD ratio at max rank?"
+    },
+    {
+      "id": "abilityAdRatio",
+      "difficulty": "variable",
+      "stat": "abilityAdRatio",
+      "question": "Which ability has the highest total AD ratio at max rank?"
+    },
+    {
+      "id": "basicAbilityCooldown",
+      "difficulty": "variable",
+      "stat": "basicAbilityCooldown",
+      "question": "Which basic ability has the longest cooldown at max rank?"
+    },
+    {
+      "id": "ultimateCooldown",
+      "difficulty": "variable",
+      "stat": "ultimateCooldown",
+      "question": "Which ultimate has the longest cooldown at max rank?"
+    },
+    {
+      "id": "abilityManaCost",
+      "difficulty": "variable",
+      "stat": "abilityManaCost",
+      "question": "Which ability costs the most mana at max rank?"
+    }
+  ]
+}

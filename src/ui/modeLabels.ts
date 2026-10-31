@@ -6,4 +6,5 @@ export const MODE_LABELS: Record<GameMode, string> = {
   stats: 'Stats',
   lore: 'Lore',
   esports: 'Esports',
+  trivia: 'Trivia',
 };

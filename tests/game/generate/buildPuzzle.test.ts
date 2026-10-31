@@ -242,8 +242,8 @@ describe('buildPuzzle with question difficulty', () => {
     questions.map((question) => (question.id === pick.id ? { ...question, difficulty } : question));
   const positionsOf = (difficulty: QuestionDifficulty) => {
     const found = new Set<number>();
-    // Long enough that a question with 1 in ~40 odds per round shows up in every round it fits.
-    for (let offset = 0; offset < 500; offset++) {
+    // Long enough that a question with 1 in ~60 odds per round shows up in every round it fits.
+    for (let offset = 0; offset < 800; offset++) {
       const puzzle = buildPuzzle(
         addUtcDays('2026-01-01', offset),
         data,

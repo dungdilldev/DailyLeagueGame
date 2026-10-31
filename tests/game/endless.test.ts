@@ -19,7 +19,7 @@ describe('buildEndlessQuestion', () => {
   });
 
   it('only asks questions of the chosen category', () => {
-    for (const category of ['stats', 'lore', 'esports'] as const) {
+    for (const category of ['stats', 'lore', 'esports', 'trivia'] as const) {
       const ids = new Set(
         questions.filter((question) => question.category === category).map(({ id }) => id),
       );

@@ -1,14 +1,13 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import questionFile from '../../data/questions.json';
 import {
   ESPORTS_IMAGE_DIRECTORY,
   esportsImagePath,
   esportsImages,
   type EsportsImageKind,
 } from '../../src/data/esportsImages';
-import { QuestionFileSchema } from '../../src/data/schema';
+import { parseQuestionFiles, QUESTION_FILES } from '../../src/data/questionFiles';
 
 const WEBP_SIGNATURE = 'WEBP';
 
@@ -26,7 +25,7 @@ describe('data/esportsImages.json', () => {
   );
 
   it('has a logo for every team of the logo question', () => {
-    const logoQuestions = QuestionFileSchema.parse(questionFile).questions.flatMap((question) =>
+    const logoQuestions = parseQuestionFiles(QUESTION_FILES).flatMap((question) =>
       'logo' in question ? [question] : [],
     );
     expect(logoQuestions.length).toBeGreaterThan(0);

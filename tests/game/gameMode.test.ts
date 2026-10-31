@@ -13,7 +13,7 @@ const { questions } = realGameData;
 
 describe('GAME_MODES', () => {
   it('lists one mode per question category, then the mixed mode', () => {
-    expect(GAME_MODES).toEqual(['stats', 'lore', 'esports', 'mixed']);
+    expect(GAME_MODES).toEqual(['stats', 'lore', 'esports', 'trivia', 'mixed']);
   });
 });
 

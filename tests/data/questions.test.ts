@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import questionFile from '../../data/questions.json';
 import { resolveQuestions } from '../../src/data/questions';
 import { QuestionFileSchema, type StatMeta } from '../../src/data/schema';
 import { findQuestionListProblems } from '../../pipeline/validate/gameData';
@@ -276,10 +275,6 @@ describe('the question file in the repository', () => {
     const lore = questions.filter((question) => question.category === 'lore');
     expect(lore.length).toBeGreaterThan(0);
     expect(lore.every((question) => question.kind !== 'stat')).toBe(true);
-  });
-
-  it('is valid', () => {
-    expect(QuestionFileSchema.safeParse(questionFile).success).toBe(true);
   });
 
   it('asks about champions, items or abilities matching the data the stat comes from', () => {

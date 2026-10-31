@@ -6,6 +6,7 @@ export const CATEGORY_LABELS: Record<QuestionCategory, string> = {
   stats: 'Stats',
   lore: 'Lore',
   esports: 'Esports',
+  trivia: 'Trivia',
 };
 
 /** "world-events" -> "World events". */

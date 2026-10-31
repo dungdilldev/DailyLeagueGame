@@ -1,13 +1,12 @@
 import { readFileSync } from 'node:fs';
 import playerFile from '../../data/players.json';
-import questionFile from '../../data/questions.json';
 import { PlayerFileSchema } from '../../src/data/playerSchema';
+import { parseQuestionFiles, QUESTION_FILES } from '../../src/data/questionFiles';
 import { resolveQuestions, type GameData } from '../../src/data/questions';
 import {
   AbilityDataFileSchema,
   ChampionDataFileSchema,
   ItemDataFileSchema,
-  QuestionFileSchema,
 } from '../../src/data/schema';
 import { newestPuzzleData } from '../../src/game/dailyPuzzle';
 
@@ -20,13 +19,12 @@ export function loadRealGameData(): GameData {
   const champions = ChampionDataFileSchema.parse(readJson('public/data/champions.json'));
   const items = ItemDataFileSchema.parse(readJson('public/data/items.json'));
   const abilities = AbilityDataFileSchema.parse(readJson('public/data/abilities.json'));
-  const { questions } = QuestionFileSchema.parse(questionFile);
   return {
     champions,
     items,
     abilities,
     questions: resolveQuestions(
-      questions,
+      parseQuestionFiles(QUESTION_FILES),
       { champion: champions.stats, item: items.stats, ability: abilities.stats },
       PlayerFileSchema.parse(playerFile).players,
     ),

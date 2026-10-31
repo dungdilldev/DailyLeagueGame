@@ -126,7 +126,7 @@ export type AbilityDataFile = DataFile<Ability>;
 const EntityIdListSchema = z.array(z.string().min(1)).min(1);
 
 /** What kind of knowledge a question tests; for grouping and, later, filtering. */
-export const QuestionCategorySchema = z.enum(['stats', 'lore', 'esports']);
+export const QuestionCategorySchema = z.enum(['stats', 'lore', 'esports', 'trivia']);
 export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 
 /**
@@ -321,7 +321,7 @@ const PickQuestionTemplateSchema = z
   })
   .refine(hasDisjointLists, { message: DISJOINT_LISTS_MESSAGE });
 
-/** One kind of question, hand-written in `data/questions.json`. */
+/** One kind of question, hand-written in `data/questions/<category>.json`. */
 export const QuestionTemplateSchema = z.union([
   StatQuestionTemplateSchema,
   PickQuestionTemplateSchema,
@@ -346,3 +346,18 @@ export const QuestionFileSchema = z
     message: 'Question ids must be unique',
   });
 export type QuestionFile = z.infer<typeof QuestionFileSchema>;
+
+/**
+ * One category's question file, `data/questions/<category>.json`. Its entries leave out
+ * `category`: the file decides it, so a question cannot disagree with the file it is in. The
+ * entries are checked in full once the category is added.
+ */
+export const CategoryQuestionFileSchema = z.object({
+  questions: z
+    .array(
+      z.record(z.string(), z.unknown()).refine((entry) => !('category' in entry), {
+        message: 'category comes from the file the question is in',
+      }),
+    )
+    .min(1),
+});
