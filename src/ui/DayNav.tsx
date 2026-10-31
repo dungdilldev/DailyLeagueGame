@@ -1,5 +1,5 @@
 import { earliestPlayableDate } from '../game/archive';
-import { addUtcDays } from '../game/date';
+import { addUtcDays, formatDayLabel } from '../game/date';
 
 interface DayNavProps {
   /** The puzzle day currently shown. */
@@ -18,26 +18,30 @@ export function DayNav({ date, today, onChange }: DayNavProps) {
       <button
         type="button"
         class="day-nav__button"
+        aria-label="Previous day"
         disabled={date <= earliestPlayableDate(today)}
         onClick={() => {
           onChange(addUtcDays(date, -1));
         }}
       >
-        &larr; Previous day
+        &larr; Previous<span class="day-nav__optional"> day</span>
       </button>
       <p class="day-nav__current" aria-live="polite">
-        <time dateTime={date}>{date}</time>
+        <time class="day-nav__date" dateTime={date}>
+          {formatDayLabel(date)}
+        </time>
         <span class="day-nav__label">{isToday ? 'Today' : 'Earlier puzzle'}</span>
       </p>
       <button
         type="button"
         class="day-nav__button"
+        aria-label="Next day"
         disabled={isToday}
         onClick={() => {
           onChange(addUtcDays(date, 1));
         }}
       >
-        Next day &rarr;
+        Next<span class="day-nav__optional"> day</span> &rarr;
       </button>
     </nav>
   );

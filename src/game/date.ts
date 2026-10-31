@@ -36,3 +36,16 @@ export function isValidUtcDate(value: string): boolean {
   const parsed = Date.parse(`${value}T00:00:00Z`);
   return !Number.isNaN(parsed) && formatUtcDate(new Date(parsed)) === value;
 }
+
+const dayLabelFormat = new Intl.DateTimeFormat('en-US', {
+  weekday: 'short',
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+/** Writes a YYYY-MM-DD day out for people, e.g. "Sat, Oct 24, 2026" (read in UTC, like the day). */
+export function formatDayLabel(date: string): string {
+  return dayLabelFormat.format(new Date(`${date}T00:00:00Z`));
+}
