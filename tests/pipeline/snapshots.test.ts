@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Champion, Snapshot } from '../../src/data/schema';
-import { mergeSnapshots, pruneSnapshots } from '../../pipeline/snapshots';
+import { dropRepeatedSnapshots, mergeSnapshots, pruneSnapshots } from '../../pipeline/snapshots';
 
 const champion = (id: string, hp: number): Champion => ({
   id,
@@ -38,6 +38,34 @@ describe('mergeSnapshots', () => {
     );
   });
 
+  // Regression: the published file lists keys in schema order, freshly built champions do not,
+  // which made every daily run add an identical copy of the champion data.
+  it('changes nothing when identical data lists its keys in another order', () => {
+    const existing = [snapshot('1.0', '2026-03-01')];
+    const reordered = DATA_V1.map(({ stats, iconUrl, classes, title, name, id }) => ({
+      stats,
+      iconUrl,
+      classes,
+      title,
+      name,
+      id,
+    }));
+    expect(mergeSnapshots(existing, { patch: '1.0', entities: reordered }, '2026-03-05')).toEqual(
+      existing,
+    );
+  });
+
+  it('cleans up repeated snapshots already in the file', () => {
+    const existing = [
+      snapshot('1.0', '2026-03-01'),
+      snapshot('1.0', '2026-03-02'),
+      snapshot('1.0', '2026-03-03'),
+    ];
+    expect(mergeSnapshots(existing, { patch: '1.0', entities: DATA_V1 }, '2026-03-05')).toEqual([
+      snapshot('1.0', '2026-03-01'),
+    ]);
+  });
+
   it('adds changed data as a snapshot that starts tomorrow, keeping today on the old one', () => {
     const existing = [snapshot('1.0', '2026-03-01')];
     const merged = mergeSnapshots(existing, { patch: '1.1', entities: DATA_V2 }, '2026-03-05');
@@ -65,6 +93,23 @@ describe('mergeSnapshots', () => {
     const newer = [champion('Ahri', 610)];
     const merged = mergeSnapshots(existing, { patch: '1.2', entities: newer }, '2026-03-20');
     expect(merged.map((s) => s.patch)).toEqual(['1.1', '1.2']);
+  });
+});
+
+describe('dropRepeatedSnapshots', () => {
+  it('keeps the first of each run of identical snapshots', () => {
+    const all = [
+      snapshot('a', '2026-03-01'),
+      snapshot('b', '2026-03-02'),
+      snapshot('c', '2026-03-03', DATA_V2),
+      snapshot('d', '2026-03-04', DATA_V2),
+      snapshot('e', '2026-03-05'),
+    ];
+    expect(dropRepeatedSnapshots(all).map((s) => s.patch)).toEqual(['a', 'c', 'e']);
+  });
+
+  it('keeps an empty list empty', () => {
+    expect(dropRepeatedSnapshots([])).toEqual([]);
   });
 });
 
