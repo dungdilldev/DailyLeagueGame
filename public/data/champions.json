@@ -34437,6 +34437,9 @@
                     "title": "the Darkin Blade",
                     "classes": [
                         "Fighter"
+                    ],
+                    "esportsSkinLines": [
+                        "DRX"
                     ]
                 },
                 {
@@ -34486,6 +34489,9 @@
                     "title": "the Rogue Assassin",
                     "classes": [
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "DRX"
                     ]
                 },
                 {
@@ -34536,6 +34542,9 @@
                     "classes": [
                         "Tank",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -34561,6 +34570,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -34659,6 +34671,9 @@
                     "title": "the Weapon of the Faithful",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "Edward Gaming"
                     ]
                 },
                 {
@@ -34684,6 +34699,10 @@
                     "classes": [
                         "Marksman",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "DRX",
+                        "Worlds 2017"
                     ]
                 },
                 {
@@ -34758,6 +34777,10 @@
                     "classes": [
                         "Mage",
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1",
+                        "Worlds 2022"
                     ]
                 },
                 {
@@ -34783,6 +34806,9 @@
                     "classes": [
                         "Support",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -34931,6 +34957,9 @@
                     "title": "the Sheriff of Piltover",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "DRX"
                     ]
                 },
                 {
@@ -34956,6 +34985,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Invictus Gaming"
                     ]
                 },
                 {
@@ -35030,6 +35062,9 @@
                     "classes": [
                         "Marksman",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Fnatic"
                     ]
                 },
                 {
@@ -35129,6 +35164,9 @@
                     "classes": [
                         "Tank",
                         "Fighter"
+                    ],
+                    "esportsSkinLines": [
+                        "Taipei Assassins"
                     ]
                 },
                 {
@@ -35154,6 +35192,9 @@
                     "classes": [
                         "Assassin",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35179,6 +35220,9 @@
                     "classes": [
                         "Assassin",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35229,6 +35273,10 @@
                     "classes": [
                         "Marksman",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung Galaxy",
+                        "Taipei Assassins"
                     ]
                 },
                 {
@@ -35279,6 +35327,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Invictus Gaming"
                     ]
                 },
                 {
@@ -35329,6 +35380,9 @@
                     "classes": [
                         "Tank",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35353,6 +35407,9 @@
                     "title": "the Saltwater Scourge",
                     "classes": [
                         "Fighter"
+                    ],
+                    "esportsSkinLines": [
+                        "FunPlus Phoenix"
                     ]
                 },
                 {
@@ -35403,6 +35460,10 @@
                     "classes": [
                         "Fighter",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung Galaxy",
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35428,6 +35489,9 @@
                     "classes": [
                         "Fighter",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Fnatic"
                     ]
                 },
                 {
@@ -35452,6 +35516,9 @@
                     "title": "the Outlaw",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "Edward Gaming"
                     ]
                 },
                 {
@@ -35601,6 +35668,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Invictus Gaming"
                     ]
                 },
                 {
@@ -35651,6 +35721,9 @@
                     "classes": [
                         "Support",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Fnatic"
                     ]
                 },
                 {
@@ -35676,6 +35749,11 @@
                     "classes": [
                         "Fighter",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "Fnatic",
+                        "Samsung Galaxy",
+                        "Worlds 2021"
                     ]
                 },
                 {
@@ -35700,6 +35778,9 @@
                     "title": "Grandmaster at Arms",
                     "classes": [
                         "Fighter"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35725,6 +35806,9 @@
                     "classes": [
                         "Fighter",
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35750,6 +35834,10 @@
                     "classes": [
                         "Marksman",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Damwon Gaming",
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35774,6 +35862,9 @@
                     "title": "the Loose Cannon",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -35799,6 +35890,9 @@
                     "classes": [
                         "Marksman",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Invictus Gaming"
                     ]
                 },
                 {
@@ -35823,6 +35917,10 @@
                     "title": "the Spear of Vengeance",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1",
+                        "Worlds 2015"
                     ]
                 },
                 {
@@ -35872,6 +35970,9 @@
                     "title": "the Deathsinger",
                     "classes": [
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Fnatic"
                     ]
                 },
                 {
@@ -35996,6 +36097,9 @@
                     "title": "the Heart of the Tempest",
                     "classes": [
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Damwon Gaming"
                     ]
                 },
                 {
@@ -36020,6 +36124,9 @@
                     "title": "the Voidreaver",
                     "classes": [
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Worlds 2018"
                     ]
                 },
                 {
@@ -36044,6 +36151,9 @@
                     "title": "The Eternal Hunters",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "DRX"
                     ]
                 },
                 {
@@ -36143,6 +36253,10 @@
                     "classes": [
                         "Assassin",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Invictus Gaming",
+                        "Worlds 2020"
                     ]
                 },
                 {
@@ -36168,6 +36282,10 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "FunPlus Phoenix",
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -36193,6 +36311,9 @@
                     "classes": [
                         "Tank",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "Damwon Gaming"
                     ]
                 },
                 {
@@ -36367,6 +36488,9 @@
                     "classes": [
                         "Tank",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "FunPlus Phoenix"
                     ]
                 },
                 {
@@ -36416,6 +36540,9 @@
                     "classes": [
                         "Tank",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "DRX"
                     ]
                 },
                 {
@@ -36641,6 +36768,9 @@
                     "classes": [
                         "Support",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -36741,6 +36871,9 @@
                     "classes": [
                         "Assassin",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Damwon Gaming"
                     ]
                 },
                 {
@@ -36816,6 +36949,9 @@
                     "classes": [
                         "Tank",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Taipei Assassins"
                     ]
                 },
                 {
@@ -36841,6 +36977,9 @@
                     "classes": [
                         "Fighter",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -36866,6 +37005,10 @@
                     "classes": [
                         "Mage",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1",
+                        "Taipei Assassins"
                     ]
                 },
                 {
@@ -36965,6 +37108,9 @@
                     "classes": [
                         "Support",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -37038,6 +37184,10 @@
                     "title": "The Charmer",
                     "classes": [
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "Invictus Gaming",
+                        "Samsung Galaxy"
                     ]
                 },
                 {
@@ -37162,6 +37312,10 @@
                     "classes": [
                         "Fighter",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1",
+                        "Worlds 2023"
                     ]
                 },
                 {
@@ -37187,6 +37341,9 @@
                     "classes": [
                         "Assassin",
                         "Fighter"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung White"
                     ]
                 },
                 {
@@ -37212,6 +37369,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Worlds 2012"
                     ]
                 },
                 {
@@ -37261,6 +37421,10 @@
                     "title": "the Rune Mage",
                     "classes": [
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1",
+                        "Worlds 2019"
                     ]
                 },
                 {
@@ -37360,6 +37524,9 @@
                     "classes": [
                         "Support",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -37433,6 +37600,9 @@
                     "title": "the Eye of Twilight",
                     "classes": [
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "Taipei Assassins"
                     ]
                 },
                 {
@@ -37458,6 +37628,9 @@
                     "classes": [
                         "Fighter",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "Worlds 2014"
                     ]
                 },
                 {
@@ -37483,6 +37656,9 @@
                     "classes": [
                         "Tank",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung White"
                     ]
                 },
                 {
@@ -37706,6 +37882,9 @@
                     "title": "the Dark Sovereign",
                     "classes": [
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -37756,6 +37935,9 @@
                     "classes": [
                         "Mage",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung Galaxy"
                     ]
                 },
                 {
@@ -37780,6 +37962,9 @@
                     "title": "the Blade's Shadow",
                     "classes": [
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung White"
                     ]
                 },
                 {
@@ -37855,6 +38040,11 @@
                     "classes": [
                         "Support",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "FunPlus Phoenix",
+                        "Samsung White",
+                        "Worlds 2013"
                     ]
                 },
                 {
@@ -37955,6 +38145,9 @@
                     "classes": [
                         "Mage",
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "Damwon Gaming"
                     ]
                 },
                 {
@@ -37980,6 +38173,9 @@
                     "classes": [
                         "Marksman",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung White"
                     ]
                 },
                 {
@@ -38055,6 +38251,9 @@
                     "classes": [
                         "Marksman",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38080,6 +38279,10 @@
                     "classes": [
                         "Marksman",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "FunPlus Phoenix",
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38178,6 +38381,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38203,6 +38409,10 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "Edward Gaming",
+                        "Worlds 2024"
                     ]
                 },
                 {
@@ -38326,6 +38536,9 @@
                     "title": "the Rebel",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "Samsung Galaxy"
                     ]
                 },
                 {
@@ -38376,6 +38589,9 @@
                     "classes": [
                         "Fighter",
                         "Tank"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38426,6 +38642,9 @@
                     "classes": [
                         "Fighter",
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38475,6 +38694,9 @@
                     "title": "the Unbroken Faith",
                     "classes": [
                         "Marksman"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38500,6 +38722,9 @@
                     "classes": [
                         "Support",
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Edward Gaming"
                     ]
                 },
                 {
@@ -38549,6 +38774,9 @@
                     "classes": [
                         "Tank",
                         "Fighter"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 },
                 {
@@ -38573,6 +38801,10 @@
                     "title": "the Master of Shadows",
                     "classes": [
                         "Assassin"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1",
+                        "Worlds 2016"
                     ]
                 },
                 {
@@ -38670,6 +38902,9 @@
                     "title": "the Aspect of Twilight",
                     "classes": [
                         "Mage"
+                    ],
+                    "esportsSkinLines": [
+                        "Edward Gaming"
                     ]
                 },
                 {
@@ -38695,6 +38930,9 @@
                     "classes": [
                         "Mage",
                         "Support"
+                    ],
+                    "esportsSkinLines": [
+                        "T1 or SKT T1"
                     ]
                 }
             ]
