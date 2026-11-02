@@ -2,10 +2,11 @@ import { useEffect, useState } from 'preact/hooks';
 import type { Puzzle } from '../game/puzzle';
 import type { Entity, OptionSubject } from '../data/schema';
 import { isComplete, roundResults, submitAnswer, validAnswers } from '../game/progress';
-import { progressSlot, type GameMode } from '../game/gameMode';
+import { nextUnfinishedMode, progressSlot, type GameMode } from '../game/gameMode';
 import { remainingImageUrls } from '../game/roundImages';
 import { currentStreak } from '../game/streak';
 import { completedDates, loadSavedDays, saveDay, type StorageLike } from '../storage/progressStore';
+import { modesFinishedOn } from '../storage/playedModes';
 import { ResultsView } from './ResultsView';
 import { RoundView } from './RoundView';
 import { preloadImages } from './preloadImages';
@@ -16,6 +17,8 @@ interface GameProps {
   entities: Readonly<Record<OptionSubject, ReadonlyMap<string, Entity>>>;
   /** Which game mode this puzzle belongs to; each mode saves its own progress and streak. */
   mode: GameMode;
+  /** Switches to another mode; the results offer the next unfinished one. */
+  onChangeMode?: (mode: GameMode) => void;
   /** UTC date of the puzzle being played. */
   date: string;
   /** The real current UTC day. Playing an earlier day does not count for the streak. */
@@ -24,7 +27,16 @@ interface GameProps {
   shareUrl: string;
 }
 
-export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }: GameProps) {
+export function Game({
+  puzzle,
+  entities,
+  mode,
+  onChangeMode,
+  date,
+  today,
+  storage,
+  shareUrl,
+}: GameProps) {
   const slot = progressSlot(mode);
   const [days, setDays] = useState(() => loadSavedDays(storage, slot));
   // True between answering a round and pressing "Next": the reveal is shown for that round.
@@ -52,6 +64,8 @@ export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }:
         )}
         isToday={date === today}
         mode={mode}
+        nextMode={nextUnfinishedMode(mode, modesFinishedOn(storage, today))}
+        onPlayMode={onChangeMode}
         shareUrl={shareUrl}
       />
     );

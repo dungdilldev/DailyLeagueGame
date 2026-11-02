@@ -370,6 +370,16 @@ Decision (owner, 2026-10-31): a fourth category, "Trivia", about the game itself
 - [x] Mode buttons tighten on narrow screens so five fit
 - Stats, lore and esports puzzles are unchanged; the mixed puzzle changes for every date (new questions).
 
+### Phase 7d - Redesign (done)
+
+Decision (owner, 2026-11-02): new look from the owner's design canvas (landing page and play page). Landing first, the game page as its own change. Fonts self-hosted (Inter and Spectral, Latin subset, OFL) instead of Google Fonts, so no third party is contacted.
+
+- [x] Start page: hero with date badge, two calls to action and countdown; an answerable sample round ("Which of these champions is a yordle?"); three steps; five mode cards with icons
+- [x] Shared full-width header (name, How to play, Categories, About, Play) and footer for the start page and the info pages; `privacy.html` font text updated
+- [x] Game page (`play.html`): category pills with a check on modes finished that day, day nav with arrows, wide round panel with four cards in a row (two on a phone), hint and Next button in one row, results panel with "Correct"/"Wrong" per round and a "Play <next unfinished mode> next" button
+- [x] The game uses the shared header and footer partials; `ui/Footer.tsx` is gone and its League of Legends Wiki attribution moved into the shared footer (now on every page)
+- The "Played today" mark shows no score: the start page would have to build every mode's puzzle to know it
+
 ### Phase 8 - Ads with Google AdSense (not started)
 
 Goal: one or two small, unobtrusive ads that never get in the way of the game and never load before the visitor has agreed, where the law asks for it. The owner already has a domain.
@@ -399,7 +409,7 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
 
 - [ ] Turn on Google's consent message (Privacy & messaging in AdSense, a certified consent platform) or use another certified one. No script of Google's may load before consent where it is required
-- [ ] Add a "Privacy settings" link in both footers to reopen the choice
+- [ ] Add a "Privacy settings" link in the footer to reopen the choice
 - [ ] Update `privacy.html`: ads, cookies and identifiers set by Google and its partners, what is shared, how to opt out (Google's ad settings, `youronlinechoices`), new "Last updated" date. Update `CLAUDE.md` (the "Riot legal" and storage notes)
 - [ ] Stop saying "no cookies" in the page text; the text on `privacy.html` and `about.html` must stay true
 

@@ -5,6 +5,7 @@ import type { GameMode } from '../game/gameMode';
 import { MIXED_MODE } from '../game/gameMode';
 import { buildShareText } from '../game/share';
 import { Countdown } from './Countdown';
+import { Icon } from './icons';
 import { MODE_LABELS } from './modeLabels';
 
 interface ResultsViewProps {
@@ -15,6 +16,9 @@ interface ResultsViewProps {
   /** False for an earlier day from the archive: no countdown, and a note about the streak. */
   isToday: boolean;
   mode: GameMode;
+  /** A mode not finished yet today, offered as the next one to play. */
+  nextMode?: GameMode;
+  onPlayMode?: (mode: GameMode) => void;
 }
 
 type CopyStatus = 'idle' | 'copied' | 'failed';
@@ -26,6 +30,8 @@ export function ResultsView({
   shareUrl,
   isToday,
   mode,
+  nextMode,
+  onPlayMode,
 }: ResultsViewProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
   const results = roundResults(puzzle, answers);
@@ -50,7 +56,9 @@ export function ResultsView({
 
   return (
     <section class="results-panel" aria-labelledby="results-heading">
-      <p class="results-panel__eyebrow">{isToday ? 'Today’s result' : 'Earlier puzzle'}</p>
+      <p class="results-panel__eyebrow">
+        {isToday ? 'Today’s result' : 'Earlier puzzle'} · {MODE_LABELS[mode]}
+      </p>
       <h2 id="results-heading" class="results-panel__score">
         You got{' '}
         <strong>
@@ -58,6 +66,7 @@ export function ResultsView({
         </strong>
       </h2>
       <p class="streak">
+        <Icon name="flame" size={20} />
         {streak > 0 ? `Streak: ${String(streak)} day${streak === 1 ? '' : 's'}` : 'No streak yet'}
       </p>
 
@@ -71,14 +80,28 @@ export function ResultsView({
               {results[i] ? '✓' : '✕'}
             </span>
             <span class="results__label">{round.statLabel}</span>
-            <span class="visually-hidden">{results[i] ? ' (correct)' : ' (wrong)'}</span>
+            <span class="results__outcome">{results[i] ? 'Correct' : 'Wrong'}</span>
           </li>
         ))}
       </ol>
 
-      <button type="button" class="button" onClick={copyResult}>
-        {copyStatus === 'copied' ? 'Copied!' : 'Share result'}
-      </button>
+      <div class="results-panel__actions">
+        <button type="button" class="button button--large" onClick={copyResult}>
+          <Icon name="share" />
+          {copyStatus === 'copied' ? 'Copied!' : 'Share result'}
+        </button>
+        {isToday && nextMode && onPlayMode && (
+          <button
+            type="button"
+            class="button button--large button--secondary"
+            onClick={() => {
+              onPlayMode(nextMode);
+            }}
+          >
+            Play {MODE_LABELS[nextMode]} next
+          </button>
+        )}
+      </div>
       {copyStatus === 'failed' && (
         <div class="share-fallback" role="alert">
           <p>Could not copy automatically. Copy this text instead:</p>
@@ -96,7 +119,7 @@ export function ResultsView({
       {isToday ? (
         <Countdown puzzleDate={puzzle.date} />
       ) : (
-        <p class="countdown">
+        <p class="results-panel__note">
           This was an earlier puzzle, so it does not count towards your streak. Use “Next day” to
           get back to today.
         </p>

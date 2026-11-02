@@ -35,3 +35,16 @@ export function puzzleSeed(date: string, mode: GameMode): string {
 export function progressSlot(mode: GameMode): string | undefined {
   return mode === MIXED_MODE ? undefined : mode;
 }
+
+/**
+ * The mode to suggest after finishing `current`: the next one in `GAME_MODES` order (wrapping
+ * round) that is not in `finished`. Undefined once every other mode is finished too.
+ */
+export function nextUnfinishedMode(
+  current: GameMode,
+  finished: readonly GameMode[],
+): GameMode | undefined {
+  const start = GAME_MODES.indexOf(current);
+  const later = [...GAME_MODES.slice(start + 1), ...GAME_MODES.slice(0, start)];
+  return later.find((mode) => !finished.includes(mode));
+}

@@ -3,9 +3,9 @@ import { resolvePuzzleDate } from '../game/archive';
 import { formatUtcDate } from '../game/date';
 import { DEFAULT_GAME_MODE, parseGameMode, type GameMode } from '../game/gameMode';
 import { getBrowserStorage } from '../storage/progressStore';
+import { modesFinishedOn } from '../storage/playedModes';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
-import { Footer } from './Footer';
 import { ModeNav } from './ModeNav';
 import { PuzzleScreen } from './PuzzleScreen';
 import { SupportButton } from './SupportButton';
@@ -63,7 +63,13 @@ function showSeedInUrl(seed: string): void {
   window.history.replaceState(null, '', url);
 }
 
-function Body({ date, mode }: { date: string; mode: GameMode }) {
+interface BodyProps {
+  date: string;
+  mode: GameMode;
+  onChangeMode: (mode: GameMode) => void;
+}
+
+function Body({ date, mode, onChangeMode }: BodyProps) {
   const state = useGameFile();
 
   switch (state.kind) {
@@ -86,6 +92,7 @@ function Body({ date, mode }: { date: string; mode: GameMode }) {
         <PuzzleScreen
           data={state.data}
           mode={mode}
+          onChangeMode={onChangeMode}
           date={date}
           today={TODAY}
           storage={getBrowserStorage()}
@@ -110,30 +117,26 @@ export function App() {
   };
 
   return (
-    <div class="app">
-      <header class="masthead">
-        <div>
-          <h1 class="masthead__title">
-            <a href="./">Summoner&apos;s Quiz</a>
-          </h1>
-          <p class="tagline">Daily League of Legends trivia game</p>
-        </div>
-      </header>
-      <main>
-        {isEndlessMode ? (
-          <p class="mode-link">
-            <a href={window.location.pathname}>&larr; Back to the daily puzzle</a>
-          </p>
-        ) : (
-          <>
-            <ModeNav mode={mode} onChange={changeMode} />
+    <>
+      {isEndlessMode ? (
+        <p class="mode-link">
+          <a href={window.location.pathname}>&larr; Back to the daily puzzle</a>
+        </p>
+      ) : (
+        <>
+          <h1 class="visually-hidden">Summoner&apos;s Quiz: the daily puzzle</h1>
+          <div class="game__toolbar">
+            <ModeNav
+              mode={mode}
+              finished={modesFinishedOn(getBrowserStorage(), date)}
+              onChange={changeMode}
+            />
             <DayNav date={date} today={TODAY} onChange={changeDate} />
-          </>
-        )}
-        <Body date={date} mode={mode} />
-      </main>
+          </div>
+        </>
+      )}
+      <Body date={date} mode={mode} onChangeMode={changeMode} />
       <SupportButton />
-      <Footer />
-    </div>
+    </>
   );
 }

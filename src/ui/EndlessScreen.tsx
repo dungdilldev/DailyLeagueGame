@@ -106,7 +106,7 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
 
   return (
     <section aria-labelledby="endless-heading">
-      <h2 id="endless-heading">Endless mode</h2>
+      <h1 id="endless-heading">Endless mode</h1>
       <p class="endless__note">
         Random questions for testing. Nothing is saved and nothing counts towards your streak. Data
         from champion patch {newestSnapshot(data.champions.snapshots).patch}, item patch{' '}

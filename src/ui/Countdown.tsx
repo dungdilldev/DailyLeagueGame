@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { formatCountdown, formatUtcDate, msUntilNextUtcDay } from '../game/date';
+import { Icon } from './icons';
 
 const TICK_MS = 1000;
 
@@ -40,7 +41,11 @@ export function Countdown({ puzzleDate }: CountdownProps) {
 
   return (
     <p class="countdown">
-      Next puzzle in <time>{formatCountdown(msUntilNextUtcDay(now))}</time> (resets at 00:00 UTC)
+      <Icon name="clock" size={20} />
+      {/* One flex item, so the words keep their normal spacing next to the icon. */}
+      <span>
+        Next puzzle in <time>{formatCountdown(msUntilNextUtcDay(now))}</time> (resets at 00:00 UTC)
+      </span>
     </p>
   );
 }

@@ -10,7 +10,7 @@ interface OptionCardProps {
   /** False until the player has answered: the value takes up space but is invisible. */
   valueRevealed: boolean;
   state: CardState;
-  /** Label shown on the right option and on the player's wrong pick once revealed. */
+  /** Label shown under the right option and the player's wrong pick once revealed. */
   tag: string | undefined;
   disabled: boolean;
   onSelect: () => void;
@@ -49,7 +49,10 @@ export function OptionCard({
           {valueText}
         </span>
       )}
-      {tag && <span class="card__tag">{tag}</span>}
+      {/* Always takes its line, like the value, so the cards keep their size on reveal. */}
+      <span class={tag ? 'card__tag' : 'card__tag card__tag--empty'} aria-hidden={!tag}>
+        {tag}
+      </span>
     </button>
   );
 }

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   GAME_MODES,
   MIXED_MODE,
+  nextUnfinishedMode,
   parseGameMode,
   progressSlot,
   puzzleSeed,
@@ -53,5 +54,23 @@ describe('puzzleSeed and progressSlot', () => {
     const seeds = GAME_MODES.map((mode) => puzzleSeed('2026-03-05', mode));
     expect(new Set(seeds).size).toBe(GAME_MODES.length);
     expect(progressSlot('lore')).toBe('lore');
+  });
+});
+
+describe('nextUnfinishedMode', () => {
+  it('suggests the next mode in order, skipping finished ones', () => {
+    expect(nextUnfinishedMode('stats', [])).toBe('lore');
+    expect(nextUnfinishedMode('stats', ['stats', 'lore'])).toBe('esports');
+  });
+
+  it('wraps round after the last mode', () => {
+    expect(nextUnfinishedMode(MIXED_MODE, [MIXED_MODE])).toBe('stats');
+    expect(nextUnfinishedMode('trivia', ['trivia', MIXED_MODE, 'stats'])).toBe('lore');
+  });
+
+  it('never suggests the current mode, and nothing once all others are finished', () => {
+    const othersFinished = GAME_MODES.filter((mode) => mode !== 'lore');
+    expect(nextUnfinishedMode('lore', othersFinished)).toBeUndefined();
+    expect(nextUnfinishedMode('lore', GAME_MODES)).toBeUndefined();
   });
 });

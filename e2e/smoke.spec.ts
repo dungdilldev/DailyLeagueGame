@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { ARCHIVE_DAYS } from '../src/game/archive';
 
 const ROUNDS_PER_DAY = 5;
-const START_HEADING = 'Test your League of Legends knowledge, every day';
+const START_HEADING = 'How well do you know League of Legends?';
 
 /** Fails the test on any uncaught page error or console error (e.g. broken data or images). */
 function collectErrors(page: Page): string[] {
@@ -43,7 +43,8 @@ test('a full day can be played and the result survives a reload', async ({ page 
   const errors = collectErrors(page);
   await page.goto('/play.html');
 
-  await expect(page.getByRole('heading', { name: "Summoner's Quiz" })).toBeVisible();
+  await expect(page.getByRole('link', { name: "Summoner's Quiz" })).toBeVisible();
+  await expect(page.getByRole('contentinfo').getByText('CC BY-SA 3.0')).toBeVisible();
   await expect(page.locator('.card')).toHaveCount(4);
   await expectIconsLoaded(page);
   await page.screenshot({ path: testInfo.outputPath('round.png'), fullPage: true });
@@ -228,7 +229,7 @@ test.describe('information pages', () => {
       await page.getByRole('navigation', { name: 'Information' }).getByText(link).click();
       await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
       // The shared header and footer were included.
-      await expect(page.getByText('Daily League of Legends trivia game')).toBeVisible();
+      await expect(page.getByRole('navigation', { name: 'Main' })).toBeVisible();
       await expect(
         page.getByRole('contentinfo').getByText("isn't endorsed by Riot Games"),
       ).toBeVisible();
@@ -274,6 +275,21 @@ test.describe('start page', () => {
     await page.goto('/');
     await expect(page.locator('.mode-card[data-mode="lore"] .mode-card__status')).toBeVisible();
     await expect(page.locator('.mode-card__status:visible')).toHaveCount(1);
+  });
+
+  test('the hero button opens the default game mode', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('link', { name: /Play today.s puzzle/ }).click();
+    await expect(page).toHaveURL(/\/play\.html$/);
+    await expect(page.getByRole('button', { name: 'Stats', pressed: true })).toBeVisible();
+  });
+
+  test('the sample round can be answered', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Garen' }).click();
+    await expect(page.getByText('Not quite: Teemo is the yordle.')).toBeVisible();
+    await page.getByRole('button', { name: 'Try again' }).click();
+    await expect(page.getByText('Pick one of the four answers.')).toBeVisible();
   });
 
   test('old game links on the start page open the game', async ({ page }) => {

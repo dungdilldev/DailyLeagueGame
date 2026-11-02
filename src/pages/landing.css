@@ -1,0 +1,489 @@
+/* The start page (index.html): hero with a sample round, the three steps, one card per mode. */
+
+.landing h1,
+.landing h2,
+.landing h3 {
+  margin: 0;
+}
+
+.landing p {
+  margin: 0;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.hero__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3.5rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 5rem;
+}
+
+.hero__text {
+  display: flex;
+  flex: 1 1 28rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.375rem 0.875rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hero__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.hero__lead {
+  max-width: 34em;
+  color: var(--muted);
+  font-size: 1.1875rem;
+  line-height: 1.55;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Sample round ---------- */
+
+.sample-round {
+  display: flex;
+  flex: 1 1 26rem;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  padding: 1.75rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 45%);
+}
+
+.sample-round__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sample-round__eyebrow {
+  color: var(--teal);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sample-round__progress {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.sample-round__pips {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.sample-round__pip {
+  width: 1.375rem;
+  height: 0.375rem;
+  border-radius: 3px;
+  background: var(--border);
+}
+
+.sample-round__pip--current {
+  background: var(--gold);
+}
+
+.sample-round__question {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.sample-round__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.sample-option {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    opacity 0.3s;
+}
+
+.sample-option:hover:not(:disabled) {
+  border-color: var(--gold-dark);
+}
+
+.sample-option:disabled {
+  cursor: default;
+}
+
+.sample-option__initial {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--gold-dark);
+  border-radius: 50%;
+  background: var(--surface-raised);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.sample-option__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+/* The mark after the name, drawn only once the round is answered. */
+.sample-option--correct::after,
+.sample-option--wrong::after {
+  flex: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.sample-option--correct {
+  border-color: var(--ok);
+  background: var(--ok-tint);
+}
+
+.sample-option--correct::after {
+  content: '\2713';
+  color: var(--ok);
+}
+
+.sample-option--wrong {
+  border-color: var(--bad);
+  background: var(--bad-tint);
+}
+
+.sample-option--wrong::after {
+  content: '\2715';
+  color: var(--bad);
+}
+
+.sample-option--other {
+  background: var(--surface);
+  opacity: 0.55;
+}
+
+.sample-round__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.sample-round__footer [data-sample-result] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.sample-round__footer .sample-round__result--right {
+  color: var(--ok);
+}
+
+.sample-round__reset {
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sample-round__reset:hover {
+  border-color: var(--gold);
+  color: var(--text);
+}
+
+/* ---------- Steps ---------- */
+
+.steps {
+  border-bottom: 1px solid var(--border);
+}
+
+.steps__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step__number {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.step h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Mode cards ---------- */
+
+.modes__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.modes__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modes__intro h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.modes__intro p {
+  color: var(--muted);
+  font-size: 1.0625rem;
+}
+
+/* Two columns on a phone, with the mixed card spanning the row below the four categories. */
+.mode-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mode-card[data-mode='mixed'] {
+  grid-column: 1 / -1;
+  border-color: var(--gold-line);
+}
+
+.mode-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.375rem;
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.mode-card:hover {
+  border-color: var(--gold);
+  background: var(--surface-raised);
+}
+
+.mode-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: var(--surface-raised);
+}
+
+.mode-card__icon svg {
+  width: 1.625rem;
+  height: 1.625rem;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mode-card__title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.mode-card__text {
+  flex: 1 1 auto;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.mode-card__cta,
+.mode-card__status {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.mode-card__cta {
+  color: var(--gold);
+}
+
+.mode-card__status {
+  color: var(--ok);
+}
+
+.mode-card__status::before {
+  content: '\2713\00a0';
+}
+
+@media (min-width: 56rem) {
+  .mode-cards {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .mode-card {
+    min-height: 12.5rem;
+  }
+
+  .mode-card[data-mode='mixed'] {
+    grid-column: auto;
+  }
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 30rem) {
+  .hero__inner {
+    gap: 2.5rem;
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .sample-round {
+    padding: 1.25rem;
+  }
+
+  .sample-round__question {
+    font-size: 1.375rem;
+  }
+
+  .sample-round__options {
+    gap: 0.5rem;
+  }
+
+  .sample-option {
+    gap: 0.625rem;
+    padding: 0.75rem;
+  }
+
+  .sample-option__initial {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+
+  .steps__list {
+    padding: 2.5rem 1rem;
+  }
+
+  .modes__inner {
+    padding: 3rem 1rem 3.5rem;
+  }
+
+  .mode-card {
+    padding: 1rem;
+  }
+}

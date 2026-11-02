@@ -1,5 +1,6 @@
 import { earliestPlayableDate } from '../game/archive';
 import { addUtcDays, formatDayLabel } from '../game/date';
+import { Icon } from './icons';
 
 interface DayNavProps {
   /** The puzzle day currently shown. */
@@ -24,7 +25,7 @@ export function DayNav({ date, today, onChange }: DayNavProps) {
           onChange(addUtcDays(date, -1));
         }}
       >
-        &larr; Previous<span class="day-nav__optional"> day</span>
+        <Icon name="chevronLeft" />
       </button>
       <p class="day-nav__current" aria-live="polite">
         <time class="day-nav__date" dateTime={date}>
@@ -41,7 +42,7 @@ export function DayNav({ date, today, onChange }: DayNavProps) {
           onChange(addUtcDays(date, 1));
         }}
       >
-        Next<span class="day-nav__optional"> day</span> &rarr;
+        <Icon name="chevronRight" />
       </button>
     </nav>
   );

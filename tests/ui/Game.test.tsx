@@ -1,10 +1,10 @@
 import { cleanup, render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { Puzzle, Round } from '../../src/game/puzzle';
 import type { Entity } from '../../src/data/schema';
 import { Game } from '../../src/ui/Game';
-import { loadSavedDays, type StorageLike } from '../../src/storage/progressStore';
+import { loadSavedDays, saveDay, type StorageLike } from '../../src/storage/progressStore';
 
 afterEach(cleanup);
 
@@ -68,6 +68,17 @@ function memoryStorage(): StorageLike & { value: string | null } {
     },
     setItem(_key, value) {
       this.value = value;
+    },
+  };
+}
+
+/** Keeps each key apart, so the modes' save slots do not share one value. */
+function keyedStorage(): StorageLike {
+  const values = new Map<string, string>();
+  return {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => {
+      values.set(key, value);
     },
   };
 }
@@ -280,6 +291,7 @@ describe('Game', () => {
     expect(screen.getByText('No streak yet')).toBeTruthy();
     expect(screen.queryByText(/Next puzzle in/)).toBeNull();
     expect(screen.getByText(/earlier puzzle/)).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /^Play .* next$/ })).toBeNull();
     expect(loadSavedDays(storage)['2026-03-04']?.late).toBe(true);
   });
 
@@ -313,5 +325,36 @@ describe('Game', () => {
       />,
     );
     expect(screen.getByText(/Round 1 of 2/)).toBeTruthy();
+  });
+
+  it('hints at what to pick, then offers the next unfinished mode once today is done', async () => {
+    const user = userEvent.setup();
+    const storage = keyedStorage();
+    saveDay(storage, TODAY, { answers: ['Ahri'], complete: true }, 'lore');
+    const onChangeMode = vi.fn();
+    render(
+      <Game
+        puzzle={puzzle}
+        entities={entities}
+        mode="stats"
+        onChangeMode={onChangeMode}
+        date={TODAY}
+        today={TODAY}
+        storage={storage}
+        shareUrl="https://example.com/"
+      />,
+    );
+
+    expect(screen.getByText('Pick the one with the highest value.')).toBeTruthy();
+    await user.click(screen.getByRole('button', { name: /Ahri/ }));
+    expect(screen.queryByText('Pick the one with the highest value.')).toBeNull();
+    await user.click(screen.getByRole('button', { name: 'Next round' }));
+    await user.click(screen.getByRole('button', { name: /Ahri/ }));
+    await user.click(screen.getByRole('button', { name: 'See results' }));
+
+    expect(screen.getByText(/Today’s result · Stats/)).toBeTruthy();
+    // Lore is already finished, so the next one in order is Esports.
+    await user.click(screen.getByRole('button', { name: 'Play Esports next' }));
+    expect(onChangeMode).toHaveBeenCalledWith('esports');
   });
 });

@@ -1,0 +1,28 @@
+/*
+ * Inter (body) and Spectral (display), Latin subset, served from this site so the browser
+ * contacts no font host (privacy.html says so). Files from Fontsource: @fontsource-variable/inter
+ * 5.1.0 and @fontsource/spectral 5.1.0, both under the SIL Open Font License (OFL-*.txt beside them).
+ */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/inter-latin-variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Spectral;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/spectral-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Spectral;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/spectral-latin-700.woff2') format('woff2');
+}

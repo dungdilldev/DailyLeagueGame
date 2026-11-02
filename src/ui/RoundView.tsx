@@ -4,6 +4,7 @@ import type { Entity } from '../data/schema';
 import { isCorrect } from '../game/progress';
 import { displayValue } from '../game/roundDisplay';
 import { clueImageUrl, roundSymbols } from '../game/textSymbols';
+import { Icon } from './icons';
 import { OptionCard, type CardState } from './OptionCard';
 import { RoundProgress } from './RoundProgress';
 
@@ -37,6 +38,8 @@ function cardState(round: Round, optionId: string, chosenId: string | undefined)
 }
 
 const WRONG_PICK_TAG = 'Your pick';
+const STAT_HINT = 'Pick the one with the highest value.';
+const PICK_HINT = 'Pick one of the four options.';
 
 /** A stat question's answer is the highest value; a pick question's answer has no value. */
 function cardTag(round: Round, state: CardState): string | undefined {
@@ -71,16 +74,20 @@ export function RoundView({
   return (
     <section class="round" aria-labelledby="question">
       <div class="round__meta">
-        <p class="progress">
-          {totalRounds === undefined
-            ? `Question ${String(roundNumber)}`
-            : `Round ${String(roundNumber)} of ${String(totalRounds)}`}
-        </p>
-        {SUBJECT_LABELS[round.subject] && <span class="chip">{SUBJECT_LABELS[round.subject]}</span>}
+        <div class="round__label">
+          <p class="progress">
+            {totalRounds === undefined
+              ? `Question ${String(roundNumber)}`
+              : `Round ${String(roundNumber)} of ${String(totalRounds)}`}
+          </p>
+          {SUBJECT_LABELS[round.subject] && (
+            <span class="chip">{SUBJECT_LABELS[round.subject]}</span>
+          )}
+        </div>
+        {totalRounds !== undefined && results && (
+          <RoundProgress current={roundNumber - 1} total={totalRounds} results={results} />
+        )}
       </div>
-      {totalRounds !== undefined && results && (
-        <RoundProgress current={roundNumber - 1} total={totalRounds} results={results} />
-      )}
       {clueUrl && (
         <img
           class="round__clue"
@@ -118,7 +125,7 @@ export function RoundView({
       </div>
 
       <div class="feedback" role="status">
-        {revealed && (
+        {revealed ? (
           <>
             <p
               class={`feedback__banner ${isCorrect(round, chosenId) ? 'feedback__ok' : 'feedback__bad'}`}
@@ -127,8 +134,11 @@ export function RoundView({
             </p>
             <button type="button" class="button" ref={nextButton} onClick={onNext}>
               {isLastRound ? 'See results' : 'Next round'}
+              <Icon name="arrowRight" size={16} />
             </button>
           </>
+        ) : (
+          <p class="feedback__hint">{round.format ? STAT_HINT : PICK_HINT}</p>
         )}
       </div>
     </section>

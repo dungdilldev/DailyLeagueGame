@@ -22,4 +22,10 @@ describe('ModeNav', () => {
     await userEvent.setup().click(screen.getByRole('button', { name: 'Esports' }));
     expect(onChange).toHaveBeenCalledWith('esports');
   });
+
+  it('marks the finished modes, and says so to screen readers', () => {
+    render(<ModeNav mode="stats" finished={['lore']} onChange={vi.fn()} />);
+    expect(screen.getByRole('button', { name: 'Lore, finished' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Stats' })).toBeTruthy();
+  });
 });

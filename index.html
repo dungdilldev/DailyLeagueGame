@@ -34,50 +34,188 @@
     <title>Summoner&apos;s Quiz - daily League of Legends trivia</title>
   </head>
   <body>
-    <div class="app">
+    <div class="site">
       <!--include:header-->
-      <main class="info landing">
-        <section class="landing__hero">
-          <h1>Test your League of Legends knowledge, every day</h1>
-          <p>
-            Five rounds, four options each, one right answer. Everyone gets the same puzzle, and a
-            new one appears every day at midnight UTC.
-          </p>
-          <div id="landing-countdown">
-            <p class="countdown">New puzzle every day at 00:00 UTC.</p>
+      <main class="landing">
+        <section class="hero">
+          <div class="hero__inner">
+            <div class="hero__text">
+              <p class="hero__badge">
+                <span class="hero__dot" aria-hidden="true"></span>
+                <span id="landing-date">Daily puzzle</span>
+              </p>
+              <h1>How well do you know League of Legends?</h1>
+              <p class="hero__lead">
+                Five rounds a day. Each round asks one question and gives you four options: pick the
+                right one. Everyone gets the same puzzle, and a new one arrives at midnight UTC.
+              </p>
+              <div class="hero__actions">
+                <a class="button button--large" href="play.html">
+                  Play today&apos;s puzzle
+                  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </a>
+                <a class="button button--large button--secondary" href="how-to-play.html">
+                  How to play
+                </a>
+              </div>
+              <div id="landing-countdown">
+                <p class="countdown">
+                  <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 7v5l3 2" />
+                  </svg>
+                  New puzzle every day at 00:00 UTC.
+                </p>
+              </div>
+            </div>
+
+            <section class="sample-round" aria-labelledby="sample-question" data-sample-round>
+              <div class="sample-round__meta">
+                <p class="sample-round__eyebrow">Try a round</p>
+                <p class="sample-round__progress">
+                  Round 1 of 5
+                  <span class="sample-round__pips" aria-hidden="true">
+                    <span class="sample-round__pip sample-round__pip--current"></span>
+                    <span class="sample-round__pip"></span>
+                    <span class="sample-round__pip"></span>
+                    <span class="sample-round__pip"></span>
+                    <span class="sample-round__pip"></span>
+                  </span>
+                </p>
+              </div>
+              <h2 id="sample-question" class="sample-round__question">
+                Which of these champions is a yordle?
+              </h2>
+              <div class="sample-round__options">
+                <button type="button" class="sample-option" data-option>
+                  <span class="sample-option__initial" aria-hidden="true">G</span>
+                  <span class="sample-option__name">Garen</span>
+                </button>
+                <button type="button" class="sample-option" data-option data-answer>
+                  <span class="sample-option__initial" aria-hidden="true">T</span>
+                  <span class="sample-option__name">Teemo</span>
+                </button>
+                <button type="button" class="sample-option" data-option>
+                  <span class="sample-option__initial" aria-hidden="true">A</span>
+                  <span class="sample-option__name">Ahri</span>
+                </button>
+                <button type="button" class="sample-option" data-option>
+                  <span class="sample-option__initial" aria-hidden="true">D</span>
+                  <span class="sample-option__name">Darius</span>
+                </button>
+              </div>
+              <div class="sample-round__footer" role="status">
+                <p data-sample-prompt>Pick one of the four answers.</p>
+                <p class="sample-round__result--right" data-sample-result="right" hidden>
+                  Correct! Teemo is a yordle.
+                </p>
+                <p data-sample-result="wrong" hidden>Not quite: Teemo is the yordle.</p>
+                <button type="button" class="sample-round__reset" data-sample-reset hidden>
+                  Try again
+                </button>
+              </div>
+            </section>
           </div>
         </section>
 
-        <h2 class="visually-hidden">Choose a mode</h2>
-        <nav class="mode-cards" aria-label="Game modes">
-          <a class="mode-card" href="play.html" data-mode="stats">
-            <span class="mode-card__title">Stats</span>
-            <span class="mode-card__text">Champions, items and abilities by the numbers</span>
-            <span class="mode-card__status" hidden>Played today</span>
-          </a>
-          <a class="mode-card" href="play.html?category=lore" data-mode="lore">
-            <span class="mode-card__title">Lore</span>
-            <span class="mode-card__text">Regions, places and history of Runeterra</span>
-            <span class="mode-card__status" hidden>Played today</span>
-          </a>
-          <a class="mode-card" href="play.html?category=esports" data-mode="esports">
-            <span class="mode-card__title">Esports</span>
-            <span class="mode-card__text">Worlds, MSI, players and teams</span>
-            <span class="mode-card__status" hidden>Played today</span>
-          </a>
-          <a class="mode-card" href="play.html?category=trivia" data-mode="trivia">
-            <span class="mode-card__title">Trivia</span>
-            <span class="mode-card__text">Scrapped champions, removed modes and easter eggs</span>
-            <span class="mode-card__status" hidden>Played today</span>
-          </a>
-          <a class="mode-card" href="play.html?category=mixed" data-mode="mixed">
-            <span class="mode-card__title">Mixed</span>
-            <span class="mode-card__text">All categories in one puzzle</span>
-            <span class="mode-card__status" hidden>Played today</span>
-          </a>
-        </nav>
+        <section class="steps" aria-labelledby="steps-heading">
+          <h2 id="steps-heading" class="visually-hidden">How it works</h2>
+          <ol class="steps__list">
+            <li class="step">
+              <span class="step__number" aria-hidden="true">1</span>
+              <div>
+                <h3>Pick a category</h3>
+                <p>Stats, lore, esports, trivia, or a mix of everything.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__number" aria-hidden="true">2</span>
+              <div>
+                <h3>Answer five rounds</h3>
+                <p>Four options, one right answer. Rounds get harder as you go.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__number" aria-hidden="true">3</span>
+              <div>
+                <h3>Share and come back</h3>
+                <p>Post your score, keep your streak alive, return tomorrow.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
 
-        <p class="landing__more">New here? Read <a href="how-to-play.html">how to play</a>.</p>
+        <section class="modes" id="modes" aria-labelledby="modes-heading">
+          <div class="modes__inner">
+            <div class="modes__intro">
+              <h2 id="modes-heading">Choose today&apos;s category</h2>
+              <p>
+                Each category is its own daily puzzle with its own streak. Play one, or all five.
+              </p>
+            </div>
+            <nav class="mode-cards" aria-label="Game modes">
+              <a class="mode-card" href="play.html" data-mode="stats">
+                <span class="mode-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
+                </span>
+                <span class="mode-card__title">Stats</span>
+                <span class="mode-card__text">Champions, items and abilities by the numbers</span>
+                <span class="mode-card__cta">Play &rarr;</span>
+                <span class="mode-card__status" hidden>Played today</span>
+              </a>
+              <a class="mode-card" href="play.html?category=lore" data-mode="lore">
+                <span class="mode-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z" />
+                    <path d="M9 4v14M15 6v14" />
+                  </svg>
+                </span>
+                <span class="mode-card__title">Lore</span>
+                <span class="mode-card__text">Regions, places and history of Runeterra</span>
+                <span class="mode-card__cta">Play &rarr;</span>
+                <span class="mode-card__status" hidden>Played today</span>
+              </a>
+              <a class="mode-card" href="play.html?category=esports" data-mode="esports">
+                <span class="mode-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+                    <path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6" />
+                  </svg>
+                </span>
+                <span class="mode-card__title">Esports</span>
+                <span class="mode-card__text">Worlds, MSI, players and teams</span>
+                <span class="mode-card__cta">Play &rarr;</span>
+                <span class="mode-card__status" hidden>Played today</span>
+              </a>
+              <a class="mode-card" href="play.html?category=trivia" data-mode="trivia">
+                <span class="mode-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17.5v.01" />
+                  </svg>
+                </span>
+                <span class="mode-card__title">Trivia</span>
+                <span class="mode-card__text"
+                  >Scrapped champions, removed modes and easter eggs</span
+                >
+                <span class="mode-card__cta">Play &rarr;</span>
+                <span class="mode-card__status" hidden>Played today</span>
+              </a>
+              <a class="mode-card" href="play.html?category=mixed" data-mode="mixed">
+                <span class="mode-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+                  </svg>
+                </span>
+                <span class="mode-card__title">Mixed</span>
+                <span class="mode-card__text">All categories in one puzzle</span>
+                <span class="mode-card__cta">Play &rarr;</span>
+                <span class="mode-card__status" hidden>Played today</span>
+              </a>
+            </nav>
+          </div>
+        </section>
       </main>
       <!--include:footer-->
     </div>
