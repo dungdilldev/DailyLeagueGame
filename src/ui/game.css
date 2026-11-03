@@ -550,6 +550,30 @@
   font: inherit;
 }
 
+/* ---------- Advertisement (play page only) ---------- */
+
+.ad-slot {
+  margin: 1.5rem 0 0;
+  text-align: center;
+}
+
+.ad-slot__label {
+  margin: 0 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ad-slot__unit {
+  display: block;
+}
+
+/* Google marks an empty slot as unfilled: drop the label and reserved space instead of a blank gap. */
+.ad-slot:has(.ad-slot__unit[data-ad-status='unfilled']) {
+  display: none;
+}
+
 /* ---------- Links and the support button ---------- */
 
 .mode-link {

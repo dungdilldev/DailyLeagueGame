@@ -4,7 +4,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'coverage', 'node_modules', 'public/data'] },
+  { ignores: ['dist', 'dist-ads-test', 'coverage', 'node_modules', 'public/data'] },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
   {
@@ -16,6 +16,24 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
+    },
+  },
+  {
+    // Ads belong on the game page (play.html) only, decided by the owner: the start page and the
+    // information pages must never load ad code, so their scripts may not import it.
+    files: ['src/pages/**'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['**/ads/*', '**/AdSlot'],
+              message: 'Ads are shown on play.html only, not on the start or information pages.',
+            },
+          ],
+        },
+      ],
     },
   },
   { files: ['*.js'], ...tseslint.configs.disableTypeChecked },

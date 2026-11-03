@@ -4,6 +4,7 @@ import { formatUtcDate } from '../game/date';
 import { DEFAULT_GAME_MODE, parseGameMode, type GameMode } from '../game/gameMode';
 import { getBrowserStorage } from '../storage/progressStore';
 import { modesFinishedOn } from '../storage/playedModes';
+import { AdSlot } from './AdSlot';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
 import { ModeNav } from './ModeNav';
@@ -137,6 +138,7 @@ export function App() {
       )}
       <Body date={date} mode={mode} onChangeMode={changeMode} />
       <SupportButton />
+      {!isEndlessMode && <AdSlot />}
     </>
   );
 }

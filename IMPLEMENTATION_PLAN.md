@@ -380,14 +380,14 @@ Decision (owner, 2026-11-02): new look from the owner's design canvas (landing p
 - [x] The game uses the shared header and footer partials; `ui/Footer.tsx` is gone and its League of Legends Wiki attribution moved into the shared footer (now on every page)
 - The "Played today" mark shows no score: the start page would have to build every mode's puzzle to know it
 
-### Phase 8 - Ads with Google AdSense (not started)
+### Phase 8 - Ads with Google AdSense (in progress)
 
 Goal: one or two small, unobtrusive ads that never get in the way of the game and never load before the visitor has agreed, where the law asks for it. The owner already has a domain.
 
 **Decisions (confirm before building)**
 
 - [x] **Riot policy:** the owner checked Riot's Legal Jibber Jabber and ads are allowed (confirmed by the owner, 2026-10-21).
-- [x] **Placement:** one banner between the game and the footer (decided by the owner); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
+- [x] **Placement:** one banner on `play.html` between the game and the footer, below the support link (decided by the owner); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
 - [ ] **Operator identity (Germany):** the owner lives in Germany, so a site with ads needs an Impressum (§ 5 DDG): real name and a postal address that can receive legal documents (no P.O. box, no handle only), plus an email address. Decide which address to publish, and the email (preferably `contact@<domain>` forwarding to the owner's inbox). Add `impressum.html` to the footers and `PAGES`, and name the operator in `privacy.html` (the GitHub issues link is not enough). Sources are in the chat answer of 2026-10-21; have a lawyer or a service such as eRecht24 check the final text.
 
 **A. Domain and hosting**
@@ -403,7 +403,7 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 - [x] Wait for review. **Rejected 2026-10-31:** "ads on screens without publisher content" and "low value content". The crawler saw `/` as an empty JavaScript shell that turns into a game screen (a "behavioural" screen), plus three short text pages, and no `robots.txt` or sitemap.
 - [x] Fix, step 1: static start page `index.html` (headline, live countdown, one short card per mode with "played today" marks; the owner wanted it compact, so the mode descriptions, data sources and FAQ were moved to `how-to-play.html`, which is now the main text page), the game moved to `play.html` (old `/?category=` / `?date=` / `?mode=` links redirect), `robots.txt`, `sitemap.xml`, `<link rel="canonical">` on every page
 - [ ] Owner: deploy, add the site to Google Search Console, submit the sitemap, check that `/` is indexed with its text. Build some real traffic over a few weeks (Google also judges "genuine user interest"), then request review
-- [ ] Ads go on the start page and the info pages, not on `play.html` (the game is the kind of screen Google rejected), at least until approval is stable. Move `AdSlot` from the game (branch `dev-adding-ads`) to a partial accordingly
+- [x] **Ads on the game page only** (owner, 2026-11-03, replacing the earlier idea of ads on the start and info pages only): `play.html` is the only page that may show ads; the start page and the info pages never load ad code. Risk: the rejection named "ads on screens without publisher content", and the game screen is the kind of screen that meant; if Google rejects again for that reason, revisit this
 - [ ] If rejected again: more original pages, e.g. reference pages generated from the data (stat rankings, lore regions and events, Worlds history) and a few hand-written guides
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
@@ -415,17 +415,17 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 **D. Code**
 
-- [ ] `public/ads.txt` with the publisher line AdSense gives
-- [ ] `src/ads/` (pure logic, unit-tested): the publisher and slot ids as named constants, and `shouldLoadAds(consent, isDevBuild)`
-- [ ] `src/ui/AdSlot.tsx`: reserves a fixed height so the layout never jumps, loads the AdSense script once and only when allowed, renders nothing if the script is blocked or fails (an ad blocker must not break or blank the game); a "Advertisement" label above it
-- [ ] Static info pages get the same slot only after approval is stable, via a partial in `src/pages/partials/`
+- [x] `public/ads.txt` with the publisher line AdSense gives
+- [x] `src/ads/` (pure logic, unit-tested): the publisher and slot ids as named constants, and `shouldLoadAds(consent, isDevBuild)`; ads are switched on per build with `VITE_ADS_ENABLED=true` and `VITE_AD_SLOT_ID` (both unset, so off, until approval and the consent message)
+- [x] `src/ui/AdSlot.tsx`: reserves a fixed height so the layout never jumps, loads the AdSense script once and only when allowed, renders nothing if the script is blocked or fails (an ad blocker must not break or blank the game); a "Advertisement" label above it
+- [x] Only the game shows the slot (`App.tsx`, not in the endless mode); an ESLint `no-restricted-imports` rule keeps `src/ads` and `AdSlot` out of `src/pages`, so the start and info pages cannot load ad code
 - [ ] Content-Security-Policy / host headers if any are set: allow Google's script, frame and image domains
-- [ ] `import.meta.env.DEV` builds never load ads, so local testing and the endless mode stay clean
+- [x] `import.meta.env.DEV` builds never load ads, so local testing and the endless mode stay clean
 
 **E. Tests**
 
-- [ ] Unit: consent decision, ad config, slot renders nothing without consent
-- [ ] Playwright (script blocked via `page.route`): the full-day game test passes with ads blocked and with consent declined; no console errors; no horizontal scroll on mobile; the slot does not move the answer buttons
+- [x] Unit: consent decision, ad config, slot renders nothing without consent
+- [x] Playwright (`e2e/ads.spec.ts`, against a second build with ads on; script stubbed or blocked via `page.route`): the full-day game test passes with ads blocked and with consent declined; no console errors; no horizontal scroll on mobile; the slot does not move the answer buttons; the start page and the info pages never request the ad script, even with consent
 - [ ] Manual after launch: use AdSense test mode / `adtest=on` before real traffic, check Lighthouse (layout shift and speed) before and after
 
 **F. Launch and after**
@@ -465,4 +465,4 @@ Before you reapply:
 
 Deploy, add the site to Google Search Console and submit https://summonersquiz.com/sitemap.xml. Then check that / shows up indexed with its text.
 Google also judges whether real people use the site, so give it a few weeks of traffic (Reddit, Discord) before you request a review.
-When ads go in, put them on the start page and the info pages, not on play.html, because the game screen is exactly what Google rejected. The AdSlot on the dev-adding-ads branch currently sits under the game and should be moved.
+Ads go on play.html only (owner, 2026-11-03), not on the start page or the info pages. If the next review is rejected again for "ads on screens without publisher content", this is the first thing to revisit.
