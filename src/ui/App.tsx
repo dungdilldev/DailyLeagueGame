@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 import { resolvePuzzleDate } from '../game/archive';
 import { formatUtcDate } from '../game/date';
-import { DEFAULT_GAME_MODE, parseGameMode, type GameMode } from '../game/gameMode';
+import type { GameMode } from '../game/gameMode';
 import { getBrowserStorage } from '../storage/progressStore';
 import { modesFinishedOn } from '../storage/playedModes';
 import { AdSlot } from './AdSlot';
@@ -11,15 +11,14 @@ import { ModeNav } from './ModeNav';
 import { PrivacySettingsLink } from './PrivacySettingsLink';
 import { PuzzleScreen } from './PuzzleScreen';
 import { SupportButton } from './SupportButton';
+import { DATE_PARAM } from './modePages';
 import { cleanSeed, randomSeed } from './randomSeed';
 import { useGameFile } from './useGameFile';
 
 // Evaluated once per page load: "today" stays fixed until the player reloads after midnight UTC.
 const TODAY = formatUtcDate(new Date());
 const SHARE_URL = window.location.origin + window.location.pathname;
-const DATE_PARAM = 'date';
 const MODE_PARAM = 'mode';
-const CATEGORY_PARAM = 'category';
 const SEED_PARAM = 'seed';
 const ENDLESS_MODE = 'endless';
 
@@ -36,18 +35,6 @@ function readRequestedDate(): string {
 
 function readInitialSeed(): string {
   return cleanSeed(new URLSearchParams(window.location.search).get(SEED_PARAM)) ?? randomSeed();
-}
-
-function readRequestedMode(): GameMode {
-  return parseGameMode(new URLSearchParams(window.location.search).get(CATEGORY_PARAM));
-}
-
-/** Keeps the chosen game mode in the address too, so a reload or shared link keeps it. */
-function showModeInUrl(mode: GameMode): void {
-  const url = new URL(window.location.href);
-  if (mode === DEFAULT_GAME_MODE) url.searchParams.delete(CATEGORY_PARAM);
-  else url.searchParams.set(CATEGORY_PARAM, mode);
-  window.history.replaceState(null, '', url);
 }
 
 /** Keeps the address bar in sync so an earlier day survives a reload and can be bookmarked. */
@@ -68,10 +55,9 @@ function showSeedInUrl(seed: string): void {
 interface BodyProps {
   date: string;
   mode: GameMode;
-  onChangeMode: (mode: GameMode) => void;
 }
 
-function Body({ date, mode, onChangeMode }: BodyProps) {
+function Body({ date, mode }: BodyProps) {
   const state = useGameFile();
 
   switch (state.kind) {
@@ -94,7 +80,6 @@ function Body({ date, mode, onChangeMode }: BodyProps) {
         <PuzzleScreen
           data={state.data}
           mode={mode}
-          onChangeMode={onChangeMode}
           date={date}
           today={TODAY}
           storage={getBrowserStorage()}
@@ -104,18 +89,17 @@ function Body({ date, mode, onChangeMode }: BodyProps) {
   }
 }
 
-export function App() {
+interface AppProps {
+  /** The mode of this page: each mode has its own page. */
+  mode: GameMode;
+}
+
+export function App({ mode }: AppProps) {
   const [date, setDate] = useState(readRequestedDate);
-  const [mode, setMode] = useState(readRequestedMode);
 
   const changeDate = (next: string) => {
     setDate(next);
     showDateInUrl(next);
-  };
-
-  const changeMode = (next: GameMode) => {
-    setMode(next);
-    showModeInUrl(next);
   };
 
   return (
@@ -126,18 +110,17 @@ export function App() {
         </p>
       ) : (
         <>
-          <h1 class="visually-hidden">Summoner&apos;s Quiz: the daily puzzle</h1>
           <div class="game__toolbar">
             <ModeNav
               mode={mode}
               finished={modesFinishedOn(getBrowserStorage(), date)}
-              onChange={changeMode}
+              archiveDate={date === TODAY ? undefined : date}
             />
             <DayNav date={date} today={TODAY} onChange={changeDate} />
           </div>
         </>
       )}
-      <Body date={date} mode={mode} onChangeMode={changeMode} />
+      <Body date={date} mode={mode} />
       <SupportButton />
       {!isEndlessMode && (
         <>

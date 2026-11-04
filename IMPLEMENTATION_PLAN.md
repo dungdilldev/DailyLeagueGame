@@ -387,7 +387,7 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 **Decisions (confirm before building)**
 
 - [x] **Riot policy:** the owner checked Riot's Legal Jibber Jabber and ads are allowed (confirmed by the owner, 2026-10-21).
-- [x] **Placement:** one banner on `play.html` between the game and the footer, below the support link (decided by the owner); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
+- [x] **Placement:** one banner on the game pages (`play.html` until 2026-11-04, now one page per mode) between the game and the footer, below the support link (decided by the owner); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
 - [ ] **Operator identity (Germany):** the owner lives in Germany, so a site with ads needs an Impressum (§ 5 DDG): real name and a postal address that can receive legal documents (no P.O. box, no handle only), plus an email address. Decide which address to publish, and the email (preferably `contact@<domain>` forwarding to the owner's inbox). Add `impressum.html` to the footers and `PAGES`, and name the operator in `privacy.html` (the GitHub issues link is not enough). Sources are in the chat answer of 2026-10-21; have a lawyer or a service such as eRecht24 check the final text.
 
 **A. Domain and hosting**
@@ -404,6 +404,8 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 - [x] Fix, step 1: static start page `index.html` (headline, live countdown, one short card per mode with "played today" marks; the owner wanted it compact, so the mode descriptions, data sources and FAQ were moved to `how-to-play.html`, which is now the main text page), the game moved to `play.html` (old `/?category=` / `?date=` / `?mode=` links redirect), `robots.txt`, `sitemap.xml`, `<link rel="canonical">` on every page
 - [ ] Owner: deploy, add the site to Google Search Console, submit the sitemap, check that `/` is indexed with its text. Build some real traffic over a few weeks (Google also judges "genuine user interest"), then request review
 - [x] **Ads on the game page only** (owner, 2026-11-03, replacing the earlier idea of ads on the start and info pages only): `play.html` is the only page that may show ads; the start page and the info pages never load ad code. Risk: the rejection named "ads on screens without publisher content", and the game screen is the kind of screen that meant; if Google rejects again for that reason, revisit this
+- [x] Fix, step 2 (2026-11-04, after looking at how Champdle and LoLdle are built): **one page per game mode** instead of one empty `play.html`. `stats.html`, `lore.html`, `esports.html`, `trivia.html` and `mixed.html` each have their own title, meta description, canonical address and a static heading with one line on what the mode asks, all in the HTML a crawler reads; the app reads the page's mode from `#app[data-mode]`. The mode pills and the results' "Play X next" button are links between the pages (an earlier day is kept). `play.html` only redirects old links (`?category=X` to `X.html`, the rest of the address kept) and is `noindex`; the sitemap lists the five pages. Ads are on all five pages (they are the game page, split up); `privacy.html` says "game pages"
+- [ ] Later, not decided: an explanation after each answer (trivia and esports moments first, one short paragraph per lore event instead of per question; no templated text for stats), and pages for past days with their answers
 - [ ] If rejected again: more original pages, e.g. reference pages generated from the data (stat rankings, lore regions and events, Worlds history) and a few hand-written guides
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
@@ -465,4 +467,4 @@ Before you reapply:
 
 Deploy, add the site to Google Search Console and submit https://summonersquiz.com/sitemap.xml. Then check that / shows up indexed with its text.
 Google also judges whether real people use the site, so give it a few weeks of traffic (Reddit, Discord) before you request a review.
-Ads go on play.html only (owner, 2026-11-03), not on the start page or the info pages. If the next review is rejected again for "ads on screens without publisher content", this is the first thing to revisit.
+Ads go on the game pages only (owner, 2026-11-03; one page per mode since 2026-11-04), not on the start page or the info pages. If the next review is rejected again for "ads on screens without publisher content", this is the first thing to revisit.

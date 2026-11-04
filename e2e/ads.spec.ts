@@ -8,7 +8,8 @@ import { collectErrors, playFullDay } from './helpers';
 const AD_SCRIPT_URL = '**/pagead2.googlesyndication.com/**';
 const CONSENT_SCRIPT_URL = '**/fundingchoicesmessages.google.com/**';
 const BANNER = 'Advertisement';
-const GAME_PAGE = '/play.html';
+/** One of the mode pages; they all render the same game, ad slot included. */
+const GAME_PAGE = '/stats.html';
 /** Every page except the game: none of them may ever load ad code (decided by the owner). */
 const PAGES_WITHOUT_ADS = ['/', '/how-to-play.html', '/about.html', '/privacy.html'];
 

@@ -1,27 +1,26 @@
 import { GAME_MODES, type GameMode } from '../game/gameMode';
 import { Icon } from './icons';
 import { MODE_LABELS } from './modeLabels';
+import { modePageHref } from './modePages';
 
 interface ModeNavProps {
   mode: GameMode;
-  /** Modes whose puzzle of the day shown is finished: their button gets a check mark. */
+  /** Modes whose puzzle of the day shown is finished: their link gets a check mark. */
   finished?: readonly GameMode[];
-  onChange: (mode: GameMode) => void;
+  /** An earlier day being played: the other modes open on that day too. */
+  archiveDate?: string;
 }
 
-/** One button per game mode: the mixed puzzle, or the questions of a single category. */
-export function ModeNav({ mode, finished = [], onChange }: ModeNavProps) {
+/** One link per game mode page: the mixed puzzle, or the questions of a single category. */
+export function ModeNav({ mode, finished = [], archiveDate }: ModeNavProps) {
   return (
     <nav class="mode-nav" aria-label="Choose game mode">
       {GAME_MODES.map((option) => (
-        <button
+        <a
           key={option}
-          type="button"
+          href={modePageHref(option, archiveDate)}
           class={`mode-nav__button${option === mode ? ' mode-nav__button--active' : ''}`}
-          aria-pressed={option === mode}
-          onClick={() => {
-            onChange(option);
-          }}
+          aria-current={option === mode ? 'page' : undefined}
         >
           {MODE_LABELS[option]}
           {finished.includes(option) && (
@@ -30,7 +29,7 @@ export function ModeNav({ mode, finished = [], onChange }: ModeNavProps) {
               <span class="visually-hidden">, finished</span>
             </>
           )}
-        </button>
+        </a>
       ))}
     </nav>
   );

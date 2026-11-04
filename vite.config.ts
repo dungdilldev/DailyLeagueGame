@@ -6,7 +6,20 @@ import { defineConfig } from 'vitest/config';
 
 const PARTIAL_PATTERN = /<!--include:([\w-]+)-->/g;
 const PARTIALS_DIRECTORY = './src/pages/partials/';
-const PAGES = ['index', 'play', 'how-to-play', 'about', 'privacy'];
+// One game page per mode (named after GAME_MODES in src/game/gameMode.ts); play.html only
+// redirects old links to them.
+const PAGES = [
+  'index',
+  'stats',
+  'lore',
+  'esports',
+  'trivia',
+  'mixed',
+  'play',
+  'how-to-play',
+  'about',
+  'privacy',
+];
 
 /** Lets the static pages share their header, footer and contact link: `<!--include:name-->`. */
 function includePartials(): Plugin {

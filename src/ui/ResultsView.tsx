@@ -7,6 +7,7 @@ import { buildShareText } from '../game/share';
 import { Countdown } from './Countdown';
 import { Icon } from './icons';
 import { MODE_LABELS } from './modeLabels';
+import { modePageHref } from './modePages';
 
 interface ResultsViewProps {
   puzzle: Puzzle;
@@ -18,7 +19,6 @@ interface ResultsViewProps {
   mode: GameMode;
   /** A mode not finished yet today, offered as the next one to play. */
   nextMode?: GameMode;
-  onPlayMode?: (mode: GameMode) => void;
 }
 
 type CopyStatus = 'idle' | 'copied' | 'failed';
@@ -31,7 +31,6 @@ export function ResultsView({
   isToday,
   mode,
   nextMode,
-  onPlayMode,
 }: ResultsViewProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
   const results = roundResults(puzzle, answers);
@@ -90,16 +89,10 @@ export function ResultsView({
           <Icon name="share" />
           {copyStatus === 'copied' ? 'Copied!' : 'Share result'}
         </button>
-        {isToday && nextMode && onPlayMode && (
-          <button
-            type="button"
-            class="button button--large button--secondary"
-            onClick={() => {
-              onPlayMode(nextMode);
-            }}
-          >
+        {isToday && nextMode && (
+          <a class="button button--large button--secondary" href={modePageHref(nextMode)}>
             Play {MODE_LABELS[nextMode]} next
-          </button>
+          </a>
         )}
       </div>
       {copyStatus === 'failed' && (

@@ -17,8 +17,6 @@ interface GameProps {
   entities: Readonly<Record<OptionSubject, ReadonlyMap<string, Entity>>>;
   /** Which game mode this puzzle belongs to; each mode saves its own progress and streak. */
   mode: GameMode;
-  /** Switches to another mode; the results offer the next unfinished one. */
-  onChangeMode?: (mode: GameMode) => void;
   /** UTC date of the puzzle being played. */
   date: string;
   /** The real current UTC day. Playing an earlier day does not count for the streak. */
@@ -27,16 +25,7 @@ interface GameProps {
   shareUrl: string;
 }
 
-export function Game({
-  puzzle,
-  entities,
-  mode,
-  onChangeMode,
-  date,
-  today,
-  storage,
-  shareUrl,
-}: GameProps) {
+export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }: GameProps) {
   const slot = progressSlot(mode);
   const [days, setDays] = useState(() => loadSavedDays(storage, slot));
   // True between answering a round and pressing "Next": the reveal is shown for that round.
@@ -65,7 +54,6 @@ export function Game({
         isToday={date === today}
         mode={mode}
         nextMode={nextUnfinishedMode(mode, modesFinishedOn(storage, today))}
-        onPlayMode={onChangeMode}
         shareUrl={shareUrl}
       />
     );

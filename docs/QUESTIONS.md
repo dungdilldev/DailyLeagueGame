@@ -171,10 +171,9 @@ So the first round is usually a clear-cut question, and movement speed is always
 
 ## Game modes
 
-The buttons at the top choose what to play: **Mixed** (all questions, five rounds) or a single
+The links at the top choose what to play: **Mixed** (all questions, five rounds) or a single
 category: **Stats**, **Lore**, **Esports** or **Trivia**. Each mode is its own game: it has its own
-puzzle for the day, its own progress, streak and shared result. The choice is kept in the address
-(`?category=lore`).
+puzzle for the day, its own progress, streak and shared result, and its own page (`lore.html`).
 
 A category with fewer questions than rounds would give a shorter day, one round per question. No
 category is that small at the moment. When a category has no question left for a

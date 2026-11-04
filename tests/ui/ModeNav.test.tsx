@@ -1,31 +1,41 @@
 import { cleanup, render, screen } from '@testing-library/preact';
-import userEvent from '@testing-library/user-event';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { ModeNav } from '../../src/ui/ModeNav';
 
 afterEach(cleanup);
 
 describe('ModeNav', () => {
-  it('has a button for each category and the mixed mode, with the current one pressed', () => {
-    render(<ModeNav mode="lore" onChange={vi.fn()} />);
-    const names = screen.getAllByRole('button').map((button) => button.textContent);
-    expect(names).toEqual(['Stats', 'Lore', 'Esports', 'Trivia', 'Mixed']);
-    expect(screen.getByRole('button', { name: 'Lore' }).getAttribute('aria-pressed')).toBe('true');
-    expect(screen.getByRole('button', { name: 'Mixed' }).getAttribute('aria-pressed')).toBe(
-      'false',
+  it('links to each mode page, with the current one marked', () => {
+    render(<ModeNav mode="lore" />);
+    const links = screen.getAllByRole('link');
+    expect(links.map((link) => link.textContent)).toEqual([
+      'Stats',
+      'Lore',
+      'Esports',
+      'Trivia',
+      'Mixed',
+    ]);
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      'stats.html',
+      'lore.html',
+      'esports.html',
+      'trivia.html',
+      'mixed.html',
+    ]);
+    expect(screen.getByRole('link', { name: 'Lore' }).getAttribute('aria-current')).toBe('page');
+    expect(screen.getByRole('link', { name: 'Mixed' }).getAttribute('aria-current')).toBeNull();
+  });
+
+  it('keeps an earlier day when switching mode', () => {
+    render(<ModeNav mode="stats" archiveDate="2026-03-04" />);
+    expect(screen.getByRole('link', { name: 'Trivia' }).getAttribute('href')).toBe(
+      'trivia.html?date=2026-03-04',
     );
   });
 
-  it('reports the mode that was chosen', async () => {
-    const onChange = vi.fn();
-    render(<ModeNav mode="mixed" onChange={onChange} />);
-    await userEvent.setup().click(screen.getByRole('button', { name: 'Esports' }));
-    expect(onChange).toHaveBeenCalledWith('esports');
-  });
-
   it('marks the finished modes, and says so to screen readers', () => {
-    render(<ModeNav mode="stats" finished={['lore']} onChange={vi.fn()} />);
-    expect(screen.getByRole('button', { name: 'Lore, finished' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Stats' })).toBeTruthy();
+    render(<ModeNav mode="stats" finished={['lore']} />);
+    expect(screen.getByRole('link', { name: 'Lore, finished' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Stats' })).toBeTruthy();
   });
 });

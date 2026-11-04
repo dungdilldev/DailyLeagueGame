@@ -3,10 +3,10 @@ import { expect, test } from '@playwright/test';
 test('the endless mode is reachable by address only, and links back to the daily page', async ({
   page,
 }) => {
-  await page.goto('/play.html');
+  await page.goto('/stats.html');
   await expect(page.getByRole('link', { name: /Endless mode/ })).toHaveCount(0);
 
-  await page.goto('/play.html?mode=endless');
+  await page.goto('/stats.html?mode=endless');
   await expect(page.getByRole('heading', { name: 'Endless mode' })).toBeVisible();
 
   await page.getByRole('link', { name: /Back to the daily puzzle/ }).click();
@@ -22,7 +22,7 @@ test('endless questions work, with real icons, and the seed is kept in the addre
     if (message.type() === 'error') errors.push(message.text());
   });
 
-  await page.goto('/play.html?mode=endless&seed=e2e');
+  await page.goto('/stats.html?mode=endless&seed=e2e');
   await expect(page.getByText('Question 1')).toBeVisible();
   await expect(page.locator('.card')).toHaveCount(4);
   await expect
@@ -48,7 +48,7 @@ test('endless questions work, with real icons, and the seed is kept in the addre
 
 test('the same seed shows the same first question', async ({ page }) => {
   const firstQuestion = async () => {
-    await page.goto('/play.html?mode=endless&seed=repeatable');
+    await page.goto('/stats.html?mode=endless&seed=repeatable');
     return page.locator('.question').textContent();
   };
   const first = await firstQuestion();
@@ -61,7 +61,7 @@ const MANY_SKIPS_TIMEOUT_MS = 180_000;
 test('skipping through many questions covers every question and difficulty', async ({
   page,
 }, testInfo) => {
-  await page.goto('/play.html?mode=endless&seed=coverage');
+  await page.goto('/stats.html?mode=endless&seed=coverage');
   await expect(page.getByText('Question 1')).toBeVisible();
   const skip = page.getByRole('button', { name: 'Skip question' });
   const missing = page.locator('.coverage__missing');
@@ -82,7 +82,7 @@ test('skipping through many questions covers every question and difficulty', asy
 });
 
 test('a question that cannot be built at a difficulty says so', async ({ page }) => {
-  await page.goto('/play.html?mode=endless&seed=x');
+  await page.goto('/stats.html?mode=endless&seed=x');
   await page.getByLabel(/^Question/).selectOption('moveSpeed');
   await page.getByLabel(/^Difficulty/).selectOption('0');
   await expect(page.getByText(/cannot be built at this difficulty/)).toBeVisible();

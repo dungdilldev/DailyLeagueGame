@@ -3,21 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Play today's Summoner's Quiz: five League of Legends trivia rounds about stats, lore, esports or trivia, four options each."
-    />
+    <script>
+      // The game used to live here, with the mode in `?category=`: old and shared links open that
+      // mode's own page and keep the rest of the address (?date=, ?mode=, ?seed=). Inline, so it
+      // runs before anything is drawn. The mode names are GAME_MODES in src/game/gameMode.ts.
+      (function () {
+        const MODES = ['stats', 'lore', 'esports', 'trivia', 'mixed'];
+        const DEFAULT_MODE = 'stats';
+        const params = new URLSearchParams(window.location.search);
+        const requested = params.get('category');
+        const mode = MODES.includes(requested) ? requested : DEFAULT_MODE;
+        params.delete('category');
+        const query = params.toString();
+        window.location.replace(mode + '.html' + (query ? '?' + query : '') + window.location.hash);
+      })();
+    </script>
+    <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#010a13" />
-    <link rel="canonical" href="https://summonersquiz.com/play.html" />
+    <link rel="canonical" href="https://summonersquiz.com/stats.html" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Play - Summoner&apos;s Quiz</title>
   </head>
   <body>
     <div class="site">
       <!--include:header-->
-      <main id="app" class="game"></main>
+      <main class="info">
+        <p><a href="stats.html">Open today&apos;s puzzle</a></p>
+      </main>
       <!--include:footer-->
     </div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/pages/info.ts"></script>
   </body>
 </html>

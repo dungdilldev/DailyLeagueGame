@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import type { Puzzle, Round } from '../../src/game/puzzle';
 import type { Entity } from '../../src/data/schema';
 import { Game } from '../../src/ui/Game';
@@ -291,7 +291,7 @@ describe('Game', () => {
     expect(screen.getByText('No streak yet')).toBeTruthy();
     expect(screen.queryByText(/Next puzzle in/)).toBeNull();
     expect(screen.getByText(/earlier puzzle/)).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /^Play .* next$/ })).toBeNull();
+    expect(screen.queryByRole('link', { name: /^Play .* next$/ })).toBeNull();
     expect(loadSavedDays(storage)['2026-03-04']?.late).toBe(true);
   });
 
@@ -331,13 +331,11 @@ describe('Game', () => {
     const user = userEvent.setup();
     const storage = keyedStorage();
     saveDay(storage, TODAY, { answers: ['Ahri'], complete: true }, 'lore');
-    const onChangeMode = vi.fn();
     render(
       <Game
         puzzle={puzzle}
         entities={entities}
         mode="stats"
-        onChangeMode={onChangeMode}
         date={TODAY}
         today={TODAY}
         storage={storage}
@@ -354,7 +352,8 @@ describe('Game', () => {
 
     expect(screen.getByText(/Today’s result · Stats/)).toBeTruthy();
     // Lore is already finished, so the next one in order is Esports.
-    await user.click(screen.getByRole('button', { name: 'Play Esports next' }));
-    expect(onChangeMode).toHaveBeenCalledWith('esports');
+    expect(screen.getByRole('link', { name: 'Play Esports next' }).getAttribute('href')).toBe(
+      'esports.html',
+    );
   });
 });
