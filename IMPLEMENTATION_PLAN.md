@@ -408,10 +408,10 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**
 
-- [ ] Turn on Google's consent message (Privacy & messaging in AdSense, a certified consent platform) or use another certified one. No script of Google's may load before consent where it is required
-- [ ] Add a "Privacy settings" link in the footer to reopen the choice
-- [ ] Update `privacy.html`: ads, cookies and identifiers set by Google and its partners, what is shared, how to opt out (Google's ad settings, `youronlinechoices`), new "Last updated" date. Update `CLAUDE.md` (the "Riot legal" and storage notes)
-- [ ] Stop saying "no cookies" in the page text; the text on `privacy.html` and `about.html` must stay true
+- [x] Site logo (owner's choice 2026-11-03: "Emote coin", a gold question mark on a navy coin, from the design canvas): header mark, `public/favicon.svg` on every page, and the 600x120 consent-message logo in `docs/brand/` (dark text for Google's default white message, light text for a dark one)
+- [x] Turn on Google's consent message (Privacy & messaging in AdSense, a certified consent platform): message created by the owner 2026-11-03. Google's ad script would bring the message along, but it may only load after consent, so `src/ads/googleConsent.ts` loads the message on its own first (Google's Funding Choices tag `fundingchoicesmessages.google.com/i/<publisher>?ers=1` plus the hidden `googlefcPresent` frame), on `play.html` only and only when ads are switched on. The ad script loads after TCF purpose 1 consent, or right away where no consent is needed
+- [x] "Privacy and cookie settings" link (Google's wording) to reopen the choice: at the bottom of `play.html` instead of the shared footer, because only the game page loads the consent message (`PrivacySettingsLink.tsx`, calls `googlefc.showRevocationMessage` through Google's queue). Shown only where the consent rules apply (`gdprApplies`), as in Google's example, and still shown after a "no"
+- [x] Update `privacy.html` (2026-11-03): ads on the game page only, Google as provider, consent first in the EEA/UK/CH, what Google receives, legal basis, how to withdraw (the link, My Ad Center, `youronlinechoices`), GDPR rights and complaint; "no advertising cookies" removed. Written as if ads were live, because AdSense review expects the disclosure; `about.html` and `how-to-play.html` needed no change. **Still missing: the controller's name and address** (comes with the Impressum above); have the text checked (eRecht24 or a lawyer) before ads go live
 
 **D. Code**
 
@@ -426,7 +426,7 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 
 - [x] Unit: consent decision, ad config, slot renders nothing without consent
 - [x] Playwright (`e2e/ads.spec.ts`, against a second build with ads on; script stubbed or blocked via `page.route`): the full-day game test passes with ads blocked and with consent declined; no console errors; no horizontal scroll on mobile; the slot does not move the answer buttons; the start page and the info pages never request the ad script, even with consent
-- [ ] Manual after launch: use AdSense test mode / `adtest=on` before real traffic, check Lighthouse (layout shift and speed) before and after
+- [ ] Manual after launch: use AdSense test mode / `adtest=on` before real traffic, check Lighthouse (layout shift and speed) before and after. Check that the consent message shows from the EU (VPN) and that a visitor outside it gets ads without a message: our code waits for `__tcfapi` to report `gdprApplies: false`, which the docs do not promise for every region; if no ad loads there, read consent from `googlefc.callbackQueue` instead
 
 **F. Launch and after**
 

@@ -8,6 +8,7 @@ import { AdSlot } from './AdSlot';
 import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
 import { ModeNav } from './ModeNav';
+import { PrivacySettingsLink } from './PrivacySettingsLink';
 import { PuzzleScreen } from './PuzzleScreen';
 import { SupportButton } from './SupportButton';
 import { cleanSeed, randomSeed } from './randomSeed';
@@ -138,7 +139,12 @@ export function App() {
       )}
       <Body date={date} mode={mode} onChangeMode={changeMode} />
       <SupportButton />
-      {!isEndlessMode && <AdSlot />}
+      {!isEndlessMode && (
+        <>
+          <AdSlot />
+          <PrivacySettingsLink />
+        </>
+      )}
     </>
   );
 }

@@ -2,10 +2,11 @@ import { expect, test, type Page } from '@playwright/test';
 import { collectErrors, playFullDay } from './helpers';
 
 // These run against a build with ads switched on (see playwright.config.ts). No real Google
-// request is ever made: the ad script is answered by a stub or blocked, and the consent platform
-// is a fake `__tcfapi` that the test controls.
+// request is ever made: the ad script is answered by a stub or blocked, Google's consent script by
+// an empty stub, and the consent platform is a fake `__tcfapi` that the test controls.
 
 const AD_SCRIPT_URL = '**/pagead2.googlesyndication.com/**';
+const CONSENT_SCRIPT_URL = '**/fundingchoicesmessages.google.com/**';
 const BANNER = 'Advertisement';
 const GAME_PAGE = '/play.html';
 /** Every page except the game: none of them may ever load ad code (decided by the owner). */
@@ -23,8 +24,9 @@ const DECLINED = {
 };
 
 const PENDING = { gdprApplies: true, eventStatus: 'cmpuishown' };
+const NOT_REQUIRED = { gdprApplies: false };
 
-type ConsentReport = typeof GRANTED | typeof DECLINED | typeof PENDING;
+type ConsentReport = typeof GRANTED | typeof DECLINED | typeof PENDING | typeof NOT_REQUIRED;
 
 /** Stands in for the consent platform; `initial` is what it reports once a listener is added. */
 async function installConsentPlatform(page: Page, initial?: ConsentReport): Promise<void> {
@@ -66,6 +68,28 @@ async function stubAdScript(page: Page): Promise<{ requests: () => number }> {
   });
   return { requests: () => count };
 }
+
+/** Stands in for Google's consent script: works through its queue and counts reopenings. */
+const FAKE_GOOGLE_CONSENT = `
+  const googlefc = (window.googlefc = window.googlefc || {});
+  const waiting = googlefc.callbackQueue || [];
+  googlefc.showRevocationMessage = () => {
+    window.__reopened = (window.__reopened || 0) + 1;
+  };
+  googlefc.callbackQueue = { push: (item) => (typeof item === 'function' ? item() : undefined) };
+  waiting.forEach((item) => googlefc.callbackQueue.push(item));
+`;
+const PRIVACY_SETTINGS = 'Privacy and cookie settings';
+
+let consentScriptRequests = 0;
+
+test.beforeEach(async ({ page }) => {
+  consentScriptRequests = 0;
+  await page.route(CONSENT_SCRIPT_URL, (route) => {
+    consentScriptRequests += 1;
+    return route.fulfill({ contentType: 'application/javascript', body: FAKE_GOOGLE_CONSENT });
+  });
+});
 
 async function horizontalOverflow(page: Page): Promise<number> {
   return page.evaluate(
@@ -169,5 +193,40 @@ for (const path of PAGES_WITHOUT_ADS) {
     await expect(page.getByLabel(BANNER)).toHaveCount(0);
     await expect(page.locator('ins.adsbygoogle')).toHaveCount(0);
     expect(script.requests()).toBe(0);
+    expect(consentScriptRequests).toBe(0);
+    await expect(page.getByRole('button', { name: PRIVACY_SETTINGS })).toHaveCount(0);
   });
 }
+
+test('after a "no" the privacy settings link reopens the consent message', async ({ page }) => {
+  await stubAdScript(page);
+  await installConsentPlatform(page, DECLINED);
+  await page.goto(GAME_PAGE);
+
+  await page.getByRole('button', { name: PRIVACY_SETTINGS }).click();
+  await expect
+    .poll(() => page.evaluate(() => (window as unknown as { __reopened?: number }).__reopened))
+    .toBe(1);
+});
+
+test('where no consent is needed ads load and there is no privacy settings link', async ({
+  page,
+}) => {
+  const script = await stubAdScript(page);
+  await installConsentPlatform(page, NOT_REQUIRED);
+  await page.goto(GAME_PAGE);
+
+  await expect(page.getByLabel(BANNER)).toBeVisible();
+  expect(script.requests()).toBe(1);
+  await expect(page.getByRole('button', { name: PRIVACY_SETTINGS })).toHaveCount(0);
+});
+
+test("the game page loads Google's consent message once, before any ad", async ({ page }) => {
+  const script = await stubAdScript(page);
+  await page.goto(GAME_PAGE);
+  await expect(page.locator('.card')).toHaveCount(4);
+
+  await expect.poll(() => consentScriptRequests).toBe(1);
+  await expect(page.locator('iframe[name="googlefcPresent"]')).toHaveCount(1);
+  expect(script.requests()).toBe(0);
+});

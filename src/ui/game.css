@@ -574,6 +574,27 @@
   display: none;
 }
 
+.privacy-settings {
+  margin: 0.75rem 0 0;
+  text-align: center;
+}
+
+.privacy-settings__button {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.privacy-settings__button:hover {
+  color: var(--gold-light);
+}
+
 /* ---------- Links and the support button ---------- */
 
 .mode-link {

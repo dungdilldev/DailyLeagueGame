@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import {
   AD_SLOT_ID,
   AD_SLOT_MIN_HEIGHT_PX,
-  ADS_ENABLED,
+  ADS_CONFIGURED,
   ADSENSE_CLIENT_ID,
   ADSENSE_SCRIPT_URL,
-  CONSENT_SCRIPT_URL,
 } from '../ads/config';
 import { shouldLoadAds, type ConsentState } from '../ads/consent';
+import { loadGoogleConsentMessage } from '../ads/googleConsent';
 import { loadScriptOnce } from '../ads/loadScript';
 import { watchTcfConsent, type ConsentWatcher } from '../ads/tcf';
 
@@ -27,7 +27,7 @@ function useConsent(enabled: boolean, watchConsent: ConsentWatcher): ConsentStat
   useEffect(() => {
     if (!enabled) return undefined;
     // The consent message has to run first: it is what lets the visitor choose.
-    if (CONSENT_SCRIPT_URL) void loadScriptOnce(CONSENT_SCRIPT_URL);
+    loadGoogleConsentMessage();
     return watchConsent(setConsent);
   }, [enabled, watchConsent]);
   return consent;
@@ -35,12 +35,13 @@ function useConsent(enabled: boolean, watchConsent: ConsentWatcher): ConsentStat
 
 /**
  * One banner between the game and the footer, below the support link so it is never next to the
- * answer cards or the Next button. Only the game page shows ads (see `eslint.config.js`). Renders nothing unless ads are switched on, this is
- * not a development build and the visitor has consented (or consent is not required). If the ad
- * script is blocked or fails, the banner disappears; the game never depends on it.
+ * answer cards or the Next button. Only the game page shows ads (see `eslint.config.js`). Renders
+ * nothing unless ads are switched on, this is not a development build and the visitor has
+ * consented (or consent is not required). If the ad script is blocked or fails, the banner
+ * disappears; the game never depends on it.
  */
 export function AdSlot({
-  enabled = ADS_ENABLED && AD_SLOT_ID !== '',
+  enabled = ADS_CONFIGURED,
   isDevBuild = import.meta.env.DEV,
   watchConsent = browserConsentWatcher,
 }: AdSlotProps) {

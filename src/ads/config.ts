@@ -9,16 +9,21 @@ const slotId: unknown = import.meta.env['VITE_AD_SLOT_ID'];
 export const ADS_ENABLED = adsFlag === 'true';
 
 /** Publisher id; the same account as the line in `public/ads.txt`. */
-export const ADSENSE_CLIENT_ID = 'ca-pub-4796032502172571';
+const PUBLISHER_ID = 'pub-4796032502172571';
+export const ADSENSE_CLIENT_ID = `ca-${PUBLISHER_ID}`;
 
 /** Id of the banner ad unit, created in AdSense once the site is approved (`VITE_AD_SLOT_ID`). */
 export const AD_SLOT_ID = typeof slotId === 'string' ? slotId : '';
 
+/** Ads are on for this build: switched on and an ad unit to show. */
+export const ADS_CONFIGURED = ADS_ENABLED && AD_SLOT_ID !== '';
+
 /**
- * Script of the consent message (a certified consent platform, set up under "Privacy & messaging"
- * in AdSense). Empty until it exists: without one no consent can be read, so no ad is ever loaded.
+ * Script of Google's consent message (a certified consent platform, set up under "Privacy &
+ * messaging" in AdSense). The ad script would bring the message along, but it may only load after
+ * consent, so the message is loaded on its own first, with the address Google's own tag uses.
  */
-export const CONSENT_SCRIPT_URL: string = '';
+export const CONSENT_SCRIPT_URL = `https://fundingchoicesmessages.google.com/i/${PUBLISHER_ID}?ers=1`;
 
 export const ADSENSE_SCRIPT_URL = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`;
 
