@@ -22,7 +22,8 @@
         "Fizz",
         "Vex"
       ],
-      "wrong": ["Annie", "Nunu", "Rammus", "Amumu", "Milio", "Yuumi", "Smolder", "Twitch"]
+      "wrong": ["Annie", "Nunu", "Rammus", "Amumu", "Milio", "Yuumi", "Smolder", "Twitch"],
+      "answer": "The yordles' home is Bandle City, a land of unfettered magic said to lie beyond the material realm. Mortals who find their way back from it often appear to have aged tremendously."
     },
     {
       "id": "isFromTheVoid",
@@ -45,7 +46,8 @@
         "TahmKench",
         "Volibear",
         "Warwick"
-      ]
+      ],
+      "answer": "The Void is the realm of nothingness beyond creation, a hungry force waiting for its masters, the Watchers. Its creatures are often constructs of limited sentience, made to bring oblivion to Runeterra."
     },
     {
       "id": "isDarkin",
@@ -71,7 +73,8 @@
         "Renekton",
         "Sion",
         "Thresh"
-      ]
+      ],
+      "answer": "The Darkin were Shurima's god-warriors who turned on each other and on mortals after their empire fell. Mortals learned to seal them inside their own weapons."
     },
     {
       "id": "isFromDemacia",
@@ -131,7 +134,8 @@
         "Milio",
         "MasterYi",
         "Qiyana"
-      ]
+      ],
+      "answer": "Demacia was founded as a refuge from sorcery after the Rune Wars, built on petricite, a white stone that dampens magic. Its distrust of mages has lasted to this day."
     },
     {
       "id": "isFromNoxus",
@@ -191,7 +195,8 @@
         "Vayne",
         "Viego",
         "Zaahen"
-      ]
+      ],
+      "answer": "Beyond its warlike reputation, Noxus is unusually inclusive: anyone who shows the aptitude can rise to power, whatever their background, homeland or wealth."
     },
     {
       "id": "isFromFreljord",
@@ -256,7 +261,8 @@
         "Poppy",
         "Skarner",
         "Zilean"
-      ]
+      ],
+      "answer": "The Freljord's people are born warriors with a strong raiding culture. It is the only place in the world where True Ice is found."
     },
     {
       "id": "isFromIonia",
@@ -313,7 +319,8 @@
         "Taric",
         "Udyr",
         "Zilean"
-      ]
+      ],
+      "answer": "Ionia is a land of natural magic whose people seek balance with the world. The border between the material and spirit realms is thinner there than elsewhere."
     },
     {
       "id": "isFromPiltover",
@@ -349,7 +356,8 @@
         "Renata",
         "Zeri",
         "Zilean"
-      ]
+      ],
+      "answer": "Piltover, the City of Progress, draws its power from trade and invention rather than military might. Fleets of ships pass through its sea-gates, bringing goods from all over the world."
     },
     {
       "id": "isFromZaun",
@@ -402,7 +410,8 @@
         "Jhin",
         "Seraphine",
         "Orianna"
-      ]
+      ],
+      "answer": "Zaun is an undercity in the canyons beneath Piltover, lit through the fumes of corroded pipes. Reckless industry has made whole parts of it toxic, yet its people are vibrant and its culture rich."
     },
     {
       "id": "isFromShadowIsles",
@@ -449,7 +458,8 @@
         "Sion",
         "Swain",
         "Velkoz"
-      ]
+      ],
+      "answer": "Living beings on the Shadow Isles slowly have their life force drained, and those who die in the Black Mist must haunt the isles forever. Its power grows every year, letting the dead reach further across Runeterra."
     },
     {
       "id": "isFromBilgewater",
@@ -487,7 +497,8 @@
         "Rengar",
         "Sett",
         "Viego"
-      ]
+      ],
+      "answer": "Bilgewater is a haven for smugglers and marauders where no one cares about your past. With enough coin almost anything can be bought there, from outlawed hextech to the favor of crime lords."
     },
     {
       "id": "isFromMountTargon",
@@ -523,7 +534,8 @@
         "Shyvana",
         "Yuumi",
         "Zilean"
-      ]
+      ],
+      "answer": "The Aspects of Targon are celestial beings who act through mortal hosts: Pantheon carries the Aspect of War, Diana the Aspect of the Moon."
     },
     {
       "id": "isFromShurima",
@@ -571,7 +583,8 @@
         "Samira",
         "Skarner",
         "Zaahen"
-      ]
+      ],
+      "answer": "Shurima was once a thriving empire spanning a vast desert, until the fall of its capital left it in ruins. Now the desert tribes hear that the city of Shurima has risen again."
     },
     {
       "id": "isFromIxtal",
@@ -617,7 +630,8 @@
         "Volibear",
         "Xayah",
         "Yuumi"
-      ]
+      ],
+      "answer": "Ixtal's mages, masters of elemental magic, survived the Void and the Darkin by drawing the jungle around them like a shield. For thousands of years they have stayed mostly free of outside influence."
     },
     {
       "id": "isFromBandleCity",
@@ -640,7 +654,8 @@
         "Smolder",
         "Vex",
         "Ziggs"
-      ]
+      ],
+      "answer": "Bandle City is said to lie beyond the material realm, where every sensation is heightened for visitors. No two storytellers seem to agree on what they actually saw there."
     },
     {
       "id": "notInIonianInvasion",
@@ -675,7 +690,8 @@
         "Singed",
         "Riven",
         "Darius"
-      ]
+      ],
+      "answer": "Noxus invaded Ionia in 984 AN to search its lands for relics that could lengthen mortal lives. The war lasted until 989 AN, when a coup in Noxus brought its army home."
     },
     {
       "id": "claimedByBlackMist",
@@ -696,7 +712,8 @@
         "Shaco",
         "Nocturne",
         "Pyke"
-      ]
+      ],
+      "answer": "The Black Mist was born in the Ruination, when the barrier between the material and spirit realms was shattered. The souls caught in it are trapped in eternal torment and cannot move on."
     },
     {
       "id": "isSentinelOfLight",
@@ -727,7 +744,8 @@
         "MissFortune",
         "Pantheon",
         "Shyvana"
-      ]
+      ],
+      "answer": "The Sentinels of Light were once the sworn defenders of the Blessed Isles' capital. After the Ruination, Jenda'kaya revived the order with relic-stone weapons that anyone can wield, not only mages."
     },
     {
       "id": "isAscended",
@@ -747,7 +765,8 @@
         "Taric",
         "KSante",
         "Malphite"
-      ]
+      ],
+      "answer": "The Ascended were mortals turned into god-warriors to serve the Shuriman empire. After the empire fell, many of them became the Darkin."
     },
     {
       "id": "knownAsTitle",
@@ -765,7 +784,8 @@
       "label": "Continents",
       "question": "Which continent is described as an eastern continent of Runeterra?",
       "correct": ["Camavor"],
-      "wrong": ["Shurima", "Valoran", "Arctic"]
+      "wrong": ["Shurima", "Valoran", "Arctic"],
+      "answer": "The vast Eternal Ocean separates it from the rest of the world. During the Rune Wars the rest of Runeterra forgot it existed, and after Camavor's fall its history became largely unknown."
     },
     {
       "id": "geoLandBridge",
@@ -775,7 +795,8 @@
       "label": "Continents",
       "question": "Which continent is joined to Shurima by an artificial land bridge, where Piltover and Zaun stand?",
       "correct": ["Valoran"],
-      "wrong": ["Arctic", "Shurima", "Camavor"]
+      "wrong": ["Arctic", "Shurima", "Camavor"],
+      "answer": "The bridge stands where the middle of the continent once was, before an event split it in two. Almost all of today's nations, among them Demacia, Noxus and the Freljord, lie on Valoran."
     },
     {
       "id": "geoSouthernContinent",
@@ -785,7 +806,8 @@
       "label": "Continents",
       "question": "Which continent is the arid southern continent of Runeterra?",
       "correct": ["Shurima"],
-      "wrong": ["Valoran", "Arctic", "Camavor"]
+      "wrong": ["Valoran", "Arctic", "Camavor"],
+      "answer": "The continent takes its name from Shurima, its greatest nation. It was once part of Valoran, until an event broke the land in two; Piltover and Zaun stand on the bridge between them."
     },
     {
       "id": "geoArgentThrone",
@@ -795,7 +817,8 @@
       "label": "Continents",
       "question": "Which continent was home to the Kingdom of the Argent Throne?",
       "correct": ["Camavor"],
-      "wrong": ["Valoran", "Shurima", "Arctic"]
+      "wrong": ["Valoran", "Shurima", "Arctic"],
+      "answer": "Dragons lived on the continent long before mortals. Camor, the first king of Camavor, bent the knee to the dragon matriarch and swore an oath binding their lineages for generations."
     },
     {
       "id": "geoIceSea",
@@ -805,7 +828,8 @@
       "label": "Seas",
       "question": "Which sea separates the Ursine Lands from the rest of Valoran?",
       "correct": ["Ice Sea"],
-      "wrong": ["Conqueror's Sea", "Guardian's Sea", "Eternal Ocean"]
+      "wrong": ["Conqueror's Sea", "Guardian's Sea", "Eternal Ocean"],
+      "answer": "The sea north of Valoran is the Freljord's gateway to the Arctic. Volibear's followers, the Ursine, often cross it to reach their hunting grounds."
     },
     {
       "id": "geoConquerorsSea",
@@ -815,7 +839,8 @@
       "label": "Seas",
       "question": "Which sea does the harbor of Demacia's Great City overlook?",
       "correct": ["Conqueror's Sea"],
-      "wrong": ["Ice Sea", "Guardian's Sea", "Eternal Ocean"]
+      "wrong": ["Ice Sea", "Guardian's Sea", "Eternal Ocean"],
+      "answer": "The sea lies west of Valoran, off Demacia's coast. Kayle and Morgana crossed it as children with their father Kilam to reach the sanctuary that would become Demacia."
     },
     {
       "id": "geoGuardiansSea",
@@ -825,7 +850,8 @@
       "label": "Seas",
       "question": "Which sea is the source of many of the creatures hunted around Bilgewater?",
       "correct": ["Guardian's Sea"],
-      "wrong": ["Ice Sea", "Conqueror's Sea", "Eternal Ocean"]
+      "wrong": ["Ice Sea", "Conqueror's Sea", "Eternal Ocean"],
+      "answer": "It lies east of Valoran and the Shuriman continent and holds the Ionian Archipelago, the Serpent Isles and the Shadow Isles. A great underwater city, Fizz's home, once stood in its depths."
     },
     {
       "id": "geoSerpentIsles",
@@ -835,7 +861,8 @@
       "label": "Islands",
       "question": "Which island chain do the Buhru people call home?",
       "correct": ["Serpent Isles"],
-      "wrong": ["Shadow Isles", "Ionian Archipelago", "Ursine Lands"]
+      "wrong": ["Shadow Isles", "Ionian Archipelago", "Ursine Lands"],
+      "answer": "Most of Valoran knows them as the Blue Flame Isles, but to the Buhru they have only ever been the Serpent Isles. Bilgewater stands there too, and its daily life borrows much from Buhru culture."
     },
     {
       "id": "geoShadowIsles",
@@ -856,7 +883,8 @@
       "label": "Islands",
       "question": "Which large archipelago lies off the east coast of Valoran?",
       "correct": ["Ionian Archipelago"],
-      "wrong": ["Serpent Isles", "Shadow Isles", "Ursine Lands"]
+      "wrong": ["Serpent Isles", "Shadow Isles", "Ursine Lands"],
+      "answer": "For ages only Ionia settled the archipelago, but in recent history Noxus has secured several of its islands for itself."
     },
     {
       "id": "geoUrsineLands",
@@ -866,7 +894,8 @@
       "label": "Islands",
       "question": "Which island north of the Freljord is the closest populated land to the Arctic?",
       "correct": ["Ursine Lands"],
-      "wrong": ["Serpent Isles", "Shadow Isles", "Ionian Archipelago"]
+      "wrong": ["Serpent Isles", "Shadow Isles", "Ionian Archipelago"],
+      "answer": "The Ursine, shapeshifting spirit walkers who serve Volibear, keep their sacred hunting grounds there. Ashe and Sejuani both trespassed on them to hunt a grellfeen."
     },
     {
       "id": "geoGreatSai",
@@ -876,7 +905,8 @@
       "label": "Deserts",
       "question": "Which desert, also called the Shuriman Wastes, covers the east, south and west of Shurima?",
       "correct": ["Great Sai"],
-      "wrong": ["Sai Kahleek", "Sai Faraj", "Burning Valley"]
+      "wrong": ["Sai Kahleek", "Sai Faraj", "Burning Valley"],
+      "answer": "The fallen empire has littered its dunes with ruins, and it stretches across most of the east, south and west of Shurima."
     },
     {
       "id": "geoSaiFaraj",
@@ -886,7 +916,8 @@
       "label": "Deserts",
       "question": "Which Shuriman desert is also called the Endless Plain?",
       "correct": ["Sai Faraj"],
-      "wrong": ["Great Sai", "Sai Kahleek", "Burning Valley"]
+      "wrong": ["Great Sai", "Sai Kahleek", "Burning Valley"],
+      "answer": "It was once Faraj, a vassal state known for its astromancers, and the ancient Shuriman empire likely began there. Few who try to cross it today are ever seen again."
     },
     {
       "id": "geoTallestPeak",
@@ -907,7 +938,8 @@
       "label": "Mountains",
       "question": "Which mountains cover the northern half of the Freljord?",
       "correct": ["Ridgeback Mountains"],
-      "wrong": ["Argent Mountains", "Greenfang Mountains", "Rocky Highlands"]
+      "wrong": ["Argent Mountains", "Greenfang Mountains", "Rocky Highlands"],
+      "answer": "The Frost-Troll village ruled by Trundle stands in these mountains, and Ashe found her True Ice bow on their ice cliffs."
     },
     {
       "id": "geoPetriciteForest",
@@ -917,7 +949,8 @@
       "label": "Forests",
       "question": "Which forest in the west of Valoran has trees rumored to dampen magic?",
       "correct": ["Petricite forest"],
-      "wrong": ["Silent Forest", "Sacred Woods", "Cloudwoods"]
+      "wrong": ["Silent Forest", "Sacred Woods", "Cloudwoods"],
+      "answer": "Demacia's early settlers mixed the forest's wood with ash and lime into petricite, which absorbs magic. It is used throughout the kingdom, from buildings and weapons to the shackles of imprisoned mages."
     },
     {
       "id": "geoEastValoran",
@@ -927,7 +960,8 @@
       "label": "Valoran map",
       "question": "Which of these lies in the east of Valoran?",
       "correct": ["Noxus"],
-      "wrong": ["Demacia", "Piltover", "Zaun"]
+      "wrong": ["Demacia", "Piltover", "Zaun"],
+      "answer": "Noxus grew from a reaver people who stormed the ancient city that now lies at the heart of their empire. Under threat from all sides, they pushed their borders outward year after year."
     },
     {
       "id": "geoWestValoran",
@@ -937,7 +971,8 @@
       "label": "Valoran map",
       "question": "Which of these lies in the west of Valoran?",
       "correct": ["Demacia"],
-      "wrong": ["Noxus", "Piltover", "Zaun"]
+      "wrong": ["Noxus", "Piltover", "Zaun"],
+      "answer": "Demacia's royal family defends the kingdom's towns, farmland, forests and mountains rich in minerals. The kingdom is largely self-sufficient and has grown more isolationist over the centuries."
     },
     {
       "id": "geoSouthValoran",
@@ -947,7 +982,8 @@
       "label": "Valoran map",
       "question": "Which of these lie in the south of Valoran?",
       "correct": ["Piltover", "Zaun"],
-      "wrong": ["Demacia", "Noxus", "Freljord"]
+      "wrong": ["Demacia", "Noxus", "Freljord"],
+      "answer": "Piltover stands on the cliffs and Zaun in the fissures below, opened by an earthquake when the canal for the Sun Gates was dug. Through those gates, ships cross between the east and west of Valoran."
     },
     {
       "id": "natFeudalMonarchy",
@@ -957,7 +993,8 @@
       "label": "Governments",
       "question": "Which nation is a feudal monarchy?",
       "correct": ["Demacia"],
-      "wrong": ["Noxus", "Freljord", "Ixtal", "Targon", "Shurima", "Ionia"]
+      "wrong": ["Noxus", "Freljord", "Ixtal", "Targon", "Shurima", "Ionia"],
+      "answer": "Demacia's people value justice, honor and duty above all and are fiercely proud of their heritage. In recent centuries the largely self-sufficient kingdom has grown insular and isolationist."
     },
     {
       "id": "natTribalMatriarchy",
@@ -967,7 +1004,8 @@
       "label": "Governments",
       "question": "Which nation is a tribal matriarchy?",
       "correct": ["Freljord"],
-      "wrong": ["Demacia", "Noxus", "Ixtal", "Shurima", "Ionia"]
+      "wrong": ["Demacia", "Noxus", "Ixtal", "Shurima", "Ionia"],
+      "answer": "Its tribes are led by Warmothers, like Ashe of the Avarosans and Sejuani of the Winter's Claw. Three factions are now fighting a civil war over the Freljord's future."
     },
     {
       "id": "natMageAutocracy",
@@ -977,7 +1015,8 @@
       "label": "Governments",
       "question": "Which nation is a magical autocracy, ruled by the Yun Tal?",
       "correct": ["Ixtal"],
-      "wrong": ["Demacia", "Noxus", "Freljord", "Targon", "Shurima", "Ionia"]
+      "wrong": ["Demacia", "Noxus", "Freljord", "Targon", "Shurima", "Ionia"],
+      "answer": "There are no formal criteria for joining the Yun Tal: aspirants are tested to their limits and must be approved unanimously. Their seat, the Cardinal Arcology, stood before Shurima raised its first Sun Disc."
     },
     {
       "id": "natExpansionistEmpire",
@@ -987,7 +1026,8 @@
       "label": "Governments",
       "question": "Which nation is an expansionist empire?",
       "correct": ["Noxus"],
-      "wrong": ["Demacia", "Freljord", "Ixtal", "Targon", "Ionia"]
+      "wrong": ["Demacia", "Freljord", "Ixtal", "Targon", "Ionia"],
+      "answer": "Noxus' people were once a reaver culture. Under threat from all sides, they took the fight to their enemies and pushed their borders outward with every passing year."
     },
     {
       "id": "natTribalTheocracy",
@@ -997,7 +1037,8 @@
       "label": "Governments",
       "question": "Which nation is a tribal theocracy?",
       "correct": ["Targon"],
-      "wrong": ["Demacia", "Noxus", "Ixtal", "Ionia"]
+      "wrong": ["Demacia", "Noxus", "Ixtal", "Ionia"],
+      "answer": "The people at the base of Mount Targon believe the stars above it are aspects of ancient stellar beings. The Solari, the dominant sect, worship the sun from the mountain's summit."
     },
     {
       "id": "natDivineEmpire",
@@ -1007,7 +1048,8 @@
       "label": "Governments",
       "question": "Which nation is a divine empire?",
       "correct": ["Shurima"],
-      "wrong": ["Demacia", "Freljord", "Ixtal", "Ionia"]
+      "wrong": ["Demacia", "Freljord", "Ixtal", "Ionia"],
+      "answer": "The Sun Disc turned chosen mortals into god-warriors to serve Shurima. After millennia in ruins, the capital rose from the sands again when Azir returned."
     },
     {
       "id": "natRegionalProvinces",
@@ -1017,7 +1059,8 @@
       "label": "Governments",
       "question": "Which nation is made up of allied regional provinces?",
       "correct": ["Ionia"],
-      "wrong": ["Demacia", "Noxus", "Ixtal", "Targon", "Shurima"]
+      "wrong": ["Demacia", "Noxus", "Ixtal", "Targon", "Shurima"],
+      "answer": "Ionia's many orders and sects often follow conflicting paths, and the land long stayed neutral in Valoran's wars. The Noxian invasion changed that, bringing militarization and vigilantism."
     },
     {
       "id": "natFrostguardSeat",
@@ -1027,7 +1070,8 @@
       "label": "Rulers",
       "question": "Which of these champions rules from the Frostguard Citadel?",
       "correct": ["Lissandra"],
-      "wrong": ["Ashe", "Sejuani", "Braum"]
+      "wrong": ["Ashe", "Sejuani", "Braum"],
+      "answer": "The citadel keeps many of the Freljord's hidden treasures and records. Every year, three Frostguard warriors climb down into the chasm it watches over, to check that the Watchers' prisons are not melting."
     },
     {
       "id": "natAvarosanLeader",
@@ -1037,7 +1081,8 @@
       "label": "Rulers",
       "question": "Which of these champions leads the Avarosan tribe?",
       "correct": ["Ashe"],
-      "wrong": ["Sejuani", "Lissandra", "Braum"]
+      "wrong": ["Sejuani", "Lissandra", "Braum"],
+      "answer": "Ashe named the tribe after the Avarosans her mother had led, who were wiped out. She dreams of a united Freljord and has won over rich southern tribes with promises of conquest."
     },
     {
       "id": "natWinterClawLeader",
@@ -1047,7 +1092,8 @@
       "label": "Rulers",
       "question": "Which of these champions is Warmother of the Winter's Claw?",
       "correct": ["Sejuani"],
-      "wrong": ["Ashe", "Lissandra", "Braum"]
+      "wrong": ["Ashe", "Lissandra", "Braum"],
+      "answer": "The Winter's Claw keep to warlike tradition and constantly raid the borderlands to survive. Under Sejuani they absorb nearby tribes into a horde of Iceborn, shamans and worshippers of the old gods."
     },
     {
       "id": "natDemaciaRuler",
@@ -1057,7 +1103,8 @@
       "label": "Rulers",
       "question": "Which of these champions rules Demacia from the Citadel of Dawn?",
       "correct": ["JarvanIV"],
-      "wrong": ["Garen", "Lux", "Fiora"]
+      "wrong": ["Garen", "Lux", "Fiora"],
+      "answer": "The Citadel of Dawn is the royal palace of House Lightshield. Since his father's sudden death, the noble families have not yet approved Jarvan IV's succession."
     },
     {
       "id": "natYunTalFounder",
@@ -1067,7 +1114,8 @@
       "label": "Rulers",
       "question": "Which of these champions is a founding member of the Yun Tal?",
       "correct": ["Skarner"],
-      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"]
+      "wrong": ["Teemo", "Tristana", "Soraka", "Nunu", "Amumu", "Veigar", "Lulu", "Alistar"],
+      "answer": "Skarner used his geomancy and strength to help build the arcology of Ixaocan. He later lost faith in the Yun Tal and withdrew to a chamber beneath the city to guard Ixtal alone."
     },
     {
       "id": "natDemaciaCapital",
@@ -1077,7 +1125,8 @@
       "label": "Capitals",
       "question": "Which of these is the capital of Demacia today?",
       "correct": ["The Great City"],
-      "wrong": ["Frostheld", "Ixaocan", "Alovédra"]
+      "wrong": ["Frostheld", "Ixaocan", "Alovédra"],
+      "answer": "The king lives there in the Citadel of Dawn, the royal palace of House Lightshield."
     },
     {
       "id": "natZeffira",
@@ -1087,7 +1136,8 @@
       "label": "Capitals",
       "question": "Which settlement was Demacia's first capital, before the capital moved north?",
       "correct": ["Zeffira"],
-      "wrong": ["Ehrenmount", "Dawnhold", "Wrenwall"]
+      "wrong": ["Ehrenmount", "Dawnhold", "Wrenwall"],
+      "answer": "Refugees from the Rune Wars founded it among petricite trees that dampen magic. Legend says Kayle and Morgana once defended it from an army of hate; less than a century after its founding it lay in ruins."
     },
     {
       "id": "natIxtalCapital",
@@ -1097,7 +1147,8 @@
       "label": "Capitals",
       "question": "Which of these is the capital of Ixtal, a system of arcologies in the jungle?",
       "correct": ["Ixaocan"],
-      "wrong": ["Zeffira", "Frostheld", "Bel'Zhun"]
+      "wrong": ["Zeffira", "Frostheld", "Bel'Zhun"],
+      "answer": "Its heart is the Cardinal Arcology, seat of the ruling Yun Tal, where the ancient Vidalion weaves magic into material form. To the Ixtali, that chamber is the center of all Runeterra."
     },
     {
       "id": "natFrostheld",
@@ -1107,7 +1158,8 @@
       "label": "Capitals",
       "question": "Which former Avarosan capital was burned by a Demacian fleet?",
       "correct": ["Frostheld"],
-      "wrong": ["Glaserport", "Rakelstake", "Hearth-Home"]
+      "wrong": ["Glaserport", "Rakelstake", "Hearth-Home"],
+      "answer": "Ashe's Avarosans had attacked Dawnhold, where Varya of the Dauntless Vanguard held them back. Her twin brother Rodian answered by setting the Avarosan capital ablaze."
     },
     {
       "id": "natTargonCapital",
@@ -1117,7 +1169,8 @@
       "label": "Capitals",
       "question": "Which of these is the celestial capital of Targon?",
       "correct": ["City of Gold and Silver"],
-      "wrong": ["Targon Prime", "Marus Omegnum", "Temple of the Solstice"]
+      "wrong": ["Targon Prime", "Marus Omegnum", "Temple of the Solstice"],
+      "answer": "Also called Targon Prime, it lies in a realm beyond Runeterra, home to the celestial Aspects and the mythical creatures of the stars."
     },
     {
       "id": "natCamavorCapital",
@@ -1127,7 +1180,8 @@
       "label": "Capitals",
       "question": "Which of these was the historical capital of Camavor, seat of the Argent Throne?",
       "correct": ["Alovédra"],
-      "wrong": ["Zavala", "Port Takan", "Polemia"]
+      "wrong": ["Zavala", "Port Takan", "Polemia"],
+      "answer": "The Iron Order guarded the Argent Throne from the Iron Keep, half a day's ride from the capital. Under Camavor's last king the order numbered nearly a thousand knights, led by Hecarim."
     },
     {
       "id": "natTaskaros",
@@ -1137,7 +1191,8 @@
       "label": "Camavor",
       "question": "Which region in the far east of Camavor later seceded?",
       "correct": ["Taskaros"],
-      "wrong": ["Panthas", "Zavala", "Burning Valley"]
+      "wrong": ["Panthas", "Zavala", "Burning Valley"],
+      "answer": "As Viego neglected his kingdom after his queen's death, Taskaros declared itself independent. Feuds over the secession burned the city of Polemia to the ground."
     },
     {
       "id": "natPanthas",
@@ -1147,7 +1202,8 @@
       "label": "Camavor",
       "question": "Which Camavoran estate on the southern shoreline is known for its vineyards and wine?",
       "correct": ["Panthas"],
-      "wrong": ["Taskaros", "Zavala", "Polemia"]
+      "wrong": ["Taskaros", "Zavala", "Polemia"],
+      "answer": "Panthas was also the birthplace of Lady Camavilla, the second wife of King Alvaro, Viego's father."
     },
     {
       "id": "natIronKeep",
@@ -1157,7 +1213,8 @@
       "label": "Camavor",
       "question": "Which fortress, half a day's ride from Alovédra, belongs to the Iron Order?",
       "correct": ["Iron Keep"],
-      "wrong": ["Citadel of Dawn", "Frostguard Citadel", "Immortal Bastion"]
+      "wrong": ["Citadel of Dawn", "Frostguard Citadel", "Immortal Bastion"],
+      "answer": "The Iron Order had guarded the Argent Throne for centuries and was the strongest knightly order under Camavor's last king. Its last Knight-Commander was Hecarim."
     },
     {
       "id": "natEastShurimanContinent",
@@ -1167,7 +1224,8 @@
       "label": "Positions",
       "question": "Which nation lies in the eastern part of the Shuriman continent, surrounded by jungle?",
       "correct": ["Ixtal"],
-      "wrong": ["Targon", "Demacia", "Noxus"]
+      "wrong": ["Targon", "Demacia", "Noxus"],
+      "answer": "Ixtali culture is older than the Shuriman empire, and Ixtal was one of the first independent nations to join it. Hidden in the jungle for thousands of years, it sees the rest of Runeterra as upstarts."
     },
     {
       "id": "natWestShurimanContinent",
@@ -1177,7 +1235,8 @@
       "label": "Positions",
       "question": "Which mountain nation lies west of Shurima, on the Shuriman continent?",
       "correct": ["Targon"],
-      "wrong": ["Ixtal", "Demacia", "Noxus"]
+      "wrong": ["Ixtal", "Demacia", "Noxus"],
+      "answer": "Targon lies far from civilization, and its mountain is all but impossible to reach except for the most determined pilgrims."
     },
     {
       "id": "natLunari",
@@ -1198,7 +1257,8 @@
       "label": "Targon",
       "question": "Which Targonian sect sees all other light as false?",
       "correct": ["Solari"],
-      "wrong": ["Lunari", "Rakkor", "Yun Tal"]
+      "wrong": ["Lunari", "Rakkor", "Yun Tal"],
+      "answer": "Legend says the Solari were founded by a warrior who could call down the might of the sun. They condemned the Lunari as heretics and hunted them into hiding."
     },
     {
       "id": "natAspectTwilight",
@@ -1208,7 +1268,8 @@
       "label": "Targon",
       "question": "Which of these champions hosts the Aspect of Twilight?",
       "correct": ["Zoe"],
-      "wrong": ["Leona", "Diana", "Pantheon"]
+      "wrong": ["Leona", "Diana", "Pantheon"],
+      "answer": "Zoe was a Lunari girl skipping her studies when the Aspect of Twilight noticed her, over a millennium ago. An earlier host, Myisha, gave mortals the means to seal the Darkin."
     },
     {
       "id": "natAspectWar",
@@ -1218,7 +1279,8 @@
       "label": "Targon",
       "question": "Which of these champions hosts the Aspect of War?",
       "correct": ["Pantheon"],
-      "wrong": ["Zoe", "Leona", "Diana"]
+      "wrong": ["Zoe", "Leona", "Diana"],
+      "answer": "Atreus was the only one of his party to survive the climb. The Aspect judged him unworthy of its purposes and took control of his body, pushing Atreus to the back of his own mind."
     },
     {
       "id": "natAspectProtection",
@@ -1228,7 +1290,8 @@
       "label": "Targon",
       "question": "Which of these champions became the Aspect of Protection?",
       "correct": ["Taric"],
-      "wrong": ["Zoe", "Leona", "Diana"]
+      "wrong": ["Zoe", "Leona", "Diana"],
+      "answer": "Disgraced in Demacia, Taric could have simply left to start a new life in exile. Instead he climbed Mount Targon to atone for his mistake."
     },
     {
       "id": "natPlacesOfDemacia",
@@ -1307,7 +1370,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "Petricite, the magic-dampening material Demacia's early settlers made from a petrified forest, is used everywhere in the kingdom, from buildings and weapons to golems."
     },
     {
       "id": "natPlacesOfNoxus",
@@ -1386,7 +1450,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "Noxus has assimilated many smaller nations over the centuries. The official histories of Runeterra count the years from its founding."
     },
     {
       "id": "natPlacesOfFreljord",
@@ -1465,7 +1530,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "The Freljord is split by a three-way civil war: the Avarosans dream of a united future, the Winter's Claw honor old traditions, and the Frostguard follow Lissandra."
     },
     {
       "id": "natPlacesOfIonia",
@@ -1544,7 +1610,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "Ionia's settlements are scattered across a massive archipelago surrounded by treacherous seas."
     },
     {
       "id": "natPlacesOfShurima",
@@ -1623,7 +1690,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "The fallen empire has littered the desert with ruins, and buried tombs still hold ancient secrets: Amumu rose from one, and Ezreal found an Ascended artifact in another."
     },
     {
       "id": "natPlacesOfTargon",
@@ -1702,7 +1770,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "Mount Targon is a towering peak of sun-baked rock amid a range of summits unmatched in scale anywhere else in the world."
     },
     {
       "id": "natPlacesOfIxtal",
@@ -1781,7 +1850,8 @@
         "Burning Valley",
         "Polemia",
         "Alshalaya"
-      ]
+      ],
+      "answer": "Ixaocan is a system of arcologies stretching across Ixtal's jungles, neither wholly homes nor colleges of magic but something in between."
     },
     {
       "id": "natPlacesOfCamavor",
@@ -1860,7 +1930,8 @@
         "Semchul",
         "Taarqen",
         "Tikras"
-      ]
+      ],
+      "answer": "Camavor was a kingdom on the continent beyond the Eternal Ocean. After the Ruination took its king and much of its army, it fell into ruin and its history was largely forgotten."
     },
     {
       "id": "cityPiltoverGovernment",
@@ -1870,7 +1941,8 @@
       "label": "Governments",
       "question": "Which city-state is an aristocratic oligarchy governed by a council?",
       "correct": ["Piltover"],
-      "wrong": ["Bilgewater", "Demacia", "Noxus", "Freljord"]
+      "wrong": ["Bilgewater", "Demacia", "Noxus", "Freljord"],
+      "answer": "The Council meets around a round table for seven councilors in a chamber at the top of the Academy. After the battles against Viktor and Ambessa it was reformed, with its first Zaunite member."
     },
     {
       "id": "cityZaunGovernment",
@@ -1880,7 +1952,8 @@
       "label": "Governments",
       "question": "Which city-state is ruled in practice by the Chem-Barons?",
       "correct": ["Zaun"],
-      "wrong": ["Piltover", "Bilgewater", "Noxus", "Demacia"]
+      "wrong": ["Piltover", "Bilgewater", "Noxus", "Demacia"],
+      "answer": "The Chem-Barons distributed shimmer, a serum invented by Singed. After Silco's death, the remaining barons fought one another to take his place as kingpin of the undercity."
     },
     {
       "id": "cityBilgewaterGovernment",
@@ -1890,7 +1963,8 @@
       "label": "Governments",
       "question": "Which city is governed by rival gang syndicates and pirate captains?",
       "correct": ["Bilgewater"],
-      "wrong": ["Piltover", "Demacia", "Noxus", "Freljord"]
+      "wrong": ["Piltover", "Demacia", "Noxus", "Freljord"],
+      "answer": "Bilgewater has no government, regulation or moral constraints to speak of. After Gangplank's fall, Sarah Fortune set out to unite the city under her own rule."
     },
     {
       "id": "cityIsthmus",
@@ -1900,7 +1974,8 @@
       "label": "Locations",
       "question": "Which city state stands on the isthmus between Valoran and Shurima?",
       "correct": ["Piltover", "Zaun"],
-      "wrong": ["Bilgewater", "Demacia", "Noxus", "Ixtal"]
+      "wrong": ["Bilgewater", "Demacia", "Noxus", "Ixtal"],
+      "answer": "Piltover and Zaun were once one city and are now separate but symbiotic societies. Many of the goods arriving in Piltover end up on Zaun's black markets."
     },
     {
       "id": "cityBilgewaterCapital",
@@ -1910,7 +1985,8 @@
       "label": "Locations",
       "question": "Which of these is the capital of Bilgewater?",
       "correct": ["Bilgewater Bay"],
-      "wrong": ["Ixaocan", "Frostheld", "The Great City"]
+      "wrong": ["Ixaocan", "Frostheld", "The Great City"],
+      "answer": "Surrounded by treacherous straits and towering cliffs, the bay is the entrance to Rat Town, Bilgewater's largest settlement. Its lowest parts hide the city's black market."
     },
     {
       "id": "cityLowPiltover",
@@ -1940,7 +2016,8 @@
       "label": "Piltover",
       "question": "Which building is both the seat of Piltover's government and its university?",
       "correct": ["Piltover Academy"],
-      "wrong": ["Hexgate", "Chembaron Tower", "Hall of Valor"]
+      "wrong": ["Hexgate", "Chembaron Tower", "Hall of Valor"],
+      "answer": "The Council chamber, with its round table for seven councilors, sits at the center of the Academy's top floor. Jayce was expelled from the Academy for tampering with the arcane before he invented hextech."
     },
     {
       "id": "cityProgressDay",
@@ -1950,7 +2027,8 @@
       "label": "Piltover",
       "question": "Which structure's first opening is celebrated as Piltover's founding day, Progress Day?",
       "correct": ["Sun Gates"],
-      "wrong": ["Hexgate", "Bridge of Progress", "Chembaron Tower"]
+      "wrong": ["Hexgate", "Bridge of Progress", "Chembaron Tower"],
+      "answer": "The Sun Gates let ships pass between the east and west of Valoran, and the taxes on that trade made Piltover rich. Digging their canal caused an earthquake that opened the fissures where Zaun now lies."
     },
     {
       "id": "citySump",
@@ -1960,7 +2038,8 @@
       "label": "Zaun",
       "question": "Which is the lowest region of Zaun, where few stay for long?",
       "correct": ["Sump"],
-      "wrong": ["Promenade", "Entresol", "Chembaron Tower"]
+      "wrong": ["Promenade", "Entresol", "Chembaron Tower"],
+      "answer": "All of Zaun's waste runs down into the Sump, and Singed kept a secret laboratory in a cave by its streams."
     },
     {
       "id": "cityEntresol",
@@ -1980,7 +2059,8 @@
       "label": "Zaun",
       "question": "Which level of Zaun is the top one, where its wealthiest gather and which meets Piltover's lowest regions?",
       "correct": ["Promenade"],
-      "wrong": ["Sump", "Entresol", "Fissures"]
+      "wrong": ["Sump", "Entresol", "Fissures"],
+      "answer": "The Promenade's Skylight Commercia is a market where Zaunites browse galleries, meet friends, dine and watch touring players perform satires."
     },
     {
       "id": "cityChemBarons",
@@ -1990,7 +2070,8 @@
       "label": "Zaun",
       "question": "Which group built a criminal empire on Silco's shimmer trade?",
       "correct": ["Chem-Barons"],
-      "wrong": ["Black Rose", "Dauntless Vanguard", "Kinkou"]
+      "wrong": ["Black Rose", "Dauntless Vanguard", "Kinkou"],
+      "answer": "Silco rose to lead the Chem-Barons, and his shimmer refineries were worked by adults and children alike. After his death, the remaining barons fought one another for control of the undercity."
     },
     {
       "id": "citySlaughterDocks",
@@ -2000,7 +2081,8 @@
       "label": "Bilgewater",
       "question": "Which place in Bilgewater is where sea monsters are rendered down?",
       "correct": ["Slaughter Docks"],
-      "wrong": ["Cutpurse Square", "White Wharf", "Serpent Bridge"]
+      "wrong": ["Cutpurse Square", "White Wharf", "Serpent Bridge"],
+      "answer": "Fleets leave port every night at sunset to hunt the sea monsters that threaten Bilgewater's waters. Gangplank's warehouse stood there, and the remains of his flagship lie scattered across the docks."
     },
     {
       "id": "cityWhiteWharf",
@@ -2010,7 +2092,8 @@
       "label": "Bilgewater",
       "question": "Which place in Bilgewater is where the dead are given to the sea?",
       "correct": ["White Wharf"],
-      "wrong": ["Slaughter Docks", "Cutpurse Square", "Serpent Bridge"]
+      "wrong": ["Slaughter Docks", "Cutpurse Square", "Serpent Bridge"],
+      "answer": "In Bilgewater the dead are not buried but given back to the ocean. The wharf takes its name from the bird droppings that cover it from end to end."
     },
     {
       "id": "cityMotherSerpent",
@@ -2020,7 +2103,8 @@
       "label": "Bilgewater",
       "question": "Which deity is the Temple of the Mother Serpent dedicated to?",
       "correct": ["Nagakabouros"],
-      "wrong": ["Atakhan", "Ramhaurg", "Avarosa"]
+      "wrong": ["Atakhan", "Ramhaurg", "Avarosa"],
+      "answer": "Nagakabouros, the goddess of motion, came from the Serpent Isles and is still Bilgewater's reigning deity. Her faith urges followers to chase their desires and make their own fate, and Illaoi is her Truth Bearer."
     },
     {
       "id": "titanWarFoe",
@@ -2030,7 +2114,8 @@
       "label": "Titan War",
       "question": "Which beings did the Vastayashai'rei defeat in the Titan War?",
       "correct": ["The Titans"],
-      "wrong": ["The Watchers", "The Darkin", "The Voidborn"]
+      "wrong": ["The Watchers", "The Darkin", "The Voidborn"],
+      "answer": "The Titans were sky-giants who came down on the First Lands. Huge weapons and stone-like remains, perhaps the petrified Titans themselves, still lie on Ionia's old battlefields."
     },
     {
       "id": "titanWarPlace",
@@ -2040,7 +2125,8 @@
       "label": "Titan War",
       "question": "Which nation covers the First Lands today, where the Titan War was fought?",
       "correct": ["Ionia"],
-      "wrong": ["Demacia", "Noxus", "Shurima"]
+      "wrong": ["Demacia", "Noxus", "Shurima"],
+      "answer": "The First Lands are the island continent now called Ionia. At Mistfall in Bahrl, countless blades from the war still stand in the earth after more than ten thousand years."
     },
     {
       "id": "titanWarWinners",
@@ -2050,7 +2136,8 @@
       "label": "Titan War",
       "question": "Which shapeshifters, who drew on the Spirit Realm, won the Titan War?",
       "correct": ["Vastayashai'rei"],
-      "wrong": ["Ascended", "Sentinels of Light", "Aspects"]
+      "wrong": ["Ascended", "Sentinels of Light", "Aspects"],
+      "answer": "Desperate mortals took the power of the Spirit Realm into themselves and became the Vastayashai'rei. After the war they lived among mortals, and their children became the vastaya."
     },
     {
       "id": "sistersLissandra",
@@ -2061,7 +2148,7 @@
       "question": "Which of these champions was one of the Three Sisters of the Freljord?",
       "correct": ["Lissandra"],
       "wrong": ["Tristana", "Soraka", "Lulu", "Aurora", "Anivia", "Annie"],
-      "answer": "Avarosa, Serylda and Lissandra ruled the Freljord together. Lissandra secretly made a pact with the Watchers, then sacrificed her sisters at the Howling Abyss to entomb the Watchers in True Ice."
+      "answer": "Avarosa, Serylda and Lissandra ruled the Freljord together. Lissandra secretly made a pact with the Watchers, then sacrificed her sisters to entomb the Watchers in True Ice."
     },
     {
       "id": "sistersBlinded",
@@ -2071,7 +2158,8 @@
       "label": "Three Sisters",
       "question": "Which of these champions is the demigod who slashed Lissandra's eyes and blinded her in front of her army?",
       "correct": ["Volibear"],
-      "wrong": ["Nunu", "Ashe", "Olaf", "Tryndamere", "Ornn", "Sejuani", "Udyr"]
+      "wrong": ["Nunu", "Ashe", "Olaf", "Tryndamere", "Ornn", "Sejuani", "Udyr"],
+      "answer": "Volibear, then called Valhir, was the most warlike of the Freljord's demigods and wanted the sisters destroyed. Blinded, Lissandra turned to dreamwalking and made contact with the Watchers."
     },
     {
       "id": "sistersEntombed",
@@ -2081,7 +2169,8 @@
       "label": "Three Sisters",
       "question": "Which beings did Lissandra entomb in True Ice?",
       "correct": ["The Watchers"],
-      "wrong": ["The Darkin", "The Titans", "The Darkins"]
+      "wrong": ["The Darkin", "The Titans", "The Darkins"],
+      "answer": "When the Watchers began to break free, Lissandra sacrificed her sisters and their armies to seal them in True Ice. Her Frostguard still keep them sealed, knowing the ice will melt one day."
     },
     {
       "id": "sistersAbyss",
@@ -2091,7 +2180,8 @@
       "label": "Three Sisters",
       "question": "Which chasm, the deepest trench in the world, did the demigod Ramhaurg carve in the Freljord?",
       "correct": ["Howling Abyss"],
-      "wrong": ["Sump", "Great Sai", "Dalu Bay"]
+      "wrong": ["Sump", "Great Sai", "Dalu Bay"],
+      "answer": "Avarosa asked Ramhaurg, the God of the Forge, for a chasm deep enough to trap the horrors the sisters feared. Lissandra later turned the bridge he built across it into a seal, and the Watchers lie entombed there."
     },
     {
       "id": "sistersYsjarn",
@@ -2101,7 +2191,8 @@
       "label": "Three Sisters",
       "question": "Which of these champions is the amicable Freljord demigod Ysjarn?",
       "correct": ["Anivia"],
-      "wrong": ["Volibear", "Ornn", "Olaf", "Lissandra", "Nunu"]
+      "wrong": ["Volibear", "Ornn", "Olaf", "Lissandra", "Nunu"],
+      "answer": "Ysjarn was the most amicable of the Freljord's demigods and seemed willing to work with the Three Sisters, while Valhir and the Iron Boar wanted them destroyed."
     },
     {
       "id": "sistersSisters",
@@ -2111,7 +2202,8 @@
       "label": "Three Sisters",
       "question": "Which of these was one of the Three Sisters?",
       "correct": ["Serylda"],
-      "wrong": ["Mihira", "Isolde", "Xolaani"]
+      "wrong": ["Mihira", "Isolde", "Xolaani"],
+      "answer": "Avarosa, Serylda and Lissandra ruled the Freljord together. Serylda tried to command the heavens and paid with her voice; Lissandra later sacrificed her and Avarosa to seal away the Watchers."
     },
     {
       "id": "icathiaWeapon",
@@ -2132,7 +2224,8 @@
       "label": "Icathia",
       "question": "Which empire was Icathia a satrapy of before it rebelled?",
       "correct": ["Shurima"],
-      "wrong": ["Noxus", "Demacia", "Ionia"]
+      "wrong": ["Noxus", "Demacia", "Ionia"],
+      "answer": "Icathia's council asked again and again for its citizens to be chosen for Ascension and was always refused. When the city rose up, a Shuriman host led by ten God-Warriors, Aatrox among them, marched on it."
     },
     {
       "id": "icathiaZilean",
@@ -2142,7 +2235,8 @@
       "label": "Icathia",
       "question": "Which of these champions sat on the Icathian council and opposed using the Void?",
       "correct": ["Zilean"],
-      "wrong": ["Azir", "Ryze", "Jax", "Qiyana", "Bard"]
+      "wrong": ["Azir", "Ryze", "Jax", "Qiyana", "Bard"],
+      "answer": "Zilean failed to find any allies for Icathia's independence and was overruled. When the Void tore the city apart, he sheltered as many citizens as he could in his tower and removed the whole tower from time."
     },
     {
       "id": "icathiaMalphite",
@@ -2152,7 +2246,8 @@
       "label": "Icathia",
       "question": "Which of these champions was formed from a surviving shard of Ne'Zuk's Monolith?",
       "correct": ["Malphite"],
-      "wrong": ["Skarner", "Nunu", "Ornn", "Amumu", "Orianna"]
+      "wrong": ["Skarner", "Nunu", "Ornn", "Amumu", "Orianna"],
+      "answer": "Ne'Zuk, an Ixtali God-Warrior, built the Monolith as a floating fortress of living stone to destroy the Void at Icathia. It was overwhelmed and fell, and only one of its shards survived to build itself into Malphite."
     },
     {
       "id": "darkinAatrox",
@@ -2162,7 +2257,8 @@
       "label": "Darkin War",
       "question": "Which of these champions is the Darkin who was tricked by the Targonians and imprisoned in his own blade?",
       "correct": ["Aatrox"],
-      "wrong": ["Naafiri", "Varus", "Zaahen"]
+      "wrong": ["Naafiri", "Varus", "Zaahen"],
+      "answer": "Aatrox was one of Shurima's god-warriors and fought at the siege of Icathia. The reborn Aspect of War later united mortals against the Darkin, and Aatrox was tricked into his own blade when he met them in battle."
     },
     {
       "id": "darkinNaafiri",
@@ -2172,7 +2268,8 @@
       "label": "Darkin War",
       "question": "Which of these champions is the Darkin who was tricked by the Aspect Myisha and imprisoned in her daggers?",
       "correct": ["Naafiri"],
-      "wrong": ["Aatrox", "Varus", "Zaahen"]
+      "wrong": ["Aatrox", "Varus", "Zaahen"],
+      "answer": "Naafiri held enough power to almost lead the Darkin. After the Aspect of Twilight tricked her into her daggers, they were hidden away in a Shuriman crypt."
     },
     {
       "id": "darkinVarus",
@@ -2182,7 +2279,8 @@
       "label": "Darkin War",
       "question": "Which of these champions is the Darkin who was sealed in his bow at the Temple of Pallas?",
       "correct": ["Varus"],
-      "wrong": ["Aatrox", "Naafiri", "Zaahen"]
+      "wrong": ["Aatrox", "Naafiri", "Zaahen"],
+      "answer": "Varus was a Shuriman temple warden who became a god-warrior to take revenge on Icathia and its Voidborn. Later he invaded Ionia with other Darkin, until Zaahen and the Kinkou hunted them down and sealed them."
     },
     {
       "id": "darkinZaahen",
@@ -2192,7 +2290,8 @@
       "label": "Darkin War",
       "question": "Which of these champions is the Darkin who asked to be sealed in his glaive, hidden in the Temple of Twilight?",
       "correct": ["Zaahen"],
-      "wrong": ["Aatrox", "Naafiri", "Varus", "Hecarim"]
+      "wrong": ["Aatrox", "Naafiri", "Varus", "Hecarim"],
+      "answer": "Zaahen turned on his fellow Darkin and helped the Kinkou seal them in Ionia. Afraid he would one day lose his humanity, he asked to be sealed too, and the Kinkou cast the temple into the spirit realm."
     },
     {
       "id": "darkinVladimir",
@@ -2202,7 +2301,8 @@
       "label": "Darkin War",
       "question": "Which of these champions was a Camavoran prince taken hostage and became the first human to learn blood magic?",
       "correct": ["Vladimir"],
-      "wrong": ["Briar", "Viego", "Karthus", "Ryze", "Viktor"]
+      "wrong": ["Briar", "Viego", "Karthus", "Ryze", "Viktor"],
+      "answer": "When the Camavoran king broke his oath to a Darkin, his son Vladimir led the Darkin's armies against his father's city. As the Darkin were being sealed, Vladimir killed his master and drank in part of his power."
     },
     {
       "id": "darkinMoneerah",
@@ -2212,7 +2312,8 @@
       "label": "Darkin War",
       "question": "Which of these champions killed the Darkin Moneerah after she explored the ruins of the Great Library of Nashramae?",
       "correct": ["Nasus"],
-      "wrong": ["Azir", "Renekton", "Xerath", "Rammus", "Sivir", "Samira"]
+      "wrong": ["Azir", "Renekton", "Xerath", "Rammus", "Sivir", "Samira"],
+      "answer": "Nasus had rejected the uneasy alliance of the surviving god-warriors. Burdened by guilt over the sealing of his brother, he withdrew from the world and stayed among the ruins as the desert swallowed them."
     },
     {
       "id": "darkinShuriman",
@@ -2228,7 +2329,8 @@
         "Titan War",
         "Darkin Disaster",
         "War of the False Kanmei"
-      ]
+      ],
+      "answer": "The god-warriors who survived the war against the Void called themselves Sunborn. Without an emperor, many of them turned on each other and on the mortals they ruled."
     },
     {
       "id": "darkinIonian",
@@ -2244,7 +2346,8 @@
         "Titan War",
         "Darkin Disaster",
         "War of the Sunborn"
-      ]
+      ],
+      "answer": "Ionia rewrote the war as myth so its people could heal and forget. The deeds of Yunara and Zaahen are told as the Tale of the Devoted Shrine Maiden, a fable of a shrine maiden and her patron spirit."
     },
     {
       "id": "darkinMeaning",
@@ -2254,7 +2357,8 @@
       "label": "Darkin War",
       "question": "Which meaning does \"Darkin\" have in ancient High Shuriman?",
       "correct": ["The fallen"],
-      "wrong": ["The sunborn", "The ascended", "The forgotten"]
+      "wrong": ["The sunborn", "The ascended", "The forgotten"],
+      "answer": "Mortals gave the name to the god-warriors who enslaved them and forced them to worship. With forbidden primal magic the Darkin reshaped their own flesh until nothing was left of the noble warriors they had been."
     },
     {
       "id": "revenantRuler",
@@ -2264,7 +2368,8 @@
       "label": "Iron Revenant",
       "question": "Which of these champions reigned over eastern and central Valoran as the Iron Revenant?",
       "correct": ["Mordekaiser"],
-      "wrong": ["Karthus", "Darius", "Sion", "Kindred", "Teemo", "Sylas", "Rell"]
+      "wrong": ["Karthus", "Darius", "Sion", "Kindred", "Teemo", "Sylas", "Rell"],
+      "answer": "In life he was Sahn-Uzal, a barbarian king of the Great Grass Ocean. Sorcerers raised him in armor of dark metal to fight their wars, and they were the first he killed."
     },
     {
       "id": "revenantFortress",
@@ -2274,7 +2379,8 @@
       "label": "Iron Revenant",
       "question": "Which fortress did Mordekaiser raise as the center of his empire?",
       "correct": ["Immortal Bastion"],
-      "wrong": ["Citadel of Dawn", "Frostguard Citadel", "Hexgate"]
+      "wrong": ["Citadel of Dawn", "Frostguard Citadel", "Hexgate"],
+      "answer": "Besides being a symbol of his power, the Bastion held the forbidden knowledge he gathered about spirits, death and the realms beyond. After his fall, the Noxii tribes made it their capital."
     },
     {
       "id": "revenantVladimir",
@@ -2284,7 +2390,8 @@
       "label": "Iron Revenant",
       "question": "Which of these champions plotted with LeBlanc to cast Mordekaiser out of the material realm?",
       "correct": ["Vladimir"],
-      "wrong": ["Elise", "Veigar", "Mel", "Cassiopeia", "Viego", "Yorick"]
+      "wrong": ["Elise", "Veigar", "Mel", "Cassiopeia", "Viego", "Yorick"],
+      "answer": "After almost three centuries of his reign, LeBlanc saw a chance to unite the Noxii tribes against the Iron Revenant. Together they severed his soul from his armor, which was hidden deep beneath his own fortress."
     },
     {
       "id": "revenantBlackRose",
@@ -2294,7 +2401,8 @@
       "label": "Iron Revenant",
       "question": "Which cabal grew from the pact between LeBlanc and Vladimir?",
       "correct": ["The Black Rose"],
-      "wrong": ["The Trifarix", "The Mageseekers", "The Dauntless Vanguard"]
+      "wrong": ["The Trifarix", "The Mageseekers", "The Dauntless Vanguard"],
+      "answer": "LeBlanc and Vladimir feasted as equals and wove magic so dark that the wine soured and the roses on their table withered from red to black."
     },
     {
       "id": "revenantAfterworld",
@@ -2304,7 +2412,8 @@
       "label": "Iron Revenant",
       "question": "Which Afterworld did Mordekaiser build from the souls of those he killed?",
       "correct": ["Mitna Rachnun"],
-      "wrong": ["Marus Omegnum", "Targon Prime", "The Glade"]
+      "wrong": ["Marus Omegnum", "Targon Prime", "The Glade"],
+      "answer": "Mordekaiser had planned his banishment all along. In the death realm he shaped the souls of everyone he had killed into the bricks and mortar of his Afterworld, where he gathers power for his final reign."
     },
     {
       "id": "ruinationCapital",
@@ -2314,7 +2423,8 @@
       "label": "Ruination",
       "question": "Which city was the capital of the Blessed Isles?",
       "correct": ["Helia"],
-      "wrong": ["Alovédra", "Zeffira", "Ixaocan"]
+      "wrong": ["Alovédra", "Zeffira", "Ixaocan"],
+      "answer": "Helia was a city of scholars on the Blessed Isles, hidden by a magic mist. It was destroyed when Viego lowered his dead queen into the Well of Ages and the World Rune beneath it became unstable."
     },
     {
       "id": "ruinationYear",
@@ -2324,7 +2434,8 @@
       "label": "Ruination",
       "question": "Which of these dates is when the Ruination of Helia happened?",
       "correct": ["25 BN"],
-      "wrong": ["550 BN", "2000 BN", "997 AN"]
+      "wrong": ["550 BN", "2000 BN", "997 AN"],
+      "answer": "BN counts the years before the founding of Noxus, so the Ruination came 25 years before it. Earlier that same year, Kalista had sailed in search of the Waters of Life for Viego's queen."
     },
     {
       "id": "ruinationAfter",
@@ -2334,7 +2445,8 @@
       "label": "Ruination",
       "question": "Which islands did the Blessed Isles become after the Ruination?",
       "correct": ["The Shadow Isles"],
-      "wrong": ["The Serpent Isles", "The Ionian Archipelago", "The Ursine Lands"]
+      "wrong": ["The Serpent Isles", "The Ionian Archipelago", "The Ursine Lands"],
+      "answer": "The Ruination tore the veil between the material and spirit realms. The souls of the dead are trapped in the Black Mist, and the wraiths of the isles' people cannot move on to the Spirit Realm."
     },
     {
       "id": "ruinationKingdom",
@@ -2344,7 +2456,8 @@
       "label": "Ruination",
       "question": "Which kingdom did Viego rule before the Ruination?",
       "correct": ["Camavor"],
-      "wrong": ["Demacia", "Noxus", "Shurima", "Ixtal"]
+      "wrong": ["Demacia", "Noxus", "Shurima", "Ixtal"],
+      "answer": "Viego neglected his kingdom for his queen Isolde, and after her death it fell apart: a border region seceded and hundreds were put to death. Having lost its king and much of its army at Helia, Camavor fell into ruin."
     },
     {
       "id": "ruinationKalista",
@@ -2354,7 +2467,8 @@
       "label": "Ruination",
       "question": "Which of these champions was the Camavoran general sent to the Blessed Isles to find the Waters of Life?",
       "correct": ["Kalista"],
-      "wrong": ["Hecarim", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Thresh"]
+      "wrong": ["Hecarim", "Yorick", "Vex", "Karthus", "Gwen", "Viego", "Shyvana", "Thresh"],
+      "answer": "Kalista refused to help Viego ransack Helia and stood with the Host to defend its people. Hecarim stabbed her in the back, and the survivors mourned her as the one who made their escape possible."
     },
     {
       "id": "ruinationHecarim",
@@ -2374,7 +2488,8 @@
         "Shyvana",
         "Mordekaiser",
         "Thresh"
-      ]
+      ],
+      "answer": "Hecarim was Knight-Commander of the Iron Order. Helia's defender Ledros bested him in a duel, and Hecarim then killed Kalista from behind; the Ruination caught his knights as they fled to their ships."
     },
     {
       "id": "ruinationThresh",
@@ -2394,7 +2509,8 @@
         "Shyvana",
         "Mordekaiser",
         "Hecarim"
-      ]
+      ],
+      "answer": "Erlok Grael wanted a place of influence at the Camavoran court in return. He later led Viego to the Well of Ages, and could only scream as the Ruination was unleashed."
     },
     {
       "id": "ruinationYorick",
@@ -2414,7 +2530,8 @@
         "Shyvana",
         "Mordekaiser",
         "Hecarim"
-      ]
+      ],
+      "answer": "Yorick had been able to speak with the dead since childhood. He told Viego that Isolde missed someone called Gwen, and for a moment the king accepted her death."
     },
     {
       "id": "ruinationRyze",
@@ -2436,7 +2553,8 @@
         "Hecarim",
         "Senna",
         "Akshan"
-      ]
+      ],
+      "answer": "Ryze's master Tyrus shielded a handful of survivors from the blast with his magical sigil. Ryze then used a spell he had only just learned to bring them aboard Kalista's ship, which had survived."
     },
     {
       "id": "runeWarsRyze",
@@ -2446,7 +2564,8 @@
       "label": "Rune Wars",
       "question": "Which of these champions killed his master Tyrus and vowed never to use a World Rune?",
       "correct": ["Ryze"],
-      "wrong": ["Soraka", "Kassadin", "Zed", "Sylas", "Heimerdinger", "Ziggs", "Mel", "Malzahar"]
+      "wrong": ["Soraka", "Kassadin", "Zed", "Sylas", "Heimerdinger", "Ziggs", "Mel", "Malzahar"],
+      "answer": "Tyrus had tried to use two World Runes for his own ends. Since then, Ryze has made it his mission to find the Runes and keep them from anyone who would misuse them."
     },
     {
       "id": "runeWarsZyra",
@@ -2456,7 +2575,8 @@
       "label": "Rune Wars",
       "question": "Which of these champions rose from the ashes of the Gardens of Zyr?",
       "correct": ["Zyra"],
-      "wrong": ["Maokai", "Ivern", "Lillia", "Neeko"]
+      "wrong": ["Maokai", "Ivern", "Lillia", "Neeko"],
+      "answer": "Attacked by the garden's plants, a sorceress ignited the swamp's fumes with a spell, and the blast left the Gardens lifeless for hundreds of years."
     },
     {
       "id": "runeWarsSkarner",
@@ -2466,7 +2586,8 @@
       "label": "Rune Wars",
       "question": "Which of these champions persuaded the Yun Tal to close the borders of Ixtal?",
       "correct": ["Skarner"],
-      "wrong": ["Milio", "Malphite", "Neeko", "Qiyana", "Zyra", "Ezreal"]
+      "wrong": ["Milio", "Malphite", "Neeko", "Qiyana", "Zyra", "Ezreal"],
+      "answer": "With the war nearing their borders, Skarner had the wilderness drawn up around their arcology-city as a living shield, cutting Ixtal off from the rest of Runeterra."
     },
     {
       "id": "runeWarsTwins",
@@ -2476,7 +2597,8 @@
       "label": "Rune Wars",
       "question": "Which of these champions belongs to the twins born to Mihira after she climbed Mount Targon?",
       "correct": ["Kayle", "Morgana"],
-      "wrong": ["Leona", "Diana", "Pantheon", "Taric", "AurelionSol"]
+      "wrong": ["Leona", "Diana", "Pantheon", "Taric", "AurelionSol"],
+      "answer": "At the peak, the Aspect of Justice deemed Mihira worthy. Fearing her divine power, the twins' father Kilam fled with them to the new Demacian settlement, hoping its petricite would hide them from their mother."
     },
     {
       "id": "runeWarsPoppy",
@@ -2498,7 +2620,8 @@
         "Shaco",
         "Akali",
         "Kennen"
-      ]
+      ],
+      "answer": "Fascinated by the warriors' coordination and discipline, Poppy became Orlon's mentee. The refugees they travelled with went on to found the first Demacian city."
     },
     {
       "id": "runeWarsNocturne",
@@ -2518,7 +2641,8 @@
         "Zyra",
         "Maokai",
         "Janna"
-      ]
+      ],
+      "answer": "Late in the Rune Wars, cabals of warrior-mages cast off their flesh to rule the spirit realm, and their shadow magic drove mortals to ever worse acts. Nocturne hunted down the shadow mages one by one."
     },
     {
       "id": "runeWarsZeffira",
@@ -2528,7 +2652,8 @@
       "label": "Rune Wars",
       "question": "Which city did refugees found in a forest of petricite trees?",
       "correct": ["Zeffira"],
-      "wrong": ["Alovédra", "Ixaocan", "Frostheld"]
+      "wrong": ["Alovédra", "Ixaocan", "Frostheld"],
+      "answer": "Refugees fleeing the Rune Wars found that the petricite trees seemed to cancel magic and shield them from its devastation."
     },
     {
       "id": "runeWarsKhom",
@@ -2538,7 +2663,8 @@
       "label": "Rune Wars",
       "question": "Which place was destroyed by two World Runes during a parley with Tyrus?",
       "correct": ["Khom"],
-      "wrong": ["Zeffira", "Alovédra", "Ixaocan"]
+      "wrong": ["Zeffira", "Alovédra", "Ixaocan"],
+      "answer": "The leaders of two rival Noxii nations had met the mage Tyrus there to plead with him. Tyrus and his apprentice Ryze saw the attack, the first of the Rune Wars."
     },
     {
       "id": "runeWarsBastion",
@@ -2548,7 +2674,8 @@
       "label": "Rune Wars",
       "question": "Which fortress sheltered the Noxii tribes during the Rune Wars?",
       "correct": ["Immortal Bastion"],
-      "wrong": ["Citadel of Dawn", "Frostguard Citadel", "Hexgate"]
+      "wrong": ["Citadel of Dawn", "Frostguard Citadel", "Hexgate"],
+      "answer": "With help from the mages of the Black Rose, the tribes inside the Bastion held off much of the magical fallout, while elsewhere whole nations were wiped out."
     },
     {
       "id": "firstWarSion",
@@ -2558,7 +2685,8 @@
       "label": "Demacian-Noxian War",
       "question": "Which of these champions killed King Jarvan I of Demacia?",
       "correct": ["Sion"],
-      "wrong": ["Darius", "Swain", "Draven", "Garen"]
+      "wrong": ["Darius", "Swain", "Draven", "Garen"],
+      "answer": "When the commander of Hvardis let the Demacian army leave, Sion threw him from the walls and charged with only his warband. Pierced by a dozen weapons, he let himself die only once the king had stopped breathing."
     },
     {
       "id": "firstWarPlace",
@@ -2568,7 +2696,8 @@
       "label": "Demacian-Noxian War",
       "question": "Which place is where Sion killed the Demacian king Jarvan I?",
       "correct": ["Hvardis"],
-      "wrong": ["Gates of Mourning", "Dalu Bay", "Alderburg"]
+      "wrong": ["Gates of Mourning", "Dalu Bay", "Alderburg"],
+      "answer": "Hvardis was a fortified settlement south-east of the Gates of Mourning, where Demacia had driven back the Noxian warbands. Over the next half century, Demacia freed central Valoran from Noxian rule."
     },
     {
       "id": "firstWarMemorial",
@@ -2578,7 +2707,8 @@
       "label": "Demacian-Noxian War",
       "question": "Which tomb is used to contain Sion's resurrected form?",
       "correct": ["Sion's Memorial"],
-      "wrong": ["Hall of Valor", "Tomb of the Emperors", "Ruins of Alovédra"]
+      "wrong": ["Hall of Valor", "Tomb of the Emperors", "Ruins of Alovédra"],
+      "answer": "Noxus built the towering monument to honor Sion for all time after he died killing King Jarvan I at Hvardis."
     },
     {
       "id": "ionianLeader",
@@ -2588,7 +2718,8 @@
       "label": "Ionian invasion",
       "question": "Which Grand General ordered the full-scale Noxian invasion of Ionia?",
       "correct": ["Boram Darkwill"],
-      "wrong": ["Jericho Swain", "Darius", "Marcus Du Couteau"]
+      "wrong": ["Jericho Swain", "Darius", "Marcus Du Couteau"],
+      "answer": "Darkwill sent his warhosts to scour Ionia for relics that could lengthen mortal lives. He was overthrown in a coup as the war ended, and the new Grand General pulled the army out of Ionia."
     },
     {
       "id": "ionianSwain",
@@ -2598,7 +2729,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions captured the Placidium of Navori, and lost an arm there?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "Draven", "Sion", "Garen", "Sylas", "Zed"]
+      "wrong": ["Darius", "Draven", "Sion", "Garen", "Sylas", "Zed"],
+      "answer": "Swain meant the captured Placidium as bait for an ambush, but the Ionian resistance united under Irelia and routed his depleted army. After the defeat he was dishonorably discharged."
     },
     {
       "id": "ionianIrelia",
@@ -2608,7 +2740,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions led the Ionian forces to victory at Dalu Bay?",
       "correct": ["Irelia"],
-      "wrong": ["Karma", "Kennen", "Shen", "Akali", "MonkeyKing", "Yasuo", "MasterYi", "XinZhao"]
+      "wrong": ["Karma", "Kennen", "Shen", "Akali", "MonkeyKing", "Yasuo", "MasterYi", "XinZhao"],
+      "answer": "Noxian soldiers killed Irelia's family early in the invasion, and while fleeing them she awakened her family's ancient dance. After the war she gave up the leadership of the resistance."
     },
     {
       "id": "ionianYi",
@@ -2628,7 +2761,8 @@
         "Yone",
         "XinZhao",
         "Riven"
-      ]
+      ],
+      "answer": "The Wuju style had always been kept secret, but Yi could not stand by and led his fellow disciples into the war. The order was almost wiped out by the fighting and the burning of their village."
     },
     {
       "id": "ionianSinged",
@@ -2638,7 +2772,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions created the chemical weapon Noxus used in Ionia?",
       "correct": ["Singed"],
-      "wrong": ["Heimerdinger", "Viktor", "Ziggs", "Blitzcrank", "Twitch", "Jinx"]
+      "wrong": ["Heimerdinger", "Viktor", "Ziggs", "Blitzcrank", "Twitch", "Jinx"],
+      "answer": "Commander Emystan tested the weapon by sacrificing his own scouts: its fire burned hot enough to fracture stone and left the earth poisoned with metal. Riven was the only one to survive the test."
     },
     {
       "id": "ionianZed",
@@ -2648,7 +2783,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions is the former Kinkou student who seized the Temple of Thanjuul and founded the Yánléi?",
       "correct": ["Zed"],
-      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Kayn"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Kayn"],
+      "answer": "Zed wanted the Kinkou to strike back at Noxus, but the order stayed neutral. After his coup, Shen led the surviving Kinkou to safety and took up the mantle of the Eye of Twilight."
     },
     {
       "id": "ionianKayn",
@@ -2658,7 +2794,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions ambushed a Noxian convoy and took the Darkin scythe Rhaast?",
       "correct": ["Kayn"],
-      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed"],
+      "answer": "Kayn was one of the child soldiers Noxus sent into battle as fodder, and Zed recruited him after he survived. His fellow acolyte Nakuri wanted to destroy the scythe, but Kayn claimed it and killed her."
     },
     {
       "id": "ionianUdyr",
@@ -2668,7 +2805,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions helped Lee Sin defend the Hirana Monastery from the Noxians?",
       "correct": ["Udyr"],
-      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed", "Kayn", "LeeSin"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed", "Kayn", "LeeSin"],
+      "answer": "Lee Sin had met Udyr in the Freljord and brought him back to Ionia. The Ionians held the monastery, but it was left in ruins along with much of its ancient knowledge, and the two stayed to help rebuild it."
     },
     {
       "id": "ionianRiven",
@@ -2678,7 +2816,8 @@
       "label": "Ionian invasion",
       "question": "Which of these champions survived Emystan's chemical fire, shielded by her runic blade?",
       "correct": ["Riven"],
-      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed", "Fiora", "Kassadin"]
+      "wrong": ["Shen", "Kennen", "Akali", "MasterYi", "Yasuo", "Yone", "Zed", "Fiora", "Kassadin"],
+      "answer": "Her commander sacrificed her unit to test a new chemical weapon. Feeling betrayed, Riven later broke her Runic Blade with Elder Souma's help, and a shard of it killed the elder, a death Yasuo was blamed for."
     },
     {
       "id": "ionianFinalBattle",
@@ -2688,7 +2827,8 @@
       "label": "Ionian invasion",
       "question": "Which place saw the final major battle of the Noxian invasion of Ionia?",
       "correct": ["Dalu Bay"],
-      "wrong": ["Placidium of Navori", "Hirana Monastery", "Fae'lor"]
+      "wrong": ["Placidium of Navori", "Hirana Monastery", "Fae'lor"],
+      "answer": "Ionia won the battle in 989 AN, just as Boram Darkwill was overthrown in a coup in Noxus. The new Grand General ordered the army out of Ionia, ending the invasion."
     },
     {
       "id": "ionianBase",
@@ -2698,7 +2838,8 @@
       "label": "Ionian invasion",
       "question": "Which fortress on Ionia's westernmost island became the Noxian base of operations?",
       "correct": ["Fae'lor"],
-      "wrong": ["Thanze", "Pallas", "Wuju"]
+      "wrong": ["Thanze", "Pallas", "Wuju"],
+      "answer": "Fae'lor fell after a long siege in the opening stage of the invasion, in 984 AN. For the whole war that followed, not a single Spirit Blossom bloomed in Ionia."
     },
     {
       "id": "ionianWuju",
@@ -2708,7 +2849,8 @@
       "label": "Ionian invasion",
       "question": "Which of Ionia's villages was destroyed by chemical fire?",
       "correct": ["Wuju"],
-      "wrong": ["Placidium of Navori", "Hirana Monastery", "Dalu Bay"]
+      "wrong": ["Placidium of Navori", "Hirana Monastery", "Dalu Bay"],
+      "answer": "The chemical fire burned hot enough to fracture stone and poisoned the earth around it. With the village gone and many of its swordsmen killed in the war, Master Yi is the last surviving Wuju master."
     },
     {
       "id": "riftTrueIce",
@@ -2718,7 +2860,8 @@
       "label": "Avarosan rift",
       "question": "Which of these champions found the True Ice bow at Ghulfrost?",
       "correct": ["Ashe"],
-      "wrong": ["Sejuani", "Lissandra", "Braum", "Nunu", "Volibear", "Tryndamere", "Trundle"]
+      "wrong": ["Sejuani", "Lissandra", "Braum", "Nunu", "Volibear", "Tryndamere", "Trundle"],
+      "answer": "Ashe's mother Grena died searching for the Throne of Avarosa, a hall of treasure she expected to find at Ghulfrost. Ashe found only an unmarked cairn there, and the bow buried among the rocks."
     },
     {
       "id": "riftWarmother",
@@ -2728,7 +2871,8 @@
       "label": "Avarosan rift",
       "question": "Which of these champions became Warmother of the Winter's Claw after Kalkia died?",
       "correct": ["Sejuani"],
-      "wrong": ["Ashe", "Lissandra", "Braum"]
+      "wrong": ["Ashe", "Lissandra", "Braum"],
+      "answer": "Sejuani raided a Noxian warship to win support against her mother and freed the drüvask Bristle there as her mount. Kalkia died in a struggle with the tribe's Frost Priests before Sejuani could reach her."
     },
     {
       "id": "riftGrena",
@@ -2738,7 +2882,8 @@
       "label": "Avarosan rift",
       "question": "Which Warmother of the Avarosans was Ashe's mother?",
       "correct": ["Grena"],
-      "wrong": ["Kalkia", "Hejian", "Lissandra"]
+      "wrong": ["Kalkia", "Hejian", "Lissandra"],
+      "answer": "Grena had once bested Sejuani's mother Kalkia in a duel. Her obsessive search for the Throne of Avarosa weakened her tribe, and she died in a Draklorn ambush while searching for it."
     },
     {
       "id": "riftHejian",
@@ -2748,7 +2893,8 @@
       "label": "Avarosan rift",
       "question": "Which Winter's Claw Warmother cut all ties with the Avarosans?",
       "correct": ["Hejian"],
-      "wrong": ["Grena", "Kalkia", "Maalcrom"]
+      "wrong": ["Grena", "Kalkia", "Maalcrom"],
+      "answer": "Hejian broke with the Avarosans after their Warmother Grena questioned how she treated her granddaughter Sejuani. The Winter's Claw then picked fights with neighboring tribes and sank further into ruin."
     },
     {
       "id": "riftMaalcrom",
@@ -2758,7 +2904,8 @@
       "label": "Avarosan rift",
       "question": "Which Avarosan Frost Priest later betrayed his tribe?",
       "correct": ["Maalcrom"],
-      "wrong": ["Grena", "Kalkia", "Hejian"]
+      "wrong": ["Grena", "Kalkia", "Hejian"],
+      "answer": "Tired of Grena's search for the Throne of Avarosa, Maalcrom turned back home with the Hearthbound. Later he was among the Draklorn hunting Ashe, and she killed him with her True Ice bow."
     },
     {
       "id": "medardaHouse",
@@ -2768,7 +2915,8 @@
       "label": "Medardan war",
       "question": "Which noble house fought the Medardan Succession War?",
       "correct": ["House Medarda"],
-      "wrong": ["House Buvelle", "House Crownguard", "House Lightshield"]
+      "wrong": ["House Buvelle", "House Crownguard", "House Lightshield"],
+      "answer": "Its patriarch Menelik died without naming an heir, and the house split between Ambessa and her cousin Ta'Fik. Noxus' Grand General sided with Ambessa after she brought him a vastaya who knew hidden routes into Ionia."
     },
     {
       "id": "medardaAmbessa",
@@ -2778,7 +2926,8 @@
       "label": "Medardan war",
       "question": "Which of these champions killed her rival Ta'Fik and became the new leader of House Medarda?",
       "correct": ["Ambessa"],
-      "wrong": ["Darius", "Swain", "Draven", "Mel", "Leblanc", "Talon", "Elise", "Katarina"]
+      "wrong": ["Darius", "Swain", "Draven", "Mel", "Leblanc", "Talon", "Elise", "Katarina"],
+      "answer": "Ambessa won the Grand General's support by bringing him a vastaya who knew hidden routes into Ionia. She killed Ta'Fik at Tereshni, then executed his daughter in front of his body."
     },
     {
       "id": "medardaMel",
@@ -2788,7 +2937,8 @@
       "label": "Medardan war",
       "question": "Which of these champions was exiled from Noxus and became the wealthiest person in Piltover?",
       "correct": ["Mel"],
-      "wrong": ["Caitlyn", "Jayce", "Vi", "Heimerdinger", "Ambessa", "Jinx"]
+      "wrong": ["Caitlyn", "Jayce", "Vi", "Heimerdinger", "Ambessa", "Jinx"],
+      "answer": "Ambessa sent her daughter away for failing her tests, among them befriending the daughter of her rival Ta'Fik. With the help of Clan Ferros, Mel won a seat on Piltover's council."
     },
     {
       "id": "medardaPatriarch",
@@ -2798,7 +2948,8 @@
       "label": "Medardan war",
       "question": "Which patriarch died without naming an heir, starting the Medardan Succession War?",
       "correct": ["Menelik Medarda"],
-      "wrong": ["Boram Darkwill", "Jarvan III", "Silco"]
+      "wrong": ["Boram Darkwill", "Jarvan III", "Silco"],
+      "answer": "Menelik meant to name Ambessa's cousin Ta'Fik as his heir, but he was secretly killed before he could. Ta'Fik accused Ambessa of poisoning him, and the house went to war."
     },
     {
       "id": "hextechViktor",
@@ -2808,7 +2959,8 @@
       "label": "Era of Hextech",
       "question": "Which of these champions developed hextech together with Jayce?",
       "correct": ["Viktor"],
-      "wrong": ["Caitlyn", "Vi", "Ekko", "Heimerdinger", "Jinx"]
+      "wrong": ["Caitlyn", "Vi", "Ekko", "Heimerdinger", "Jinx"],
+      "answer": "Viktor was an assistant at the Academy when Jayce's speech at his trial caught his interest, and he helped Jayce finish his experiments safely. They split when Jayce refused Viktor's wish to destroy the hexcore."
     },
     {
       "id": "hextechJinx",
@@ -2818,7 +2970,8 @@
       "label": "Era of Hextech",
       "question": "Which of these champions stole the hextech gemstone on Progress Day?",
       "correct": ["Jinx"],
-      "wrong": ["Vi", "Ekko", "Caitlyn", "Teemo", "Heimerdinger", "Jayce"]
+      "wrong": ["Vi", "Ekko", "Caitlyn", "Teemo", "Heimerdinger", "Jayce"],
+      "answer": "Jinx bombed Academy Square after Jayce's Progress Day speech and broke into his laboratory. Within days, she had reverse-engineered hextech from his and Viktor's research journal."
     },
     {
       "id": "hextechHammer",
@@ -2828,7 +2981,8 @@
       "label": "Era of Hextech",
       "question": "Which of these champions wields the Mercury Hammer?",
       "correct": ["Jayce"],
-      "wrong": ["Poppy", "Taric", "Jax", "Ornn"]
+      "wrong": ["Poppy", "Taric", "Jax", "Ornn"],
+      "answer": "Jayce was expelled from the Academy for tampering with the arcane, and later joined the Council to guard the city's hextech. He built the hammer for an unauthorized raid on Silco's shimmer factories."
     },
     {
       "id": "hextechZDrive",
@@ -2838,7 +2992,8 @@
       "label": "Era of Hextech",
       "question": "Which of these champions built the Z-Drive, a hextech time-reversal device?",
       "correct": ["Ekko"],
-      "wrong": ["Jinx", "Vi", "Caitlyn", "Zilean"]
+      "wrong": ["Jinx", "Vi", "Caitlyn", "Zilean"],
+      "answer": "Ekko built it to get back from an alternate world where hextech was never invented and Powder never became Jinx. Heimerdinger sacrificed himself to finish the device."
     },
     {
       "id": "hextechHexgate",
@@ -2848,7 +3003,8 @@
       "label": "Era of Hextech",
       "question": "Which tower, built at the Council's request, turned Piltover into a hub for global trade?",
       "correct": ["Hexgate"],
-      "wrong": ["Bridge of Progress", "Chembaron Tower", "Hexcore"]
+      "wrong": ["Bridge of Progress", "Chembaron Tower", "Hexcore"],
+      "answer": "Jayce and Viktor built it in the years after they invented hextech. At its base, Ekko, Heimerdinger and Jayce later found a massive wild rune that was corrupting the land around it."
     },
     {
       "id": "hextechHexcore",
@@ -2858,7 +3014,8 @@
       "label": "Era of Hextech",
       "question": "Which device is Viktor's adaptive runic matrix?",
       "correct": ["Hexcore"],
-      "wrong": ["Z-Drive", "Fishbones", "Atlas Gauntlets"]
+      "wrong": ["Z-Drive", "Fishbones", "Atlas Gauntlets"],
+      "answer": "Viktor hoped to join the hexcore with the human body to augment life itself and cure his own terminal illness. Heimerdinger demanded its destruction, and Jayce had him voted off the Council to save it."
     },
     {
       "id": "hextechFishbones",
@@ -2868,7 +3025,8 @@
       "label": "Era of Hextech",
       "question": "Which weapon did Jinx build from the stolen hextech gemstone?",
       "correct": ["Fishbones"],
-      "wrong": ["Mercury Hammer", "Atlas Gauntlets", "Hexclaw"]
+      "wrong": ["Mercury Hammer", "Atlas Gauntlets", "Hexclaw"],
+      "answer": "Silco ordered Jinx to turn the gemstone into a weapon. She later fired from it at the Piltover council chamber just as the councilors voted for Zaun's independence."
     },
     {
       "id": "hextechShimmer",
@@ -2878,7 +3036,8 @@
       "label": "Era of Hextech",
       "question": "Which mutagenic serum, not hextech, did Singed create for Silco?",
       "correct": ["Shimmer"],
-      "wrong": ["Hexite", "True Ice", "Waters of Life"]
+      "wrong": ["Hexite", "True Ice", "Waters of Life"],
+      "answer": "Silco first used shimmer to enhance one of his thugs and kidnap Vander. It went on to fuel his criminal empire, and Singed saved Jinx's life by flooding her blood with it."
     },
     {
       "id": "hextechSevika",
@@ -2888,7 +3047,8 @@
       "label": "Era of Hextech",
       "question": "Which person became the first Zaunite to sit on the Piltover Council?",
       "correct": ["Sevika"],
-      "wrong": ["Silco", "Vander", "Marcus"]
+      "wrong": ["Silco", "Vander", "Marcus"],
+      "answer": "Sevika stayed loyal to Silco and killed the Chem-Baron Finn when he tried to overthrow him. She got her seat when the Council was reformed after the battles against Viktor and Ambessa."
     },
     {
       "id": "trifarixSwain",
@@ -2898,7 +3058,8 @@
       "label": "Trifarix",
       "question": "Which of these champions led the coup that overthrew Emperor Boram Darkwill?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "Leblanc", "JarvanIV", "Zed", "Talon", "Sylas", "Viego"]
+      "wrong": ["Darius", "Leblanc", "JarvanIV", "Zed", "Talon", "Sylas", "Viego"],
+      "answer": "Swain had been dishonorably discharged after his defeat in Ionia. With Draven and General Marcus Du Couteau among his allies, he overthrew the regime in a single night and crushed Darkwill in front of his followers."
     },
     {
       "id": "trifarixVision",
@@ -2908,7 +3069,8 @@
       "label": "Trifarix",
       "question": "Which of these champions represents Vision on the Trifarix?",
       "correct": ["Swain"],
-      "wrong": ["Darius", "Draven", "Katarina", "Leblanc", "Zilean"]
+      "wrong": ["Darius", "Draven", "Katarina", "Leblanc", "Zilean"],
+      "answer": "Swain split supreme power between three seats, so that no single ruler could be manipulated as Darkwill had been. Darius took Strength, and the Faceless, for the assassin guilds, took Guile."
     },
     {
       "id": "trifarixDraven",
@@ -2918,7 +3080,8 @@
       "label": "Trifarix",
       "question": "Which of these champions helped Swain with the coup against Boram Darkwill?",
       "correct": ["Draven"],
-      "wrong": ["Darius", "Leblanc", "Talon", "Riven", "Ambessa", "Mel"]
+      "wrong": ["Darius", "Leblanc", "Talon", "Riven", "Ambessa", "Mel"],
+      "answer": "Draven's part in the coup left his brother Darius, the Hand of Noxus, torn between him and the old regime. After confronting Swain, Darius accepted the coup and joined him on the Trifarix."
     },
     {
       "id": "trifarixGuile",
@@ -2928,7 +3091,8 @@
       "label": "Trifarix",
       "question": "Which seat on the Trifarix is held by the Faceless, representing the assassin guilds?",
       "correct": ["Guile"],
-      "wrong": ["Honor", "Mercy", "Wisdom"]
+      "wrong": ["Honor", "Mercy", "Wisdom"],
+      "answer": "The Trifarix embodies the Vision of the Noxidi, the Might of the Noxkri and the Guile of the Noxtali. Swain later used his new alliances to weaken both the noble houses and the assassin guilds."
     },
     {
       "id": "sunDiscAzir",
@@ -2938,7 +3102,8 @@
       "label": "Sun Disc",
       "question": "Which of these champions is the last Shuriman emperor, awakened by Sivir's blood?",
       "correct": ["Azir"],
-      "wrong": ["Nasus", "Renekton", "Xerath", "Qiyana", "Rammus"]
+      "wrong": ["Nasus", "Renekton", "Xerath", "Qiyana", "Rammus"],
+      "answer": "Azir vowed revenge on Xerath, whose betrayal had brought down his empire. He restored Shurima's long-dry waterways and called the nomadic Shurimans to join his new empire."
     },
     {
       "id": "sunDiscCassiopeia",
@@ -2948,7 +3113,8 @@
       "label": "Sun Disc",
       "question": "Which of these champions betrays Sivir and is cursed into a serpent-like form?",
       "correct": ["Cassiopeia"],
-      "wrong": ["Taliyah", "Zyra", "Nasus"]
+      "wrong": ["Taliyah", "Zyra", "Nasus"],
+      "answer": "A Noxian noblewoman, Cassiopeia wanted godlike power to oppose the new Grand General Swain. Opening the tomb with Sivir's blade also freed Xerath and Renekton from their prison."
     },
     {
       "id": "sunDiscRenekton",
@@ -2958,7 +3124,8 @@
       "label": "Sun Disc",
       "question": "Which of these champions defeats the Sandthrashers at Vekaura while hunting Nasus?",
       "correct": ["Renekton"],
-      "wrong": ["Xerath", "Sivir", "Taliyah", "Rengar", "Khazix", "Azir", "Rammus", "RekSai"]
+      "wrong": ["Xerath", "Sivir", "Taliyah", "Rengar", "Khazix", "Azir", "Rammus", "RekSai"],
+      "answer": "Freed from the tomb, Renekton blamed his brother Nasus for leaving him there. He killed the Sandthrashers' leader in combat, and the raiders followed him to the library where Nasus lived."
     },
     {
       "id": "sunDiscXerath",
@@ -2968,7 +3135,8 @@
       "label": "Sun Disc",
       "question": "Which of these champions builds a new empire in Nerimazeth?",
       "correct": ["Xerath"],
-      "wrong": ["Renekton", "Nasus", "Azir", "Qiyana", "Belveth", "Skarner", "Darius", "Ashe"]
+      "wrong": ["Renekton", "Nasus", "Azir", "Qiyana", "Belveth", "Skarner", "Darius", "Ashe"],
+      "answer": "Xerath's betrayal had brought down the old empire, and he set out to wipe out Azir's bloodline. His return set off a civil war against Azir's risen Shurima."
     },
     {
       "id": "sunDiscTaliyah",
@@ -2978,7 +3146,8 @@
       "label": "Sun Disc",
       "question": "Which of these champions reaches the Sun Disc in 991 AN?",
       "correct": ["Taliyah"],
-      "wrong": ["Sivir", "Cassiopeia", "Nasus", "Renekton", "Rammus", "RekSai"]
+      "wrong": ["Sivir", "Cassiopeia", "Nasus", "Renekton", "Rammus", "RekSai"],
+      "answer": "Taliyah left Yasuo's training when she heard that Shurima had risen, to make sure her family and tribe were safe. In the city she heard the echoes of the people who died in the empire's last moments."
     },
     {
       "id": "sunDiscNasus",
@@ -2988,7 +3157,8 @@
       "label": "Sun Disc",
       "question": "Which of these champions protects the emperor's bloodline and opposes Xerath?",
       "correct": ["Nasus"],
-      "wrong": ["Renekton", "Xerath", "Cassiopeia", "Azir", "Rammus", "Sivir"]
+      "wrong": ["Renekton", "Xerath", "Cassiopeia", "Azir", "Rammus", "Sivir"],
+      "answer": "Nasus gave Sivir a jade pendant that hid her from Xerath, then fought Xerath to buy her time. Xerath's stolen power proved too much, and he buried Nasus under a collapsed sun temple."
     },
     {
       "id": "sunDiscVekaura",
@@ -2998,7 +3168,8 @@
       "label": "Sun Disc",
       "question": "Which place is where Xerath defeats Nasus in 990 AN?",
       "correct": ["Vekaura"],
-      "wrong": ["Nerimazeth", "Nashramae", "Tereshni"]
+      "wrong": ["Nerimazeth", "Nashramae", "Tereshni"],
+      "answer": "Taliyah had found Sivir dying there, and both Ascended came for Azir's last descendant. Nasus' duel with Xerath gave the city's people time to flee."
     },
     {
       "id": "sunDiscOasis",
@@ -3008,7 +3179,8 @@
       "label": "Sun Disc",
       "question": "Which place is where Azir saves Sivir's life?",
       "correct": ["Oasis of the Dawn"],
-      "wrong": ["Zoantha Cascade", "Valley of Song", "Circle of Ascension"]
+      "wrong": ["Zoantha Cascade", "Valley of Song", "Circle of Ascension"],
+      "answer": "Sivir lay dying in the ruins after Cassiopeia stabbed her, and Azir found her there. By saving the last of his bloodline, he fulfilled the conditions for his own ascension."
     },
     {
       "id": "sunDiscAscended",
@@ -3018,7 +3190,8 @@
       "label": "Sun Disc",
       "question": "Which name is given to the god-warriors raised by the Sun Disc?",
       "correct": ["Ascended"],
-      "wrong": ["Darkin", "Sentinels of Light", "Aspects"]
+      "wrong": ["Darkin", "Sentinels of Light", "Aspects"],
+      "answer": "When Azir became an Ascended, his lost capital rose from the sands, crowned by the Sun Disc. In ancient times, many of the Ascended later turned into the Darkin."
     },
     {
       "id": "princeShyvana",
@@ -3028,7 +3201,8 @@
       "label": "Demacian prince",
       "question": "Which of these champions is the half-dragon who rescued Prince Jarvan IV in the Argent Mountains?",
       "correct": ["Shyvana"],
-      "wrong": ["Kayle", "Garen", "Quinn"]
+      "wrong": ["Kayle", "Garen", "Quinn"],
+      "answer": "At first Jarvan mistook her for the Winged Protector. She later killed her own brood-mother, the dragon Yvva, while defending him, and Jarvan promised her a place at his side."
     },
     {
       "id": "princeMountains",
@@ -3038,7 +3212,8 @@
       "label": "Demacian prince",
       "question": "Which mountains was Jarvan IV shot down in by hidden Noxian artillery?",
       "correct": ["Argent Mountains"],
-      "wrong": ["Greenfang Mountains", "Ridgeback Mountains", "Rocky Highlands"]
+      "wrong": ["Greenfang Mountains", "Ridgeback Mountains", "Rocky Highlands"],
+      "answer": "Against his lieutenants' advice, Jarvan IV set up an outpost there to prove himself in battle. He and his silverwing riders were harassing Noxian supply lines when the artillery brought them down."
     },
     {
       "id": "princeGates",
@@ -3048,7 +3223,8 @@
       "label": "Demacian prince",
       "question": "Which settlement did Noxian warmages capture after a day-long siege?",
       "correct": ["Gates of Mourning"],
-      "wrong": ["Dawnhold", "Graygate", "Wrenwall"]
+      "wrong": ["Dawnhold", "Graygate", "Wrenwall"],
+      "answer": "The king sent an elite force there to search for his son. Noxian warmages destroyed it, killing the High Marshal and the king's close friend Lord Barrett Buvelle."
     },
     {
       "id": "princeCastle",
@@ -3058,7 +3234,8 @@
       "label": "Demacian prince",
       "question": "Which castle did Shyvana carry the prince to?",
       "correct": ["Wrenwall"],
-      "wrong": ["Dawnhold", "Graygate", "Ehrenmount"]
+      "wrong": ["Dawnhold", "Graygate", "Ehrenmount"],
+      "answer": "While Jarvan recovered there, Shyvana's brood-mother Yvva attacked the castle. Shyvana killed the dragon by breaking her neck against the flagstones, and the two took her skull home as proof."
     },
     {
       "id": "princeMarshal",
@@ -3068,7 +3245,8 @@
       "label": "Demacian prince",
       "question": "Which person succeeded Percival Bronz as High Marshal of Demacia?",
       "correct": ["Tianna Crownguard"],
-      "wrong": ["Lestara Buvelle", "Barrett Buvelle", "Eldred"]
+      "wrong": ["Lestara Buvelle", "Barrett Buvelle", "Eldred"],
+      "answer": "The High Marshal died with the rescue force at the Gates of Mourning. His successor had been Sword-Captain of the Dauntless Vanguard, the guard that failed to protect Lord Barrett Buvelle there."
     },
     {
       "id": "reaverFortune",
@@ -3078,7 +3256,8 @@
       "label": "Reaver King",
       "question": "Which of these champions destroyed Gangplank's flagship, the Dead Pool?",
       "correct": ["MissFortune"],
-      "wrong": ["Graves", "TwistedFate", "Illaoi", "Pyke", "Fizz", "Nilah"]
+      "wrong": ["Graves", "TwistedFate", "Illaoi", "Pyke", "Fizz", "Nilah"],
+      "answer": "When Sarah Fortune was a child, Gangplank killed her parents, shot her and left her for dead. She waited fifteen years for her revenge."
     },
     {
       "id": "reaverHired",
@@ -3088,7 +3267,8 @@
       "label": "Reaver King",
       "question": "Which of these champions was hired by Sarah Fortune to steal a magical dagger from Gangplank?",
       "correct": ["TwistedFate"],
-      "wrong": ["Graves", "MissFortune", "Illaoi", "Pyke", "Fizz", "Nilah", "Katarina", "Talon"]
+      "wrong": ["Graves", "MissFortune", "Illaoi", "Pyke", "Fizz", "Nilah", "Katarina", "Talon"],
+      "answer": "Sarah Fortune also tipped off Graves, who had spent years believing Twisted Fate had abandoned him. Captured by Gangplank, the two old partners made peace just before his flagship exploded."
     },
     {
       "id": "reaverLocker",
@@ -3098,7 +3278,8 @@
       "label": "Reaver King",
       "question": "Which of these champions was imprisoned in the Locker for a decade?",
       "correct": ["Graves"],
-      "wrong": ["Gangplank", "TwistedFate", "Illaoi", "Pyke", "Fizz", "Nilah"]
+      "wrong": ["Gangplank", "TwistedFate", "Illaoi", "Pyke", "Fizz", "Nilah"],
+      "answer": "Graves was caught after a failed heist in Piltover and blamed his partner Tobias, now Twisted Fate, for leaving him behind. The two made peace only when Gangplank was about to drown them both."
     },
     {
       "id": "reaverShip",
@@ -3108,7 +3289,8 @@
       "label": "Reaver King",
       "question": "Which ship was Gangplank's flagship?",
       "correct": ["The Dead Pool"],
-      "wrong": ["Charming Lady", "Daggerhawk", "Black Pearl"]
+      "wrong": ["Charming Lady", "Daggerhawk", "Black Pearl"],
+      "answer": "Gangplank survived the explosion, but the Buhru had to haul him out of the sea and his ruined left arm was amputated. Believing him dead, Bilgewater fell into chaos as rival gangs fought for power."
     },
     {
       "id": "reaverConclave",
@@ -3118,7 +3300,8 @@
       "label": "Reaver King",
       "question": "Which truce bound Bilgewater's four strongest crews?",
       "correct": ["Corsair's Conclave"],
-      "wrong": ["The Black Rose", "Sentinels of Light", "Mageseekers"]
+      "wrong": ["The Black Rose", "Sentinels of Light", "Mageseekers"],
+      "answer": "Sir Petyr Harker, Bragg, Crow and Sarah Fortune divided Bilgewater between them after Gangplank's fall. Six months later, the others met without Fortune and agreed to disarm her."
     },
     {
       "id": "reaverKillhouse",
@@ -3128,7 +3311,8 @@
       "label": "Reaver King",
       "question": "Which place is where Sarah Fortune killed members of the Conclave?",
       "correct": ["MacGregan's Killhouse"],
-      "wrong": ["Slaughter Docks", "White Wharf", "Cutpurse Square"]
+      "wrong": ["Slaughter Docks", "White Wharf", "Cutpurse Square"],
+      "answer": "Learning that the other captains meant to get rid of her, Fortune lured the whole Conclave there with three forged letters. She killed Crow and Bragg and shot off Harker's hand."
     },
     {
       "id": "ruinedKingThresh",
@@ -3138,7 +3322,8 @@
       "label": "Ruined King",
       "question": "Which of these champions resurrected Viego?",
       "correct": ["Thresh"],
-      "wrong": ["Gwen", "Yorick", "Maokai", "Vex", "Leblanc", "Akshan", "Mordekaiser", "Karthus"]
+      "wrong": ["Gwen", "Yorick", "Maokai", "Vex", "Leblanc", "Akshan", "Mordekaiser", "Karthus"],
+      "answer": "Once the Sentinels had defeated Viego, Thresh took control of the Black Mist. No longer bound to the Shadow Isles, he began a new wave of mayhem across Runeterra."
     },
     {
       "id": "ruinedKingSenna",
@@ -3148,7 +3333,8 @@
       "label": "Ruined King",
       "question": "Which of these champions had their soul trapped in a lantern by Thresh?",
       "correct": ["Senna"],
-      "wrong": ["Lucian", "Akshan", "Vayne", "Riven", "Pyke", "Olaf", "Graves"]
+      "wrong": ["Lucian", "Akshan", "Vayne", "Riven", "Pyke", "Olaf", "Graves"],
+      "answer": "Senna stepped into Thresh's path to protect her husband Lucian, and her soul was sealed in the lantern. When she was freed five years later, she came back as a wraith with a relic cannon."
     },
     {
       "id": "ruinedKingLucian",
@@ -3158,7 +3344,8 @@
       "label": "Ruined King",
       "question": "Which of these champions freed Senna's soul from Thresh's lantern?",
       "correct": ["Lucian"],
-      "wrong": ["Akshan", "Vayne", "Riven", "Pyke", "Olaf", "Graves"]
+      "wrong": ["Akshan", "Vayne", "Riven", "Pyke", "Olaf", "Graves"],
+      "answer": "For years Lucian chased the Black Mist across Runeterra, believing Senna was dead. After learning that her soul was in Thresh's lantern, he went to the heart of the Shadow Isles and fought Thresh for it."
     },
     {
       "id": "ruinedKingAkshan",
@@ -3168,7 +3355,8 @@
       "label": "Ruined King",
       "question": "Which of these champions killed Isolde at her own request?",
       "correct": ["Akshan"],
-      "wrong": ["Lucian", "Vayne", "Riven", "Pyke", "Olaf", "Graves", "Gwen"]
+      "wrong": ["Lucian", "Vayne", "Riven", "Pyke", "Olaf", "Graves", "Gwen"],
+      "answer": "Senna, Gwen and Yorick's Maiden had died when the pieces of Isolde's soul were torn from them. Akshan's Absolver revives the victims of whoever it kills, so killing Isolde brought all three back."
     },
     {
       "id": "ruinedKingGwen",
@@ -3178,7 +3366,8 @@
       "label": "Ruined King",
       "question": "Which of these champions used the Hallowed Mist to bind Viego with needles and thread?",
       "correct": ["Gwen"],
-      "wrong": ["Lucian", "Vayne", "Akshan", "Riven", "Pyke", "Olaf", "Graves", "Senna"]
+      "wrong": ["Lucian", "Vayne", "Akshan", "Riven", "Pyke", "Olaf", "Graves", "Senna"],
+      "answer": "Gwen was brought to life by Viego's return. Once Isolde was gone, Viego lost his power over the Black Mist, and the Sentinels finished him off."
     },
     {
       "id": "ruinedKingFortune",
@@ -3188,7 +3377,8 @@
       "label": "Ruined King",
       "question": "Which of these champions sealed Viego in the amulet during the battle in Bilgewater?",
       "correct": ["MissFortune"],
-      "wrong": ["Gangplank", "Illaoi", "Pyke", "Nilah", "Fizz", "Graves", "TwistedFate"]
+      "wrong": ["Gangplank", "Illaoi", "Pyke", "Nilah", "Fizz", "Graves", "TwistedFate"],
+      "answer": "Ahri first weakened Viego with his own memories, found in the Black Mist. Sealed inside, Viego tempted Fortune with power, and the amulet was later stolen from Illaoi on the Shadow Isles."
     },
     {
       "id": "ruinedKingAhri",
@@ -3198,7 +3388,8 @@
       "label": "Ruined King",
       "question": "Which of these champions learned Viego's memories through the Black Mist?",
       "correct": ["Ahri"],
-      "wrong": ["Yasuo", "Illaoi", "Senna", "Lucian", "Yorick", "Karthus", "Thresh", "Vex", "Gwen"]
+      "wrong": ["Yasuo", "Illaoi", "Senna", "Lucian", "Yorick", "Karthus", "Thresh", "Vex", "Gwen"],
+      "answer": "Ahri found the memories while searching for her ancestors, who had lived on the Blessed Isles as scholars. With them she weakened Viego so Miss Fortune could seal him in an amulet."
     },
     {
       "id": "ruinedKingBraum",
@@ -3208,7 +3399,8 @@
       "label": "Ruined King",
       "question": "Which of these champions sought the Blessed Waters in the Shadow Isles to cure a sickness in the Freljord?",
       "correct": ["Braum"],
-      "wrong": ["Illaoi", "Yasuo", "Ahri", "Sejuani", "Udyr", "Trundle", "Maokai"]
+      "wrong": ["Illaoi", "Yasuo", "Ahri", "Sejuani", "Udyr", "Trundle", "Maokai"],
+      "answer": "On the way the Black Mist sank his boat and he lost his shield. On the Shadow Isles, Maokai gave Braum his own leaves to cure his people."
     },
     {
       "id": "ruinedKingYasuo",
@@ -3218,7 +3410,8 @@
       "label": "Ruined King",
       "question": "Which of these champions faced his brother Yone's shadow and spared him?",
       "correct": ["Yasuo"],
-      "wrong": ["Ahri", "Braum", "Illaoi", "Zed", "Vex"]
+      "wrong": ["Ahri", "Braum", "Illaoi", "Zed", "Vex"],
+      "answer": "The shadow appeared on an island where Viego's winds had wrecked the crew's ship. By letting it live, Yasuo came to terms with his past and accepted his own mistakes and those of others."
     },
     {
       "id": "ruinedKingVayne",
@@ -3228,7 +3421,8 @@
       "label": "Ruined King",
       "question": "Which of these champions is the Sentinel of Light who stayed on as Demacia's Sentinel?",
       "correct": ["Vayne"],
-      "wrong": ["Gwen", "Akshan", "Olaf", "Graves", "Riven", "Irelia", "Pyke", "Diana"]
+      "wrong": ["Gwen", "Akshan", "Olaf", "Graves", "Riven", "Irelia", "Pyke", "Diana"],
+      "answer": "Vayne first fought the Black Mist alongside Poppy, defending a Demacian city. When Viego fell, every other new Sentinel laid down their weapons and cloak and went back to their old life."
     },
     {
       "id": "ruinedKingPrison",
@@ -3238,7 +3432,8 @@
       "label": "Ruined King",
       "question": "Which place is where Gwen imprisoned Viego?",
       "correct": ["Camavor"],
-      "wrong": ["Shadow Isles", "Bilgewater", "Holdrum"]
+      "wrong": ["Shadow Isles", "Bilgewater", "Holdrum"],
+      "answer": "Viego had been king of Camavor before the Ruination. Vex helped him open a portal there to reunite Isolde's soul, and after his defeat Gwen bound him there with needles and thread."
     },
     {
       "id": "ruinedKingShip",
@@ -3248,7 +3443,8 @@
       "label": "Ruined King",
       "question": "Which ship carried the crew to the Shadow Isles?",
       "correct": ["Charming Lady"],
-      "wrong": ["The Dead Pool", "Daggerhawk", "Black Pearl"]
+      "wrong": ["The Dead Pool", "Daggerhawk", "Black Pearl"],
+      "answer": "Searching for Miss Fortune's crew, the group took a ship that Braum named and sailed for the Shadow Isles. Viego later wrecked it on an island with massive winds."
     },
     {
       "id": "ruinedKingAbsolver",
@@ -3258,7 +3454,8 @@
       "label": "Ruined King",
       "question": "Which weapon of Akshan revives people by killing their murderer?",
       "correct": ["Absolver"],
-      "wrong": ["Mercury Hammer", "Fishbones", "Hexclaw"]
+      "wrong": ["Mercury Hammer", "Fishbones", "Hexclaw"],
+      "answer": "Akshan first meant to use it on the Shuriman warlord who murdered his mentor Shadya, the Lost Sentinel, to bring her back. Against Viego, he used it to kill Isolde and bring Senna back."
     },
     {
       "id": "rebellionSylas",
@@ -3268,7 +3465,8 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions started the Great Mage Rebellion?",
       "correct": ["Sylas"],
-      "wrong": ["Lux", "Garen", "JarvanIV", "Galio", "Darius", "Locke"]
+      "wrong": ["Lux", "Garen", "JarvanIV", "Galio", "Darius", "Locke"],
+      "answer": "Sylas once tried to protect a girl from the Mageseekers, but could not control the lightning he took from her. Branded the most dangerous mage in the land, he escaped his execution with Lux's power."
     },
     {
       "id": "rebellionLux",
@@ -3278,7 +3476,8 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions smuggled forbidden books to Sylas and helped him escape?",
       "correct": ["Lux"],
-      "wrong": ["Garen", "JarvanIV", "Fiora", "Poppy", "Graves", "TwistedFate", "MissFortune"]
+      "wrong": ["Garen", "JarvanIV", "Fiora", "Poppy", "Graves", "TwistedFate", "MissFortune"],
+      "answer": "In return, Sylas taught Lux to control her magic. When Garen and Tianna had him sentenced to death, Lux tried to stop the execution, and Sylas used her power to break free."
     },
     {
       "id": "rebellionGalio",
@@ -3288,7 +3487,8 @@
       "label": "Mage Rebellion",
       "question": "Which of these champions did Lux summon to save Garen in the battle against Sylas and the Winter's Claw?",
       "correct": ["Galio"],
-      "wrong": ["Poppy", "Shyvana", "Kayle", "Fiora", "Quinn", "Bard", "Sona"]
+      "wrong": ["Poppy", "Shyvana", "Kayle", "Fiora", "Quinn", "Bard", "Sona"],
+      "answer": "Sylas and his raiders had breached the fortress where the Demacian army sheltered. As Sylas was about to strike Garen down, Lux picked up a staff and unleashed her magic, and the army rallied around the colossus."
     },
     {
       "id": "rebellionMageseekers",
@@ -3298,7 +3498,8 @@
       "label": "Mage Rebellion",
       "question": "Which order of Demacia hunted and imprisoned mages?",
       "correct": ["Mageseekers"],
-      "wrong": ["Dauntless Vanguard", "Illuminators", "Trifarian Legion"]
+      "wrong": ["Dauntless Vanguard", "Illuminators", "Trifarian Legion"],
+      "answer": "After Sylas escaped, the Mageseekers began to round up every known mage in Demacia to imprison or exile them. The harsh new laws set off revolts in towns and villages across the kingdom."
     },
     {
       "id": "rebellionAlly",
@@ -3308,7 +3509,8 @@
       "label": "Mage Rebellion",
       "question": "Which Freljord tribe did Sylas ally with?",
       "correct": ["Winter's Claw"],
-      "wrong": ["Avarosans", "Frostguard", "Ebrataal"]
+      "wrong": ["Avarosans", "Frostguard", "Ebrataal"],
+      "answer": "Lost and dying in the north, Sylas clashed with a band of their raiders before they joined forces. He later led them against Garen, Lux and the Demacian army."
     },
     {
       "id": "rebellionKing",
@@ -3318,7 +3520,8 @@
       "label": "Mage Rebellion",
       "question": "Which king was killed in his bunker in 996 AN?",
       "correct": ["Jarvan III"],
-      "wrong": ["Jarvan IV", "Jarvan I", "Boram Darkwill"]
+      "wrong": ["Jarvan IV", "Jarvan I", "Boram Darkwill"],
+      "answer": "Katarina killed the king in the chaos after Sylas' escape. His son found a decree in which the king would have halted the arrests of mages, but destroyed it, believing mages had killed his father."
     },
     {
       "id": "rebellionAlderburg",
@@ -3328,7 +3531,8 @@
       "label": "Mage Rebellion",
       "question": "Which town is where Garen's Dauntless Vanguard found a Noxian force hiding behind an illusion?",
       "correct": ["Alderburg"],
-      "wrong": ["Dawnhold", "Graygate", "Wrenwall"]
+      "wrong": ["Dawnhold", "Graygate", "Wrenwall"],
+      "answer": "Garen went there to check on his grand-uncle, Demacia's ambassador, who turned out to be an illusion made by a sorceress. Quinn's eagle Valor brought Silverwing riders to save the trapped Vanguard."
     }
   ]
 }

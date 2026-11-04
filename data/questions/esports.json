@@ -82,7 +82,8 @@
       "label": "Faker vs Ryu",
       "question": "Which of these champions were Faker and Ryu both playing when Faker outplayed Ryu in the deciding game of the OGN Summer 2013 final?",
       "correct": ["Zed"],
-      "wrong": ["Yasuo", "Sylas", "Yone"]
+      "wrong": ["Yasuo", "Sylas", "Yone"],
+      "answer": "The outplay came in game 5 of the final between SK Telecom T1 and KT Bullets, and SK Telecom T1 went on to win the game and the title."
     },
     {
       "id": "momentXpekeBackdoor",
@@ -92,7 +93,8 @@
       "label": "xPeke's backdoor",
       "question": "Which of these champions did xPeke play in his famous backdoor against SK Gaming at IEM Katowice in 2013?",
       "correct": ["Kassadin"],
-      "wrong": ["Ekko", "Qiyana", "Akshan"]
+      "wrong": ["Ekko", "Qiyana", "Akshan"],
+      "answer": "xPeke slipped into SK Gaming's base alone and destroyed the nexus before their players could get back. A solo backdoor has been called \"pulling an xPeke\" ever since."
     },
     {
       "id": "momentUziTwoFinals",
@@ -122,7 +124,8 @@
       "label": "Cloud9 in 2018",
       "question": "Which of these North American teams reached the World Championship semifinals in 2018?",
       "correct": ["Cloud9"],
-      "wrong": ["Team Liquid", "Team SoloMid", "100 Thieves"]
+      "wrong": ["Team Liquid", "Team SoloMid", "100 Thieves"],
+      "answer": "Cloud9 swept Afreeca Freecs 3-0 in the quarterfinals, then lost the semifinal 3-0 to Fnatic."
     },
     {
       "id": "momentFirstChineseTitle",
@@ -182,7 +185,8 @@
       "label": "The first Worlds",
       "question": "Which event hosted the first World Championship, in 2011?",
       "correct": ["DreamHack Summer"],
-      "wrong": ["IEM Katowice", "Gamescom", "BlizzCon"]
+      "wrong": ["IEM Katowice", "Gamescom", "BlizzCon"],
+      "answer": "The first World Championship was a small event: eight teams played for a prize pool of $100,000."
     },
     {
       "id": "isWorldsChampion",

@@ -186,16 +186,16 @@ have appeared. See [LOCAL_TESTING.md](LOCAL_TESTING.md#endless-mode-testing-ever
 
 ## Where to change things
 
-| To...                                 | Edit                                                                      |
-| ------------------------------------- | ------------------------------------------------------------------------- |
-| Add or reword a question              | `data/questions/<category>.json`                                          |
-| Ask about specific champions or items | `data/questions/<category>.json` (pick question, see below)               |
-| Limit who can be an answer            | `correct`, `wrong` or `exclude` on the question                           |
-| Explain the answer after a pick       | `answer` on the question (a short text, true for every possible answer)   |
-| Add a champion stat                   | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`) |
-| Add or change an item stat            | `pipeline/stats/itemStats.ts`                                             |
-| Change which items are used           | `pipeline/items/selectItems.ts`                                           |
-| Change how hard rounds are            | `src/game/generate/config.ts`                                             |
+| To...                                 | Edit                                                                                                       |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Add or reword a question              | `data/questions/<category>.json`                                                                           |
+| Ask about specific champions or items | `data/questions/<category>.json` (pick question, see below)                                                |
+| Limit who can be an answer            | `correct`, `wrong` or `exclude` on the question                                                            |
+| Explain the answer after a pick       | `answer` on the question (short, true for every possible answer, and never the answer to another question) |
+| Add a champion stat                   | `pipeline/stats/` (one file each, list them in `pipeline/stats/index.ts`)                                  |
+| Add or change an item stat            | `pipeline/stats/itemStats.ts`                                                                              |
+| Change which items are used           | `pipeline/items/selectItems.ts`                                                                            |
+| Change how hard rounds are            | `src/game/generate/config.ts`                                                                              |
 
 A stat only becomes a question once `data/questions/stats.json` has an entry for it. Which stat is a
 champion stat and which an item stat follows from the list it is registered in.

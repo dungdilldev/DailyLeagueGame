@@ -8,7 +8,8 @@
       "label": "Priscilla, the Spider Queen",
       "question": "Which of these champions began as the scrapped champion Priscilla, the Spider Queen?",
       "correct": ["Elise"],
-      "wrong": ["Skarner", "KogMaw", "Leblanc", "Nidalee", "Lissandra", "Morgana"]
+      "wrong": ["Skarner", "KogMaw", "Leblanc", "Nidalee", "Lissandra", "Morgana"],
+      "answer": "Priscilla was scrapped after she already had an in-game model. The Spider Queen idea was eventually released as Elise."
     },
     {
       "id": "scrappedAoShin",
@@ -18,7 +19,8 @@
       "label": "Ao Shin",
       "question": "Which of these champions began as the scrapped dragon champion Ao Shin?",
       "correct": ["AurelionSol"],
-      "wrong": ["Shyvana", "Smolder", "Xerath", "Anivia", "Swain", "Lux"]
+      "wrong": ["Shyvana", "Smolder", "Xerath", "Anivia", "Swain", "Lux"],
+      "answer": "Ao Shin was scrapped, and the dragon idea was eventually released as Aurelion Sol. His Storm Dragon skin is a direct tribute to the original concept."
     },
     {
       "id": "scrappedSeth",
@@ -28,7 +30,8 @@
       "label": "Seth, the Sand Mage",
       "question": "Which of these champions was reworked from the scrapped champion Seth, the Sand Mage?",
       "correct": ["Azir"],
-      "wrong": ["Nasus", "Renekton", "Xerath", "Taliyah", "Sivir", "Amumu"]
+      "wrong": ["Nasus", "Renekton", "Xerath", "Taliyah", "Sivir", "Amumu"],
+      "answer": "Riot could not get the Sand Mage concept right in the time it had, and the game could not yet support the visual effects it needed. The idea was reworked into Azir."
     },
     {
       "id": "scrappedVoidRay",
@@ -38,7 +41,8 @@
       "label": "Void Ray",
       "question": "Which of these champions was reworked from the scrapped champion concept Void Ray?",
       "correct": ["Belveth"],
-      "wrong": ["Kassadin", "Velkoz", "Chogath", "Malzahar", "Khazix", "KogMaw"]
+      "wrong": ["Kassadin", "Velkoz", "Chogath", "Malzahar", "Khazix", "KogMaw"],
+      "answer": "The airborne champion first appeared on a Battlecast promo blueprint and was later glimpsed in splash art and a recall animation, long before it became Bel'Veth."
     },
     {
       "id": "scrappedKomachi",
@@ -48,7 +52,8 @@
       "label": "Komachi",
       "question": "Which of these champions recycled the concepts of the scrapped champion Komachi?",
       "correct": ["Thresh"],
-      "wrong": ["Hecarim", "Karthus", "Yorick", "Mordekaiser", "Viego", "Nocturne"]
+      "wrong": ["Hecarim", "Karthus", "Yorick", "Mordekaiser", "Viego", "Nocturne"],
+      "answer": "Komachi was planned as a pure tank wielding a scythe, designed by Kuo-Yen 'Xypherous' Lo. When it was shelved, its concepts were recycled for Thresh."
     },
     {
       "id": "scrappedOmen",
@@ -58,7 +63,8 @@
       "label": "Omen",
       "question": "Which of these champions recycled the concepts of the scrapped champion Omen?",
       "correct": ["RekSai"],
-      "wrong": ["Kassadin", "Velkoz", "Chogath", "Malzahar", "Khazix", "Skarner"]
+      "wrong": ["Kassadin", "Velkoz", "Chogath", "Malzahar", "Khazix", "Skarner"],
+      "answer": "Riot shelved Omen because it could not find a suitable personality for it. The name was later reused for an agent in Valorant."
     },
     {
       "id": "scrappedHusk",
@@ -68,7 +74,8 @@
       "label": "Husk, the Hive Commander",
       "question": "Which of these champions grew out of the scrapped champion Husk, the Hive Commander?",
       "correct": ["Camille", "Kaisa"],
-      "wrong": ["Velkoz", "Chogath", "Kassadin", "Orianna", "Fiora", "Malzahar"]
+      "wrong": ["Velkoz", "Chogath", "Kassadin", "Orianna", "Fiora", "Malzahar"],
+      "answer": "Husk was a cancelled concept whose ideas were split between two champions: Camille and Kai'Sa."
     },
     {
       "id": "magmaChamberArena",
@@ -78,7 +85,8 @@
       "label": "Magma Chamber and Arena",
       "question": "Which game mode recycled the concept of Magma Chamber, a cancelled 2v2 map?",
       "correct": ["Arena"],
-      "wrong": ["ARAM", "One for All", "Ultra Rapid Fire", "Nexus Blitz"]
+      "wrong": ["ARAM", "One for All", "Ultra Rapid Fire", "Nexus Blitz"],
+      "answer": "Magma Chamber was first played publicly as a 2v2 map at the 2013 All-Star Showdown. When the 2v2 idea returned as Arena, Magma Chamber became one of its maps."
     },
     {
       "id": "magmaChamberDominion",
@@ -88,7 +96,8 @@
       "label": "Magma Chamber and Dominion",
       "question": "Which game mode was reworked from Magma Chamber, first announced in 2010 as a 5v5 map and then cancelled?",
       "correct": ["Dominion"],
-      "wrong": ["ARAM", "One for All", "Ultra Rapid Fire", "Nexus Blitz"]
+      "wrong": ["ARAM", "One for All", "Ultra Rapid Fire", "Nexus Blitz"],
+      "answer": "Dominion was a capture-and-hold mode on the Crystal Scar. It launched in September 2011 and was retired in 2016 because too few people played it."
     },
     {
       "id": "dominionMap",
@@ -98,7 +107,8 @@
       "label": "Dominion map",
       "question": "Which map was the Dominion game mode played on?",
       "correct": ["The Crystal Scar"],
-      "wrong": ["Twisted Treeline", "Howling Abyss", "Summoner's Rift"]
+      "wrong": ["Twisted Treeline", "Howling Abyss", "Summoner's Rift"],
+      "answer": "On the Crystal Scar, two teams fought over five capture points, and holding more of them drained the enemy nexus. The map was removed from the game files in January 2018."
     },
     {
       "id": "mapRemoved2019",
@@ -108,7 +118,8 @@
       "label": "Map removed in 2019",
       "question": "Which map was removed from League of Legends in 2019?",
       "correct": ["Twisted Treeline"],
-      "wrong": ["The Crystal Scar", "Howling Abyss", "Summoner's Rift"]
+      "wrong": ["The Crystal Scar", "Howling Abyss", "Summoner's Rift"],
+      "answer": "Twisted Treeline was a smaller 3v3 map with two lanes that had been in the game since launch. It was retired at the end of Season 2019 because so few people played it."
     },
     {
       "id": "removedSummonerSpell",
@@ -292,7 +303,8 @@
       "label": "A tribute to Joe",
       "question": "Which of these champions says \"Bravest hero I ever knew was just a kid. Here's to you, champ.\", a tribute to Joe, a young fan who visited Riot through Make-A-Wish?",
       "correct": ["Jax"],
-      "wrong": ["Garen", "Darius", "Braum", "Pantheon", "Tryndamere", "XinZhao"]
+      "wrong": ["Garen", "Darius", "Braum", "Pantheon", "Tryndamere", "XinZhao"],
+      "answer": "Joe had Ewing's sarcoma and visited Riot's headquarters through Make-A-Wish. He died in June 2012, and his favorite skin, Jaximus, carries a tribute line of its own: \"Here's to you, kid.\""
     },
     {
       "id": "jaximusMakeAWish",
@@ -302,7 +314,8 @@
       "label": "Jaximus",
       "question": "Which Jax skin's sales did Riot give to Make-A-Wish in 2012, for a young fan named Joe?",
       "correct": ["Jaximus"],
-      "wrong": ["Angler Jax", "Vandal Jax", "Temple Jax", "Nemesis Jax"]
+      "wrong": ["Angler Jax", "Vandal Jax", "Temple Jax", "Nemesis Jax"],
+      "answer": "Joe had Ewing's sarcoma and visited Riot's headquarters through Make-A-Wish, and Jaximus was his favorite skin. The skin's line \"Here's to you, kid.\" is a tribute to him."
     },
     {
       "id": "voiceLineOk",
@@ -312,7 +325,8 @@
       "label": "\"OK.\"",
       "question": "Which of these champions is famous for answering almost every command with \"OK.\"?",
       "correct": ["Rammus"],
-      "wrong": ["Malphite", "Nasus", "Amumu", "Garen", "Zac", "Galio"]
+      "wrong": ["Malphite", "Nasus", "Amumu", "Garen", "Zac", "Galio"],
+      "answer": "Rammus has the fewest quotes of any champion, only six, and is the only one without a joke in English. In several other languages he has a full set of taunts and jokes."
     },
     {
       "id": "voiceLineScoutCode",
@@ -332,7 +346,8 @@
       "label": "Baron Nashor and Roshan",
       "question": "Which game has the boss Roshan, whose name Baron Nashor's is an anagram of?",
       "correct": ["Defense of the Ancients"],
-      "wrong": ["World of Warcraft", "Diablo II", "StarCraft", "Ultima Online"]
+      "wrong": ["World of Warcraft", "Diablo II", "StarCraft", "Ultima Online"],
+      "answer": "League of Legends was originally based on Defense of the Ancients, so its biggest neutral monster got a reshuffled version of a DotA name."
     },
     {
       "id": "guinsooItem",
@@ -342,7 +357,8 @@
       "label": "Named after Guinsoo",
       "question": "Which of these items is named after Steve \"Guinsoo\" Feak, the creator of Defense of the Ancients: Allstars?",
       "correct": ["3124"],
-      "wrong": ["3031", "3078", "3075", "3135", "3072", "3089"]
+      "wrong": ["3031", "3078", "3075", "3135", "3072", "3089"],
+      "answer": "According to Feak, Guinsoo's Rageblade was made with Corki in mind. Its icon resembles Guinsoo's Scythe of Vyse, a Defense of the Ancients item also named after him."
     },
     {
       "id": "bandKda",
@@ -369,7 +385,8 @@
         "KSante",
         "Sett",
         "Yone"
-      ]
+      ],
+      "answer": "K/DA debuted with POP/STARS at the 2018 World Championship opening ceremony. Seraphine joined the group for the 2020 EP ALL OUT."
     },
     {
       "id": "bandPentakill",
@@ -395,7 +412,8 @@
         "KSante",
         "Sett",
         "Yone"
-      ]
+      ],
+      "answer": "In Pentakill's story, a mountain fell on Mordekaiser once he had brought metal to the masses, and legend said whoever drew the axe from its peak would herald a new age of metal."
     },
     {
       "id": "bandTrueDamage",
@@ -422,7 +440,8 @@
         "KSante",
         "Sett",
         "Yone"
-      ]
+      ],
+      "answer": "True Damage calls itself a collective of the best artists from around the world, making hip-hop. Its GIANTS music video also gave the first glimpse of Riot Forge."
     },
     {
       "id": "bandHeartsteel",
@@ -448,7 +467,8 @@
         "Qiyana",
         "Senna",
         "Yasuo"
-      ]
+      ],
+      "answer": "HEARTSTEEL debuted in 2023 with the song PARANOIA."
     },
     {
       "id": "ultimateSkin",
@@ -479,7 +499,8 @@
       "label": "The Mageseeker",
       "question": "Which Riot Forge game stars Sylas?",
       "correct": ["The Mageseeker"],
-      "wrong": ["CONV/RGENCE", "Song of Nunu", "Hextech Mayhem", "Ruined King"]
+      "wrong": ["CONV/RGENCE", "Song of Nunu", "Hextech Mayhem", "Ruined King"],
+      "answer": "The Mageseeker was made by Digital Sun Games for Riot Forge, a label that worked with studios outside Riot to make League of Legends games."
     },
     {
       "id": "forgeEkko",
@@ -489,7 +510,8 @@
       "label": "CONV/RGENCE",
       "question": "Which Riot Forge game stars Ekko?",
       "correct": ["CONV/RGENCE"],
-      "wrong": ["The Mageseeker", "Song of Nunu", "Ruined King"]
+      "wrong": ["The Mageseeker", "Song of Nunu", "Ruined King"],
+      "answer": "CONV/RGENCE was made by Double Stallion Games for Riot Forge. Riot stopped making Forge games in 2024, during mass layoffs."
     },
     {
       "id": "forgeZiggs",
@@ -499,7 +521,8 @@
       "label": "Hextech Mayhem",
       "question": "Which Riot Forge game stars Ziggs?",
       "correct": ["Hextech Mayhem"],
-      "wrong": ["The Mageseeker", "Song of Nunu", "Ruined King"]
+      "wrong": ["The Mageseeker", "Song of Nunu", "Ruined King"],
+      "answer": "Hextech Mayhem was made by Choice Provisions, one of the outside studios Riot Forge partnered with."
     },
     {
       "id": "ruinedKingChampion",
@@ -509,7 +532,8 @@
       "label": "Ruined King",
       "question": "Which of these champions is playable in the Riot Forge game Ruined King?",
       "correct": ["MissFortune", "Illaoi", "Braum", "Yasuo", "Ahri", "Pyke"],
-      "wrong": ["Sylas", "Ekko", "Ziggs", "Nunu", "Garen", "Jinx"]
+      "wrong": ["Sylas", "Ekko", "Ziggs", "Nunu", "Garen", "Jinx"],
+      "answer": "Ruined King was made by Airship Syndicate for Riot Forge. It is a turn-based role-playing game set in Bilgewater and the Shadow Isles."
     },
     {
       "id": "arcaneStudio",
@@ -519,7 +543,8 @@
       "label": "Arcane studio",
       "question": "Which studio produced the animated series Arcane?",
       "correct": ["Fortiche"],
-      "wrong": ["Pixar", "Studio Ghibli", "DreamWorks Animation", "Laika"]
+      "wrong": ["Pixar", "Studio Ghibli", "DreamWorks Animation", "Laika"],
+      "answer": "Fortiche is a French animation studio based in Paris that had made champion videos for Riot before Arcane."
     },
     {
       "id": "arcanePlatform",
@@ -529,7 +554,8 @@
       "label": "Arcane premiere",
       "question": "Which streaming service did Arcane premiere on worldwide in 2021?",
       "correct": ["Netflix"],
-      "wrong": ["Disney+", "Amazon Prime Video", "HBO Max", "Apple TV+"]
+      "wrong": ["Disney+", "Amazon Prime Video", "HBO Max", "Apple TV+"],
+      "answer": "Netflix picked up Arcane for international release in May 2021. Its second season followed in November 2024, released in three acts."
     },
     {
       "id": "monster2024",
@@ -539,7 +565,8 @@
       "label": "Added in 2024",
       "question": "Which neutral monster was added to Summoner's Rift in 2024?",
       "correct": ["Voidgrubs"],
-      "wrong": ["Baron Nashor", "Elder Dragon", "Gromp", "Scuttle Crab", "Atakhan"]
+      "wrong": ["Baron Nashor", "Elder Dragon", "Gromp", "Scuttle Crab", "Atakhan"],
+      "answer": "Voidgrubs spawn in the Baron pit, three of them, once per game. Each one killed makes enemy structures burn, and the third summons allied Voidmites to help take down turrets."
     },
     {
       "id": "monster2025",
@@ -549,7 +576,8 @@
       "label": "Added in 2025",
       "question": "Which neutral monster was added to Summoner's Rift in 2025?",
       "correct": ["Atakhan"],
-      "wrong": ["Baron Nashor", "Elder Dragon", "Gromp", "Scuttle Crab", "Voidgrubs"]
+      "wrong": ["Baron Nashor", "Elder Dragon", "Gromp", "Scuttle Crab", "Voidgrubs"],
+      "answer": "Atakhan spawned on whichever side of the river had seen more fighting by 14 minutes. In the lore he is the demon Mordekaiser bound to his service as his Bringer of Ruin."
     },
     {
       "id": "rankAdded2023",
@@ -569,7 +597,8 @@
         "Master",
         "Grandmaster",
         "Challenger"
-      ]
+      ],
+      "answer": "Emerald arrived in Split 2 of Season 2023, between Platinum and Diamond. The promotion series between tiers was removed at the same time."
     },
     {
       "id": "rankAdded2019",
@@ -588,7 +617,8 @@
         "Master",
         "Challenger",
         "Emerald"
-      ]
+      ],
+      "answer": "Season 2019 added Iron at the bottom of the ladder and Grandmaster below Challenger, and cut the divisions in each tier from five to four."
     },
     {
       "id": "rankAdded2014",
@@ -598,7 +628,8 @@
       "label": "Tier added in 2014",
       "question": "Which ranked tier was added in 2014?",
       "correct": ["Master"],
-      "wrong": ["Iron", "Grandmaster", "Emerald"]
+      "wrong": ["Iron", "Grandmaster", "Emerald"],
+      "answer": "Master was added in Season 2014 with a single division, between Diamond and Challenger."
     },
     {
       "id": "urfAnimal",
@@ -608,7 +639,8 @@
       "label": "Urf",
       "question": "Which animal is Urf, Riot's April Fools' mascot?",
       "correct": ["Manatee"],
-      "wrong": ["Walrus", "Seal", "Otter", "Penguin"]
+      "wrong": ["Walrus", "Seal", "Otter", "Penguin"],
+      "answer": "Urf began as a 'cancelled' champion in an April Fools' Day joke and has been Riot's mascot ever since, showing up around April 1st. In his story, he idolized Jax above all other champions."
     },
     {
       "id": "urfOccasion",
@@ -618,7 +650,8 @@
       "label": "Ultra Rapid Fire",
       "question": "Which occasion was the Ultra Rapid Fire mode first introduced for?",
       "correct": ["April Fools' Day"],
-      "wrong": ["Halloween", "Christmas", "Lunar New Year", "Valentine's Day"]
+      "wrong": ["Halloween", "Christmas", "Lunar New Year", "Valentine's Day"],
+      "answer": "In Ultra Rapid Fire, abilities cost nothing and every champion gets 300 ability haste. Recent runs have used All Random picks."
     },
     {
       "id": "riotFounder",
@@ -628,7 +661,8 @@
       "label": "Riot founders",
       "question": "Which person founded Riot Games together with Marc Merrill in 2006?",
       "correct": ["Brandon Beck"],
-      "wrong": ["Gabe Newell", "Mike Morhaime", "Hideo Kojima", "Shigeru Miyamoto"]
+      "wrong": ["Gabe Newell", "Mike Morhaime", "Hideo Kojima", "Shigeru Miyamoto"],
+      "answer": "Beck and Merrill were roommates at the University of Southern California. They wanted a company that keeps improving one game after its release instead of moving on to a new one."
     },
     {
       "id": "riotOwner",
@@ -638,7 +672,8 @@
       "label": "Riot owner",
       "question": "Which company has fully owned Riot Games since 2015?",
       "correct": ["Tencent"],
-      "wrong": ["Activision Blizzard", "Electronic Arts", "Ubisoft", "Microsoft"]
+      "wrong": ["Activision Blizzard", "Electronic Arts", "Ubisoft", "Microsoft"],
+      "answer": "Tencent bought a majority of Riot Games in February 2011 and the rest in December 2015."
     },
     {
       "id": "leagueReleaseYear",
@@ -648,7 +683,8 @@
       "label": "Release year",
       "question": "Which year was League of Legends released in?",
       "correct": ["2009"],
-      "wrong": ["2007", "2011", "2012", "2013"]
+      "wrong": ["2007", "2011", "2012", "2013"],
+      "answer": "League of Legends launched on 27 October 2009, and the 3v3 Twisted Treeline map launched alongside it."
     },
     {
       "id": "dotaOrigin",
@@ -658,7 +694,8 @@
       "label": "Defense of the Ancients",
       "question": "Which game was Defense of the Ancients, the map League of Legends is based on, made for?",
       "correct": ["Warcraft III"],
-      "wrong": ["Diablo II", "Age of Empires II", "Half-Life", "Command & Conquer"]
+      "wrong": ["Diablo II", "Age of Empires II", "Half-Life", "Command & Conquer"],
+      "answer": "Steve 'Guinsoo' Feak, who created Defense of the Ancients: Allstars, was one of the main creative minds behind League of Legends."
     }
   ]
 }
