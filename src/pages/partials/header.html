@@ -1,14 +1,38 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-header__brand" href="./">
-      <svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true">
-        <path
-          d="M24 3 42 13.5v21L24 45 6 34.5v-21Z"
-          fill="#0a1428"
-          stroke="#c8aa6e"
-          stroke-width="3"
+      <svg width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="brand-rim" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f0e6d2" />
+            <stop offset="0.5" stop-color="#c8aa6e" />
+            <stop offset="1" stop-color="#785a28" />
+          </linearGradient>
+          <radialGradient id="brand-coin" cx="0.5" cy="0.4" r="0.6">
+            <stop offset="0" stop-color="#1a4a6e" />
+            <stop offset="0.6" stop-color="#0c1a2e" />
+            <stop offset="1" stop-color="#050d1a" />
+          </radialGradient>
+        </defs>
+        <circle
+          cx="60"
+          cy="60"
+          r="54"
+          fill="url(#brand-coin)"
+          stroke="url(#brand-rim)"
+          stroke-width="8"
         />
-        <path d="M24 14 33 24 24 34 15 24Z" fill="#c8aa6e" />
+        <g transform="translate(60 60) scale(0.72) translate(-60 -60)">
+          <path
+            d="M41 42C41 28 50 20 61 20C73 20 81 28 81 39C81 49 74 54 67 58C62 61 60 64 60 70V74"
+            fill="none"
+            stroke="#e6c46a"
+            stroke-width="18"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="60" cy="94" r="11" fill="#e6c46a" />
+        </g>
       </svg>
       <span>Summoner&apos;s Quiz</span>
     </a>

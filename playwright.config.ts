@@ -3,6 +3,9 @@ import { defineConfig, devices } from '@playwright/test';
 const PORT = 4173;
 // The endless mode only exists in development builds, so its tests run against the dev server.
 const DEV_PORT = 5174;
+// A second production build with ads switched on, because the deployed build has them off.
+const ADS_PORT = 4174;
+const ADS_OUT_DIR = 'dist-ads-test';
 
 export default defineConfig({
   testDir: 'e2e',
@@ -12,12 +15,22 @@ export default defineConfig({
   reporter: process.env['CI'] ? 'github' : 'list',
   use: { baseURL: `http://localhost:${String(PORT)}` },
   projects: [
-    { name: 'desktop', testIgnore: /endless/, use: { ...devices['Desktop Chrome'] } },
+    { name: 'desktop', testIgnore: /endless|ads\.spec/, use: { ...devices['Desktop Chrome'] } },
     // Chromium with a phone-sized viewport and touch: catches mobile layout problems.
     {
       name: 'mobile',
-      testIgnore: /endless/,
+      testIgnore: /endless|ads\.spec/,
       use: { ...devices['Pixel 7'] },
+    },
+    {
+      name: 'ads-desktop',
+      testMatch: /ads\.spec/,
+      use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${String(ADS_PORT)}` },
+    },
+    {
+      name: 'ads-mobile',
+      testMatch: /ads\.spec/,
+      use: { ...devices['Pixel 7'], baseURL: `http://localhost:${String(ADS_PORT)}` },
     },
     {
       name: 'endless-desktop',
@@ -35,6 +48,13 @@ export default defineConfig({
     {
       command: `npm run build && npm run preview -- --port ${String(PORT)} --strictPort`,
       url: `http://localhost:${String(PORT)}`,
+      reuseExistingServer: !process.env['CI'],
+      timeout: 120_000,
+    },
+    {
+      command: `npx vite build --outDir ${ADS_OUT_DIR} && npx vite preview --outDir ${ADS_OUT_DIR} --port ${String(ADS_PORT)} --strictPort`,
+      env: { VITE_ADS_ENABLED: 'true', VITE_AD_SLOT_ID: '1234567890' },
+      url: `http://localhost:${String(ADS_PORT)}`,
       reuseExistingServer: !process.env['CI'],
       timeout: 120_000,
     },

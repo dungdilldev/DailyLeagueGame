@@ -1,18 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 import { ARCHIVE_DAYS } from '../src/game/archive';
+import { collectErrors, playFullDay, ROUNDS_PER_DAY } from './helpers';
 
-const ROUNDS_PER_DAY = 5;
 const START_HEADING = 'How well do you know League of Legends?';
-
-/** Fails the test on any uncaught page error or console error (e.g. broken data or images). */
-function collectErrors(page: Page): string[] {
-  const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  page.on('console', (message) => {
-    if (message.type() === 'error') errors.push(message.text());
-  });
-  return errors;
-}
 
 /** Waits until every champion icon has actually loaded, not just been added to the page. */
 async function expectIconsLoaded(page: Page): Promise<void> {
@@ -25,18 +15,6 @@ async function expectIconsLoaded(page: Page): Promise<void> {
         ),
     )
     .toBe(true);
-}
-
-async function playFullDay(page: Page): Promise<void> {
-  for (let round = 1; round <= ROUNDS_PER_DAY; round++) {
-    await expect(
-      page.getByText(`Round ${String(round)} of ${String(ROUNDS_PER_DAY)}`),
-    ).toBeVisible();
-    await page.locator('.card').first().click();
-    await page
-      .getByRole('button', { name: round === ROUNDS_PER_DAY ? 'See results' : 'Next round' })
-      .click();
-  }
 }
 
 test('a full day can be played and the result survives a reload', async ({ page }, testInfo) => {
