@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test';
 
 test('the endless mode is reachable by address only, and links back to the daily page', async ({
   page,

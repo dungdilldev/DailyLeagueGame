@@ -1,4 +1,5 @@
-import { expect, test, type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
+import { expect, test } from './test';
 import { ARCHIVE_DAYS } from '../src/game/archive';
 import { collectErrors, playFullDay, ROUNDS_PER_DAY } from './helpers';
 

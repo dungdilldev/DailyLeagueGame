@@ -21,7 +21,7 @@ const PAGES = [
   'privacy',
 ];
 
-/** Lets the static pages share their header, footer and contact link: `<!--include:name-->`. */
+/** Lets the static pages share their header, footer, contact link and analytics snippet: `<!--include:name-->`. */
 function includePartials(): Plugin {
   return {
     name: 'include-partials',

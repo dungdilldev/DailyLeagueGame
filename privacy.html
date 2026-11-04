@@ -19,11 +19,12 @@
         <h1>Privacy policy</h1>
         <p class="info__updated">Last updated: 4 November 2026</p>
         <p>
-          Short version: Summoner&apos;s Quiz has no accounts, does not ask for personal data and
-          uses no analytics. Your game progress stays in your own browser. The game pages (one per
-          category) show ads from Google AdSense; in the European Economic Area, the United Kingdom
-          and Switzerland they load only after you agree. The start page and the information pages
-          (how to play, about, this page) show no ads and load nothing from Google.
+          Short version: Summoner&apos;s Quiz has no accounts and does not ask for personal data. It
+          counts visits with Cloudflare Web Analytics, which uses no cookies and does not identify
+          you. Your game progress stays in your own browser. The game pages (one per category) show
+          ads from Google AdSense; in the European Economic Area, the United Kingdom and Switzerland
+          they load only after you agree. The start page and the information pages (how to play,
+          about, this page) show no ads and load nothing from Google.
         </p>
 
         <h2>What is saved on your device</h2>
@@ -44,9 +45,21 @@
         <h2>What we collect</h2>
         <p>
           We do not collect, store or sell any personal data ourselves. There is no sign-up, no
-          contact form, no newsletter and no analytics service on this site. If you email us, we
-          receive your email address and your message and use them only to answer you. On the game
-          pages, Google receives data to show ads; see <a href="#advertising">Advertising</a>.
+          contact form and no newsletter. If you email us, we receive your email address and your
+          message and use them only to answer you. On the game pages, Google receives data to show
+          ads; see <a href="#advertising">Advertising</a>.
+        </p>
+        <p id="analytics">
+          <strong>Visit counts.</strong> Every page loads Cloudflare Web Analytics, so we can see
+          how many people visit and which pages they open. It stores nothing on your device (no
+          cookies, no local storage) and does not track you across visits or across sites. When a
+          page loads, Cloudflare receives the page address, the referring page, your browser and
+          device type, your country and page load times; your IP address is used to deliver the
+          request but, according to Cloudflare, not to identify or count you. We see only totals.
+          This is based on our legitimate interest in knowing how the site is used (Art. 6(1)(f)
+          GDPR); an ad or content blocker stops it, and the game works the same. See
+          <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> and the
+          <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>.
         </p>
 
         <h2>Third parties your browser contacts</h2>
@@ -61,6 +74,11 @@
               href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
               >GitHub privacy statement</a
             >.
+          </li>
+          <li>
+            <strong>Cloudflare Web Analytics</strong> (Cloudflare, Inc.), on every page
+            (<code>cloudflareinsights.com</code>), which counts visits. See
+            <a href="#analytics">Visit counts</a>.
           </li>
           <li>
             <strong>Riot Games&apos; Data Dragon</strong>
@@ -149,10 +167,10 @@
 
         <h2>Your rights and contact</h2>
         <p>
-          Apart from emails you send us, we hold no personal data about you, so there is nothing for
-          us to access, correct or delete; you control the game data, in your browser. The data
-          Google receives for ads is held by Google, and you can use your rights with Google
-          directly (see the Google privacy policy above).
+          Apart from emails you send us, we hold no personal data about you (the visit counts are
+          totals only), so there is nothing for us to access, correct or delete; you control the
+          game data, in your browser. The data Google receives for ads is held by Google, and you
+          can use your rights with Google directly (see the Google privacy policy above).
         </p>
         <p>
           Under the GDPR you have the right to access, correct and delete your personal data, to
@@ -172,5 +190,6 @@
       <!--include:footer-->
     </div>
     <script type="module" src="/src/pages/info.ts"></script>
+    <!--include:analytics-->
   </body>
 </html>

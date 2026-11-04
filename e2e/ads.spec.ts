@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
+import { expect, test } from './test';
 import { collectErrors, playFullDay } from './helpers';
 
 // These run against a build with ads switched on (see playwright.config.ts). No real Google

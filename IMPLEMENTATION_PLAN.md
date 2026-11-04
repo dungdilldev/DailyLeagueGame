@@ -344,7 +344,8 @@ permission, so it needs the operator's agreement first.
 - [ ] Practice/unlimited mode, difficulty modes
 - [ ] Stats page (accuracy per stat, streak history)
 - [ ] Champion splash art / ability icons, animations, sound toggle
-- [ ] Analytics (privacy-friendly, e.g. Plausible/Cloudflare) and OG share image
+- [x] Analytics: Cloudflare Web Analytics (cookieless, page views only, no consent needed), on every page via `src/pages/partials/analytics.html`
+- [ ] OG share image
 - [ ] Archive of past puzzles
 - [ ] "Report a problem" button on each round. Deferred until the site has a server of its own: no third-party form service (decided by the owner); a `mailto:` link with the question, options and date prefilled is the no-server fallback
 
