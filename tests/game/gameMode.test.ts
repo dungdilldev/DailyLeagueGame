@@ -8,21 +8,27 @@ import {
   puzzleSeed,
   questionsForMode,
 } from '../../src/game/gameMode';
+import { QuestionCategorySchema } from '../../src/data/schema';
 import { realGameData } from '../support/realGameData';
 
 const { questions } = realGameData;
 
 describe('GAME_MODES', () => {
-  it('lists one mode per question category, then the mixed mode', () => {
-    expect(GAME_MODES).toEqual(['stats', 'lore', 'esports', 'trivia', 'mixed']);
+  it('lists the categories in display order, then the mixed mode', () => {
+    expect(GAME_MODES).toEqual(['trivia', 'lore', 'stats', 'esports', 'mixed']);
+  });
+
+  it('has every question category exactly once', () => {
+    const categories = GAME_MODES.filter((mode) => mode !== MIXED_MODE);
+    expect([...categories].sort()).toEqual([...QuestionCategorySchema.options].sort());
   });
 });
 
 describe('parseGameMode', () => {
-  it('accepts every mode and falls back to stats for anything else', () => {
+  it('accepts every mode and falls back to trivia for anything else', () => {
     for (const mode of GAME_MODES) expect(parseGameMode(mode)).toBe(mode);
     for (const bad of [null, undefined, '', 'nope', 'LORE', 'endless']) {
-      expect(parseGameMode(bad)).toBe('stats');
+      expect(parseGameMode(bad)).toBe('trivia');
     }
   });
 });
@@ -59,13 +65,13 @@ describe('puzzleSeed and progressSlot', () => {
 
 describe('nextUnfinishedMode', () => {
   it('suggests the next mode in order, skipping finished ones', () => {
-    expect(nextUnfinishedMode('stats', [])).toBe('lore');
-    expect(nextUnfinishedMode('stats', ['stats', 'lore'])).toBe('esports');
+    expect(nextUnfinishedMode('trivia', [])).toBe('lore');
+    expect(nextUnfinishedMode('trivia', ['trivia', 'lore'])).toBe('stats');
   });
 
   it('wraps round after the last mode', () => {
-    expect(nextUnfinishedMode(MIXED_MODE, [MIXED_MODE])).toBe('stats');
-    expect(nextUnfinishedMode('trivia', ['trivia', MIXED_MODE, 'stats'])).toBe('lore');
+    expect(nextUnfinishedMode(MIXED_MODE, [MIXED_MODE])).toBe('trivia');
+    expect(nextUnfinishedMode('esports', ['esports', MIXED_MODE, 'trivia'])).toBe('lore');
   });
 
   it('never suggests the current mode, and nothing once all others are finished', () => {

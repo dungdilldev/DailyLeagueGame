@@ -133,10 +133,10 @@ test.describe('game modes', () => {
   test('the stats page offers one link per mode page', async ({ page }) => {
     await page.goto('/stats.html');
     await expect(modeNav(page).getByRole('link')).toHaveText([
-      'Stats',
-      'Lore',
-      'Esports',
       'Trivia',
+      'Lore',
+      'Stats',
+      'Esports',
       'Mixed',
     ]);
     await expect(modeNav(page).getByRole('link', { name: 'Stats' })).toHaveAttribute(
@@ -189,7 +189,7 @@ test.describe('game modes', () => {
     await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
 
     await page.goto('/play.html');
-    await expect(page).toHaveURL(/\/stats\.html$/);
+    await expect(page).toHaveURL(/\/trivia\.html$/);
   });
 
   test('the esports mode plays a full day, with text options and champion options', async ({
@@ -240,10 +240,10 @@ test.describe('information pages', () => {
 
 test.describe('start page', () => {
   const modes = [
-    { name: 'Stats', url: /\/stats\.html$/ },
-    { name: 'Lore', url: /\/lore\.html$/ },
-    { name: 'Esports', url: /\/esports\.html$/ },
     { name: 'Trivia', url: /\/trivia\.html$/ },
+    { name: 'Lore', url: /\/lore\.html$/ },
+    { name: 'Stats', url: /\/stats\.html$/ },
+    { name: 'Esports', url: /\/esports\.html$/ },
     { name: 'Mixed', url: /\/mixed\.html$/ },
   ];
 
@@ -277,11 +277,11 @@ test.describe('start page', () => {
     await expect(page.locator('.mode-card__status:visible')).toHaveCount(1);
   });
 
-  test('the hero button opens the default game mode', async ({ page }) => {
+  test('the hero button opens the first mode, trivia', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('link', { name: /Play today.s puzzle/ }).click();
-    await expect(page).toHaveURL(/\/stats\.html$/);
-    await expect(modeNav(page).getByRole('link', { name: 'Stats' })).toHaveAttribute(
+    await expect(page).toHaveURL(/\/trivia\.html$/);
+    await expect(modeNav(page).getByRole('link', { name: 'Trivia' })).toHaveAttribute(
       'aria-current',
       'page',
     );

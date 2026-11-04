@@ -208,6 +208,19 @@ describe('subcategory', () => {
   });
 });
 
+describe('answer text', () => {
+  it('is optional and allowed on every kind of question', () => {
+    const answer = 'Because it is.';
+    for (const question of [template, pick, clue, playerQuestion, yearly]) {
+      expect(parse([{ ...question, answer }]).success, question.id).toBe(true);
+    }
+  });
+
+  it('cannot be empty', () => {
+    expect(parse([{ ...pick, answer: '' }]).success).toBe(false);
+  });
+});
+
 describe('questions about a given year', () => {
   it('are accepted with a year placeholder and one answer per year', () => {
     expect(parse([yearly]).success).toBe(true);

@@ -132,3 +132,22 @@ describe('buildRound answer lists', () => {
     expect(buildRound(roster, question, band, createRng('low'))).toBeUndefined();
   });
 });
+
+describe('buildRound answer text', () => {
+  const band = { minRatio: 0.05, maxRatio: 1 };
+
+  it("carries the question's answer text into the round", () => {
+    const question = { ...STAT, answer: 'Health grows with level.' };
+    expect(buildRound(roster, question, band, createRng('a'))?.explanation).toBe(
+      'Health grows with level.',
+    );
+  });
+
+  it('leaves it out when the question has none, and does not change the round', () => {
+    const plain = buildRound(roster, STAT, band, createRng('b'));
+    const explained = buildRound(roster, { ...STAT, answer: 'Note.' }, band, createRng('b'));
+    expect(plain).toBeDefined();
+    expect(plain && 'explanation' in plain).toBe(false);
+    expect(explained).toEqual({ ...plain, explanation: 'Note.' });
+  });
+});

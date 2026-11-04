@@ -199,6 +199,7 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 
 - [x] Mode buttons at the top: Mixed (all questions, the original puzzle) and one per category; `?category=` in the address
 - [x] The site opens on Stats instead of Mixed (owner, 2026-10-31); saved progress and seeds unchanged, so Mixed keeps its streak
+- [x] Trivia first (owner, 2026-11-04): modes are shown in the order trivia, lore, stats, esports, mixed, and Trivia is the default (start page button, header and footer "Play", old `play.html` links); puzzles, seeds and saved progress unchanged
 - [x] Each mode has its own seed, saved progress, streak and share text
 - [x] Pools smaller than 5 questions give shorter days; empty tiers fall back to the nearest tier
 - The `trivia` category (one marksman question) was removed again.
@@ -405,7 +406,9 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 - [ ] Owner: deploy, add the site to Google Search Console, submit the sitemap, check that `/` is indexed with its text. Build some real traffic over a few weeks (Google also judges "genuine user interest"), then request review
 - [x] **Ads on the game page only** (owner, 2026-11-03, replacing the earlier idea of ads on the start and info pages only): `play.html` is the only page that may show ads; the start page and the info pages never load ad code. Risk: the rejection named "ads on screens without publisher content", and the game screen is the kind of screen that meant; if Google rejects again for that reason, revisit this
 - [x] Fix, step 2 (2026-11-04, after looking at how Champdle and LoLdle are built): **one page per game mode** instead of one empty `play.html`. `stats.html`, `lore.html`, `esports.html`, `trivia.html` and `mixed.html` each have their own title, meta description, canonical address and a static heading with one line on what the mode asks, all in the HTML a crawler reads; the app reads the page's mode from `#app[data-mode]`. The mode pills and the results' "Play X next" button are links between the pages (an earlier day is kept). `play.html` only redirects old links (`?category=X` to `X.html`, the rest of the address kept) and is `noindex`; the sitemap lists the five pages. Ads are on all five pages (they are the game page, split up); `privacy.html` says "game pages"
-- [ ] Later, not decided: an explanation after each answer (trivia and esports moments first, one short paragraph per lore event instead of per question; no templated text for stats), and pages for past days with their answers
+- [x] Answer texts, step 1 (2026-11-04): an optional `answer` on every question, shown after the player picks; five lore examples checked on the wiki
+- [ ] Answer texts, next: more of them, trivia and esports moments first; for lore, questions with one right answer (a text must fit every possible answer); no templated text for stats
+- [ ] Later, not decided: pages for past days with their answers (and answer texts)
 - [ ] If rejected again: more original pages, e.g. reference pages generated from the data (stat rankings, lore regions and events, Worlds history) and a few hand-written guides
 
 **C. Consent and privacy (required for EEA, UK and Switzerland visitors)**

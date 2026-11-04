@@ -9,7 +9,7 @@
       // runs before anything is drawn. The mode names are GAME_MODES in src/game/gameMode.ts.
       (function () {
         const MODES = ['stats', 'lore', 'esports', 'trivia', 'mixed'];
-        const DEFAULT_MODE = 'stats';
+        const DEFAULT_MODE = 'trivia';
         const params = new URLSearchParams(window.location.search);
         const requested = params.get('category');
         const mode = MODES.includes(requested) ? requested : DEFAULT_MODE;
@@ -20,7 +20,7 @@
     </script>
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#010a13" />
-    <link rel="canonical" href="https://summonersquiz.com/stats.html" />
+    <link rel="canonical" href="https://summonersquiz.com/trivia.html" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Play - Summoner&apos;s Quiz</title>
   </head>
@@ -28,7 +28,7 @@
     <div class="site">
       <!--include:header-->
       <main class="info">
-        <p><a href="stats.html">Open today&apos;s puzzle</a></p>
+        <p><a href="trivia.html">Open today&apos;s puzzle</a></p>
       </main>
       <!--include:footer-->
     </div>

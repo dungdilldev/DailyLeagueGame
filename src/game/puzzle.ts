@@ -23,6 +23,8 @@ export interface Round {
   clue?: 'teamLogo';
   /** Every option's value, revealed after answering. Empty for a pick question. */
   values: Record<string, number>;
+  /** The question's `answer` text, shown once the player has answered. Absent for most rounds. */
+  explanation?: string;
 }
 
 export interface Puzzle {

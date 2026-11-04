@@ -9,17 +9,17 @@ describe('ModeNav', () => {
     render(<ModeNav mode="lore" />);
     const links = screen.getAllByRole('link');
     expect(links.map((link) => link.textContent)).toEqual([
-      'Stats',
-      'Lore',
-      'Esports',
       'Trivia',
+      'Lore',
+      'Stats',
+      'Esports',
       'Mixed',
     ]);
     expect(links.map((link) => link.getAttribute('href'))).toEqual([
-      'stats.html',
-      'lore.html',
-      'esports.html',
       'trivia.html',
+      'lore.html',
+      'stats.html',
+      'esports.html',
       'mixed.html',
     ]);
     expect(screen.getByRole('link', { name: 'Lore' }).getAttribute('aria-current')).toBe('page');

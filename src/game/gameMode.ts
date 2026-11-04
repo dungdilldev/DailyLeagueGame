@@ -1,4 +1,4 @@
-import { QuestionCategorySchema, type QuestionCategory } from '../data/schema';
+import type { QuestionCategory } from '../data/schema';
 import type { Question } from '../data/questions';
 
 /** The puzzle made from every question, whatever its category. */
@@ -7,10 +7,15 @@ export const MIXED_MODE = 'mixed';
 /** What the player chooses to play: everything mixed, or the questions of one category. */
 export type GameMode = typeof MIXED_MODE | QuestionCategory;
 
-export const GAME_MODES: readonly GameMode[] = [...QuestionCategorySchema.options, MIXED_MODE];
+/**
+ * Every mode, in the order the mode links show them and "Play X next" suggests them. Written out
+ * rather than taken from `QuestionCategorySchema`, whose order sets how the question files are
+ * combined: reordering that would change every mixed puzzle.
+ */
+export const GAME_MODES: readonly GameMode[] = ['trivia', 'lore', 'stats', 'esports', MIXED_MODE];
 
 /** The mode the site opens in when the address names none. */
-export const DEFAULT_GAME_MODE: GameMode = 'stats';
+export const DEFAULT_GAME_MODE: GameMode = 'trivia';
 
 /** Anything that is not a known mode (garbage in the address bar) is the default mode. */
 export function parseGameMode(value: string | null | undefined): GameMode {

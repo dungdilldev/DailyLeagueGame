@@ -150,6 +150,12 @@ const QuestionFields = {
   question: z.string().min(1),
   /** Never used for this question, neither as the answer nor as a wrong option. */
   exclude: EntityIdListSchema.optional(),
+  /**
+   * Shown once the player has answered: a short note on why the right option is right. It must
+   * hold for every option that can be the answer, since the question does not know which one a
+   * day picks.
+   */
+  answer: z.string().min(1).optional(),
 };
 
 /** Roles are exclusive: an id that is both right and wrong, or excluded, would be ambiguous. */

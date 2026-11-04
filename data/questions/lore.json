@@ -845,7 +845,8 @@
       "label": "Islands",
       "question": "Which island chain is permanently shrouded by the Black Mist?",
       "correct": ["Shadow Isles"],
-      "wrong": ["Serpent Isles", "Ionian Archipelago", "Ursine Lands"]
+      "wrong": ["Serpent Isles", "Ionian Archipelago", "Ursine Lands"],
+      "answer": "They were once the Blessed Isles. When Viego took his dead wife Isolde to the Waters of Life to bring her back, the magic set off the Ruination, and the Black Mist has covered the isles ever since."
     },
     {
       "id": "geoIonianArchipelago",
@@ -895,7 +896,8 @@
       "label": "Mountains",
       "question": "Which of these holds the tallest peak in Runeterra?",
       "correct": ["Mount Targon"],
-      "wrong": ["Argent Mountains", "Greenfang Mountains", "Ridgeback Mountains"]
+      "wrong": ["Argent Mountains", "Greenfang Mountains", "Ridgeback Mountains"],
+      "answer": "Nearly all who try to climb Mount Targon die on the way. At the summit a portal opens only for the rare hero the Aspects choose, and those who return are changed beyond recognition."
     },
     {
       "id": "geoRidgeback",
@@ -1185,7 +1187,8 @@
       "label": "Targon",
       "question": "Which Targonian people secretly worship the moon?",
       "correct": ["Lunari"],
-      "wrong": ["Solari", "Rakkor", "Yun Tal"]
+      "wrong": ["Solari", "Rakkor", "Yun Tal"],
+      "answer": "The Lunari venerate the Aspect of the Moon. The Solari branded them heretics, so they keep their faith hidden. Diana, host of the Aspect of the Moon, is their leading figure."
     },
     {
       "id": "natSolari",
@@ -2057,7 +2060,8 @@
       "label": "Three Sisters",
       "question": "Which of these champions was one of the Three Sisters of the Freljord?",
       "correct": ["Lissandra"],
-      "wrong": ["Tristana", "Soraka", "Lulu", "Aurora", "Anivia", "Annie"]
+      "wrong": ["Tristana", "Soraka", "Lulu", "Aurora", "Anivia", "Annie"],
+      "answer": "Avarosa, Serylda and Lissandra ruled the Freljord together. Lissandra secretly made a pact with the Watchers, then sacrificed her sisters at the Howling Abyss to entomb the Watchers in True Ice."
     },
     {
       "id": "sistersBlinded",
@@ -2117,7 +2121,8 @@
       "label": "Icathia",
       "question": "Which power did Icathia's mages unleash on the Shuriman host?",
       "correct": ["The Void"],
-      "wrong": ["The Black Mist", "The Ruination", "The Harrowing"]
+      "wrong": ["The Black Mist", "The Ruination", "The Harrowing"],
+      "answer": "After years of Shuriman oppression, Icathia's mages opened rifts to the Void and lost control of it. Their own capital was destroyed, and Shurima's Ascended fought for ages to contain the rifts."
     },
     {
       "id": "icathiaEmpire",

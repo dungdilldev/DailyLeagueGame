@@ -16,7 +16,7 @@
     </script>
     <meta
       name="description"
-      content="Summoner's Quiz is a free daily League of Legends trivia game. Pick a mode (stats, lore, esports, trivia or mixed) and answer five rounds, four options each."
+      content="Summoner's Quiz is a free daily League of Legends trivia game. Pick a mode (trivia, lore, stats, esports or mixed) and answer five rounds, four options each."
     />
     <meta name="theme-color" content="#010a13" />
     <link rel="canonical" href="https://summonersquiz.com/" />
@@ -25,7 +25,7 @@
     <meta property="og:title" content="Summoner's Quiz - daily League of Legends trivia" />
     <meta
       property="og:description"
-      content="Five rounds a day about champion stats, Runeterra lore, esports history and game trivia. Same puzzle for everyone, new every day."
+      content="Five rounds a day about game trivia, Runeterra lore, champion stats and esports history. Same puzzle for everyone, new every day."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Summoner&apos;s Quiz - daily League of Legends trivia</title>
@@ -47,7 +47,7 @@
                 right one. Everyone gets the same puzzle, and a new one arrives at midnight UTC.
               </p>
               <div class="hero__actions">
-                <a class="button button--large" href="stats.html">
+                <a class="button button--large" href="trivia.html">
                   Play today&apos;s puzzle
                   <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" />
@@ -123,7 +123,7 @@
               <span class="step__number" aria-hidden="true">1</span>
               <div>
                 <h3>Pick a category</h3>
-                <p>Stats, lore, esports, trivia, or a mix of everything.</p>
+                <p>Trivia, lore, stats, esports, or a mix of everything.</p>
               </div>
             </li>
             <li class="step">
@@ -152,12 +152,17 @@
               </p>
             </div>
             <nav class="mode-cards" aria-label="Game modes">
-              <a class="mode-card" href="stats.html" data-mode="stats">
+              <a class="mode-card" href="trivia.html" data-mode="trivia">
                 <span class="mode-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17.5v.01" />
+                  </svg>
                 </span>
-                <span class="mode-card__title">Stats</span>
-                <span class="mode-card__text">Champions, items and abilities by the numbers</span>
+                <span class="mode-card__title">Trivia</span>
+                <span class="mode-card__text"
+                  >Scrapped champions, removed modes and easter eggs</span
+                >
                 <span class="mode-card__cta">Play &rarr;</span>
                 <span class="mode-card__status" hidden>Played today</span>
               </a>
@@ -173,6 +178,15 @@
                 <span class="mode-card__cta">Play &rarr;</span>
                 <span class="mode-card__status" hidden>Played today</span>
               </a>
+              <a class="mode-card" href="stats.html" data-mode="stats">
+                <span class="mode-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
+                </span>
+                <span class="mode-card__title">Stats</span>
+                <span class="mode-card__text">Champions, items and abilities by the numbers</span>
+                <span class="mode-card__cta">Play &rarr;</span>
+                <span class="mode-card__status" hidden>Played today</span>
+              </a>
               <a class="mode-card" href="esports.html" data-mode="esports">
                 <span class="mode-card__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
@@ -182,20 +196,6 @@
                 </span>
                 <span class="mode-card__title">Esports</span>
                 <span class="mode-card__text">Worlds, MSI, players and teams</span>
-                <span class="mode-card__cta">Play &rarr;</span>
-                <span class="mode-card__status" hidden>Played today</span>
-              </a>
-              <a class="mode-card" href="trivia.html" data-mode="trivia">
-                <span class="mode-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17.5v.01" />
-                  </svg>
-                </span>
-                <span class="mode-card__title">Trivia</span>
-                <span class="mode-card__text"
-                  >Scrapped champions, removed modes and easter eggs</span
-                >
                 <span class="mode-card__cta">Play &rarr;</span>
                 <span class="mode-card__status" hidden>Played today</span>
               </a>

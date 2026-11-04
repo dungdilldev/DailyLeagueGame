@@ -127,11 +127,14 @@ export function RoundView({
       <div class="feedback" role="status">
         {revealed ? (
           <>
-            <p
-              class={`feedback__banner ${isCorrect(round, chosenId) ? 'feedback__ok' : 'feedback__bad'}`}
-            >
-              {isCorrect(round, chosenId) ? 'Correct!' : `Not quite. It was ${answerName}.`}
-            </p>
+            <div class="feedback__text">
+              <p
+                class={`feedback__banner ${isCorrect(round, chosenId) ? 'feedback__ok' : 'feedback__bad'}`}
+              >
+                {isCorrect(round, chosenId) ? 'Correct!' : `Not quite. It was ${answerName}.`}
+              </p>
+              {round.explanation && <p class="feedback__explanation">{round.explanation}</p>}
+            </div>
             <button type="button" class="button" ref={nextButton} onClick={onNext}>
               {isLastRound ? 'See results' : 'Next round'}
               <Icon name="arrowRight" size={16} />

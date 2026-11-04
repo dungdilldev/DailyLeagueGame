@@ -92,6 +92,19 @@ export function buildRound(
   band: GapBand,
   rng: Rng,
 ): Round | undefined {
+  const round = buildRoundOfKind(entities, question, band, rng);
+  // Added here rather than by each kind's builder, so every kind of question can have one.
+  return round && question.answer !== undefined
+    ? { ...round, explanation: question.answer }
+    : round;
+}
+
+function buildRoundOfKind(
+  entities: readonly Entity[],
+  question: Question,
+  band: GapBand,
+  rng: Rng,
+): Round | undefined {
   switch (question.kind) {
     case 'pick':
       return buildPickRound(entities, question, rng);
