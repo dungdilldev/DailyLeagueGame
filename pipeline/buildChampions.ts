@@ -1,6 +1,6 @@
 import type { Champion } from '../src/data/schema';
 import { esportsSkinLines } from './esportsSkins';
-import { championIconUrl } from './sources/dataDragon';
+import { iconPath } from './icons/iconPaths';
 import type { ChampionStat, StatInput } from './stats/types';
 
 function buildStats(input: StatInput, stats: readonly ChampionStat[]): Record<string, number> {
@@ -13,11 +13,7 @@ function buildStats(input: StatInput, stats: readonly ChampionStat[]): Record<st
   return Object.fromEntries(entries);
 }
 
-export function buildChampion(
-  input: StatInput,
-  version: string,
-  stats: readonly ChampionStat[],
-): Champion {
+export function buildChampion(input: StatInput, stats: readonly ChampionStat[]): Champion {
   const { summary } = input;
   const skinLines = esportsSkinLines(input.detail);
   return {
@@ -25,7 +21,7 @@ export function buildChampion(
     name: summary.name,
     title: summary.title,
     classes: summary.tags,
-    iconUrl: championIconUrl(version, summary),
+    iconUrl: iconPath('champions', summary.id),
     stats: buildStats(input, stats),
     // Left out when empty, which keeps the published file small.
     ...(skinLines.length > 0 && { esportsSkinLines: skinLines }),
@@ -35,10 +31,9 @@ export function buildChampion(
 /** Sorted by id so regenerating unchanged data gives an identical result. */
 export function buildChampions(
   inputs: readonly StatInput[],
-  version: string,
   stats: readonly ChampionStat[],
 ): Champion[] {
   return inputs
-    .map((input) => buildChampion(input, version, stats))
+    .map((input) => buildChampion(input, stats))
     .sort((a, b) => a.id.localeCompare(b.id));
 }

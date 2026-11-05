@@ -1,5 +1,5 @@
 import type { Ability } from '../src/data/schema';
-import { abilityIconUrl } from './sources/dataDragon';
+import { iconPath } from './icons/iconPaths';
 import type { AbilityStat, AbilityStatInput } from './stats/types';
 
 /** "Ahri Q · Orb of Deception": the card has to say whose ability it is. */
@@ -7,11 +7,7 @@ export function abilityDisplayName({ championName, slot, wiki }: AbilityStatInpu
   return `${championName} ${slot} · ${wiki.name}`;
 }
 
-export function buildAbility(
-  input: AbilityStatInput,
-  version: string,
-  stats: readonly AbilityStat[],
-): Ability {
+export function buildAbility(input: AbilityStatInput, stats: readonly AbilityStat[]): Ability {
   const entries = stats.flatMap((stat) => {
     const value = stat.extract(input);
     return value === undefined ? [] : [[stat.id, value] as const];
@@ -19,7 +15,7 @@ export function buildAbility(
   return {
     id: input.id,
     name: abilityDisplayName(input),
-    iconUrl: abilityIconUrl(version, input.spell),
+    iconUrl: iconPath('abilities', input.id),
     stats: Object.fromEntries(entries),
   };
 }
@@ -30,11 +26,10 @@ export function buildAbility(
  */
 export function buildAbilities(
   inputs: readonly AbilityStatInput[],
-  version: string,
   stats: readonly AbilityStat[],
 ): Ability[] {
   return inputs
-    .map((input) => buildAbility(input, version, stats))
+    .map((input) => buildAbility(input, stats))
     .filter((ability) => Object.keys(ability.stats).length > 0)
     .sort((a, b) => a.id.localeCompare(b.id));
 }

@@ -1,8 +1,8 @@
 import type { Item } from '../src/data/schema';
-import { itemIconUrl } from './sources/dataDragon';
+import { iconPath } from './icons/iconPaths';
 import type { ItemStat, ItemStatInput } from './stats/types';
 
-export function buildItem(input: ItemStatInput, version: string, stats: readonly ItemStat[]): Item {
+export function buildItem(input: ItemStatInput, stats: readonly ItemStat[]): Item {
   const entries = stats.flatMap((stat) => {
     const value = stat.extract(input);
     // Items only have the stats they actually grant; a missing value just leaves the stat out.
@@ -11,18 +11,14 @@ export function buildItem(input: ItemStatInput, version: string, stats: readonly
   return {
     id: input.item.id,
     name: input.item.name,
-    iconUrl: itemIconUrl(version, input.item),
+    iconUrl: iconPath('items', input.item.id),
     stats: Object.fromEntries(entries),
   };
 }
 
 /** Sorted so regenerating unchanged data gives an identical result. */
-export function buildItems(
-  inputs: readonly ItemStatInput[],
-  version: string,
-  stats: readonly ItemStat[],
-): Item[] {
+export function buildItems(inputs: readonly ItemStatInput[], stats: readonly ItemStat[]): Item[] {
   return inputs
-    .map((input) => buildItem(input, version, stats))
+    .map((input) => buildItem(input, stats))
     .sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id));
 }

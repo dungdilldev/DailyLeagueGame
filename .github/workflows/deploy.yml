@@ -41,14 +41,14 @@ jobs:
       - name: Commit data changes
         id: commit
         run: |
-          if [ -z "$(git status --porcelain public/data)" ]; then
+          if [ -z "$(git status --porcelain public/data public/images/icons)" ]; then
             echo "No data changes."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data
+          git add public/data public/images/icons
           git commit -m "Update champion data"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"

@@ -89,23 +89,22 @@ describe('ability stats', () => {
 });
 
 describe('buildAbilities', () => {
-  it('names the champion and slot, links the Data Dragon icon and sorts by id', () => {
+  it('names the champion and slot, points at its downloaded icon and sorts by id', () => {
     const abilities = buildAbilities(
       [abilityInput('W', { id: 'AhriW' }), abilityInput('E', { id: 'AhriE' })],
-      '16.21.1',
       ABILITY_STATS,
     );
     expect(abilities.map(({ id }) => id)).toEqual(['AhriE', 'AhriW']);
     expect(abilities[0]).toMatchObject({
       name: 'Ahri E · Charm',
-      iconUrl: 'https://ddragon.leagueoflegends.com/cdn/16.21.1/img/spell/AhriE.png',
+      iconUrl: 'images/icons/abilities/AhriE.png',
       stats: { basicAbilityDamage: 250, abilityApRatio: 60, basicAbilityCooldown: 10 },
     });
   });
 
   it('leaves out abilities without any stat', () => {
     const empty = abilityInput('Q', { wiki: { name: 'Charm' } });
-    expect(buildAbilities([empty], '16.21.1', ABILITY_STATS)).toEqual([]);
+    expect(buildAbilities([empty], ABILITY_STATS)).toEqual([]);
   });
 });
 

@@ -464,11 +464,13 @@ Goal (owner, 2026-11-05, after looking at how Champdle and LoLdle are built): a 
 
 **2. Local images**
 
-- [ ] Champion, item and ability icons downloaded from Data Dragon by `data:refresh` into `public/images/{champions,items,abilities}/` as PNG (no image library); only when the Data Dragon version changes or a file is missing; files of entities no longer in the data are deleted; a failed download fails the run
-- [ ] The data files hold local paths, joined with `BASE_URL` in the client (one new snapshot, harmless)
-- [ ] Region and group crests downloaded from the LoL Wiki (like the esports images) instead of hotlinked
-- [ ] Test: every entity and every crest has a file
-- [ ] `privacy.html` (the browser no longer contacts Riot or the wiki), CLAUDE.md (Riot legal, Region crests, Commands), `about.html` if needed
+- [x] Champion, item and ability icons downloaded from Data Dragon by `data:refresh` into `public/images/{champions,items,abilities}/` as PNG (no image library); only when the Data Dragon version changes or a file is missing; files of entities no longer in the data are deleted; a failed download fails the run
+- [x] The data files hold local paths, joined with `BASE_URL` in the client (one new snapshot, harmless)
+- [x] Region and group crests downloaded from the LoL Wiki (like the esports images) instead of hotlinked
+- [x] Test: every entity and every crest has a file; `e2e/images.spec.ts` plays each mode on the newest data and fails on any image from another host
+- [x] `deploy.yml` commits `public/images/icons` with the data (it only committed `public/data`)
+- Done 2026-11-05: 941 icons (12 MB) and 22 crests. Today's snapshot still names Data Dragon (a snapshot in effect is never edited); from 2026-11-06 every image is local
+- [x] `privacy.html` (the browser no longer contacts Riot or the wiki), CLAUDE.md (Riot legal, Region crests, Commands), `about.html` if needed
 
 **3. Puzzle built into the HTML**
 

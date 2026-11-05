@@ -18,11 +18,9 @@ const itemStats = ITEM_STATS;
 
 describe('buildChampion', () => {
   it('maps summary fields and records every champion stat', () => {
-    const champion = buildChampion(makeInput('Ahri'), '16.20.1', championStats);
+    const champion = buildChampion(makeInput('Ahri'), championStats);
 
-    expect(champion.iconUrl).toBe(
-      'https://ddragon.leagueoflegends.com/cdn/16.20.1/img/champion/Ahri.png',
-    );
+    expect(champion.iconUrl).toBe('images/icons/champions/Ahri.png');
     expect(champion.classes).toEqual(['Mage']);
     expect(Object.keys(champion.stats).sort()).toEqual(championStats.map((s) => s.id).sort());
     expect(champion.stats['baseHealth']).toBe(600);
@@ -34,7 +32,7 @@ describe('buildChampion', () => {
 
   it('leaves out a stat whose value is unavailable instead of failing', () => {
     const input = makeInput('New', { wiki: undefined, patchCount: undefined });
-    const champion = buildChampion(input, '16.20.1', championStats);
+    const champion = buildChampion(input, championStats);
     expect(champion.stats['releaseDate']).toBeUndefined();
     expect(champion.stats['patchesPerYear']).toBeUndefined();
     expect(champion.stats['skinsPerYear']).toBeUndefined();
@@ -46,7 +44,6 @@ describe('buildChampions', () => {
   it('sorts champions by id regardless of input order', () => {
     const champions = buildChampions(
       [makeInput('Zed'), makeInput('Ahri'), makeInput('Lux')],
-      '16.20.1',
       championStats,
     );
     expect(champions.map((c) => c.id)).toEqual(['Ahri', 'Lux', 'Zed']);
@@ -55,18 +52,18 @@ describe('buildChampions', () => {
   it('passes a bad number through so the schema check at the publish boundary can reject it', () => {
     const broken = makeInput('Bad');
     broken.detail.stats.hp = Number.NaN;
-    const [champion] = buildChampions([broken], '16.20.1', championStats);
+    const [champion] = buildChampions([broken], championStats);
     expect(Number.isNaN(champion?.stats['baseHealth'])).toBe(true);
   });
 });
 
 describe('buildItems', () => {
   it('maps the item, its icon and every item stat it has', () => {
-    const [item] = buildItems([makeItemInput('3031')], '16.20.1', itemStats);
+    const [item] = buildItems([makeItemInput('3031')], itemStats);
     expect(item).toMatchObject({
       id: '3031',
       name: 'Item 3031',
-      iconUrl: 'https://ddragon.leagueoflegends.com/cdn/16.20.1/img/item/3031.png',
+      iconUrl: 'images/icons/items/3031.png',
     });
     expect(item?.stats['itemCost']).toBe(3000);
     expect(item?.stats['itemAttackDamage']).toBe(60);
@@ -78,7 +75,6 @@ describe('buildItems', () => {
   it('sorts items by name regardless of input order', () => {
     const items = buildItems(
       [makeItemInput('2'), makeItemInput('1'), makeItemInput('3')],
-      '16.20.1',
       itemStats,
     );
     expect(items.map((item) => item.id)).toEqual(['1', '2', '3']);
@@ -109,8 +105,8 @@ describe('findProblems', () => {
       }),
     );
   const build = (champions = roster(MIN_CHAMPION_COUNT), items = itemRoster(MIN_ITEM_COUNT)) => ({
-    champions: buildChampions(champions, '16.20.1', championStats),
-    items: buildItems(items, '16.20.1', itemStats),
+    champions: buildChampions(champions, championStats),
+    items: buildItems(items, itemStats),
   });
 
   it('accepts a complete set of champions and items', () => {

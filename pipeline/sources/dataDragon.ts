@@ -7,13 +7,16 @@ const MAX_ATTEMPTS = 3;
 /** Fetches and parses JSON. Injected so tests never touch the network. */
 export type JsonFetcher = (url: string) => Promise<unknown>;
 
-export const fetchJson: JsonFetcher = async (url) => {
+/** Fetches a file's raw bytes (the icons). Injected so tests never touch the network. */
+export type BytesFetcher = (url: string) => Promise<Uint8Array>;
+
+async function fetchWithRetries<T>(url: string, read: (response: Response) => Promise<T>) {
   let lastError: unknown;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP ${String(response.status)} for ${url}`);
-      return (await response.json()) as unknown;
+      return await read(response);
     } catch (error) {
       lastError = error;
     }
@@ -21,7 +24,13 @@ export const fetchJson: JsonFetcher = async (url) => {
   throw new Error(`Failed to fetch ${url} after ${String(MAX_ATTEMPTS)} attempts`, {
     cause: lastError,
   });
-};
+}
+
+export const fetchJson: JsonFetcher = (url) =>
+  fetchWithRetries(url, async (response) => (await response.json()) as unknown);
+
+export const fetchBytes: BytesFetcher = (url) =>
+  fetchWithRetries(url, async (response) => new Uint8Array(await response.arrayBuffer()));
 
 const VersionsSchema = z.array(z.string()).min(1);
 

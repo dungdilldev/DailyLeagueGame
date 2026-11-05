@@ -18,9 +18,13 @@ import { collectAbilities } from './abilities/collectAbilities';
 import { buildAbilities } from './buildAbilities';
 import { buildChampions } from './buildChampions';
 import { buildItems } from './buildItems';
+import { mapWithConcurrency } from './concurrency';
+import { iconSources } from './icons/iconSources';
+import { syncIcons } from './icons/syncIcons';
 import { selectItems } from './items/selectItems';
 import { mergeSnapshots } from './snapshots';
 import {
+  fetchBytes,
   fetchChampionDetail,
   fetchChampionSummaries,
   fetchItems,
@@ -46,25 +50,8 @@ import {
 const CHAMPIONS_PATH = path.resolve('public/data/champions.json');
 const ITEMS_PATH = path.resolve('public/data/items.json');
 const ABILITIES_PATH = path.resolve('public/data/abilities.json');
+const SITE_ROOT = path.resolve('public');
 const CONCURRENCY = 8;
-
-/** Runs `task` over `items` with a bounded number of requests in flight, keeping input order. */
-async function mapWithConcurrency<T, R>(
-  items: readonly T[],
-  limit: number,
-  task: (item: T) => Promise<R>,
-): Promise<R[]> {
-  const results: R[] = [];
-  let next = 0;
-  const worker = async () => {
-    while (next < items.length) {
-      const index = next++;
-      results[index] = await task(items[index] as T);
-    }
-  };
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
-  return results;
-}
 
 /** Snapshots already published, or none if there is no usable file yet. */
 async function readExistingSnapshots<T extends Entity>(
@@ -140,9 +127,9 @@ async function main(): Promise<void> {
   const championStats = CHAMPION_STATS.map(toStatMeta);
   const itemStats = ITEM_STATS.map(toStatMeta);
   const abilityStats = ABILITY_STATS.map(toStatMeta);
-  const champions = buildChampions(withReferenceDate(championInputs), version, CHAMPION_STATS);
-  const items = buildItems(itemInputs, version, ITEM_STATS);
-  const abilities = buildAbilities(abilityInputs, version, ABILITY_STATS);
+  const champions = buildChampions(withReferenceDate(championInputs), CHAMPION_STATS);
+  const items = buildItems(itemInputs, ITEM_STATS);
+  const abilities = buildAbilities(abilityInputs, ABILITY_STATS);
   const questions = resolveQuestions(
     parseQuestionFiles(QUESTION_FILES),
     { champion: championStats, item: itemStats, ability: abilityStats },
@@ -194,6 +181,25 @@ async function main(): Promise<void> {
       ),
     },
   ];
+
+  // Icons first: if a download fails, no data file points at an icon that is not there.
+  const freshIcons = new Set([...champions, ...items, ...abilities].map(({ iconUrl }) => iconUrl));
+  const icons = await syncIcons({
+    siteRoot: SITE_ROOT,
+    sources: iconSources(version, {
+      champions: championInputs,
+      items: itemInputs,
+      abilities: abilityInputs,
+    }).filter((source) => freshIcons.has(source.path)),
+    inUse: new Set(
+      files.flatMap(({ file }) =>
+        file.snapshots.flatMap((snapshot) => snapshot.entities.map(({ iconUrl }) => iconUrl)),
+      ),
+    ),
+    version,
+    fetcher: fetchBytes,
+  });
+  console.log(`Icons: ${String(icons.downloaded)} downloaded, ${String(icons.removed)} removed`);
 
   for (const { path: filePath, file } of files) await writeJsonAtomically(filePath, file);
   for (const { name, file } of files) {

@@ -36,11 +36,12 @@ describe('team logo clue', () => {
 describe('roundSymbols', () => {
   it('gives every option its crest when all of them have one', () => {
     const symbols = roundSymbols(textRound(['Demacia', 'Noxus', 'Shadow Isles', 'The Black Rose']));
+    const crest = (file: string) => `${import.meta.env.BASE_URL}images/crests/${file}`;
     expect(symbols?.urls).toEqual({
-      Demacia: 'https://wiki.leagueoflegends.com/en-us/images/Demacia_Crest_icon.png',
-      Noxus: 'https://wiki.leagueoflegends.com/en-us/images/Noxus_Crest_icon.png',
-      'Shadow Isles': 'https://wiki.leagueoflegends.com/en-us/images/Shadow_Isles_Crest_icon.png',
-      'The Black Rose': 'https://wiki.leagueoflegends.com/en-us/images/Black_Rose_Crest_icon.png',
+      Demacia: crest('demacia-crest-icon.png'),
+      Noxus: crest('noxus-crest-icon.png'),
+      'Shadow Isles': crest('shadow-isles-crest-icon.png'),
+      'The Black Rose': crest('black-rose-crest-icon.png'),
     });
   });
 

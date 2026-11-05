@@ -49,7 +49,11 @@ const EntityFields = {
    */
   id: z.string().min(1),
   name: z.string().min(1),
-  iconUrl: z.url(),
+  /**
+   * The icon's address: a path below the site root (`images/icons/...`), or a Data Dragon address
+   * in snapshots made before the icons were downloaded (2026-11-05).
+   */
+  iconUrl: z.string().min(1),
   /** Stat id -> value. A stat is absent when its source has no value for this entity. */
   stats: z.record(z.string(), z.number().nonnegative()),
 };
