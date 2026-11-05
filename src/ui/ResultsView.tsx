@@ -14,8 +14,6 @@ interface ResultsViewProps {
   answers: readonly string[];
   streak: number;
   shareUrl: string;
-  /** False for an earlier day from the archive: no countdown, and a note about the streak. */
-  isToday: boolean;
   mode: GameMode;
   /** A mode not finished yet today, offered as the next one to play. */
   nextMode?: GameMode;
@@ -28,7 +26,6 @@ export function ResultsView({
   answers,
   streak,
   shareUrl,
-  isToday,
   mode,
   nextMode,
 }: ResultsViewProps) {
@@ -55,9 +52,7 @@ export function ResultsView({
 
   return (
     <section class="results-panel" aria-labelledby="results-heading">
-      <p class="results-panel__eyebrow">
-        {isToday ? 'Today’s result' : 'Earlier puzzle'} · {MODE_LABELS[mode]}
-      </p>
+      <p class="results-panel__eyebrow">Today’s result · {MODE_LABELS[mode]}</p>
       <h2 id="results-heading" class="results-panel__score">
         You got{' '}
         <strong>
@@ -89,7 +84,7 @@ export function ResultsView({
           <Icon name="share" />
           {copyStatus === 'copied' ? 'Copied!' : 'Share result'}
         </button>
-        {isToday && nextMode && (
+        {nextMode && (
           <a class="button button--large button--secondary" href={modePageHref(nextMode)}>
             Play {MODE_LABELS[nextMode]} next
           </a>
@@ -109,14 +104,7 @@ export function ResultsView({
         </div>
       )}
 
-      {isToday ? (
-        <Countdown puzzleDate={puzzle.date} />
-      ) : (
-        <p class="results-panel__note">
-          This was an earlier puzzle, so it does not count towards your streak. Use “Next day” to
-          get back to today.
-        </p>
-      )}
+      <Countdown puzzleDate={puzzle.date} />
     </section>
   );
 }

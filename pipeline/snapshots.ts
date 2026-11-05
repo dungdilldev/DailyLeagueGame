@@ -1,16 +1,14 @@
 import type { Snapshot } from '../src/data/schema';
-import { earliestPlayableDate } from '../src/game/archive';
 import { addUtcDays } from '../src/game/date';
 
 type FreshData<T> = Pick<Snapshot<T>, 'patch' | 'entities'>;
 
 /**
- * Keeps what players can still reach: the snapshot that was in effect on the earliest playable
- * archive day, and everything after it. Older snapshots are never used again.
+ * Keeps what players can still reach: the snapshot in effect today and any upcoming one. Only
+ * today can be played, so older snapshots are never used again.
  */
 export function pruneSnapshots<T>(snapshots: readonly Snapshot<T>[], today: string): Snapshot<T>[] {
-  const earliest = earliestPlayableDate(today);
-  const firstNeeded = snapshots.findLastIndex((snapshot) => snapshot.effectiveFrom <= earliest);
+  const firstNeeded = snapshots.findLastIndex((snapshot) => snapshot.effectiveFrom <= today);
   return firstNeeded <= 0 ? [...snapshots] : snapshots.slice(firstNeeded);
 }
 

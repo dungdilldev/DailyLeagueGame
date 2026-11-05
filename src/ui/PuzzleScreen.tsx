@@ -8,16 +8,14 @@ import { Game } from './Game';
 interface PuzzleScreenProps {
   data: GameData;
   mode: GameMode;
-  /** The puzzle day being played (today, or an earlier day from the archive). */
+  /** The puzzle day being played: today (UTC). */
   date: string;
-  /** The real current UTC day. */
-  today: string;
   storage: StorageLike | undefined;
   shareUrl: string;
 }
 
 /** Builds the puzzle for `date` from the loaded data and plays it. */
-export function PuzzleScreen({ data, mode, date, today, storage, shareUrl }: PuzzleScreenProps) {
+export function PuzzleScreen({ data, mode, date, storage, shareUrl }: PuzzleScreenProps) {
   const daily = useMemo(() => {
     try {
       return createDailyPuzzle(data, date, mode);
@@ -41,7 +39,6 @@ export function PuzzleScreen({ data, mode, date, today, storage, shareUrl }: Puz
       puzzle={daily.puzzle}
       entities={daily.entities}
       date={date}
-      today={today}
       storage={storage}
       shareUrl={shareUrl}
     />

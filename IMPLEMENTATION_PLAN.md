@@ -286,7 +286,7 @@ Decisions (owner, 2026-10-24): all four idea groups, and memorable moments in mi
 - [x] 11 memorable moments (`subcategory: moments`): who, which team, which champion, which year
 - Mixed mode is now about 38% stats, 43% lore, 19% esports (was about 10% esports). Not done: region-specific moments and older or regional moments (the owner can add favourites; every fact needs a source)
 
-### Phase 5d - Previous days (done)
+### Phase 5d - Previous days (done, removed again in Phase 9)
 
 - [x] Day navigation (“Previous day” / “Next day”) and `?date=YYYY-MM-DD` in the address; invalid, future and too-old dates fall back to today (`src/game/archive.ts`)
 - [x] Window of `ARCHIVE_DAYS` = 7 days back (one constant; set to 1 for “yesterday only”). Data snapshots are pruned to match, so an earlier day is rebuilt from the data that was live then
@@ -441,6 +441,53 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 - [ ] If ads hurt play, move the banner or remove it
 
 **Done when:** approved ads show on the live domain only after consent where required, the game works identically with ads blocked, the privacy policy matches what the site does, and `npm run check` and the e2e tests pass.
+
+### Phase 9 - Built daily, today only, local images (in progress)
+
+Goal (owner, 2026-11-05, after looking at how Champdle and LoLdle are built): a simpler, faster site whose game pages carry the day's questions in their HTML. The puzzle is generated at build time, the site is rebuilt every day, only today can be played and every image is served from our own host.
+
+**Decisions (owner, 2026-11-05)**
+
+- [x] Midnight handover: every game page holds **today's and tomorrow's** puzzle; the client picks by UTC date and, if neither matches (a missed build), shows the newer one with a short note. Accepted: tomorrow's answers are in the page source a day early (casual game, answers were never secret)
+- [x] The production client gets the puzzle only: no data files, question files, player file, schemas or generator. Only the dev-only endless mode still loads them (lazy import)
+- [x] No "yesterday's answers" page for now, no puzzle number
+
+**Order:** 1, then 2, then 3 and 4 together (built-in puzzles without a daily build would go stale at midnight).
+
+**1. Today only (remove previous days)**
+
+- [x] Remove `src/game/archive.ts`, `DayNav`, the `?date=` handling in `App.tsx`, `ModeNav`'s `archiveDate`, the date kept by `modePageHref` and `play.html`, and the "Earlier puzzle" result note
+- [x] Remove the `late` flag from new saves; old saves (with `late` or an old date) must still load, and old days never count for the streak
+- [x] A `?date=` link opens today and the parameter is removed from the address
+- [x] Snapshots: keep only the snapshot in effect today plus any upcoming one (`pruneSnapshots`)
+- [x] Tests (unit and e2e), `how-to-play.html` (earlier days paragraph and meta description), CLAUDE.md (Archive, Snapshots, Game modes), `docs/LOCAL_TESTING.md`. The day buttons are gone without a replacement: the game no longer shows the date
+
+**2. Local images**
+
+- [ ] Champion, item and ability icons downloaded from Data Dragon by `data:refresh` into `public/images/{champions,items,abilities}/` as PNG (no image library); only when the Data Dragon version changes or a file is missing; files of entities no longer in the data are deleted; a failed download fails the run
+- [ ] The data files hold local paths, joined with `BASE_URL` in the client (one new snapshot, harmless)
+- [ ] Region and group crests downloaded from the LoL Wiki (like the esports images) instead of hotlinked
+- [ ] Test: every entity and every crest has a file
+- [ ] `privacy.html` (the browser no longer contacts Riot or the wiki), CLAUDE.md (Riot legal, Region crests, Commands), `about.html` if needed
+
+**3. Puzzle built into the HTML**
+
+- [ ] Build step (`PUZZLE_DATE` env, default today in UTC): for each mode page, generate today's and tomorrow's puzzle with the existing generator, render the day's questions and option names into `<main>` (crawlable text) and embed both puzzles as JSON; answers and answer texts only in the JSON, never as hidden HTML
+- [ ] The Preact app hydrates from the embedded puzzle, picks the day by UTC date, falls back to the newer puzzle with a note; no flash of round 1 for a player whose saved progress is further on
+- [ ] Production bundle without data, question and player files, schemas and generator; the endless mode loads them lazily in dev
+- [ ] Landing page sample round built in the same way
+- [ ] Tests: unit test of the build step (page holds the questions, embedded puzzle equals `createDailyPuzzle`); e2e builds with a fixed `PUZZLE_DATE` and sets `page.clock` to it, including the day switch at midnight
+- [ ] CLAUDE.md ("Puzzles are generated in the browser", Determinism, Architecture), section 2 of this plan
+
+**4. Daily rebuild**
+
+- [ ] `deploy.yml`: build and deploy on every scheduled run, not only when data changed; twice a day (e.g. 12:00 and 22:00 UTC) so a late or skipped run is covered by tomorrow's puzzle
+- [ ] A failed data refresh no longer blocks the build: it builds from the last committed good data; only failing tests block the deploy
+- [ ] After deploy: fetch the live page and check that it holds today's puzzle
+- [ ] Failure notification (Phase 4 open item) beyond GitHub's email, now that the site depends on the daily build
+- [ ] Known: GitHub turns off scheduled workflows of public repos after 60 days without activity; data commits every patch should keep it active
+
+**Done when:** the live site works a full week with no manual action, across UTC midnight, with no request to a third-party image host, and `npm run check` and the e2e tests pass.
 
 ## 5. Risks & Open Questions
 

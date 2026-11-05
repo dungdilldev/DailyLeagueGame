@@ -11,7 +11,10 @@ const DayRecordSchema = z.object({
   /** Champion id chosen in each round, in order. */
   answers: z.array(z.string()),
   complete: z.boolean(),
-  /** Set when the puzzle was played after its own day; such days do not count for the streak. */
+  /**
+   * Set on days played after their own day, back when earlier days could be played (until
+   * 2026-11-05). No longer written, but such saved days still do not count for the streak.
+   */
   late: z.boolean().optional(),
 });
 export type DayRecord = z.infer<typeof DayRecordSchema>;

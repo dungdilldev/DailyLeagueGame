@@ -17,15 +17,13 @@ interface GameProps {
   entities: Readonly<Record<OptionSubject, ReadonlyMap<string, Entity>>>;
   /** Which game mode this puzzle belongs to; each mode saves its own progress and streak. */
   mode: GameMode;
-  /** UTC date of the puzzle being played. */
+  /** UTC date of the puzzle being played: today. */
   date: string;
-  /** The real current UTC day. Playing an earlier day does not count for the streak. */
-  today: string;
   storage: StorageLike | undefined;
   shareUrl: string;
 }
 
-export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }: GameProps) {
+export function Game({ puzzle, entities, mode, date, storage, shareUrl }: GameProps) {
   const slot = progressSlot(mode);
   const [days, setDays] = useState(() => loadSavedDays(storage, slot));
   // True between answering a round and pressing "Next": the reveal is shown for that round.
@@ -49,11 +47,10 @@ export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }:
         answers={answers}
         streak={currentStreak(
           completedDates(days).filter((completed) => completed !== date || complete),
-          today,
+          date,
         )}
-        isToday={date === today}
         mode={mode}
-        nextMode={nextUnfinishedMode(mode, modesFinishedOn(storage, today))}
+        nextMode={nextUnfinishedMode(mode, modesFinishedOn(storage, date))}
         shareUrl={shareUrl}
       />
     );
@@ -65,11 +62,7 @@ export function Game({ puzzle, entities, mode, date, today, storage, shareUrl }:
 
   const choose = (optionId: string) => {
     const next = submitAnswer(puzzle, answers, optionId);
-    const record = {
-      answers: next,
-      complete: isComplete(puzzle, next),
-      ...(date !== today && { late: true }),
-    };
+    const record = { answers: next, complete: isComplete(puzzle, next) };
     saveDay(storage, date, record, slot);
     setDays((previous) => ({ ...previous, [date]: record }));
     setRevealing(true);

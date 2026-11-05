@@ -1,17 +1,14 @@
-import { useState } from 'preact/hooks';
-import { resolvePuzzleDate } from '../game/archive';
+import { useEffect } from 'preact/hooks';
 import { formatUtcDate } from '../game/date';
 import type { GameMode } from '../game/gameMode';
 import { getBrowserStorage } from '../storage/progressStore';
 import { modesFinishedOn } from '../storage/playedModes';
 import { AdSlot } from './AdSlot';
-import { DayNav } from './DayNav';
 import { EndlessScreen } from './EndlessScreen';
 import { ModeNav } from './ModeNav';
 import { PrivacySettingsLink } from './PrivacySettingsLink';
 import { PuzzleScreen } from './PuzzleScreen';
 import { SupportButton } from './SupportButton';
-import { DATE_PARAM } from './modePages';
 import { cleanSeed, randomSeed } from './randomSeed';
 import { useGameFile } from './useGameFile';
 
@@ -21,6 +18,8 @@ const SHARE_URL = window.location.origin + window.location.pathname;
 const MODE_PARAM = 'mode';
 const SEED_PARAM = 'seed';
 const ENDLESS_MODE = 'endless';
+/** Earlier days could be opened with `?date=` until 2026-11-05; such links now open today. */
+const OLD_DATE_PARAM = 'date';
 
 // A testing tool, so it only exists in development builds: Vite replaces `import.meta.env.DEV`
 // with `false` in production and drops the endless screen from the bundle.
@@ -28,20 +27,14 @@ const isEndlessMode =
   import.meta.env.DEV &&
   new URLSearchParams(window.location.search).get(MODE_PARAM) === ENDLESS_MODE;
 
-function readRequestedDate(): string {
-  const requested = new URLSearchParams(window.location.search).get(DATE_PARAM);
-  return resolvePuzzleDate(requested, TODAY);
-}
-
 function readInitialSeed(): string {
   return cleanSeed(new URLSearchParams(window.location.search).get(SEED_PARAM)) ?? randomSeed();
 }
 
-/** Keeps the address bar in sync so an earlier day survives a reload and can be bookmarked. */
-function showDateInUrl(date: string): void {
+function removeOldDateFromUrl(): void {
   const url = new URL(window.location.href);
-  if (date === TODAY) url.searchParams.delete(DATE_PARAM);
-  else url.searchParams.set(DATE_PARAM, date);
+  if (!url.searchParams.has(OLD_DATE_PARAM)) return;
+  url.searchParams.delete(OLD_DATE_PARAM);
   window.history.replaceState(null, '', url);
 }
 
@@ -52,12 +45,7 @@ function showSeedInUrl(seed: string): void {
   window.history.replaceState(null, '', url);
 }
 
-interface BodyProps {
-  date: string;
-  mode: GameMode;
-}
-
-function Body({ date, mode }: BodyProps) {
+function Body({ mode }: { mode: GameMode }) {
   const state = useGameFile();
 
   switch (state.kind) {
@@ -80,8 +68,7 @@ function Body({ date, mode }: BodyProps) {
         <PuzzleScreen
           data={state.data}
           mode={mode}
-          date={date}
-          today={TODAY}
+          date={TODAY}
           storage={getBrowserStorage()}
           shareUrl={SHARE_URL}
         />
@@ -95,12 +82,7 @@ interface AppProps {
 }
 
 export function App({ mode }: AppProps) {
-  const [date, setDate] = useState(readRequestedDate);
-
-  const changeDate = (next: string) => {
-    setDate(next);
-    showDateInUrl(next);
-  };
+  useEffect(removeOldDateFromUrl, []);
 
   return (
     <>
@@ -109,18 +91,11 @@ export function App({ mode }: AppProps) {
           <a href={window.location.pathname}>&larr; Back to the daily puzzle</a>
         </p>
       ) : (
-        <>
-          <div class="game__toolbar">
-            <ModeNav
-              mode={mode}
-              finished={modesFinishedOn(getBrowserStorage(), date)}
-              archiveDate={date === TODAY ? undefined : date}
-            />
-            <DayNav date={date} today={TODAY} onChange={changeDate} />
-          </div>
-        </>
+        <div class="game__toolbar">
+          <ModeNav mode={mode} finished={modesFinishedOn(getBrowserStorage(), TODAY)} />
+        </div>
       )}
-      <Body date={date} mode={mode} />
+      <Body mode={mode} />
       <SupportButton />
       {!isEndlessMode && (
         <>

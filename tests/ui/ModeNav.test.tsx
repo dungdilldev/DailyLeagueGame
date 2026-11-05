@@ -26,13 +26,6 @@ describe('ModeNav', () => {
     expect(screen.getByRole('link', { name: 'Mixed' }).getAttribute('aria-current')).toBeNull();
   });
 
-  it('keeps an earlier day when switching mode', () => {
-    render(<ModeNav mode="stats" archiveDate="2026-03-04" />);
-    expect(screen.getByRole('link', { name: 'Trivia' }).getAttribute('href')).toBe(
-      'trivia.html?date=2026-03-04',
-    );
-  });
-
   it('marks the finished modes, and says so to screen readers', () => {
     render(<ModeNav mode="stats" finished={['lore']} />);
     expect(screen.getByRole('link', { name: 'Lore, finished' })).toBeTruthy();

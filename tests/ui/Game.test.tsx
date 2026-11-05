@@ -90,7 +90,6 @@ const renderGame = (storage: StorageLike) =>
       entities={entities}
       mode="mixed"
       date={TODAY}
-      today={TODAY}
       storage={storage}
       shareUrl="https://example.com/"
     />,
@@ -147,7 +146,6 @@ describe('Game', () => {
         entities={entities}
         mode="mixed"
         date={TODAY}
-        today={TODAY}
         storage={memoryStorage()}
         shareUrl="https://example.com/"
       />,
@@ -182,7 +180,6 @@ describe('Game', () => {
         entities={entities}
         mode="mixed"
         date={TODAY}
-        today={TODAY}
         storage={memoryStorage()}
         shareUrl="https://example.com/"
       />,
@@ -216,7 +213,6 @@ describe('Game', () => {
         entities={entities}
         mode="mixed"
         date={TODAY}
-        today={TODAY}
         storage={memoryStorage()}
         shareUrl="https://example.com/"
       />,
@@ -258,7 +254,6 @@ describe('Game', () => {
         entities={entities}
         mode="mixed"
         date={TODAY}
-        today={TODAY}
         storage={undefined}
         shareUrl="https://example.com/"
       />,
@@ -267,32 +262,20 @@ describe('Game', () => {
     expect(screen.getByText('Correct!')).toBeTruthy();
   });
 
-  it('an earlier day can be played but does not count towards the streak', async () => {
+  it('saves today without a late flag; a day saved as played late still does not count', async () => {
     const user = userEvent.setup();
     const storage = memoryStorage();
-    render(
-      <Game
-        puzzle={{ ...puzzle, date: '2026-03-04' }}
-        entities={entities}
-        mode="mixed"
-        date="2026-03-04"
-        today={TODAY}
-        storage={storage}
-        shareUrl="https://example.com/"
-      />,
-    );
+    // Saved back when earlier days could be played: yesterday's puzzle, played after its day.
+    saveDay(storage, '2026-03-04', { answers: ['Ahri', 'Ahri'], complete: true, late: true });
+    renderGame(storage);
 
     await user.click(screen.getByRole('button', { name: /Ahri/ }));
     await user.click(screen.getByRole('button', { name: 'Next round' }));
     await user.click(screen.getByRole('button', { name: /Ahri/ }));
     await user.click(screen.getByRole('button', { name: 'See results' }));
 
-    expect(screen.getByText('2/2')).toBeTruthy();
-    expect(screen.getByText('No streak yet')).toBeTruthy();
-    expect(screen.queryByText(/Next puzzle in/)).toBeNull();
-    expect(screen.getByText(/earlier puzzle/)).toBeTruthy();
-    expect(screen.queryByRole('link', { name: /^Play .* next$/ })).toBeNull();
-    expect(loadSavedDays(storage)['2026-03-04']?.late).toBe(true);
+    expect(screen.getByText('Streak: 1 day')).toBeTruthy();
+    expect(loadSavedDays(storage)[TODAY]).toEqual({ answers: ['Ahri', 'Ahri'], complete: true });
   });
 
   it('keeps progress for different days separate', async () => {
@@ -304,7 +287,6 @@ describe('Game', () => {
         entities={entities}
         mode="mixed"
         date={TODAY}
-        today={TODAY}
         storage={storage}
         shareUrl="https://example.com/"
       />
@@ -319,7 +301,6 @@ describe('Game', () => {
         entities={entities}
         mode="mixed"
         date="2026-03-04"
-        today={TODAY}
         storage={storage}
         shareUrl="https://example.com/"
       />,
@@ -337,7 +318,6 @@ describe('Game', () => {
         entities={entities}
         mode="stats"
         date={TODAY}
-        today={TODAY}
         storage={storage}
         shareUrl="https://example.com/"
       />,

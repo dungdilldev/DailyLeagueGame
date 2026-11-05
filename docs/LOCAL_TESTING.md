@@ -14,7 +14,7 @@ npx playwright install chromium     # only needed for the browser tests (npm run
 The site opens on a start page with one card per mode; each mode is its own page, and the links at
 the top of the game switch between them. Open http://localhost:5173/lore.html (or `stats`,
 `esports`, `trivia`, `mixed`) to go straight to one. Old addresses still work:
-`/play.html?category=lore` opens `lore.html`, and `/?category=lore`, `/?date=...` and
+`/play.html?category=lore` opens `lore.html`, and `/?category=lore` and
 `/?mode=endless` on the start page redirect the same way. Each
 mode saves its own progress, so to replay one mode only, clear its key in the browser's local
 storage: `dailyleague:v1` is the mixed mode, `dailyleague:v1:lore` and so on are the others.
@@ -27,15 +27,11 @@ npm run dev
 
 Open http://localhost:5173/ (start page) and pick a mode. The page reloads when you edit code. Stop with `Ctrl+C`.
 
-| Goal                       | Command or URL                                                       |
-| -------------------------- | -------------------------------------------------------------------- |
-| Play on your phone         | `npm run dev -- --host`, then open the "Network" address it prints   |
-| Try the production build   | `npm run build`, then `npm run preview` (http://localhost:4173/)     |
-| Play an earlier day        | Use the "Previous day" button, or open `/stats.html?date=YYYY-MM-DD` |
-| Play again after finishing | Reset progress (below)                                               |
-
-Only today and the previous 7 days can be opened. Any other date in the address falls back to today.
-Days played after their own date do not count towards the streak.
+| Goal                       | Command or URL                                                     |
+| -------------------------- | ------------------------------------------------------------------ |
+| Play on your phone         | `npm run dev -- --host`, then open the "Network" address it prints |
+| Try the production build   | `npm run build`, then `npm run preview` (http://localhost:4173/)   |
+| Play again after finishing | Reset progress (below)                                             |
 
 ### Endless mode (testing every question)
 

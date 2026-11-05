@@ -1,6 +1,5 @@
 import { type Locator, type Page } from '@playwright/test';
 import { expect, test } from './test';
-import { ARCHIVE_DAYS } from '../src/game/archive';
 import { collectErrors, playFullDay, ROUNDS_PER_DAY } from './helpers';
 
 const START_HEADING = 'How well do you know League of Legends?';
@@ -75,54 +74,11 @@ test('shows a friendly message when the game data cannot be loaded', async ({ pa
   await expect(page.getByRole('alert')).toContainText('Something went wrong');
 });
 
-test.describe('day navigation', () => {
-  test('goes back to the previous day and returns to today', async ({ page }, testInfo) => {
-    await page.goto('/stats.html');
-    const next = page.getByRole('button', { name: /Next day/ });
-    await expect(next).toBeDisabled();
-    await expect(page.getByText('Today', { exact: true })).toBeVisible();
-
-    await page.getByRole('button', { name: /Previous day/ }).click();
-    await expect(page).toHaveURL(/\?date=\d{4}-\d{2}-\d{2}$/);
-    await expect(page.getByText('Earlier puzzle')).toBeVisible();
-    await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
-    await page.screenshot({ path: testInfo.outputPath('previous-day.png'), fullPage: true });
-
-    // The chosen day survives a reload.
-    await page.reload();
-    await expect(page.getByText('Earlier puzzle')).toBeVisible();
-
-    await next.click();
-    await expect(page.getByText('Today', { exact: true })).toBeVisible();
-    await expect(page).not.toHaveURL(/date=/);
-  });
-
-  test('can go back only as far as the archive window allows', async ({ page }) => {
-    await page.goto('/stats.html');
-    const previous = page.getByRole('button', { name: /Previous day/ });
-    for (let day = 0; day < ARCHIVE_DAYS; day++) await previous.click();
-    await expect(previous).toBeDisabled();
-  });
-
-  test('ignores a date in the address that is invalid or outside the window', async ({ page }) => {
-    for (const value of ['2000-01-01', '2099-01-01', 'garbage']) {
-      await page.goto(`/stats.html?date=${value}`);
-      await expect(page.getByText('Today', { exact: true })).toBeVisible();
-    }
-  });
-
-  test('keeps progress for today and an earlier day separate', async ({ page }) => {
-    await page.goto('/stats.html');
-    await page.locator('.card').first().click();
-    await page.getByRole('button', { name: 'Next round' }).click();
-    await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
-
-    await page.getByRole('button', { name: /Previous day/ }).click();
-    await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
-
-    await page.getByRole('button', { name: /Next day/ }).click();
-    await expect(page.getByText(`Round 2 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
-  });
+test('an old link to an earlier day opens today and drops the date', async ({ page }) => {
+  await page.goto('/stats.html?date=2000-01-01');
+  await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
+  await expect(page).toHaveURL(/\/stats\.html$/);
+  await expect(page.getByRole('navigation', { name: 'Choose puzzle day' })).toHaveCount(0);
 });
 
 /** The mode links at the top of the game. */
@@ -176,17 +132,9 @@ test.describe('game modes', () => {
     expect(errors).toEqual([]);
   });
 
-  test('switching mode on an earlier day keeps that day', async ({ page }) => {
-    await page.goto('/stats.html');
-    await page.getByRole('button', { name: /Previous day/ }).click();
-    await modeNav(page).getByRole('link', { name: 'Trivia' }).click();
-    await expect(page).toHaveURL(/\/trivia\.html\?date=\d{4}-\d{2}-\d{2}$/);
-    await expect(page.getByText('Today', { exact: true })).toHaveCount(0);
-  });
-
   test('old game links open the mode page and keep the rest of the address', async ({ page }) => {
-    await page.goto('/play.html?category=lore&date=garbage');
-    await expect(page).toHaveURL(/\/lore\.html\?date=garbage$/);
+    await page.goto('/play.html?category=lore&seed=abc');
+    await expect(page).toHaveURL(/\/lore\.html\?seed=abc$/);
     await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
 
     await page.goto('/play.html');

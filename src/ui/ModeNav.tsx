@@ -5,20 +5,18 @@ import { modePageHref } from './modePages';
 
 interface ModeNavProps {
   mode: GameMode;
-  /** Modes whose puzzle of the day shown is finished: their link gets a check mark. */
+  /** Modes whose puzzle of today is finished: their link gets a check mark. */
   finished?: readonly GameMode[];
-  /** An earlier day being played: the other modes open on that day too. */
-  archiveDate?: string;
 }
 
 /** One link per game mode page: the mixed puzzle, or the questions of a single category. */
-export function ModeNav({ mode, finished = [], archiveDate }: ModeNavProps) {
+export function ModeNav({ mode, finished = [] }: ModeNavProps) {
   return (
     <nav class="mode-nav" aria-label="Choose game mode">
       {GAME_MODES.map((option) => (
         <a
           key={option}
-          href={modePageHref(option, archiveDate)}
+          href={modePageHref(option)}
           class={`mode-nav__button${option === mode ? ' mode-nav__button--active' : ''}`}
           aria-current={option === mode ? 'page' : undefined}
         >

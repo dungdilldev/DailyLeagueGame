@@ -80,18 +80,10 @@ describe('mergeSnapshots', () => {
     expect(merged[1]?.effectiveFrom).toBe('2026-03-06');
   });
 
-  it('keeps the snapshot players can still reach through the archive window', () => {
+  it('drops snapshots no longer in effect, keeping today and the upcoming one', () => {
     const existing = [snapshot('1.0', '2026-03-01'), snapshot('1.1', '2026-03-06', DATA_V2)];
     const newer = [champion('Ahri', 610)];
-    // Archive reaches back to 03-03, which was still on 1.0.
     const merged = mergeSnapshots(existing, { patch: '1.2', entities: newer }, '2026-03-10');
-    expect(merged.map((s) => s.patch)).toEqual(['1.0', '1.1', '1.2']);
-  });
-
-  it('drops snapshots once the archive window has moved past them', () => {
-    const existing = [snapshot('1.0', '2026-03-01'), snapshot('1.1', '2026-03-06', DATA_V2)];
-    const newer = [champion('Ahri', 610)];
-    const merged = mergeSnapshots(existing, { patch: '1.2', entities: newer }, '2026-03-20');
     expect(merged.map((s) => s.patch)).toEqual(['1.1', '1.2']);
   });
 });
@@ -114,13 +106,18 @@ describe('dropRepeatedSnapshots', () => {
 });
 
 describe('pruneSnapshots', () => {
-  it('keeps the current snapshot and everything after it', () => {
+  it('keeps the snapshot in effect today and everything after it', () => {
     const all = [
       snapshot('a', '2026-01-01'),
       snapshot('b', '2026-02-01'),
       snapshot('c', '2026-04-01'),
     ];
     expect(pruneSnapshots(all, '2026-03-01').map((s) => s.patch)).toEqual(['b', 'c']);
+  });
+
+  it('keeps a snapshot that starts today and drops the one before it', () => {
+    const all = [snapshot('a', '2026-03-01'), snapshot('b', '2026-03-05')];
+    expect(pruneSnapshots(all, '2026-03-05').map((s) => s.patch)).toEqual(['b']);
   });
 
   it('keeps everything when none is in effect yet', () => {
