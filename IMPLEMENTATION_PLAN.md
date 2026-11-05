@@ -27,7 +27,7 @@ Status legend: `[ ]` todo, `[x]` done. Update as work progresses.
 ## 2. Architecture
 
 ```
-GitHub Actions (cron, daily)
+GitHub Actions (cron, 12:00 and 22:00 UTC)
    |
    v
 pipeline/sources  -> fetch Data Dragon + LoL Wiki
@@ -39,16 +39,17 @@ public/data/champions.json + items.json + abilities.json  (stats + snapshots; co
 data/questions/*.json  (hand-edited question templates, one file per category, bundled into the app)
    |
    v
-Static site (Vite build) -> GitHub Pages
+Static site (Vite build, every run): for each game page, pick each file's snapshot for today and
+         tomorrow (UTC), generate both days' puzzles with the date-seeded generator
+         (src/game/generate), put round 1 into the HTML and both puzzles in as JSON -> GitHub Pages
    |
    v
-Browser: load both data files, pick each file's snapshot for today (UTC), generate the day's puzzle
-         with the date-seeded generator (src/game/generate), play, store result in localStorage
+Browser: pick today's puzzle from the page by UTC date, play, store result in localStorage
 ```
 
-**Why static + generate in the browser:** zero hosting cost, no server, no per-day files in the repo. The generator is deterministic (seed = UTC date), so every player gets the same puzzle. Snapshots with an `effectiveFrom` date keep a day's puzzle stable when data changes. Trade-off: answers are inspectable by anyone (a server would be needed to hide them).
+**Why static + generate at build time** (in the browser until 2026-11-05)**:** zero hosting cost, no server, no per-day files in the repo, and the game pages carry their questions as text. The generator is deterministic (seed = UTC date), so every player gets the same puzzle. Snapshots with an `effectiveFrom` date keep a day's puzzle stable when data changes. Trade-off: answers are inspectable by anyone (a server would be needed to hide them).
 
-**Self-healing:** if a refresh fails, the site keeps serving the last good data. Puzzles keep generating from it.
+**Self-healing:** if a refresh fails, the site is still rebuilt from the last good data. If a build fails, the pages already carry tomorrow's puzzle; after that they show their newest puzzle with a note.
 
 ## 3. Data Model (TypeScript sketch)
 
@@ -474,20 +475,22 @@ Goal (owner, 2026-11-05, after looking at how Champdle and LoLdle are built): a 
 
 **3. Puzzle built into the HTML**
 
-- [ ] Build step (`PUZZLE_DATE` env, default today in UTC): for each mode page, generate today's and tomorrow's puzzle with the existing generator, render the day's questions and option names into `<main>` (crawlable text) and embed both puzzles as JSON; answers and answer texts only in the JSON, never as hidden HTML
-- [ ] The Preact app hydrates from the embedded puzzle, picks the day by UTC date, falls back to the newer puzzle with a note; no flash of round 1 for a player whose saved progress is further on
-- [ ] Production bundle without data, question and player files, schemas and generator; the endless mode loads them lazily in dev
-- [ ] Landing page sample round built in the same way
-- [ ] Tests: unit test of the build step (page holds the questions, embedded puzzle equals `createDailyPuzzle`); e2e builds with a fixed `PUZZLE_DATE` and sets `page.clock` to it, including the day switch at midnight
-- [ ] CLAUDE.md ("Puzzles are generated in the browser", Determinism, Architecture), section 2 of this plan
+- [x] Build step (`prerender-puzzles` in `vite.config.ts`, `src/prerender/`; `PUZZLE_DATE` env, default today in UTC; also on the dev server, on every page load): for each mode page, today's and tomorrow's puzzle from the existing generator. Round 1 of today's is rendered into `#app` (question, the four option names and icons, the mode links: what a first visit shows), both puzzles are embedded as JSON with only what the cards need; answers and answer texts only in the JSON. Only round 1, not all five questions: the other four are not on screen, and hidden text is what search engines penalise
+- [x] The app replaces the built-in markup (render, not hydrate: a returning player's state differs anyway), picks the day by UTC date, falls back to the newest puzzle with a note; an inline script hides round 1 before it is drawn when the app will show something else
+- [x] Production bundle without data, question and player files and generator (zod stays, for the saved progress); the endless mode loads them with a dynamic import in dev only
+- [x] Landing page sample round: nothing to do, it is hand-written HTML already
+- [x] Tests: `buildPuzzleDays`, `pickPuzzleDay`, `renderGamePage` (page holds round 1, embedded puzzles equal `createDailyPuzzle`, JSON cannot close its script), `DailyPage`, `readPuzzleDays`; e2e (`e2e/days.spec.ts`): the switch at midnight, a missed build, no flash for a returning player, the first question without JavaScript; the e2e build uses the default date (today) and the tests set `page.clock` from it
+- [x] CLAUDE.md, README, `docs/LOCAL_TESTING.md`, section 2 of this plan
+- New dev dependency: `preact-render-to-string` (pinned 6.8.1), from the Preact team, used only by the build
 
 **4. Daily rebuild**
 
-- [ ] `deploy.yml`: build and deploy on every scheduled run, not only when data changed; twice a day (e.g. 12:00 and 22:00 UTC) so a late or skipped run is covered by tomorrow's puzzle
-- [ ] A failed data refresh no longer blocks the build: it builds from the last committed good data; only failing tests block the deploy
-- [ ] After deploy: fetch the live page and check that it holds today's puzzle
-- [ ] Failure notification (Phase 4 open item) beyond GitHub's email, now that the site depends on the daily build
-- [ ] Known: GitHub turns off scheduled workflows of public repos after 60 days without activity; data commits every patch should keep it active
+- [x] `deploy.yml`: builds and deploys on every run, at 12:00 and 22:00 UTC
+- [x] A failed data refresh no longer blocks the build: it builds from the last committed data; the unit tests gate the deploy
+- [x] After deploy: the live `trivia.html` must carry today's puzzle (retried for 10 minutes, past GitHub's CDN cache)
+- [ ] Failure notification beyond GitHub's email (Phase 4 open item): needs a choice of service (e.g. a Discord webhook or ntfy), not decided
+- [x] Known: GitHub turns off scheduled workflows of public repos after 60 days without activity; data commits every patch should keep it active
+- [ ] Owner: watch the first scheduled runs on GitHub (both crons, the live check)
 
 **Done when:** the live site works a full week with no manual action, across UTC midnight, with no request to a third-party image host, and `npm run check` and the e2e tests pass.
 

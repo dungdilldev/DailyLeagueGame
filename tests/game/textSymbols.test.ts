@@ -36,7 +36,7 @@ describe('team logo clue', () => {
 describe('roundSymbols', () => {
   it('gives every option its crest when all of them have one', () => {
     const symbols = roundSymbols(textRound(['Demacia', 'Noxus', 'Shadow Isles', 'The Black Rose']));
-    const crest = (file: string) => `${import.meta.env.BASE_URL}images/crests/${file}`;
+    const crest = (file: string) => `images/crests/${file}`;
     expect(symbols?.urls).toEqual({
       Demacia: crest('demacia-crest-icon.png'),
       Noxus: crest('noxus-crest-icon.png'),

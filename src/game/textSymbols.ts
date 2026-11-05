@@ -22,19 +22,19 @@ export interface RoundSymbols {
  */
 const QUESTIONS_WITHOUT_PHOTOS: readonly string[] = ['playerByTeam'];
 
-/** Downloaded esports image, if there is one for this name. */
+/**
+ * Downloaded esports image, if there is one for this name. Image addresses are relative: every
+ * page sits at the site root, where the images folder is.
+ */
 function esportsImageUrl(kind: EsportsImageKind, name: string): string | undefined {
   if (!(name in esportsImages[kind])) return undefined;
-  return `${import.meta.env.BASE_URL}${ESPORTS_IMAGE_DIRECTORY}/${esportsImagePath(kind, name)}`;
+  return `${ESPORTS_IMAGE_DIRECTORY}/${esportsImagePath(kind, name)}`;
 }
 
 function symbolFor(name: string): { kind: SymbolKind; url: string } | undefined {
   const crestFile = CREST_FILES[name];
   if (crestFile !== undefined) {
-    return {
-      kind: 'crest',
-      url: `${import.meta.env.BASE_URL}${CREST_IMAGE_DIRECTORY}/${crestImagePath(crestFile)}`,
-    };
+    return { kind: 'crest', url: `${CREST_IMAGE_DIRECTORY}/${crestImagePath(crestFile)}` };
   }
   const logoUrl = esportsImageUrl('leagues', name) ?? esportsImageUrl('teams', name);
   if (logoUrl !== undefined) return { kind: 'crest', url: logoUrl };

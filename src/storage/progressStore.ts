@@ -2,8 +2,11 @@ import { z } from 'zod';
 
 const STORAGE_KEY = 'dailyleague:v1';
 
-/** The mixed mode keeps the original key; every other mode saves apart, as its own game. */
-function storageKey(slot: string | undefined): string {
+/**
+ * The mixed mode keeps the original key; every other mode saves apart, as its own game. Also read
+ * by the small script each game page carries (see `src/prerender`), before the app has loaded.
+ */
+export function progressStorageKey(slot: string | undefined): string {
   return slot === undefined ? STORAGE_KEY : `${STORAGE_KEY}:${slot}`;
 }
 
@@ -36,7 +39,7 @@ export function getBrowserStorage(): StorageLike | undefined {
 /** Returns saved progress, or an empty record if nothing usable is stored. Never throws. */
 export function loadSavedDays(storage: StorageLike | undefined, slot?: string): SavedDays {
   try {
-    const raw = storage?.getItem(storageKey(slot));
+    const raw = storage?.getItem(progressStorageKey(slot));
     if (!raw) return {};
     const parsed = SavedDaysSchema.safeParse(JSON.parse(raw));
     return parsed.success ? parsed.data : {};
@@ -54,7 +57,7 @@ export function saveDay(
 ): void {
   try {
     const days = { ...loadSavedDays(storage, slot), [date]: record };
-    storage?.setItem(storageKey(slot), JSON.stringify(days));
+    storage?.setItem(progressStorageKey(slot), JSON.stringify(days));
   } catch {
     // Storage full or blocked: keep playing with in-memory state.
   }

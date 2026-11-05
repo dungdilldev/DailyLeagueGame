@@ -68,8 +68,15 @@ test('layout fits the viewport without horizontal scrolling', async ({ page }) =
   expect(overflow).toBeLessThanOrEqual(0);
 });
 
-test('shows a friendly message when the game data cannot be loaded', async ({ page }) => {
-  await page.route('**/data/champions.json', (route) => route.fulfill({ status: 500 }));
+test('shows a friendly message when the page has no puzzles built in', async ({ page }) => {
+  await page.route('**/stats.html', async (route) => {
+    const response = await route.fetch();
+    const body = (await response.text()).replace(
+      /<script type="application\/json"[^]*?<\/script>/,
+      '',
+    );
+    await route.fulfill({ response, body });
+  });
   await page.goto('/stats.html');
   await expect(page.getByRole('alert')).toContainText('Something went wrong');
 });

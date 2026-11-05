@@ -31,6 +31,7 @@ Open http://localhost:5173/ (start page) and pick a mode. The page reloads when 
 | -------------------------- | ------------------------------------------------------------------ |
 | Play on your phone         | `npm run dev -- --host`, then open the "Network" address it prints |
 | Try the production build   | `npm run build`, then `npm run preview` (http://localhost:4173/)   |
+| Build for another day      | `PUZZLE_DATE=2026-12-24 npm run build` (any `YYYY-MM-DD`)          |
 | Play again after finishing | Reset progress (below)                                             |
 
 ### Endless mode (testing every question)
@@ -90,7 +91,9 @@ Fetches the latest champion data from Riot's Data Dragon and the LoL Wiki and up
 data of a file did not change, that file stays the same. If it did change, the new data becomes a snapshot that starts tomorrow (UTC) and the
 previous one is kept, so today's puzzle does not change.
 
-Afterwards run `npm test`: it generates a year of puzzles from the data and checks every one.
+It also downloads the champion, item and ability icons into `public/images/icons/` (all of them for a new
+Data Dragon version, otherwise only missing ones). Afterwards run `npm test`: it generates a year of
+puzzles from the data and checks every one.
 
 ## Troubleshooting
 
@@ -98,8 +101,8 @@ Afterwards run `npm test`: it generates a year of puzzles from the data and chec
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `Executable doesn't exist` in browser tests | Run `npx playwright install chromium`                                                                            |
 | Port 5173 or 4173 already in use            | Stop the other dev server, or use `npm run dev -- --port 5200`                                                   |
-| Page says "Something went wrong loading"    | `public/data/champions.json`, `items.json` or `abilities.json` is missing or invalid: run `npm run data:refresh` |
-| Champion icons are blank                    | They load from Riot's CDN, so check your internet connection                                                     |
+| Build or dev page fails on the data         | `public/data/champions.json`, `items.json` or `abilities.json` is missing or invalid: run `npm run data:refresh` |
+| Champion icons are blank                    | An icon is missing from `public/images/icons/`: run `npm run data:refresh`                                       |
 | Data refresh fails on the wiki step         | The wiki may be down or changed its format; the error says which. Retry later                                    |
 | You see an already-finished day             | Reset your progress (see above)                                                                                  |
 

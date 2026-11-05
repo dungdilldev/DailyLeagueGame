@@ -47,15 +47,15 @@ Remove any old `A`, `AAAA` or `CNAME` records on the same names first, and do no
 
 ## How the daily automation works
 
-- The daily puzzle is generated in the browser from the date (UTC), using the champion, item and ability data in
-  `public/data/champions.json`, `public/data/items.json` and `public/data/abilities.json` and the questions in `data/questions/` (one file per category). There are no puzzle files; the answers can be worked out by anyone
-  who reads the code, which is fine for a casual game.
-- `Update data and deploy` (scheduled, daily): fetches fresh champion data from Riot's Data Dragon and
-  the LoL Wiki. If nothing changed, it stops. If something changed (a new patch or champion), it runs
-  the full test suite, which generates a year of puzzles from the new data and checks every one, then
-  commits the data and deploys.
+- The daily puzzle is generated when the site is built, from the date (UTC), using the champion, item and ability data in
+  `public/data/champions.json`, `public/data/items.json` and `public/data/abilities.json` and the questions in `data/questions/` (one file per category). Every game page carries today's and tomorrow's puzzle, so it keeps working past midnight. There are no puzzle files; the answers are in the page source, which is fine for a casual game.
+- `Update data and deploy` (scheduled, 12:00 and 22:00 UTC): fetches fresh champion data and icons from Riot's Data Dragon and
+  the LoL Wiki. If something changed (a new patch or champion), it runs
+  the full test suite, which generates a year of puzzles from the new data and checks every one, and
+  commits the data. Then it always rebuilds and deploys the site, and checks that the live page has today's puzzle.
 - New data takes effect from the next UTC day, so a puzzle never changes under someone who is
   already playing it.
-- If anything fails (Riot data changes shape, a test breaks), nothing is committed or deployed and
-  the previous site stays live. GitHub emails the repository owner about failed runs.
+- If the data refresh fails (Riot data changes shape, a test breaks), nothing is committed and the
+  site is rebuilt from the previous data. If the build fails, the live pages still carry tomorrow's
+  puzzle. GitHub emails the repository owner about failed runs.
 - `CI` runs checks and browser smoke tests on every pull request and push to `main`.

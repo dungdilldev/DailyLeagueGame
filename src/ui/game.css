@@ -37,6 +37,18 @@
   gap: 1rem;
 }
 
+/* The built-in round 1 is not what this player sees (saved progress, or another day): hidden
+   until the app replaces it, so it never flashes up. */
+.game__app--pending > * {
+  visibility: hidden;
+}
+
+.game__note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
 /* ---------- Mode pills ---------- */
 
 .mode-nav {
