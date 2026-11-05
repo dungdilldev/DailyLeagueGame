@@ -1,10 +1,12 @@
 name: Update data and deploy
 
 on:
-  # Daily check for new champion data (patches, new champions). Puzzles are generated in the
-  # browser from the date, so most days nothing changes and nothing is committed or deployed.
+  # The site is rebuilt twice a day: every game page carries today's and tomorrow's puzzle (built
+  # in at build time), so either run covers the next midnight (UTC) and a late or skipped run
+  # changes nothing for players. Each run also checks for new data (patches, new champions).
   schedule:
-    - cron: '30 0 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 22 * * *'
   # Manual run from the Actions tab.
   workflow_dispatch:
   # Deploy code changes. Data commits made by this workflow's own token do not re-trigger it.
@@ -23,8 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    outputs:
-      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -35,15 +35,13 @@ jobs:
       - name: Refresh champion data
         run: npm run data:refresh
       # Gate: the tests generate a year of puzzles from the fresh data. If any is invalid, nothing is
-      # committed or deployed and the previous good data stays live.
+      # committed, and the deploy below rebuilds the site from the previous good data.
       - run: npm run typecheck
       - run: npm test
       - name: Commit data changes
-        id: commit
         run: |
           if [ -z "$(git status --porcelain public/data public/images/icons)" ]; then
             echo "No data changes."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -51,12 +49,13 @@ jobs:
           git add public/data public/images/icons
           git commit -m "Update champion data"
           git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs: update-data
-    # Deploy code pushes, and data updates that actually changed something. Never after a failure.
-    if: ${{ !cancelled() && (needs.update-data.result == 'skipped' || (needs.update-data.result == 'success' && needs.update-data.outputs.changed == 'true')) }}
+    # Every run deploys, so the pages carry the coming days' puzzles. A failed data refresh does
+    # not stop it: the build then uses the last committed data, and the failed job still makes the
+    # run fail (GitHub emails the owner).
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -75,6 +74,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      # Gate: the tests generate a year of puzzles from the committed data.
+      - run: npm test
       - run: npm run build
       # The artifact name includes the attempt number: re-running a failed run keeps the first
       # attempt's "github-pages" artifact, and two artifacts with that name make deploy-pages fail.
@@ -86,3 +87,19 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
+      # The live game page must carry today's puzzle. GitHub's CDN may serve the previous page for
+      # a few minutes; the query string asks it for a fresh copy.
+      - name: Check the live site
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          today="$(date -u +%F)"
+          for attempt in $(seq 1 20); do
+            if curl -fsS "${PAGE_URL}trivia.html?check=${GITHUB_RUN_ID}-${attempt}" | grep -q "\"date\":\"${today}\""; then
+              echo "The live site has the puzzle of ${today}."
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "::error::The live site does not have the puzzle of ${today} after 10 minutes."
+          exit 1
