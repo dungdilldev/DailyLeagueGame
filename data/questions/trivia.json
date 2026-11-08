@@ -6,10 +6,10 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Priscilla, the Spider Queen",
-      "question": "Which of these champions began as the scrapped champion Priscilla, the Spider Queen?",
+      "question": "Which of these champions began as the scrapped champion Priscilla?",
       "correct": ["Elise"],
       "wrong": ["Skarner", "KogMaw", "Leblanc", "Nidalee", "Lissandra", "Morgana"],
-      "answer": "Priscilla was scrapped after she already had an in-game model. The Spider Queen idea was eventually released as Elise."
+      "answer": "Priscilla, the Spider Queen was scrapped after she already had an in-game model. After a Petition on the League of Legends forum, Presilla was eventually reworked into Elise. Her original name was Nidalee which was reused and confirmed to have no other relations."
     },
     {
       "id": "scrappedAoShin",
@@ -17,7 +17,7 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ao Shin",
-      "question": "Which of these champions began as the scrapped dragon champion Ao Shin?",
+      "question": "Which of these champions began as the scrapped champion Ao Shin?",
       "correct": ["AurelionSol"],
       "wrong": ["Shyvana", "Smolder", "Xerath", "Anivia", "Swain", "Lux"],
       "answer": "Ao Shin was scrapped, and the dragon idea was eventually released as Aurelion Sol. His Storm Dragon skin is a direct tribute to the original concept."
@@ -28,7 +28,7 @@
       "difficulty": "hard",
       "subject": "champion",
       "label": "Seth, the Sand Mage",
-      "question": "Which of these champions was reworked from the scrapped champion Seth, the Sand Mage?",
+      "question": "Which of these champions was reworked from the scrapped champion Seth?",
       "correct": ["Azir"],
       "wrong": ["Nasus", "Renekton", "Xerath", "Taliyah", "Sivir", "Amumu"],
       "answer": "Riot could not get the Sand Mage concept right in the time it had, and the game could not yet support the visual effects it needed. The idea was reworked into Azir."
@@ -36,7 +36,7 @@
     {
       "id": "scrappedVoidRay",
       "subcategory": "unreleased-champions",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Void Ray",
       "question": "Which of these champions was reworked from the scrapped champion concept Void Ray?",
@@ -74,8 +74,17 @@
       "label": "Husk, the Hive Commander",
       "question": "Which of these champions grew out of the scrapped champion Husk, the Hive Commander?",
       "correct": ["Camille", "Kaisa"],
-      "wrong": ["Velkoz", "Chogath", "Kassadin", "Orianna", "Fiora", "Malzahar"],
-      "answer": "Husk was a cancelled concept whose ideas were split between two champions: Camille and Kai'Sa."
+      "wrong": [
+        "Velkoz",
+        "Chogath",
+        "Kassadin",
+        "Orianna",
+        "Fiora",
+        "Malzahar",
+        "Urgot",
+        "Belveth"
+      ],
+      "answer": "Husk was invisioned as a mercenary from Zaun and ex-partner of Caitlyn. The concept was split and used for the two champions: Camille and Kai'Sa."
     },
     {
       "id": "magmaChamberArena",
@@ -91,7 +100,7 @@
     {
       "id": "magmaChamberDominion",
       "subcategory": "cancelled-features",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Magma Chamber and Dominion",
       "question": "Which game mode was reworked from Magma Chamber, first announced in 2010 as a 5v5 map and then cancelled?",
@@ -102,7 +111,7 @@
     {
       "id": "dominionMap",
       "subcategory": "removed-modes",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Dominion map",
       "question": "Which map was the Dominion game mode played on?",
@@ -122,64 +131,9 @@
       "answer": "Twisted Treeline was a smaller 3v3 map with two lanes that had been in the game since launch. It was retired at the end of Season 2019 because so few people played it."
     },
     {
-      "id": "removedSummonerSpell",
-      "subcategory": "removed-summoner-spells",
-      "difficulty": "medium",
-      "subject": "text",
-      "label": "Removed summoner spells",
-      "question": "Which of these summoner spells has been removed from the game?",
-      "correct": [
-        "Clairvoyance",
-        "Revive",
-        "Promote",
-        "Rally",
-        "Surge",
-        "Fortify",
-        "Garrison",
-        "Observer",
-        "Stifle"
-      ],
-      "wrong": [
-        "Flash",
-        "Ignite",
-        "Teleport",
-        "Heal",
-        "Barrier",
-        "Exhaust",
-        "Cleanse",
-        "Ghost",
-        "Smite"
-      ]
-    },
-    {
-      "id": "removedItem",
-      "subcategory": "removed-items",
-      "difficulty": "hard",
-      "subject": "text",
-      "label": "Removed items",
-      "question": "Which of these items has been removed from Summoner's Rift?",
-      "correct": [
-        "Ohmwrecker",
-        "Wriggle's Lantern",
-        "Sightstone",
-        "Spirit of the Elder Lizard",
-        "Lord Van Damm's Pillager"
-      ],
-      "wrong": [
-        "Infinity Edge",
-        "Rabadon's Deathcap",
-        "Zhonya's Hourglass",
-        "Trinity Force",
-        "Guardian Angel",
-        "Thornmail",
-        "Void Staff",
-        "Bloodthirster"
-      ]
-    },
-    {
       "id": "originalChampion",
       "subcategory": "original-champions",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "subject": "champion",
       "label": "The original 17",
       "question": "Which of these champions was one of the original 17, released in February 2009?",
@@ -205,100 +159,25 @@
       "wrong": [
         "Ahri",
         "Akali",
-        "Caitlyn",
-        "Darius",
-        "Draven",
         "Ezreal",
         "Garen",
-        "Graves",
-        "Jinx",
-        "LeeSin",
-        "Leona",
         "Lux",
         "MissFortune",
-        "Nami",
-        "Riven",
-        "Thresh",
         "Vayne",
-        "Yasuo",
-        "Zed",
-        "Vi",
-        "Orianna",
-        "Syndra"
-      ]
-    },
-    {
-      "id": "visualGameplayUpdate",
-      "subcategory": "champion-updates",
-      "difficulty": "medium",
-      "subject": "champion",
-      "label": "Visual and gameplay updates",
-      "question": "Which of these champions has received a full visual and gameplay update?",
-      "correct": [
-        "Sion",
-        "Urgot",
-        "Mordekaiser",
-        "Swain",
-        "Fiddlesticks",
-        "Volibear",
-        "Warwick",
-        "Skarner",
-        "Udyr",
-        "DrMundo",
-        "Pantheon",
-        "Kayle",
+        "Singed",
+        "Zilean",
         "Evelynn",
-        "Galio",
-        "Aatrox",
-        "Irelia",
-        "Akali",
-        "Nunu",
-        "Viktor",
-        "Yorick",
+        "Tryndamere",
+        "Twitch",
+        "Karthus",
         "Taric",
-        "Shen",
-        "Poppy",
-        "Fiora",
-        "Gangplank",
-        "Tristana",
-        "Soraka",
-        "Sivir",
-        "MasterYi",
-        "Trundle",
-        "Sejuani",
-        "Karma",
-        "Katarina"
-      ],
-      "wrong": [
-        "Akshan",
-        "Ambessa",
-        "Aurora",
-        "Belveth",
-        "Briar",
-        "Gwen",
-        "Hwei",
-        "KSante",
-        "Lillia",
-        "Mel",
-        "Milio",
-        "Naafiri",
-        "Nilah",
-        "Rell",
-        "Renata",
-        "Samira",
-        "Seraphine",
-        "Sett",
-        "Smolder",
-        "Vex",
-        "Viego",
-        "Yone",
-        "Zeri"
+        "Janna"
       ]
     },
     {
       "id": "voiceLineJoe",
       "subcategory": "voice-lines",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "subject": "champion",
       "label": "A tribute to Joe",
       "question": "Which of these champions says \"Bravest hero I ever knew was just a kid. Here's to you, champ.\", a tribute to Joe, a young fan who visited Riot through Make-A-Wish?",
@@ -309,7 +188,7 @@
     {
       "id": "jaximusMakeAWish",
       "subcategory": "voice-lines",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "subject": "text",
       "label": "Jaximus",
       "question": "Which Jax skin's sales did Riot give to Make-A-Wish in 2012, for a young fan named Joe?",
@@ -329,19 +208,9 @@
       "answer": "Rammus has the fewest quotes of any champion, only six, and is the only one without a joke in English. In several other languages he has a full set of taunts and jokes."
     },
     {
-      "id": "voiceLineScoutCode",
-      "subcategory": "voice-lines",
-      "difficulty": "easy",
-      "subject": "champion",
-      "label": "The Scout Code",
-      "question": "Which of these champions says \"Never underestimate the power of the Scout Code!\"?",
-      "correct": ["Teemo"],
-      "wrong": ["Tristana", "Corki", "Kennen", "Lulu", "Poppy", "Rumble"]
-    },
-    {
       "id": "baronRoshan",
       "subcategory": "names-and-references",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "subject": "text",
       "label": "Baron Nashor and Roshan",
       "question": "Which game has the boss Roshan, whose name Baron Nashor's is an anagram of?",
@@ -355,7 +224,7 @@
       "difficulty": "hard",
       "subject": "item",
       "label": "Named after Guinsoo",
-      "question": "Which of these items is named after Steve \"Guinsoo\" Feak, the creator of Defense of the Ancients: Allstars?",
+      "question": "Which of these items is named after Steve Feak, the creator of Defense of the Ancients: Allstars?",
       "correct": ["3124"],
       "wrong": ["3031", "3078", "3075", "3135", "3072", "3089"],
       "answer": "According to Feak, Guinsoo's Rageblade was made with Corki in mind. Its icon resembles Guinsoo's Scythe of Vyse, a Defense of the Ancients item also named after him."
@@ -368,30 +237,13 @@
       "label": "K/DA",
       "question": "Which of these champions is a member of the band K/DA?",
       "correct": ["Ahri", "Akali", "Evelynn", "Kaisa", "Seraphine"],
-      "wrong": [
-        "Karthus",
-        "Kayle",
-        "Mordekaiser",
-        "Olaf",
-        "Sona",
-        "Yorick",
-        "Ekko",
-        "Qiyana",
-        "Senna",
-        "Yasuo",
-        "Aphelios",
-        "Ezreal",
-        "Kayn",
-        "KSante",
-        "Sett",
-        "Yone"
-      ],
+      "wrong": ["Kayle", "Sona", "Qiyana", "Senna", "Ezreal", "Kayn"],
       "answer": "K/DA debuted with POP/STARS at the 2018 World Championship opening ceremony. Seraphine joined the group for the 2020 EP ALL OUT."
     },
     {
       "id": "bandPentakill",
       "subcategory": "music-bands",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Pentakill",
       "question": "Which of these champions is a member of the metal band Pentakill?",
@@ -418,7 +270,7 @@
     {
       "id": "bandTrueDamage",
       "subcategory": "music-bands",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "True Damage",
       "question": "Which of these champions is a member of the band True Damage?",
@@ -446,7 +298,7 @@
     {
       "id": "bandHeartsteel",
       "subcategory": "music-bands",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "HEARTSTEEL",
       "question": "Which of these champions is a member of the band HEARTSTEEL?",
@@ -494,7 +346,7 @@
     {
       "id": "forgeSylas",
       "subcategory": "spin-offs",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "The Mageseeker",
       "question": "Which Riot Forge game stars Sylas?",
@@ -505,7 +357,7 @@
     {
       "id": "forgeEkko",
       "subcategory": "spin-offs",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "CONV/RGENCE",
       "question": "Which Riot Forge game stars Ekko?",
@@ -516,7 +368,7 @@
     {
       "id": "forgeZiggs",
       "subcategory": "spin-offs",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "subject": "text",
       "label": "Hextech Mayhem",
       "question": "Which Riot Forge game stars Ziggs?",
@@ -532,7 +384,18 @@
       "label": "Ruined King",
       "question": "Which of these champions is playable in the Riot Forge game Ruined King?",
       "correct": ["MissFortune", "Illaoi", "Braum", "Yasuo", "Ahri", "Pyke"],
-      "wrong": ["Sylas", "Ekko", "Ziggs", "Nunu", "Garen", "Jinx"],
+      "wrong": [
+        "Viego",
+        "Sylas",
+        "Ekko",
+        "Ziggs",
+        "Vayne",
+        "Gwen",
+        "Yorick",
+        "Senna",
+        "Lucian",
+        "Akshan"
+      ],
       "answer": "Ruined King was made by Airship Syndicate for Riot Forge. It is a turn-based role-playing game set in Bilgewater and the Shadow Isles."
     },
     {
@@ -656,7 +519,7 @@
     {
       "id": "riotFounder",
       "subcategory": "riot-games",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "subject": "text",
       "label": "Riot founders",
       "question": "Which person founded Riot Games together with Marc Merrill in 2006?",
@@ -732,13 +595,13 @@
     {
       "id": "crabNamedAfter",
       "subcategory": "names-and-references",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "subject": "champion",
       "label": "Crab species",
       "question": "Which of these champions had a species of crab, discovered in 2024, named after them?",
       "correct": ["Teemo"],
       "wrong": ["Tristana", "Poppy", "Corki", "Heimerdinger", "Kennen", "Lulu"],
-      "answer": "Teemo is the smallest champion in the game, and players even measure ranges in 'Teemos'."
+      "answer": "The Gothus teemo crab was descoverd in the South China Sea and was named after the board game Go as well as Teemo."
     },
     {
       "id": "hundredthChampion",
@@ -776,7 +639,7 @@
     {
       "id": "forgeNunu",
       "subcategory": "spin-offs",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Song of Nunu",
       "question": "Which Riot Forge game stars Nunu & Willump?",
@@ -787,12 +650,12 @@
     {
       "id": "arcaneVoiceSteinfeld",
       "subcategory": "spin-offs",
-      "difficulty": "easy",
+      "difficulty": "hard",
       "subject": "champion",
       "label": "Hailee Steinfeld",
       "question": "Which of these champions does Hailee Steinfeld voice in Arcane?",
       "correct": ["Vi"],
-      "wrong": ["Jinx", "Caitlyn", "Jayce", "Ekko", "Viktor", "Heimerdinger", "Singed", "Warwick"]
+      "wrong": ["Jinx", "Caitlyn", "Mel", "Ambessa", "Renata"]
     },
     {
       "id": "arcaneVoicePurnell",
@@ -802,7 +665,7 @@
       "label": "Ella Purnell",
       "question": "Which of these champions does Ella Purnell voice in Arcane?",
       "correct": ["Jinx"],
-      "wrong": ["Vi", "Caitlyn", "Jayce", "Ekko", "Viktor", "Heimerdinger", "Singed", "Warwick"],
+      "wrong": ["Vi", "Caitlyn", "Mel", "Ambessa", "Renata"],
       "answer": "Ella Purnell voices both the grown-up Jinx and Powder, the girl she used to be. Young Powder is voiced by Mia Sinclair Jenness."
     },
     {
@@ -913,7 +776,7 @@
     {
       "id": "namedAfterSanchez",
       "subcategory": "names-and-references",
-      "difficulty": "hard",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Edmundo Sanchez",
       "question": "Which of these champions is named after Edmundo 'odnumde' Sanchez?",
@@ -927,10 +790,10 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Jin Ho Yang",
-      "question": "Which of these champions is named after his visual effects artist, Jin Ho Yang?",
+      "question": "Which of these champions is named after his visual effects artist?",
       "correct": ["Jhin"],
       "wrong": ["Lucian", "Graves", "Draven", "MissFortune", "Kindred", "Varus"],
-      "answer": "During development his name and title were 'Jin, the Artisan Killer'."
+      "answer": "During development his name and title were 'Jin, the Artisan Killer' and he was named Jin Ho Yang."
     },
     {
       "id": "namedAfterJew",
@@ -957,12 +820,12 @@
     {
       "id": "namedAfterForumMeme",
       "subcategory": "names-and-references",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "subject": "champion",
       "label": "Armored bears meme",
-      "question": "Which of these champions is named after a forum user's long-running meme about armored bears?",
+      "question": "Which of these champions is named after a forum user's long-running meme about a certain armored animal?",
       "correct": ["Volibear"],
-      "wrong": ["Braum", "Ornn", "Sejuani", "Udyr", "Gragas", "Nautilus"],
+      "wrong": ["Ornn", "Sejuani", "Rell"],
       "answer": "The forum user was Travis 'Volibar' George, who kept championing armored bears in the League."
     },
     {
@@ -984,7 +847,8 @@
       "label": "Maokai Xiao",
       "question": "Which of these champions is named after its concept artist, Maokai Xiao?",
       "correct": ["Maokai"],
-      "wrong": ["Ivern", "Zyra", "Fiddlesticks", "Hecarim", "Zac", "Nautilus"]
+      "wrong": ["Ivern", "Zyra", "Fiddlesticks", "Hecarim", "Zac", "Nautilus"],
+      "answer": "Maokai was named after his concept artist Maokai Xiao?."
     },
     {
       "id": "lastLetter",
@@ -994,13 +858,13 @@
       "label": "Every letter used",
       "question": "Which of these champions was released in 2013 as the first whose name starts with the last unused letter of the alphabet?",
       "correct": ["Quinn"],
-      "wrong": ["Thresh", "Zac", "Lissandra", "Aatrox", "Lucian", "Yasuo"],
+      "wrong": ["Zac", "Aatrox", "Xerath", "Yasuo"],
       "answer": "Q was the only letter left that no champion's name started with. Qiyana became the second in 2019."
     },
     {
       "id": "fewestAbilities",
       "subcategory": "champion-kits",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Fewer than five abilities",
       "question": "Which of these champions is the only one with fewer than five abilities?",
@@ -1058,7 +922,7 @@
       "label": "Melee to ranged",
       "question": "Which of these champions was the first to be changed from melee to ranged, in patch 9.20?",
       "correct": ["Ivern"],
-      "wrong": ["Maokai", "Zyra", "Bard", "Zac", "Taric", "Braum"],
+      "wrong": ["Thresh", "Nilah", "Jayce", "Nidalee", "Gnar"],
       "answer": "If he dances after summoning Daisy, she dances along."
     },
     {
@@ -1096,7 +960,7 @@
     {
       "id": "fewestQuotes",
       "subcategory": "voice-lines",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "champion",
       "label": "Fewest quotes",
       "question": "Which of these champions has the fewest voice lines in English, and no joke at all?",
@@ -1107,7 +971,7 @@
     {
       "id": "firstPrestige",
       "subcategory": "skin-history",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "subject": "champion",
       "label": "First Prestige Edition",
       "question": "Which of these champions was the first to get a Prestige Edition skin?",
@@ -1118,13 +982,35 @@
     {
       "id": "tftBeforeLeague",
       "subcategory": "spin-offs",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "subject": "champion",
       "label": "TFT before League",
       "question": "Which of these champions came to Teamfight Tactics before League of Legends?",
       "correct": ["Mel"],
       "wrong": ["Vi", "Jinx", "Ekko", "Caitlyn", "Jayce", "Viktor"],
       "answer": "She was already in development for League, but Teamfight Tactics gave her simpler art of its own for its Into the Arcane set first."
+    },
+    {
+      "id": "nonstandardIvernLeague",
+      "subcategory": "champion-trivia",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "TFT before League",
+      "question": "Which of these champions is the only champion to have a non standard Unit radius?",
+      "correct": ["Ivern"],
+      "wrong": ["Velkoz", "Teemo", "Anivia", "AurelionSol", "Yuumi"],
+      "answer": "Ivern has a unit radius of 70, instead of one of the standard values of (55/65/80). No one knows why, exactly."
+    },
+    {
+      "id": "bandMostSongs",
+      "subcategory": "music-bands",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Most songs",
+      "question": "Which of these League of Legends bands has released the most songs?",
+      "correct": ["Pentakill"],
+      "wrong": ["K/DA", "True Damage", "HEARTSTEEL"],
+      "answer": "Pentakill's three albums hold 30 tracks: 8 on Smite and Ignite (2014), 11 on Grasp of the Undying (2017) and 11 on Lost Chapter (2021). Most of them are named after items."
     }
   ]
 }
