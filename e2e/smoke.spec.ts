@@ -245,10 +245,10 @@ test.describe('start page', () => {
 
   test('the sample round can be answered', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: 'Garen' }).click();
-    await expect(page.getByText('Not quite: Teemo is the yordle.')).toBeVisible();
+    await page.getByRole('button', { name: 'Jinx' }).click();
+    await expect(page.getByText('Not quite: Ezreal has the most skins.')).toBeVisible();
     await page.getByRole('button', { name: 'Try again' }).click();
-    await expect(page.getByText('Pick one of the four answers.')).toBeVisible();
+    await expect(page.getByText('Pick the one with the highest value.')).toBeVisible();
   });
 
   test('old game links on the start page open the game', async ({ page }) => {

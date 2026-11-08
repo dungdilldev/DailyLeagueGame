@@ -70,6 +70,7 @@ export function RoundView({
   const symbols = roundSymbols(round);
   const clueUrl = clueImageUrl(round);
   const answerName = options.get(round.answerId)?.name ?? round.answerId;
+  const answeredRight = chosenId !== undefined && isCorrect(round, chosenId);
 
   return (
     <section class="round" aria-labelledby="question">
@@ -127,13 +128,17 @@ export function RoundView({
       <div class="feedback" role="status">
         {revealed ? (
           <>
-            <div class="feedback__text">
-              <p
-                class={`feedback__banner ${isCorrect(round, chosenId) ? 'feedback__ok' : 'feedback__bad'}`}
-              >
-                {isCorrect(round, chosenId) ? 'Correct!' : `Not quite. It was ${answerName}.`}
-              </p>
-              {round.explanation && <p class="feedback__explanation">{round.explanation}</p>}
+            {/* A tinted panel in the cards' colours, so the answer text is read, not skimmed. */}
+            <div class={`feedback__panel ${answeredRight ? 'feedback__ok' : 'feedback__bad'}`}>
+              <span class="feedback__mark">
+                <Icon name={answeredRight ? 'check' : 'cross'} size={18} />
+              </span>
+              <div class="feedback__text">
+                <p class="feedback__banner">
+                  {answeredRight ? 'Correct!' : `Not quite. It was ${answerName}.`}
+                </p>
+                {round.explanation && <p class="feedback__explanation">{round.explanation}</p>}
+              </div>
             </div>
             <button type="button" class="button" ref={nextButton} onClick={onNext}>
               {isLastRound ? 'See results' : 'Next round'}

@@ -1,10 +1,11 @@
+import { joinAbilityName } from '../src/data/abilityName';
 import type { Ability } from '../src/data/schema';
 import { iconPath } from './icons/iconPaths';
 import type { AbilityStat, AbilityStatInput } from './stats/types';
 
 /** "Ahri Q · Orb of Deception": the card has to say whose ability it is. */
 export function abilityDisplayName({ championName, slot, wiki }: AbilityStatInput): string {
-  return `${championName} ${slot} · ${wiki.name}`;
+  return joinAbilityName(`${championName} ${slot}`, wiki.name);
 }
 
 export function buildAbility(input: AbilityStatInput, stats: readonly AbilityStat[]): Ability {

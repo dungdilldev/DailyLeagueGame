@@ -263,6 +263,11 @@
   overflow-wrap: anywhere;
 }
 
+/* An ability's owner ("Ahri Q") and its own name each get a line. */
+.card__name-line {
+  display: block;
+}
+
 /* Text-only cards have no picture, so the name itself becomes the picture. */
 .card--plain {
   justify-content: center;
@@ -382,32 +387,65 @@
   font-size: 0.9375rem;
 }
 
-.feedback__banner {
-  margin: 0;
-  font-size: 1.0625rem;
-  font-weight: 700;
-  animation: rise 0.25s ease-out both;
-}
-
-.feedback__text {
+.feedback__panel {
+  display: flex;
   flex: 1 1 20rem;
-}
-
-.feedback__explanation {
-  max-width: 40rem;
-  margin: 0.375rem 0 0;
-  color: var(--muted);
-  font-size: 0.9375rem;
-  line-height: 1.5;
+  align-items: flex-start;
+  gap: 0.875rem;
+  min-width: 0;
+  padding: 0.875rem 1.125rem;
+  border: 1px solid;
+  border-left-width: 4px;
+  border-radius: 0.75rem;
   animation: rise 0.25s ease-out both;
 }
 
 .feedback__ok {
-  color: var(--ok);
+  --feedback-accent: var(--ok);
+
+  border-color: var(--ok);
+  background: var(--ok-tint);
 }
 
 .feedback__bad {
+  --feedback-accent: var(--bad);
+
+  border-color: var(--bad);
+  background: var(--bad-tint);
+}
+
+.feedback__mark {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--feedback-accent);
+  color: var(--bg);
+}
+
+.feedback__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-top: 0.125rem;
+}
+
+.feedback__banner {
+  margin: 0;
+  color: var(--feedback-accent);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.feedback__explanation {
+  max-width: 42rem;
+  margin: 0.5rem 0 0;
   color: var(--text);
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 /* ---------- Results ---------- */

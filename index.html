@@ -68,46 +68,60 @@
             </div>
 
             <section class="sample-round" aria-labelledby="sample-question" data-sample-round>
-              <div class="sample-round__meta">
-                <p class="sample-round__eyebrow">Try a round</p>
-                <p class="sample-round__progress">
-                  Round 1 of 5
-                  <span class="sample-round__pips" aria-hidden="true">
-                    <span class="sample-round__pip sample-round__pip--current"></span>
-                    <span class="sample-round__pip"></span>
-                    <span class="sample-round__pip"></span>
-                    <span class="sample-round__pip"></span>
-                    <span class="sample-round__pip"></span>
-                  </span>
-                </p>
-              </div>
+              <p class="sample-round__eyebrow">Try a round</p>
               <h2 id="sample-question" class="sample-round__question">
-                Which of these champions is a yordle?
+                Which champion has the most skins?
               </h2>
+              <!-- Ezreal 22, Jinx 15, Yuumi 10, Ornn 5 (champions.json, patch 16.22): gaps wide
+                   enough that a new skin does not change the answer. -->
               <div class="sample-round__options">
                 <button type="button" class="sample-option" data-option>
-                  <span class="sample-option__initial" aria-hidden="true">G</span>
-                  <span class="sample-option__name">Garen</span>
+                  <img
+                    class="sample-option__icon"
+                    src="/images/icons/champions/Jinx.png"
+                    alt=""
+                    width="44"
+                    height="44"
+                  />
+                  <span class="sample-option__name">Jinx</span>
                 </button>
                 <button type="button" class="sample-option" data-option data-answer>
-                  <span class="sample-option__initial" aria-hidden="true">T</span>
-                  <span class="sample-option__name">Teemo</span>
+                  <img
+                    class="sample-option__icon"
+                    src="/images/icons/champions/Ezreal.png"
+                    alt=""
+                    width="44"
+                    height="44"
+                  />
+                  <span class="sample-option__name">Ezreal</span>
                 </button>
                 <button type="button" class="sample-option" data-option>
-                  <span class="sample-option__initial" aria-hidden="true">A</span>
-                  <span class="sample-option__name">Ahri</span>
+                  <img
+                    class="sample-option__icon"
+                    src="/images/icons/champions/Ornn.png"
+                    alt=""
+                    width="44"
+                    height="44"
+                  />
+                  <span class="sample-option__name">Ornn</span>
                 </button>
                 <button type="button" class="sample-option" data-option>
-                  <span class="sample-option__initial" aria-hidden="true">D</span>
-                  <span class="sample-option__name">Darius</span>
+                  <img
+                    class="sample-option__icon"
+                    src="/images/icons/champions/Yuumi.png"
+                    alt=""
+                    width="44"
+                    height="44"
+                  />
+                  <span class="sample-option__name">Yuumi</span>
                 </button>
               </div>
               <div class="sample-round__footer" role="status">
-                <p data-sample-prompt>Pick one of the four answers.</p>
+                <p data-sample-prompt>Pick the one with the highest value.</p>
                 <p class="sample-round__result--right" data-sample-result="right" hidden>
-                  Correct! Teemo is a yordle.
+                  Correct! Ezreal has the most skins of these four.
                 </p>
-                <p data-sample-result="wrong" hidden>Not quite: Teemo is the yordle.</p>
+                <p data-sample-result="wrong" hidden>Not quite: Ezreal has the most skins.</p>
                 <button type="button" class="sample-round__reset" data-sample-reset hidden>
                   Try again
                 </button>

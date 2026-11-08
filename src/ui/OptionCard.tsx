@@ -1,3 +1,5 @@
+import { displayNameLines } from '../data/abilityName';
+
 export type CardState = 'idle' | 'correct' | 'wrong' | 'other';
 
 interface OptionCardProps {
@@ -43,7 +45,13 @@ export function OptionCard({
           height={96}
         />
       )}
-      <span class="card__name">{name}</span>
+      <span class="card__name">
+        {displayNameLines(name).map((line) => (
+          <span key={line} class="card__name-line">
+            {line}
+          </span>
+        ))}
+      </span>
       {valueText !== undefined && (
         <span class={valueRevealed ? 'card__value' : 'card__value card__value--hidden'}>
           {valueText}
