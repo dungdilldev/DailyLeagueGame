@@ -12,6 +12,8 @@ export interface Round {
   question: string;
   /** How to display the values after the player has answered; absent when there are none. */
   format?: StatFormat;
+  /** The stat's in-game symbol, shown after each value like a unit. Absent for most rounds. */
+  unitIconUrl?: string;
   /** Ids of the options (champions or items), in display order; the answer is not always first. */
   optionIds: string[];
   /** The right option: the one with the highest value, or the one from a pick question's correct list. */

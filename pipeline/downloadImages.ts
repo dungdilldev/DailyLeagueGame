@@ -10,11 +10,12 @@ import {
   esportsImages,
   type EsportsImageKind,
 } from '../src/data/esportsImages';
+import { STAT_ICON_FILES, statIconUrl, type StatIcon } from '../src/data/statIcons';
 
 /** Leaguepedia scales an image on request, so no image library is needed. */
 const ESPORTS_IMAGE_WIDTH = 160;
 const LEAGUEPEDIA_FILE_URL = 'https://lol.fandom.com/wiki/Special:FilePath/';
-/** The crests are small already; the wiki serves them as they are. */
+/** The crests and stat symbols are small already; the wiki serves them as they are. */
 const WIKI_FILE_URL = 'https://wiki.leagueoflegends.com/en-us/images/';
 const USER_AGENT = 'DailyLeagueGame/1.0 (hobby project; one-off image download)';
 const PAUSE_BETWEEN_DOWNLOADS_MS = 400;
@@ -53,6 +54,14 @@ function crestDownloads(): Download[] {
   }));
 }
 
+function statIconDownloads(): Download[] {
+  return (Object.entries(STAT_ICON_FILES) as [StatIcon, string][]).map(([icon, fileName]) => ({
+    label: `stat symbol ${fileName}`,
+    url: `${WIKI_FILE_URL}${wikiFileName(fileName)}`,
+    target: statIconUrl(icon),
+  }));
+}
+
 /** Fandom turns away Node's HTTP client (even with a plain user agent) but not curl, so use curl. */
 async function download({ url, target }: Download): Promise<void> {
   const file = path.join('public', target);
@@ -73,7 +82,7 @@ async function download({ url, target }: Download): Promise<void> {
 /** Files already saved are skipped; delete one to fetch it again (e.g. after a team's rebrand). */
 async function main(): Promise<void> {
   const failures: string[] = [];
-  const missing = [...esportsDownloads(), ...crestDownloads()].filter(
+  const missing = [...esportsDownloads(), ...crestDownloads(), ...statIconDownloads()].filter(
     ({ target }) => !existsSync(path.join('public', target)),
   );
   console.log(`${String(missing.length)} images to download`);

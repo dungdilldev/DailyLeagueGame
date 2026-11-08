@@ -36,6 +36,29 @@ const show = (chosenId: string | undefined, shown: Round = round) =>
     />,
   );
 
+describe('RoundView stat symbol', () => {
+  const statRound: Round = {
+    ...round,
+    subject: 'champion',
+    format: { kind: 'number' },
+    unitIconUrl: 'images/stats/armor.png',
+    values: { Valoran: 30, Camavor: 40, Arctic: 20, Shurima: 10 },
+  };
+  const symbols = () => [...document.querySelectorAll('.card__value .card__unit')];
+
+  it('follows every value as its unit', () => {
+    show('Camavor', statRound);
+    expect(symbols().map((symbol) => symbol.getAttribute('src'))).toEqual(
+      IDS.map(() => 'images/stats/armor.png'),
+    );
+  });
+
+  it('is left out for a stat without one', () => {
+    show('Camavor', { ...statRound, unitIconUrl: undefined });
+    expect(symbols()).toEqual([]);
+  });
+});
+
 describe('RoundView answer text', () => {
   it('is hidden until the player has answered', () => {
     show(undefined);

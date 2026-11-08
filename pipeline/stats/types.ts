@@ -1,4 +1,5 @@
 import type { StatFormat, StatId, StatMeta } from '../../src/data/schema';
+import { statIconUrl, type StatIcon } from '../../src/data/statIcons';
 import type { WikiAbility } from '../abilities/parseAbility';
 import type {
   ChampionDetail,
@@ -55,6 +56,8 @@ export interface StatBase {
   source: string;
   /** How values are shown to the player; plain numbers when omitted. */
   format?: StatFormat;
+  /** The in-game symbol shown after each value; none for stats the game has no symbol for. */
+  unitIcon?: StatIcon;
   /** Share of entities that must have a value; defaults to the usual 95%. */
   minCoverage?: number;
 }
@@ -83,6 +86,7 @@ export function toStatMeta(stat: StatBase): StatMeta {
     id: stat.id,
     label: stat.label,
     format: stat.format ?? NUMBER_FORMAT,
+    ...(stat.unitIcon && { unitIconUrl: statIconUrl(stat.unitIcon) }),
     source: stat.source,
   };
 }

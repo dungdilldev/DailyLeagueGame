@@ -74,6 +74,7 @@ function buildStatRound(
       statLabel: question.statMeta.label,
       question: question.question,
       format: question.statMeta.format,
+      ...(question.statMeta.unitIconUrl && { unitIconUrl: question.statMeta.unitIconUrl }),
       optionIds: chosen.map((entry) => entry.entity.id),
       answerId: answer.entity.id,
       values: Object.fromEntries(chosen.map((entry) => [entry.entity.id, entry.value])),

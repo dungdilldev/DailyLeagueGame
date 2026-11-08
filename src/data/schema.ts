@@ -36,6 +36,8 @@ export const StatMetaSchema = z.object({
   /** Shown to the player, e.g. "Base health". */
   label: z.string().min(1),
   format: StatFormatSchema,
+  /** The stat's in-game symbol, shown after each value like a unit; absent for e.g. skin counts. */
+  unitIconUrl: z.string().min(1).optional(),
   /** Where the values came from, so wrong-looking numbers can be traced. */
   source: z.string().min(1),
 });

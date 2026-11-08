@@ -9,6 +9,8 @@ interface OptionCardProps {
   isSymbol?: boolean;
   /** Stat value as display text; its line is always reserved so revealing it moves nothing. */
   valueText: string | undefined;
+  /** The stat's symbol, drawn after the value as its unit. */
+  unitIconUrl?: string | undefined;
   /** False until the player has answered: the value takes up space but is invisible. */
   valueRevealed: boolean;
   state: CardState;
@@ -23,6 +25,7 @@ export function OptionCard({
   iconUrl,
   isSymbol = false,
   valueText,
+  unitIconUrl,
   valueRevealed,
   state,
   tag,
@@ -55,6 +58,10 @@ export function OptionCard({
       {valueText !== undefined && (
         <span class={valueRevealed ? 'card__value' : 'card__value card__value--hidden'}>
           {valueText}
+          {/* The question names the stat, so the symbol adds nothing for screen readers. */}
+          {unitIconUrl && (
+            <img class="card__unit" src={unitIconUrl} alt="" width={18} height={18} />
+          )}
         </span>
       )}
       {/* Always takes its line, like the value, so the cards keep their size on reveal. */}

@@ -74,6 +74,18 @@ describe('buildRound', () => {
     expect(round?.format).toEqual({ kind: 'date', epoch: '2009-01-01' });
   });
 
+  it("carries the stat's symbol into the round, and leaves it out for a stat without one", () => {
+    const withSymbol: StatQuestion = {
+      ...STAT,
+      statMeta: { ...STAT.statMeta, unitIconUrl: 'images/stats/health.png' },
+    };
+    const band = { minRatio: 0.05, maxRatio: 1 };
+    expect(buildRound(roster, withSymbol, band, createRng('u'))?.unitIconUrl).toBe(
+      'images/stats/health.png',
+    );
+    expect(buildRound(roster, STAT, band, createRng('u'))).not.toHaveProperty('unitIconUrl');
+  });
+
   it('ignores champions that lack the stat', () => {
     const withMissing = [...roster, { ...champion('NoStat', 0), stats: {} }];
     const round = buildRound(withMissing, STAT, { minRatio: 0.05, maxRatio: 1 }, createRng('m'));

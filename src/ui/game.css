@@ -284,10 +284,21 @@
 }
 
 .card__value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   font-size: 1.25rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   animation: rise 0.35s ease-out both;
+}
+
+/* The stat's symbol as the value's unit, sized to the digits like the game's tooltips. */
+.card__unit {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  object-fit: contain;
 }
 
 /* Takes its space before the answer so the cards do not grow on reveal. */

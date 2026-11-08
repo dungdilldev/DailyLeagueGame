@@ -113,6 +113,7 @@ export function RoundView({
               iconUrl={symbols?.urls[id] ?? option?.iconUrl}
               isSymbol={symbols?.kind === 'crest'}
               valueText={displayValue(round, id)}
+              unitIconUrl={round.unitIconUrl}
               valueRevealed={revealed}
               state={state}
               tag={cardTag(round, state)}

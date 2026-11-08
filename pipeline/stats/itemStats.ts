@@ -1,12 +1,14 @@
+import type { StatIcon } from '../../src/data/statIcons';
 import { goldEfficiency } from '../items/goldEfficiency';
 import { DATA_DRAGON_SOURCE, LEAGUE_WIKI_SOURCE, type ItemStat, type ItemStatInput } from './types';
 
 /** An item stat that is one of the wiki's own stat numbers (the wiki's short stat names). */
-function wikiItemStat(id: string, label: string, wikiKey: string): ItemStat {
+function wikiItemStat(id: string, label: string, wikiKey: string, unitIcon: StatIcon): ItemStat {
   return {
     id,
     label,
     source: LEAGUE_WIKI_SOURCE,
+    unitIcon,
     // Many items lack any given stat; those simply are not options for this question.
     minCoverage: 0.05,
     extract: ({ wiki }: ItemStatInput) => wiki.stats[wikiKey],
@@ -17,6 +19,7 @@ export const itemCost: ItemStat = {
   id: 'itemCost',
   label: 'Item cost',
   source: DATA_DRAGON_SOURCE,
+  unitIcon: 'gold',
   extract: ({ item }) => item.gold.total,
 };
 
@@ -28,9 +31,24 @@ export const itemGoldEfficiency: ItemStat = {
   extract: ({ item, wiki, goldValues }) => goldEfficiency(wiki, goldValues, item.gold.total),
 };
 
-export const itemAttackDamage = wikiItemStat('itemAttackDamage', 'Attack damage', 'ad');
-export const itemAbilityPower = wikiItemStat('itemAbilityPower', 'Ability power', 'ap');
-export const itemHealth = wikiItemStat('itemHealth', 'Health', 'hp');
-export const itemArmor = wikiItemStat('itemArmor', 'Armor', 'armor');
-export const itemMagicResist = wikiItemStat('itemMagicResist', 'Magic resistance', 'mr');
-export const itemAbilityHaste = wikiItemStat('itemAbilityHaste', 'Ability haste', 'ah');
+export const itemAttackDamage = wikiItemStat(
+  'itemAttackDamage',
+  'Attack damage',
+  'ad',
+  'attackDamage',
+);
+export const itemAbilityPower = wikiItemStat(
+  'itemAbilityPower',
+  'Ability power',
+  'ap',
+  'abilityPower',
+);
+export const itemHealth = wikiItemStat('itemHealth', 'Health', 'hp', 'health');
+export const itemArmor = wikiItemStat('itemArmor', 'Armor', 'armor', 'armor');
+export const itemMagicResist = wikiItemStat(
+  'itemMagicResist',
+  'Magic resistance',
+  'mr',
+  'magicResist',
+);
+export const itemAbilityHaste = wikiItemStat('itemAbilityHaste', 'Ability haste', 'ah', 'cooldown');
