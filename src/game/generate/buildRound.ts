@@ -94,10 +94,16 @@ export function buildRound(
   rng: Rng,
 ): Round | undefined {
   const round = buildRoundOfKind(entities, question, band, rng);
+  if (!round) return undefined;
   // Added here rather than by each kind's builder, so every kind of question can have one.
-  return round && question.answer !== undefined
-    ? { ...round, explanation: question.answer }
-    : round;
+  const explanation = explanationFor(question, round.answerId);
+  return explanation === undefined ? round : { ...round, explanation };
+}
+
+/** The text for this day's answer if the question has one for it, else its shared text. */
+function explanationFor(question: Question, answerId: string): string | undefined {
+  const ownText = question.kind === 'pick' ? question.answerFor?.[answerId] : undefined;
+  return ownText ?? question.answer;
 }
 
 function buildRoundOfKind(

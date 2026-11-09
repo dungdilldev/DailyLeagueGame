@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildRound, gapRatio } from '../../../src/game/generate/buildRound';
 import { createRng } from '../../../src/game/generate/random';
-import type { StatQuestion } from '../../../src/data/questions';
+import type { PickQuestion, StatQuestion } from '../../../src/data/questions';
 import type { Champion } from '../../../src/data/schema';
 
 const STAT: StatQuestion = {
@@ -153,6 +153,28 @@ describe('buildRound answer text', () => {
     expect(buildRound(roster, question, band, createRng('a'))?.explanation).toBe(
       'Health grows with level.',
     );
+  });
+
+  it("uses the day's answer's own text when a pick question has one, else the shared text", () => {
+    const pick: PickQuestion = {
+      kind: 'pick',
+      id: 'strongest',
+      category: 'trivia',
+      difficulty: 'variable',
+      subject: 'champion',
+      label: 'Strongest',
+      question: 'Which of these champions is strong?',
+      correct: ['C100', 'C90'],
+      wrong: ['C10', 'C20', 'C30'],
+      answer: 'Shared text.',
+      answerFor: { C100: 'C100 text.' },
+    };
+    const textByAnswer = new Map<string, string | undefined>();
+    for (let seed = 0; seed < 30; seed++) {
+      const round = buildRound(roster, pick, band, createRng(String(seed)));
+      if (round) textByAnswer.set(round.answerId, round.explanation);
+    }
+    expect(Object.fromEntries(textByAnswer)).toEqual({ C100: 'C100 text.', C90: 'Shared text.' });
   });
 
   it('leaves it out when the question has none, and does not change the round', () => {

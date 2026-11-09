@@ -330,8 +330,18 @@ const PickQuestionTemplateSchema = z
     label: z.string().min(1),
     correct: EntityIdListSchema,
     wrong: z.array(z.string().min(1)).min(MIN_WRONG_PER_PICK_QUESTION),
+    /**
+     * Answer text per right option, shown instead of `answer` when that option is the day's
+     * answer, so it may name that option ("Vayne's passive, Night Hunter, ..."). Options without
+     * an entry fall back to `answer`.
+     */
+    answerFor: z.record(z.string().min(1), z.string().min(1)).optional(),
   })
-  .refine(hasDisjointLists, { message: DISJOINT_LISTS_MESSAGE });
+  .refine(hasDisjointLists, { message: DISJOINT_LISTS_MESSAGE })
+  .refine(
+    ({ correct, answerFor = {} }) => Object.keys(answerFor).every((id) => correct.includes(id)),
+    { message: 'answerFor may only name options from correct' },
+  );
 
 /** One kind of question, hand-written in `data/questions/<category>.json`. */
 export const QuestionTemplateSchema = z.union([

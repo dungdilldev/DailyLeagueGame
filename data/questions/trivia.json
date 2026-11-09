@@ -341,7 +341,8 @@
         "Malphite",
         "Nami",
         "Rammus"
-      ]
+      ],
+      "answer": "There are seven Ultimate skins: Pulsefire Ezreal (2012), Spirit Guard Udyr (2013), DJ Sona (2015), Elementalist Lux (2016), Gun Goddess Miss Fortune (2018), ALL OUT Seraphine (2020) and Soul Fighter Samira (2023)."
     },
     {
       "id": "forgeSylas",
@@ -933,7 +934,15 @@
       "label": "Ability named like the title",
       "question": "Which of these champions has an ability with the same name as their title?",
       "correct": ["Volibear", "Aatrox", "Elise", "Jax", "Sejuani", "Vayne"],
-      "wrong": ["Ashe", "Garen", "Darius", "Lux", "Annie", "Ahri"]
+      "wrong": ["Ashe", "Garen", "Darius", "Lux", "Annie", "Ahri"],
+      "answerFor": {
+        "Volibear": "His passive, The Relentless Storm, shares its name with his title, the Relentless Storm.",
+        "Aatrox": "His Q, The Darkin Blade, shares its name with his title, the Darkin Blade.",
+        "Elise": "Her passive, Spider Queen, shares its name with her title, the Spider Queen.",
+        "Jax": "His ultimate, Grandmaster-at-Arms, shares its name with his title, Grandmaster at Arms.",
+        "Sejuani": "Her passive, Fury of the North, shares its name with her title, Fury of the North.",
+        "Vayne": "Her passive, Night Hunter, shares its name with her title, the Night Hunter."
+      }
     },
     {
       "id": "firstAfterLaunch",
@@ -995,7 +1004,7 @@
       "subcategory": "champion-trivia",
       "difficulty": "hard",
       "subject": "champion",
-      "label": "TFT before League",
+      "label": "Unit radius",
       "question": "Which of these champions is the only champion to have a non standard Unit radius?",
       "correct": ["Ivern"],
       "wrong": ["Velkoz", "Teemo", "Anivia", "AurelionSol", "Yuumi"],
@@ -1011,6 +1020,165 @@
       "correct": ["Pentakill"],
       "wrong": ["K/DA", "True Damage", "HEARTSTEEL"],
       "answer": "Pentakill's three albums hold 30 tracks: 8 on Smite and Ignite (2014), 11 on Grasp of the Undying (2017) and 11 on Lost Chapter (2021). Most of them are named after items."
+    },
+    {
+      "id": "launcherCode",
+      "subcategory": "april-fools",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Launcher code",
+      "question": "Which phrase could players type into the old League of Legends launcher to make a greyed-out Play button clickable again?",
+      "correct": ["thereisnourflevel"],
+      "wrong": ["showmethemoney", "iddqd", "motherlode", "poweroverwhelming"],
+      "answer": "It worked when the launcher could not reach the server and showed lines of code instead of the news. Forum posts sharing it were long taken for trolling, until players found it really worked."
+    },
+    {
+      "id": "upwardEars",
+      "subcategory": "champion-trivia",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Ears pointing up",
+      "question": "Which of these champions is the only yordle whose ears point upwards?",
+      "correct": ["Vex"],
+      "wrong": ["Teemo", "Tristana", "Lulu", "Ziggs", "Kennen", "Gnar"],
+      "answer": "Why hers point up, unlike the rest of her kind, is not known."
+    },
+    {
+      "id": "danceUCantTouchThis",
+      "subcategory": "champion-trivia",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "U Can't Touch This",
+      "question": "Which of these champions has a dance that references MC Hammer's U Can't Touch This?",
+      "correct": ["Jayce"],
+      "wrong": ["Azir", "Lucian", "Evelynn", "Amumu", "Corki"]
+    },
+    {
+      "id": "danceSouthPark",
+      "subcategory": "champion-trivia",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "South Park dance",
+      "question": "Which of these champions has a dance that references the goth kids from South Park?",
+      "correct": ["Amumu"],
+      "wrong": ["Jayce", "Azir", "KogMaw", "Corki", "Evelynn"]
+    },
+    {
+      "id": "danceBarrelRoll",
+      "subcategory": "champion-trivia",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Do a barrel roll",
+      "question": "Which of these champions has a dance that references \"Do a barrel roll!\" from Star Fox 64?",
+      "correct": ["Corki"],
+      "wrong": ["Jayce", "Azir", "Lucian", "KogMaw", "Amumu"]
+    },
+    {
+      "id": "danceRememberTheTime",
+      "subcategory": "champion-trivia",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Remember the Time",
+      "question": "Which of these champions has a dance that references Michael Jackson's Remember the Time?",
+      "correct": ["Azir"],
+      "wrong": ["Jayce", "Lucian", "Evelynn", "Amumu", "KogMaw"]
+    },
+    {
+      "id": "unmaxedSkills",
+      "subcategory": "champion-trivia",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Cannot max every ability",
+      "question": "Which of these champions is the only one who cannot max out all of their abilities?",
+      "correct": ["Udyr"],
+      "wrong": ["Karma", "Aphelios", "Jayce"],
+      "answer": "Each of his four abilities has six ranks, 24 points in all, but levels give only 18 (21 with the top lane quest and an Elixir of Skill)."
+    },
+    {
+      "id": "callsTobias",
+      "subcategory": "champion-trivia",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Tobias",
+      "question": "Which of these champions is the only one who still calls Twisted Fate by his birth name, Tobias?",
+      "correct": ["Graves"],
+      "wrong": ["MissFortune", "Gangplank", "Pyke", "Illaoi", "Nautilus", "Fizz"]
+    },
+    {
+      "id": "summonsEnemyUnit",
+      "subcategory": "champion-trivia",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Summons an enemy unit",
+      "question": "Which of these champions is the only one who can summon an enemy unit?",
+      "correct": ["Illaoi"],
+      "wrong": ["Annie", "Yorick", "Zyra", "Heimerdinger", "Malzahar", "Ivern"],
+      "answer": "Her E, Test of Spirit, pulls out an enemy champion's spirit as a unit of its own."
+    },
+    {
+      "id": "onlyQuoteKept",
+      "subcategory": "champion-trivia",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Cut them down",
+      "question": "Which of these champions kept only one quote, \"Cut them down.\", through her rework?",
+      "correct": ["Irelia"],
+      "wrong": ["Riven", "Fiora", "Akali", "Katarina", "Sivir", "Kayle"]
+    },
+    {
+      "id": "voidTitle",
+      "subcategory": "champion-trivia",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "No Void in the title",
+      "question": "Which of these champions from the Void is the only one without 'Void' in their title?",
+      "correct": ["KogMaw"],
+      "wrong": ["Chogath", "Khazix", "Kassadin", "Velkoz", "RekSai", "Malzahar", "Belveth"],
+      "answer": "His title is the Mouth of the Abyss."
+    },
+    {
+      "id": "twoCritAnimations",
+      "subcategory": "champion-trivia",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Two critical strike animations",
+      "question": "Which of these champions is the only one with two different critical strike animations?",
+      "correct": ["Draven"],
+      "wrong": ["Jinx", "Caitlyn", "Ashe", "Sivir", "Tristana", "Varus"],
+      "answer": "He has one for each arm's attack."
+    },
+    {
+      "id": "selfButNotAllies",
+      "subcategory": "champion-trivia",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Self but not allies",
+      "question": "Which of these champions has the only single-target ability that can be cast on themselves but not on allies?",
+      "correct": ["Lissandra"],
+      "wrong": ["Lulu", "Kayle", "Zilean", "Janna", "Karma", "Taric"],
+      "answer": "Her ultimate, Frozen Tomb, can target an enemy or Lissandra herself, but never an ally."
+    },
+    {
+      "id": "uselessPassive",
+      "subcategory": "champion-trivia",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Passive that does nothing",
+      "question": "Which of these champions is the only one whose passive cannot do anything at level 1?",
+      "correct": ["Tristana"],
+      "wrong": ["Ashe", "Caitlyn", "Jinx", "KogMaw", "Twitch", "Ezreal"],
+      "answer": "Her passive, Draw a Bead, gives bonus attack range that grows with her level, and at level 1 it gives none."
+    },
+    {
+      "id": "highestAdRatio",
+      "subcategory": "champion-trivia",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Highest AD ratio",
+      "question": "Which of these champions has an ability that, fully stacked, has the highest AD ratio in the game?",
+      "correct": ["Kalista"],
+      "wrong": ["Draven", "Jhin", "Varus", "Caitlyn", "Ezreal", "Lucian"],
+      "answer": "A fully stacked Rend scales with up to 8915% AD at max rank."
     }
   ]
 }

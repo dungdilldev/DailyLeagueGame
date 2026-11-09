@@ -219,6 +219,13 @@ describe('answer text', () => {
   it('cannot be empty', () => {
     expect(parse([{ ...pick, answer: '' }]).success).toBe(false);
   });
+
+  it('can be given per right option on a pick question, for right options only', () => {
+    expect(parse([{ ...pick, answerFor: { Jinx: 'Jinx text.' } }]).success).toBe(true);
+    expect(parse([{ ...pick, answerFor: { Garen: 'A wrong option.' } }]).success).toBe(false);
+    expect(parse([{ ...pick, answerFor: { Jinx: '' } }]).success).toBe(false);
+    expect(parse([{ ...clue, answerFor: { Jinx: 'Not a pick question.' } }]).success).toBe(false);
+  });
 });
 
 describe('questions about a given year', () => {
