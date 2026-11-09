@@ -33,7 +33,7 @@ describe('AdSlot', () => {
   it('renders nothing and loads nothing when ads are switched off', async () => {
     const { watch, report } = fakeConsent();
     const { container } = render(
-      <AdSlot enabled={false} isDevBuild={false} watchConsent={watch} />,
+      <AdSlot enabled={false} isDevBuild={false} watchConsent={watch} placement="rail" />,
     );
     await report('granted');
     expect(container.innerHTML).toBe('');
@@ -42,7 +42,9 @@ describe('AdSlot', () => {
 
   it('renders nothing in a development build, even with consent', async () => {
     const { watch, report } = fakeConsent();
-    const { container } = render(<AdSlot enabled isDevBuild watchConsent={watch} />);
+    const { container } = render(
+      <AdSlot enabled isDevBuild watchConsent={watch} placement="rail" />,
+    );
     await report('granted');
     expect(container.innerHTML).toBe('');
     expect(adScripts()).toHaveLength(0);
@@ -52,7 +54,9 @@ describe('AdSlot', () => {
     'renders nothing and loads nothing when consent is %s',
     async (state) => {
       const { watch, report } = fakeConsent();
-      const { container } = render(<AdSlot enabled isDevBuild={false} watchConsent={watch} />);
+      const { container } = render(
+        <AdSlot enabled isDevBuild={false} watchConsent={watch} placement="rail" />,
+      );
       await report(state);
       expect(container.innerHTML).toBe('');
       expect(adScripts()).toHaveLength(0);
@@ -61,7 +65,7 @@ describe('AdSlot', () => {
 
   it('shows the labelled banner and loads the ad script once consent is granted', async () => {
     const { watch, report } = fakeConsent();
-    render(<AdSlot enabled isDevBuild={false} watchConsent={watch} />);
+    render(<AdSlot enabled isDevBuild={false} watchConsent={watch} placement="rail" />);
     await report('granted');
     expect(screen.getByLabelText('Advertisement')).toBeTruthy();
     expect(adScripts()).toHaveLength(1);
@@ -69,7 +73,9 @@ describe('AdSlot', () => {
 
   it('removes the banner when the ad script is blocked', async () => {
     const { watch, report } = fakeConsent();
-    const { container } = render(<AdSlot enabled isDevBuild={false} watchConsent={watch} />);
+    const { container } = render(
+      <AdSlot enabled isDevBuild={false} watchConsent={watch} placement="rail" />,
+    );
     await report('granted');
     await act(async () => {
       adScripts()[0]?.dispatchEvent(new Event('error'));
@@ -77,4 +83,15 @@ describe('AdSlot', () => {
     });
     expect(container.innerHTML).toBe('');
   });
+
+  it.each(['rail', 'below'] as const)(
+    'places the banner by its placement: %s',
+    async (placement) => {
+      const { watch, report } = fakeConsent();
+      render(<AdSlot enabled isDevBuild={false} watchConsent={watch} placement={placement} />);
+      await report('granted');
+      expect(screen.getByLabelText('Advertisement').classList).toContain(`ad-slot--${placement}`);
+      expect(adScripts()).toHaveLength(1);
+    },
+  );
 });

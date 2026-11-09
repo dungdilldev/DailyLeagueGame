@@ -27,5 +27,10 @@ export const CONSENT_SCRIPT_URL = `https://fundingchoicesmessages.google.com/i/$
 
 export const ADSENSE_SCRIPT_URL = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`;
 
-/** Space reserved for the banner, so the page below it never jumps when the ad arrives. */
-export const AD_SLOT_MIN_HEIGHT_PX = 100;
+/**
+ * The narrowest window whose margin left of the game (57.5rem wide) holds the 160px banner.
+ * Narrower windows (phones, tablets, small laptops) show it below the game instead, never on top
+ * of or between the answer cards. Same value as the media queries for `.ad-slot` in
+ * `src/ui/game.css`.
+ */
+export const AD_RAIL_MIN_VIEWPORT_PX = 1280;

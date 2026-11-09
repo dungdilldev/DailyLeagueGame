@@ -1,6 +1,8 @@
 /* The game pages (one per mode): mode and day choice, the round panel, the results panel. */
 
 .game {
+  /* On wide windows the ad banner (.ad-slot--rail) is placed in the margin left of this box. */
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -581,9 +583,53 @@
 
 /* ---------- Advertisement (play page only) ---------- */
 
+/* One responsive AdSense unit; the box decides the ad's size. The placement is chosen once from
+   the window width (AD_RAIL_MIN_VIEWPORT_PX in src/ads/config.ts), because a loaded ad keeps its
+   size: if the window is resized across that width afterwards, the banner is hidden instead. */
 .ad-slot {
-  margin: 1.5rem 0 0;
   text-align: center;
+}
+
+.ad-slot__unit {
+  display: inline-block;
+}
+
+/* Wide windows: a 160x600 skyscraper in the empty margin left of the game, level with its top.
+   Out of the flow, so the game does not move when it arrives. */
+.ad-slot--rail {
+  position: absolute;
+  top: 2rem;
+  right: 100%;
+  width: 160px;
+}
+
+.ad-slot--rail .ad-slot__unit {
+  width: 160px;
+  height: 600px;
+}
+
+/* Narrower windows: a banner below the game and the support link, far from the cards and the
+   Next button. The space is reserved, so the footer does not jump when the ad arrives. */
+.ad-slot--below {
+  margin: 1.5rem 0 0;
+}
+
+.ad-slot--below .ad-slot__unit {
+  width: 100%;
+  max-width: 728px;
+  height: 100px;
+}
+
+@media (max-width: 1279.98px) {
+  .ad-slot--rail {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .ad-slot--below {
+    display: none;
+  }
 }
 
 .ad-slot__label {
@@ -592,10 +638,6 @@
   font-size: 0.65rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.ad-slot__unit {
-  display: block;
 }
 
 /* Google marks an empty slot as unfilled: drop the label and reserved space instead of a blank gap. */

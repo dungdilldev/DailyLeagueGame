@@ -13,6 +13,13 @@ const BANNER = 'Advertisement';
 const GAME_PAGE = '/stats.html';
 /** Every page except the game: none of them may ever load ad code (decided by the owner). */
 const PAGES_WITHOUT_ADS = ['/', '/how-to-play.html', '/about.html', '/privacy.html'];
+/** AD_RAIL_MIN_VIEWPORT_PX: narrower windows show the banner below the game instead of left of it. */
+const RAIL_MIN_WIDTH_PX = 1280;
+const NARROW_DESKTOP = { width: 1024, height: 768 };
+
+function railFits(page: Page): boolean {
+  return (page.viewportSize()?.width ?? 0) >= RAIL_MIN_WIDTH_PX;
+}
 
 const GRANTED = {
   gdprApplies: true,
@@ -99,9 +106,18 @@ async function horizontalOverflow(page: Page): Promise<number> {
   );
 }
 
-test('after consent the labelled banner appears below the game and the page still fits', async ({
+/** Right edge of the banner, and the left edge of the leftmost part of the game. */
+async function bannerAndGameEdges(page: Page): Promise<{ bannerRight: number; gameLeft: number }> {
+  const banner = await page.getByLabel(BANNER).boundingBox();
+  const parts = await page.locator('.game__intro, .game__toolbar, .round, .card').all();
+  const lefts = await Promise.all(parts.map(async (part) => (await part.boundingBox())?.x ?? 0));
+  return { bannerRight: (banner?.x ?? 0) + (banner?.width ?? 0), gameLeft: Math.min(...lefts) };
+}
+
+test('after consent the labelled banner appears left of the game and the page still fits', async ({
   page,
 }) => {
+  test.skip(!railFits(page), 'no room for the banner in this window');
   const errors = collectErrors(page);
   const script = await stubAdScript(page);
   await installConsentPlatform(page, GRANTED);
@@ -111,12 +127,48 @@ test('after consent the labelled banner appears below the game and the page stil
   await expect(banner).toBeVisible();
   await expect(banner.getByText(BANNER)).toBeVisible();
   await expect(banner.locator('ins.adsbygoogle')).toHaveAttribute('data-ad-slot', '1234567890');
-  expect(script.requests()).toBe(1);
+  await expect.poll(() => script.requests()).toBe(1);
 
-  const bannerTop = (await banner.boundingBox())?.y ?? 0;
-  const lastCard = (await page.locator('.card').last().boundingBox()) ?? { y: 0, height: 0 };
-  expect(bannerTop).toBeGreaterThan(lastCard.y + lastCard.height);
+  const { bannerRight, gameLeft } = await bannerAndGameEdges(page);
+  expect(bannerRight).toBeLessThanOrEqual(gameLeft);
+  expect((await banner.boundingBox())?.x ?? -1).toBeGreaterThanOrEqual(0);
   expect(await horizontalOverflow(page)).toBeLessThanOrEqual(0);
+  expect(errors).toEqual([]);
+});
+
+test('the banner stays clear of the cards and the Next button for the whole day', async ({
+  page,
+}) => {
+  test.skip(!railFits(page), 'no room for the banner in this window');
+  await stubAdScript(page);
+  await installConsentPlatform(page, GRANTED);
+  await page.goto(GAME_PAGE);
+  await expect(page.getByLabel(BANNER)).toBeVisible();
+
+  await page.locator('.card').first().click();
+  const { bannerRight, gameLeft } = await bannerAndGameEdges(page);
+  expect(bannerRight).toBeLessThanOrEqual(gameLeft);
+  const next = await page.getByRole('button', { name: /Next/ }).boundingBox();
+  expect(next?.x ?? 0).toBeGreaterThanOrEqual(bannerRight);
+});
+
+test('a window without room left of the game shows the banner below the game', async ({ page }) => {
+  const errors = collectErrors(page);
+  if (railFits(page)) await page.setViewportSize(NARROW_DESKTOP);
+  const script = await stubAdScript(page);
+  await installConsentPlatform(page, GRANTED);
+  await page.goto(GAME_PAGE);
+
+  const banner = page.getByLabel(BANNER);
+  await expect(banner).toBeVisible();
+  await expect.poll(() => script.requests()).toBe(1);
+  const bannerTop = (await banner.boundingBox())?.y ?? 0;
+  const round = (await page.locator('.round').boundingBox()) ?? { y: 0, height: 0 };
+  expect(bannerTop).toBeGreaterThan(round.y + round.height);
+  expect(await horizontalOverflow(page)).toBeLessThanOrEqual(0);
+
+  await playFullDay(page);
+  await expect(page.getByRole('heading', { name: /You got/ })).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -219,7 +271,7 @@ test('where no consent is needed ads load and there is no privacy settings link'
   await page.goto(GAME_PAGE);
 
   await expect(page.getByLabel(BANNER)).toBeVisible();
-  expect(script.requests()).toBe(1);
+  await expect.poll(() => script.requests()).toBe(1);
   await expect(page.getByRole('button', { name: PRIVACY_SETTINGS })).toHaveCount(0);
 });
 

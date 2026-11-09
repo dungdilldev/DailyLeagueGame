@@ -391,7 +391,7 @@ Goal: one or two small, unobtrusive ads that never get in the way of the game an
 **Decisions (confirm before building)**
 
 - [x] **Riot policy:** the owner checked Riot's Legal Jibber Jabber and ads are allowed (confirmed by the owner, 2026-10-21).
-- [x] **Placement:** one banner on the game pages (`play.html` until 2026-11-04, now one page per mode) between the game and the footer, below the support link (decided by the owner); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode.
+- [x] **Placement:** one banner on the game pages (`play.html` until 2026-11-04, now one page per mode); never between the answer cards or next to the Next-round button (accidental clicks break AdSense policy). No ads in the dev-only endless mode. Until 2026-11-09 it was below the game; since then (owner) it is a fixed 160x600 unit in the empty margin left of the game, on windows at least 1280px wide; narrower windows (phones, tablets) show it below the game and the support link (owner, same day). One responsive AdSense unit serves both, sized by CSS per placement.
 - [ ] **Operator identity (Germany):** the owner lives in Germany, so a site with ads needs an Impressum (§ 5 DDG): real name and a postal address that can receive legal documents (no P.O. box, no handle only), plus an email address. Decide which address to publish, and the email (preferably `contact@<domain>` forwarding to the owner's inbox). Add `impressum.html` to the footers and `PAGES`, and name the operator in `privacy.html` (the GitHub issues link is not enough). Sources are in the chat answer of 2026-10-21; have a lawyer or a service such as eRecht24 check the final text.
 
 **A. Domain and hosting**
