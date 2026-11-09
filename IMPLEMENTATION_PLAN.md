@@ -379,6 +379,7 @@ Decision (owner, 2026-11-02): new look from the owner's design canvas (landing p
 
 - [x] Start page: hero with date badge, two calls to action and countdown; an answerable sample round ("Which of these champions is a yordle?"); three steps; five mode cards with icons
 - [x] Shared full-width header (name, How to play, Categories, About, Play) and footer for the start page and the info pages; `privacy.html` font text updated
+- [x] Mode cards on the first screen (owner, 2026-11-09): the start page hero is the headline followed directly by the five mode cards (a compact row per mode on phones, tiles on desktop), then the countdown; the sample round and the three steps moved below. The "Play today's puzzle" hero button was dropped (the cards and the header "Play" do its job). An e2e test checks every card is in the first viewport on desktop and phone
 - [x] Game page (`play.html`): category pills with a check on modes finished that day, day nav with arrows, wide round panel with four cards in a row (two on a phone), hint and Next button in one row, results panel with "Correct"/"Wrong" per round and a "Play <next unfinished mode> next" button
 - [x] The game uses the shared header and footer partials; `ui/Footer.tsx` is gone and its League of Legends Wiki attribution moved into the shared footer (now on every page)
 - The "Played today" mark shows no score: the start page would have to build every mode's puzzle to know it

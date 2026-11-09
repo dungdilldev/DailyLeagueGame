@@ -100,6 +100,22 @@
   }
 }
 
+/* The narrowest phones: smaller links, so they still share one row and leave room below. */
+@media (max-width: 22.5rem) {
+  .site-header__inner {
+    padding-block: 0.75rem;
+  }
+
+  .site-nav {
+    gap: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .site-nav .site-nav__play {
+    padding: 0.4375rem 0.75rem;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {

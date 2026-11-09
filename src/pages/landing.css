@@ -1,4 +1,7 @@
-/* The start page (index.html): hero with a sample round, the three steps, one card per mode. */
+/*
+ * The start page (index.html): a short hero with the mode cards right under the headline, so a
+ * category is one tap away without scrolling, then a sample round and the three steps below.
+ */
 
 .landing h1,
 .landing h2,
@@ -19,19 +22,17 @@
 
 .hero__inner {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 3.5rem;
+  flex-direction: column;
+  gap: 1rem;
   max-width: 75rem;
   margin: 0 auto;
-  padding: 4.5rem 1.5rem 5rem;
+  padding: 3rem 1.5rem 3.5rem;
 }
 
 .hero__text {
   display: flex;
-  flex: 1 1 28rem;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   min-width: 0;
 }
 
@@ -58,28 +59,187 @@
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
 .hero__lead {
-  max-width: 34em;
+  max-width: 40em;
   color: var(--muted);
-  font-size: 1.1875rem;
-  line-height: 1.55;
+  font-size: 1.125rem;
+  line-height: 1.5;
 }
 
-.hero__actions {
+/* ---------- Mode cards ---------- */
+
+/*
+ * Phones: one compact row per mode (icon, name and line, then "Play"), so all five fit on the
+ * first screen. Wider screens switch to tiles below.
+ */
+.mode-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.625rem;
+}
+
+.mode-card {
+  display: grid;
+  grid-template-areas:
+    'icon title cta'
+    'icon text cta';
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.125rem 0.875rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.mode-card:hover {
+  border-color: var(--gold);
+  background: var(--surface-raised);
+}
+
+.mode-card[data-mode='mixed'] {
+  border-color: var(--gold-line);
+}
+
+.mode-card__icon {
+  display: flex;
+  grid-area: icon;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: var(--surface-raised);
+}
+
+.mode-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mode-card__title {
+  grid-area: title;
+  align-self: end;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.mode-card__text {
+  grid-area: text;
+  align-self: start;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+/* Only one of the two is shown at a time, so they share a place. */
+.mode-card__cta,
+.mode-card__status {
+  grid-area: cta;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mode-card__cta {
+  color: var(--gold);
+}
+
+.mode-card__status {
+  color: var(--ok);
+}
+
+.mode-card__status::before {
+  content: '\2713\00a0';
+}
+
+/* Above phones the lead stays with the headline and the cards get some room. */
+@media (min-width: 30.01rem) {
+  .mode-cards {
+    margin-block: 0.75rem;
+  }
+}
+
+/* Tablets: two columns, the mixed card spanning the row below the four categories. */
+@media (min-width: 40rem) {
+  .mode-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+
+  .mode-card[data-mode='mixed'] {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktops: five tiles in one row. */
+@media (min-width: 56rem) {
+  .mode-cards {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .mode-card {
+    grid-template-areas:
+      'icon'
+      'title'
+      'text'
+      'cta';
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 0.625rem;
+    padding: 1.25rem;
+  }
+
+  .mode-card[data-mode='mixed'] {
+    grid-column: auto;
+  }
+
+  .mode-card__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .mode-card__title {
+    font-size: 1.375rem;
+  }
+}
+
+/* ---------- Sample round and steps ---------- */
+
+.intro {
+  border-bottom: 1px solid var(--border);
+}
+
+.intro__inner {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
+  align-items: center;
+  gap: 3rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
 }
-
-/* ---------- Sample round ---------- */
 
 .sample-round {
   display: flex;
@@ -233,19 +393,28 @@
   color: var(--text);
 }
 
-/* ---------- Steps ---------- */
-
 .steps {
-  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex: 1 1 22rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.steps h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
 }
 
 .steps__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 2rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 3.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -281,135 +450,66 @@
   font-size: 0.9375rem;
 }
 
-/* ---------- Mode cards ---------- */
-
-.modes__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 4rem 1.5rem 5rem;
-}
-
-.modes__intro {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.modes__intro h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-.modes__intro p {
-  color: var(--muted);
-  font-size: 1.0625rem;
-}
-
-/* Two columns on a phone, with the mixed card spanning the row below the four categories. */
-.mode-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.mode-card[data-mode='mixed'] {
-  grid-column: 1 / -1;
-  border-color: var(--gold-line);
-}
-
-.mode-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  padding: 1.375rem;
-  border: 1px solid var(--border);
-  border-radius: 0.875rem;
-  background: var(--surface);
-  color: var(--text);
-  text-decoration: none;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
-}
-
-.mode-card:hover {
-  border-color: var(--gold);
-  background: var(--surface-raised);
-}
-
-.mode-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.75rem;
-  background: var(--surface-raised);
-}
-
-.mode-card__icon svg {
-  width: 1.625rem;
-  height: 1.625rem;
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.mode-card__title {
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 700;
-}
-
-.mode-card__text {
-  flex: 1 1 auto;
-  color: var(--muted);
-  font-size: 0.9375rem;
-}
-
-.mode-card__cta,
-.mode-card__status {
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.mode-card__cta {
-  color: var(--gold);
-}
-
-.mode-card__status {
-  color: var(--ok);
-}
-
-.mode-card__status::before {
-  content: '\2713\00a0';
-}
-
-@media (min-width: 56rem) {
-  .mode-cards {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .mode-card {
-    min-height: 12.5rem;
-  }
-
-  .mode-card[data-mode='mixed'] {
-    grid-column: auto;
-  }
-}
-
 /* ---------- Phones ---------- */
 
 @media (max-width: 30rem) {
   .hero__inner {
+    gap: 1rem;
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  .hero__text {
+    gap: 0.75rem;
+  }
+
+  .hero__badge {
+    font-size: 0.8125rem;
+  }
+
+  /* The cards come straight after the headline; the lead and the countdown follow them. */
+  .hero__lead {
+    order: 1;
+    font-size: 1rem;
+  }
+
+  #landing-countdown {
+    order: 1;
+  }
+
+  .mode-cards {
+    gap: 0.5rem;
+  }
+
+  .mode-card {
+    column-gap: 0.75rem;
+    padding: 0.5rem 0.875rem 0.5rem 0.625rem;
+  }
+
+  .mode-card__icon {
+    width: 2.375rem;
+    height: 2.375rem;
+  }
+
+  .mode-card__title {
+    font-size: 1.125rem;
+  }
+
+  .mode-card__text {
+    font-size: 0.8125rem;
+    line-height: 1.3;
+  }
+
+  /* Only the arrow, so the line beside it has room and the five cards fit on the first screen. */
+  .mode-card__cta {
+    font-size: 0;
+  }
+
+  .mode-card__cta::after {
+    content: '\2192';
+    font-size: 1.25rem;
+  }
+
+  .intro__inner {
     gap: 2.5rem;
     padding: 2.5rem 1rem 3rem;
   }
@@ -434,17 +534,5 @@
   .sample-option__icon {
     width: 2.25rem;
     height: 2.25rem;
-  }
-
-  .steps__list {
-    padding: 2.5rem 1rem;
-  }
-
-  .modes__inner {
-    padding: 3rem 1rem 3.5rem;
-  }
-
-  .mode-card {
-    padding: 1rem;
   }
 }

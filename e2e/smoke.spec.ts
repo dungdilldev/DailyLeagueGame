@@ -1,4 +1,4 @@
-import { type Locator, type Page } from '@playwright/test';
+﻿import { type Locator, type Page } from '@playwright/test';
 import { expect, test } from './test';
 import { collectErrors, playFullDay, ROUNDS_PER_DAY } from './helpers';
 
@@ -233,9 +233,21 @@ test.describe('start page', () => {
     await expect(page.locator('.mode-card__status:visible')).toHaveCount(1);
   });
 
-  test('the hero button opens the first mode, trivia', async ({ page }) => {
+  test('shows every mode card without scrolling', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('link', { name: /Play today.s puzzle/ }).click();
+    const cards = page.getByRole('navigation', { name: 'Game modes' }).getByRole('link');
+    await expect(cards).toHaveCount(5);
+    for (const card of await cards.all()) {
+      await expect(card).toBeInViewport({ ratio: 1 });
+    }
+  });
+
+  test('the header Play link opens the first mode, trivia', async ({ page }) => {
+    await page.goto('/');
+    await page
+      .getByRole('navigation', { name: 'Main' })
+      .getByRole('link', { name: 'Play', exact: true })
+      .click();
     await expect(page).toHaveURL(/\/trivia\.html$/);
     await expect(modeNav(page).getByRole('link', { name: 'Trivia' })).toHaveAttribute(
       'aria-current',
