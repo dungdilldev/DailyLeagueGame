@@ -2,6 +2,7 @@
   "questions": [
     {
       "id": "isYordle",
+      "subcategory": "races",
       "difficulty": "easy",
       "subject": "champion",
       "label": "Yordles",
@@ -27,6 +28,7 @@
     },
     {
       "id": "isFromTheVoid",
+      "subcategory": "races",
       "difficulty": "easy",
       "subject": "champion",
       "label": "Void creatures",
@@ -51,6 +53,7 @@
     },
     {
       "id": "isDarkin",
+      "subcategory": "races",
       "difficulty": "hard",
       "subject": "champion",
       "label": "Darkin",
@@ -78,6 +81,7 @@
     },
     {
       "id": "isFromDemacia",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Demacia",
@@ -139,6 +143,7 @@
     },
     {
       "id": "isFromNoxus",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Noxus",
@@ -200,6 +205,7 @@
     },
     {
       "id": "isFromFreljord",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Freljord",
@@ -266,6 +272,7 @@
     },
     {
       "id": "isFromIonia",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ionia",
@@ -324,6 +331,7 @@
     },
     {
       "id": "isFromPiltover",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Piltover",
@@ -361,6 +369,7 @@
     },
     {
       "id": "isFromZaun",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Zaun",
@@ -415,6 +424,7 @@
     },
     {
       "id": "isFromShadowIsles",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shadow Isles",
@@ -463,6 +473,7 @@
     },
     {
       "id": "isFromBilgewater",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bilgewater",
@@ -502,6 +513,7 @@
     },
     {
       "id": "isFromMountTargon",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Mount Targon",
@@ -539,6 +551,7 @@
     },
     {
       "id": "isFromShurima",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shurima",
@@ -588,6 +601,7 @@
     },
     {
       "id": "isFromIxtal",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Ixtal",
@@ -635,6 +649,7 @@
     },
     {
       "id": "isFromBandleCity",
+      "subcategory": "champion-origins",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bandle City",
@@ -659,6 +674,7 @@
     },
     {
       "id": "notInIonianInvasion",
+      "subcategory": "noxian-invasion-of-ionia",
       "difficulty": "hard",
       "subject": "champion",
       "label": "Noxian invasion of Ionia",
@@ -695,6 +711,7 @@
     },
     {
       "id": "claimedByBlackMist",
+      "subcategory": "ruination-of-helia",
       "difficulty": "hard",
       "subject": "champion",
       "label": "The Ruination",
@@ -717,6 +734,7 @@
     },
     {
       "id": "isSentinelOfLight",
+      "subcategory": "return-of-the-ruined-king",
       "difficulty": "hard",
       "subject": "champion",
       "label": "Sentinels of Light",
@@ -749,6 +767,7 @@
     },
     {
       "id": "isAscended",
+      "subcategory": "races",
       "difficulty": "easy",
       "subject": "champion",
       "label": "The Ascended",
@@ -770,6 +789,7 @@
     },
     {
       "id": "knownAsTitle",
+      "subcategory": "trivia",
       "difficulty": "easy",
       "subject": "champion",
       "clue": "title",

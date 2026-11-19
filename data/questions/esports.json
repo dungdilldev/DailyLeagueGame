@@ -2,6 +2,7 @@
   "questions": [
     {
       "id": "playerByTeam",
+      "subcategory": "players",
       "difficulty": "medium",
       "subject": "text",
       "label": "Players and teams",
@@ -10,6 +11,7 @@
     },
     {
       "id": "teamByPlayer",
+      "subcategory": "players",
       "difficulty": "medium",
       "subject": "text",
       "label": "Players and teams",
@@ -18,6 +20,7 @@
     },
     {
       "id": "esportsSkinLine",
+      "subcategory": "trivia",
       "difficulty": "medium",
       "subject": "champion",
       "skinLine": "esports",
@@ -26,6 +29,7 @@
     },
     {
       "id": "teamByLogo",
+      "subcategory": "trivia",
       "difficulty": "easy",
       "subject": "text",
       "logo": "team",
@@ -190,6 +194,7 @@
     },
     {
       "id": "isWorldsChampion",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "label": "World champions",
@@ -225,6 +230,7 @@
     },
     {
       "id": "lostWorldsFinal",
+      "subcategory": "worlds",
       "difficulty": "hard",
       "subject": "text",
       "label": "Finalists",
@@ -257,6 +263,7 @@
     },
     {
       "id": "hostedWorldsFinal",
+      "subcategory": "worlds",
       "difficulty": "hard",
       "subject": "text",
       "label": "Final cities",
@@ -295,6 +302,7 @@
     },
     {
       "id": "mostTitlesRegion",
+      "subcategory": "worlds",
       "difficulty": "easy",
       "subject": "text",
       "label": "Regions",
@@ -304,6 +312,7 @@
     },
     {
       "id": "mostTitlesPlayer",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "label": "Most titles",
@@ -313,6 +322,7 @@
     },
     {
       "id": "playerByNickname",
+      "subcategory": "players",
       "difficulty": "medium",
       "subject": "text",
       "label": "Nicknames",
@@ -321,6 +331,7 @@
     },
     {
       "id": "worldsChampionPlayer",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "ask": "playerWithTitle",
@@ -341,6 +352,7 @@
     },
     {
       "id": "neverWonWorlds",
+      "subcategory": "worlds",
       "difficulty": "hard",
       "subject": "text",
       "ask": "playerWithoutTitle",
@@ -350,6 +362,7 @@
     },
     {
       "id": "playerByRegion",
+      "subcategory": "players",
       "difficulty": "medium",
       "subject": "text",
       "ask": "playerByRegion",
@@ -358,6 +371,7 @@
     },
     {
       "id": "playerByRole",
+      "subcategory": "players",
       "difficulty": "medium",
       "subject": "text",
       "ask": "playerByRole",
@@ -367,6 +381,7 @@
     },
     {
       "id": "firstWorldsChampion",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "label": "First champions",
@@ -376,6 +391,7 @@
     },
     {
       "id": "threeInARow",
+      "subcategory": "worlds",
       "difficulty": "easy",
       "subject": "text",
       "label": "Three-peat",
@@ -385,6 +401,7 @@
     },
     {
       "id": "worldsWinnerByYear",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "label": "Worlds winners",
@@ -512,6 +529,7 @@
     },
     {
       "id": "worldsRunnerUpByYear",
+      "subcategory": "worlds",
       "difficulty": "hard",
       "subject": "text",
       "label": "Worlds runners-up",
@@ -585,6 +603,7 @@
     },
     {
       "id": "worldsFinalsMvpByYear",
+      "subcategory": "worlds",
       "difficulty": "hard",
       "subject": "text",
       "label": "Worlds Finals MVPs",
@@ -646,6 +665,7 @@
     },
     {
       "id": "worldsFinalCityByYear",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "label": "Worlds final cities",
@@ -763,6 +783,7 @@
     },
     {
       "id": "worldsAnthemByYear",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "label": "Worlds anthems",
@@ -932,6 +953,7 @@
     },
     {
       "id": "worldsChampionByYear",
+      "subcategory": "worlds",
       "difficulty": "medium",
       "subject": "text",
       "ask": "playerWithTitleInYear",

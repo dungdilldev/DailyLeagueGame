@@ -271,7 +271,14 @@ describe('buildPuzzle with question difficulty', () => {
 
 describe('buildPuzzle with fewer questions than rounds', () => {
   it('gives one round per question, in a valid puzzle', () => {
-    const few = questions.filter((question) => question.category === 'lore').slice(0, 2);
+    // From two subcategories, since a subcategory gives at most one round a day.
+    const lore = questions.filter((question) => question.category === 'lore');
+    const few = lore
+      .filter(
+        (question, index) =>
+          lore.findIndex(({ subcategory }) => subcategory === question.subcategory) === index,
+      )
+      .slice(0, 2);
     for (let offset = 0; offset < 60; offset++) {
       const date = addUtcDays('2026-01-01', offset);
       const puzzle = buildPuzzle(date, data, few);
