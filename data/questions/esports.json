@@ -205,7 +205,8 @@
         "FunPlus Phoenix",
         "Damwon Gaming",
         "Edward Gaming",
-        "DRX"
+        "DRX",
+        "Bilibili Gaming"
       ],
       "wrong": [
         "G2 Esports",
@@ -219,7 +220,8 @@
         "Royal Never Give Up",
         "FlyQuest",
         "MAD Lions",
-        "Hanwha Life Esports"
+        "Hanwha Life Esports",
+        "Gen.G"
       ]
     },
     {
@@ -237,7 +239,8 @@
         "Against All Authority",
         "Hanwha Life Esports",
         "Suning",
-        "KOO Tigers"
+        "KOO Tigers",
+        "Gen.G"
       ],
       "wrong": [
         "Cloud9",
@@ -269,7 +272,8 @@
         "Reykjavík",
         "San Francisco",
         "London",
-        "Chengdu"
+        "Chengdu",
+        "New York City"
       ],
       "wrong": [
         "Tokyo",
@@ -369,7 +373,7 @@
     },
     {
       "id": "threeInARow",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Three-peat",
       "question": "Which of these teams has won three World Championships in a row?",
@@ -442,6 +446,10 @@
         {
           "year": 2025,
           "answer": "T1"
+        },
+        {
+          "year": 2026,
+          "answer": "Bilibili Gaming"
         }
       ]
     },
@@ -621,6 +629,10 @@
         {
           "year": 2025,
           "answer": "Gumayusi"
+        },
+        {
+          "year": 2026,
+          "answer": "Knight"
         }
       ]
     },
@@ -690,6 +702,10 @@
         {
           "year": 2025,
           "answer": "Chengdu"
+        },
+        {
+          "year": 2026,
+          "answer": "New York City"
         }
       ]
     }
