@@ -110,12 +110,13 @@ describe('buildPuzzle with champions and items', () => {
       puzzles.flatMap((puzzle) => puzzle.rounds.map((round) => round.subject)),
     );
     expect(subjects).toEqual(new Set(['champion', 'item', 'ability', 'text']));
-    // Each of the two has 8 of the stat questions, so each comes up on about every other day.
+    // Each of the two has 7 or 8 of the 29 stat questions, and stats has a quarter of the rounds,
+    // so each comes up on about every third day.
     for (const subject of ['item', 'ability']) {
       const rounds = puzzles
         .flatMap((puzzle) => puzzle.rounds)
         .filter((round) => round.subject === subject);
-      expect(rounds.length, subject).toBeGreaterThan(days.length / 3);
+      expect(rounds.length, subject).toBeGreaterThan(days.length / 4);
     }
   });
 
@@ -198,11 +199,10 @@ describe('buildPuzzle with subcategories', () => {
     expect(subcategories.size).toBeGreaterThan(0);
     for (const slot of subcategories) {
       const group = questions.filter((question) => bySlot(question) === slot);
-      // Questions that fit any round let the group's questions land in the round of their tier.
-      const anyRound = questions.filter(
-        (question) => question.subcategory === undefined && question.difficulty === 'variable',
-      );
-      const pool = [...group, ...anyRound];
+      // Played as its category's own mode: the other slots of the category fill the other rounds,
+      // so the group can land in any round. (In a mixed pool with one other category, the group
+      // would always be one of the first two slots tried, and so always an easy round.)
+      const pool = questions.filter((question) => question.category === group[0]?.category);
       const groupIds = new Set(group.map(({ id }) => id));
       const asked = new Set<string>();
       // Generous: a slot is used by the first round it fits, so a group with one easy question
@@ -218,22 +218,44 @@ describe('buildPuzzle with subcategories', () => {
   });
 
   it('does not let a big subcategory take over the day', () => {
-    const counts = new Map<string, number>();
+    // Rounds per slot (a subcategory, or a question without one), by category.
+    const counts = new Map<string, Map<string, number>>();
     for (let offset = 0; offset < 365; offset++) {
       const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, questions);
       for (const round of puzzle.rounds) {
+        const question = questions.find(({ id }) => id === round.questionId) as Question;
+        const slots = counts.get(question.category) ?? new Map<string, number>();
         const key = slotOfRound(round) ?? round.questionId;
-        counts.set(key, (counts.get(key) ?? 0) + 1);
+        slots.set(key, (slots.get(key) ?? 0) + 1);
+        counts.set(question.category, slots);
       }
     }
-    const biggest = Math.max(
-      ...[...counts.entries()].filter(([key]) => key.includes('/')).map(([, n]) => n),
-    );
-    const singles = [...counts.entries()].filter(([key]) => !key.includes('/')).map(([, n]) => n);
-    const averageSingle = singles.reduce((sum, n) => sum + n, 0) / singles.length;
-    // Not equal: a group with questions of every difficulty fits any round, while a single hard
-    // question fits only two of the five. But it must stay far from its share by size (20+ times).
-    expect(biggest).toBeLessThan(averageSingle * 3);
+    for (const [category, slots] of counts) {
+      const rounds = [...slots.values()];
+      const average = rounds.reduce((sum, n) => sum + n, 0) / rounds.length;
+      // Not equal: a group with questions of every difficulty fits any round, while a single hard
+      // question fits only two of the five. But it must stay far from its share by size (lore's
+      // `nations` has 36 questions, ten times a small event).
+      expect(Math.max(...rounds), category).toBeLessThan(average * 3);
+    }
+  });
+
+  it('gives every category about the same share of a mixed day', () => {
+    const rounds = new Map<string, number>();
+    const days = 365;
+    for (let offset = 0; offset < days; offset++) {
+      const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, questions);
+      for (const round of puzzle.rounds) {
+        const category = questions.find(({ id }) => id === round.questionId)?.category ?? '';
+        rounds.set(category, (rounds.get(category) ?? 0) + 1);
+      }
+    }
+    const fairShare = ROUNDS_PER_DAY / rounds.size;
+    // Stats has 29 slots and esports 5: by slots alone, stats would get five times the rounds.
+    for (const [category, count] of rounds) {
+      expect(count / days, category).toBeGreaterThan(fairShare * 0.8);
+      expect(count / days, category).toBeLessThan(fairShare * 1.2);
+    }
   });
 });
 

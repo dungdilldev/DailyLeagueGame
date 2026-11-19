@@ -49,17 +49,37 @@ function slotKey(question: Question): string {
     : `${question.category}/${question.subcategory}`;
 }
 
+/** The slots of each category, categories and slots in the order they first appear. */
+function slotsByCategory(questions: readonly Question[]): Question[][][] {
+  const categories = new Map<string, Map<string, Question[]>>();
+  for (const question of questions) {
+    const slots = categories.get(question.category) ?? new Map<string, Question[]>();
+    slots.set(slotKey(question), [...(slots.get(slotKey(question)) ?? []), question]);
+    categories.set(question.category, slots);
+  }
+  return [...categories.values()].map((slots) => [...slots.values()]);
+}
+
+/** One item of each list in turn: [[a1, a2], [b1]] gives [a1, b1, a2]. */
+function interleave<T>(lists: readonly (readonly T[])[]): T[] {
+  const longest = Math.max(0, ...lists.map((list) => list.length));
+  return Array.from({ length: longest }, (_, index) =>
+    lists.flatMap((list) => list.slice(index, index + 1)),
+  ).flat();
+}
+
 /**
- * The questions in the order they are tried: slots in random order, and the questions of a slot
- * together in random order. A subcategory with many questions therefore comes up as often as a
- * single question, instead of in proportion to its size.
+ * The questions in the order they are tried: the categories take turns in random order, each
+ * offering its slots in random order, and the questions of a slot come together in random order.
+ * So every category gets about the same share of a mixed day, however many slots it has (stats
+ * has a slot per stat), and a subcategory with many questions comes up as often as a single
+ * question, instead of in proportion to its size. With one category this is a plain shuffle of
+ * its slots (shuffling the one category draws no number), so the category modes are unaffected.
  */
 function orderBySlot(questions: readonly Question[], rng: Rng): Question[] {
-  const slots = new Map<string, Question[]>();
-  for (const question of questions) {
-    slots.set(slotKey(question), [...(slots.get(slotKey(question)) ?? []), question]);
-  }
-  return rng.shuffle([...slots.values()]).flatMap((slot) => rng.shuffle(slot));
+  const categories = rng.shuffle(slotsByCategory(questions));
+  const slots = interleave(categories.map((slots) => rng.shuffle(slots)));
+  return slots.flatMap((slot) => rng.shuffle(slot));
 }
 
 function tryBuildRounds(

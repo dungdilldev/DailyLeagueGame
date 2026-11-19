@@ -55,7 +55,7 @@
           "year": 2021
         }
       ],
-      "teams": ["Edward Gaming", "Top Esports"]
+      "teams": ["Edward Gaming", "Top Esports", "Invictus Gaming"]
     },
     {
       "name": "Rookie",
@@ -144,7 +144,7 @@
           "year": 2021
         }
       ],
-      "teams": ["Edward Gaming", "LNG Esports", "JD Gaming", "Nongshim RedForce"]
+      "teams": ["Edward Gaming", "LNG Esports", "JD Gaming", "Nongshim RedForce", "T1"]
     },
     {
       "name": "Peanut",
@@ -314,7 +314,14 @@
           "year": 2019
         }
       ],
-      "teams": ["FunPlus Phoenix", "Weibo Gaming", "Top Esports", "LGD Gaming"]
+      "teams": [
+        "FunPlus Phoenix",
+        "Weibo Gaming",
+        "Top Esports",
+        "LGD Gaming",
+        "Newbee",
+        "Bilibili Gaming"
+      ]
     },
     {
       "name": "Canyon",
@@ -369,7 +376,13 @@
           "year": 2022
         }
       ],
-      "teams": ["Royal Never Give Up", "LNG Esports", "Invictus Gaming", "JD Gaming"]
+      "teams": [
+        "Royal Never Give Up",
+        "LNG Esports",
+        "Invictus Gaming",
+        "JD Gaming",
+        "Dominus Esports"
+      ]
     },
     {
       "name": "Caps",
@@ -381,7 +394,7 @@
           "year": 2019
         }
       ],
-      "teams": ["Fnatic", "G2 Esports"],
+      "teams": ["Fnatic", "G2 Esports", "Dark Passage"],
       "nickname": "Baby Faker"
     },
     {
@@ -410,7 +423,14 @@
           "year": 2024
         }
       ],
-      "teams": ["Griffin", "KT Rolster", "Gen.G"]
+      "teams": [
+        "Griffin",
+        "KT Rolster",
+        "Gen.G",
+        "DN SOOPers",
+        "Hanwha Life Esports",
+        "Nongshim RedForce"
+      ]
     },
     {
       "name": "Doran",
@@ -422,7 +442,7 @@
           "year": 2025
         }
       ],
-      "teams": ["Griffin", "DRX", "Gen.G", "Hanwha Life Esports", "T1"]
+      "teams": ["Griffin", "DRX", "Gen.G", "Hanwha Life Esports", "T1", "KT Rolster"]
     },
     {
       "name": "Tian",
@@ -434,7 +454,7 @@
           "year": 2019
         }
       ],
-      "teams": ["Suning", "FunPlus Phoenix", "Top Esports", "Weibo Gaming"]
+      "teams": ["Suning", "FunPlus Phoenix", "Top Esports", "Weibo Gaming", "Young Miracles"]
     },
     {
       "name": "CoreJJ",
@@ -476,7 +496,7 @@
       "region": "Korea",
       "role": "bot",
       "titles": [],
-      "teams": ["KT Rolster", "Bilibili Gaming", "Dplus KIA"]
+      "teams": ["KT Rolster", "Bilibili Gaming", "Dplus KIA", "DN SOOPers", "DRX"]
     },
     {
       "name": "Elk",
@@ -502,7 +522,15 @@
       "region": "Korea",
       "role": "bot",
       "titles": [],
-      "teams": ["Jin Air Green Wings", "T1", "DN SOOPers", "Liiv SANDBOX", "DRX"]
+      "teams": [
+        "Jin Air Green Wings",
+        "T1",
+        "DN SOOPers",
+        "Liiv SANDBOX",
+        "DRX",
+        "OKSavingsBank BRION",
+        "Winners"
+      ]
     },
     {
       "name": "Karsa",
@@ -601,7 +629,7 @@
           "year": 2026
         }
       ],
-      "teams": ["Bilibili Gaming"]
+      "teams": ["Bilibili Gaming", "Suning", "Weibo Gaming"]
     },
     {
       "name": "Gumayusi",
@@ -664,7 +692,7 @@
           "year": 2019
         }
       ],
-      "teams": ["H2k-Gaming", "ROCCAT", "G2 Esports", "Team Heretics"],
+      "teams": ["H2k-Gaming", "ROCCAT", "G2 Esports", "Team Heretics", "The Ruddy Sack"],
       "nickname": "First Blood King"
     },
     {
@@ -732,7 +760,14 @@
       "region": "China",
       "role": "top",
       "titles": [],
-      "teams": ["Oh My God", "Team WE", "Bilibili Gaming", "Royal Never Give Up", "Weibo Gaming"]
+      "teams": [
+        "Team WE",
+        "Bilibili Gaming",
+        "Royal Never Give Up",
+        "Weibo Gaming",
+        "Anyone's Legend",
+        "Invictus Gaming"
+      ]
     },
     {
       "name": "TheShy",
@@ -744,7 +779,7 @@
           "year": 2018
         }
       ],
-      "teams": ["Team WE", "Invictus Gaming", "Weibo Gaming"]
+      "teams": ["Invictus Gaming", "Weibo Gaming"]
     },
     {
       "name": "MISSING",
@@ -756,7 +791,7 @@
           "year": 2023
         }
       ],
-      "teams": ["JD Gaming", "LNG Esports"]
+      "teams": ["JD Gaming", "LNG Esports", "Team WE"]
     },
     {
       "name": "Kingen",
@@ -845,7 +880,15 @@
       "region": "Taiwan",
       "role": "support",
       "titles": [],
-      "teams": ["Flash Wolves", "Suning", "Team SoloMid", "Weibo Gaming", "MGN Vikings"]
+      "teams": [
+        "Flash Wolves",
+        "Suning",
+        "Team SoloMid",
+        "Weibo Gaming",
+        "MGN Vikings",
+        "Anyone's Legend",
+        "CTBC Flying Oyster"
+      ]
     },
     {
       "name": "Kellin",
@@ -900,7 +943,7 @@
       "region": "Korea",
       "role": "support",
       "titles": [],
-      "teams": ["Gen.G", "DN SOOPers"]
+      "teams": ["Gen.G", "DN SOOPers", "FunPlus Phoenix", "Hanwha Life Esports", "KT Rolster"]
     },
     {
       "name": "Light",
@@ -919,7 +962,7 @@
           "year": 2019
         }
       ],
-      "teams": ["Newbee", "I May", "FunPlus Phoenix", "Royal Never Give Up"]
+      "teams": ["Newbee", "FunPlus Phoenix", "Royal Never Give Up"]
     },
     {
       "name": "xiye",
@@ -959,21 +1002,21 @@
       "region": "North America",
       "role": "bot",
       "titles": [],
-      "teams": [
-        "Cloud9",
-        "Team SoloMid",
-        "Immortals",
-        "FlyQuest",
-        "Counter Logic Gaming",
-        "Shopify Rebellion"
-      ]
+      "teams": ["Cloud9", "Team SoloMid", "Immortals", "FlyQuest", "Counter Logic Gaming"]
     },
     {
       "name": "Clid",
       "region": "Korea",
       "role": "jungle",
       "titles": [],
-      "teams": ["JD Gaming", "T1", "Gen.G", "FunPlus Phoenix", "Hanwha Life Esports"]
+      "teams": [
+        "JD Gaming",
+        "T1",
+        "Gen.G",
+        "FunPlus Phoenix",
+        "Hanwha Life Esports",
+        "Qiao Gu Reapers"
+      ]
     },
     {
       "name": "Wunder",
@@ -1069,7 +1112,7 @@
       "region": "Taiwan",
       "role": "bot",
       "titles": [],
-      "teams": ["PSG Talon"]
+      "teams": ["PSG Talon", "Flash Wolves", "Anyone's Legend", "Royal Never Give Up"]
     },
     {
       "name": "Shanks",
@@ -1090,7 +1133,7 @@
       "region": "North America",
       "role": "support",
       "titles": [],
-      "teams": ["Counter Logic Gaming", "100 Thieves", "Dignitas", "FlyQuest"]
+      "teams": ["Counter Logic Gaming", "100 Thieves", "Dignitas", "FlyQuest", "Team Curse"]
     },
     {
       "name": "Doublelift",
@@ -1118,7 +1161,7 @@
           "year": 2014
         }
       ],
-      "teams": ["Samsung Galaxy", "Vici Gaming", "Royal Never Give Up", "KT Rolster", "T1"]
+      "teams": ["Samsung White", "Vici Gaming", "Royal Never Give Up", "KT Rolster", "T1", "BBT"]
     },
     {
       "name": "Vulcan",
@@ -1132,7 +1175,7 @@
       "region": "Europe",
       "role": "top",
       "titles": [],
-      "teams": ["H2k-Gaming", "Splyce", "FC Schalke 04", "Rogue", "GIANTX"]
+      "teams": ["H2k-Gaming", "Splyce", "FC Schalke 04", "Rogue", "GIANTX", "Excel Esports"]
     },
     {
       "name": "Ucal",
@@ -1146,7 +1189,7 @@
       "region": "Latin America",
       "role": "jungle",
       "titles": [],
-      "teams": ["Lyon Gaming", "Isurus", "Rainbow7", "LYON"]
+      "teams": ["Lyon Gaming", "Isurus", "Rainbow7", "LYON", "Estral Esports"]
     },
     {
       "name": "SofM",
@@ -1168,7 +1211,8 @@
         "NRG Esports",
         "FlyQuest",
         "GIANTX",
-        "Dignitas"
+        "Dignitas",
+        "FC Schalke 04"
       ]
     },
     {
@@ -1176,7 +1220,16 @@
       "region": "Europe",
       "role": "bot",
       "titles": [],
-      "teams": ["Fnatic", "Alliance", "G2 Esports", "Karmine Corp", "Los Ratones"],
+      "teams": [
+        "Fnatic",
+        "Alliance",
+        "G2 Esports",
+        "Karmine Corp",
+        "Los Ratones",
+        "Copenhagen Wolves",
+        "SK Gaming",
+        "T1"
+      ],
       "nickname": "Swedish Superman"
     },
     {
@@ -1184,7 +1237,14 @@
       "region": "Korea",
       "role": "bot",
       "titles": [],
-      "teams": ["Nongshim RedForce", "KT Rolster", "DN SOOPers"]
+      "teams": [
+        "Nongshim RedForce",
+        "KT Rolster",
+        "DN SOOPers",
+        "DRX",
+        "Dplus KIA",
+        "FunPlus Phoenix"
+      ]
     },
     {
       "name": "Robo",
@@ -1198,28 +1258,43 @@
       "region": "North America",
       "role": "jungle",
       "titles": [],
-      "teams": ["Copenhagen Wolves", "SK Gaming", "Team SoloMid", "Cloud9", "Evil Geniuses"]
+      "teams": [
+        "Copenhagen Wolves",
+        "SK Gaming",
+        "Team SoloMid",
+        "Cloud9",
+        "Evil Geniuses",
+        "Millenium",
+        "Ninjas in Pyjamas"
+      ]
     },
     {
       "name": "GorillA",
       "region": "Korea",
       "role": "support",
       "titles": [],
-      "teams": ["Hanwha Life Esports", "Longzhu Gaming", "DRX", "Liiv SANDBOX", "BNK FEARX"]
+      "teams": [
+        "Hanwha Life Esports",
+        "Longzhu Gaming",
+        "DRX",
+        "Liiv SANDBOX",
+        "BNK FEARX",
+        "NaJin White Shield"
+      ]
     },
     {
       "name": "Humanoid",
       "region": "Europe",
       "role": "mid",
       "titles": [],
-      "teams": ["Splyce", "MAD Lions", "Fnatic", "Team Vitality"]
+      "teams": ["Splyce", "MAD Lions", "Fnatic", "Team Vitality", "Dark Passage", "Millenium"]
     },
     {
       "name": "Kuro",
       "region": "Korea",
       "role": "mid",
       "titles": [],
-      "teams": ["Hanwha Life Esports", "KT Rolster"]
+      "teams": ["Hanwha Life Esports", "KT Rolster", "DN SOOPers", "Bilibili Gaming"]
     },
     {
       "name": "Ghost",
@@ -1245,7 +1320,15 @@
       "region": "China",
       "role": "mid",
       "titles": [],
-      "teams": ["TyLoo", "Suning", "Weibo Gaming", "Edward Gaming", "JD Gaming"]
+      "teams": [
+        "Suning",
+        "Weibo Gaming",
+        "Edward Gaming",
+        "JD Gaming",
+        "Ninjas in Pyjamas",
+        "Oh My God",
+        "Royal Never Give Up"
+      ]
     },
     {
       "name": "Bengi",
@@ -1265,7 +1348,7 @@
           "year": 2016
         }
       ],
-      "teams": ["BBT", "T1", "Vici Gaming"],
+      "teams": ["T1", "Vici Gaming"],
       "nickname": "The Jungle himself"
     },
     {
@@ -1278,7 +1361,14 @@
           "year": 2019
         }
       ],
-      "teams": ["G2 Esports", "Cloud9", "Team Vitality", "Team Heretics"],
+      "teams": [
+        "G2 Esports",
+        "Cloud9",
+        "Team Vitality",
+        "Team Heretics",
+        "Millenium",
+        "The Ruddy Sack"
+      ],
       "nickname": "Uma Jan"
     }
   ]
