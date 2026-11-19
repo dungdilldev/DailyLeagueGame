@@ -55,8 +55,8 @@ test('the same seed shows the same first question', async ({ page }) => {
   expect(await firstQuestion()).toBe(first);
 });
 
-const MAX_SKIPS = 3000;
-const MANY_SKIPS_TIMEOUT_MS = 180_000;
+const MAX_SKIPS = 4000;
+const MANY_SKIPS_TIMEOUT_MS = 300_000;
 
 test('skipping through many questions covers every question and difficulty', async ({
   page,

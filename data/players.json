@@ -55,7 +55,7 @@
           "year": 2021
         }
       ],
-      "teams": ["EDward Gaming", "Top Esports"]
+      "teams": ["Edward Gaming", "Top Esports"]
     },
     {
       "name": "Rookie",
@@ -144,7 +144,7 @@
           "year": 2021
         }
       ],
-      "teams": ["EDward Gaming", "LNG Esports", "JD Gaming", "Nongshim RedForce"]
+      "teams": ["Edward Gaming", "LNG Esports", "JD Gaming", "Nongshim RedForce"]
     },
     {
       "name": "Peanut",
@@ -174,6 +174,10 @@
         {
           "event": "MSI",
           "year": 2023
+        },
+        {
+          "event": "Worlds",
+          "year": 2026
         }
       ],
       "teams": ["Young Miracles", "Suning", "Top Esports", "JD Gaming", "Bilibili Gaming"],
@@ -196,7 +200,7 @@
           "year": 2021
         }
       ],
-      "teams": ["LNG Esports", "EDward Gaming", "JD Gaming", "Anyone's Legend", "Bilibili Gaming"]
+      "teams": ["LNG Esports", "Edward Gaming", "JD Gaming", "Anyone's Legend", "Bilibili Gaming"]
     },
     {
       "name": "Kiin",
@@ -234,9 +238,13 @@
         {
           "event": "Worlds",
           "year": 2021
+        },
+        {
+          "event": "Worlds",
+          "year": 2026
         }
       ],
-      "teams": ["Griffin", "Hanwha Life Esports", "EDward Gaming", "Bilibili Gaming"]
+      "teams": ["Griffin", "Hanwha Life Esports", "Edward Gaming", "Bilibili Gaming"]
     },
     {
       "name": "Chovy",
@@ -316,6 +324,14 @@
         {
           "event": "Worlds",
           "year": 2020
+        },
+        {
+          "event": "MSI",
+          "year": 2024
+        },
+        {
+          "event": "MSI",
+          "year": 2025
         }
       ],
       "teams": ["Dplus KIA", "Gen.G"]
@@ -376,6 +392,10 @@
         {
           "event": "MSI",
           "year": 2022
+        },
+        {
+          "event": "Worlds",
+          "year": 2026
         }
       ],
       "teams": ["Suning", "Weibo Gaming", "Royal Never Give Up", "Bilibili Gaming"]
@@ -575,7 +595,12 @@
       "name": "ON",
       "region": "China",
       "role": "support",
-      "titles": [],
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2026
+        }
+      ],
       "teams": ["Bilibili Gaming"]
     },
     {
@@ -612,7 +637,7 @@
         "J Team",
         "Bilibili Gaming",
         "Rare Atom",
-        "EDward Gaming",
+        "Edward Gaming",
         "Team WE",
         "PSG Talon"
       ]
@@ -786,7 +811,12 @@
       "name": "Xun",
       "region": "China",
       "role": "jungle",
-      "titles": [],
+      "titles": [
+        {
+          "event": "Worlds",
+          "year": 2026
+        }
+      ],
       "teams": ["Invictus Gaming", "Bilibili Gaming", "JD Gaming"]
     },
     {
@@ -856,7 +886,7 @@
       "region": "China",
       "role": "bot",
       "titles": [],
-      "teams": ["EDward Gaming", "Team WE", "JD Gaming", "Anyone's Legend"]
+      "teams": ["Edward Gaming", "Team WE", "JD Gaming", "Anyone's Legend"]
     },
     {
       "name": "Zven",
@@ -922,7 +952,7 @@
           "year": 2021
         }
       ],
-      "teams": ["EDward Gaming", "Invictus Gaming", "FunPlus Phoenix", "Weibo Gaming"]
+      "teams": ["Edward Gaming", "Invictus Gaming", "FunPlus Phoenix", "Weibo Gaming"]
     },
     {
       "name": "WildTurtle",
@@ -1002,7 +1032,7 @@
       ],
       "teams": [
         "Royal Never Give Up",
-        "OMG",
+        "Oh My God",
         "Qiao Gu Reapers",
         "Newbee",
         "Bilibili Gaming",
@@ -1215,7 +1245,7 @@
       "region": "China",
       "role": "mid",
       "titles": [],
-      "teams": ["TyLoo", "Suning", "Weibo Gaming", "EDward Gaming", "JD Gaming"]
+      "teams": ["TyLoo", "Suning", "Weibo Gaming", "Edward Gaming", "JD Gaming"]
     },
     {
       "name": "Bengi",

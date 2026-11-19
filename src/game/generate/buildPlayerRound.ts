@@ -13,6 +13,7 @@ const PLACEHOLDERS: Partial<Record<Ask, string>> = {
   playerByNickname: '{nickname}',
   playerByRegion: '{region}',
   playerByRole: '{role}',
+  playerWithTitleInYear: '{year}',
 };
 
 /** How a role reads in a question: "Which of these players is best known as a {role}?" */
@@ -100,6 +101,25 @@ function titleMatchups(question: PlayerQuestion, players: readonly Player[]): Ma
     : [{ subject: '', right: others, wrong: winners }];
 }
 
+/**
+ * One matchup per year the `event` was won. Winners of other years are wrong options too, which is
+ * fair only because every player's `titles` are complete.
+ */
+function titleYearMatchups(question: PlayerQuestion, players: readonly Player[]): Matchup[] {
+  const wonIn = (player: Player, year: number) =>
+    player.titles.some((title) => title.event === question.event && title.year === year);
+  const years = new Set(
+    players.flatMap(({ titles }) =>
+      titles.filter(({ event }) => event === question.event).map(({ year }) => year),
+    ),
+  );
+  return [...years].map((year) => ({
+    subject: String(year),
+    right: players.filter((player) => wonIn(player, year)).map(nameOf),
+    wrong: players.filter((player) => !wonIn(player, year)).map(nameOf),
+  }));
+}
+
 function allMatchups(question: PlayerQuestion): Matchup[] {
   const { players } = question;
   switch (question.ask) {
@@ -116,6 +136,8 @@ function allMatchups(question: PlayerQuestion): Matchup[] {
     case 'playerWithTitle':
     case 'playerWithoutTitle':
       return titleMatchups(question, players);
+    case 'playerWithTitleInYear':
+      return titleYearMatchups(question, players);
   }
 }
 
@@ -137,7 +159,7 @@ function matchups(question: PlayerQuestion, available: ReadonlySet<string>): Mat
 
 /**
  * Builds a round about players: one right option and three wrong ones for a random team, player,
- * nickname, region, role or title. `entities` are the names still available; returns undefined
+ * nickname, region, role, title or title year. `entities` are the names still available; returns undefined
  * if nothing the question could be about has enough options left.
  */
 export function buildPlayerRound(

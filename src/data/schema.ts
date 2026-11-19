@@ -250,14 +250,19 @@ const LogoQuestionTemplateSchema = z
   });
 
 /** Player questions about a title; they need to say which tournament (`event`). */
-const TITLE_ASKS: readonly string[] = ['playerWithTitle', 'playerWithoutTitle'];
+const TITLE_ASKS: readonly string[] = [
+  'playerWithTitle',
+  'playerWithoutTitle',
+  'playerWithTitleInYear',
+];
 
 /**
  * A question made from `data/players.json`. It names a random team and asks for a player who
  * played there (`playerByTeam`, `{team}`), names a player and asks for one of their teams
  * (`teamByPlayer`, `{player}`), quotes a nickname (`playerByNickname`, `{nickname}`), names a
- * region (`playerByRegion`, `{region}`) or a role (`playerByRole`, `{role}`), or asks who has
- * (`playerWithTitle`) or has never (`playerWithoutTitle`) won the `event`. Options are plain text.
+ * region (`playerByRegion`, `{region}`) or a role (`playerByRole`, `{role}`), asks who has
+ * (`playerWithTitle`) or has never (`playerWithoutTitle`) won the `event`, or who won it in a
+ * named year (`playerWithTitleInYear`, `{year}`). Options are plain text.
  */
 const PlayerQuestionTemplateSchema = z
   .strictObject({
@@ -271,6 +276,7 @@ const PlayerQuestionTemplateSchema = z
       'playerByRole',
       'playerWithTitle',
       'playerWithoutTitle',
+      'playerWithTitleInYear',
     ]),
     /** The tournament a title question is about; only for those. */
     event: PlayerTitleEventSchema.optional(),

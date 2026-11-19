@@ -42,4 +42,14 @@ describe('data/players.json', () => {
   it('is valid', () => {
     expect(PlayerFileSchema.safeParse(playerFile).success).toBe(true);
   });
+
+  // "EDward Gaming" next to "Edward Gaming" made Deft a wrong option for his own team.
+  it('spells each team one way only', () => {
+    const teams = [...new Set(playerFile.players.flatMap(({ teams }) => teams))];
+    const key = (team: string) => team.toLowerCase().replaceAll(' ', '');
+    const lookalikes = teams.filter((team) =>
+      teams.some((other) => other !== team && key(other) === key(team)),
+    );
+    expect(lookalikes).toEqual([]);
+  });
 });

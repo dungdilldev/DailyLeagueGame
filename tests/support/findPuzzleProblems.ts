@@ -54,6 +54,10 @@ function playerChecks(question: PlayerQuestion, subject: string) {
     playerByRole: (option) => find(option)?.role === ROLE_BY_NAME[subject],
     playerWithTitle: hasTitle,
     playerWithoutTitle: (option) => find(option) !== undefined && !hasTitle(option),
+    playerWithTitleInYear: (option) =>
+      find(option)?.titles.some(
+        ({ event, year }) => event === question.event && String(year) === subject,
+      ) ?? false,
   };
   const fits = checks[question.ask];
   const arguable =
@@ -70,6 +74,7 @@ const PLAYER_PLACEHOLDERS: Partial<Record<PlayerQuestion['ask'], string>> = {
   playerByNickname: '{nickname}',
   playerByRegion: '{region}',
   playerByRole: '{role}',
+  playerWithTitleInYear: '{year}',
 };
 
 /** A player round is valid if the answer fits the question and none of the other options could. */

@@ -230,16 +230,16 @@
       "label": "Finalists",
       "question": "Which of these teams has reached a Worlds final but never won the title?",
       "correct": [
-        "Royal Never Give Up",
         "Weibo Gaming",
         "G2 Esports",
-        "Bilibili Gaming",
         "KT Rolster",
         "Against All Authority",
-        "Hanwha Life Esports",
         "Suning",
         "KOO Tigers",
-        "Gen.G"
+        "Gen.G",
+        "Royal Club",
+        "Azubu Frost",
+        "DWG KIA"
       ],
       "wrong": [
         "Cloud9",
@@ -249,7 +249,10 @@
         "MAD Lions",
         "FlyQuest",
         "Karmine Corp",
-        "Taipei Assassins"
+        "Taipei Assassins",
+        "Royal Never Give Up",
+        "Bilibili Gaming",
+        "Hanwha Life Esports"
       ]
     },
     {
@@ -282,8 +285,8 @@
         "Rio de Janeiro",
         "Moscow",
         "Mumbai",
-        "Münich",
-        "Dehli",
+        "Munich",
+        "Delhi",
         "Cairo",
         "Mexico City",
         "Istanbul",
@@ -327,10 +330,12 @@
     },
     {
       "id": "msiChampionPlayer",
+      "subcategory": "msi",
       "difficulty": "hard",
       "subject": "text",
       "ask": "playerWithTitle",
       "event": "MSI",
+      "exclude": ["Bengi"],
       "label": "MSI champions",
       "question": "Which of these players has won the Mid-Season Invitational?"
     },
@@ -453,6 +458,7 @@
     },
     {
       "id": "msiWinnerByYear",
+      "subcategory": "msi",
       "difficulty": "hard",
       "subject": "text",
       "label": "MSI winners",
@@ -570,6 +576,10 @@
         {
           "year": 2025,
           "answer": "KT Rolster"
+        },
+        {
+          "year": 2026,
+          "answer": "Gen.G"
         }
       ]
     },
@@ -706,6 +716,239 @@
           "answer": "New York City"
         }
       ]
+    },
+    {
+      "id": "momentAnxQuarterfinal",
+      "subcategory": "moments",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "A wildcard in the quarterfinals",
+      "question": "Which of these teams was the first wildcard team to reach the World Championship quarterfinals, in 2016?",
+      "correct": ["Albus NoX Luna"],
+      "wrong": ["paiN Gaming", "Lyon Gaming", "Kabum! e-Sports"],
+      "answer": "The team from the CIS region made it out of its group, then lost the quarterfinal 3-0 to H2k-Gaming."
+    },
+    {
+      "id": "momentDeftFirstTitle",
+      "subcategory": "moments",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Deft's first title",
+      "question": "Which of these players won his first World Championship in 2022, nearly ten years after his professional debut?",
+      "correct": ["Deft"],
+      "wrong": ["Bjergsen", "Doublelift", "Rekkles"],
+      "answer": "Deft made his debut in 2013 and had long been called the best player never to have won Worlds."
+    },
+    {
+      "id": "momentFirstPlayIn",
+      "subcategory": "moments",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "The first play-in stage",
+      "question": "Which year was the play-in stage first used at the World Championship?",
+      "correct": ["2017"],
+      "wrong": ["2014", "2015", "2020"],
+      "answer": "The play-in stage grew the event from 16 to 24 teams; the three Korean seeds went straight into the group stage."
+    },
+    {
+      "id": "momentFirstSwissStage",
+      "subcategory": "moments",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "The first Swiss stage",
+      "question": "Which year was the Swiss stage first used at the World Championship, in place of the group stage?",
+      "correct": ["2023"],
+      "wrong": ["2019", "2021", "2016"],
+      "answer": "In the Swiss stage, teams are paired against others with the same record: three wins go through, three losses go home."
+    },
+    {
+      "id": "worldsAnthemByYear",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Worlds anthems",
+      "question": "Which song was the official World Championship anthem in {year}?",
+      "byYear": [
+        {
+          "year": 2014,
+          "answer": "Warriors"
+        },
+        {
+          "year": 2015,
+          "answer": "Worlds Collide"
+        },
+        {
+          "year": 2016,
+          "answer": "Ignite"
+        },
+        {
+          "year": 2017,
+          "answer": "Legends Never Die"
+        },
+        {
+          "year": 2018,
+          "answer": "RISE"
+        },
+        {
+          "year": 2019,
+          "answer": "Phoenix"
+        },
+        {
+          "year": 2020,
+          "answer": "Take Over"
+        },
+        {
+          "year": 2021,
+          "answer": "Burn It All Down"
+        },
+        {
+          "year": 2022,
+          "answer": "Star Walkin'"
+        },
+        {
+          "year": 2023,
+          "answer": "GODS"
+        },
+        {
+          "year": 2024,
+          "answer": "Heavy Is the Crown"
+        },
+        {
+          "year": 2025,
+          "answer": "Sacrifice"
+        },
+        {
+          "year": 2026,
+          "answer": "Know My Name"
+        }
+      ]
+    },
+    {
+      "id": "msiRunnerUpByYear",
+      "subcategory": "msi",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "MSI runners-up",
+      "question": "Which team lost the Mid-Season Invitational final in {year}?",
+      "byYear": [
+        {
+          "year": 2015,
+          "answer": "T1"
+        },
+        {
+          "year": 2016,
+          "answer": "Counter Logic Gaming"
+        },
+        {
+          "year": 2017,
+          "answer": "G2 Esports"
+        },
+        {
+          "year": 2018,
+          "answer": "Kingzone DragonX"
+        },
+        {
+          "year": 2019,
+          "answer": "Team Liquid"
+        },
+        {
+          "year": 2021,
+          "answer": "DWG KIA"
+        },
+        {
+          "year": 2022,
+          "answer": "T1"
+        },
+        {
+          "year": 2023,
+          "answer": "Bilibili Gaming"
+        },
+        {
+          "year": 2024,
+          "answer": "Bilibili Gaming"
+        },
+        {
+          "year": 2025,
+          "answer": "T1"
+        },
+        {
+          "year": 2026,
+          "answer": "Bilibili Gaming"
+        }
+      ]
+    },
+    {
+      "id": "msiFinalCityByYear",
+      "subcategory": "msi",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "MSI final cities",
+      "question": "Which city hosted the Mid-Season Invitational final in {year}?",
+      "byYear": [
+        {
+          "year": 2015,
+          "answer": "Tallahassee"
+        },
+        {
+          "year": 2016,
+          "answer": "Shanghai"
+        },
+        {
+          "year": 2017,
+          "answer": "Rio de Janeiro"
+        },
+        {
+          "year": 2018,
+          "answer": "Paris"
+        },
+        {
+          "year": 2019,
+          "answer": "Taipei"
+        },
+        {
+          "year": 2021,
+          "answer": "Reykjavík"
+        },
+        {
+          "year": 2022,
+          "answer": "Busan"
+        },
+        {
+          "year": 2023,
+          "answer": "London"
+        },
+        {
+          "year": 2024,
+          "answer": "Chengdu"
+        },
+        {
+          "year": 2025,
+          "answer": "Vancouver"
+        },
+        {
+          "year": 2026,
+          "answer": "Daejeon"
+        }
+      ]
+    },
+    {
+      "id": "worldsChampionByYear",
+      "difficulty": "medium",
+      "subject": "text",
+      "ask": "playerWithTitleInYear",
+      "event": "Worlds",
+      "label": "Worlds champions by year",
+      "question": "Which of these players won the World Championship in {year}?"
+    },
+    {
+      "id": "msiChampionByYear",
+      "subcategory": "msi",
+      "difficulty": "hard",
+      "subject": "text",
+      "ask": "playerWithTitleInYear",
+      "event": "MSI",
+      "exclude": ["Bengi"],
+      "label": "MSI champions by year",
+      "question": "Which of these players won the Mid-Season Invitational in {year}?"
     }
   ]
 }

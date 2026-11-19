@@ -495,6 +495,19 @@ Goal (owner, 2026-11-05, after looking at how Champdle and LoLdle are built): a 
 
 **Done when:** the live site works a full week with no manual action, across UTC midnight, with no request to a third-party image host, and `npm run check` and the e2e tests pass.
 
+### Phase 9b - Esports review after Worlds 2026 (done)
+
+Decisions (owner, 2026-11-19): new `byYear` lists, more moments, a generated "won it in {year}" player question; a renamed team counts only under its own name.
+
+- [x] Worlds 2026 leftovers: BLG out of "reached a final but never won", Gen.G added as the 2026 runner-up, the five BLG starters given the 2026 title (Wikipedia lists no substitute)
+- [x] Name rule applied to `lostWorldsFinal`: Hanwha Life and RNG never reached a final under that name (now wrong options); Royal Club, Azubu Frost and DWG KIA added as finalists
+- [x] Players file: Canyon's MSI 2024 and 2025 titles were missing; `EDward Gaming` / `Edward Gaming` and `OMG` / `Oh My God` were treated as different teams (merged, with a test against lookalike spellings); Bengi (MSI 2016 substitute) excluded from the MSI questions
+- [x] Typos in the final-city wrong options (Munich, Delhi)
+- [x] New: Worlds anthem by year (2014-2026), MSI runner-up and MSI final city by year (Wikipedia), "Which of these players won Worlds / MSI in {year}?" (`playerWithTitleInYear`), 4 moments (Albus NoX Luna, Deft's first title, first play-in stage, first Swiss stage)
+- [x] The five MSI questions share the new `msi` slot, so mixed mode stays at about 31% stats, 34% lore, 19% trivia, 16% esports (without the slot esports would have risen to 20%)
+- [ ] Add BLG's skin prefix to `TEAM_PREFIXES` (`pipeline/esportsSkins.ts`) once its Worlds 2026 skins ship
+- Known: `momentDrxPlayIn` and `momentFakerFirstTitle` state a Worlds winner in the question text, so they can give away `worldsWinnerByYear` the same day; left as is (rewording moves puzzles)
+
 ## 5. Risks & Open Questions
 
 1. **Win rate / pick rate source (biggest risk).** Riot has no aggregate endpoint. Options:

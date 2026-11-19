@@ -46,7 +46,7 @@ const question = (ask: PlayerQuestion['ask']): PlayerQuestion => ({
   subject: 'text',
   label: 'Players and teams',
   ask,
-  ...(ask === 'playerWithTitle' || ask === 'playerWithoutTitle'
+  ...(ask === 'playerWithTitle' || ask === 'playerWithoutTitle' || ask === 'playerWithTitleInYear'
     ? { event: 'Worlds' as const }
     : {}),
   question: {
@@ -57,6 +57,7 @@ const question = (ask: PlayerQuestion['ask']): PlayerQuestion => ({
     playerByRole: 'Which player is best known as a {role}?',
     playerWithTitle: 'Which player has won Worlds?',
     playerWithoutTitle: 'Which player has never won Worlds?',
+    playerWithTitleInYear: 'Which player won Worlds in {year}?',
   }[ask],
   players,
 });
@@ -185,6 +186,42 @@ describe('buildPlayerRound', () => {
       expect(champions).not.toContain(never?.answerId);
       expect(never?.optionIds.filter((id) => !champions.includes(id))).toHaveLength(1);
     }
+  });
+
+  describe('who won the event in a named year', () => {
+    const titles = (...years: number[]) =>
+      years.map((year) => ({ event: 'Worlds' as const, year }));
+    const titlesByName: Partial<Record<string, Player['titles']>> = {
+      Faker: titles(2013, 2023),
+      Keria: titles(2023),
+      Deft: titles(2022),
+    };
+    const winners = players.map((p) => ({ ...p, titles: titlesByName[p.name] ?? [] }));
+    const byYear = { ...question('playerWithTitleInYear'), players: winners };
+    const wonIn = (name: string, year: string | undefined) =>
+      winners.find((p) => p.name === name)?.titles.some((t) => String(t.year) === year) ?? false;
+
+    it('offers a winner of that year and three players who did not win it', () => {
+      const wrongWinners = new Set<string>();
+      for (const seed of seeds) {
+        const round = buildPlayerRound(allNames('playerWithTitleInYear'), byYear, createRng(seed));
+        const year = round?.question.match(/Worlds in (\d{4})\?/)?.[1];
+        expect(wonIn(round?.answerId ?? '', year)).toBe(true);
+        const others = round?.optionIds.filter((id) => id !== round.answerId) ?? [];
+        expect(others).toHaveLength(3);
+        expect(others.filter((id) => wonIn(id, year))).toEqual([]);
+        others
+          .filter((id) => wonIn(id, '2013') || wonIn(id, '2022') || wonIn(id, '2023'))
+          .forEach((id) => wrongWinners.add(id));
+      }
+      // Winners of other years are fair wrong options, which makes the question harder.
+      expect(wrongWinners.size).toBeGreaterThan(0);
+    });
+
+    it('gives up when no year has three players who did not win it', () => {
+      const left = entities(['Faker', 'Keria', 'Deft']);
+      expect(buildPlayerRound(left, byYear, createRng('s'))).toBeUndefined();
+    });
   });
 
   it('is deterministic for a seed', () => {

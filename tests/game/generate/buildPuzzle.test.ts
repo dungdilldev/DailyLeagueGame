@@ -205,7 +205,9 @@ describe('buildPuzzle with subcategories', () => {
       const pool = [...group, ...anyRound];
       const groupIds = new Set(group.map(({ id }) => id));
       const asked = new Set<string>();
-      for (let offset = 0; offset < 40 * group.length && asked.size < groupIds.size; offset++) {
+      // Generous: a slot is used by the first round it fits, so a group with one easy question
+      // (esports moments) gives its medium questions a chance only on days the slot comes up late.
+      for (let offset = 0; offset < 150 * group.length && asked.size < groupIds.size; offset++) {
         const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, pool);
         puzzle.rounds.forEach((round) => {
           if (groupIds.has(round.questionId)) asked.add(round.questionId);

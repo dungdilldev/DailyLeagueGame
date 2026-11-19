@@ -7,6 +7,7 @@ import { realGameData, realPuzzleData } from '../support/realGameData';
 const data = realPuzzleData;
 const { questions } = realGameData;
 const everyone = [...data.champions, ...data.items, ...data.abilities];
+const DRAWS_PER_QUESTION = 20;
 
 const ask = (index: number, filter = {}, seed = 'seed') =>
   buildEndlessQuestion(data, questions, seed, index, filter);
@@ -63,7 +64,8 @@ describe('buildEndlessQuestion', () => {
   it('represents every question and every difficulty when asked many times', () => {
     const questionsSeen = new Set<string>();
     const bandsSeen = new Set<number>();
-    for (let index = 0; index < 3000; index++) {
+    // Questions are drawn uniformly, so the draws must grow with the list or the rarest is missed.
+    for (let index = 0; index < DRAWS_PER_QUESTION * questions.length; index++) {
       const question = ask(index);
       if (!question) continue;
       questionsSeen.add(question.round.questionId);
