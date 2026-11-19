@@ -9,7 +9,7 @@ export type GameMode = typeof MIXED_MODE | QuestionCategory;
 
 /**
  * Every mode, in the order the mode links show them and "Play X next" suggests them. Written out
- * rather than taken from `QuestionCategorySchema`, whose order sets how the question files are
+ * rather than taken from `QUESTION_CATEGORIES`, whose order sets how the question files are
  * combined: reordering that would change every mixed puzzle.
  */
 export const GAME_MODES: readonly GameMode[] = ['trivia', 'lore', 'stats', 'esports', MIXED_MODE];

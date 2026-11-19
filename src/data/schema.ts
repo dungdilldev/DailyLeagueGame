@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { PlayerTitleEventSchema } from './playerSchema';
+import { QUESTION_CATEGORIES, type QuestionCategory } from './questionCategory';
 
 /** Stat ids are defined by the stat lists in `pipeline/stats`; the client treats them as opaque. */
 export type StatId = string;
@@ -131,14 +132,14 @@ export type AbilityDataFile = DataFile<Ability>;
 
 const EntityIdListSchema = z.array(z.string().min(1)).min(1);
 
-/** What kind of knowledge a question tests; for grouping and, later, filtering. */
-export const QuestionCategorySchema = z.enum(['stats', 'lore', 'esports', 'trivia']);
-export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
+export const QuestionCategorySchema = z.enum(QUESTION_CATEGORIES);
+export type { QuestionCategory };
 
 /**
  * Which rounds of the day a question may appear in: easy ones early, hard ones late.
  * `variable` means any round, for questions whose difficulty comes from the numbers (the gap
- * between the best and second-best option) rather than from the question itself.
+ * between the best and second-best option) or from what is drawn (the player questions: a famous
+ * player or an obscure one) rather than from the question itself.
  */
 export const QuestionDifficultySchema = z.enum(['easy', 'medium', 'hard', 'variable']);
 export type QuestionDifficulty = z.infer<typeof QuestionDifficultySchema>;

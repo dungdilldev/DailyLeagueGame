@@ -602,7 +602,7 @@
       "question": "Which of these champions had a species of crab, discovered in 2024, named after them?",
       "correct": ["Teemo"],
       "wrong": ["Tristana", "Poppy", "Corki", "Heimerdinger", "Kennen", "Lulu"],
-      "answer": "The Gothus teemo crab was descoverd in the South China Sea and was named after the board game Go as well as Teemo."
+      "answer": "The Gothus teemo crab was discovered in the South China Sea and was named after the board game Go as well as Teemo."
     },
     {
       "id": "hundredthChampion",

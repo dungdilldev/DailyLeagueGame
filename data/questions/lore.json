@@ -477,7 +477,7 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Bilgewater",
-      "question": "Which of these champions nelongs to Bilgewater?",
+      "question": "Which of these champions belongs to Bilgewater?",
       "correct": [
         "Fizz",
         "Gangplank",
@@ -555,7 +555,7 @@
       "difficulty": "medium",
       "subject": "champion",
       "label": "Shurima",
-      "question": "Which of these champions nelongs to Shurima?",
+      "question": "Which of these champions belongs to Shurima?",
       "correct": [
         "Akshan",
         "Amumu",

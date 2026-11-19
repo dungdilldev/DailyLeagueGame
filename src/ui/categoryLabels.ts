@@ -1,5 +1,5 @@
 import type { Question } from '../data/questions';
-import { QuestionCategorySchema, type QuestionCategory } from '../data/schema';
+import { QUESTION_CATEGORIES, type QuestionCategory } from '../data/questionCategory';
 
 /** Names shown for question categories. */
 export const CATEGORY_LABELS: Record<QuestionCategory, string> = {
@@ -29,7 +29,7 @@ export interface QuestionGroup {
  * one first). Categories and subcategories without questions are left out.
  */
 export function groupQuestions(questions: readonly Question[]): QuestionGroup[] {
-  return QuestionCategorySchema.options.flatMap((category) => {
+  return QUESTION_CATEGORIES.flatMap((category) => {
     const inCategory = questions.filter((question) => question.category === category);
     const subcategories = [
       ...new Set(inCategory.flatMap(({ subcategory }) => (subcategory ? [subcategory] : []))),

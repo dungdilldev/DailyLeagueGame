@@ -7,6 +7,7 @@ import {
   esportsImages,
   type EsportsImageKind,
 } from '../../src/data/esportsImages';
+import { EsportsImageFileSchema } from '../../src/data/esportsImageSchema';
 import { parseQuestionFiles, QUESTION_FILES } from '../../src/data/questionFiles';
 
 const WEBP_SIGNATURE = 'WEBP';
@@ -23,6 +24,10 @@ describe('data/esportsImages.json', () => {
   const entries = (Object.keys(esportsImages) as EsportsImageKind[]).flatMap((kind) =>
     Object.keys(esportsImages[kind]).map((name) => ({ kind, name })),
   );
+
+  it('has the expected shape (the app itself does not check it)', () => {
+    expect(EsportsImageFileSchema.safeParse(esportsImages).success).toBe(true);
+  });
 
   it('has a logo for every team of the logo question', () => {
     const logoQuestions = parseQuestionFiles(QUESTION_FILES).flatMap((question) =>

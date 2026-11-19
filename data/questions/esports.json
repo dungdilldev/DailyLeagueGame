@@ -3,7 +3,7 @@
     {
       "id": "playerByTeam",
       "subcategory": "players",
-      "difficulty": "medium",
+      "difficulty": "variable",
       "subject": "text",
       "label": "Players and teams",
       "ask": "playerByTeam",
@@ -12,7 +12,7 @@
     {
       "id": "teamByPlayer",
       "subcategory": "players",
-      "difficulty": "medium",
+      "difficulty": "variable",
       "subject": "text",
       "label": "Players and teams",
       "ask": "teamByPlayer",
@@ -313,7 +313,7 @@
     {
       "id": "mostTitlesPlayer",
       "subcategory": "worlds",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "subject": "text",
       "label": "Most titles",
       "question": "Which of these players has won the most World Championships?",
@@ -323,7 +323,7 @@
     {
       "id": "playerByNickname",
       "subcategory": "players",
-      "difficulty": "medium",
+      "difficulty": "variable",
       "subject": "text",
       "label": "Nicknames",
       "ask": "playerByNickname",
@@ -363,7 +363,7 @@
     {
       "id": "playerByRegion",
       "subcategory": "players",
-      "difficulty": "medium",
+      "difficulty": "variable",
       "subject": "text",
       "ask": "playerByRegion",
       "label": "Players by region",
@@ -372,7 +372,7 @@
     {
       "id": "playerByRole",
       "subcategory": "players",
-      "difficulty": "medium",
+      "difficulty": "variable",
       "subject": "text",
       "ask": "playerByRole",
       "exclude": ["Perkz", "CoreJJ", "Xiaohu", "Rekkles", "Zven"],

@@ -1,20 +1,19 @@
-import { z } from 'zod';
 import imageFile from '../../data/esportsImages.json';
 import { imageSlug } from './imageSlug';
 
 /** Image file names on Leaguepedia (lol.fandom.com), by team, league or player name. */
-const ImageNamesSchema = z.record(z.string(), z.string().min(1));
-
-export const EsportsImageFileSchema = z.strictObject({
-  leagues: ImageNamesSchema,
-  teams: ImageNamesSchema,
-  players: ImageNamesSchema,
-});
-export type EsportsImageFile = z.infer<typeof EsportsImageFileSchema>;
+export interface EsportsImageFile {
+  leagues: Record<string, string>;
+  teams: Record<string, string>;
+  players: Record<string, string>;
+}
 export type EsportsImageKind = keyof EsportsImageFile;
 
-/** Hand-written like the players file and bundled into the app, so it is checked once on load. */
-export const esportsImages: EsportsImageFile = EsportsImageFileSchema.parse(imageFile);
+/**
+ * Hand-written like the players file and bundled into the app. Not parsed here, so the browser
+ * loads no Zod: `EsportsImageFileSchema` checks it in the tests, which gate every deploy.
+ */
+export const esportsImages: EsportsImageFile = imageFile;
 
 /** Where the downloaded images live below the site root; `npm run images:download` fills it. */
 export const ESPORTS_IMAGE_DIRECTORY = 'images/esports';

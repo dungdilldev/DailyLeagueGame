@@ -10,6 +10,7 @@ import {
   esportsImages,
   type EsportsImageKind,
 } from '../src/data/esportsImages';
+import { EsportsImageFileSchema } from '../src/data/esportsImageSchema';
 import { STAT_ICON_FILES, statIconUrl, type StatIcon } from '../src/data/statIcons';
 
 /** Leaguepedia scales an image on request, so no image library is needed. */
@@ -35,9 +36,10 @@ function wikiFileName(fileName: string): string {
 }
 
 function esportsDownloads(): Download[] {
-  const kinds = Object.keys(esportsImages) as EsportsImageKind[];
+  const imageFile = EsportsImageFileSchema.parse(esportsImages);
+  const kinds = Object.keys(imageFile) as EsportsImageKind[];
   return kinds.flatMap((kind) =>
-    Object.entries(esportsImages[kind]).map(([name, fileName]) => ({
+    Object.entries(imageFile[kind]).map(([name, fileName]) => ({
       label: `${kind} ${name}`,
       url: `${LEAGUEPEDIA_FILE_URL}${wikiFileName(fileName)}?width=${String(ESPORTS_IMAGE_WIDTH)}`,
       target: path.join(ESPORTS_IMAGE_DIRECTORY, esportsImagePath(kind, name)),

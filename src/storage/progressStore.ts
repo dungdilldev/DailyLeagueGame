@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 const STORAGE_KEY = 'dailyleague:v1';
 
 /**
@@ -10,20 +8,43 @@ export function progressStorageKey(slot: string | undefined): string {
   return slot === undefined ? STORAGE_KEY : `${STORAGE_KEY}:${slot}`;
 }
 
-const DayRecordSchema = z.object({
+export interface DayRecord {
   /** Champion id chosen in each round, in order. */
-  answers: z.array(z.string()),
-  complete: z.boolean(),
+  answers: string[];
+  complete: boolean;
   /**
    * Set on days played after their own day, back when earlier days could be played (until
    * 2026-11-05). No longer written, but such saved days still do not count for the streak.
    */
-  late: z.boolean().optional(),
-});
-export type DayRecord = z.infer<typeof DayRecordSchema>;
+  late?: boolean;
+}
 
-const SavedDaysSchema = z.record(z.string(), DayRecordSchema);
-export type SavedDays = z.infer<typeof SavedDaysSchema>;
+export type SavedDays = Record<string, DayRecord>;
+
+// Checked by hand rather than with Zod: this module runs on every page, and Zod would be most of
+// the JavaScript the start page loads.
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string');
+}
+
+/** The saved day without any unknown fields, or undefined if it has the wrong shape. */
+function readDayRecord(value: unknown): DayRecord | undefined {
+  if (typeof value !== 'object' || value === null) return undefined;
+  const { answers, complete, late } = value as Record<string, unknown>;
+  if (!isStringArray(answers) || typeof complete !== 'boolean') return undefined;
+  if (late === undefined) return { answers, complete };
+  return typeof late === 'boolean' ? { answers, complete, late } : undefined;
+}
+
+/** All saved days, or undefined if anything is malformed (the stored progress is then ignored). */
+function readSavedDays(value: unknown): SavedDays | undefined {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) return undefined;
+  const entries = Object.entries(value).map(([date, day]) => [date, readDayRecord(day)] as const);
+  const valid = entries.flatMap(([date, record]) => (record ? [[date, record] as const] : []));
+  // fromEntries rather than assignment, so a "__proto__" key stays a plain key.
+  return valid.length === entries.length ? Object.fromEntries(valid) : undefined;
+}
 
 export type StorageLike = Pick<Storage, 'getItem' | 'setItem'>;
 
@@ -41,8 +62,7 @@ export function loadSavedDays(storage: StorageLike | undefined, slot?: string): 
   try {
     const raw = storage?.getItem(progressStorageKey(slot));
     if (!raw) return {};
-    const parsed = SavedDaysSchema.safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data : {};
+    return readSavedDays(JSON.parse(raw)) ?? {};
   } catch {
     return {};
   }

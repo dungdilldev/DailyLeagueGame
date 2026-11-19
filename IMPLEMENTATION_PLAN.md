@@ -255,7 +255,7 @@ Decision: maintenance was hard because a stat was both a data column and a quest
 - [x] Optional `subcategory` on every question (schema validates the spelling); endless mode gets a Subcategory dropdown and groups its question list and coverage table by it; `continentsRunterra` is the first (`lore`, `geography`)
 - The daily puzzle treats a subcategory as one slot (phase 5c13).
 - [x] Every esports and lore question has a subcategory (user, 2026-11-19): the Worlds questions each had their own slot, so an Esports day often asked two or three of them (two or more Worlds rounds on 352 of 365 days, now 6). Esports: `worlds` (teams, players, finals), `msi`, `moments`, `players` (the generated player questions), `trivia` (skin line, logo); an Esports day now asks one of each. Lore: `champion-origins` (the "belongs to" region questions), `races` (yordle, Void, Darkin, Ascended), `trivia` (the title clue), and the Ionia, Black Mist and Sentinel questions joined their events. Questions without a clear topic go into `trivia`. Stat questions keep a slot each. Side effect: in Mixed mode Esports fell from about 0.8 to 0.3 rounds a day, Stats rose from 1.6 to 1.9.
-- Open: `threeInARow` still comes up on about a third of Esports days, because Esports has only four easy questions for the two easy rounds (`teamByLogo`, `momentFakerFirstTitle`, `mostTitlesRegion`, `threeInARow`).
+- [x] `threeInARow` still came up on a third of Esports days, because Esports had only four easy questions for the two easy rounds. `mostTitlesPlayer` is now `easy` and the five generated player questions `variable` (user, 2026-11-19): `threeInARow` now comes up on about 72 of 365 days.
 
 ### Phase 5c13 - Lore geography, nations, city-states and events (done)
 

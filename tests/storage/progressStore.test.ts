@@ -45,6 +45,26 @@ describe('progress store', () => {
   it('treats corrupt or wrongly shaped data as empty', () => {
     expect(loadSavedDays(memoryStorage('not json'))).toEqual({});
     expect(loadSavedDays(memoryStorage('{"2026-03-05":{"answers":"x"}}'))).toEqual({});
+    expect(loadSavedDays(memoryStorage('[{"answers":["A"],"complete":true}]'))).toEqual({});
+    expect(
+      loadSavedDays(memoryStorage('{"2026-03-05":{"answers":["A"],"complete":true,"late":1}}')),
+    ).toEqual({});
+  });
+
+  it('ignores everything when one saved day is wrongly shaped', () => {
+    const mixed = '{"2026-03-04":{"answers":["A"],"complete":true},"2026-03-05":{"answers":[1]}}';
+    expect(loadSavedDays(memoryStorage(mixed))).toEqual({});
+  });
+
+  it('drops fields it does not know', () => {
+    const extra = memoryStorage('{"2026-03-04":{"answers":["A"],"complete":true,"x":1}}');
+    expect(loadSavedDays(extra)).toEqual({ '2026-03-04': { answers: ['A'], complete: true } });
+  });
+
+  it('keeps a "__proto__" key as a plain day instead of changing the prototype', () => {
+    const days = loadSavedDays(memoryStorage('{"__proto__":{"answers":["A"],"complete":true}}'));
+    expect(Object.getPrototypeOf(days)).toBe(Object.prototype);
+    expect(Object.keys(days)).toEqual(['__proto__']);
   });
 
   it('survives storage that throws, and missing storage', () => {

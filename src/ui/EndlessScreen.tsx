@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { questionLabel, type GameData } from '../data/questions';
-import { QuestionCategorySchema, type QuestionCategory } from '../data/schema';
+import { QUESTION_CATEGORIES, type QuestionCategory } from '../data/questionCategory';
 import { newestPuzzleData } from '../game/dailyPuzzle';
 import { buildEntityLookup } from '../game/entityLookup';
 import { buildEndlessQuestion } from '../game/endless';
@@ -128,7 +128,7 @@ export function EndlessScreen({ data, initialSeed, onSeedChange }: EndlessScreen
             }}
           >
             <option value={ANY}>Any (random)</option>
-            {QuestionCategorySchema.options.map((category) => (
+            {QUESTION_CATEGORIES.map((category) => (
               <option key={category} value={category}>
                 {CATEGORY_LABELS[category]}
               </option>
