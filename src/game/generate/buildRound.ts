@@ -1,6 +1,6 @@
 import type { Question, StatQuestion } from '../../data/questions';
-import type { Entity } from '../../data/schema';
-import type { Round } from '../puzzle';
+import type { Entity, StatDetail } from '../../data/schema';
+import type { Round, RoundDetail } from '../puzzle';
 import { buildClueRound } from './buildClueRound';
 import { buildPickRound } from './buildPickRound';
 import { buildPlayerRound } from './buildPlayerRound';
@@ -34,6 +34,25 @@ function splitPools(entries: readonly Entry[], question: StatQuestion) {
     answers: usable.filter((entry) => !allowedAnswers || allowedAnswers.has(entry.entity.id)),
     wrong: usable.filter((entry) => !allowedWrong || allowedWrong.has(entry.entity.id)),
   };
+}
+
+/**
+ * The detail values of the chosen options. A detail some option lacks is left out, so all four
+ * cards show the same lines.
+ */
+function roundDetails(
+  details: readonly StatDetail[],
+  chosen: readonly Entry[],
+): { details?: RoundDetail[] } {
+  const complete = details.flatMap((detail): RoundDetail[] => {
+    const values = chosen.flatMap((entry) => {
+      const value = entry.entity.stats[detail.stat];
+      return value === undefined ? [] : [[entry.entity.id, value] as const];
+    });
+    if (values.length < chosen.length) return [];
+    return [{ label: detail.label, format: detail.format, values: Object.fromEntries(values) }];
+  });
+  return complete.length === 0 ? {} : { details: complete };
 }
 
 /**
@@ -75,6 +94,8 @@ function buildStatRound(
       question: question.question,
       format: question.statMeta.format,
       ...(question.statMeta.unitIconUrl && { unitIconUrl: question.statMeta.unitIconUrl }),
+      ...(question.statMeta.unit && { unit: question.statMeta.unit }),
+      ...roundDetails(question.statMeta.details ?? [], chosen),
       optionIds: chosen.map((entry) => entry.entity.id),
       answerId: answer.entity.id,
       values: Object.fromEntries(chosen.map((entry) => [entry.entity.id, entry.value])),

@@ -11,6 +11,10 @@ interface OptionCardProps {
   valueText: string | undefined;
   /** The stat's symbol, drawn after the value as its unit. */
   unitIconUrl?: string | undefined;
+  /** A unit written after the value, e.g. "skins per year". */
+  unit?: string | undefined;
+  /** Lines shown under the value once revealed, e.g. "Skins: 11"; their space is reserved too. */
+  details?: readonly string[];
   /** False until the player has answered: the value takes up space but is invisible. */
   valueRevealed: boolean;
   state: CardState;
@@ -26,6 +30,8 @@ export function OptionCard({
   isSymbol = false,
   valueText,
   unitIconUrl,
+  unit,
+  details = [],
   valueRevealed,
   state,
   tag,
@@ -62,6 +68,16 @@ export function OptionCard({
           {unitIconUrl && (
             <img class="card__unit" src={unitIconUrl} alt="" width={18} height={18} />
           )}
+          {unit && <span class="card__unit-text">{unit}</span>}
+        </span>
+      )}
+      {details.length > 0 && (
+        <span class={valueRevealed ? 'card__details' : 'card__details card__details--hidden'}>
+          {details.map((line) => (
+            <span key={line} class="card__detail">
+              {line}
+            </span>
+          ))}
         </span>
       )}
       {/* Always takes its line, like the value, so the cards keep their size on reveal. */}

@@ -31,6 +31,18 @@ export const StatFormatSchema = z.discriminatedUnion('kind', [
 ]);
 export type StatFormat = z.infer<typeof StatFormatSchema>;
 
+/**
+ * Another stat of the same entity, shown under each option's value once answered, e.g. the skin
+ * count and release date behind "skins per year".
+ */
+export const StatDetailSchema = z.object({
+  stat: z.string().min(1),
+  /** Shown before the value, e.g. "Skins". */
+  label: z.string().min(1),
+  format: StatFormatSchema,
+});
+export type StatDetail = z.infer<typeof StatDetailSchema>;
+
 /** Everything the game needs to know about a stat besides the values themselves. */
 export const StatMetaSchema = z.object({
   id: z.string().min(1),
@@ -39,6 +51,9 @@ export const StatMetaSchema = z.object({
   format: StatFormatSchema,
   /** The stat's in-game symbol, shown after each value like a unit; absent for e.g. skin counts. */
   unitIconUrl: z.string().min(1).optional(),
+  /** A unit written after each value, e.g. "skins per year"; absent for most stats. */
+  unit: z.string().min(1).optional(),
+  details: z.array(StatDetailSchema).optional(),
   /** Where the values came from, so wrong-looking numbers can be traced. */
   source: z.string().min(1),
 });

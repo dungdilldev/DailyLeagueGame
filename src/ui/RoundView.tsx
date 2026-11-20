@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'preact/hooks';
 import type { Round } from '../game/puzzle';
 import type { Entity } from '../data/schema';
 import { isCorrect } from '../game/progress';
-import { displayValue } from '../game/roundDisplay';
+import { displayDetails, displayValue } from '../game/roundDisplay';
 import { clueImageUrl, roundSymbols } from '../game/textSymbols';
 import { Icon } from './icons';
 import { OptionCard, type CardState } from './OptionCard';
@@ -114,6 +114,8 @@ export function RoundView({
               isSymbol={symbols?.kind === 'crest'}
               valueText={displayValue(round, id)}
               unitIconUrl={round.unitIconUrl}
+              unit={round.unit}
+              details={displayDetails(round, id)}
               valueRevealed={revealed}
               state={state}
               tag={cardTag(round, state)}

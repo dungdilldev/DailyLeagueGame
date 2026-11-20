@@ -58,6 +58,10 @@ export interface StatBase {
   format?: StatFormat;
   /** The in-game symbol shown after each value; none for stats the game has no symbol for. */
   unitIcon?: StatIcon;
+  /** A unit written after each value, e.g. "skins per year"; none for most stats. */
+  unit?: string;
+  /** Other stats of the same file shown with each option once answered, e.g. the counts a rate comes from. */
+  details?: readonly { stat: StatBase; label: string }[];
   /** Share of entities that must have a value; defaults to the usual 95%. */
   minCoverage?: number;
 }
@@ -87,6 +91,14 @@ export function toStatMeta(stat: StatBase): StatMeta {
     label: stat.label,
     format: stat.format ?? NUMBER_FORMAT,
     ...(stat.unitIcon && { unitIconUrl: statIconUrl(stat.unitIcon) }),
+    ...(stat.unit && { unit: stat.unit }),
+    ...(stat.details && {
+      details: stat.details.map((detail) => ({
+        stat: detail.stat.id,
+        label: detail.label,
+        format: detail.stat.format ?? NUMBER_FORMAT,
+      })),
+    }),
     source: stat.source,
   };
 }

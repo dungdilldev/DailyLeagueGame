@@ -10,7 +10,7 @@
       "id": "skinsPerYear",
       "difficulty": "variable",
       "stat": "skinsPerYear",
-      "question": "Which champion has the most skins relative to their release date?"
+      "question": "Which champion has the most skins per year since release?"
     },
     {
       "id": "releaseDate",
@@ -76,7 +76,7 @@
       "id": "patchesPerYear",
       "difficulty": "variable",
       "stat": "patchesPerYear",
-      "question": "Which champion has had the most patch changes relative to their release date?"
+      "question": "Which champion has had the most patch changes per year since release?"
     },
     {
       "id": "itemCost",

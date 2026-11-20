@@ -1,4 +1,6 @@
+import { patchCount } from './patchCount';
 import { perYear } from './perYear';
+import { releaseDate } from './releaseDate';
 import { LEAGUE_WIKI_SOURCE, type ChampionStat } from './types';
 
 /**
@@ -10,6 +12,11 @@ export const patchesPerYear: ChampionStat = {
   id: 'patchesPerYear',
   label: 'Patch changes per year',
   source: LEAGUE_WIKI_SOURCE,
-  extract: ({ patchCount, wiki, referenceDate }) =>
-    perYear(patchCount, wiki?.releaseDate, referenceDate),
+  unit: 'patch changes per year',
+  details: [
+    { stat: patchCount, label: 'Patch changes' },
+    { stat: releaseDate, label: 'Released' },
+  ],
+  extract: ({ patchCount: count, wiki, referenceDate }) =>
+    perYear(count, wiki?.releaseDate, referenceDate),
 };

@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { CHAMPION_STATS, ITEM_STATS } from '../../pipeline/stats';
+import { ABILITY_STATS, CHAMPION_STATS, ITEM_STATS } from '../../pipeline/stats';
 import { armor, baseHealth } from '../../pipeline/stats/baseStats';
+import { patchCount } from '../../pipeline/stats/patchCount';
+import { patchesPerYear } from '../../pipeline/stats/patchesPerYear';
 import { RELEASE_DATE_EPOCH, releaseDate } from '../../pipeline/stats/releaseDate';
 import { skinCount } from '../../pipeline/stats/skinCount';
+import { skinsPerYear } from '../../pipeline/stats/skinsPerYear';
 import { toStatMeta } from '../../pipeline/stats/types';
 import { makeDetail, makeInput, makeWiki } from './fixtures';
 
@@ -74,6 +77,37 @@ describe('toStatMeta', () => {
     });
     expect(toStatMeta(releaseDate).format.kind).toBe('date');
   });
+
+  it('publishes the written unit and the details with their own formats', () => {
+    expect(toStatMeta(skinsPerYear)).toMatchObject({
+      unit: 'skins per year',
+      details: [
+        { stat: 'skinCount', label: 'Skins', format: { kind: 'number' } },
+        {
+          stat: 'releaseDate',
+          label: 'Released',
+          format: { kind: 'date', epoch: RELEASE_DATE_EPOCH },
+        },
+      ],
+    });
+    expect(toStatMeta(patchesPerYear).details?.map((detail) => detail.stat)).toEqual([
+      'patchCount',
+      'releaseDate',
+    ]);
+  });
+
+  it('leaves out unit and details for a stat without them', () => {
+    const meta = toStatMeta(baseHealth);
+    expect(meta).not.toHaveProperty('unit');
+    expect(meta).not.toHaveProperty('details');
+  });
+});
+
+describe('patchCount', () => {
+  it('is the number of patches in the patch history, if there is one', () => {
+    expect(patchCount.extract(makeInput('Ahri'))).toBe(12);
+    expect(patchCount.extract(makeInput('Ahri', { patchCount: undefined }))).toBeUndefined();
+  });
 });
 
 describe('stat lists', () => {
@@ -81,6 +115,15 @@ describe('stat lists', () => {
     for (const stats of [CHAMPION_STATS, ITEM_STATS]) {
       const ids = stats.map((stat) => stat.id);
       expect(new Set(ids).size).toBe(ids.length);
+    }
+  });
+
+  it('only name details that are stats of the same data file', () => {
+    for (const stats of [CHAMPION_STATS, ITEM_STATS, ABILITY_STATS]) {
+      const ids = new Set<string>(stats.map((stat) => stat.id));
+      for (const detail of stats.flatMap((stat) => stat.details ?? [])) {
+        expect(ids).toContain(detail.stat.id);
+      }
     }
   });
 });

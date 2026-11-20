@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Round } from '../../src/game/puzzle';
-import { displayValue } from '../../src/game/roundDisplay';
+import { displayDetails, displayValue } from '../../src/game/roundDisplay';
 import { formatStatValue } from '../../src/game/statFormat';
 
 const base: Round = {
@@ -44,5 +44,24 @@ describe('displayValue', () => {
 
   it('is undefined for a champion that is not in the round', () => {
     expect(displayValue(base, 'Z')).toBeUndefined();
+  });
+});
+
+describe('displayDetails', () => {
+  const withDetails: Round = {
+    ...base,
+    details: [
+      { label: 'Skins', format: { kind: 'number' }, values: { A: 11, B: 3 } },
+      { label: 'Released', format: { kind: 'date', epoch: '2013-06-01' }, values: { A: 12 } },
+    ],
+  };
+
+  it('writes each detail as its label and formatted value', () => {
+    expect(displayDetails(withDetails, 'A')).toEqual(['Skins: 11', 'Released: Jun 13, 2013']);
+  });
+
+  it('skips details the option has no value for, and is empty without details', () => {
+    expect(displayDetails(withDetails, 'B')).toEqual(['Skins: 3']);
+    expect(displayDetails(base, 'A')).toEqual([]);
   });
 });

@@ -287,7 +287,9 @@
 
 .card__value {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0.3rem;
   font-size: 1.25rem;
   font-weight: 700;
@@ -303,22 +305,47 @@
   object-fit: contain;
 }
 
-/* Takes its space before the answer so the cards do not grow on reveal. */
-.card__value--hidden {
+/* A written unit gets its own line under the number, so the number stays large on narrow cards. */
+.card__unit-text {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* What the value is made of (e.g. skin count and release date), small under the value. */
+.card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  animation: rise 0.35s ease-out both;
+}
+
+/* Take their space before the answer so the cards do not grow on reveal. */
+.card__value--hidden,
+.card__details--hidden {
   visibility: hidden;
   animation: none;
 }
 
 /* Reveal values one after another, like tiles turning over. */
-.card:nth-child(2) .card__value {
+.card:nth-child(2) .card__value,
+.card:nth-child(2) .card__details {
   animation-delay: 0.08s;
 }
 
-.card:nth-child(3) .card__value {
+.card:nth-child(3) .card__value,
+.card:nth-child(3) .card__details {
   animation-delay: 0.16s;
 }
 
-.card:nth-child(4) .card__value {
+.card:nth-child(4) .card__value,
+.card:nth-child(4) .card__details {
   animation-delay: 0.24s;
 }
 

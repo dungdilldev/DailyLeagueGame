@@ -59,6 +59,37 @@ describe('RoundView stat symbol', () => {
   });
 });
 
+describe('RoundView unit and details', () => {
+  const perYearRound: Round = {
+    ...round,
+    subject: 'champion',
+    format: { kind: 'number' },
+    unit: 'skins per year',
+    values: { Valoran: 1.5, Camavor: 2, Arctic: 1, Shurima: 0.5 },
+    details: [
+      {
+        label: 'Skins',
+        format: { kind: 'number' },
+        values: { Valoran: 6, Camavor: 8, Arctic: 4, Shurima: 2 },
+      },
+    ],
+  };
+  const texts = (selector: string) =>
+    [...document.querySelectorAll(selector)].map((element) => element.textContent);
+
+  it("writes the unit after every value and each option's details under it", () => {
+    show('Camavor', perYearRound);
+    expect(texts('.card__value .card__unit-text')).toEqual(IDS.map(() => 'skins per year'));
+    expect(texts('.card__detail')).toEqual(['Skins: 6', 'Skins: 8', 'Skins: 4', 'Skins: 2']);
+    expect(document.querySelector('.card__details--hidden')).toBeNull();
+  });
+
+  it('keeps the details hidden until the player has answered', () => {
+    show(undefined, perYearRound);
+    expect(document.querySelectorAll('.card__details--hidden')).toHaveLength(IDS.length);
+  });
+});
+
 describe('RoundView answer text', () => {
   it('is hidden until the player has answered', () => {
     show(undefined);

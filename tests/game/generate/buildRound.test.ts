@@ -86,6 +86,45 @@ describe('buildRound', () => {
     expect(buildRound(roster, STAT, band, createRng('u'))).not.toHaveProperty('unitIconUrl');
   });
 
+  describe('unit and details', () => {
+    const band = { minRatio: 0.05, maxRatio: 1 };
+    const withDetails: StatQuestion = {
+      ...STAT,
+      statMeta: {
+        ...STAT.statMeta,
+        unit: 'health per year',
+        details: [{ stat: 'age', label: 'Age', format: { kind: 'number' } }],
+      },
+    };
+    const withAge = (entry: Champion, age: number | undefined): Champion => ({
+      ...entry,
+      stats: age === undefined ? entry.stats : { ...entry.stats, age },
+    });
+
+    it("carries the unit and every option's detail value into the round", () => {
+      const aged = roster.map((entry) => withAge(entry, (entry.stats.hp ?? 0) * 2));
+      const round = buildRound(aged, withDetails, band, createRng('d'));
+      expect(round?.unit).toBe('health per year');
+      const ages = round?.details?.[0]?.values ?? {};
+      expect(Object.keys(ages)).toEqual(round?.optionIds);
+      for (const id of round?.optionIds ?? []) expect(ages[id]).toBe((round?.values[id] ?? 0) * 2);
+    });
+
+    it('leaves out a detail that one of the options lacks', () => {
+      const someAged = roster.map((entry) => withAge(entry, entry.id === 'C100' ? undefined : 1));
+      for (let seed = 0; seed < 20; seed++) {
+        const round = buildRound(someAged, withDetails, band, createRng(`age${String(seed)}`));
+        expect(round?.details === undefined).toBe(round?.optionIds.includes('C100'));
+      }
+    });
+
+    it('are absent for a stat without them', () => {
+      const round = buildRound(roster, STAT, band, createRng('u'));
+      expect(round).not.toHaveProperty('unit');
+      expect(round).not.toHaveProperty('details');
+    });
+  });
+
   it('ignores champions that lack the stat', () => {
     const withMissing = [...roster, { ...champion('NoStat', 0), stats: {} }];
     const round = buildRound(withMissing, STAT, { minRatio: 0.05, maxRatio: 1 }, createRng('m'));

@@ -29,6 +29,7 @@ import {
   itemHealth,
   itemMagicResist,
 } from './itemStats';
+import { patchCount } from './patchCount';
 import { patchesPerYear } from './patchesPerYear';
 import { releaseDate } from './releaseDate';
 import { skinCount } from './skinCount';
@@ -50,6 +51,7 @@ export const CHAMPION_STATS: readonly ChampionStat[] = [
   attackRange,
   moveSpeed,
   patchesPerYear,
+  patchCount,
 ];
 
 /** Every stat stored in items.json. */
