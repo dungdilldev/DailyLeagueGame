@@ -971,6 +971,113 @@
       "exclude": ["Bengi"],
       "label": "MSI champions by year",
       "question": "Which of these players won the Mid-Season Invitational in {year}?"
+    },
+    {
+      "id": "summonersCup",
+      "subcategory": "trivia",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "The Worlds trophy",
+      "question": "Which of these is the trophy the World Championship winner lifts?",
+      "correct": ["Summoner's Cup"],
+      "wrong": ["Aegis of Champions", "Stanley Cup", "Webb Ellis Cup", "Claret Jug"],
+      "answer": "Tiffany & Co. made the version of the cup lifted from 2022 to 2024; in 2025 it went back to its original shape."
+    },
+    {
+      "id": "trophyCaseDesigner",
+      "subcategory": "trivia",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "The trophy case",
+      "question": "Which of these fashion houses made a travel case for the Summoner's Cup in 2019?",
+      "correct": ["Louis Vuitton"],
+      "wrong": ["Gucci", "Prada", "Chanel", "Balenciaga"],
+      "answer": "The case took more than 900 hours to make, and a mechanism inside opens its panels and lifts the trophy."
+    },
+    {
+      "id": "chinaLeague",
+      "subcategory": "trivia",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "China's league",
+      "question": "Which of these is the top League of Legends league in China?",
+      "correct": ["LPL"],
+      "wrong": ["LCK", "LEC", "LCS", "LJL", "VCS"]
+    },
+    {
+      "id": "hideOnBush",
+      "subcategory": "trivia",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Hide on bush",
+      "question": "Which of these players plays solo queue on the account \"Hide on bush\"?",
+      "correct": ["Faker"],
+      "wrong": ["Uzi", "Chovy", "ShowMaker", "Rookie"],
+      "answer": "Since Riot added name tags, thousands of fans in Korea have taken the same name."
+    },
+    {
+      "id": "firstMsiWinner",
+      "subcategory": "msi",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "First MSI champions",
+      "question": "Which of these teams won the first Mid-Season Invitational, in 2015?",
+      "correct": ["Edward Gaming"],
+      "wrong": ["Royal Never Give Up", "G2 Esports", "Gen.G", "JD Gaming", "Team Liquid"]
+    },
+    {
+      "id": "msiCancelledYear",
+      "subcategory": "msi",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "The cancelled MSI",
+      "question": "Which year was the Mid-Season Invitational cancelled?",
+      "correct": ["2020"],
+      "wrong": ["2016", "2019", "2021", "2023"],
+      "answer": "Riot cancelled it because of the COVID-19 pandemic and held the Mid-Season Cup in its place, played online between the top four teams of the LCK and the LPL."
+    },
+    {
+      "id": "mostMsiTitles",
+      "subcategory": "msi",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Most MSI titles",
+      "question": "Which of these teams has won the Mid-Season Invitational the most times?",
+      "correct": ["Royal Never Give Up"],
+      "wrong": ["T1", "Gen.G", "G2 Esports", "Edward Gaming", "JD Gaming", "Hanwha Life Esports"],
+      "answer": "Royal Never Give Up won it three times; no other team has won it more than twice."
+    },
+    {
+      "id": "momentInsecKick",
+      "subcategory": "moments",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "The Insec kick",
+      "question": "Which of these champions does the \"Insec\" kick, named after the Korean pro player inSec?",
+      "correct": ["LeeSin"],
+      "wrong": ["Yasuo", "Ekko", "Sylas", "Qiyana"],
+      "answer": "The move dashes behind an enemy, usually to a ward, and kicks them back into Lee Sin's own team with his ultimate, Dragon's Rage."
+    },
+    {
+      "id": "firstStandEvent",
+      "subcategory": "trivia",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "The newest international event",
+      "question": "Which of these international tournaments did Riot add at the start of the 2025 season?",
+      "correct": ["First Stand"],
+      "wrong": ["Rift Rivals", "All-Star Event", "Mid-Season Invitational"],
+      "answer": "Its first edition had five teams, one from each major region, and was the first international event played with Fearless Draft."
+    },
+    {
+      "id": "onlyWesternMsiWinner",
+      "subcategory": "msi",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "MSI outside Korea and China",
+      "question": "Which of these teams is the only one from outside Korea and China to have won the Mid-Season Invitational?",
+      "correct": ["G2 Esports"],
+      "wrong": ["Fnatic", "Cloud9", "Team Liquid", "Counter Logic Gaming", "Flash Wolves"]
     }
   ]
 }

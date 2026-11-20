@@ -44,3 +44,19 @@ export function createRng(seed: string): Rng {
 
   return { next, pick, shuffle };
 }
+
+/**
+ * A shuffled copy in which an item with twice the weight is about twice as likely to come before
+ * another (Efraimidis-Spirakis: each item's key is u ** (1 / weight), largest first). Weights must
+ * be positive. Draws one number per item.
+ */
+export function weightedShuffle<T>(
+  items: readonly T[],
+  weightOf: (item: T) => number,
+  rng: Rng,
+): T[] {
+  return items
+    .map((item) => ({ item, key: rng.next() ** (1 / weightOf(item)) }))
+    .sort((a, b) => b.key - a.key)
+    .map(({ item }) => item);
+}

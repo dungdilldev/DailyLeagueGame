@@ -7,10 +7,11 @@ import {
   fitsRound,
   MAX_PUZZLE_ATTEMPTS,
   ROUND_GAP_BANDS,
+  SLOT_SIZE_WEIGHT_EXPONENT,
   tierDistance,
   type GapBand,
 } from './config';
-import { createRng, type Rng } from './random';
+import { createRng, weightedShuffle, type Rng } from './random';
 
 export interface PuzzleData {
   champions: readonly Champion[];
@@ -68,17 +69,21 @@ function interleave<T>(lists: readonly (readonly T[])[]): T[] {
   ).flat();
 }
 
+/** A slot's chance to be tried early grows with its size, but slower (see the exponent). */
+function slotWeight(slot: readonly Question[]): number {
+  return slot.length ** SLOT_SIZE_WEIGHT_EXPONENT;
+}
+
 /**
  * The questions in the order they are tried: the categories take turns in random order, each
- * offering its slots in random order, and the questions of a slot come together in random order.
- * So every category gets about the same share of a mixed day, however many slots it has (stats
- * has a slot per stat), and a subcategory with many questions comes up as often as a single
- * question, instead of in proportion to its size. With one category this is a plain shuffle of
- * its slots (shuffling the one category draws no number), so the category modes are unaffected.
+ * offering its slots in a random order weighted by size, and the questions of a slot come
+ * together in random order. So every category gets about the same share of a mixed day, however
+ * many slots it has (stats has a slot per stat), and a subcategory with many questions comes up
+ * more often than a single question, but far less than in proportion to its size.
  */
 function orderBySlot(questions: readonly Question[], rng: Rng): Question[] {
   const categories = rng.shuffle(slotsByCategory(questions));
-  const slots = interleave(categories.map((slots) => rng.shuffle(slots)));
+  const slots = interleave(categories.map((slots) => weightedShuffle(slots, slotWeight, rng)));
   return slots.flatMap((slot) => rng.shuffle(slot));
 }
 

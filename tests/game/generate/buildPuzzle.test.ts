@@ -24,16 +24,24 @@ describe('difficulty config', () => {
     expect(ROUND_TIERS).toHaveLength(ROUND_GAP_BANDS.length);
   });
 
-  it('lets a variable question into every round and a fixed one only into its tier', () => {
-    ROUND_TIERS.forEach((tier, index) => {
+  it('lets a variable question into every round and a fixed one only into its tiers', () => {
+    ROUND_TIERS.forEach((tiers, index) => {
       expect(fitsRound('variable', index)).toBe(true);
-      expect(fitsRound(tier, index)).toBe(true);
-      for (const other of ['easy', 'medium', 'hard'] as const) {
-        expect(fitsRound(other, index), `${other} in round ${String(index + 1)}`).toBe(
-          other === tier,
+      for (const difficulty of ['easy', 'medium', 'hard'] as const) {
+        expect(fitsRound(difficulty, index), `${difficulty} in round ${String(index + 1)}`).toBe(
+          tiers.includes(difficulty),
         );
       }
     });
+  });
+
+  it('starts easy, ends hard and gives every tier more than one round', () => {
+    expect(ROUND_TIERS[0]).toEqual(['easy']);
+    expect(ROUND_TIERS.at(-1)).toEqual(['hard']);
+    for (const difficulty of ['easy', 'medium', 'hard'] as const) {
+      const rounds = ROUND_TIERS.filter((tiers) => tiers.includes(difficulty));
+      expect(rounds.length, difficulty).toBeGreaterThan(1);
+    }
   });
 
   it('gets strictly harder: bands move to smaller gaps each round', () => {
@@ -282,7 +290,7 @@ describe('buildPuzzle with question difficulty', () => {
 
   it('only asks an easy question in the easy rounds, a hard one in the hard rounds', () => {
     expect(positionsOf('easy')).toEqual([0, 1]);
-    expect(positionsOf('medium')).toEqual([2]);
+    expect(positionsOf('medium')).toEqual([1, 2, 3]);
     expect(positionsOf('hard')).toEqual([3, 4]);
   });
 
