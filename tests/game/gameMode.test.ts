@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   GAME_MODES,
+  HIDDEN_CATEGORIES,
   MIXED_MODE,
   nextUnfinishedMode,
   parseGameMode,
@@ -15,12 +16,20 @@ const { questions } = realGameData;
 
 describe('GAME_MODES', () => {
   it('lists the categories in display order, then the mixed mode', () => {
-    expect(GAME_MODES).toEqual(['trivia', 'lore', 'stats', 'esports', 'mixed']);
+    expect(GAME_MODES).toEqual(['trivia', 'lore', 'stats', 'mixed']);
   });
 
-  it('has every question category exactly once', () => {
+  it('has every question category that is not hidden exactly once', () => {
     const categories = GAME_MODES.filter((mode) => mode !== MIXED_MODE);
-    expect([...categories].sort()).toEqual([...QuestionCategorySchema.options].sort());
+    const shown = QuestionCategorySchema.options.filter(
+      (category) => !HIDDEN_CATEGORIES.includes(category),
+    );
+    expect([...categories].sort()).toEqual([...shown].sort());
+  });
+
+  it('hides esports, so it falls back to the default mode', () => {
+    expect(HIDDEN_CATEGORIES).toEqual(['esports']);
+    expect(parseGameMode('esports')).toBe('trivia');
   });
 });
 
@@ -34,11 +43,20 @@ describe('parseGameMode', () => {
 });
 
 describe('questionsForMode', () => {
-  it('gives every question in the mixed mode', () => {
-    expect(questionsForMode(questions, MIXED_MODE)).toEqual(questions);
+  it('gives every question of the shown categories in the mixed mode', () => {
+    expect(questionsForMode(questions, MIXED_MODE)).toEqual(
+      questions.filter((question) => !HIDDEN_CATEGORIES.includes(question.category)),
+    );
   });
 
-  it('gives only the questions of the category, and the categories add up to the whole pool', () => {
+  it('leaves the hidden esports questions out of the mixed mode', () => {
+    expect(questions.some((question) => question.category === 'esports')).toBe(true);
+    expect(
+      questionsForMode(questions, MIXED_MODE).some((question) => question.category === 'esports'),
+    ).toBe(false);
+  });
+
+  it('gives only the questions of the category, and the categories add up to the mixed pool', () => {
     let total = 0;
     for (const mode of GAME_MODES.filter((each) => each !== MIXED_MODE)) {
       const inMode = questionsForMode(questions, mode);
@@ -46,7 +64,7 @@ describe('questionsForMode', () => {
       expect(inMode.every((question) => question.category === mode)).toBe(true);
       total += inMode.length;
     }
-    expect(total).toBe(questions.length);
+    expect(total).toBe(questionsForMode(questions, MIXED_MODE).length);
   });
 });
 
@@ -71,7 +89,7 @@ describe('nextUnfinishedMode', () => {
 
   it('wraps round after the last mode', () => {
     expect(nextUnfinishedMode(MIXED_MODE, [MIXED_MODE])).toBe('trivia');
-    expect(nextUnfinishedMode('esports', ['esports', MIXED_MODE, 'trivia'])).toBe('lore');
+    expect(nextUnfinishedMode('stats', ['stats', MIXED_MODE, 'trivia'])).toBe('lore');
   });
 
   it('never suggests the current mode, and nothing once all others are finished', () => {

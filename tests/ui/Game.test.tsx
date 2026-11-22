@@ -331,9 +331,9 @@ describe('Game', () => {
     await user.click(screen.getByRole('button', { name: 'See results' }));
 
     expect(screen.getByText(/Today’s result · Stats/)).toBeTruthy();
-    // Lore is already finished, so the next one in order is Esports.
-    expect(screen.getByRole('link', { name: 'Play Esports next' }).getAttribute('href')).toBe(
-      'esports.html',
+    // Lore is already finished, so the next one in order is Mixed (esports is hidden).
+    expect(screen.getByRole('link', { name: 'Play Mixed next' }).getAttribute('href')).toBe(
+      'mixed.html',
     );
   });
 });

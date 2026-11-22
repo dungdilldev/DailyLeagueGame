@@ -1,6 +1,7 @@
 ﻿import { type Locator, type Page } from '@playwright/test';
 import { expect, test } from './test';
 import { collectErrors, playFullDay, ROUNDS_PER_DAY } from './helpers';
+import { GAME_MODES } from '../src/game/gameMode';
 
 const START_HEADING = 'How well do you know League of Legends?';
 
@@ -96,13 +97,7 @@ function modeNav(page: Page): Locator {
 test.describe('game modes', () => {
   test('the stats page offers one link per mode page', async ({ page }) => {
     await page.goto('/stats.html');
-    await expect(modeNav(page).getByRole('link')).toHaveText([
-      'Trivia',
-      'Lore',
-      'Stats',
-      'Esports',
-      'Mixed',
-    ]);
+    await expect(modeNav(page).getByRole('link')).toHaveText(['Trivia', 'Lore', 'Stats', 'Mixed']);
     await expect(modeNav(page).getByRole('link', { name: 'Stats' })).toHaveAttribute(
       'aria-current',
       'page',
@@ -148,16 +143,19 @@ test.describe('game modes', () => {
     await expect(page).toHaveURL(/\/trivia\.html$/);
   });
 
-  test('the esports mode plays a full day, with text options and champion options', async ({
+  test('old game links with an unknown or hidden category open the start page', async ({
     page,
   }) => {
-    const errors = collectErrors(page);
-    await page.goto('/esports.html');
-    await expect(page.getByText(`Round 1 of ${String(ROUNDS_PER_DAY)}`)).toBeVisible();
-    await expect(page.locator('.card')).toHaveCount(4);
-    await playFullDay(page);
-    await expect(page.getByRole('heading', { name: /You got/ })).toBeVisible();
-    expect(errors).toEqual([]);
+    for (const address of ['/play.html?category=nope&seed=abc', '/?category=esports']) {
+      await page.goto(address);
+      await expect(page).toHaveURL(/\/$/);
+      await expect(page.getByRole('heading', { level: 1, name: START_HEADING })).toBeVisible();
+    }
+  });
+
+  test('the hidden esports mode has no page', async ({ page }) => {
+    const response = await page.goto('/esports.html');
+    expect(response?.status()).toBe(404);
   });
 });
 
@@ -199,7 +197,6 @@ test.describe('start page', () => {
     { name: 'Trivia', url: /\/trivia\.html$/ },
     { name: 'Lore', url: /\/lore\.html$/ },
     { name: 'Stats', url: /\/stats\.html$/ },
-    { name: 'Esports', url: /\/esports\.html$/ },
     { name: 'Mixed', url: /\/mixed\.html$/ },
   ];
 
@@ -236,7 +233,7 @@ test.describe('start page', () => {
   test('shows every mode card without scrolling', async ({ page }) => {
     await page.goto('/');
     const cards = page.getByRole('navigation', { name: 'Game modes' }).getByRole('link');
-    await expect(cards).toHaveCount(5);
+    await expect(cards).toHaveCount(GAME_MODES.length);
     for (const card of await cards.all()) {
       await expect(card).toBeInViewport({ ratio: 1 });
     }
@@ -264,8 +261,8 @@ test.describe('start page', () => {
   });
 
   test('old game links on the start page open the game', async ({ page }) => {
-    await page.goto('/?category=esports');
-    await expect(page).toHaveURL(/\/esports\.html$/);
+    await page.goto('/?category=lore');
+    await expect(page).toHaveURL(/\/lore\.html$/);
     await expect(page.getByText(/^Round 1 of \d/)).toBeVisible();
   });
 
@@ -286,6 +283,6 @@ test.describe('start page without JavaScript', () => {
     await expect(page.getByRole('heading', { level: 1, name: START_HEADING })).toBeVisible();
     await expect(
       page.getByRole('navigation', { name: 'Game modes' }).getByRole('link'),
-    ).toHaveCount(5);
+    ).toHaveCount(GAME_MODES.length);
   });
 });

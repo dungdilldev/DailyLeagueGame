@@ -8,11 +8,26 @@ export const MIXED_MODE = 'mixed';
 export type GameMode = typeof MIXED_MODE | QuestionCategory;
 
 /**
+ * Categories that are not played for now: no mode, no page, and left out of the mixed puzzle.
+ * Their questions stay in the files and in the dev-only endless mode, so showing one again is
+ * removing it here and restoring its page. Esports is hidden because its questions do not work
+ * well yet (owner, 2026-11-22).
+ */
+export const HIDDEN_CATEGORIES: readonly QuestionCategory[] = ['esports'];
+
+function isHidden(mode: GameMode): boolean {
+  return (HIDDEN_CATEGORIES as readonly GameMode[]).includes(mode);
+}
+
+/**
  * Every mode, in the order the mode links show them and "Play X next" suggests them. Written out
  * rather than taken from `QUESTION_CATEGORIES`, whose order sets how the question files are
  * combined: reordering that would change every mixed puzzle.
  */
-export const GAME_MODES: readonly GameMode[] = ['trivia', 'lore', 'stats', 'esports', MIXED_MODE];
+const MODE_ORDER: readonly GameMode[] = ['trivia', 'lore', 'stats', 'esports', MIXED_MODE];
+
+/** The modes that can be played, in display order. */
+export const GAME_MODES: readonly GameMode[] = MODE_ORDER.filter((mode) => !isHidden(mode));
 
 /** The mode the site opens in when the address names none. */
 export const DEFAULT_GAME_MODE: GameMode = 'trivia';
@@ -24,7 +39,7 @@ export function parseGameMode(value: string | null | undefined): GameMode {
 
 export function questionsForMode(questions: readonly Question[], mode: GameMode): Question[] {
   return mode === MIXED_MODE
-    ? [...questions]
+    ? questions.filter((question) => !isHidden(question.category))
     : questions.filter((question) => question.category === mode);
 }
 

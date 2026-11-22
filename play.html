@@ -7,12 +7,18 @@
       // The game used to live here, with the mode in `?category=`: old and shared links open that
       // mode's own page and keep the rest of the address (?mode=, ?seed=). Inline, so it
       // runs before anything is drawn. The mode names are GAME_MODES in src/game/gameMode.ts.
+      // No category opens the default mode; an unknown one (or a hidden mode's) opens the start
+      // page, without the address's parameters, or the start page would send it back here.
       (function () {
-        const MODES = ['stats', 'lore', 'esports', 'trivia', 'mixed'];
+        const MODES = ['stats', 'lore', 'trivia', 'mixed'];
         const DEFAULT_MODE = 'trivia';
         const params = new URLSearchParams(window.location.search);
         const requested = params.get('category');
-        const mode = MODES.includes(requested) ? requested : DEFAULT_MODE;
+        if (requested !== null && !MODES.includes(requested)) {
+          window.location.replace('./');
+          return;
+        }
+        const mode = requested ?? DEFAULT_MODE;
         params.delete('category');
         const query = params.toString();
         window.location.replace(mode + '.html' + (query ? '?' + query : '') + window.location.hash);

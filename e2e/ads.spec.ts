@@ -252,6 +252,15 @@ for (const path of PAGES_WITHOUT_ADS) {
   });
 }
 
+test('the hidden esports mode has no page, so nothing there can show an ad', async ({ page }) => {
+  const script = await stubAdScript(page);
+  await installConsentPlatform(page, GRANTED);
+  const response = await page.goto('/esports.html');
+
+  expect(response?.status()).toBe(404);
+  expect(script.requests()).toBe(0);
+});
+
 test('after a "no" the privacy settings link reopens the consent message', async ({ page }) => {
   await stubAdScript(page);
   await installConsentPlatform(page, DECLINED);

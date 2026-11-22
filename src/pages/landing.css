@@ -179,22 +179,18 @@
   }
 }
 
-/* Tablets: two columns, the mixed card spanning the row below the four categories. */
+/* Tablets: two columns, two by two. */
 @media (min-width: 40rem) {
   .mode-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.875rem;
   }
-
-  .mode-card[data-mode='mixed'] {
-    grid-column: 1 / -1;
-  }
 }
 
-/* Desktops: five tiles in one row. */
+/* Desktops: the four tiles in one row. */
 @media (min-width: 56rem) {
   .mode-cards {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
   }
 
@@ -209,10 +205,6 @@
     align-items: start;
     gap: 0.625rem;
     padding: 1.25rem;
-  }
-
-  .mode-card[data-mode='mixed'] {
-    grid-column: auto;
   }
 
   .mode-card__icon {

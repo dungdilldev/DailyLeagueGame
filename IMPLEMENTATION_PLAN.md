@@ -513,6 +513,17 @@ Decisions (owner, 2026-11-19): new `byYear` lists, more moments, a generated "wo
 - [ ] Add BLG's skin prefix to `TEAM_PREFIXES` (`pipeline/esportsSkins.ts`) once its Worlds 2026 skins ship
 - Known: `momentDrxPlayIn` and `momentFakerFirstTitle` state a Worlds winner in the question text, so they can give away `worldsWinnerByYear` the same day; left as is (rewording moves puzzles)
 
+### Phase 9c - Esports hidden (done)
+
+Decision (owner, 2026-11-22): the esports questions do not work well yet, so the mode is hidden until they are reworked; hiding is enough for now.
+
+- [x] `HIDDEN_CATEGORIES` in `src/game/gameMode.ts`: esports is out of `GAME_MODES` (mode links, "Play X next", the played-today marks) and out of the mixed puzzle
+- [x] Not reachable on the live site (owner): `esports.html` deleted and out of `PAGES`, so the address is a 404 and no ad can show there (checked by the smoke and ads e2e tests); no start page card (the cards are now 2 by 2 on tablets and 4 in a row on desktops), sitemap entry or `play.html` mode; how-to-play, about and mixed texts no longer mention esports
+- [x] `appType: 'mpa'` in `vite.config.ts`: a missing page is a 404 in `vite preview` and the dev server too, as on GitHub Pages, instead of the start page
+- [x] Questions, generators, images and their tests stay; the endless mode still asks them
+- Every mixed puzzle moved once (no esports rounds); the trivia, lore and stats puzzles are unchanged
+- [ ] Rework the esports questions, then bring the mode back (steps in CLAUDE.md, Game modes)
+
 ## 5. Risks & Open Questions
 
 1. **Win rate / pick rate source (biggest risk).** Riot has no aggregate endpoint. Options:

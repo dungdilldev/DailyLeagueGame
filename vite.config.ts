@@ -9,12 +9,11 @@ import type * as PrerenderModuleExports from './src/prerender/prerenderGamePage.
 const PARTIAL_PATTERN = /<!--include:([\w-]+)-->/g;
 const PARTIALS_DIRECTORY = './src/pages/partials/';
 // One game page per mode (named after GAME_MODES in src/game/gameMode.ts); play.html only
-// redirects old links to them.
+// redirects old links to them. A hidden mode (HIDDEN_CATEGORIES) has no page, so it is not built.
 const PAGES = [
   'index',
   'stats',
   'lore',
-  'esports',
   'trivia',
   'mixed',
   'play',
@@ -92,6 +91,9 @@ export default defineConfig({
   plugins: [preact(), includePartials(), prerenderPuzzles()],
   // Relative base so the build works on GitHub Pages sub-paths and on root domains.
   base: './',
+  // Several pages, no client-side routes: a missing page is a 404, as on the live host, instead
+  // of the start page (Vite's single-page fallback), so the tests see what visitors would.
+  appType: 'mpa',
   build: {
     rollupOptions: {
       input: Object.fromEntries(
