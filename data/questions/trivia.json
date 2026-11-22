@@ -783,7 +783,7 @@
       "question": "Which of these champions is named after Edmundo 'odnumde' Sanchez?",
       "correct": ["DrMundo"],
       "wrong": ["Singed", "Warwick", "Sion", "Shaco", "Amumu", "Rammus"],
-      "answer": "Dr. Mundo's dance references the title character of House, M.D., dancing to Fight the Power by Public Enemy."
+      "answer": "Before his rework, Dr. Mundo's dance referenced the title character of House, M.D., dancing to Fight the Power by Public Enemy."
     },
     {
       "id": "namedAfterJinHoYang",
@@ -1045,43 +1045,515 @@
     },
     {
       "id": "danceUCantTouchThis",
-      "subcategory": "champion-trivia",
+      "subcategory": "dances",
       "difficulty": "easy",
       "subject": "champion",
       "label": "U Can't Touch This",
       "question": "Which of these champions has a dance that references MC Hammer's U Can't Touch This?",
-      "correct": ["Jayce"],
-      "wrong": ["Azir", "Lucian", "Evelynn", "Amumu", "Corki"]
+      "correct": ["Jayce", "Malzahar"],
+      "wrong": ["Azir", "Lucian", "Evelynn", "Amumu", "Corki"],
+      "answerFor": { "Malzahar": "His Voidlings dance it along with him." }
     },
     {
       "id": "danceSouthPark",
-      "subcategory": "champion-trivia",
+      "subcategory": "dances",
       "difficulty": "easy",
       "subject": "champion",
       "label": "South Park dance",
       "question": "Which of these champions has a dance that references the goth kids from South Park?",
       "correct": ["Amumu"],
-      "wrong": ["Jayce", "Azir", "KogMaw", "Corki", "Evelynn"]
+      "wrong": ["Jayce", "Azir", "KogMaw", "Corki", "Evelynn"],
+      "answer": "The goth kids' dance in turn parodies the shuffling dance of the Peanuts characters."
     },
     {
       "id": "danceBarrelRoll",
-      "subcategory": "champion-trivia",
+      "subcategory": "dances",
       "difficulty": "easy",
       "subject": "champion",
       "label": "Do a barrel roll",
       "question": "Which of these champions has a dance that references \"Do a barrel roll!\" from Star Fox 64?",
       "correct": ["Corki"],
-      "wrong": ["Jayce", "Azir", "Lucian", "KogMaw", "Amumu"]
+      "wrong": ["Jayce", "Azir", "Lucian", "KogMaw", "Amumu"],
+      "answer": "In Star Fox 64 the line is spoken by Peppy Hare."
     },
     {
       "id": "danceRememberTheTime",
-      "subcategory": "champion-trivia",
+      "subcategory": "dances",
       "difficulty": "medium",
       "subject": "champion",
       "label": "Remember the Time",
       "question": "Which of these champions has a dance that references Michael Jackson's Remember the Time?",
       "correct": ["Azir"],
       "wrong": ["Jayce", "Lucian", "Evelynn", "Amumu", "KogMaw"]
+    },
+    {
+      "id": "danceGangnamStyle",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Gangnam Style",
+      "question": "Which of these champions has a dance that references PSY's Gangnam Style?",
+      "correct": ["TwistedFate"],
+      "wrong": ["Jayce", "Blitzcrank", "Olaf", "Singed", "Anivia", "Kassadin"]
+    },
+    {
+      "id": "danceThriller",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Thriller",
+      "question": "Which of these champions has a dance that references Michael Jackson's Thriller?",
+      "correct": ["Warwick"],
+      "wrong": ["TwistedFate", "Jayce", "Blitzcrank", "Olaf", "Trundle", "Singed"],
+      "answer": "He kept the dance through his rework."
+    },
+    {
+      "id": "danceMacarena",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Macarena",
+      "question": "Which of these champions has a dance that references the Macarena?",
+      "correct": ["Blitzcrank"],
+      "wrong": ["TwistedFate", "Warwick", "Anivia", "Olaf", "Jayce", "Kassadin"]
+    },
+    {
+      "id": "danceChickenDance",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Chicken Dance",
+      "question": "Which of these champions has a dance that references the Chicken Dance?",
+      "correct": ["Anivia"],
+      "wrong": ["Blitzcrank", "TwistedFate", "Skarner", "Olaf", "Singed", "Warwick"]
+    },
+    {
+      "id": "danceCrabRave",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Crab Rave",
+      "question": "Which of these champions has a dance that references Crab Rave?",
+      "correct": ["Skarner"],
+      "wrong": ["Anivia", "Blitzcrank", "TwistedFate", "Olaf", "Trundle", "Rammus"],
+      "answer": "Several Skarners dancing at once move in sync."
+    },
+    {
+      "id": "danceTechnoviking",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Technoviking",
+      "question": "Which of these champions has a dance that references the Technoviking meme?",
+      "correct": ["Olaf"],
+      "wrong": ["Trundle", "Braum", "Tryndamere", "Garen", "Volibear", "Singed"]
+    },
+    {
+      "id": "danceTrollface",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Dancing Trollface",
+      "question": "Which of these champions has a dance that references the Dancing Trollface meme?",
+      "correct": ["Trundle"],
+      "wrong": ["Olaf", "Singed", "TwistedFate", "Blitzcrank", "Kassadin", "Shaco"],
+      "answer": "The more movement speed he has, the faster he dances."
+    },
+    {
+      "id": "danceRunningMan",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Running Man",
+      "question": "Which of these champions has a dance that references the Running Man?",
+      "correct": ["MasterYi"],
+      "wrong": ["Katarina", "Shen", "LeeSin", "Talon", "Vi", "Kled"],
+      "answer": "The more movement speed he has, the faster he dances."
+    },
+    {
+      "id": "danceNapoleonDynamite",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Napoleon Dynamite",
+      "question": "Which of these champions has a dance that references Napoleon Dynamite?",
+      "correct": ["Katarina"],
+      "wrong": ["Talon", "Cassiopeia", "Vi", "Jinx", "Kayle", "Fiora"],
+      "answer": "Before his rework, Master Yi danced another part of the same dance."
+    },
+    {
+      "id": "danceJumpOnIt",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Jump on It",
+      "question": "Which of these champions has a dance that references Will Smith's \"Jump on It\" dance from The Fresh Prince of Bel-Air?",
+      "correct": ["Singed"],
+      "wrong": ["Warwick", "TwistedFate", "Jayce", "Blitzcrank", "Olaf", "Trundle"],
+      "answer": "Kayle shared the dance with him until hers was changed."
+    },
+    {
+      "id": "danceBillieJean",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Billie Jean",
+      "question": "Which of these champions has a dance that references Michael Jackson's Billie Jean?",
+      "correct": ["Talon"],
+      "wrong": ["Katarina", "Jayce", "TwistedFate", "Kassadin", "Vi", "Garen"]
+    },
+    {
+      "id": "danceJailhouseRock",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Jailhouse Rock",
+      "question": "Which of these champions has a dance that references Elvis Presley's Jailhouse Rock?",
+      "correct": ["Rakan"],
+      "wrong": ["Garen", "Talon", "Jayce", "TwistedFate", "Swain", "Kayle"],
+      "answer": "Pantheon shared the dance with him until Pantheon's rework."
+    },
+    {
+      "id": "danceMoonwalk",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Moonwalk",
+      "question": "Which of these champions has a dance that references the Moonwalk?",
+      "correct": ["Kled"],
+      "wrong": ["Vi", "Singed", "Jinx", "Blitzcrank", "Garen", "Trundle"],
+      "answer": "Only on foot: Kled moonwalks when Skaarl is not with him."
+    },
+    {
+      "id": "danceHaka",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Haka",
+      "question": "Which of these champions has a dance that references the haka, the Māori warrior dance?",
+      "correct": ["Pyke", "Rengar"],
+      "wrong": ["Olaf", "Braum", "Tryndamere", "Malphite", "Shen", "Jhin"],
+      "answerFor": { "Rengar": "His dance is the Ka Mate haka in particular." }
+    },
+    {
+      "id": "danceBreakdance",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Breakdance move",
+      "question": "Which of these champions has a dance based on a breakdance move?",
+      "correct": ["Camille", "Kennen", "Heimerdinger", "Rammus", "Shaco"],
+      "wrong": ["Blitzcrank", "TwistedFate", "Olaf", "Anivia", "Singed", "Trundle", "Galio"],
+      "exclude": ["Vayne"],
+      "answerFor": {
+        "Camille": "Her dance is the airflare, which she shares with Kennen.",
+        "Kennen": "His dance is the airflare, which he shares with Camille.",
+        "Heimerdinger": "His dance is the headspin.",
+        "Rammus": "His dance is the back spin.",
+        "Shaco": "His dance is the worm."
+      }
+    },
+    {
+      "id": "danceGirlsGeneration",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Girls' Generation",
+      "question": "Which of these champions has a dance that references a song by Girls' Generation?",
+      "correct": ["Ahri", "Syndra"],
+      "wrong": ["Janna", "Kaisa", "Sivir", "Cassiopeia", "Ashe", "Quinn"],
+      "answerFor": {
+        "Ahri": "Her dance references Run Devil Run.",
+        "Syndra": "Her dance references the choreography of Hoot."
+      }
+    },
+    {
+      "id": "danceSeinfeld",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Seinfeld",
+      "question": "Which of these champions has a dance that references Elaine Benes' dance from Seinfeld?",
+      "correct": ["Kayle"],
+      "wrong": ["Morgana", "Fiora", "Ashe", "Quinn", "Cassiopeia", "Janna"],
+      "answer": "Her first dance was Will Smith's \"Jump on It\" from The Fresh Prince of Bel-Air, which she shared with Singed."
+    },
+    {
+      "id": "danceJohnnyBravo",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Johnny Bravo",
+      "question": "Which of these champions has a dance that references Johnny Bravo?",
+      "correct": ["Garen"],
+      "wrong": ["Braum", "Tryndamere", "Olaf", "Jayce", "Talon", "Swain"],
+      "answer": "Before his rework he danced to NSYNC's Bye Bye Bye, a dance he shared with Tryndamere."
+    },
+    {
+      "id": "danceAdventureTime",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Adventure Time",
+      "question": "Which of these champions has a dance that references Jake from Adventure Time?",
+      "correct": ["Jinx"],
+      "wrong": ["Vi", "Kassadin", "Poppy", "KogMaw", "Amumu", "Kled"],
+      "answer": "It is Jake's dance from the episode Power Animal."
+    },
+    {
+      "id": "danceCanCan",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Can-can",
+      "question": "Which of these champions has a dance that references the can-can?",
+      "correct": ["Elise", "Urgot"],
+      "wrong": ["Cassiopeia", "Kayle", "Morgana", "Fiora", "Zyra", "Ashe"],
+      "exclude": ["Veigar"],
+      "answerFor": {
+        "Elise": "Her spiderlings dance along with her.",
+        "Urgot": "He shares the dance with Elise and with Veigar's Final Boss skin."
+      }
+    },
+    {
+      "id": "danceBeautyAndTheBeast",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Beauty and the Beast",
+      "question": "Which of these champions has a dance that references Disney's Beauty and the Beast?",
+      "correct": ["Galio"],
+      "wrong": ["Malphite", "Braum", "Maokai", "Sion", "Nautilus", "Rammus"],
+      "answer": "He kept the dance through his rework."
+    },
+    {
+      "id": "danceCapoeira",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Capoeira",
+      "question": "Which of these champions has a dance that references capoeira?",
+      "correct": ["Malphite"],
+      "wrong": ["Shen", "LeeSin", "Braum", "Galio", "Pyke", "Vi"],
+      "answer": "His dance is the ginga, the basic footwork of capoeira."
+    },
+    {
+      "id": "danceBellyDance",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Belly dance",
+      "question": "Which of these champions has a dance that references belly dancing?",
+      "correct": ["Cassiopeia"],
+      "wrong": ["Morgana", "Elise", "Kayle", "Janna", "Zyra", "Ashe"]
+    },
+    {
+      "id": "danceTaiChi",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Tai chi",
+      "question": "Which of these champions has a dance that references tai chi?",
+      "correct": ["Shen"],
+      "wrong": ["LeeSin", "MasterYi", "Malphite", "Jhin", "XinZhao", "Kalista"],
+      "answer": "His dance is the 24-form, a standard tai chi sequence."
+    },
+    {
+      "id": "danceSprinkler",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Sprinkler",
+      "question": "Which of these champions has a dance that references the Sprinkler?",
+      "correct": ["Kassadin"],
+      "wrong": ["Malzahar", "Chogath", "KogMaw", "Viktor", "Jayce", "Vi"]
+    },
+    {
+      "id": "danceDragonForm",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "How to Train Your Dragon",
+      "question": "Which of these champions has a dragon form whose dance references How to Train Your Dragon?",
+      "correct": ["Shyvana"],
+      "wrong": ["Elise", "Jayce", "Kled", "Galio", "Anivia", "Volibear"],
+      "exclude": ["Smolder"],
+      "answer": "It is the scene from The Hidden World in which Toothless dances to impress the Light Fury."
+    },
+    {
+      "id": "danceQiyanaDab",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Dab",
+      "question": "Which of these champions dabs when using an emote within 10 seconds of a takedown?",
+      "correct": ["Qiyana"],
+      "wrong": ["Ahri", "Syndra", "Kayle", "Morgana", "Cassiopeia", "Janna"]
+    },
+    {
+      "id": "danceSonaCrescendo",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Forced to dance",
+      "question": "Which of these champions has an ultimate that makes the enemies it stuns play their dance emote?",
+      "correct": ["Sona"],
+      "wrong": ["Annie", "Amumu", "Leona", "Malphite", "Orianna", "Taric"],
+      "answer": "Her ultimate, Crescendo, plays an irresistible chord."
+    },
+    {
+      "id": "danceRiftScuttler",
+      "subcategory": "dances",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Rift Scuttler joins in",
+      "question": "Which of these champions makes a nearby Rift Scuttler join in when he dances?",
+      "correct": ["TahmKench"],
+      "wrong": ["Fizz", "Nami", "Nautilus", "Pyke", "Illaoi", "Gangplank"],
+      "answer": "He plays the tune he hums in 'The River King' with his tongue."
+    },
+    {
+      "id": "danceFredAstaire",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Fred Astaire",
+      "question": "Which of these champions has a dance that references Fred Astaire?",
+      "correct": ["Fiora", "Swain"],
+      "wrong": ["Garen", "Jayce", "Talon", "Kayle", "Rakan", "Katarina"],
+      "answerFor": {
+        "Fiora": "Her dance references his Puttin' On the Ritz from the film Blue Skies.",
+        "Swain": "His dance references Top Hat, White Tie and Tails, and he whistles a tune from his theme while dancing."
+      }
+    },
+    {
+      "id": "danceGameOfThrones",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Game of Thrones",
+      "question": "Which of these champions has a dance that references Game of Thrones?",
+      "correct": ["Kalista", "Riven"],
+      "wrong": ["Fiora", "Jhin", "Vayne", "Swain", "Talon", "Cassiopeia"],
+      "answerFor": {
+        "Kalista": "Her dance references Oberyn Martell's spear dance.",
+        "Riven": "Her dance resembles the Water Dance of Braavos."
+      }
+    },
+    {
+      "id": "danceCossack",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Cossack dance",
+      "question": "Which of these champions has a dance that references the Cossack dance?",
+      "correct": ["Braum", "Tryndamere"],
+      "wrong": ["Olaf", "Volibear", "Pyke", "Rengar", "Garen", "Sion"],
+      "answerFor": {
+        "Tryndamere": "His dance is the hopak. Before an early patch he danced to NSYNC's Bye Bye Bye instead."
+      }
+    },
+    {
+      "id": "danceDougie",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Dougie",
+      "question": "Which of these champions has a dance that references the Dougie?",
+      "correct": ["Vi"],
+      "wrong": ["Jinx", "Kaisa", "Sivir", "Quinn", "Kassadin", "Talon"]
+    },
+    {
+      "id": "danceOneFroggyEvening",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Michigan J. Frog",
+      "question": "Which of these champions has a dance that references Michigan J. Frog from the cartoon One Froggy Evening?",
+      "correct": ["KogMaw"],
+      "wrong": ["Amumu", "Corki", "Rammus", "Kassadin", "Heimerdinger", "Poppy"]
+    },
+    {
+      "id": "danceHareHareYukai",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Hare Hare Yukai",
+      "question": "Which of these champions has a dance that references the ending dance of The Melancholy of Haruhi Suzumiya?",
+      "correct": ["Ezreal"],
+      "wrong": ["Ahri", "Syndra", "Jinx", "Vayne", "Lucian", "Talon"],
+      "answer": "The dance is Hare Hare Yukai, and he kept it through his visual update."
+    },
+    {
+      "id": "danceShaolinSoccer",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Shaolin Soccer",
+      "question": "Which of these champions has a dance that references the film Shaolin Soccer?",
+      "correct": ["LeeSin"],
+      "wrong": ["Shen", "MasterYi", "XinZhao", "Jhin", "Akshan", "Malphite"]
+    },
+    {
+      "id": "danceMelbourneShuffle",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Melbourne Shuffle",
+      "question": "Which of these champions has a dance that references the Melbourne Shuffle?",
+      "correct": ["Viktor"],
+      "wrong": ["Jayce", "Heimerdinger", "Kassadin", "Vi", "Blitzcrank", "Malzahar"]
+    },
+    {
+      "id": "danceGrunkaLunka",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Futurama",
+      "question": "Which of these champions has a dance that references the Grunka Lunkas from Futurama?",
+      "correct": ["Poppy"],
+      "wrong": ["Jinx", "KogMaw", "Amumu", "Corki", "Kled", "Rammus"]
+    },
+    {
+      "id": "danceChrisFarley",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Chris Farley",
+      "question": "Which of these champions has a dance that references Chris Farley's Chippendales audition?",
+      "correct": ["Sion"],
+      "wrong": ["Garen", "Olaf", "Braum", "Tryndamere", "Singed", "Warwick"],
+      "answer": "Before his rework, he danced to Moskau by Dschinghis Khan."
+    },
+    {
+      "id": "danceOliverAndCompany",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Oliver & Company",
+      "question": "Which of these champions has a dance that references Disney's Oliver & Company?",
+      "correct": ["Smolder"],
+      "wrong": ["KogMaw", "Amumu", "Rammus", "Corki", "Poppy", "Kled"]
+    },
+    {
+      "id": "dancePonponpon",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "PONPONPON",
+      "question": "Which of these champions has a dance based on the PONPONPON music video?",
+      "correct": ["Gwen"],
+      "wrong": ["Janna", "Kaisa", "Quinn", "Ashe", "Cassiopeia", "Sivir"]
+    },
+    {
+      "id": "danceLezginka",
+      "subcategory": "dances",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Lezginka",
+      "question": "Which of these champions has a dance that references the lezginka?",
+      "correct": ["Jhin"],
+      "wrong": ["Shen", "Malphite", "Cassiopeia", "Pyke", "Swain", "Kalista"]
     },
     {
       "id": "unmaxedSkills",
