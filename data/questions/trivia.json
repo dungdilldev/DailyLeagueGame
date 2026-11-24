@@ -2500,6 +2500,428 @@
       "correct": ["Sona"],
       "wrong": ["Soraka", "Lulu", "Nami", "Karma", "Seraphine", "Yuumi"],
       "answer": "Erin Fitzgerald voices both."
+    },
+    {
+      "id": "nemesisRengar",
+      "subcategory": "nemesis-quests",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "The Hunt is On!",
+      "question": "Which of these champions is Rengar's opponent in a Nemesis Quest?",
+      "correct": ["Khazix"],
+      "wrong": ["Warwick", "Nidalee", "Kindred", "Chogath", "Velkoz", "Skarner"],
+      "answer": "If Rengar wins, the Head of Kha'Zix gives his Bonetooth Necklace a 6th stack. If Kha'Zix wins, he gets a fourth evolution point and can evolve all four abilities."
+    },
+    {
+      "id": "nemesisNasus",
+      "subcategory": "nemesis-quests",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Bad Blood",
+      "question": "Which of these champions is Nasus's opponent in a Nemesis Quest?",
+      "correct": ["Renekton"],
+      "wrong": ["Azir", "Xerath", "Sivir", "Amumu", "Rammus", "Skarner"],
+      "answer": "Each wins by killing the other while his own ultimate is active, which then lasts longer and makes him even bigger."
+    },
+    {
+      "id": "nemesisShen",
+      "subcategory": "nemesis-quests",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Battle of Spirit and Shadow",
+      "question": "Which of these champions is Shen's opponent in a Nemesis Quest?",
+      "correct": ["Zed"],
+      "wrong": ["Akali", "Kennen", "Kayn", "MasterYi", "Yasuo", "LeeSin"],
+      "answer": "Zed wins by killing two champions near Shen. Shen wins by taking Zed down first, which makes his Ki Barrier shield 30% stronger."
+    },
+    {
+      "id": "nemesisThresh",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Sentinels of Light",
+      "question": "Which of these champions can win a Nemesis Quest against Thresh?",
+      "correct": ["Senna", "Lucian"],
+      "wrong": ["Viego", "Kalista", "Hecarim", "Yorick", "Karthus", "Gwen"],
+      "answerFor": {
+        "Senna": "If Thresh dies within 3 seconds of her damage, she releases his soul from the Black Mist and absorbs some of his power.",
+        "Lucian": "He joins Senna's quest with a contest of his own. If Thresh wins it, he imprisons Lucian's soul in his lantern."
+      }
+    },
+    {
+      "id": "nemesisHwei",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Golden Ratio",
+      "question": "Which of these champions is Hwei's opponent in a Nemesis Quest?",
+      "correct": ["Jhin"],
+      "wrong": ["Neeko", "Ahri", "Kayn", "Yasuo", "Karma", "Shen"],
+      "answer": "Jhin must kill Hwei with Curtain Call, and Hwei must kill Jhin within 3 seconds of hitting him with Spiraling Despair."
+    },
+    {
+      "id": "nemesisBaron",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Fishing in the Lavender Sea",
+      "question": "Which of these champions has a Nemesis Quest that is won by helping to take down Baron Nashor?",
+      "correct": ["Belveth", "Jax"],
+      "wrong": ["Chogath", "Velkoz", "Malzahar", "Kassadin", "Kaisa", "Skarner"],
+      "answerFor": {
+        "Belveth": "If she wins, Jax drops an Enhanced Void Coral when she kills him.",
+        "Jax": "If he wins, he gains stacks of Bel'Veth's Lavender. His line: \"Great. If the Void Empress eats this place, where am I meant to fish!?\""
+      }
+    },
+    {
+      "id": "nemesisSmolder",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Dragon's Hoard",
+      "question": "Which of these champions is Smolder's opponent in a Nemesis Quest?",
+      "correct": ["AurelionSol"],
+      "wrong": ["Shyvana", "Ornn", "Brand", "Annie", "Volibear", "Anivia"],
+      "answer": "The winner cashes out the stacks both of them banked during the quest. If Smolder wins: \"Didja see that, Mom??? I beat that Hairy-Iron-Soil guy!!!\""
+    },
+    {
+      "id": "nemesisTryndamere",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Death Defied",
+      "question": "Which of these champions is Tryndamere's opponent in a Nemesis Quest?",
+      "correct": ["Kindred"],
+      "wrong": ["Karthus", "Olaf", "Sejuani", "Udyr", "Volibear", "Yorick"],
+      "answer": "They must take him down within 15 seconds of his Undying Rage. If he wins instead, his Mocking Shout lasts 1 second longer."
+    },
+    {
+      "id": "nemesisAatrox",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "World Ender",
+      "question": "Which of these champions can win a Nemesis Quest against Aatrox?",
+      "correct": ["Kayle", "Morgana"],
+      "wrong": ["Varus", "Kayn", "Pantheon", "Taric", "Leona", "Garen"],
+      "answerFor": {
+        "Kayle": "She must take him down twice before he does the same to her, which cuts 10 seconds off her Divine Judgment's cooldown.",
+        "Morgana": "She can join Kayle's quest from the same team, and winning cuts 2.5 seconds off her Black Shield's cooldown."
+      }
+    },
+    {
+      "id": "nemesisViWarwick",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "The Beast and the Brawler",
+      "question": "Which of these champions faced Vi in a Nemesis Quest on the Bridge of Progress?",
+      "correct": ["Warwick"],
+      "wrong": ["Jinx", "Caitlyn", "Ekko", "Singed", "Jayce", "Viktor"],
+      "answer": "On the PBE, Warwick's victory text read \"Zaun needed you... us\". It was replaced for supposedly spoiling the second season of Arcane."
+    },
+    {
+      "id": "nemesisJayceViktor",
+      "subcategory": "nemesis-quests",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Our Shared Dream",
+      "question": "Which of these champions had to take down Viktor 5 times to win a Nemesis Quest on the Bridge of Progress?",
+      "correct": ["Jayce"],
+      "wrong": ["Heimerdinger", "Ezreal", "Caitlyn", "Camille", "Vi", "Ekko"],
+      "answer": "Viktor won by doing the same to Jayce. Either reward made the winner's team deal extra magic damage with their ultimates."
+    },
+    {
+      "id": "nemesisBridgeOfProgress",
+      "subcategory": "nemesis-quests",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Bridge of Progress",
+      "question": "Which of these champions had a Nemesis Quest that was only available on the Bridge of Progress?",
+      "correct": [
+        "Caitlyn",
+        "Jinx",
+        "Jayce",
+        "Viktor",
+        "Heimerdinger",
+        "Singed",
+        "Ekko",
+        "Vi",
+        "Warwick"
+      ],
+      "wrong": ["Rengar", "Khazix", "Nasus", "Renekton", "Shen", "Zed", "Hwei", "Smolder"],
+      "answer": "Those quests were removed in patch 25.S1.1. The others are available in every permanent queue."
+    },
+    {
+      "id": "nemesisPoros",
+      "subcategory": "nemesis-quests",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Echoes of Innocence",
+      "question": "Which of these champions had to feed Poros 5 times to win a Nemesis Quest on the Bridge of Progress?",
+      "correct": ["Jinx"],
+      "wrong": ["Caitlyn", "Vi", "Heimerdinger", "Singed", "Viktor", "Jayce"],
+      "answer": "It was her quest against Ekko, whose team had to emote 5 times instead. Either reward gave the team 10 ultimate haste."
+    },
+    {
+      "id": "nemesisHealthRelics",
+      "subcategory": "nemesis-quests",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "For Science's Sake",
+      "question": "Which of these champions raced Heimerdinger to collect 10 Health Relics in a Nemesis Quest on the Bridge of Progress?",
+      "correct": ["Singed"],
+      "wrong": ["Ziggs", "Viktor", "Jayce", "Corki", "Rumble", "Twitch"],
+      "answer": "If Singed won, he and his allies got a random elixir every 3 minutes."
+    },
+    {
+      "id": "minigameTournamentOfSoulsHero",
+      "subcategory": "client-minigames",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Tournament of Souls",
+      "question": "Which of these champions had her rise to fame told in the client minigame Tournament of Souls?",
+      "correct": ["Samira"],
+      "wrong": ["Riven", "Yasuo", "Fiora", "Akali", "Irelia", "Katarina", "Draven"],
+      "answer": "Samira fought a series of 1v1 matches, and playing League of Legends built up her reputation and style. The minigame ran from July 20 to August 28, 2023."
+    },
+    {
+      "id": "minigameTournamentOfSoulsGrandFinals",
+      "subcategory": "client-minigames",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Tournament of Souls Grand Finals",
+      "question": "Which of these champions did Samira face in the Grand Finals of the client minigame Tournament of Souls?",
+      "correct": ["Shaco"],
+      "wrong": ["Gwen", "Lux", "Naafiri", "Jhin", "Pyke", "Evelynn", "Sett"],
+      "answer": "Samira beat seven fighters on the way, starting with Gwen in the first match, and after the Grand Finals she still had to face the tournament's host."
+    },
+    {
+      "id": "minigameFightingGame",
+      "subcategory": "client-minigames",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Fighting game minigame",
+      "question": "Which client minigame was a fighting game?",
+      "correct": ["Tournament of Souls"],
+      "wrong": [
+        "Spirit Bonds",
+        "Demacia Rising",
+        "Another Sky",
+        "Cupcakes 4 Heartaches",
+        "The Spirit of Hearth-Home",
+        "The Council Archives"
+      ],
+      "answer": "It told the story of Samira's rise to fame through a series of 1v1 matches, from July 20 to August 28, 2023."
+    },
+    {
+      "id": "minigameHearthHomeNewChampion",
+      "subcategory": "client-minigames",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "The Spirit of Hearth-Home",
+      "question": "Which of these champions was introduced through the client minigame The Spirit of Hearth-Home?",
+      "correct": ["Aurora"],
+      "wrong": ["Smolder", "Hwei", "Briar", "Milio", "Ambessa", "Mel"],
+      "answer": "The point-and-click minigame, with digital comic and visual novel elements, told how Aurora met Ornn. It ran from May 30 to June 26, 2024."
+    },
+    {
+      "id": "minigameHearthHomeHost",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "The Spirit of Hearth-Home",
+      "question": "Which of these champions did Aurora meet in the client minigame The Spirit of Hearth-Home?",
+      "correct": ["Ornn"],
+      "wrong": ["Braum", "Sejuani", "Ashe", "Trundle", "Gragas", "Udyr"],
+      "answer": "The minigame was set around Ornn's home, with a courtyard, library, hall, smelter and workshop. The keyed string instrument in his library is a nyckelharpa."
+    },
+    {
+      "id": "minigameCodenameCornflakes",
+      "subcategory": "client-minigames",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Cornflakes",
+      "question": "Which client minigame was called Cornflakes in development?",
+      "correct": ["The Spirit of Hearth-Home"],
+      "wrong": [
+        "Spirit Bonds",
+        "Another Sky",
+        "Tournament of Souls",
+        "The Demon's Hand",
+        "Demacia Rising",
+        "Cupcakes 4 Heartaches"
+      ],
+      "answer": "It told the story of how Ornn met Aurora, the new champion it introduced in May 2024."
+    },
+    {
+      "id": "minigameKoeshinPlayable",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "The Battle of Koeshin",
+      "question": "Which of these champions could the player control in the client minigame The Battle of Koeshin?",
+      "correct": ["XinZhao", "Yunara"],
+      "wrong": ["Garen", "Jax", "LeeSin", "Talon", "Pantheon", "MonkeyKing"],
+      "answer": "The Battle of Koeshin was a side-scrolling beat 'em up with two playable heroes, who could be swapped freely mid-fight across three stages: the Mountains, the Forest and the Port Town."
+    },
+    {
+      "id": "minigameKoeshinSpirits",
+      "subcategory": "client-minigames",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Koeshin's Courtyard",
+      "question": "Which of these champions gave a Spirit Assist in the client minigame The Battle of Koeshin?",
+      "correct": ["Irelia", "Karma", "Kayle", "Zed"],
+      "wrong": ["Diana", "Leona", "Talon", "Fiora", "Jhin"],
+      "answer": "A spirit's assist unlocked at rank S+ in Koeshin's Courtyard, which the wiki calls a spiritual successor to Spirit Bonds."
+    },
+    {
+      "id": "minigameDemonsHandStars",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "The Demon's Hand",
+      "question": "Which of these champions starred in the client minigame The Demon's Hand?",
+      "correct": ["Leblanc", "Vladimir"],
+      "wrong": ["Darius", "Draven", "Ezreal", "Teemo", "Jinx", "Garen"],
+      "answer": "The Demon's Hand was a turn-based card-battling minigame, available from March 19 to April 28, 2025."
+    },
+    {
+      "id": "minigameCardGame",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Card-battling minigame",
+      "question": "Which client minigame was a card-battling game?",
+      "correct": ["The Demon's Hand"],
+      "wrong": [
+        "Tournament of Souls",
+        "Spirit Bonds",
+        "Demacia Rising",
+        "Another Sky",
+        "Cupcakes 4 Heartaches",
+        "The Spirit of Hearth-Home"
+      ],
+      "answer": "Each battle drew 8 cards from a 52-card deck, and the strongest attack combo, The Demon's Hand, dealt 2000 base damage."
+    },
+    {
+      "id": "minigameCupcakesBaker",
+      "subcategory": "client-minigames",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Cupcakes 4 Heartaches",
+      "question": "Which of these champions bakes cupcakes in the client minigame Cupcakes 4 Heartaches?",
+      "correct": ["Caitlyn"],
+      "wrong": ["Lulu", "Annie", "Poppy", "Gragas", "Nami", "Teemo"],
+      "answer": "Amumu and Vi helped her, and the minigame's codename was Caitlyn's Charity Bake."
+    },
+    {
+      "id": "minigameCupcakesServer",
+      "subcategory": "client-minigames",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Cupcakes 4 Heartaches server",
+      "question": "Which server was the only one to get the client minigame Cupcakes 4 Heartaches?",
+      "correct": ["Oceania (OCE)"],
+      "wrong": ["North America (NA)", "Europe West (EUW)", "Korea (KR)", "Brazil (BR)"],
+      "answer": "It ran there as a prototype from February 10 to 21, 2023, to test new technology for minigames in the client."
+    },
+    {
+      "id": "minigameArcaneCompanion",
+      "subcategory": "client-minigames",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Arcane companion",
+      "question": "Which client minigame was released as a companion to Arcane?",
+      "correct": ["The Council Archives"],
+      "wrong": [
+        "Spirit Bonds",
+        "Another Sky",
+        "Tournament of Souls",
+        "The Demon's Hand",
+        "Demacia Rising"
+      ],
+      "answer": "From November 8 to December 9, 2021, an anonymous council member sent the player on a secret mission, unlocking four collections of documents between November 8 and 24."
+    },
+    {
+      "id": "minigameDatingSim",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Dating sim minigame",
+      "question": "Which client minigame was a visual novel with dating sim elements?",
+      "correct": ["Spirit Bonds"],
+      "wrong": [
+        "The Demon's Hand",
+        "Tournament of Souls",
+        "Demacia Rising",
+        "Cupcakes 4 Heartaches"
+      ],
+      "answer": "It came out during the 2020 Spirit Blossom event. Playing games won favor with champions and unlocked event tokens, emotes, icons and new parts of the story."
+    },
+    {
+      "id": "minigameSpiritBondsChampions",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Spirit Bonds",
+      "question": "Which of these champions could you win the favor of in the client minigame Spirit Bonds?",
+      "correct": ["Ahri", "Cassiopeia", "Kindred", "Lillia", "Riven", "Teemo", "Thresh"],
+      "wrong": ["Garen", "Jinx", "Ezreal", "Malphite", "Blitzcrank", "Draven"],
+      "answer": "Spirit Bonds ran from July 22 to August 24, 2020, during the Spirit Blossom event, and winning a champion's favor unlocked new parts of their story."
+    },
+    {
+      "id": "minigameCityBuilder",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "City-building minigame",
+      "question": "Which client minigame was a turn-based city-building game?",
+      "correct": ["Demacia Rising"],
+      "wrong": [
+        "Tournament of Souls",
+        "Spirit Bonds",
+        "Another Sky",
+        "Cupcakes 4 Heartaches",
+        "The Battle of Koeshin",
+        "The Council Archives",
+        "The Spirit of Hearth-Home"
+      ],
+      "answer": "Made with Envar Studio, it came out on January 9, 2026, in two Acts that matched the two Acts of the For Demacia season."
+    },
+    {
+      "id": "minigameAnotherSkyGroup",
+      "subcategory": "client-minigames",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Another Sky",
+      "question": "Which group did the client visual novel Another Sky tell the story of a new generation of?",
+      "correct": ["Star Guardians"],
+      "wrong": ["Battle Academia", "Spirit Blossom", "Space Groove", "Cafe Cuties"],
+      "answer": "It ran from July 14 to August 24, 2022. Because of ongoing problems handing out rewards, the whole story and all rewards were unlocked on August 12."
+    },
+    {
+      "id": "minigameAnotherSkyStars",
+      "subcategory": "client-minigames",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Another Sky",
+      "question": "Which of these champions starred in the client visual novel Another Sky?",
+      "correct": [
+        "Akali",
+        "Ekko",
+        "Kaisa",
+        "Nilah",
+        "Quinn",
+        "Rell",
+        "Sona",
+        "Syndra",
+        "Taliyah",
+        "Zoe"
+      ],
+      "wrong": ["Leona", "Diana", "Katarina", "Garen", "Riven", "Vayne"],
+      "answer": "Another Sky told the story of a new generation of Star Guardians, released chapter by chapter from July 14 to August 24, 2022."
     }
   ]
 }
