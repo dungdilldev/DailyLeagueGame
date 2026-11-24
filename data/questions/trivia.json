@@ -2204,6 +2204,302 @@
       "correct": ["Akali", "Warwick"],
       "wrong": ["Darius", "Rengar", "Khazix", "Draven", "Katarina", "Nasus", "Renekton"],
       "answer": "It was part of the Global Splash Unification of patches 6.7 and 6.8, which gave every region, China included, the same splash art without human skeletons, alcohol, tobacco or excessive gore."
+    },
+    {
+      "id": "voicedByMatthewMercer",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Matthew Mercer",
+      "question": "Which of these champions is voiced by Matthew Mercer in English?",
+      "correct": ["Gangplank", "Kindred"],
+      "wrong": [
+        "Graves",
+        "TwistedFate",
+        "Draven",
+        "Jayce",
+        "Ezreal",
+        "Nautilus",
+        "Garen",
+        "Darius"
+      ],
+      "answerFor": {
+        "Gangplank": "He has voiced Gangplank since the champion's 2015 update.",
+        "Kindred": "He voices the Wolf, and Marcella Lentz-Pope voices the Lamb."
+      }
+    },
+    {
+      "id": "voicedByLiamOBrien",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Liam O'Brien",
+      "question": "Which of these champions is voiced by Liam O'Brien in English?",
+      "correct": ["Yasuo"],
+      "wrong": ["Yone", "Zed", "Shen", "MasterYi", "Talon", "LeeSin"]
+    },
+    {
+      "id": "voicedByLauraPost",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Laura Post",
+      "question": "Which of these champions is voiced by Laura Post in English?",
+      "correct": ["Ahri"],
+      "wrong": ["Evelynn", "Syndra", "Akali", "Kaisa", "Seraphine", "Lux"],
+      "answer": "She also voices her Star Guardian, Spirit Blossom and Risen Legend skins."
+    },
+    {
+      "id": "voicedByRogerJackson",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Roger L. Jackson",
+      "question": "Which of these champions is voiced by Roger L. Jackson in English?",
+      "correct": ["Singed"],
+      "wrong": ["Viktor", "Heimerdinger", "Twitch", "Urgot", "DrMundo", "Ziggs"]
+    },
+    {
+      "id": "voicedByFredTatasciore",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Fred Tatasciore",
+      "question": "Which of these champions is voiced by Fred Tatasciore in English?",
+      "correct": ["Mordekaiser"],
+      "wrong": ["Darius", "Sion", "Nasus", "Malphite", "Urgot", "Volibear"],
+      "answer": "He also voices the Sentinel Graves skin."
+    },
+    {
+      "id": "voicedByKarenStrassman",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Karen Strassman",
+      "question": "Which of these champions is voiced by Karen Strassman in English?",
+      "correct": ["Cassiopeia", "Fiora", "Shyvana", "Zyra"],
+      "wrong": ["Elise", "Evelynn", "Katarina", "Vayne", "Leona", "Diana", "Sivir", "Irelia"],
+      "answer": "She voices four champions, Cassiopeia, Fiora, Shyvana and Zyra: more than anyone else in the English cast."
+    },
+    {
+      "id": "voicedByEricaLindbeck",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Erica Lindbeck",
+      "question": "Which of these champions is voiced by Erica Lindbeck in English?",
+      "correct": ["Morgana", "Taliyah", "Zoe"],
+      "wrong": ["Kayle", "Lux", "Neeko", "Lillia", "Gwen", "Vex", "Annie"],
+      "answer": "She voices three champions: Morgana, Taliyah and Zoe."
+    },
+    {
+      "id": "voicedByErikBraa",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Erik Braa",
+      "question": "Which of these champions is voiced by Erik Braa in English?",
+      "correct": ["Draven", "Jax", "Velkoz"],
+      "wrong": ["Darius", "Garen", "Olaf", "Tryndamere", "Xerath", "Malzahar"],
+      "answer": "He voices three champions: Draven, Jax and Vel'Koz."
+    },
+    {
+      "id": "sameVoiceAnnie",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Annie's voice",
+      "question": "Which of these champions has the same English voice actor as Annie?",
+      "correct": ["Amumu"],
+      "wrong": ["Tristana", "Lulu", "Teemo", "Poppy", "Kennen", "Gnar"],
+      "answer": "Cristina Milizia voices both."
+    },
+    {
+      "id": "sameVoiceKogMaw",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Kog'Maw's voice",
+      "question": "Which of these champions has the same English voice actor as Kog'Maw?",
+      "correct": ["Renekton"],
+      "wrong": ["Nasus", "Rengar", "Chogath", "Skarner", "Malphite", "Azir"],
+      "answer": "Patrick Seitz voices both, and also Lucian's grunts and laughs."
+    },
+    {
+      "id": "sameVoiceRyze",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Ryze's voice",
+      "question": "Which of these champions has the same English voice actor as Ryze?",
+      "correct": ["Warwick"],
+      "wrong": ["Brand", "Vladimir", "Malzahar", "Xerath", "Swain", "Zilean"],
+      "answer": "Dave B. Mitchell voices both."
+    },
+    {
+      "id": "sameVoiceTwistedFate",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Twisted Fate's voice",
+      "question": "Which of these champions has the same English voice actor as Twisted Fate?",
+      "correct": ["Viktor"],
+      "wrong": ["Graves", "Jayce", "Heimerdinger", "Ezreal", "Lucian", "Jhin"],
+      "answer": "Owen Thomas voices both, and he already voiced Viktor before the champion's 2024 update."
+    },
+    {
+      "id": "sameVoiceDarius",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Darius's voice",
+      "question": "Which of these champions has the same English voice actor as Darius?",
+      "correct": ["Khazix"],
+      "wrong": ["Draven", "Swain", "Sion", "Talon", "Rengar", "Garen"],
+      "answer": "Chuck Kourouklis voices both."
+    },
+    {
+      "id": "sameVoiceFizz",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Fizz's voice",
+      "question": "Which of these champions has the same English voice actor as Fizz?",
+      "correct": ["Kennen"],
+      "wrong": ["Teemo", "Tristana", "Ziggs", "Heimerdinger", "Rumble", "Corki"],
+      "answer": "Both are voiced by Philece Sampler."
+    },
+    {
+      "id": "sameVoiceGraves",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Graves's voice",
+      "question": "Which of these champions has the same English voice actor as Graves?",
+      "correct": ["JarvanIV"],
+      "wrong": ["Garen", "Lucian", "Darius", "XinZhao", "TwistedFate", "Gangplank"],
+      "answer": "Kyle Hebert voices both."
+    },
+    {
+      "id": "sameVoiceHecarim",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Hecarim's voice",
+      "question": "Which of these champions has the same English voice actor as Hecarim?",
+      "correct": ["Sion"],
+      "wrong": ["Mordekaiser", "Nasus", "Urgot", "Yorick", "Thresh", "Karthus"],
+      "answer": "Scott McNeil voices both, and also the Final Boss and Fright Night Veigar skins."
+    },
+    {
+      "id": "sameVoiceKarthus",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Karthus's voice",
+      "question": "Which of these champions has the same English voice actor as Karthus?",
+      "correct": ["Ziggs"],
+      "wrong": ["Heimerdinger", "Rumble", "Yorick", "Thresh", "Corki", "Viktor"],
+      "answer": "Alessandro Juliani voices both."
+    },
+    {
+      "id": "sameVoiceKassadin",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Kassadin's voice",
+      "question": "Which of these champions has the same English voice actor as Kassadin?",
+      "correct": ["Shaco"],
+      "wrong": ["Malzahar", "Nocturne", "Jhin", "Twitch", "Xerath", "Velkoz"],
+      "answer": "Adam Harrington voices both, and voiced Karthus, Mordekaiser and Ryze before their updates."
+    },
+    {
+      "id": "sameVoiceKled",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Kled's voice",
+      "question": "Which of these champions has the same English voice actor as Kled?",
+      "correct": ["MonkeyKing"],
+      "wrong": ["Gnar", "Rumble", "Teemo", "Ziggs", "Tristana", "Corki"],
+      "answer": "Spike Spencer voices both."
+    },
+    {
+      "id": "sameVoiceNami",
+      "subcategory": "voice-actors",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Nami's voice",
+      "question": "Which of these champions has the same English voice actor as Nami?",
+      "correct": ["Yuumi"],
+      "wrong": ["Lulu", "Soraka", "Janna", "Sona", "Seraphine", "Milio"],
+      "answer": "Cassandra Lee Morris voices both."
+    },
+    {
+      "id": "sameVoiceBlitzcrank",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Blitzcrank's voice",
+      "question": "Which of these champions has the same English voice actor as Blitzcrank?",
+      "correct": ["Rammus"],
+      "wrong": ["Orianna", "Malphite", "Nautilus", "Galio", "Skarner", "Urgot"],
+      "answer": "Duncan Watt voices both."
+    },
+    {
+      "id": "sameVoiceChogath",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Cho'Gath's voice",
+      "question": "Which of these champions has the same English voice actor as Cho'Gath?",
+      "correct": ["Gragas"],
+      "wrong": ["Velkoz", "Khazix", "KogMaw", "Skarner", "Nautilus", "Olaf"],
+      "answer": "J.S. Gilbert voices both, and voiced Dr. Mundo, Sion and Udyr before their updates."
+    },
+    {
+      "id": "sameVoiceAzir",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Azir's voice",
+      "question": "Which of these champions has the same English voice actor as Azir?",
+      "correct": ["Talon"],
+      "wrong": ["Nasus", "Renekton", "Xerath", "Sivir", "Swain", "Katarina"],
+      "answer": "Travis Willingham voices both."
+    },
+    {
+      "id": "sameVoiceCamille",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Camille's voice",
+      "question": "Which of these champions has the same English voice actor as Camille?",
+      "correct": ["Samira"],
+      "wrong": ["Fiora", "Vi", "Caitlyn", "Akali", "Irelia", "Riven"],
+      "answer": "Emily O'Brien voices both."
+    },
+    {
+      "id": "sameVoiceAshe",
+      "subcategory": "voice-actors",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Ashe's voice",
+      "question": "Which of these champions has the same English voice actor as Ashe?",
+      "correct": ["Teemo"],
+      "wrong": ["Tristana", "Lulu", "Poppy", "Kennen", "Annie", "Ziggs"],
+      "answer": "Melissa Hutchison voices both."
+    },
+    {
+      "id": "sameVoiceJanna",
+      "subcategory": "voice-actors",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Janna's voice",
+      "question": "Which of these champions has the same English voice actor as Janna?",
+      "correct": ["Sona"],
+      "wrong": ["Soraka", "Lulu", "Nami", "Karma", "Seraphine", "Yuumi"],
+      "answer": "Erin Fitzgerald voices both."
     }
   ]
 }
