@@ -1704,6 +1704,306 @@
         "Zeri"
       ],
       "answer": "There are only 23 champions without any AP ratios."
+    },
+    {
+      "id": "duoDanceYasuo",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Dancing with Yasuo",
+      "question": "Which of these champions dances in sync with Yasuo when the two dance next to each other?",
+      "correct": ["Yone"],
+      "wrong": ["Irelia", "Riven", "Talon", "Akali", "Shen", "MasterYi"]
+    },
+    {
+      "id": "duoDanceXayah",
+      "subcategory": "dances",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Dancing with Xayah",
+      "question": "Which of these champions starts a unique dance when dancing next to Xayah?",
+      "correct": ["Rakan"],
+      "wrong": ["Ezreal", "Jhin", "Sett", "Taric", "Kayn", "Lucian"]
+    },
+    {
+      "id": "eggEurekaPentakill",
+      "subcategory": "easter-eggs",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Eureka!",
+      "question": "Which of these champions gains a buff called \"Eureka!\" after scoring a pentakill?",
+      "correct": ["Heimerdinger"],
+      "wrong": ["Viktor", "Jayce", "Ziggs", "Singed", "Corki", "Orianna"],
+      "answer": "The buff reads \"...FOR SCIENCE!\" and lasts 25 seconds."
+    },
+    {
+      "id": "eggOnTheCase",
+      "subcategory": "easter-eggs",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "On the Case",
+      "question": "Which of these champions earns 1 extra gold for every takedown scored together with an allied Vi?",
+      "correct": ["Caitlyn"],
+      "wrong": ["Jayce", "Camille", "Orianna", "Ezreal", "Seraphine", "Corki"],
+      "answer": "Both get a buff called On the Case, which reads \"Piltover's Finest.\""
+    },
+    {
+      "id": "eggPirateHunter",
+      "subcategory": "easter-eggs",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Pirate Hunter",
+      "question": "Which of these champions got a buff called \"Pirate Hunter\" in an easter egg removed in patch 3.14?",
+      "correct": ["MissFortune"],
+      "wrong": ["Graves", "TwistedFate", "Illaoi", "Nautilus", "Pyke", "Nami"],
+      "answer": "Gangplank got one of his own, Pirate: \"Yarr! I'm a mighty pirate!\" Hers read \"Yarr! I'm a mighty pirate… hunter!\""
+    },
+    {
+      "id": "eggQueenOfTheFreljord",
+      "subcategory": "easter-eggs",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "Queen of the Freljord",
+      "question": "Which of these champions could be crowned Queen of the Freljord in a removed easter egg?",
+      "correct": ["Ashe", "Sejuani", "Lissandra"],
+      "wrong": ["Anivia", "Braum", "Olaf", "Tryndamere", "Trundle", "Volibear", "Ornn", "Udyr"],
+      "answer": "When two of the three met on opposing teams, a quest told them to take each other down, and the winner wore an ice crown. The easter egg was turned off with Ashe's voice update in patch 9.20."
+    },
+    {
+      "id": "eggFreljordPoro",
+      "subcategory": "easter-eggs",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "A Poro on the Rift",
+      "question": "Which region must a whole team's champions come from for a Poro to appear outside their fountain on Summoner's Rift?",
+      "correct": ["Freljord"],
+      "wrong": ["Demacia", "Noxus", "Ionia", "Piltover", "Bilgewater", "Targon"]
+    },
+    {
+      "id": "eggArmoredBearHater",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Zilean's rival",
+      "question": "Which of these champions gains 1 armor for each enemy Zilean nearby?",
+      "correct": ["Volibear"],
+      "wrong": ["Braum", "Ornn", "Rammus", "Malphite", "Nautilus", "Sejuani", "Ekko"],
+      "answer": "Zilean in turn gains 1 ability power for each enemy Volibear nearby, a nod to designer Tom 'Zileas' Cadwell, who had opposed adding the champion. Before the rework the two dealt bonus damage to each other instead."
+    },
+    {
+      "id": "eggAnglingJax",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Grandmaster at Angling",
+      "question": "Which of these champions sometimes catches a fish while standing idle in the river?",
+      "correct": ["Jax"],
+      "wrong": ["Nami", "Nautilus", "Illaoi", "Gangplank", "MissFortune", "Kennen", "Fizz"],
+      "answer": "The buff is called Grandmaster at Angling. A fish gives 1 ability power and 1 gold, and a rare one 10 of each."
+    },
+    {
+      "id": "eggRumbleTristana",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Drawn to Tristana",
+      "question": "Which of these champions gains 1 bonus movement speed when moving toward an allied Tristana?",
+      "correct": ["Rumble"],
+      "wrong": ["Corki", "Heimerdinger", "Kennen", "Poppy", "Veigar", "Lulu"]
+    },
+    {
+      "id": "eggNaafiriPetting",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Who's a good girl?",
+      "question": "Which of these champions can be petted by a hand that looks like the old game cursor, through a chain of emotes?",
+      "correct": ["Naafiri"],
+      "wrong": ["Warwick", "Nasus", "Rengar", "Nidalee", "Gnar", "Shyvana"],
+      "answer": "Pressing Ctrl+1 twice gets a pat on the head, Ctrl+2 after that a scratch on the neck, and Ctrl+3 after that a belly rub."
+    },
+    {
+      "id": "eggWitchHat",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "A witch's hat",
+      "question": "Which of these champions gets a witch's hat instead of a Rabadon's Deathcap when Ornn's forge upgrades it?",
+      "correct": ["Aurora"],
+      "wrong": ["Veigar", "Lux", "Annie", "Syndra", "Neeko", "Brand"],
+      "answer": "The hat keeps the upgraded item's stats, and its text reads: \"'Friend.' Yes, it is a funny word. Yet perhaps I understand its purpose.\""
+    },
+    {
+      "id": "eggChatNickname",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Another name in chat",
+      "question": "Which of these champions goes by another name in the chat while in another form?",
+      "correct": ["Anivia", "Gnar"],
+      "wrong": ["Nidalee", "Elise", "Jayce", "Shyvana", "Udyr", "Swain"],
+      "answerFor": {
+        "Anivia": "While reborn as an egg, she is called Eggnivia.",
+        "Gnar": "While transformed, he is called Mega Gnar."
+      }
+    },
+    {
+      "id": "eggTonsOfDamage",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "item",
+      "label": "Tons of damage",
+      "question": "Which of these items comes up in the shop when you search for \"tons of damage\"?",
+      "correct": ["3078"],
+      "wrong": ["3071", "3031", "3110", "6662", "3100", "3068"],
+      "answer": "It is the catchphrase of Riot's David 'Phreak' Turley in his Champion Spotlights. Before patch 10.23 the shop even showed it as the item's description."
+    },
+    {
+      "id": "eggSyndraSentinel",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Throwing the Blue Sentinel",
+      "question": "Which of these champions gets 10 mana back by throwing the Blue Sentinel?",
+      "correct": ["Syndra"],
+      "wrong": ["Orianna", "Lux", "Anivia", "Viktor", "Cassiopeia", "Taliyah"],
+      "answer": "Throwing it with Force of Will also takes 1 second off the cooldown, and throwing the Red Brambleback burns the enemies it hits like the red buff."
+    },
+    {
+      "id": "eggInverseNinja",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Inverse Ninja Strength",
+      "question": "Which of these champions lost 1 health for every other ninja on their team, in a removed easter egg?",
+      "correct": ["Akali", "Kennen", "Shen", "Zed"],
+      "wrong": ["Talon", "Katarina", "MasterYi", "Yasuo", "Irelia", "LeeSin"],
+      "answer": "The buff was called Inverse Ninja Strength: \"Ninjas are more effective when they work alone.\" It was removed in patch 3.14."
+    },
+    {
+      "id": "eggThreshSennaSoul",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "A soul from the start",
+      "question": "Which of these champions made an enemy Thresh start the game with one soul, hinting at Senna's release?",
+      "correct": ["Lucian"],
+      "wrong": ["Jhin", "Caitlyn", "Vayne", "Graves", "Ezreal", "Kalista"],
+      "answer": "The easter egg was removed in patch 9.20, and Senna came out two patches later."
+    },
+    {
+      "id": "eggBilgewaterSharks",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Bilgewater in force",
+      "question": "Which of these appears on Summoner's Rift when five or more Bilgewater champions are in the game?",
+      "correct": ["Two sharks"],
+      "wrong": [
+        "A yellow rubber duck",
+        "A ghost ship",
+        "A kraken",
+        "Fog over the river",
+        "Pirate flags on the turrets"
+      ],
+      "answer": "Dark Waters skins count too, and the sharks swim in the lower right corner of the map."
+    },
+    {
+      "id": "eggSennaBlackMist",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Black mist in the fountains",
+      "question": "Which of these champions was teased before release by a black mist covering both fountains at the start of games?",
+      "correct": ["Senna"],
+      "wrong": ["Gwen", "Akshan", "Vex", "Rell", "Seraphine", "Yone"],
+      "answer": "The mist showed up in patches 9.20 and 9.21."
+    },
+    {
+      "id": "eggBardWalls",
+      "subcategory": "easter-eggs",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "A face on the walls",
+      "question": "Which of these champions was teased before release by a symbol of the champion's face placed on walls on Summoner's Rift?",
+      "correct": ["Bard"],
+      "wrong": ["Ekko", "Illaoi", "Jhin", "Taliyah", "Camille"]
+    },
+    {
+      "id": "eggPykeRiver",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "At home in the river",
+      "question": "Which of these champions gains 1 bonus movement speed while in the river?",
+      "correct": ["Pyke"],
+      "wrong": ["Fizz", "Nami", "Nautilus", "Illaoi", "Gangplank", "MissFortune"]
+    },
+    {
+      "id": "eggBriarSion",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Running from Sion",
+      "question": "Which of these champions gains 1 bonus movement speed when moving away from Sion?",
+      "correct": ["Briar"],
+      "wrong": ["Darius", "Draven", "Swain", "Katarina", "Samira", "Rell"],
+      "answer": "She also gains it when moving toward Talon, who in turn gains it when moving away from her."
+    },
+    {
+      "id": "eggZauniteIngenuity",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Zaunite Ingenuity",
+      "question": "Which of these champions gets a buff called \"Zaunite Ingenuity\" when on the same team as Ekko?",
+      "correct": ["Zeri"],
+      "wrong": ["Singed", "Twitch", "Urgot", "Renata", "DrMundo", "Blitzcrank"],
+      "answer": "It reads \"Kids from the Undercity stick together.\" and gives both 1 gold for every takedown they score together."
+    },
+    {
+      "id": "eggHaroldAndKumar",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "item",
+      "label": "haroldandkumar",
+      "question": "Which of these items comes up in the shop when you search for \"haroldandkumar\"?",
+      "correct": ["3050"],
+      "wrong": ["3110", "3068", "3026", "3071", "6662", "3100"],
+      "answer": "The search term is a nod to the film Harold & Kumar."
+    },
+    {
+      "id": "eggNunuTwoSouls",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Two souls",
+      "question": "Which of these champions drops two souls for Thresh, and two mists for Senna, when taken down?",
+      "correct": ["Nunu"],
+      "wrong": ["Kled", "Annie", "Yorick", "Ivern", "Quinn", "Azir"],
+      "answer": "Sejuani and her boar Bristle drop only one."
+    },
+    {
+      "id": "eggPlantsVsZombies",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Plants vs. Zombies",
+      "question": "Which of these champions got 2 bonus gold for taking down Zyra, in a removed nod to Plants vs. Zombies?",
+      "correct": ["Karthus", "Sion"],
+      "wrong": ["Yorick", "Thresh", "Hecarim", "Kalista", "Viego", "Mordekaiser"],
+      "answer": "Zyra got the same 2 gold for taking down either of them."
+    },
+    {
+      "id": "eggChumTheWaters",
+      "subcategory": "easter-eggs",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Eaten by the shark",
+      "question": "Which of these champions gets eaten, body and all, when killed by a medium or large Chum the Waters from Fizz?",
+      "correct": ["Annie", "Amumu", "Kennen", "Lulu", "Poppy", "Tristana", "Veigar", "Ziggs"],
+      "wrong": ["Heimerdinger", "Rumble", "Teemo"],
+      "answer": "Heimerdinger, Rumble and Teemo are small too, but are never eaten."
     }
   ]
 }
