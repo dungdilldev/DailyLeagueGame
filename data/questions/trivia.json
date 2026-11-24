@@ -2004,6 +2004,137 @@
       "correct": ["Annie", "Amumu", "Kennen", "Lulu", "Poppy", "Tristana", "Veigar", "Ziggs"],
       "wrong": ["Heimerdinger", "Rumble", "Teemo"],
       "answer": "Heimerdinger, Rumble and Teemo are small too, but are never eaten."
+    },
+    {
+      "id": "chewReleaseYear",
+      "subcategory": "april-fools",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which year did Riot release the browser game Cho'Gath Eats the World as an April Fools' joke?",
+      "correct": ["2013"],
+      "wrong": ["2011", "2012", "2014", "2015"],
+      "answer": "It was taken down the next day. While it was up, Cho'Gath was sold at half price."
+    },
+    {
+      "id": "chewRampage",
+      "subcategory": "april-fools",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which arcade game series is the April Fools' game Cho'Gath Eats the World a parody of?",
+      "correct": ["Rampage"],
+      "wrong": ["Donkey Kong", "Space Invaders", "Pac-Man", "Galaga", "Metal Slug"],
+      "answer": "It parodies Rampage World Tour in particular: Cho'Gath climbs and punches buildings to bring them down, city by city."
+    },
+    {
+      "id": "chewJimmyEatWorld",
+      "subcategory": "april-fools",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which rock band is the name of the April Fools' game Cho'Gath Eats the World most probably a reference to?",
+      "correct": ["Jimmy Eat World"],
+      "wrong": ["Linkin Park", "Green Day", "Foo Fighters", "Fall Out Boy", "Paramore"],
+      "answer": "A poster reading \"Cho'Gath Eat World\" could already be seen in the old splash art of Emumu Amumu."
+    },
+    {
+      "id": "chewFinalBoss",
+      "subcategory": "april-fools",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which of these champions is the final boss of the April Fools' game Cho'Gath Eats the World?",
+      "correct": ["Zac"],
+      "wrong": ["Malphite", "Nautilus", "Sion", "Mordekaiser", "Darius", "Vi"],
+      "answer": "He waits in the last city, Sydney. Hitting him splits him into blobs, and he comes back unless all of them are destroyed."
+    },
+    {
+      "id": "chewEnemyChampion",
+      "subcategory": "april-fools",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which of these champions fights Cho'Gath as an enemy in the April Fools' game Cho'Gath Eats the World?",
+      "correct": ["Teemo", "Garen", "Corki", "Singed", "Ziggs", "Caitlyn", "Twitch", "Zac"],
+      "wrong": ["Annie", "Ryze", "Ezreal", "MasterYi", "Darius", "Jax", "Malphite", "Nasus"],
+      "answer": "They try to save the cities by killing him, and Battlecast Prime Cho'Gath joins them in Tokyo, firing missiles."
+    },
+    {
+      "id": "chewGentlemanSkin",
+      "subcategory": "april-fools",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which Cho'Gath skin is unlocked by beating the April Fools' game Cho'Gath Eats the World?",
+      "correct": ["Gentleman Cho'Gath"],
+      "wrong": [
+        "Nightmare Cho'Gath",
+        "Loch Ness Cho'Gath",
+        "Jurassic Cho'Gath",
+        "Prehistoric Cho'Gath",
+        "Dark Star Cho'Gath",
+        "Toy Terror Cho'Gath"
+      ],
+      "answer": "Dying while wearing it sends you back to the very first level. Its hat also turns up as a pick-up worth 250 points."
+    },
+    {
+      "id": "chewAstroTeemoCity",
+      "subcategory": "april-fools",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Cho'Gath Eats the World",
+      "question": "Which city's level in Cho'Gath Eats the World unlocks the hidden minigame Astro Teemo?",
+      "correct": ["Santa Monica"],
+      "wrong": ["Baltimore", "New York", "Seattle", "London", "Paris", "Tokyo"],
+      "answer": "Cho'Gath has to devour the rainbow on top of the Riot building, and Astro Teemo starts right away."
+    },
+    {
+      "id": "astroTeemoJetpackJoyride",
+      "subcategory": "april-fools",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Astro Teemo",
+      "question": "Which mobile game is the 2013 April Fools' minigame Astro Teemo a direct copy of?",
+      "correct": ["Jetpack Joyride"],
+      "wrong": ["Temple Run", "Subway Surfers", "Doodle Jump", "Angry Birds", "Fruit Ninja"],
+      "answer": "Teemo flies up while W is held and collects coins, which sometimes spell out words such as GLHF and /DANCE."
+    },
+    {
+      "id": "astroTeemoNyanCat",
+      "subcategory": "april-fools",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Astro Teemo",
+      "question": "Which internet meme inspired the rainbow trail behind Teemo in the April Fools' minigame Astro Teemo?",
+      "correct": ["Nyan Cat"],
+      "wrong": ["Doge", "Keyboard Cat", "Grumpy Cat", "Rickroll", "Dancing Baby"],
+      "answer": "Teemo runs on clouds in his Astronaut skin, and the game comes with a song sung by Teemo himself."
+    },
+    {
+      "id": "astroTeemoSoulShield",
+      "subcategory": "april-fools",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Soul Shield",
+      "question": "Which of these champions once had an ability called Soul Shield, the name of the priciest upgrade in the April Fools' minigame Astro Teemo?",
+      "correct": ["Karma"],
+      "wrong": ["Kayle", "Janna", "Lulu", "Soraka", "Taric", "Sona"],
+      "answer": "The ability was removed in her rework. In Astro Teemo, the upgrade lets Teemo take an extra hit and costs 30,000 gold."
+    },
+    {
+      "id": "astroTeemoObstacles",
+      "subcategory": "april-fools",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Astro Teemo",
+      "question": "Which of these champions has an ultimate that is an obstacle in the April Fools' minigame Astro Teemo?",
+      "correct": ["Ashe", "Lux"],
+      "wrong": ["Ezreal", "Varus", "Brand", "Annie", "Xerath", "Karthus"],
+      "answerFor": {
+        "Ashe": "Her Enchanted Crystal Arrows aim at Teemo, with a blue marker that turns red when they fire.",
+        "Lux": "Steel Legion Lux's Final Spark charges up and fires in a line."
+      }
     }
   ]
 }
