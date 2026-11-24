@@ -1052,7 +1052,9 @@
       "question": "Which of these champions has a dance that references MC Hammer's U Can't Touch This?",
       "correct": ["Jayce", "Malzahar"],
       "wrong": ["Azir", "Lucian", "Evelynn", "Amumu", "Corki"],
-      "answerFor": { "Malzahar": "His Voidlings dance it along with him." }
+      "answerFor": {
+        "Malzahar": "His Voidlings dance it along with him."
+      }
     },
     {
       "id": "danceSouthPark",
@@ -1233,7 +1235,9 @@
       "question": "Which of these champions has a dance that references the haka, the Māori warrior dance?",
       "correct": ["Pyke", "Rengar"],
       "wrong": ["Olaf", "Braum", "Tryndamere", "Malphite", "Shen", "Jhin"],
-      "answerFor": { "Rengar": "His dance is the Ka Mate haka in particular." }
+      "answerFor": {
+        "Rengar": "His dance is the Ka Mate haka in particular."
+      }
     },
     {
       "id": "danceBreakdance",
@@ -2922,6 +2926,257 @@
       ],
       "wrong": ["Leona", "Diana", "Katarina", "Garen", "Riven", "Vayne"],
       "answer": "Another Sky told the story of a new generation of Star Guardians, released chapter by chapter from July 14 to August 24, 2022."
+    },
+    {
+      "id": "modeArenaBattlefields",
+      "subcategory": "game-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Koi Pond and Frostbite Thicket",
+      "question": "Which game mode is fought on battlefields such as the Koi Pond and the Frostbite Thicket?",
+      "correct": ["Arena"],
+      "wrong": ["ARAM: Mayhem", "Nexus Blitz", "Brawl", "Swarm", "Ultimate Spellbook"],
+      "answer": "Arena is a team deathmatch in a tournament format, where teams power themselves up with unique Augments and items in rotating combat rounds until the last team is standing."
+    },
+    {
+      "id": "modeBrawlMap",
+      "subcategory": "game-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "The Bandlewood",
+      "question": "Which game mode is played on The Bandlewood?",
+      "correct": ["Brawl"],
+      "wrong": ["ARAM: Mayhem", "Nexus Blitz", "Arena", "Swarm", "Ultimate Spellbook"],
+      "answer": "Brawl is a 5v5 team deathmatch on a map somewhere in Bandle City. It was released in patch V25.10, during Spirit Blossom Beyond."
+    },
+    {
+      "id": "modeNexusBlitzMap",
+      "subcategory": "game-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Nexus Blitz map",
+      "question": "Which map is the game mode Nexus Blitz played on?",
+      "correct": ["Temple of Lily and Lotus"],
+      "wrong": [
+        "The Bandlewood",
+        "Howling Abyss",
+        "Butcher's Bridge",
+        "Koeshin's Crossing",
+        "Valoran City Park"
+      ],
+      "answer": "Teams take one of two paths to attack the enemy where they are weakest, then siege the enemy base together to destroy its Nexus."
+    },
+    {
+      "id": "modeSwarmGenre",
+      "subcategory": "game-modes",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Bullet heaven",
+      "question": "Which game mode is a bullet heaven for 1 to 4 players?",
+      "correct": ["Swarm"],
+      "wrong": ["Doom Bots", "Arena", "Brawl", "Nexus Blitz", "Ultimate Spellbook"],
+      "answer": "Players team up as Anima Squad fighters to defend Final City from waves of Primordians, and each of its four maps ends in a boss fight."
+    },
+    {
+      "id": "modeSwarmBosses",
+      "subcategory": "game-modes",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Swarm bosses",
+      "question": "Which of these champions is a Primordian boss in the game mode Swarm?",
+      "correct": ["RekSai", "Briar", "Belveth", "Aatrox"],
+      "wrong": ["Chogath", "Velkoz", "Kassadin", "Khazix", "Malzahar", "KogMaw"],
+      "answer": "Each of Swarm's four maps, from the Warehouse District to the Beachhead, ends in a fight against one Primordian boss."
+    },
+    {
+      "id": "modeUltimateSpellbook",
+      "subcategory": "game-modes",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Ultimates as summoner spells",
+      "question": "Which game mode puts another champion's ultimate in one of your summoner spell slots?",
+      "correct": ["Ultimate Spellbook"],
+      "wrong": ["One for All", "Ultra Rapid Fire", "Nexus Blitz", "Arena", "Brawl"],
+      "answer": "Players choose 1 of 4 random ultimates and start at level 3 with 950 gold. Slaying the Dragon or Baron Nashor grants a charge that refreshes the spell soon after it is cast."
+    },
+    {
+      "id": "modeLeagueClassic",
+      "subcategory": "game-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Earlier versions of the game",
+      "question": "Which game mode recreates the gameplay of earlier versions of League, generally from before Yasuo's release?",
+      "correct": ["League Classic"],
+      "wrong": [
+        "One for All",
+        "Ultra Rapid Fire",
+        "Nexus Blitz",
+        "Ultimate Spellbook",
+        "ARAM: Mayhem"
+      ],
+      "answer": "It brings back the original systems both in and out of the game, and a community vote steers its future development."
+    },
+    {
+      "id": "modeOneForAllDisabled",
+      "subcategory": "game-modes",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Disabled in One for All",
+      "question": "Which of these champions is disabled in the game mode One for All?",
+      "correct": ["Karthus", "Teemo"],
+      "wrong": ["Garen", "Annie", "Ashe", "MasterYi", "Lux", "Darius"],
+      "answer": "Every champion in the mode gets the One for All buff, with 70 summoner spell haste and 40 bonus movement speed."
+    },
+    {
+      "id": "modeDoomBotsWinRate",
+      "subcategory": "game-modes",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Strongest Doom Bot",
+      "question": "Which of these champions had the Doom Bot with the highest win rate on the hardest difficulty, according to Riot in 2014?",
+      "correct": ["Amumu"],
+      "wrong": ["Annie", "Teemo", "Ziggs", "Blitzcrank", "Ryze", "Ashe"],
+      "answer": "Doom Bots was Riot's first PvE mode, with 15 hand-crafted alternate kits. The developers' verdict on Doom Amumu: \"Too many tears.\""
+    },
+    {
+      "id": "modeUrfBuff",
+      "subcategory": "game-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Awesome Buff",
+      "question": "Which game mode gives every champion the Awesome Buff of Awesomely Awesome Buffing?",
+      "correct": ["Ultra Rapid Fire"],
+      "wrong": ["One for All", "Ultimate Spellbook", "Nexus Blitz", "Brawl", "ARAM: Mayhem"],
+      "answer": "The buff grants excessive ability haste and removes ability costs. Depending on the year, the mode has been played as All Random or Blind Pick."
+    },
+    {
+      "id": "modeArurfLongestRun",
+      "subcategory": "game-modes",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "ARURF+",
+      "question": "Which of these is how long Riot left ARURF+ running without a break?",
+      "correct": ["42 days"],
+      "wrong": ["16 days", "7 days", "28 days", "60 days"],
+      "answer": "It was the longest run the mode had had: before ARURF+, All Random URF had never run for more than 16 days in a row."
+    },
+    {
+      "id": "modeChinaHours",
+      "subcategory": "game-modes",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Half of all hours in China",
+      "question": "Which featured game mode reached about half of all hours played in China by the end of its run?",
+      "correct": ["All Random URF"],
+      "wrong": ["One for All", "Nexus Blitz", "Odyssey: Extraction"],
+      "answer": "In China, One for All reached about 20% of hours, while Nexus Blitz struggled to crack 2% and Odyssey stayed at about 3%."
+    },
+    {
+      "id": "modeDarkStarThresh",
+      "subcategory": "removed-modes",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Dark Star: Singularity",
+      "question": "Which of these champions had his abilities reworked for the game mode Dark Star: Singularity?",
+      "correct": ["Thresh"],
+      "wrong": ["Blitzcrank", "Nautilus", "Pyke", "Leona", "Morgana", "Darius"],
+      "answer": "Teams of three played best of 3 rounds on the Cosmic Ruins, scoring by throwing Abyss Scuttlers and enemies into the black hole at its center. The Box was removed, because Thresh did not need it to end the universe."
+    },
+    {
+      "id": "modeInvasionMap",
+      "subcategory": "removed-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Invasion map",
+      "question": "Which map was the Star Guardian game mode Invasion played on?",
+      "correct": ["Valoran City Park"],
+      "wrong": [
+        "Crash Site",
+        "Cosmic Ruins",
+        "Substructure 43",
+        "The Crystal Scar",
+        "Twisted Treeline"
+      ],
+      "answer": "Five champions fought through seven encounters with space monsters there, ending in a boss fight, and Star Guardian Ahri replaced the announcer."
+    },
+    {
+      "id": "modeInvasionChampions",
+      "subcategory": "removed-modes",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Invasion champions",
+      "question": "Which of these champions could be played in the game mode Invasion?",
+      "correct": [
+        "Ahri",
+        "Ezreal",
+        "Janna",
+        "Jinx",
+        "Lulu",
+        "Lux",
+        "MissFortune",
+        "Poppy",
+        "Soraka",
+        "Syndra"
+      ],
+      "wrong": ["Garen", "Darius", "Annie", "Ashe", "Leona", "Diana", "Katarina"],
+      "answer": "Only Star Guardian champions could be played, though the skin was not required, and every champion started the match with 2600 gold."
+    },
+    {
+      "id": "modeHuntOfTheBloodMoon",
+      "subcategory": "removed-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Limited champion pool",
+      "question": "Which game mode was the first to use a limited champion pool, with two teams of Assassins?",
+      "correct": ["Hunt of the Blood Moon"],
+      "wrong": [
+        "Hexakill",
+        "Nemesis Draft",
+        "Ascension",
+        "Legend of the Poro King",
+        "Black Market Brawlers",
+        "Nexus Siege"
+      ],
+      "answer": "The first team to 350 points won. Three kills without going back to base gave a champion the Demon Brand, with invisibility and an attack that dealt true damage."
+    },
+    {
+      "id": "modeNexusSiege",
+      "subcategory": "removed-modes",
+      "difficulty": "medium",
+      "subject": "text",
+      "label": "Half the Rift",
+      "question": "Which game mode cut Summoner's Rift in half, with the teams switching sides once the attackers destroyed the Nexus?",
+      "correct": ["Nexus Siege"],
+      "wrong": [
+        "Nexus Blitz",
+        "Hexakill",
+        "Ascension",
+        "Legend of the Poro King",
+        "Black Market Brawlers"
+      ],
+      "answer": "Victory went to whichever team destroyed the base fastest when attacking."
+    },
+    {
+      "id": "modePoroKing",
+      "subcategory": "removed-modes",
+      "difficulty": "easy",
+      "subject": "text",
+      "label": "Poro King",
+      "question": "Which game mode let a team summon the Poro King by landing ten Poro tosses?",
+      "correct": ["Legend of the Poro King"],
+      "wrong": ["Snowdown Showdown", "Hexakill", "Ascension", "Nemesis Draft", "Nexus Siege"],
+      "answer": "Feeding treats to the Poro King caused wild effects. When the mode left, Riot said: \"Don't worry, he lives on... inside of YOU!\""
+    },
+    {
+      "id": "modeHexakillMap",
+      "subcategory": "removed-modes",
+      "difficulty": "hard",
+      "subject": "text",
+      "label": "Hexakill map",
+      "question": "Which map was the game mode Hexakill played on, besides Summoner's Rift?",
+      "correct": ["Twisted Treeline"],
+      "wrong": ["The Crystal Scar", "Howling Abyss", "Butcher's Bridge"],
+      "answer": "A version enabled in patch V4.18 squeezed all twelve players onto it, with minions and experience scaling up faster to make up for it."
     }
   ]
 }
