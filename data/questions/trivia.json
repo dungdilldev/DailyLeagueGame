@@ -2135,6 +2135,75 @@
         "Ashe": "Her Enchanted Crystal Arrows aim at Teemo, with a blue marker that turns red when they fire.",
         "Lux": "Steel Legion Lux's Final Spark charges up and fires in a line."
       }
+    },
+    {
+      "id": "realLifeGravesCigar",
+      "subcategory": "real-life-changes",
+      "difficulty": "easy",
+      "subject": "champion",
+      "label": "The missing cigar",
+      "question": "Which of these champions had his cigar removed from his splash art for censorship reasons?",
+      "correct": ["Graves"],
+      "wrong": ["Darius", "Draven", "Jayce", "Lucian", "Ezreal", "Braum"],
+      "answer": "The change was at first made in every region, which made \"Graves's cigar\" a meme for pointless visual changes. Since patch 7.9, regions with lighter censorship rules get the art with the cigar back."
+    },
+    {
+      "id": "realLifeCorkiSiren",
+      "subcategory": "real-life-changes",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Air raid siren",
+      "question": "Which of these champions had a sound effect changed after a player in Syria pointed out that it sounded like an air raid siren?",
+      "correct": ["Corki"],
+      "wrong": ["Rumble", "Ziggs", "Jinx", "Heimerdinger", "Gnar", "Blitzcrank"],
+      "answer": "It was the sound of him picking up The Package, and Riot changed it promptly."
+    },
+    {
+      "id": "realLifeMordekaiserCross",
+      "subcategory": "real-life-changes",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "A throne like a cross",
+      "question": "Which of these champions had a skin's throne made taller over concerns that it resembled a Christian cross?",
+      "correct": ["Mordekaiser"],
+      "wrong": ["Azir", "Viego", "Sylas", "Pantheon", "Nasus", "Darius"],
+      "answer": "It was the throne of King of Clubs Mordekaiser, which used to be shorter, with his mace Nightfall resting on its back."
+    },
+    {
+      "id": "realLifeSameGenderSplash",
+      "subcategory": "real-life-changes",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Censored love interest",
+      "question": "Which of these champions has a skin whose splash art is censored in some regions because it shows a love interest of the same gender?",
+      "correct": ["Vi", "Caitlyn"],
+      "wrong": ["Ashe", "Lulu", "Lux", "Nami", "Braum", "Poppy"],
+      "answerFor": {
+        "Vi": "It is her Heartache skin, which shares its theme with Heartthrob Caitlyn.",
+        "Caitlyn": "It is her Heartthrob skin, which shares its theme with Heartache Vi."
+      }
+    },
+    {
+      "id": "realLifeKarthusSkeleton",
+      "subcategory": "real-life-changes",
+      "difficulty": "medium",
+      "subject": "champion",
+      "label": "Skeletons removed",
+      "question": "Which of these champions had skeletons removed from his base splash art in 2016, so that every region could share the same art?",
+      "correct": ["Karthus"],
+      "wrong": ["Yorick", "Thresh", "Kalista", "Malzahar", "Nasus", "Xerath"],
+      "answer": "It was part of the Global Splash Unification of patches 6.7 and 6.8, which gave every region, China included, the same splash art without human skeletons, alcohol, tobacco or excessive gore."
+    },
+    {
+      "id": "realLifeSplashGore",
+      "subcategory": "real-life-changes",
+      "difficulty": "hard",
+      "subject": "champion",
+      "label": "Gore removed",
+      "question": "Which of these champions had gore removed from a skin's splash art in 2016, so that every region could share the same art?",
+      "correct": ["Akali", "Warwick"],
+      "wrong": ["Darius", "Rengar", "Khazix", "Draven", "Katarina", "Nasus", "Renekton"],
+      "answer": "It was part of the Global Splash Unification of patches 6.7 and 6.8, which gave every region, China included, the same splash art without human skeletons, alcohol, tobacco or excessive gore."
     }
   ]
 }
