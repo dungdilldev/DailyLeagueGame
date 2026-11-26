@@ -63,7 +63,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
     steps:
       # Default ref would be the commit that triggered the run, missing the data commit above.
       - uses: actions/checkout@v4
@@ -83,7 +83,19 @@ jobs:
         with:
           name: github-pages-${{ github.run_attempt }}
           path: dist
+      # The artifact API can take a few seconds to list a fresh upload, so deploy-pages sometimes
+      # fails with "No artifacts named ... were found" although the upload succeeded. Wait and retry
+      # once; the second attempt's failure fails the job.
       - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
+      - name: Wait for the artifact to be listed
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - id: deployment-retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
@@ -91,7 +103,7 @@ jobs:
       # a few minutes; the query string asks it for a fresh copy.
       - name: Check the live site
         env:
-          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
         run: |
           today="$(date -u +%F)"
           for attempt in $(seq 1 20); do
