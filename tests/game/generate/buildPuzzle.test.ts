@@ -194,6 +194,9 @@ describe('buildPuzzle with subcategories', () => {
   const slotOfRound = (round: { questionId: string }) =>
     bySlot(questions.find(({ id }) => id === round.questionId) as Question);
   const subcategories = new Set(questions.map(bySlot).filter((slot) => slot !== undefined));
+  // Builds up to 150 puzzles per question of every subcategory, so it grows with the question
+  // files and needs more than the default 5 seconds when the whole suite runs in parallel.
+  const EVERY_QUESTION_TIMEOUT_MS = 30_000;
 
   it('asks at most one question of a subcategory a day', () => {
     for (let offset = 0; offset < 200; offset++) {
@@ -203,27 +206,31 @@ describe('buildPuzzle with subcategories', () => {
     }
   });
 
-  it('can ask every question of a subcategory, not only the same few', () => {
-    expect(subcategories.size).toBeGreaterThan(0);
-    for (const slot of subcategories) {
-      const group = questions.filter((question) => bySlot(question) === slot);
-      // Played as its category's own mode: the other slots of the category fill the other rounds,
-      // so the group can land in any round. (In a mixed pool with one other category, the group
-      // would always be one of the first two slots tried, and so always an easy round.)
-      const pool = questions.filter((question) => question.category === group[0]?.category);
-      const groupIds = new Set(group.map(({ id }) => id));
-      const asked = new Set<string>();
-      // Generous: a slot is used by the first round it fits, so a group with one easy question
-      // (esports moments) gives its medium questions a chance only on days the slot comes up late.
-      for (let offset = 0; offset < 150 * group.length && asked.size < groupIds.size; offset++) {
-        const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, pool);
-        puzzle.rounds.forEach((round) => {
-          if (groupIds.has(round.questionId)) asked.add(round.questionId);
-        });
+  it(
+    'can ask every question of a subcategory, not only the same few',
+    () => {
+      expect(subcategories.size).toBeGreaterThan(0);
+      for (const slot of subcategories) {
+        const group = questions.filter((question) => bySlot(question) === slot);
+        // Played as its category's own mode: the other slots of the category fill the other rounds,
+        // so the group can land in any round. (In a mixed pool with one other category, the group
+        // would always be one of the first two slots tried, and so always an easy round.)
+        const pool = questions.filter((question) => question.category === group[0]?.category);
+        const groupIds = new Set(group.map(({ id }) => id));
+        const asked = new Set<string>();
+        // Generous: a slot is used by the first round it fits, so a group with one easy question
+        // (esports moments) gives its medium questions a chance only on days the slot comes up late.
+        for (let offset = 0; offset < 150 * group.length && asked.size < groupIds.size; offset++) {
+          const puzzle = buildPuzzle(addUtcDays('2026-03-01', offset), data, pool);
+          puzzle.rounds.forEach((round) => {
+            if (groupIds.has(round.questionId)) asked.add(round.questionId);
+          });
+        }
+        expect(asked.size, slot).toBe(groupIds.size);
       }
-      expect(asked.size, slot).toBe(groupIds.size);
-    }
-  });
+    },
+    EVERY_QUESTION_TIMEOUT_MS,
+  );
 
   it('does not let a big subcategory take over the day', () => {
     // Rounds per slot (a subcategory, or a question without one), by category.
