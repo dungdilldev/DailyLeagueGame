@@ -55,8 +55,13 @@ test('the same seed shows the same first question', async ({ page }) => {
   expect(await firstQuestion()).toBe(first);
 });
 
-const MAX_SKIPS = 4000;
-const MANY_SKIPS_TIMEOUT_MS = 300_000;
+// Questions are drawn uniformly, so seeing all N takes about N * (ln N + 0.6) skips (the coupon
+// collector), with a spread of about 1.3 N. The limit is that times this margin, so it grows with
+// the question files instead of running out when questions are added.
+const SKIP_LIMIT_MARGIN = 1.6;
+const SKIP_LIMIT_OFFSET = 0.6;
+// Generous: a skip takes about 50 ms locally, and CI runners are slower.
+const MS_PER_SKIP = 100;
 
 test('skipping through many questions covers every question and difficulty', async ({
   page,
@@ -66,14 +71,14 @@ test('skipping through many questions covers every question and difficulty', asy
   const skip = page.getByRole('button', { name: 'Skip question' });
   const missing = page.locator('.coverage__missing');
 
-  // Questions are drawn uniformly, so seeing all N takes about N * (ln N + 0.6) skips: the
-  // limit is that for several hundred questions, with room to spare. Stop as soon as all are seen.
-  test.setTimeout(MANY_SKIPS_TIMEOUT_MS);
-  for (let i = 0; i < MAX_SKIPS && (await missing.count()) > 0; i++) {
+  const total = await page.locator('.coverage tbody tr').count();
+  const maxSkips = Math.ceil(total * (Math.log(total) + SKIP_LIMIT_OFFSET) * SKIP_LIMIT_MARGIN);
+  test.setTimeout(maxSkips * MS_PER_SKIP);
+  // Stop as soon as all are seen.
+  for (let i = 0; i < maxSkips && (await missing.count()) > 0; i++) {
     await skip.click();
   }
 
-  const total = await page.locator('.coverage tbody tr').count();
   await expect(page.getByText(/questions seen/)).toHaveText(
     new RegExp(`^${String(total)} of ${String(total)}`),
   );
