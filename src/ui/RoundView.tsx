@@ -5,6 +5,7 @@ import { isCorrect } from '../game/progress';
 import { displayDetails, displayValue } from '../game/roundDisplay';
 import { clueImageUrl, roundSymbols } from '../game/textSymbols';
 import { Icon } from './icons';
+import { longestWordEm } from './nameWidth';
 import { OptionCard, type CardState } from './OptionCard';
 import { RoundProgress } from './RoundProgress';
 
@@ -71,6 +72,7 @@ export function RoundView({
   const clueUrl = clueImageUrl(round);
   const answerName = options.get(round.answerId)?.name ?? round.answerId;
   const answeredRight = chosenId !== undefined && isCorrect(round, chosenId);
+  const optionNames = round.optionIds.map((id) => options.get(id)?.name ?? id);
 
   return (
     <section class="round" aria-labelledby="question">
@@ -102,7 +104,8 @@ export function RoundView({
         {round.question}
       </h2>
 
-      <div class="cards">
+      {/* One name size for all four cards, small enough that no word has to break. */}
+      <div class="cards" style={`--longest-word-em: ${String(longestWordEm(optionNames))}`}>
         {round.optionIds.map((id) => {
           const option = options.get(id);
           const state = cardState(round, id, chosenId);
