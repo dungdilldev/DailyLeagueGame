@@ -43,36 +43,74 @@
         <a href="about.html">About</a>
         <a class="site-nav__play" href="trivia.html">Play</a>
       </nav>
-      <div class="settings" data-settings>
+      <div class="site-header__tools">
         <button
           type="button"
-          class="settings__gear"
-          aria-label="Settings"
-          aria-expanded="false"
-          aria-controls="settings-panel"
-          title="Settings"
+          class="header-button"
+          aria-label="Patch notes"
+          aria-haspopup="dialog"
+          title="Patch notes"
+          data-patch-notes-open
         >
           <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <circle cx="12" cy="12" r="3" />
-            <path
-              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"
-            />
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
           </svg>
         </button>
-        <div class="settings__panel" id="settings-panel" hidden>
-          <p class="settings__title">Settings</p>
-          <label class="settings__option">
-            <input class="settings__switch" type="checkbox" role="switch" data-colorblind-toggle />
-            <span>
-              <span class="settings__name">Colorblind mode</span>
-              <span class="settings__hint">
-                <span class="settings__swatch settings__swatch--ok" aria-hidden="true"></span>
-                <span class="settings__swatch settings__swatch--bad" aria-hidden="true"></span>
-                Blue and orange instead of green and red
+        <div class="settings" data-settings>
+          <button
+            type="button"
+            class="header-button settings__gear"
+            aria-label="Settings"
+            aria-expanded="false"
+            aria-controls="settings-panel"
+            title="Settings"
+          >
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"
+              />
+            </svg>
+          </button>
+          <div class="settings__panel" id="settings-panel" hidden>
+            <p class="settings__title">Settings</p>
+            <label class="settings__option">
+              <input
+                class="settings__switch"
+                type="checkbox"
+                role="switch"
+                data-colorblind-toggle
+              />
+              <span>
+                <span class="settings__name">Colorblind mode</span>
+                <span class="settings__hint">
+                  <span class="settings__swatch settings__swatch--ok" aria-hidden="true"></span>
+                  <span class="settings__swatch settings__swatch--bad" aria-hidden="true"></span>
+                  Blue and orange instead of green and red
+                </span>
               </span>
-            </span>
-          </label>
+            </label>
+          </div>
         </div>
+        <dialog class="patch-notes" aria-labelledby="patch-notes-title" data-patch-notes>
+          <div class="patch-notes__frame">
+            <div class="patch-notes__head">
+              <h2 id="patch-notes-title" class="patch-notes__title">Patch notes</h2>
+              <button
+                type="button"
+                class="header-button"
+                aria-label="Close patch notes"
+                data-patch-notes-close
+              >
+                <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />
+                </svg>
+              </button>
+            </div>
+            <div class="patch-notes__list" data-patch-notes-list></div>
+          </div>
+        </dialog>
       </div>
     </div>
   </div>

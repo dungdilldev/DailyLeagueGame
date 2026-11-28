@@ -1,0 +1,217 @@
+/*
+ * The buttons at the right of the shared header (partials/header.html) and what they open: the
+ * patch notes window (patchNotesWindow.ts) and the settings menu (settingsMenu.ts).
+ */
+
+.header-button {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.header-button .icon {
+  stroke-width: 2;
+}
+
+.header-button:hover,
+.header-button[aria-expanded='true'] {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.header-button:focus-visible,
+.settings__switch:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Settings menu ---------- */
+
+.settings {
+  position: relative;
+}
+
+.settings__panel {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: max-content;
+  max-width: min(20rem, calc(100vw - 2rem));
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 45%);
+}
+
+.settings__title {
+  margin: 0 0 0.75rem;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.settings__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  cursor: pointer;
+}
+
+.settings__switch {
+  position: relative;
+  flex: none;
+  width: 2.5rem;
+  height: 1.375rem;
+  margin: 0.0625rem 0 0;
+  border: 1px solid var(--gold-line);
+  border-radius: 999px;
+  background: var(--bg-deep);
+  cursor: pointer;
+  appearance: none;
+  transition: background 0.15s;
+}
+
+.settings__switch::before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--muted);
+  content: '';
+  transition: transform 0.15s;
+}
+
+.settings__switch:checked {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.settings__switch:checked::before {
+  background: var(--bg-deep);
+  transform: translateX(1.125rem);
+}
+
+.settings__name {
+  display: block;
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.settings__hint {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+/* The two colours in use right now, so the switch shows what it changes. */
+.settings__swatch {
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-right: 0.25rem;
+  border-radius: 50%;
+}
+
+.settings__swatch--ok {
+  background: var(--ok);
+}
+
+.settings__swatch--bad {
+  margin-right: 0.375rem;
+  background: var(--bad);
+}
+
+/* ---------- Patch notes window ---------- */
+
+/* No padding: the frame fills the dialog, so a click on the dialog itself is on the backdrop. */
+.patch-notes {
+  width: min(36rem, calc(100vw - 2rem));
+  max-height: min(40rem, calc(100dvh - 4rem));
+  padding: 0;
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 55%);
+  color: var(--text);
+}
+
+.patch-notes::backdrop {
+  background: rgb(1 10 19 / 75%);
+}
+
+/* The frame scrolls, so the arrow keys scroll it while the close button has focus. */
+.patch-notes__frame {
+  max-height: inherit;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.patch-notes__head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1rem 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-raised);
+}
+
+.patch-notes__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.patch-notes__list {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+.patch-note + .patch-note {
+  border-top: 1px solid var(--border);
+}
+
+.patch-note__date {
+  margin: 1.25rem 0 0.5rem;
+  color: var(--gold);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.patch-note__changes {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.patch-note__changes li + li {
+  margin-top: 0.375rem;
+}
+
+.patch-note__changes li::marker {
+  color: var(--gold);
+}
+
+/* The page behind the open window stays put. */
+html:has(.patch-notes[open]) {
+  overflow: hidden;
+}

@@ -6,7 +6,7 @@ import {
   setColorblindMode,
 } from '../ui/colorblindMode';
 
-/** Applies the saved settings and wires the header's settings menu. Every page's script calls it first. */
+/** Applies the saved settings and wires the header's settings menu (called by `enableHeader`). */
 export function enableSettings(page: Document): void {
   applySavedColorblindMode();
   const menu = page.querySelector('[data-settings]');

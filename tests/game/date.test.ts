@@ -3,6 +3,7 @@ import {
   addUtcDays,
   formatCountdown,
   formatDayLabel,
+  formatLongDate,
   formatUtcDate,
   isValidUtcDate,
   msUntilNextUtcDay,
@@ -72,5 +73,12 @@ describe('formatDayLabel', () => {
 
   it('reads the date in UTC, so no time zone moves it to a neighbouring day', () => {
     expect(formatDayLabel('2026-01-01')).toBe('Thu, Jan 1, 2026');
+  });
+});
+
+describe('formatLongDate', () => {
+  it('writes the month out in full, without the weekday, read in UTC', () => {
+    expect(formatLongDate('2026-11-28')).toBe('November 28, 2026');
+    expect(formatLongDate('2026-01-01')).toBe('January 1, 2026');
   });
 });

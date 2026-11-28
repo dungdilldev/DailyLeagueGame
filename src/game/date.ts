@@ -49,3 +49,15 @@ const dayLabelFormat = new Intl.DateTimeFormat('en-US', {
 export function formatDayLabel(date: string): string {
   return dayLabelFormat.format(new Date(`${date}T00:00:00Z`));
 }
+
+const longDateFormat = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+/** Writes a YYYY-MM-DD day out in full, e.g. "November 28, 2026" (read in UTC, like the day). */
+export function formatLongDate(date: string): string {
+  return longDateFormat.format(new Date(`${date}T00:00:00Z`));
+}
