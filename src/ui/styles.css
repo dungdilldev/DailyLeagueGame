@@ -1,20 +1,29 @@
 /*
- * Hextech look: deep navy, gold hairlines, a teal accent, a classical serif for display text.
+ * Hextech look: slate charcoal, gold hairlines, a teal accent, a classical serif for display text.
  * The fonts are self-hosted (fonts.css), so no font is downloaded from a third party.
  * This file is the base every page shares; the game's own styles are in game.css.
  */
 @import './fonts.css';
 
+/*
+ * Each surface is a clear step lighter than the one it sits on (page, header band, panel, card),
+ * and everything that can be clicked is outlined with --border-strong, at least 3:1 against its
+ * background, so the cards never blend into the page. --border is for dividers only.
+ */
 :root {
   color-scheme: dark;
-  --bg-deep: #010a13;
-  --bg: #0a1428;
-  --surface: #0c1a2e;
-  --surface-raised: #11233b;
-  --surface-hover: #152a46;
-  --border: #1e2d3d;
+  --bg-deep: #08090b;
+  --bg: #111317;
+  --surface: #1b1e24;
+  --surface-card: #23262d;
+  --surface-raised: #2c3039;
+  --surface-hover: #363b46;
+  --border: #2e333c;
+  --border-strong: #636b7a;
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 6%), 0 6px 16px rgb(0 0 0 / 35%);
+  --shadow-panel: 0 24px 60px rgb(0 0 0 / 55%);
   --text: #f0e6d2;
-  --muted: #a09b8c;
+  --muted: #aea999;
   --gold-light: #f0e6d2;
   --gold: #c8aa6e;
   --gold-dark: #785a28;
@@ -107,7 +116,7 @@ body {
 }
 
 .button--secondary {
-  border-color: var(--border);
+  border-color: var(--border-strong);
   background: transparent;
   color: var(--muted);
   font-weight: 600;
