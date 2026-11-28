@@ -288,8 +288,17 @@
   min-height: 9rem;
 }
 
+/*
+ * An invisible twin of the tag line at the top, so the name sits in the true middle of the card
+ * rather than in the middle of the space above the tag.
+ */
+.card--plain::before {
+  content: '';
+  min-height: 1.375rem;
+  margin-bottom: auto;
+}
+
 .card--plain .card__name {
-  margin-top: auto;
   color: var(--gold-light);
   --name-size: 1.35rem;
 
@@ -339,11 +348,19 @@
   animation: rise 0.35s ease-out both;
 }
 
-/* Take their space before the answer so the cards do not grow on reveal. */
-.card__value--hidden,
-.card__details--hidden {
+/* The value takes its line before the answer, so most cards do not grow on reveal. */
+.card__value--hidden {
   visibility: hidden;
   animation: none;
+}
+
+/*
+ * The written unit and the details would leave a large empty space under the picture before the
+ * answer, so they take no space until then; the whole row grows together on reveal.
+ */
+.card__value--hidden .card__unit-text,
+.card__details--hidden {
+  display: none;
 }
 
 /* Reveal values one after another, like tiles turning over. */

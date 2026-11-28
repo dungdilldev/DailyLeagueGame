@@ -7,13 +7,13 @@ interface OptionCardProps {
   iconUrl: string | undefined;
   /** A region or group crest rather than a portrait: drawn without the portrait frame. */
   isSymbol?: boolean;
-  /** Stat value as display text; its line is always reserved so revealing it moves nothing. */
+  /** Stat value as display text; its line is always reserved (the written unit's is not). */
   valueText: string | undefined;
   /** The stat's symbol, drawn after the value as its unit. */
   unitIconUrl?: string | undefined;
   /** A unit written after the value, e.g. "skins per year". */
   unit?: string | undefined;
-  /** Lines shown under the value once revealed, e.g. "Skins: 11"; their space is reserved too. */
+  /** Lines shown under the value once revealed, e.g. "Skins: 11"; they take no space before that. */
   details?: readonly string[];
   /** False until the player has answered: the value takes up space but is invisible. */
   valueRevealed: boolean;
