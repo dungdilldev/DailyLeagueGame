@@ -2,11 +2,15 @@ import { render, type ComponentChild } from 'preact';
 import { parseGameMode } from './game/gameMode';
 import { App } from './ui/App';
 import { PENDING_CLASS, readPuzzleDays } from './ui/embeddedPuzzleDays';
+import { enableSettings } from './pages/settingsMenu';
 import './ui/styles.css';
 import './pages/site.css';
 import './ui/game.css';
 
 const ENDLESS_MODE = 'endless';
+
+// First, so a saved result is drawn in the chosen colours from the start.
+enableSettings(document);
 
 const root = document.getElementById('app');
 if (!root) {

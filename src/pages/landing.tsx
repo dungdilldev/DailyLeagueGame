@@ -7,9 +7,12 @@ import { getBrowserStorage } from '../storage/progressStore';
 import { modesFinishedOn } from '../storage/playedModes';
 import { Countdown } from '../ui/Countdown';
 import { enableSampleRound } from './sampleRound';
+import { enableSettings } from './settingsMenu';
 import '../ui/styles.css';
 import './site.css';
 import './landing.css';
+
+enableSettings(document);
 
 const today = formatUtcDate(new Date());
 

@@ -351,6 +351,7 @@ permission, so it needs the operator's agreement first.
 - [ ] Champion splash art / ability icons, animations, sound toggle
 - [x] Analytics: Cloudflare Web Analytics (cookieless, page views only, no consent needed), on every page via `src/pages/partials/analytics.html`
 - [ ] OG share image
+- [x] Colorblind mode (2026-11-28): a gear in the shared header opens a settings menu (`src/pages/settingsMenu.ts`) with a switch that turns right and wrong from green and red into blue and orange on every page (`data-colorblind` on `<html>` overrides `--ok` / `--bad` in `styles.css`), including the share squares; saved in `localStorage` (`src/storage/settings.ts`), listed in `privacy.html`
 - [ ] Archive of past puzzles
 - [ ] "Report a problem" button on each round. Deferred until the site has a server of its own: no third-party form service (decided by the owner); a `mailto:` link with the question, options and date prefilled is the no-server fallback
 

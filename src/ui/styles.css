@@ -31,6 +31,18 @@
   font-family: var(--font-body);
 }
 
+/*
+ * Colorblind mode (the settings menu in the header, `colorblindMode.ts`): blue and orange instead
+ * of green and red, a pair told apart with every common colour vision deficiency. Every right and
+ * wrong mark is drawn with these four tokens, so nothing else changes.
+ */
+:root[data-colorblind] {
+  --ok: #4ba3ff;
+  --ok-tint: rgb(75 163 255 / 14%);
+  --bad: #ff8a3d;
+  --bad-tint: rgb(255 138 61 / 14%);
+}
+
 *,
 *::before,
 *::after {

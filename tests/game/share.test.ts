@@ -14,6 +14,12 @@ describe('buildShareText', () => {
     );
   });
 
+  it('uses blue and orange squares in colorblind mode', () => {
+    expect(buildShareText('2026-03-05', [true, false], undefined, undefined, 'colorblind')).toBe(
+      "Summoner's Quiz 2026-03-05 1/2\n\u{1F7E6}\u{1F7E7}",
+    );
+  });
+
   it('appends the url when given', () => {
     expect(buildShareText('2026-03-05', [true], 'https://example.com')).toContain(
       '\nhttps://example.com',

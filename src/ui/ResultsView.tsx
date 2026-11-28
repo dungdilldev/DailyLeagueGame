@@ -8,6 +8,7 @@ import { Countdown } from './Countdown';
 import { Icon } from './icons';
 import { MODE_LABELS } from './modeLabels';
 import { modePageHref } from './modePages';
+import { useColorblindMode } from './useColorblindMode';
 
 interface ResultsViewProps {
   puzzle: Puzzle;
@@ -30,6 +31,7 @@ export function ResultsView({
   nextMode,
 }: ResultsViewProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
+  const colorblind = useColorblindMode();
   const results = roundResults(puzzle, answers);
   const correct = results.filter(Boolean).length;
   const shareText = buildShareText(
@@ -37,6 +39,7 @@ export function ResultsView({
     results,
     shareUrl,
     mode === MIXED_MODE ? undefined : MODE_LABELS[mode],
+    colorblind ? 'colorblind' : 'standard',
   );
 
   const copyResult = () => {
